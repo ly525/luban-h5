@@ -11,7 +11,7 @@ const LbpButton = {
       borderColor,
       borderRadius,
       borderWidth,
-      name
+      text
     } = this
     return (
       <button
@@ -26,11 +26,11 @@ const LbpButton = {
           borderWidth: borderWidth + 'px',
           textDecoration: 'none'
         }}
-      >{name}</button>)
+      >{text}</button>)
   },
   name: 'lbp-button',
   props: {
-    name: {
+    text: {
       type: String,
       default: '按钮'
     },
