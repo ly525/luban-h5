@@ -345,7 +345,6 @@ const Editor = {
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      */
     clone ({ name }) {
-      debugger
       const zindex = this.elements.length + 1
       // const defaultPropsValue = this.getPropsDefaultValue(name)
       const editorConfig = this.getEditorConfig(name)
@@ -355,7 +354,7 @@ const Editor = {
       this.editingElement = element
     },
     /**
-     * #!zh: renderCanvas 将拖拽过来的组件渲染到中间画布 上
+     * #!zh: renderCanvas 渲染中间画布
      * elements
      * @param {*} h
      * @param {*} elements
