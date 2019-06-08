@@ -36,3 +36,9 @@
 2. 后端：[Adonis.js](https://adonisjs.com)
 3. 存储：[MongoDB](https://mongodb.com)
 
+
+### 安装
+> project：项目根目录
+
+1. 前端 
+    1. 编辑器部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
