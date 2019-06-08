@@ -84,14 +84,12 @@ const LbpButton = {
     }
   },
   editorConfig: {
-    propConfig: {
-      name: {
+    propsConfig: {
+      text: {
         type: 'el-input',
         label: '按钮文字',
         require: true,
-        widgetProps: {
-          value: '按钮'
-        }
+        defaultPropValue: '按钮'
       },
       fontSize: {
         type: 'el-input-number',
@@ -102,10 +100,7 @@ const LbpButton = {
           min: 12,
           max: 144
         },
-        widgetProps: {
-          value: 14
-
-        }
+        defaultPropValue: 14
       },
       color: {
         type: 'el-input',
@@ -115,9 +110,7 @@ const LbpButton = {
           type: 'color'
         },
         require: true,
-        widgetProps: {
-          value: ''
-        }
+        defaultPropValue: 'black'
       },
       backgroundColor: {
         type: 'el-input', // lbs-color-picker
@@ -126,9 +119,7 @@ const LbpButton = {
           type: 'color'
         },
         require: true,
-        widgetProps: {
-          value: ''
-        }
+        defaultPropValue: '#ffffff' // TODO why logogram for color does't work?
       },
       borderColor: {
         type: 'el-input', // lbs-color-picker
@@ -137,9 +128,7 @@ const LbpButton = {
           type: 'color'
         },
         require: true,
-        widgetProps: {
-          value: '#ced4da'
-        }
+        defaultPropValue: '#eeeeee'
       },
       borderWidth: {
         type: 'el-input-number',
@@ -150,9 +139,7 @@ const LbpButton = {
           min: 1,
           max: 10
         },
-        widgetProps: {
-          value: 1
-        }
+        defaultPropValue: 1
       },
       borderRadius: {
         type: 'el-input-number',
@@ -163,10 +150,7 @@ const LbpButton = {
           min: 0,
           max: 10
         },
-        widgetProps: {
-          value: 0
-
-        }
+        defaultPropValue: 0
       },
       lineHeight: {
         type: 'el-input-number',
@@ -177,19 +161,13 @@ const LbpButton = {
           min: 0.1,
           max: 10
         },
-        widgetProps: {
-          value: 1
-
-        }
+        defaultPropValue: 1
       },
       textAlign: {
         type: 'lbs-text-align',
         label: '文字对齐',
         require: true,
-        widgetProps: {
-          value: 'center'
-
-        }
+        defaultPropValue: 'center'
       }
     },
     components: {
@@ -293,21 +271,51 @@ const PluginList = [
   }
 ]
 
+const defaultProps = {
+  top: 100,
+  left: 100,
+  width: 100,
+  height: 40,
+  zindex: 1,
+  textAlign: 'center',
+  color: '#000000',
+  backgroundColor: '#ffffff',
+  fontSize: 14
+}
+
 class Element {
   constructor (ele) {
-    const { defaultPropsValue = {} } = ele
-    this.type = ele.name
+    // TODO 需要处理plugin的prop中是 name 的，会覆盖 this.name，
+    // 或者将plugin的props赋值给this.pluginProps，这样可以避免冲突，也可以知道哪些是plugin 的props
     this.name = ele.name
-    this.zindex = ele.zindex || defaultPropsValue.zindex || 1
-    this.style = {
-      top: ele.top || defaultPropsValue.top || 100,
-      left: ele.left || defaultPropsValue.left || 100,
-      ...defaultPropsValue
-    }
+    this.editorConfig = ele.editorConfig || {}
+    this.init()
+  }
+
+  init () {
+    // init common props
+    Object.keys(defaultProps).forEach(key => {
+      this[key] = defaultProps[key]
+    })
+
+    // init prop of plugin
+    const propConf = this.editorConfig.propsConfig
+    Object.keys(propConf).forEach(key => {
+      this[key] = propConf[key].defaultPropValue
+    })
   }
 
   getStyle () {
-
+    return {
+      top: `${this.top}px`,
+      left: `${this.left}px`,
+      width: `${this.width}px`,
+      height: `${this.height}px`,
+      fontSize: `${this.fontSize}px`,
+      color: this.color,
+      backgroundColor: this.backgroundColor,
+      textAlign: this.textAlign
+    }
   }
 
   getClass () {
@@ -322,27 +330,29 @@ class Element {
 const Editor = {
   name: 'Editor',
   components: {
-    EditorPanel: {
-      template: '<div>Editor Panel</div>'
-    }
   },
   data: () => ({
     pages: [],
-    elements: []
+    elements: [],
+    editingElement: null
   }),
   methods: {
+    getEditorConfig (pluginName) {
+      return this.$options.components[pluginName].editorConfig
+    },
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      */
     clone ({ name }) {
+      debugger
       const zindex = this.elements.length + 1
-      const defaultPropsValue = this.getPropsDefaultValue(name)
-      this.elements.push(new Element({ name, zindex, defaultPropsValue }))
-      // return new Element({ name, zindex })
+      // const defaultPropsValue = this.getPropsDefaultValue(name)
+      const editorConfig = this.getEditorConfig(name)
+      this.elements.push(new Element({ name, zindex, editorConfig }))
     },
     setCurrentEditingElement (element) {
-
+      this.editingElement = element
     },
     /**
      * #!zh: renderCanvas 将拖拽过来的组件渲染到中间画布 上
@@ -357,16 +367,8 @@ const Editor = {
           {elements.map((element, index) => {
             return (() => {
               const data = {
-                style: {
-                  top: '100px',
-                  fontSize: '16px',
-                  textAlign: 'center',
-                  color: 'orange',
-                  width: '100px',
-                  height: '30px',
-                  position: 'absolute'
-                },
-                on: {
+                style: element.getStyle(),
+                nativeOn: {
                   click: this.setCurrentEditingElement.bind(this, element)
                 }
               }
@@ -404,26 +406,53 @@ const Editor = {
         </el-tabs>
       )
     },
-    renderPropsEditorPanel () {
-      return (<EditorPanel />)
+    renderPropsEditorPanel (h) {
+      if (!this.editingElement) return (<span>请先选择一个元素</span>)
+      const editingElement = this.editingElement
+      const propsConfig = editingElement.editorConfig.propsConfig
+      return (
+        <el-form ref="form" label-width="80px">
+          {
+            Object.keys(propsConfig).map(propKey => {
+              const item = propsConfig[propKey]
+              // https://vuejs.org/v2/guide/render-function.html
+              const data = {
+                props: {
+                  ...item.prop,
+                  // https://vuejs.org/v2/guide/render-function.html#v-model
+                  ...{ value: editingElement[propKey] || item.defaultPropValue }
+                },
+                on: {
+                  // https://vuejs.org/v2/guide/render-function.html#v-model
+                  input (value) {
+                    editingElement[propKey] = value
+                  }
+                }
+              }
+              return (
+                <el-form-item label={item.label}>
+                  { h(item.type, data) }
+                </el-form-item>
+              )
+            })
+          }
+        </el-form>
+      )
     }
   },
   render (h) {
     return (
-      <div style='height: 100vh;'>
-        <div id='designer-page'>
-          <div class='el-col-5'>
-            { this.renderPluginListPanel() }
+      <div id='designer-page'>
+        <div class='el-col-5'>
+          { this.renderPluginListPanel() }
+        </div>
+        <div class='el-col-13'>
+          <div class='canvas-wrapper'>
+            { this.renderCanvas(h, this.elements) }
           </div>
-          <div class='el-col-13'>
-            <div class='canvas-wrapper'>
-              { this.renderCanvas(h, this.elements) }
-              { this.hasEleEditing && <Shape elementStyle={this.editingElement.style || {}} /> }
-            </div>
-          </div>
-          <div class='el-col-6'>
-            { this.renderPropsEditorPanel() }
-          </div>
+        </div>
+        <div class='el-col-6' style="border-left: 1px solid #eee;">
+          { this.renderPropsEditorPanel(h) }
         </div>
       </div>
     )
@@ -439,13 +468,6 @@ export default {
     }
   },
   methods: {
-    getPropsDefaultValue (pluginName) {
-      const defaultPropsValue = {}
-      const component = this.$options.components[pluginName]
-      const propConfig = component.editorConfig.propConfig
-      Object.keys(propConfig).forEach(key => { defaultPropsValue[key] = propConfig[key].widgetProps.value })
-      return defaultPropsValue
-    },
     mixinPlugins2Editor () {
       PluginList.forEach(plugin => {
         this.$options.components[plugin.name] = plugin.component
