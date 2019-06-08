@@ -203,7 +203,12 @@ const LbpButton = {
         }),
         computed: {
           value_: {
-            get: () => this.value,
+            // TODO 关于箭头函数中的this：这里不能写成箭头函数，否则 this 为 undefined，为何？
+            // http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/
+            // https://tangxiaolang101.github.io/2016/08/01/%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8JavaScript%E7%9A%84%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E6%A0%88%EF%BC%88What%20is%20the%20Execution%20Context%20&%20Stack%20in%20JavaScript%EF%BC%89/
+            get () {
+              return this.value
+            },
             set (val) {
               this.$emit('input', val)
             }
@@ -350,8 +355,16 @@ const Editor = {
       const editorConfig = this.getEditorConfig(name)
       this.elements.push(new Element({ name, zindex, editorConfig }))
     },
+    mixinPluginCustomComponents2Editor () {
+      const { components } = this.editingElement.editorConfig
+      for (const key in components) {
+        if (this.$options.components[key]) return
+        this.$options.components[key] = components[key]
+      }
+    },
     setCurrentEditingElement (element) {
       this.editingElement = element
+      this.mixinPluginCustomComponents2Editor()
     },
     /**
      * #!zh: renderCanvas 渲染中间画布
