@@ -303,6 +303,7 @@ class Element {
     })
 
     // init prop of plugin
+    this.pluginProps = {}
     const propConf = this.editorConfig.propsConfig
     Object.keys(propConf).forEach(key => {
       // #6
@@ -310,7 +311,7 @@ class Element {
         console.warn('Please do not use {name} as plugin prop')
         return
       }
-      this[key] = propConf[key].defaultPropValue
+      this.pluginProps[key] = propConf[key].defaultPropValue
     })
   }
 
@@ -384,7 +385,7 @@ const Editor = {
             return (() => {
               const data = {
                 style: element.getStyle(),
-                props: element, // #6
+                props: element.pluginProps, // #6 #3
                 nativeOn: {
                   click: this.setCurrentEditingElement.bind(this, element)
                 }
