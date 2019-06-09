@@ -291,8 +291,6 @@ const defaultProps = {
 
 class Element {
   constructor (ele) {
-    // TODO 需要处理plugin的prop中是 name 的，会覆盖 this.name，
-    // 或者将plugin的props赋值给this.pluginProps，这样可以避免冲突，也可以知道哪些是plugin 的props
     this.name = ele.name
     this.editorConfig = ele.editorConfig || {}
     this.init()
@@ -307,6 +305,11 @@ class Element {
     // init prop of plugin
     const propConf = this.editorConfig.propsConfig
     Object.keys(propConf).forEach(key => {
+      // #6
+      if (key === 'name') {
+        console.warn('Please do not use {name} as plugin prop')
+        return
+      }
       this[key] = propConf[key].defaultPropValue
     })
   }
@@ -381,6 +384,7 @@ const Editor = {
             return (() => {
               const data = {
                 style: element.getStyle(),
+                props: element, // #6
                 nativeOn: {
                   click: this.setCurrentEditingElement.bind(this, element)
                 }
