@@ -177,7 +177,8 @@ const LbpButton = {
             <el-radio-group v-model="value_" size="small">
               <el-tooltip effect="dark" :content="item.label" placement="top" :key="index" v-for="(item, index) in textAlignTabs">
                 <el-radio-button :label="item.value">
-                  <i :class="['fa', 'fa-align-\${item.value}']" aria-hidden="true"></i>
+                  <!-- issue #8 -->
+                  <i :class="['fa', 'fa-align-'+item.value]" aria-hidden="true"></i>
                 </el-radio-button>
               </el-tooltip>
             </el-radio-group>
