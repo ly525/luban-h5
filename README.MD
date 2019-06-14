@@ -1,3 +1,5 @@
+简体中文 | [English](./README.en.md)
+
 ### 鲁班H5是什么？
 鲁班H5是基于Vue2.0开发的，通过拖拽的形式，生成页面的工具，类似[易企秀](http://www.eqxiu.com/)、[百度 H5](https://h5.baidu.com) 等工具
 
