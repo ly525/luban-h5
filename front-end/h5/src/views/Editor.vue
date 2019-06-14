@@ -1,4 +1,6 @@
 <script>
+import Vue from 'vue'
+
 // LuBanPlugin -> Lbp
 const LbpButton = {
   render () {
@@ -344,11 +346,15 @@ const Editor = {
   data: () => ({
     pages: [],
     elements: [],
-    editingElement: null
+    editingElement: null,
+    isPreviewMode: false,
   }),
   methods: {
     getEditorConfig (pluginName) {
-      return this.$options.components[pluginName].editorConfig
+      // const pluginCtor = Vue.options[pluginName]
+      // const pluginCtor = this.$options.components[pluginName]
+      const pluginCtor = Vue.component(pluginName)
+      return new pluginCtor().$options.editorConfig
     },
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
@@ -389,6 +395,22 @@ const Editor = {
                 nativeOn: {
                   click: this.setCurrentEditingElement.bind(this, element)
                 }
+              }
+              return h(element.name, data)
+            })()
+          })}
+        </div>
+      )
+    },
+    renderPreview (h, elements) {
+      return (
+        <div style={{ height: '100%' }}>
+          {elements.map((element, index) => {
+            return (() => {
+              const data = {
+                style: element.getStyle(),
+                props: element.pluginProps, // #6 #3
+                nativeOn: {}
               }
               return h(element.name, data)
             })()
@@ -465,8 +487,14 @@ const Editor = {
           { this.renderPluginListPanel() }
         </div>
         <div class='el-col-13'>
+          <div style="text-align: center;">
+            <el-radio-group value={this.isPreviewMode} onInput={(value) => this.isPreviewMode = value} size="mini">
+              <el-radio-button label={false}>Edit</el-radio-button>
+              <el-radio-button label={true}>Preview</el-radio-button>
+            </el-radio-group>
+          </div>
           <div class='canvas-wrapper'>
-            { this.renderCanvas(h, this.elements) }
+            { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements)  }
           </div>
         </div>
         <div class='el-col-6' style="border-left: 1px solid #eee;">
@@ -488,7 +516,8 @@ export default {
   methods: {
     mixinPlugins2Editor () {
       PluginList.forEach(plugin => {
-        this.$options.components[plugin.name] = plugin.component
+        // 全局注册组件，便于以后扩展自定义脚本，注释原来的局部注册：this.$options.components[plugin.name] = plugin.component
+        Vue.component(plugin.name, plugin.component)
       })
     }
   },
