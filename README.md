@@ -44,3 +44,7 @@
 
 1. 前端 
     1. 编辑器部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
+
+
+### 前端组件说明
+1. `lbp-` 全称为 `lu-ban-plugin-`, 意思为 `鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`

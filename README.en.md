@@ -41,4 +41,6 @@ English | [简体中文](./README.md)
 
   1. Front End
       Editor: please refer to: [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
-        
+
+### Front-End Component Explanation
+1. `lbp-`: `lu-ban-plugin-`, means `Luban H5 plugin`, location: `proj/front-end/h5/src/components/plugins`
