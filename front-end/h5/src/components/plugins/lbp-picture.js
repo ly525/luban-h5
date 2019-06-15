@@ -17,14 +17,14 @@ export default {
   editorConfig: {
     propsConfig: {
       imgSrc: {
-        type: 'picture-picker',
-        label: '',
-        require: true,
-        widgetProps: {
-          value: '',
-          template: '%i',
+        // type: 'picture-picker',
+        type: 'el-input',
+        label: '图片url',
+        prop: {
+          type: 'textarea'
         },
-      },
+        defaultPropValue: ''
+      }
     },
     components: {
     //   'picture-picker': PicturePicker,
