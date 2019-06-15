@@ -3,6 +3,7 @@ import Vue from 'vue'
 import CoreEditor from '../components/core/editor'
 
 import LbpButton from '../components/plugins/lbp-button'
+import LbpPicture from '../components/plugins/lbp-picture'
 
 const PluginList = [
   {
@@ -11,6 +12,13 @@ const PluginList = [
     component: LbpButton,
     visible: true,
     name: 'lbp-button'
+  },
+  {
+    title: '图片',
+    icon: 'file-image-o',
+    component: LbpPicture,
+    visible: true,
+    name: 'lbp-picture'
   }
 ]
 
