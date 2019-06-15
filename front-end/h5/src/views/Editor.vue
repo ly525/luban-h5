@@ -4,8 +4,6 @@ import CoreEditor from '../components/core/editor'
 
 import LbpButton from '../components/plugins/lbp-button'
 
-import Element from '../components/core/models/element'
-
 const PluginList = [
   {
     title: '按钮',

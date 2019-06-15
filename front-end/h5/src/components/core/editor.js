@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Element from './models/element'
 
 export default {
   name: 'Editor',
