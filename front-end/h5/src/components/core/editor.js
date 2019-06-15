@@ -162,7 +162,14 @@ export default {
           </div>
         </div>
         <div class='el-col-6' style="border-left: 1px solid #eee;">
-          { this.renderPropsEditorPanel(h) }
+          <el-tabs type="border-card" style="height: 100%;">
+            <el-tab-pane>
+              <span slot="label"><i class="el-icon-date"></i> 属性</span>
+              { this.renderPropsEditorPanel(h) }
+            </el-tab-pane>
+            <el-tab-pane label="动画">动画</el-tab-pane>
+            <el-tab-pane label="动作">动作</el-tab-pane>
+          </el-tabs>
         </div>
       </div>
     )
