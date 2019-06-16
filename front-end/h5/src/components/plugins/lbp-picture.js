@@ -1,18 +1,19 @@
-const defaultPngPath = 'http://jietu-10024907.file.myqcloud.com/kblthjeuhituluuaalpiuyvfwrldpkrj.jpg'
-
+// const defaultPngPath = 'http://jietu-10024907.file.myqcloud.com/kblthjeuhituluuaalpiuyvfwrldpkrj.jpg'
+// issue 34
+import placeholderImg from './lbp-picture-placeholder.jpg'
 export default {
   name: 'lbp-picture',
   render () {
-    return <img src={this.imgSrc || defaultPngPath} alt="" srcset="" width="100%" />
+    return <img src={this.imgSrc || placeholderImg} alt="" srcset="" width="100%" />
   },
   props: {
     imgSrc: {
       type: String,
-      default: defaultPngPath
+      default: placeholderImg
     }
   },
   data: () => ({
-    defaultPngPath
+    placeholderImg
   }),
   editorConfig: {
     propsConfig: {
