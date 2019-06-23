@@ -14,4 +14,9 @@
     outline: none;
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+}
 </style>
