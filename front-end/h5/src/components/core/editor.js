@@ -40,6 +40,70 @@ export default {
       this.mixinPluginCustomComponents2Editor()
     },
     /**
+     * 在左侧或顶部导航上显示可用的组件快捷方式，用户点击之后，即可将其添加到中间画布上
+     * @param {Object} group: {children, title, icon}
+     */
+    renderPluginShortcut (group) {
+      return group.children.length === 1
+        ? this.renderSinglePluginShortcut(group)
+        : this.renderMultiPluginShortcuts(group)
+    },
+    /**
+     * 渲染多个插件的快捷方式
+     * @param {Object} group: {children, title, icon}
+     */
+    renderMultiPluginShortcuts (group) {
+      const plugins = group.children
+      return <el-popover
+        placement="bottom"
+        width="400"
+        trigger="hover">
+        {
+          plugins.sort().map(item => (
+            <el-button
+              class='ma-0 no-border-radius'
+              onClick={this.clone.bind(this, item)}
+            >
+              <i
+                class={['fa', `fa-${item.icon}`]}
+                aria-hidden='true'
+                style='display: block;font-size: 16px;margin-bottom: 10px;'
+              />
+              <span>{ item.title }</span>
+            </el-button>
+          ))
+        }
+        <el-button slot="reference" class='ma-0 no-border-radius'>
+          <i
+            class={['fa', `fa-${group.icon}`]}
+            aria-hidden='true'
+            style='display: block;font-size: 16px;margin-bottom: 10px;'
+          />
+          <span class="plugin-item__text">{group.title}</span>
+        </el-button>
+      </el-popover>
+    },
+    /**
+     * #!zh: 渲染单个插件的快捷方式
+     * #!en: render shortcut for single plugin
+     * @param {Object} group: {children, title, icon}
+     */
+    renderSinglePluginShortcut ({ children }) {
+      const [plugin] = children
+      return <el-button
+        class='ma-0 no-border-radius'
+        style={{ width: '100%' }}
+        onClick={this.clone.bind(this, plugin)}
+      >
+        <i
+          class={['fa', `fa-${plugin.icon}`]}
+          aria-hidden='true'
+          style='display: block;font-size: 16px;margin-bottom: 10px;'
+        />
+        <span class="plugin-item__text">{ plugin.title }</span>
+      </el-button>
+    },
+    /**
      * #!zh: renderCanvas 渲染中间画布
      * elements
      * @param {*} h
@@ -85,21 +149,15 @@ export default {
         <el-tabs tab-position="left" class="lb-tabs">
           <el-tab-pane label='组件列表'>
             <div class="full-height">
-              {this.visiblePluginList.sort().map(item => {
-                return (
-                  <el-button
-                    class='plugin-item ma-0 no-border-radius'
-                    onClick={this.clone.bind(this, item)}
-                  >
-                    <i
-                      class={['fa', `fa-${item.icon}`]}
-                      aria-hidden='true'
-                      style='display: block;font-size: 16px;margin-bottom: 10px;'
-                    />
-                    <span>{ item.title }</span>
-                  </el-button>
-                )
-              })}
+              <el-row gutter={20}>
+                {
+                  this.groups.sort().map(group => (
+                    <el-col span={12} style={{ marginTop: '10px' }}>
+                      {this.renderPluginShortcut(group)}
+                    </el-col>
+                  ))
+                }
+              </el-row>
             </div>
           </el-tab-pane>
           <el-tab-pane label='页面管理'>

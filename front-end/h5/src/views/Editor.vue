@@ -11,14 +11,53 @@ const PluginList = [
     icon: 'hand-pointer-o',
     component: LbpButton,
     visible: true,
-    name: 'lbp-button'
+    name: 'lbp-button',
+    children: [
+      {
+        title: '按钮',
+        icon: 'hand-pointer-o',
+        component: LbpButton,
+        visible: true,
+        name: 'lbp-button'
+      }
+    ]
   },
   {
     title: '图片',
     icon: 'image',
     component: LbpPicture,
     visible: true,
-    name: 'lbp-picture'
+    name: 'lbp-picture',
+    children: [
+      {
+        title: '图片',
+        icon: 'image',
+        component: LbpPicture,
+        visible: true,
+        name: 'lbp-picture'
+      }
+    ]
+  },
+  {
+    title: '表单',
+    icon: 'wpforms',
+    visible: true,
+    children: [
+      {
+        title: '按钮',
+        icon: 'hand-pointer-o',
+        component: LbpButton,
+        visible: true,
+        name: 'lbp-button'
+      },
+      {
+        title: '图片',
+        icon: 'image',
+        component: LbpPicture,
+        visible: true,
+        name: 'lbp-picture'
+      }
+    ]
   }
 ]
 
@@ -27,6 +66,9 @@ export default {
   computed: {
     // !#zh 显示在侧边栏或顶部的 可用组件列表
     visiblePluginList () {
+      return PluginList.filter(p => p.visible)
+    },
+    groups () {
       return PluginList.filter(p => p.visible)
     }
   },
@@ -55,16 +97,6 @@ $designerWidthHalf: $designerWidth / 2;
   // less: min-height: ~'calc(100% - 40px)';
   min-height: calc(100% - 40px);
 
-}
-
-.plugin-item {
-  border: 1px solid #f1efef;
-  width: 49%;
-  padding: 12px 12px;
-
-  &:nth-child(even) {
-    margin: 4px 0 4px 2% !important;
-  }
 }
 
 .canvas-wrapper {
