@@ -38,16 +38,18 @@ class Element {
   }
 
   getStyle () {
-    return {
-      top: `${this.top}px`,
-      left: `${this.left}px`,
-      width: `${this.width}px`,
-      height: `${this.height}px`,
-      fontSize: `${this.fontSize}px`,
-      color: this.color,
-      backgroundColor: this.backgroundColor,
-      textAlign: this.textAlign
+    const pluginProps = this.pluginProps
+    let style = {
+      top: `${pluginProps.top || this.top}px`,
+      left: `${pluginProps.left || this.left}px`,
+      width: `${pluginProps.width || this.width}px`,
+      height: `${pluginProps.height || this.height}px`,
+      fontSize: `${pluginProps.fontSize || this.fontSize}px`,
+      color: pluginProps.color || this.color,
+      backgroundColor: pluginProps.backgroundColor || this.backgroundColor,
+      textAlign: pluginProps.textAlign || this.textAlign
     }
+    return style
   }
 
   getClass () {
