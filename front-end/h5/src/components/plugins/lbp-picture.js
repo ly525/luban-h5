@@ -19,7 +19,7 @@ export default {
     propsConfig: {
       imgSrc: {
         // type: 'picture-picker',
-        type: 'el-input',
+        type: 'a-input',
         label: '图片url',
         prop: {
           type: 'textarea'

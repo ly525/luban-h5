@@ -11,19 +11,21 @@ export default {
       borderWidth,
       text
     } = this
+
+    const style = {
+      color,
+      textAlign,
+      backgroundColor,
+      fontSize: fontSize,
+      lineHeight: lineHeight + 'em',
+      borderColor,
+      borderRadius: borderRadius + 'px',
+      borderWidth: borderWidth + 'px',
+      textDecoration: 'none'
+    }
     return (
       <button
-        style={{
-          color,
-          textAlign,
-          backgroundColor,
-          fontSize: fontSize + 'px',
-          lineHeight: lineHeight + 'em',
-          borderColor,
-          borderRadius: borderRadius + 'px',
-          borderWidth: borderWidth + 'px',
-          textDecoration: 'none'
-        }}
+        style={style}
       >{text}</button>)
   },
   name: 'lbp-button',
@@ -84,13 +86,13 @@ export default {
   editorConfig: {
     propsConfig: {
       text: {
-        type: 'el-input',
+        type: 'a-input',
         label: '按钮文字',
         require: true,
         defaultPropValue: '按钮'
       },
       fontSize: {
-        type: 'el-input-number',
+        type: 'a-input-number',
         label: '字号(px)',
         require: true,
         prop: {
@@ -101,7 +103,7 @@ export default {
         defaultPropValue: 14
       },
       color: {
-        type: 'el-input',
+        type: 'a-input',
         label: '文字颜色',
         // !#zh 为编辑组件指定 prop
         prop: {
@@ -111,7 +113,7 @@ export default {
         defaultPropValue: 'black'
       },
       backgroundColor: {
-        type: 'el-input', // lbs-color-picker
+        type: 'a-input', // lbs-color-picker
         label: '背景颜色',
         prop: {
           type: 'color'
@@ -120,7 +122,7 @@ export default {
         defaultPropValue: '#ffffff' // TODO why logogram for color does't work?
       },
       borderColor: {
-        type: 'el-input', // lbs-color-picker
+        type: 'a-input', // lbs-color-picker
         label: '边框颜色',
         prop: {
           type: 'color'
@@ -129,7 +131,7 @@ export default {
         defaultPropValue: '#eeeeee'
       },
       borderWidth: {
-        type: 'el-input-number',
+        type: 'a-input-number',
         label: '边框宽度(px)',
         require: true,
         prop: {
@@ -140,7 +142,7 @@ export default {
         defaultPropValue: 1
       },
       borderRadius: {
-        type: 'el-input-number',
+        type: 'a-input-number',
         label: '圆角(px)',
         require: true,
         prop: {
@@ -151,7 +153,7 @@ export default {
         defaultPropValue: 0
       },
       lineHeight: {
-        type: 'el-input-number',
+        type: 'a-input-number',
         label: '行高',
         require: true,
         prop: {
@@ -172,14 +174,14 @@ export default {
       'lbs-text-align': {
         template: `
           <div class="wrap">
-            <el-radio-group v-model="value_" size="small">
-              <el-tooltip effect="dark" :content="item.label" placement="top" :key="index" v-for="(item, index) in textAlignTabs">
-                <el-radio-button :label="item.value">
+            <a-radio-group v-model="value_" size="small">
+              <a-tooltip effect="dark" :content="item.label" placement="top" :key="index" v-for="(item, index) in textAlignTabs">
+                <a-radio-button :label="item.value">
                   <!-- issue #8 -->
                   <i :class="['fa', 'fa-align-'+item.value]" aria-hidden="true"></i>
-                </el-radio-button>
-              </el-tooltip>
-            </el-radio-group>
+                </a-radio-button>
+              </a-tooltip>
+            </a-radio-group>
           </div>`,
         props: {
           value: {
@@ -227,14 +229,14 @@ export default {
           }
         },
         template: `
-          <el-select v-model="value_" placeholder="类型">
-            <el-option
+          <a-select v-model="value_" placeholder="类型">
+            <a-option
               v-for="item in options"
               :key="item.value"
               :label="item.label"
               :value="item.value">
-            </el-option>
-          </el-select>
+            </a-option>
+          </a-select>
         `,
         data: () => ({
           options: [

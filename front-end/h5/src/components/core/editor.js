@@ -1,11 +1,45 @@
 import Vue from 'vue'
 import Element from './models/element'
+import './styles/index.scss'
 
 export default {
   name: 'Editor',
   components: {
+    ShortcutButton: {
+      functional: true,
+      props: {
+        faIcon: {
+          required: true,
+          type: String
+        },
+        title: {
+          required: true,
+          type: String
+        },
+        clickFn: {
+          required: false,
+          type: Function
+        }
+      },
+      render: (h, { props, listeners, slots }) => {
+        const onClick = props.clickFn || function () {}
+        return (
+          <a-button
+            class="shortcut-button"
+            onClick={onClick}
+          >
+            <i
+              class={['shortcut-icon', 'fa', `fa-${props.faIcon}`]}
+              aria-hidden='true'
+            />
+            <span>{ props.title }</span>
+          </a-button>
+        )
+      }
+    }
   },
   data: () => ({
+    activeMenuKey: 'pluginList',
     pages: [],
     elements: [],
     editingElement: null,
@@ -20,6 +54,7 @@ export default {
     },
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
+     * #!en click the plugin shortcut, create new Element with the plugin's meta data
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      */
     clone ({ name }) {
@@ -40,7 +75,8 @@ export default {
       this.mixinPluginCustomComponents2Editor()
     },
     /**
-     * 在左侧或顶部导航上显示可用的组件快捷方式，用户点击之后，即可将其添加到中间画布上
+     * #!zh: 在左侧或顶部导航上显示可用的组件快捷方式，用户点击之后，即可将其添加到中间画布上
+     * #!en: render shortcust at the sidebar or the header. if user click the shortcut, the related plugin will be added to the canvas
      * @param {Object} group: {children, title, icon}
      */
     renderPluginShortcut (group) {
@@ -49,39 +85,34 @@ export default {
         : this.renderMultiPluginShortcuts(group)
     },
     /**
-     * 渲染多个插件的快捷方式
+     * #!zh 渲染多个插件的快捷方式
+     * #!en render shortcuts for multi plugins
      * @param {Object} group: {children, title, icon}
      */
     renderMultiPluginShortcuts (group) {
       const plugins = group.children
-      return <el-popover
+      return <a-popover
         placement="bottom"
-        width="400"
+        class="shortcust-button"
         trigger="hover">
-        {
-          plugins.sort().map(item => (
-            <el-button
-              class='ma-0 no-border-radius'
-              onClick={this.clone.bind(this, item)}
-            >
-              <i
-                class={['fa', `fa-${item.icon}`]}
-                aria-hidden='true'
-                style='display: block;font-size: 16px;margin-bottom: 10px;'
-              />
-              <span>{ item.title }</span>
-            </el-button>
-          ))
-        }
-        <el-button slot="reference" class='ma-0 no-border-radius'>
-          <i
-            class={['fa', `fa-${group.icon}`]}
-            aria-hidden='true'
-            style='display: block;font-size: 16px;margin-bottom: 10px;'
-          />
-          <span class="plugin-item__text">{group.title}</span>
-        </el-button>
-      </el-popover>
+        <a-row slot="content" gutter={20} style={{ width: '400px' }}>
+          {
+            plugins.sort().map(item => (
+              <a-col span={6}>
+                <ShortcutButton
+                  clickFn={this.clone.bind(this, item)}
+                  title={item.title}
+                  faIcon={item.icon}
+                />
+              </a-col>
+            ))
+          }
+        </a-row>
+        <ShortcutButton
+          title={group.title}
+          faIcon={group.icon}
+        />
+      </a-popover>
     },
     /**
      * #!zh: 渲染单个插件的快捷方式
@@ -90,18 +121,11 @@ export default {
      */
     renderSinglePluginShortcut ({ children }) {
       const [plugin] = children
-      return <el-button
-        class='ma-0 no-border-radius'
-        style={{ width: '100%' }}
-        onClick={this.clone.bind(this, plugin)}
-      >
-        <i
-          class={['fa', `fa-${plugin.icon}`]}
-          aria-hidden='true'
-          style='display: block;font-size: 16px;margin-bottom: 10px;'
-        />
-        <span class="plugin-item__text">{ plugin.title }</span>
-      </el-button>
+      return <ShortcutButton
+        clickFn={this.clone.bind(this, plugin)}
+        title={plugin.title}
+        faIcon={plugin.icon}
+      />
     },
     /**
      * #!zh: renderCanvas 渲染中间画布
@@ -146,24 +170,15 @@ export default {
     },
     renderPluginListPanel () {
       return (
-        <el-tabs tab-position="left" class="lb-tabs">
-          <el-tab-pane label='组件列表'>
-            <div class="full-height">
-              <el-row gutter={20}>
-                {
-                  this.groups.sort().map(group => (
-                    <el-col span={12} style={{ marginTop: '10px' }}>
-                      {this.renderPluginShortcut(group)}
-                    </el-col>
-                  ))
-                }
-              </el-row>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label='页面管理'>
-            <span>页面管理</span>
-          </el-tab-pane>
-        </el-tabs>
+        <a-row gutter={20}>
+          {
+            this.groups.sort().map(group => (
+              <a-col span={12} style={{ marginTop: '10px' }}>
+                {this.renderPluginShortcut(group)}
+              </a-col>
+            ))
+          }
+        </a-row>
       )
     },
     renderPropsEditorPanel (h) {
@@ -171,7 +186,7 @@ export default {
       const editingElement = this.editingElement
       const propsConfig = editingElement.editorConfig.propsConfig
       return (
-        <el-form ref="form" label-width="100px" size="mini" label-position="left">
+        <a-form ref="form" label-width="100px" size="mini" label-position="left">
           {
             Object.keys(propsConfig).map(propKey => {
               const item = propsConfig[propKey]
@@ -180,56 +195,119 @@ export default {
                 props: {
                   ...item.prop,
                   // https://vuejs.org/v2/guide/render-function.html#v-model
-                  ...{ value: editingElement[propKey] || item.defaultPropValue }
+                  value: editingElement.pluginProps[propKey] || item.defaultPropValue
                 },
                 on: {
                   // https://vuejs.org/v2/guide/render-function.html#v-model
-                  input (value) {
-                    editingElement[propKey] = value
+                  // input (e) {
+                  //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+                  // }
+                  change (e) {
+                    editingElement.pluginProps[propKey] = e.target ? e.target.value : e
                   }
                 }
               }
               return (
-                <el-form-item label={item.label}>
+                <a-form-item label={item.label}>
                   { h(item.type, data) }
-                </el-form-item>
+                </a-form-item>
               )
             })
           }
-        </el-form>
+        </a-form>
       )
     }
   },
   render (h) {
     return (
-      <div id='designer-page'>
-        <div class='el-col-5'>
-          { this.renderPluginListPanel() }
-        </div>
-        <div class='el-col-13'>
-          <div style="text-align: center;">
-            <el-radio-group value={this.isPreviewMode} onInput={(value) => {
-              this.isPreviewMode = value
-            }} size="mini">
-              <el-radio-button label={false}>Edit</el-radio-button>
-              <el-radio-button label={true}>Preview</el-radio-button>
-            </el-radio-group>
-          </div>
-          <div class='canvas-wrapper'>
-            { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) }
-          </div>
-        </div>
-        <div class='el-col-6' style="border-left: 1px solid #eee;">
-          <el-tabs type="border-card" style="height: 100%;">
-            <el-tab-pane>
-              <span slot="label"><i class="el-icon-date"></i> 属性</span>
-              { this.renderPropsEditorPanel(h) }
-            </el-tab-pane>
-            <el-tab-pane label="动画">动画</el-tab-pane>
-            <el-tab-pane label="动作">动作</el-tab-pane>
-          </el-tabs>
-        </div>
-      </div>
+      <a-layout id="luban-layout" style={{ height: '100vh' }}>
+        <a-layout-header class="header">
+          <div class="logo">鲁班 H5</div>
+          {/* TODO we can show the plugins shortcuts here
+          <a-menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px', float: 'left', marginLeft: '30%', background: 'transparent' }}
+          >
+            {
+              this.groups.sort().map((group, id) => (
+                <a-menu-item key={id} class="transparent-bg">
+                  {this.renderPluginShortcut(group)}
+                </a-menu-item>
+              ))
+            }
+          </a-menu> */}
+          <a-menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
+          >
+            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small">预览</a-button></a-menu-item>
+            <a-menu-item key="2" class="transparent-bg"><a-button size="small">保存</a-button></a-menu-item>
+            <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
+          </a-menu>
+        </a-layout-header>
+        <a-layout>
+          <a-layout-sider width="160" style="background: #fff">
+            <a-menu onSelect={val => { this.activeMenuKey = val }} mode="inline" defaultSelectedKeys={['pluginList']} style={{ height: '100%', borderRight: 1 }}>
+              <a-menu-item key="pluginList">
+                <a-icon type="user" />
+                <span>组件列表</span>
+              </a-menu-item>
+              <a-menu-item key="2">
+                <a-icon type="video-camera" />
+                <span>页面管理</span>
+              </a-menu-item>
+              <a-menu-item key="3">
+                <a-icon type="upload" />
+                <span>更多模板</span>
+              </a-menu-item>
+            </a-menu>
+          </a-layout-sider>
+          <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+            { this.renderPluginListPanel() }
+          </a-layout-sider>
+          <a-layout style="padding: 0 24px 24px">
+            <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
+              <div style="text-align: center;">
+                <a-radio-group
+                  value={this.isPreviewMode}
+                  onInput={value => {
+                    this.isPreviewMode = value
+                  }}
+                >
+                  <a-radio-button label={false} value={false}>Edit</a-radio-button>
+                  <a-radio-button label={true} value={true}>Preview</a-radio-button>
+                </a-radio-group>
+              </div>
+              <div class='canvas-wrapper'>
+                { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) }
+              </div>
+            </a-layout-content>
+          </a-layout>
+          <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+            <a-tabs type="card" style="height: 100%;">
+              {/*
+                #!zh tab 标题：
+                #!en tab title
+                  ElementUI：label
+                  Ant Design Vue：tab
+              */}
+              <a-tab-pane key="属性">
+                <span slot="tab">
+                  <a-icon type="apple" />
+                  属性
+                </span>
+                { this.renderPropsEditorPanel(h) }
+              </a-tab-pane>
+              <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
+              <a-tab-pane label="动作" key='动作' tab='动作'>动作</a-tab-pane>
+            </a-tabs>
+          </a-layout-sider>
+        </a-layout>
+      </a-layout>
     )
   }
 }

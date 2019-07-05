@@ -10,6 +10,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "ant-design-vue": "^1.3.10",
     "core-js": "^2.6.5",
     "element-ui": "^2.9.1",
     "font-awesome": "4.7.0",

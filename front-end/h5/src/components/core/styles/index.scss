@@ -1,0 +1,41 @@
+#luban-layout  {
+  .header {
+    padding: 0 10px;
+
+    .logo {
+      width: 120px;
+      height: 31px;
+      // background: rgba(255,255,255,.2);
+      margin: 16px 28px 16px 0;
+      float: left;
+    
+      line-height: 31px;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+    }
+  }
+
+  .shortcut-button {
+    width: 100%;
+    height: 40px;
+
+    .shortcut-icon {
+      padding-right: 4px;
+      // display: block;
+      // font-size: 16px;
+      // margin-bottom: 10px;
+    }
+  }
+
+}
+
+
+
+.transparent-bg {
+  background: transparent !important;
+}
+
+.no-border {
+  border: none !important;
+}

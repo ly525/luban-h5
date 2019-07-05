@@ -91,14 +91,6 @@ $designerWidth: 320px;
 $designerHeight: 568px;
 $designerWidthHalf: $designerWidth / 2;
 
-#designer-page {
-  display: flex;
-  // https://stackoverflow.com/questions/17904088/disable-less-css-overwriting-calc
-  // less: min-height: ~'calc(100% - 40px)';
-  min-height: calc(100% - 40px);
-
-}
-
 .canvas-wrapper {
   position: relative;
   top: 5%;
@@ -106,6 +98,7 @@ $designerWidthHalf: $designerWidth / 2;
   height: $designerHeight;
   border: 1px #ebeaea solid;
   margin: 0 auto;
+  background: #fff;
 }
 
 .lb-tabs {
