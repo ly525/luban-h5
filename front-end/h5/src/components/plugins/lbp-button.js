@@ -164,6 +164,28 @@ export default {
         defaultPropValue: 1
       },
       textAlign: {
+        /**
+         * #!en: you can also config type like below:
+         * #!zh: 可以直接这样写：
+          textAlign: {
+            type: component(component definition json/自定义的组件，比如下面的 components[''lbs-text-align'])
+          }
+
+        * more explanation
+          textAlign: {
+            type: {
+              render() {},
+              props: {},
+              methods: {},
+            }
+          }
+         * #!en: reference: how to judge the tag is custom component or a HTML element in React or Vue?
+         * !#zh:
+         * 思路来源：
+         * React 中 深入JSX 中，如何判断 h(tag) 中的 tag 是自定义组件还是普通 HTML 元素呢？React 是判断该 tag 是否为 function 来实现的
+         * Vue 中的自定义组件 是一个普通的 JSON 对象，最后自定义组件被转换成了函数，输入是 JSON 输出是 函数，可以看看 Vue 中 createElement 也就是 h 的实现·
+         * 参见：http://hcysun.me/2018/01/05/%E6%8E%A2%E7%B4%A2Vue%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/
+         */
         type: 'lbs-text-align',
         label: '文字对齐',
         require: true,
