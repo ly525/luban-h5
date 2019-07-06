@@ -1,6 +1,6 @@
 <script>
 import Vue from 'vue'
-import CoreEditor from '../components/core/editor'
+import CoreEditor from '../components/core/editor/index.js'
 
 import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'

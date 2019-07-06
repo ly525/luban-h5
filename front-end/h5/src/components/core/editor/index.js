@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Element from './models/element'
-import './styles/index.scss'
+import Element from '../models/element'
+import '../styles/index.scss'
 
 export default {
   name: 'Editor',
