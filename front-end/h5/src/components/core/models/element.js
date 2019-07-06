@@ -50,7 +50,7 @@ class Element {
       height: `${pluginProps.height || commonStyle.height}px`,
       fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
       color: pluginProps.color || commonStyle.color,
-      backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
+      // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
       textAlign: pluginProps.textAlign || commonStyle.textAlign
     }
     return style

@@ -4,8 +4,25 @@ import CoreEditor from '../components/core/editor/index.js'
 
 import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'
+import LbpText from '../components/plugins/lbp-text'
 
 const PluginList = [
+  {
+    title: '文字',
+    icon: 'hand-pointer-o',
+    component: LbpText,
+    visible: true,
+    name: 'lbp-text',
+    children: [
+      {
+        title: '文字',
+        icon: 'hand-pointer-o',
+        component: LbpText,
+        visible: true,
+        name: 'lbp-text'
+      }
+    ]
+  },
   {
     title: '按钮',
     icon: 'hand-pointer-o',

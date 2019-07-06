@@ -91,9 +91,15 @@ export default {
                 style,
                 class: 'element-on-edit-canvas', // TODO 添加为何添加 class 的原因：与 handleClickCanvas 配合
                 props: element.pluginProps, // #6 #3
-                nativeOn: {
+                on: {
                   // 高亮当前点击的元素
                   // click: () => this.handleClickElementProp(element)
+                  input: ({ value, pluginName }) => {
+                    if (pluginName === 'lbp-text') {
+                      debugger
+                      element.pluginProps.text = value
+                    }
+                  }
                 }
               }
               return (
