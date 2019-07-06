@@ -2,42 +2,31 @@ import Vue from 'vue'
 import Element from '../models/element'
 import '../styles/index.scss'
 
+import RenderEditCanvas from './canvas/edit'
+import RenderPreviewCanvas from './canvas/preview'
+import RenderPropsEditor from './edit-panel/props'
+import RenderShortcutsPanel from './shortcuts-panel/index'
+
+const sidebarMenus = [
+  {
+    label: '组件列表',
+    value: 'pluginList',
+    antIcon: 'user'
+  },
+  {
+    label: '页面管理',
+    value: 'pageManagement',
+    antIcon: 'copy'
+  },
+  {
+    label: '免费模板',
+    value: 'freeTemplate',
+    antIcon: 'appstore'
+  }
+]
 export default {
   name: 'Editor',
-  components: {
-    ShortcutButton: {
-      functional: true,
-      props: {
-        faIcon: {
-          required: true,
-          type: String
-        },
-        title: {
-          required: true,
-          type: String
-        },
-        clickFn: {
-          required: false,
-          type: Function
-        }
-      },
-      render: (h, { props, listeners, slots }) => {
-        const onClick = props.clickFn || function () {}
-        return (
-          <a-button
-            class="shortcut-button"
-            onClick={onClick}
-          >
-            <i
-              class={['shortcut-icon', 'fa', `fa-${props.faIcon}`]}
-              aria-hidden='true'
-            />
-            <span>{ props.title }</span>
-          </a-button>
-        )
-      }
-    }
-  },
+  components: {},
   data: () => ({
     activeMenuKey: 'pluginList',
     pages: [],
@@ -63,159 +52,8 @@ export default {
       const editorConfig = this.getEditorConfig(name)
       this.elements.push(new Element({ name, zindex, editorConfig }))
     },
-    mixinPluginCustomComponents2Editor () {
-      const { components } = this.editingElement.editorConfig
-      for (const key in components) {
-        if (this.$options.components[key]) return
-        this.$options.components[key] = components[key]
-      }
-    },
     setCurrentEditingElement (element) {
       this.editingElement = element
-      this.mixinPluginCustomComponents2Editor()
-    },
-    /**
-     * #!zh: 在左侧或顶部导航上显示可用的组件快捷方式，用户点击之后，即可将其添加到中间画布上
-     * #!en: render shortcust at the sidebar or the header. if user click the shortcut, the related plugin will be added to the canvas
-     * @param {Object} group: {children, title, icon}
-     */
-    renderPluginShortcut (group) {
-      return group.children.length === 1
-        ? this.renderSinglePluginShortcut(group)
-        : this.renderMultiPluginShortcuts(group)
-    },
-    /**
-     * #!zh 渲染多个插件的快捷方式
-     * #!en render shortcuts for multi plugins
-     * @param {Object} group: {children, title, icon}
-     */
-    renderMultiPluginShortcuts (group) {
-      const plugins = group.children
-      return <a-popover
-        placement="bottom"
-        class="shortcust-button"
-        trigger="hover">
-        <a-row slot="content" gutter={20} style={{ width: '400px' }}>
-          {
-            plugins.sort().map(item => (
-              <a-col span={6}>
-                <ShortcutButton
-                  clickFn={this.clone.bind(this, item)}
-                  title={item.title}
-                  faIcon={item.icon}
-                />
-              </a-col>
-            ))
-          }
-        </a-row>
-        <ShortcutButton
-          title={group.title}
-          faIcon={group.icon}
-        />
-      </a-popover>
-    },
-    /**
-     * #!zh: 渲染单个插件的快捷方式
-     * #!en: render shortcut for single plugin
-     * @param {Object} group: {children, title, icon}
-     */
-    renderSinglePluginShortcut ({ children }) {
-      const [plugin] = children
-      return <ShortcutButton
-        clickFn={this.clone.bind(this, plugin)}
-        title={plugin.title}
-        faIcon={plugin.icon}
-      />
-    },
-    /**
-     * #!zh: renderCanvas 渲染中间画布
-     * elements
-     * @param {*} h
-     * @param {*} elements
-     * @returns
-     */
-    renderCanvas (h, elements) {
-      return (
-        <div style={{ height: '100%' }}>
-          {elements.map((element, index) => {
-            return (() => {
-              const data = {
-                style: element.getStyle(),
-                props: element.pluginProps, // #6 #3
-                nativeOn: {
-                  click: this.setCurrentEditingElement.bind(this, element)
-                }
-              }
-              return h(element.name, data)
-            })()
-          })}
-        </div>
-      )
-    },
-    renderPreview (h, elements) {
-      return (
-        <div style={{ height: '100%' }}>
-          {elements.map((element, index) => {
-            return (() => {
-              const data = {
-                style: element.getStyle(),
-                props: element.pluginProps, // #6 #3
-                nativeOn: {}
-              }
-              return h(element.name, data)
-            })()
-          })}
-        </div>
-      )
-    },
-    renderPluginListPanel () {
-      return (
-        <a-row gutter={20}>
-          {
-            this.groups.sort().map(group => (
-              <a-col span={12} style={{ marginTop: '10px' }}>
-                {this.renderPluginShortcut(group)}
-              </a-col>
-            ))
-          }
-        </a-row>
-      )
-    },
-    renderPropsEditorPanel (h) {
-      if (!this.editingElement) return (<span>请先选择一个元素</span>)
-      const editingElement = this.editingElement
-      const propsConfig = editingElement.editorConfig.propsConfig
-      return (
-        <a-form ref="form" label-width="100px" size="mini" label-position="left">
-          {
-            Object.keys(propsConfig).map(propKey => {
-              const item = propsConfig[propKey]
-              // https://vuejs.org/v2/guide/render-function.html
-              const data = {
-                props: {
-                  ...item.prop,
-                  // https://vuejs.org/v2/guide/render-function.html#v-model
-                  value: editingElement.pluginProps[propKey] || item.defaultPropValue
-                },
-                on: {
-                  // https://vuejs.org/v2/guide/render-function.html#v-model
-                  // input (e) {
-                  //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
-                  // }
-                  change (e) {
-                    editingElement.pluginProps[propKey] = e.target ? e.target.value : e
-                  }
-                }
-              }
-              return (
-                <a-form-item label={item.label}>
-                  { h(item.type, data) }
-                </a-form-item>
-              )
-            })
-          }
-        </a-form>
-      )
     }
   },
   render (h) {
@@ -223,21 +61,7 @@ export default {
       <a-layout id="luban-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
           <div class="logo">鲁班 H5</div>
-          {/* TODO we can show the plugins shortcuts here
-          <a-menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px', float: 'left', marginLeft: '30%', background: 'transparent' }}
-          >
-            {
-              this.groups.sort().map((group, id) => (
-                <a-menu-item key={id} class="transparent-bg">
-                  {this.renderPluginShortcut(group)}
-                </a-menu-item>
-              ))
-            }
-          </a-menu> */}
+          {/* TODO we can show the plugins shortcuts here */}
           <a-menu
             theme="dark"
             mode="horizontal"
@@ -252,22 +76,18 @@ export default {
         <a-layout>
           <a-layout-sider width="160" style="background: #fff">
             <a-menu onSelect={val => { this.activeMenuKey = val }} mode="inline" defaultSelectedKeys={['pluginList']} style={{ height: '100%', borderRight: 1 }}>
-              <a-menu-item key="pluginList">
-                <a-icon type="user" />
-                <span>组件列表</span>
-              </a-menu-item>
-              <a-menu-item key="2">
-                <a-icon type="video-camera" />
-                <span>页面管理</span>
-              </a-menu-item>
-              <a-menu-item key="3">
-                <a-icon type="upload" />
-                <span>更多模板</span>
-              </a-menu-item>
+              {
+                sidebarMenus.map(menu => (
+                  <a-menu-item key={menu.value}>
+                    <a-icon type={menu.antIcon} />
+                    <span>{menu.label}</span>
+                  </a-menu-item>
+                ))
+              }
             </a-menu>
           </a-layout-sider>
           <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
-            { this.renderPluginListPanel() }
+            <RenderShortcutsPanel groups={this.groups} handleClickShortcut={this.clone} />
           </a-layout-sider>
           <a-layout style="padding: 0 24px 24px">
             <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
@@ -283,7 +103,8 @@ export default {
                 </a-radio-group>
               </div>
               <div class='canvas-wrapper'>
-                { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) }
+                {/* { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) } */}
+                { this.isPreviewMode ? <RenderPreviewCanvas elements={this.elements}/> : <RenderEditCanvas elements={this.elements} handleElementClick={this.setCurrentEditingElement} /> }
               </div>
             </a-layout-content>
           </a-layout>
@@ -300,7 +121,8 @@ export default {
                   <a-icon type="apple" />
                   属性
                 </span>
-                { this.renderPropsEditorPanel(h) }
+                {/* { this.renderPropsEditorPanel(h) } */}
+                <RenderPropsEditor editingElement={this.editingElement} />
               </a-tab-pane>
               <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab='动作'>动作</a-tab-pane>
