@@ -16,13 +16,15 @@ class Element {
     this.name = ele.name
     this.editorConfig = ele.editorConfig || {}
     this.pluginProps = {}
+    this.commonStyle = {}
     this.init()
   }
 
   init () {
+    const commonStyle = this.commonStyle
     // init common props
     Object.keys(defaultProps).forEach(key => {
-      this[key] = defaultProps[key]
+      commonStyle[key] = defaultProps[key]
     })
 
     // init prop of plugin
@@ -39,15 +41,16 @@ class Element {
 
   getStyle () {
     const pluginProps = this.pluginProps
+    const commonStyle = this.commonStyle
     let style = {
-      top: `${pluginProps.top || this.top}px`,
-      left: `${pluginProps.left || this.left}px`,
-      width: `${pluginProps.width || this.width}px`,
-      height: `${pluginProps.height || this.height}px`,
-      fontSize: `${pluginProps.fontSize || this.fontSize}px`,
-      color: pluginProps.color || this.color,
-      backgroundColor: pluginProps.backgroundColor || this.backgroundColor,
-      textAlign: pluginProps.textAlign || this.textAlign
+      top: `${pluginProps.top || commonStyle.top}px`,
+      left: `${pluginProps.left || commonStyle.left}px`,
+      width: `${pluginProps.width || commonStyle.width}px`,
+      height: `${pluginProps.height || commonStyle.height}px`,
+      fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
+      color: pluginProps.color || commonStyle.color,
+      backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
+      textAlign: pluginProps.textAlign || commonStyle.textAlign
     }
     return style
   }

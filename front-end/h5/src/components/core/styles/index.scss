@@ -8,7 +8,7 @@
       // background: rgba(255,255,255,.2);
       margin: 16px 28px 16px 0;
       float: left;
-    
+
       line-height: 31px;
       text-align: center;
       color: white;
@@ -28,6 +28,22 @@
     }
   }
 
+  .canvas-editor-wrapper {
+    .element--editing {
+      outline: 1px dashed #70c0ff !important;
+    }
+
+    // !#zh 控制缩放大小的圆点
+    .shape__scale-point {
+      position: absolute;
+      background: #fff;
+      border: 1px solid rgb(89, 199, 249);
+      width: 6px;
+      height: 6px;
+      z-index: 1;
+      border-radius: 50%;
+    }
+  }
 }
 
 

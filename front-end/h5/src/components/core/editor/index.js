@@ -54,6 +54,11 @@ export default {
     },
     setCurrentEditingElement (element) {
       this.editingElement = element
+    },
+    handleClickCanvas (e) {
+      if (!e.target.classList.contains('element-on-edit-canvas')) {
+        this.editingElement = null
+      }
     }
   },
   render (h) {
@@ -104,7 +109,15 @@ export default {
               </div>
               <div class='canvas-wrapper'>
                 {/* { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) } */}
-                { this.isPreviewMode ? <RenderPreviewCanvas elements={this.elements}/> : <RenderEditCanvas elements={this.elements} handleElementClick={this.setCurrentEditingElement} /> }
+                { this.isPreviewMode
+                  ? <RenderPreviewCanvas elements={this.elements}/>
+                  : <RenderEditCanvas
+                    elements={this.elements}
+                    handleClickElementProp={this.setCurrentEditingElement}
+                    handleClickCanvasProp={this.handleClickCanvas}
+                    editingElement={this.editingElement}
+                  />
+                }
               </div>
             </a-layout-content>
           </a-layout>
