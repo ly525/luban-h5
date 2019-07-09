@@ -5,14 +5,14 @@ English | [简体中文](./README.md)
 ###Features 功能
 1. Editor
     - [ ] Reference Line
-    - [ ] Change plugin shape by drag-and-drop
+    - [*] Change plugin shape by drag-and-drop
     - [ ] Nodes: copy, delete, edit
     - [ ] Page: add, copy, delete
 
 2. Plugin System
 
     - [ ] Text
-    - [ ] Normal Button
+    - [*] Normal Button
     - [ ] Form Button
     - [ ] Form Field
     - [ ] Picture
@@ -26,7 +26,7 @@ English | [简体中文](./README.md)
 
 4. Data Statistics
     - [ ] Form Statistics
- 
+
 5. Others
     - [ ] Online preview
     - [ ] QR Code Preview
