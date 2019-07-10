@@ -43,6 +43,21 @@
       z-index: 1;
       border-radius: 50%;
     }
+    // TODO #!zh: 写一个辅助线基类： base-line
+    .v-line {
+      position: absolute;
+      height: 100vh;
+      width: 1px;
+      top: 0;
+      background-color: #94f5ff;
+    }
+    .h-line {
+      position: absolute;
+      height: 1px;
+      width: 100vh;
+      left: 0;
+      background-color: #94f5ff;
+    }
   }
 }
 

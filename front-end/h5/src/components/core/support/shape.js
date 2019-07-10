@@ -13,7 +13,7 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
-  props: ['element', 'active', 'editingElement', 'handleMousedownProp'],
+  props: ['element', 'active', 'editingElement', 'handleMousedownProp', 'handleElementMoveProp'],
   methods: {
     /**
      * 通过方位计算样式，主要是 top、left、鼠标样式
@@ -116,6 +116,7 @@ export default {
         let currY = moveEvent.clientY
         pos.top = currY - startY + startTop
         pos.left = currX - startX + startLeft
+        this.handleElementMoveProp(pos)
       }
 
       let up = moveEvent => {
