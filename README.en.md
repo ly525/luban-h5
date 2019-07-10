@@ -4,18 +4,20 @@ English | [简体中文](./README.md)
 > LuBan-H5 is a mobile page builder based on Vue.js, which is similar with http://www.eqxiu.com、[Baidu-H5](https://h5.bce.baidu.com/). It also supports parsing PSD file to HMTL5 Page
 ###Features 功能
 1. Editor
-    - [ ] Reference Line
-    - [*] Change plugin shape by drag-and-drop
+    - [x] Reference Line/GuideLine
+    - [x] Adsorption Line
+    - [x] Change plugin shape by drag-and-drop
     - [ ] Nodes: copy, delete, edit
     - [ ] Page: add, copy, delete
+    - [x] Preview
 
 2. Plugin System
 
     - [ ] Text
-    - [*] Normal Button
+    - [x] Normal Button
     - [ ] Form Button
     - [ ] Form Field
-    - [ ] Picture
+    - [x] Picture
     - [ ] Background Image
     - [ ] Video (Iframe format)
 
