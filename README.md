@@ -3,6 +3,10 @@
 ### 鲁班H5是什么？
 鲁班H5是基于Vue2.0开发的，通过拖拽的形式，生成页面的工具，类似[易企秀](http://www.eqxiu.com/)、[百度 H5](https://h5.baidu.com) 等工具
 
+### Screenshots
+![image](https://user-images.githubusercontent.com/12668546/60982044-01965100-a36a-11e9-993d-d61e76186f3f.png)
+
+
 ### Features
 1. 编辑器
     - [x] 参考线
