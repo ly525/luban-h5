@@ -29,6 +29,8 @@
   }
 
   .canvas-editor-wrapper {
+    // inspired by https://github.com/Heboy/h5-maker/blob/38136192bab1427b9d5741a5dae0b5186d4b2ea0/src/scss/Page.scss#L8
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADVJREFUeNpifPHixQEGGgMWEPH161cHWlrCxEAHMGrJqCWjloxaMmrJqCWjloxaMrgtAQgwAL+YBst5kqDgAAAAAElFTkSuQmCC);
     .element--editing {
       outline: 1px dashed #70c0ff !important;
     }
