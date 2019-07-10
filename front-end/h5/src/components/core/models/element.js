@@ -14,6 +14,7 @@ const defaultProps = {
 class Element {
   constructor (ele) {
     this.name = ele.name
+    this.uuid = +new Date()
     this.editorConfig = ele.editorConfig || {}
     this.pluginProps = {}
     this.commonStyle = {}
