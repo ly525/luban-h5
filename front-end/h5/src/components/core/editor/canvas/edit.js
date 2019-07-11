@@ -96,7 +96,6 @@ export default {
                   // click: () => this.handleClickElementProp(element)
                   input: ({ value, pluginName }) => {
                     if (pluginName === 'lbp-text') {
-                      debugger
                       element.pluginProps.text = value
                     }
                   }
