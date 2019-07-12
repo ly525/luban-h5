@@ -40,7 +40,7 @@ class Element {
     })
   }
 
-  getStyle () {
+  getStyle (position = 'static') {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {
@@ -51,7 +51,8 @@ class Element {
       fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
-      textAlign: pluginProps.textAlign || commonStyle.textAlign
+      textAlign: pluginProps.textAlign || commonStyle.textAlign,
+      position
     }
     return style
   }

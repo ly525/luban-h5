@@ -89,7 +89,9 @@ export default {
               const style = element.getStyle()
               const data = {
                 style,
-                class: 'element-on-edit-canvas', // TODO 添加为何添加 class 的原因：与 handleClickCanvas 配合
+                // 添加 class 的原因：与 handleClickCanvasProp 配合,
+                // 当点击编辑画布上的其它区域（clickEvent.target.classList 不包含下面的 className）的时候，设置 editingElement=null
+                class: 'element-on-edit-canvas',
                 props: element.pluginProps, // #6 #3
                 on: {
                   // 高亮当前点击的元素
