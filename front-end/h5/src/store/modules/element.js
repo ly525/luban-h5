@@ -47,6 +47,15 @@ const mutations = {
       case 'copy':
         state.elementsOfCurrentPage.push(state.editingElement.clone())
         break
+      case 'delete':
+        const { elementsOfCurrentPage, editingElement } = state
+        let index = elementsOfCurrentPage.findIndex(e => e.uuid === editingElement.uuid)
+        if (index !== -1) {
+          let newElements = elementsOfCurrentPage.slice()
+          newElements.splice(index, 1)
+          state.elementsOfCurrentPage = newElements
+        }
+        break
       default:
     }
   }
