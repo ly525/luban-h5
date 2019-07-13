@@ -11,13 +11,15 @@ English | [简体中文](./README.md)
     - [x] Reference Line/GuideLine
     - [x] Adsorption Line
     - [x] Change plugin shape by drag-and-drop
-    - [ ] Nodes: copy, delete, edit
+    - [x] Edit Element (Canvas)
+    - [x] Copy Element (Canvas)
+    - [x] Delete Element (Canvas)
     - [ ] Page: add, copy, delete
     - [x] Preview
 
 2. Plugin System
 
-    - [ ] Text
+    - [x] Text
     - [x] Normal Button
     - [ ] Form Button
     - [ ] Form Field
