@@ -81,7 +81,12 @@ export default {
     /**
      * #!zh: 在元素移动过程中，计算和生成辅助线
      */
-    handleElementMove ({ top, left }) {
+    handleElementMove (pos) {
+      this.setElementPosition(pos)
+      this.calcX(pos.left)
+      this.calcY(pos.top)
+    },
+    handlePointMove ({ top, left }) {
       this.calcX(left)
       this.calcY(top)
     },
@@ -146,6 +151,7 @@ export default {
               }
               return (
                 <Shape
+                  defaultPosition={element.commonStyle}
                   element={element}
                   active={this.editingElement === element}
                   handleMousedownProp={() => {
@@ -153,6 +159,10 @@ export default {
                     // 在 mousedown 的时候，即可激活 editingElement(当前选中元素)
                     // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果
                     this.setEditingElement(element)
+                  }}
+                  // TODO 矩形四周的点叫什么？暂时叫 Point 吧
+                  handlePointMoveProp={pos => {
+                    this.setElementPosition(pos)
                   }}
                   handleElementMoveProp={this.handleElementMove}
                 >

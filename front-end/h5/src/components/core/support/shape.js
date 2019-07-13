@@ -13,14 +13,18 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
-  props: ['element', 'active', 'handleMousedownProp', 'handleElementMoveProp'],
+  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp'],
+  computed: {
+    position () {
+      return { ...this.defaultPosition }
+    }
+  },
   methods: {
     /**
      * 通过方位计算样式，主要是 top、left、鼠标样式
      */
     getPointStyle (point, isWrapElement = true) {
-      // const eleStyle = this.numbericElementStyle
-      const pos = this.element.commonStyle
+      const pos = this.position
       const top = pos.top - 4 // !#zh 减4是为了让元素能够处于 border 的中间
       const left = pos.left - 4
       const height = pos.height
@@ -63,8 +67,7 @@ export default {
     mousedownForMark (point, downEvent) {
       downEvent.stopPropagation()
       downEvent.preventDefault() // Let's stop this event.
-      // let eleStyle = this.numbericElementStyle
-      const pos = this.element.commonStyle
+      const pos = { ...this.position }
       let height = pos.height
       let width = pos.width
       let top = pos.top
@@ -86,6 +89,7 @@ export default {
         pos.width = newWidth > 0 ? newWidth : 0
         pos.left = +left + (hasL ? disX : 0)
         pos.top = +top + (hasT ? disY : 0)
+        this.handlePointMoveProp(pos)
       }
       let up = () => {
         document.removeEventListener('mousemove', move)
@@ -97,11 +101,10 @@ export default {
     /**
      * !#zh 给 当前选中元素 添加鼠标移动相关事件
      *
-     * @param {Object} element
      * @param {mouseEvent} e
      */
-    mousedownForElement (e, element) {
-      const pos = element.commonStyle
+    mousedownForElement (e) {
+      const pos = { ...this.position }
       let startY = e.clientY
       let startX = e.clientX
       let startTop = pos.top
