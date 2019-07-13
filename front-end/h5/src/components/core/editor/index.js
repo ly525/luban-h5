@@ -1,5 +1,7 @@
 import Vue from 'vue'
-import Element from '../models/element'
+import { mapState, mapActions } from 'vuex'
+// import Element from '../models/element'
+
 import '../styles/index.scss'
 
 import RenderEditCanvas from './canvas/edit'
@@ -30,10 +32,19 @@ export default {
   data: () => ({
     activeMenuKey: 'pluginList',
     pages: [],
-    elements: [],
+    // elements: [],
     isPreviewMode: false
   }),
+  computed: {
+    ...mapState('element', {
+      editingElement: state => state.editingElement,
+      elements: state => state.elementsOfCurrentPage
+    })
+  },
   methods: {
+    ...mapActions('element', [
+      'elementManager'
+    ]),
     getEditorConfig (pluginName) {
       // const pluginCtor = Vue.options[pluginName]
       // const pluginCtor = this.$options.components[pluginName]
@@ -49,7 +60,11 @@ export default {
       const zindex = this.elements.length + 1
       // const defaultPropsValue = this.getPropsDefaultValue(name)
       const editorConfig = this.getEditorConfig(name)
-      this.elements.push(new Element({ name, zindex, editorConfig }))
+      // this.elements.push(new Element({ name, zindex, editorConfig }))
+      this.elementManager({
+        type: 'add',
+        value: { name, zindex, editorConfig }
+      })
     }
   },
   render (h) {

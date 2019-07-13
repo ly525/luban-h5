@@ -1,6 +1,33 @@
 import { mapState, mapActions } from 'vuex'
 import Shape from '../../support/shape'
 
+const contextmenuOptions = [
+  {
+    label: '复制',
+    value: 'copy'
+  },
+  {
+    label: '删除',
+    value: 'delete'
+  },
+  {
+    label: '置顶',
+    value: 'bring2Top'
+  },
+  {
+    label: '置底',
+    value: 'bring2Bottom'
+  },
+  {
+    label: '上移',
+    value: 'addZindex'
+  },
+  {
+    label: '下移',
+    value: 'minusZindex'
+  }
+]
+
 export default {
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
   data: () => ({
@@ -17,7 +44,8 @@ export default {
     ...mapActions('element', [
       'setEditingElement', // -> this.foo()
       'setElementPosition', // -> this.foo()
-      'setElementShape' // -> this.foo()
+      'setElementShape', // -> this.foo()
+      'elementManager'
     ]),
     // TODO #!zh: 优化代码
     // generate vertical line
@@ -187,6 +215,9 @@ export default {
           {
             this.contextmenuPos.length
               ? <a-menu
+                onSelect={({ item, key, selectedKeys }) => {
+                  this.elementManager({ type: key })
+                }}
                 style={{
                   left: this.contextmenuPos[0] + 'px',
                   top: this.contextmenuPos[1] + 'px',
@@ -195,12 +226,7 @@ export default {
                   zIndex: 999
                 }}
               >
-                <a-menu-item data-command='copyEditingElement'>复制</a-menu-item>
-                <a-menu-item data-command="deleteEditingElement">删除</a-menu-item>
-                <a-menu-item data-command="bringLayer2Front">置顶</a-menu-item>
-                <a-menu-item data-command="bringLayer2End">置底</a-menu-item>
-                <a-menu-item data-command="addLayerZindex">上移</a-menu-item>
-                <a-menu-item data-command="subtractLayerZindex">下移</a-menu-item>
+                { contextmenuOptions.map(option => <a-menu-item key={option.value} data-command={option.value}>{option.label}</a-menu-item>) }
               </a-menu>
               : null
           }

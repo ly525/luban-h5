@@ -1,6 +1,9 @@
 // initial state
+import Element from '../../components/core/models/element'
+
 const state = {
-  editingElement: null
+  editingElement: null,
+  elementsOfCurrentPage: []
 }
 
 // getters
@@ -18,6 +21,9 @@ const actions = {
   },
   setElementShape ({ commit }, payload) {
     commit('setElementCommonStyle', payload)
+  },
+  elementManager ({ commit }, payload) {
+    commit('elementManager', payload)
   }
 }
 
@@ -30,6 +36,18 @@ const mutations = {
     state.editingElement.commonStyle = {
       ...state.editingElement.commonStyle,
       ...payload
+    }
+  },
+  elementManager (state, { type, value }) {
+    switch (type) {
+      case 'add':
+        const element = new Element(value)
+        state.elementsOfCurrentPage.push(element)
+        break
+      case 'copy':
+        state.elementsOfCurrentPage.push(state.editingElement.clone())
+        break
+      default:
     }
   }
 }
