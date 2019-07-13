@@ -3,7 +3,8 @@ export default {
   props: ['elements', 'editingElement', 'handleClickElementProp', 'handleClickCanvasProp'],
   data: () => ({
     vLines: [],
-    hLines: []
+    hLines: [],
+    contextmenuPos: []
   }),
   methods: {
     // TODO #!zh: 优化代码
@@ -70,6 +71,21 @@ export default {
       this.calcX(left)
       this.calcY(top)
     },
+    bindContextMenu (e) {
+      e.preventDefault() // 不显示默认的右击菜单
+      if (
+        e.target.classList.contains('element-on-edit-canvas') ||
+        e.target.parentElement.classList.contains('element-on-edit-canvas')
+      ) {
+        const { x, y } = this.$el.getBoundingClientRect()
+        this.contextmenuPos = [e.clientX - x, e.clientY - y]
+      } else {
+        this.hideContextMenu()
+      }
+    },
+    hideContextMenu () {
+      this.contextmenuPos = []
+    },
     /**
      * #!zh: renderCanvas 渲染中间画布
      * elements
@@ -82,7 +98,13 @@ export default {
         <div
           style={{ height: '100%', position: 'relative' }}
           class="canvas-editor-wrapper"
-          onClick={this.handleClickCanvasProp}
+          onClick={(e) => {
+            this.hideContextMenu()
+            this.handleClickCanvasProp(e)
+          }}
+          onContextmenu={e => {
+            this.bindContextMenu(e)
+          }}
         >
           {
             elements.map((element, index) => {
@@ -130,6 +152,26 @@ export default {
             this.hLines.map(line => (
               <div class="h-line" style={{ top: `${line.top}px` }}></div>
             ))
+          }
+          {
+            this.contextmenuPos.length
+              ? <a-menu
+                style={{
+                  left: this.contextmenuPos[0] + 'px',
+                  top: this.contextmenuPos[1] + 'px',
+                  userSelect: 'none',
+                  position: 'absolute',
+                  zIndex: 999
+                }}
+              >
+                <a-menu-item data-command='copyEditingElement'>复制</a-menu-item>
+                <a-menu-item data-command="deleteEditingElement">删除</a-menu-item>
+                <a-menu-item data-command="bringLayer2Front">置顶</a-menu-item>
+                <a-menu-item data-command="bringLayer2End">置底</a-menu-item>
+                <a-menu-item data-command="addLayerZindex">上移</a-menu-item>
+                <a-menu-item data-command="subtractLayerZindex">下移</a-menu-item>
+              </a-menu>
+              : null
           }
         </div>
       )
