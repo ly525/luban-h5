@@ -139,12 +139,10 @@ export default {
     }
   },
   render (h) {
-    const style = this.element.getStyle('absolute'/** position */)
     return (
       <div
         onClick={this.handleWrapperClick}
         onMousedown={this.handleMousedown}
-        style={style}
       >
         {
           this.active &&
