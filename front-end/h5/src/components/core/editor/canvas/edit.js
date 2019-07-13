@@ -15,17 +15,21 @@ export default {
   },
   methods: {
     ...mapActions('element', [
-      'setEditingElement' // -> this.foo()
+      'setEditingElement', // -> this.foo()
+      'setElementPosition', // -> this.foo()
+      'setElementShape' // -> this.foo()
     ]),
     // TODO #!zh: 优化代码
     // generate vertical line
     drawVLine (newLeft) {
-      this.editingElement.commonStyle.left = newLeft
+      // this.editingElement.commonStyle.left = newLeft
+      this.setElementPosition({ left: newLeft })
       this.vLines = [{ left: newLeft }]
     },
     // generate horizontal line
     drawHLine (newTop) {
-      this.editingElement.commonStyle.top = newTop
+      // this.editingElement.commonStyle.top = newTop
+      this.setElementPosition({ top: newTop })
       this.hLines = [{ top: newTop }]
     },
     calcX (newLeft) {
