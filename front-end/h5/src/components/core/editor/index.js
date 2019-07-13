@@ -31,7 +31,6 @@ export default {
     activeMenuKey: 'pluginList',
     pages: [],
     elements: [],
-    editingElement: null,
     isPreviewMode: false
   }),
   methods: {
@@ -51,14 +50,6 @@ export default {
       // const defaultPropsValue = this.getPropsDefaultValue(name)
       const editorConfig = this.getEditorConfig(name)
       this.elements.push(new Element({ name, zindex, editorConfig }))
-    },
-    setCurrentEditingElement (element) {
-      this.editingElement = element
-    },
-    handleClickCanvas (e) {
-      if (!e.target.classList.contains('element-on-edit-canvas')) {
-        this.editingElement = null
-      }
     }
   },
   render (h) {
@@ -113,9 +104,6 @@ export default {
                   ? <RenderPreviewCanvas elements={this.elements}/>
                   : <RenderEditCanvas
                     elements={this.elements}
-                    handleClickElementProp={this.setCurrentEditingElement}
-                    handleClickCanvasProp={this.handleClickCanvas}
-                    editingElement={this.editingElement}
                   />
                 }
               </div>
@@ -135,7 +123,7 @@ export default {
                   属性
                 </span>
                 {/* { this.renderPropsEditorPanel(h) } */}
-                <RenderPropsEditor editingElement={this.editingElement} />
+                <RenderPropsEditor/>
               </a-tab-pane>
               <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab='动作'>动作</a-tab-pane>

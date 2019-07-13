@@ -1,12 +1,22 @@
+import { mapState, mapActions } from 'vuex'
 import Shape from '../../support/shape'
+
 export default {
-  props: ['elements', 'editingElement', 'handleClickElementProp', 'handleClickCanvasProp'],
+  props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
   data: () => ({
     vLines: [],
     hLines: [],
     contextmenuPos: []
   }),
+  computed: {
+    ...mapState('element', {
+      editingElement: state => state.editingElement
+    })
+  },
   methods: {
+    ...mapActions('element', [
+      'setEditingElement' // -> this.foo()
+    ]),
     // TODO #!zh: 优化代码
     // generate vertical line
     drawVLine (newLeft) {
@@ -86,6 +96,11 @@ export default {
     hideContextMenu () {
       this.contextmenuPos = []
     },
+    handleClickCanvas (e) {
+      if (!e.target.classList.contains('element-on-edit-canvas')) {
+        this.setEditingElement()
+      }
+    },
     /**
      * #!zh: renderCanvas 渲染中间画布
      * elements
@@ -100,7 +115,7 @@ export default {
           class="canvas-editor-wrapper"
           onClick={(e) => {
             this.hideContextMenu()
-            this.handleClickCanvasProp(e)
+            this.handleClickCanvas(e)
           }}
           onContextmenu={e => {
             this.bindContextMenu(e)
@@ -117,7 +132,7 @@ export default {
                 props: element.pluginProps, // #6 #3
                 on: {
                   // 高亮当前点击的元素
-                  // click: () => this.handleClickElementProp(element)
+                  // click: () => this.setEditingElement(element)
                   input: ({ value, pluginName }) => {
                     if (pluginName === 'lbp-text') {
                       element.pluginProps.text = value
@@ -128,13 +143,12 @@ export default {
               return (
                 <Shape
                   element={element}
-                  editingElement={this.editingElement}
                   active={this.editingElement === element}
                   handleMousedownProp={() => {
                     // 在 shape 上面添加 mousedown，而非 plugin 本身添加 onClick 的原因：
                     // 在 mousedown 的时候，即可激活 editingElement(当前选中元素)
                     // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果
-                    this.handleClickElementProp(element)
+                    this.setEditingElement(element)
                   }}
                   handleElementMoveProp={this.handleElementMove}
                 >
