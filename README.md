@@ -7,7 +7,8 @@
 ### Screenshots
 > [在线访问地址](https://ly525.github.io/luban-h5)
 
-![image](https://user-images.githubusercontent.com/12668546/60982044-01965100-a36a-11e9-993d-d61e76186f3f.png)
+![image](https://user-images.githubusercontent.com/12668546/61186568-974b1c80-a699-11e9-831b-a87a506699b9.png)
+
 
 
 ### Features
@@ -15,11 +16,12 @@
     - [x] 参考线
     - [x] 吸附线、组件对齐
     - [x] 拖拽改变组件形状
-    - [x] 元素复制（画布）
-    - [x] 元素删除（画布）
-    - [x] 元素编辑（画布）
+    - [x] 元素: 复制（画布）
+    - [x] 元素: 删除（画布）
+    - [x] 元素: 编辑（画布）
     - [ ] 页面：新增、复制、删除
     - [x] 快速预览
+    - [x] 撤销、重做
 
 2. 组件系统
     - [x] 文字
