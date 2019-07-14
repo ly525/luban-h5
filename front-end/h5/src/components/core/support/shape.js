@@ -145,6 +145,7 @@ export default {
       <div
         onClick={this.handleWrapperClick}
         onMousedown={this.handleMousedown}
+        style={{ outline: this.active ? '1px dashed #bcbcbc' : '' }}
       >
         {
           this.active &&
