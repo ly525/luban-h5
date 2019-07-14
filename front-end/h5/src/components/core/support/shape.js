@@ -25,8 +25,8 @@ export default {
      */
     getPointStyle (point, isWrapElement = true) {
       const pos = this.position
-      const top = pos.top - 4 // !#zh 减4是为了让元素能够处于 border 的中间
-      const left = pos.left - 4
+      const top = pos.top // !#zh 减4是为了让元素能够处于 border 的中间
+      const left = pos.left
       const height = pos.height
       const width = pos.width
       let hasT = /t/.test(point)
@@ -51,6 +51,8 @@ export default {
         }
       }
       const style = {
+        marginLeft: (hasL || hasR) ? '-3px' : 0,
+        marginTop: (hasT || hasB) ? '-3px' : 0,
         left: `${newLeft + (isWrapElement ? 0 : left)}px`,
         top: `${newTop + (isWrapElement ? 0 : top)}px`,
         cursor: point.split('').reverse().map(m => directionKey[m]).join('') + '-resize'
