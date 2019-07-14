@@ -13,7 +13,7 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
-  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp'],
+  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp'],
   computed: {
     position () {
       return { ...this.defaultPosition }

@@ -45,6 +45,7 @@ export default {
       'setEditingElement', // -> this.foo()
       'setElementPosition', // -> this.foo()
       'setElementShape', // -> this.foo()
+      'recordElementRect', // -> this.foo()
       'elementManager'
     ]),
     // TODO #!zh: 优化代码
@@ -196,6 +197,12 @@ export default {
                     this.setElementPosition(pos)
                   }}
                   handleElementMoveProp={this.handleElementMove}
+                  handleElementMouseUpProp={() => {
+                    this.recordElementRect()
+                  }}
+                  handlePointMouseUpProp={() => {
+                    this.recordElementRect()
+                  }}
                 >
                   {h(element.name, data)}
                 </Shape>

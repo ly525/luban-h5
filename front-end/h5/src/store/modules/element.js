@@ -22,6 +22,9 @@ const actions = {
   setElementShape ({ commit }, payload) {
     commit('setElementCommonStyle', payload)
   },
+  recordElementRect ({ commit }, payload = {}) {
+    commit('recordRect', payload)
+  },
   elementManager ({ commit }, payload) {
     commit('elementManager', payload)
   }
@@ -58,6 +61,9 @@ const mutations = {
         break
       default:
     }
+  },
+  recordRect (state, { type, value }) {
+
   }
 }
 

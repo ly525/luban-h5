@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 // import Element from '../models/element'
+import undoRedoHistory from '../../../store/plugins/undo-redo/History'
 
 import '../styles/index.scss'
 
@@ -79,6 +80,12 @@ export default {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
           >
+            <a-menu-item key="4" class="transparent-bg">
+              <a-button-group>
+                <a-button class="transparent-bg" style={{ color: 'white' }} type="dashed" size="small" onClick={() => undoRedoHistory.undo()}><i class={['shortcut-icon', 'fa', `fa-mail-reply`]} aria-hidden='true'/> 撤销</a-button>
+                <a-button class="transparent-bg" style={{ color: 'white' }} type="dashed" size="small" onClick={() => undoRedoHistory.redo()}><i class={['shortcut-icon', 'fa', `fa-mail-forward`]} aria-hidden='true'/> 重做</a-button>
+              </a-button-group>
+            </a-menu-item>
             <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small">预览</a-button></a-menu-item>
             <a-menu-item key="2" class="transparent-bg"><a-button size="small">保存</a-button></a-menu-item>
             <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>

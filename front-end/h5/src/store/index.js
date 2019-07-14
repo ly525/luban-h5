@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import undoRedoPlugin from './plugins/undo-redo/index'
 import editor from './modules/editor'
 import user from './modules/user'
 import visible from './modules/visible'
@@ -24,5 +25,6 @@ export default new Vuex.Store({
     visible,
     loading,
     element
-  }
+  },
+  plugins: [undoRedoPlugin]
 })
