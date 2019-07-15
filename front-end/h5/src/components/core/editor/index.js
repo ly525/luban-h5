@@ -14,12 +14,12 @@ const sidebarMenus = [
   {
     label: '组件列表',
     value: 'pluginList',
-    antIcon: 'user'
+    antIcon: 'bars'
   },
   {
     label: '页面管理',
     value: 'pageManagement',
-    antIcon: 'copy'
+    antIcon: 'snippets'
   },
   {
     label: '免费模板',
@@ -92,8 +92,13 @@ export default {
           </a-menu>
         </a-layout-header>
         <a-layout>
-          <a-layout-sider width="160" style="background: #fff">
-            <a-menu onSelect={val => { this.activeMenuKey = val }} mode="inline" defaultSelectedKeys={['pluginList']} style={{ height: '100%', borderRight: 1 }}>
+          <a-layout-sider width="160" style="background: #fff" collapsed>
+            <a-menu
+              mode="inline"
+              defaultSelectedKeys={['pluginList']}
+              style={{ height: '100%', borderRight: 1 }}
+              onSelect={val => { this.activeMenuKey = val }}
+            >
               {
                 sidebarMenus.map(menu => (
                   <a-menu-item key={menu.value}>
@@ -131,8 +136,8 @@ export default {
               </div>
             </a-layout-content>
           </a-layout>
-          <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
-            <a-tabs type="card" style="height: 100%;">
+          <a-layout-sider width="340" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+            <a-tabs style="height: 100%;" tabBarGutter={10}>
               {/*
                 #!zh tab 标题：
                 #!en tab title
@@ -149,6 +154,7 @@ export default {
               </a-tab-pane>
               <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab='动作'>动作</a-tab-pane>
+              <a-tab-pane label="脚本" key='脚本' tab='脚本'>脚本</a-tab-pane>
             </a-tabs>
           </a-layout-sider>
         </a-layout>

@@ -23,12 +23,20 @@ export default {
     renderPropsEditorPanel (h, editingElement) {
       const propsConfig = editingElement.editorConfig.propsConfig
       return (
-        <a-form ref="form" label-width="100px" size="mini" label-position="left">
+        <a-form
+          ref="form"
+          size="mini"
+          id="props-edit-form"
+          label-width="100px"
+          label-position="left"
+
+        >
           {
             Object.keys(propsConfig).map(propKey => {
               const item = propsConfig[propKey]
               // https://vuejs.org/v2/guide/render-function.html
               const data = {
+                style: { width: '100%' },
                 props: {
                   ...item.prop,
                   // https://vuejs.org/v2/guide/render-function.html#v-model
@@ -46,7 +54,7 @@ export default {
                 }
               }
               return (
-                <a-form-item label={item.label}>
+                <a-form-item label={item.label} labelCol={{ span: 8 }} wrapperCol={{ span: 14, offset: 2 }}>
                   { h(item.type, data) }
                 </a-form-item>
               )
