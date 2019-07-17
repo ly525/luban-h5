@@ -25,6 +25,7 @@ class Element {
      */
     this.pluginProps = ele.pluginProps || this.getDefaultPluginProps()
     this.commonStyle = ele.commonStyle || this.getDefaultCommonStyle()
+    this.events = []
   }
 
   getDefaultCommonStyle () {
