@@ -8,6 +8,8 @@ import '../styles/index.scss'
 import RenderEditCanvas from './canvas/edit'
 import RenderPreviewCanvas from './canvas/preview'
 import RenderPropsEditor from './edit-panel/props'
+import RenderScriptEditor from './edit-panel/script'
+import RenderActoionEditor from './edit-panel/action'
 import RenderShortcutsPanel from './shortcuts-panel/index'
 
 const sidebarMenus = [
@@ -34,7 +36,8 @@ export default {
     activeMenuKey: 'pluginList',
     pages: [],
     // elements: [],
-    isPreviewMode: false
+    isPreviewMode: false,
+    activeTabKey: '属性'
   }),
   computed: {
     ...mapState('element', {
@@ -137,7 +140,11 @@ export default {
             </a-layout-content>
           </a-layout>
           <a-layout-sider width="340" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
-            <a-tabs style="height: 100%;" tabBarGutter={10}>
+            <a-tabs
+              style="height: 100%;"
+              tabBarGutter={10}
+              onChange={activeTabKey => { this.activeTabKey = activeTabKey }}
+            >
               {/*
                 #!zh tab 标题：
                 #!en tab title
@@ -153,8 +160,8 @@ export default {
                 <RenderPropsEditor/>
               </a-tab-pane>
               <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
-              <a-tab-pane label="动作" key='动作' tab='动作'>动作</a-tab-pane>
-              <a-tab-pane label="脚本" key='脚本' tab='脚本'>脚本</a-tab-pane>
+              <a-tab-pane label="动作" key='动作' tab='动作'>{this.activeTabKey === '动作'}{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
+              <a-tab-pane label="脚本" key='脚本' tab='脚本'><RenderScriptEditor/></a-tab-pane>
             </a-tabs>
           </a-layout-sider>
         </a-layout>
