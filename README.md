@@ -60,3 +60,17 @@
 
 ### 前端组件说明
 1. `lbp-` 全称为 `lu-ban-plugin-`, 意思为 `鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
+
+---
+
+### 交流群 (#!en Join Discusion Group)
+扫描二维码加入 钉钉讨论组 或点击 [群邀请链接](https://qr.dingtalk.com/action/joingroup?code=v1,k1,ga4PURIUr/kGsO3/LsZbBP3rXosUgjV6IuCmpLsyqds=&_dt_no_comment=1&origin=11) 
+
+#!en: Scan the QR code using [Dingtalk App](https://www.dingtalk.com) to join in discusion group :
+
+For users in other languages, please keep using Github issue tracker. 🤟
+
+
+<img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200px">
+
+
