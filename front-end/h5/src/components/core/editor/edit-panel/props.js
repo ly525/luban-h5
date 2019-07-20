@@ -2,13 +2,11 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState('element', {
-      editingElement: state => state.editingElement
-    })
+    ...mapState('editor', ['editingElement'])
   },
   methods: {
-    ...mapActions('element', [
-      'setEditingElement' // -> this.foo()
+    ...mapActions('editor', [
+      'setEditingElement'
     ]),
     /**
      * 将插件属性的 自定义增强编辑器注入 属性编辑面板中

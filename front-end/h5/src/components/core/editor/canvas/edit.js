@@ -36,16 +36,14 @@ export default {
     contextmenuPos: []
   }),
   computed: {
-    ...mapState('element', {
-      editingElement: state => state.editingElement
-    })
+    ...mapState('editor', ['editingElement'])
   },
   methods: {
-    ...mapActions('element', [
-      'setEditingElement', // -> this.foo()
-      'setElementPosition', // -> this.foo()
-      'setElementShape', // -> this.foo()
-      'recordElementRect', // -> this.foo()
+    ...mapActions('editor', [
+      'setEditingElement',
+      'setElementPosition',
+      'setElementShape',
+      'recordElementRect',
       'elementManager'
     ]),
     // TODO #!zh: 优化代码

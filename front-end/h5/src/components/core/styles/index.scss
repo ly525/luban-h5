@@ -67,6 +67,20 @@
       margin-bottom: 12px;
     }
   }
+
+  .page-manager-container {
+    margin-top: 16px;
+    .page-button {
+      padding: 18px 8px;
+      border-bottom: 1px solid #ebeef5;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .active-page {
+      color: #2981fa;
+    }
+
+  }
 }
 
 

@@ -1,18 +1,22 @@
-class Work {
-  constructor (work = {}) {
-    this.title = work.title || '标题'
-    this.description = work.description || '描述'
-    this.pages = work.pages || []
-    this.type = work.type || 'h5'
-    this.work = work
+import Work from '../../components/core/models/work'
 
-    this.id = this.id
-    this.coverImageUrl = ''
-    this.projectId = 1
-    this.isPublish = false
-    this.createTime = +new Date()
-    this.updateTime = +new Date()
+export const actions = {
+  previewWork ({ commit }, payload = {}) {
+    commit('previewWork', payload)
+  },
+  deployWork ({ commit }, payload = {}) {
+    commit('previewWork', payload)
+  },
+  saveWork ({ commit, state }, payload = {}) {
+    // save work with api
   }
 }
 
-export default Work
+// mutations
+export const mutations = {
+  createWork (state) {
+    state.work = new Work()
+  },
+  previewWork (state, { type, value }) {},
+  deployWork (state, { type, value }) {}
+}

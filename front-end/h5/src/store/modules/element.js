@@ -1,18 +1,7 @@
-// initial state
 import Element from '../../components/core/models/element'
 
-const state = {
-  editingElement: null,
-  elementsOfCurrentPage: []
-}
-
-// getters
-const getters = {
-
-}
-
 // actions
-const actions = {
+export const actions = {
   setEditingElement ({ commit }, payload) {
     commit('setEditingElement', payload)
   },
@@ -31,7 +20,7 @@ const actions = {
 }
 
 // mutations
-const mutations = {
+export const mutations = {
   setEditingElement (state, payload) {
     state.editingElement = payload
   },
@@ -45,18 +34,18 @@ const mutations = {
     switch (type) {
       case 'add':
         const element = new Element(value)
-        state.elementsOfCurrentPage.push(element)
+        state.editingPage.elements.push(element)
         break
       case 'copy':
-        state.elementsOfCurrentPage.push(state.editingElement.clone())
+        state.editingPage.elements.push(state.editingElement.clone())
         break
       case 'delete':
-        const { elementsOfCurrentPage, editingElement } = state
-        let index = elementsOfCurrentPage.findIndex(e => e.uuid === editingElement.uuid)
+        const { editingPage, editingElement } = state
+        let index = editingPage.elements.findIndex(e => e.uuid === editingElement.uuid)
         if (index !== -1) {
-          let newElements = elementsOfCurrentPage.slice()
+          let newElements = editingPage.elements.slice()
           newElements.splice(index, 1)
-          state.elementsOfCurrentPage = newElements
+          state.editingPage.elements = newElements
         }
         break
       default:
@@ -65,12 +54,4 @@ const mutations = {
   recordRect (state, { type, value }) {
 
   }
-}
-
-export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
 }

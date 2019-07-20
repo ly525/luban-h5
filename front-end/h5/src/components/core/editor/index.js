@@ -34,20 +34,21 @@ export default {
   components: {},
   data: () => ({
     activeMenuKey: 'pluginList',
-    pages: [],
-    // elements: [],
     isPreviewMode: false,
     activeTabKey: '属性'
   }),
   computed: {
-    ...mapState('element', {
+    ...mapState('editor', {
       editingElement: state => state.editingElement,
-      elements: state => state.elementsOfCurrentPage
+      elements: state => state.editingPage.elements,
+      pages: state => state.work.pages
     })
   },
   methods: {
-    ...mapActions('element', [
-      'elementManager'
+    ...mapActions('editor', [
+      'elementManager',
+      'saveWork',
+      'createWork'
     ]),
     getEditorConfig (pluginName) {
       // const pluginCtor = Vue.options[pluginName]
@@ -90,7 +91,7 @@ export default {
               </a-button-group>
             </a-menu-item>
             <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small">预览</a-button></a-menu-item>
-            <a-menu-item key="2" class="transparent-bg"><a-button size="small">保存</a-button></a-menu-item>
+            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()}>保存</a-button></a-menu-item>
             <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
           </a-menu>
         </a-layout-header>
@@ -167,5 +168,13 @@ export default {
         </a-layout>
       </a-layout>
     )
+  },
+  created () {
+    let workId = this.$route.query.workId
+    if (workId) {
+      // this.$store.dispatch('getWorkById', workId)
+    } else {
+      this.createWork()
+    }
   }
 }

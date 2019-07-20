@@ -4,13 +4,13 @@ export default {
   data: () => ({
   }),
   computed: {
-    ...mapState('element', {
-      editingElement: state => state.editingElement
-    })
+    ...mapState('editor', [
+      'editingElement'
+    ])
   },
   methods: {
-    ...mapActions('element', [
-      'setEditingElement' // -> this.foo()
+    ...mapActions('editor', [
+      'setEditingElement'
     ])
   },
   created () {},
