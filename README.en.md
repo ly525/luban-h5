@@ -42,8 +42,8 @@ English | [简体中文](./README.md)
 
 ### Technology Stack (current)
   1. Front end: Vue.js
-  2. Back End: Adonis.js
-  3. Storage: MongoDB
+  2. Back End: Strapi
+  3. Storage: Sqlite
 
 ### Installs
 > proj: project root path
