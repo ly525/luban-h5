@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "work",
+  "info": {
+    "name": "work",
+    "description": "用户的一个H5作品"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "cover_image_url": {
+      "type": "string"
+    },
+    "is_publish": {
+      "type": "boolean"
+    },
+    "create_time": {
+      "type": "date"
+    },
+    "update_time": {
+      "type": "date"
+    },
+    "pages": {
+      "type": "json"
+    }
+  }
+}
