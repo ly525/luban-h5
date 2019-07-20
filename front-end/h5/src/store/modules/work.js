@@ -1,4 +1,5 @@
 import Work from '../../components/core/models/work'
+import strapi from '../../utils/strapi'
 
 export const actions = {
   previewWork ({ commit }, payload = {}) {
@@ -8,7 +9,8 @@ export const actions = {
     commit('previewWork', payload)
   },
   saveWork ({ commit, state }, payload = {}) {
-    // save work with api
+    // save work with strapi
+    strapi.createEntry('works', state.work)
   }
 }
 
