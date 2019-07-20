@@ -3,10 +3,10 @@ import Page from '../../components/core/models/page'
 // actions
 export const actions = {
   setEditingPage ({ commit }, payload) {
-    commit('setEditing', payload)
+    commit('setEditingPage', payload)
   },
   pageManager ({ commit }, payload) {
-    commit('manager', payload)
+    commit('pageManager', payload)
   }
 }
 
@@ -23,13 +23,13 @@ export const mutations = {
         state.work.pages.push(page)
         break
       case 'copy':
-        state.work.pages.push(state.editing.clone())
+        state.work.pages.push(state.editingPage.clone())
         break
       case 'delete':
-        const { pagesOfCurrentWork, editing } = state
-        let index = pagesOfCurrentWork.findIndex(e => e.uuid === editing.uuid)
+        const { work, editingPage } = state
+        let index = work.pages.findIndex(e => e.uuid === editingPage.uuid)
         if (index !== -1) {
-          let newPages = pagesOfCurrentWork.slice()
+          let newPages = work.slice()
           newPages.splice(index, 1)
           state.work.pages = newPages
         }

@@ -47,6 +47,7 @@ export default {
   methods: {
     ...mapActions('editor', [
       'elementManager',
+      'pageManager',
       'saveWork',
       'createWork'
     ]),
@@ -70,6 +71,32 @@ export default {
         type: 'add',
         value: { name, zindex, editorConfig }
       })
+    },
+    _renderMenuContent () {
+      switch (this.activeMenuKey) {
+        case sidebarMenus[0].value:
+          return <RenderShortcutsPanel groups={this.groups} handleClickShortcut={this.clone} />
+        case sidebarMenus[1].value:
+          return (
+            this.pages.map((page, index) => (
+              <span style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0' }}>
+                <span>第{index + 1}页</span>
+                <a-dropdown trigger={['hover']} placement='bottomCenter'>
+                  <a class="ant-dropdown-link" href="#">
+                    <a-icon type="down" />
+                  </a>
+                  <a-menu slot="overlay" onClick={({ key }) => { this.pageManager({ type: key }) }}>
+                    <a-menu-item key="add"><a-icon type="user" />新增页面</a-menu-item>
+                    {/* <a-menu-item key="copy"><a-icon type="user" />复制页面</a-menu-item> */}
+                    {/* <a-menu-item key="delete"><a-icon type="user" />删除页面</a-menu-item> */}
+                  </a-menu>
+                </a-dropdown>
+              </span>
+            ))
+          )
+        default:
+          return null
+      }
     }
   },
   render (h) {
@@ -101,7 +128,7 @@ export default {
               mode="inline"
               defaultSelectedKeys={['pluginList']}
               style={{ height: '100%', borderRight: 1 }}
-              onSelect={val => { this.activeMenuKey = val }}
+              onSelect={({ key }) => { this.activeMenuKey = key }}
             >
               {
                 sidebarMenus.map(menu => (
@@ -113,8 +140,8 @@ export default {
               }
             </a-menu>
           </a-layout-sider>
-          <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
-            <RenderShortcutsPanel groups={this.groups} handleClickShortcut={this.clone} />
+          <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '12px' }}>
+            { this._renderMenuContent() }
           </a-layout-sider>
           <a-layout style="padding: 0 24px 24px">
             <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
