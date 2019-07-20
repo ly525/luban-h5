@@ -44,12 +44,7 @@
     - [ ] 在线预览
     - [ ] 二维码预览
 
-
-### 技术栈（当前）
-1. 前端：[Vue.js](https://vuejs.org/v2/guide/)
-2. 后端：[Strapi](https://strapi.io/)
-3. 存储：[Sqlite](https://mongodb.com)
-
+---
 
 ### 安装
 > project：项目根目录
@@ -57,9 +52,19 @@
 1. 前端
     1. 编辑器部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
 
+2. 后端
+     1. 后端 API 部分请参照 [`project/back-end/h5-api/README.md`](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)
 
-### 前端组件说明
+
+### 更多说明
+#### 前端组件说明
 1. `lbp-` 全称为 `lu-ban-plugin-`, 意思为 `鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
+
+
+#### 技术栈（当前）
+1. 前端：[Vue.js](https://vuejs.org/v2/guide/)
+2. 后端：[Strapi](https://strapi.io/)
+3. 存储：[Sqlite](https://mongodb.com)
 
 ---
 
