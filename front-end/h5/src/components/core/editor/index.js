@@ -1,7 +1,6 @@
-import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
-// import Element from '../models/element'
 import undoRedoHistory from '../../../store/plugins/undo-redo/History'
+import { getEditorConfigForEditingElement } from '../../../utils/element'
 
 import '../styles/index.scss'
 
@@ -51,12 +50,6 @@ export default {
       'saveWork',
       'createWork'
     ]),
-    getEditorConfig (pluginName) {
-      // const pluginCtor = Vue.options[pluginName]
-      // const pluginCtor = this.$options.components[pluginName]
-      const PluginCtor = Vue.component(pluginName)
-      return new PluginCtor().$options.editorConfig
-    },
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
      * #!en click the plugin shortcut, create new Element with the plugin's meta data
@@ -64,9 +57,7 @@ export default {
      */
     clone ({ name }) {
       const zindex = this.elements.length + 1
-      // const defaultPropsValue = this.getPropsDefaultValue(name)
-      const editorConfig = this.getEditorConfig(name)
-      // this.elements.push(new Element({ name, zindex, editorConfig }))
+      const editorConfig = getEditorConfigForEditingElement(name)
       this.elementManager({
         type: 'add',
         value: { name, zindex, editorConfig }

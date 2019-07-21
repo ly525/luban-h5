@@ -1,9 +1,13 @@
 import Element from '../../components/core/models/element'
+import { getEditorConfigForEditingElement } from '../../utils/element'
 
 // actions
 export const actions = {
   setEditingElement ({ commit }, payload) {
     commit('setEditingElement', payload)
+
+    const vm = (payload && payload.name) ? getEditorConfigForEditingElement(payload.name) : null
+    commit('setEditingElementEditorConfig', vm)
   },
   setElementPosition ({ commit }, payload) {
     commit('setElementCommonStyle', payload)
@@ -23,6 +27,9 @@ export const actions = {
 export const mutations = {
   setEditingElement (state, payload) {
     state.editingElement = payload
+  },
+  setEditingElementEditorConfig (state, payload) {
+    state.editingElementEditorConfig = payload
   },
   setElementCommonStyle (state, payload) {
     state.editingElement.commonStyle = {

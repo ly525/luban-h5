@@ -7,7 +7,8 @@ import { actions as workActions, mutations as workMutations } from './work'
 const state = {
   work: new Work(),
   editingPage: { elements: [] },
-  editingElement: null
+  editingElement: null,
+  editingElementEditorConfig: null
 }
 
 // getters

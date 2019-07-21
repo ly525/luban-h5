@@ -1,3 +1,6 @@
+/**
+ * TODO extract page preview card used for page list
+ */
 export default {
   props: ['elements'],
   methods: {

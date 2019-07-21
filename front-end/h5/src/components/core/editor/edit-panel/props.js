@@ -2,7 +2,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   computed: {
-    ...mapState('editor', ['editingElement'])
+    ...mapState('editor', ['editingElement', 'editingElementEditorConfig'])
   },
   methods: {
     ...mapActions('editor', [
@@ -12,14 +12,14 @@ export default {
      * 将插件属性的 自定义增强编辑器注入 属性编辑面板中
      */
     mixinEnhancedPropsEditor (editingElement) {
-      const { components } = editingElement.editorConfig
+      const { components } = this.editingElementEditorConfig
       for (const key in components) {
         if (this.$options.components[key]) return
         this.$options.components[key] = components[key]
       }
     },
     renderPropsEditorPanel (h, editingElement) {
-      const propsConfig = editingElement.editorConfig.propsConfig
+      const propsConfig = this.editingElementEditorConfig.propsConfig
       return (
         <a-form
           ref="form"
