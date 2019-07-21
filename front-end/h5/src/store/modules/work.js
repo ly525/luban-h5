@@ -1,4 +1,5 @@
 // import Work from '../../components/core/models/work'
+import Element from '../../components/core/models/element'
 import strapi from '../../utils/strapi'
 
 export const actions = {
@@ -30,8 +31,11 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setWork (state, payload) {
-    state.work = payload
+  setWork (state, work) {
+    work.pages.forEach(page => {
+      page.elements = page.elements.map(element => new Element(element))
+    })
+    state.work = work
   },
   // createWork (state) {
   //   state.work = new Work()
