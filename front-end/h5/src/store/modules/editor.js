@@ -1,4 +1,5 @@
 // initial state
+import strapi from '../../utils/strapi'
 import Work from '../../components/core/models/work'
 import { actions as pageActions, mutations as pageMutations } from './page'
 import { actions as elementActions, mutations as elementMutations } from './element'
@@ -18,12 +19,7 @@ const getters = {}
 const actions = {
   ...elementActions,
   ...pageActions,
-  ...workActions,
-  createWork ({ commit }, payload) {
-    commit('createWork')
-    commit('pageManager', { type: 'add' })
-    commit('setEditingPage')
-  }
+  ...workActions
 }
 
 // mutations

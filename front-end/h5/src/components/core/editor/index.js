@@ -48,7 +48,8 @@ export default {
       'elementManager',
       'pageManager',
       'saveWork',
-      'createWork'
+      'createWork',
+      'fetchWork'
     ]),
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
@@ -191,6 +192,7 @@ export default {
     let workId = this.$route.query.workId
     if (workId) {
       // this.$store.dispatch('getWorkById', workId)
+      this.fetchWork(workId)
     } else {
       this.createWork()
     }
