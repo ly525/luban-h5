@@ -36,11 +36,12 @@
     - [ ] 上传 PSD，一键转换为 H5
     - [ ] 图片库
     - [ ] 第三方无版权图片搜索
+    - [ ] 自定义脚本
 
-4. 数据统计
-    - [ ] 表单数据统计
-
-5. 其它
+4. 后端 API
+    - [x] 创建、保存、更新作品
+    - [ ] 表单数据收集
+    - [ ] 表单数据展示
     - [ ] 在线预览
     - [ ] 二维码预览
 
@@ -69,7 +70,7 @@
 ---
 
 ### 交流群 (#!en Join Discussion Group)
-扫描二维码加入 钉钉讨论组 或点击 [群邀请链接](https://qr.dingtalk.com/action/joingroup?code=v1,k1,ga4PURIUr/kGsO3/LsZbBP3rXosUgjV6IuCmpLsyqds=&_dt_no_comment=1&origin=11)
+扫描二维码加入 钉钉讨论组
 
 #!en: Scan the QR code using [Dingtalk App](https://www.dingtalk.com) to join in discussion group :
 
