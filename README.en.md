@@ -15,8 +15,11 @@ English | [简体中文](./README.md)
     - [x] Edit Element (Canvas)
     - [x] Copy Element (Canvas)
     - [x] Delete Element (Canvas)
-    - [ ] Page: add, copy, delete
-    - [x] Preview
+    - [x] Edit Page
+    - [x] Copy Page
+    - [x] Delete Page
+    - [x] Quick Preview
+    - [x] Undo、Redo
 
 2. Plugin System
 

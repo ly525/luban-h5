@@ -26,10 +26,12 @@ export const mutations = {
         state.work.pages.push(state.editingPage.clone())
         break
       case 'delete':
+        if (state.work.pages.length === 1) return // #!zh: 作品中至少需要保留一个页面，TODO 需要在页面中提示用户此信息
+
         const { work, editingPage } = state
-        let index = work.pages.findIndex(e => e.uuid === editingPage.uuid)
+        let index = work.pages.findIndex(page => page.uuid === editingPage.uuid)
         if (index !== -1) {
-          let newPages = work.slice()
+          let newPages = work.pages.slice()
           newPages.splice(index, 1)
           state.work.pages = newPages
         }

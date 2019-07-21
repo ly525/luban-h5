@@ -1,6 +1,7 @@
 // import Work from '../../components/core/models/work'
 import Element from '../../components/core/models/element'
 import strapi from '../../utils/strapi'
+import Page from '../../components/core/models/page'
 
 export const actions = {
   previewWork ({ commit }, payload = {}) {
@@ -32,8 +33,9 @@ export const actions = {
 // mutations
 export const mutations = {
   setWork (state, work) {
-    work.pages.forEach(page => {
+    work.pages = work.pages.map(page => {
       page.elements = page.elements.map(element => new Element(element))
+      return new Page(page)
     })
     state.work = work
   },

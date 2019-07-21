@@ -79,8 +79,8 @@ export default {
                   </a>
                   <a-menu slot="overlay" onClick={({ key }) => { this.pageManager({ type: key }) }}>
                     <a-menu-item key="add"><a-icon type="user" />新增页面</a-menu-item>
-                    {/* <a-menu-item key="copy"><a-icon type="user" />复制页面</a-menu-item> */}
-                    {/* <a-menu-item key="delete"><a-icon type="user" />删除页面</a-menu-item> */}
+                    <a-menu-item key="copy"><a-icon type="user" />复制页面</a-menu-item>
+                    <a-menu-item key="delete"><a-icon type="user" />删除页面</a-menu-item>
                   </a-menu>
                 </a-dropdown>
               </span>
