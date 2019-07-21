@@ -47,7 +47,7 @@
 ---
 
 ### 安装
-> project：项目根目录
+> 说明：project：项目根目录
 
 1. 前端
     1. 编辑器部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
