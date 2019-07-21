@@ -16,10 +16,12 @@
   "attributes": {
     "title": {
       "required": true,
-      "type": "string"
+      "type": "string",
+      "default": "default title"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "default": "default desc"
     },
     "cover_image_url": {
       "type": "string"

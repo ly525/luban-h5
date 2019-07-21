@@ -20,7 +20,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-  
+
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},
@@ -31,7 +31,12 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  // beforeCreate: async (model, attrs, options) => {},
+  beforeCreate: async (model, attrs, options) => {
+    const defaultPages = [{
+      elements: []
+    }];
+    model.set('pages', JSON.stringify(defaultPages));
+  },
 
   // After creating a value.
   // Fired after an `insert` query.
