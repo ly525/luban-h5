@@ -1,5 +1,5 @@
 import Element from '../../components/core/models/element'
-import { getEditorConfigForEditingElement } from '../../utils/element'
+import { getEditorConfigForEditingElement, swapZindex } from '../../utils/element'
 
 // actions
 export const actions = {
@@ -38,22 +38,53 @@ export const mutations = {
     }
   },
   elementManager (state, { type, value }) {
+    const { editingPage, editingElement } = state
+    const elements = editingPage.elements
+    const len = elements.length
+
     switch (type) {
       case 'add':
+        value = {
+          ...value,
+          zindex: len + 1
+        }
         const element = new Element(value)
-        state.editingPage.elements.push(element)
+        elements.push(element)
         break
       case 'copy':
-        state.editingPage.elements.push(state.editingElement.clone())
+        elements.push(state.editingElement.clone())
         break
       case 'delete':
-        const { editingPage, editingElement } = state
-        let index = editingPage.elements.findIndex(e => e.uuid === editingElement.uuid)
-        if (index !== -1) {
-          let newElements = editingPage.elements.slice()
-          newElements.splice(index, 1)
+        {
+          const index = elements.findIndex(e => e.uuid === editingElement.uuid)
+          if (index !== -1) {
+            let newElements = elements.slice()
+            newElements.splice(index, 1)
+            state.editingPage.elements = newElements
+          }
+        }
+        break
+      case 'move2Top':
+      case 'move2Bottom':
+        {
+          const index = elements.findIndex(e => e.uuid === editingElement.uuid)
+          elements.splice(index, 1)
+          const newElements = type === 'move2Top' ? [...elements, editingElement] : [editingElement, ...elements]
+          newElements.forEach((ele, i, arr) => {
+            ele.commonStyle.zindex = i + 1
+          })
           state.editingPage.elements = newElements
         }
+        break
+      case 'addZindex':
+      case 'minusZindex':
+        const maxZindex = elements.length
+        const eleZindex = editingElement.commonStyle.zindex
+        if (eleZindex === maxZindex || eleZindex === 1) return
+
+        const flag = type === 'addZindex' ? 1 : -1
+        const swapElement = elements.find(ele => ele.commonStyle.zindex === eleZindex + flag * 1)
+        swapZindex(editingElement, swapElement)
         break
       default:
     }

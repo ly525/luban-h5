@@ -12,11 +12,11 @@ const contextmenuOptions = [
   },
   {
     label: '置顶',
-    value: 'bring2Top'
+    value: 'move2Top'
   },
   {
     label: '置底',
-    value: 'bring2Bottom'
+    value: 'move2Bottom'
   },
   {
     label: '上移',
@@ -203,6 +203,7 @@ export default {
                   }}
                 >
                   {h(element.name, data)}
+                  {element.commonStyle.zindex}
                 </Shape>
               )
             })

@@ -28,7 +28,12 @@ class Element {
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
     this.pluginProps = (typeof ele.pluginProps === 'object' && clone(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
-    this.commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || this.getDefaultCommonStyle()
+    const commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || this.getDefaultCommonStyle()
+    this.commonStyle = {
+      ...commonStyle,
+      zindex: ele.zindex
+    }
+
     this.events = []
   }
 
@@ -76,8 +81,9 @@ class Element {
 
   }
 
-  clone () {
+  clone ({ zindex }) {
     return new Element({
+      zindex,
       name: this.name,
       pluginProps: this.pluginProps,
       commonStyle: {
