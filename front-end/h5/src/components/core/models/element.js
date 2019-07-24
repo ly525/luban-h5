@@ -56,7 +56,7 @@ class Element {
     return pluginProps
   }
 
-  getStyle (position = 'static') {
+  getStyle ({ position = 'static' }) {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {
@@ -71,6 +71,13 @@ class Element {
       position
     }
     return style
+  }
+
+  getProps ({ mode = 'edit' } = {}) {
+    return {
+      ...this.pluginProps,
+      disabled: this.name === 'lbp-form-input' && mode === 'edit'
+    }
   }
 
   getClass () {

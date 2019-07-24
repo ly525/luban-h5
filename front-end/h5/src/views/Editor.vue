@@ -5,6 +5,7 @@ import CoreEditor from '../components/core/editor/index.js'
 import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'
 import LbpText from '../components/plugins/lbp-text'
+import LbpFormInput from '../components/plugins/lbp-form-input'
 
 const PluginList = [
   {
@@ -59,23 +60,32 @@ const PluginList = [
     title: '表单',
     icon: 'wpforms',
     visible: true,
+    component: LbpFormInput,
+    name: 'lbp-form-input',
     children: [
       {
-        title: '按钮',
+        title: '输入框',
         icon: 'hand-pointer-o',
-        component: LbpButton,
+        component: LbpFormInput,
         visible: true,
-        name: 'lbp-button'
+        name: 'lbp-form-input'
       },
-      {
-        title: '图片',
-        icon: 'image',
-        component: LbpPicture,
-        visible: true,
-        name: 'lbp-picture'
-      }
     ]
-  }
+  },
+  // {
+  //   title: '表单2',
+  //   icon: 'wpforms',
+  //   visible: true,
+  //   children: [
+  //     {
+  //       title: '输入框',
+  //       icon: 'hand-pointer-o',
+  //       component: LbpFormInput,
+  //       visible: true,
+  //       name: 'lbp-form-input'
+  //     },
+  //   ]
+  // }
 ]
 
 export default {
