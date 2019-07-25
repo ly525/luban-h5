@@ -67,7 +67,7 @@ export default {
     _renderMenuContent () {
       switch (this.activeMenuKey) {
         case sidebarMenus[0].value:
-          return <RenderShortcutsPanel groups={this.groups} handleClickShortcut={this.clone} />
+          return <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
         case sidebarMenus[1].value:
           return (
             this.pages.map((page, index) => (
