@@ -9,6 +9,7 @@ module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
-    return ctx.render('engine', {work: { page2: []}});
+    const work = await strapi.services.work.findOne(ctx.params);
+    return ctx.render('engine', { work });
   }
 };

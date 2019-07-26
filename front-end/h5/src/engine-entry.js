@@ -5,14 +5,13 @@ import Vue from 'vue'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import 'font-awesome/css/font-awesome.min.css'
-import loadPluginMixin from '../../../../mixins/load-plugins.js'
-import Element from '../../models/element'
-
+import { pluginsList } from './mixins/load-plugins.js'
+import Element from './components/core/models/element'
 Vue.config.productionTip = false
 Vue.use(Antd)
+
 const Engine = {
   name: 'engine',
-  mixins: [loadPluginMixin],
   methods: {
     renderPreview (h, _elements) {
       const elements = _elements.map(element => new Element(element))
@@ -54,9 +53,19 @@ const Engine = {
   }
 }
 
-new Vue({
-  components: {
-    engine: Engine
-  },
-  render: h => h('engine')
-}).$mount('#app')
+const install = function (Vue) {
+  Vue.component(Engine.name, Engine)
+  pluginsList.forEach(plugin => {
+    Vue.component(plugin.name, plugin.component)
+  })
+}
+
+// auto install
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
+export default {
+  install,
+  Engine
+}

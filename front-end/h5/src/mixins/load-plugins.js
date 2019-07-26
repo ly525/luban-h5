@@ -4,7 +4,7 @@ import LbpPicture from '../components/plugins/lbp-picture'
 import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
 
-const pluginsList = [
+export const pluginsList = [
   {
     title: '图片',
     icon: 'photo',

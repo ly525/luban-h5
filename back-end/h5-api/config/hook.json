@@ -12,7 +12,7 @@
     "viewExt": "ejs",
     "partial": true,
     "cache": false,
-    "debug": true,
+    "debug": false,
     "layout": false
   }
 }
