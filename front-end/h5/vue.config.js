@@ -5,5 +5,16 @@ module.exports = {
     : '/',
   devServer: {
     proxy: 'http://localhost:1337'
+  },
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html',
+      title: 'Index Page'
+    },
+    engine: {
+      entry: 'src/components/core/editor/engine/index.js'
+    }
   }
 }

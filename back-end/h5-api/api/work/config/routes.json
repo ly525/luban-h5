@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/works/preview/:id",
+      "handler": "Work.previewOne",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

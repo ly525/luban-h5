@@ -5,4 +5,10 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  // GET /previewOne
+  // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
+  previewOne: async (ctx) => {
+    return ctx.render('engine', {work: { page2: []}});
+  }
+};

@@ -6,5 +6,13 @@
       "Define the hooks' load order by putting their names in this array in the right order"
     ],
     "after": []
+  },
+  "ejs": {
+    "enabled": true,
+    "viewExt": "ejs",
+    "partial": true,
+    "cache": false,
+    "debug": true,
+    "layout": false
   }
 }
