@@ -1,5 +1,4 @@
 // initial state
-import strapi from '../../utils/strapi'
 import Work from '../../components/core/models/work'
 import { actions as pageActions, mutations as pageMutations } from './page'
 import { actions as elementActions, mutations as elementMutations } from './element'

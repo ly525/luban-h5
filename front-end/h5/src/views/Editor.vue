@@ -1,11 +1,10 @@
 <script>
-import Vue from 'vue'
 import CoreEditor from '../components/core/editor/index.js'
 import loadPluginMixin from '../mixins/load-plugins.js'
 
 export default {
   extends: CoreEditor,
-  mixins: [loadPluginMixin],
+  mixins: [loadPluginMixin]
 }
 </script>
 <style lang="scss">

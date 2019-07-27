@@ -14,52 +14,52 @@ export default {
   },
   computed: {
     ...mapState('editor', {
-      work: state => state.work,
+      work: state => state.work
     }),
     releaseUrl () {
       return `//localhost:1337/works/preview/${this.work.id}`
     }
   },
-  data() {
+  data () {
     return {
       confirmLoading: false,
-      qrcodeSize: 500,
+      qrcodeSize: 500
     }
   },
   watch: {
     visible (val) {
-      if (!val) return;
-      this.$nextTick(() => this.drawQRcode());
-    },
+      if (!val) return
+      this.$nextTick(() => this.drawQRcode())
+    }
   },
   methods: {
     ...mapActions('editor', [
       'saveWork',
       'updateWork'
     ]),
-    handleOk(e) {
-      this.confirmLoading = true;
+    handleOk (e) {
+      this.confirmLoading = true
       this.saveWork().then(res => {
         this.handleClose()
-        this.confirmLoading = false;
+        this.confirmLoading = false
       })
       // setTimeout(() => {
       // }, 2000);
     },
-    handleCancel(e) {
-      console.log('Clicked cancel button');
+    handleCancel (e) {
+      console.log('Clicked cancel button')
       this.handleClose()
     },
     drawQRcode () {
-      var canvas = document.getElementById('qrcode-container');
+      var canvas = document.getElementById('qrcode-container')
       QRCode.toCanvas(canvas, this.releaseUrl, { scale: 4 }, err => {
-        console.log(err);
-      });
+        console.log(err)
+      })
     },
     postMessage2Iframe (message) {
       let iframeWin = document.getElementById('iframe-for-preview').contentWindow
       // iframeWin.postMessage('next', window.location.origin);
-      iframeWin.postMessage(message, 'http://localhost:1337');
+      iframeWin.postMessage(message, 'http://localhost:1337')
     }
   },
   render (h) {
@@ -71,11 +71,11 @@ export default {
         onCancel={this.handleCancel}
         width="70%"
         okText="保存"
-        >
+      >
         <div class="preview-wrapper">
           <a-row gutter={20}>
             <a-col span={8}>
-              <div class="phone-wrapper" style={{ transform: 'scale(0.8)'}}>
+              <div class="phone-wrapper" style={{ transform: 'scale(0.8)' }}>
                 <div class="phone">
                   <div class="float-ctrl-panel">
                     <a class="page-controller" onClick={(e) => { this.postMessage2Iframe('prev') }}>上一页</a>
@@ -104,14 +104,14 @@ export default {
                   <a-input
                     class="input"
                     value={this.work.title}
-                    onChange={e => this.updateWork({ title: e.target.value})}
+                    onChange={e => this.updateWork({ title: e.target.value })}
                     // onBlur={this.saveTitle}
                     placeholder="请输入标题"
                   ></a-input>
                   <a-input
                     class="input"
                     value={this.work.description}
-                    onChange={e => this.updateWork({ description: e.target.value})}
+                    onChange={e => this.updateWork({ description: e.target.value })}
                     // v-model="description"
                     // onBlur={this.saveDescription}
                     placeholder="请输入描述"
@@ -122,7 +122,7 @@ export default {
                   <div class="label">手机扫码分享给好友</div>
                   <div class="code">
                     <canvas style="float: left" id="qrcode-container"></canvas>
-                    <a-radio-group class="radios" value={this.qrcodeSize} onChange={e => {this.qrcodeSize = e.target.value}}>
+                    <a-radio-group class="radios" value={this.qrcodeSize} onChange={e => { this.qrcodeSize = e.target.value }}>
                       <a-radio label={500} value={500}>500x500</a-radio>
                       <a-radio label={1000} value={1000}>1000x1000</a-radio>
                       <a-radio label={2000} value={2000}>2000x2000</a-radio>
@@ -140,7 +140,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss">
 .preview-wrapper {

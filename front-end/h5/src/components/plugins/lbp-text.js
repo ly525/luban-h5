@@ -10,7 +10,7 @@ export default {
     } = this
 
     const style = {
-      color,
+      color: `${color} !important`,
       textAlign,
       backgroundColor: 'transparent',
       fontSize: fontSize,

@@ -203,7 +203,6 @@ export default {
                   }}
                 >
                   {h(element.name, data)}
-                  {element.commonStyle.zindex}
                 </Shape>
               )
             })
