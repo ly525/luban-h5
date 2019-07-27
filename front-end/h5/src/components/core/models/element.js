@@ -1,3 +1,5 @@
+import { parsePx } from '../../../utils/element.js'
+
 const clone = (value) => JSON.parse(JSON.stringify(value))
 
 const defaultProps = {
@@ -56,14 +58,14 @@ class Element {
     return pluginProps
   }
 
-  getStyle ({ position = 'static' }) {
+  getStyle ({ position = 'static', isRem = false }) {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {
-      top: `${pluginProps.top || commonStyle.top}px`,
-      left: `${pluginProps.left || commonStyle.left}px`,
-      width: `${pluginProps.width || commonStyle.width}px`,
-      height: `${pluginProps.height || commonStyle.height}px`,
+      top: parsePx(pluginProps.top || commonStyle.top),
+      left: parsePx(pluginProps.left || commonStyle.left),
+      width: parsePx(pluginProps.width || commonStyle.width),
+      height: parsePx(pluginProps.height || commonStyle.height),
       fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,

@@ -10,6 +10,7 @@ import RenderPropsEditor from './edit-panel/props'
 import RenderScriptEditor from './edit-panel/script'
 import RenderActoionEditor from './edit-panel/action'
 import RenderShortcutsPanel from './shortcuts-panel/index'
+import PreviewDialog from './modals/preview.vue'
 
 const sidebarMenus = [
   {
@@ -34,7 +35,8 @@ export default {
   data: () => ({
     activeMenuKey: 'pluginList',
     isPreviewMode: false,
-    activeTabKey: '属性'
+    activeTabKey: '属性',
+    previewVisible: false
   }),
   computed: {
     ...mapState('editor', {
@@ -109,7 +111,7 @@ export default {
                 <a-button class="transparent-bg" style={{ color: 'white' }} type="dashed" size="small" onClick={() => undoRedoHistory.redo()}><i class={['shortcut-icon', 'fa', `fa-mail-forward`]} aria-hidden='true'/> 重做</a-button>
               </a-button-group>
             </a-menu-item>
-            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small">预览</a-button></a-menu-item>
+            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>预览</a-button></a-menu-item>
             <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()}>保存</a-button></a-menu-item>
             <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
           </a-menu>
@@ -185,6 +187,7 @@ export default {
             </a-tabs>
           </a-layout-sider>
         </a-layout>
+        <PreviewDialog visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} />
       </a-layout>
     )
   },

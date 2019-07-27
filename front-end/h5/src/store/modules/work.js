@@ -18,9 +18,21 @@ export const actions = {
     // commit('pageManager', { type: 'add' })
     // commit('setEditingPage')
   },
+  updateWork ({ commit, state }, payload = {}) {
+    // update work with strapi
+    const work = {
+      ...state.work,
+      ...payload
+    }
+    commit('setWork', work)
+  },
   saveWork ({ commit, state }, payload = {}) {
     // update work with strapi
-    strapi.updateEntry('works', state.work.id, state.work)
+    const work = {
+      ...state.work,
+      ...payload
+    }
+    strapi.updateEntry('works', state.work.id, work)
   },
   fetchWork ({ commit, state }, workId) {
     strapi.getEntry('works', workId).then(entry => {

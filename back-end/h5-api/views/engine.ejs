@@ -17,6 +17,9 @@
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.js"></script>
   <style>
+    * {
+      outline: none;
+    }
     .swiper-container {
       width: 100%;
       height: 100vh;
@@ -26,7 +29,9 @@
 
 <body>
   <div id="app">
-      <engine />
+    <button class="swiper-button-next" style="position: fixed;left: 1000px">Next</button>
+    <button class="swiper-button-prev" style="position: fixed;left: 1000px">Prev</button>
+    <engine />
   </div>
   <script>
     // Vue.component('engine', window.Engine)
@@ -59,6 +64,18 @@
         el: '.swiper-scrollbar',
       },
     });
+
+    function displayMessage ({ origin, data }) {
+      if (data && origin === "http://localhost:8080") {
+        document.querySelector(`.swiper-button-${data}`).click()
+      }
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener("message", displayMessage, false);
+    } else {
+      window.attachEvent("onmessage", displayMessage);
+    }
   </script>
   <!-- build:js scripts/vendor.js -->
   <!-- endbuild -->

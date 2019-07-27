@@ -12,9 +12,9 @@ module.exports = {
       template: 'public/index.html',
       filename: 'index.html',
       title: 'Index Page'
-    },
-    engine: {
-      entry: 'src/components/core/editor/engine/index.js'
     }
+    // engine: {
+    //   entry: 'src/engine-entry.js'
+    // }
   }
 }
