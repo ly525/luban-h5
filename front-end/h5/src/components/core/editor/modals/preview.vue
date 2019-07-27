@@ -64,20 +64,18 @@ export default {
   },
   render (h) {
     return (
-      <div>
-        <a-modal
-          title="作品设置"
-          visible={this.visible}
-          confirmLoading={this.confirmLoading}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          width="70%"
-          okText="保存"
+      <a-modal
+        visible={this.visible}
+        confirmLoading={this.confirmLoading}
+        onOk={this.handleOk}
+        onCancel={this.handleCancel}
+        width="70%"
+        okText="保存"
         >
         <div class="preview-wrapper">
           <a-row gutter={20}>
             <a-col span={8}>
-              <div class="phone-wrapper">
+              <div class="phone-wrapper" style={{ transform: 'scale(0.8)'}}>
                 <div class="phone">
                   <div class="float-ctrl-panel">
                     <a class="page-controller" onClick={(e) => { this.postMessage2Iframe('prev') }}>上一页</a>
@@ -102,7 +100,7 @@ export default {
             <a-col span={12} offset={4}>
               <div class="setting">
                 <div class="info">
-                  <div class="label">设置作品信息</div>
+                  <h4 class="label">设置作品信息</h4>
                   <a-input
                     class="input"
                     value={this.work.title}
@@ -135,8 +133,7 @@ export default {
             </a-col>
           </a-row>
         </div>
-        </a-modal>
-      </div>
+      </a-modal>
     )
   },
   mounted () {
@@ -148,22 +145,16 @@ export default {
 <style lang="scss">
 .preview-wrapper {
   position: relative;
-  min-height: 600px;
-  min-width: 800px;
+  min-height: 480px;
 
   .phone-wrapper {
     position: absolute;
-    // margin-top: -300px;
-    left: 10px;
-    top: 50%;
-    width: 320px;
-    height: 600px;
     box-sizing: content-box;
     .phone {
       position: absolute;
-      // left: 40px;
-      width: 100%;
-      height: calc(638px - 70px);
+      width: 320px;
+      height: 568px;
+
       display: inline-block;
       background: #fff;
       box-sizing: content-box;
