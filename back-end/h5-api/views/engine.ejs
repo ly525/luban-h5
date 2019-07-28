@@ -89,7 +89,7 @@
     });
 
     function displayMessage ({ origin, data }) {
-      if (data && origin === "http://localhost:8080") {
+      if (data && origin === window.location.origin) {
         document.querySelector(`.swiper-button-${data}`).click()
       }
     }

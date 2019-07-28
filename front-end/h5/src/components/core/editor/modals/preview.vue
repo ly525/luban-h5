@@ -1,6 +1,8 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import QRCode from 'qrcode'
+import { API_ORIGIN } from '../../../../constants/api.js'
+
 export default {
   props: {
     visible: {
@@ -17,7 +19,7 @@ export default {
       work: state => state.work
     }),
     releaseUrl () {
-      return `http://${window.location.hostname}:1337/works/preview/${this.work.id}`
+      return `${API_ORIGIN}/works/preview/${this.work.id}`
     }
   },
   data () {
@@ -58,12 +60,11 @@ export default {
     },
     postMessage2Iframe (message) {
       let iframeWin = document.getElementById('iframe-for-preview').contentWindow
-      // iframeWin.postMessage('next', window.location.origin);
-      iframeWin.postMessage(message, 'http://localhost:1337')
+      iframeWin.postMessage(message, API_ORIGIN)
     },
     openNewTab () {
-      window.open(this.releaseUrl);
-    },
+      window.open(this.releaseUrl)
+    }
   },
   render (h) {
     return (
@@ -92,7 +93,7 @@ export default {
                   </div>
                   <iframe
                     id="iframe-for-preview"
-                    src="http://localhost:1337/works/preview/12"
+                    src={this.releaseUrl}
                     frameborder="0"
                     style="height: 100%;width: 100%;"
                   ></iframe>
