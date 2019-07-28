@@ -19,7 +19,7 @@ const Engine = {
         <div style={{ height: '100%', position: 'relative' }}>
           {
             elements.map((element, index) => {
-              const style = element.getStyle({ position: 'absolute' })
+              const style = element.getStyle({ position: 'absolute', isRem: true })
               const data = {
                 style,
                 props: element.getProps({ mode: 'preview' })

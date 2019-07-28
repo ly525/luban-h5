@@ -62,10 +62,10 @@ class Element {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {
-      top: parsePx(pluginProps.top || commonStyle.top),
-      left: parsePx(pluginProps.left || commonStyle.left),
-      width: parsePx(pluginProps.width || commonStyle.width),
-      height: parsePx(pluginProps.height || commonStyle.height),
+      top: parsePx(pluginProps.top || commonStyle.top, isRem),
+      left: parsePx(pluginProps.left || commonStyle.left, isRem),
+      width: parsePx(pluginProps.width || commonStyle.width, isRem),
+      height: parsePx(pluginProps.height || commonStyle.height, isRem),
       fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,

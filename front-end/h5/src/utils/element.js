@@ -31,7 +31,7 @@ function px2Rem (px) {
  * @param {Number} px 元素的某个属性的像素值，比如 height
  * @param {Boolean} isToRem 是否将 px 转换为 rem
  */
-export function parsePx (px, isRem = true) {
+export function parsePx (px, isRem = false) {
   if (isRem) return px2Rem(px)
   return `${px}px`
 }
