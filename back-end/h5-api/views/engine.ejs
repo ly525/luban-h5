@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>work.html</title>
-  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <!-- <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"> -->
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
@@ -12,7 +12,7 @@
   <!-- <script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/flexible.js"></script> -->
   <!-- <link rel="stylesheet" href="/be-static/be-static-luban-h5/engine/engine.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-  <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+  <!-- <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
   <script>
     function setDocFontSize(base) {
@@ -36,6 +36,7 @@
       domEle.style.fontSize = w / base * 100 + "px";
       domEle.dataset.dpr = dpr;
     }
+    setDocFontSize(320)
   </script>
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.js"></script>
@@ -49,8 +50,8 @@
     }
   </style>
 </head>
-
-<body onload="setDocFontSize(320)">
+<!-- <body onload="setDocFontSize(320)"> -->
+<body>
   <div id="app">
     <button class="swiper-button-next" style="position: fixed;left: 1000px">Next</button>
     <button class="swiper-button-prev" style="position: fixed;left: 1000px">Prev</button>

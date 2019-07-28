@@ -66,7 +66,7 @@ class Element {
       left: parsePx(pluginProps.left || commonStyle.left, isRem),
       width: parsePx(pluginProps.width || commonStyle.width, isRem),
       height: parsePx(pluginProps.height || commonStyle.height, isRem),
-      fontSize: `${pluginProps.fontSize || commonStyle.fontSize}px`,
+      fontSize: parsePx(pluginProps.fontSize || commonStyle.fontSize, isRem),
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
       textAlign: pluginProps.textAlign || commonStyle.textAlign,
