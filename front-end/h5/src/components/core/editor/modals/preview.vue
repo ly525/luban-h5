@@ -17,7 +17,7 @@ export default {
       work: state => state.work
     }),
     releaseUrl () {
-      return `//localhost:1337/works/preview/${this.work.id}`
+      return `http://${window.location.hostname}:1337/works/preview/${this.work.id}`
     }
   },
   data () {
@@ -60,7 +60,10 @@ export default {
       let iframeWin = document.getElementById('iframe-for-preview').contentWindow
       // iframeWin.postMessage('next', window.location.origin);
       iframeWin.postMessage(message, 'http://localhost:1337')
-    }
+    },
+    openNewTab () {
+      window.open(this.releaseUrl);
+    },
   },
   render (h) {
     return (
@@ -122,11 +125,16 @@ export default {
                   <div class="label">手机扫码分享给好友</div>
                   <div class="code">
                     <canvas style="float: left" id="qrcode-container"></canvas>
+                    <div>
+                      <a-button type="dashed" onClick={() => this.openNewTab()}>打开预览 URL </a-button>
+                    </div>
+                    {/**
                     <a-radio-group class="radios" value={this.qrcodeSize} onChange={e => { this.qrcodeSize = e.target.value }}>
                       <a-radio label={500} value={500}>500x500</a-radio>
                       <a-radio label={1000} value={1000}>1000x1000</a-radio>
                       <a-radio label={2000} value={2000}>2000x2000</a-radio>
                     </a-radio-group>
+                    */}
                   </div>
                 </div>
               </div>
