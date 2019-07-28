@@ -72,13 +72,9 @@
 ---
 
 ### 交流群 (#!en Join Discussion Group)
-扫描二维码加入 钉钉讨论组
+钉钉讨论组（推荐） 和 QQ讨论组 (QQ 群号：251936377)
+> #!en: Scan the DingTalk QR code using [Dingtalk App](https://www.dingtalk.com) or Scan the QQ QR code using [QQ App](https://im.qq.com) to join in discussion group
 
-#!en: Scan the QR code using [Dingtalk App](https://www.dingtalk.com) to join in discussion group :
+> For users in other languages, please keep using Github issue tracker. 🤟
 
-For users in other languages, please keep using Github issue tracker. 🤟
-
-
-<img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200px">
-
-
+<img src="https://user-images.githubusercontent.com/12668546/62009529-d184e580-b192-11e9-93ba-e23c1fb5c72a.png" width="650px">
