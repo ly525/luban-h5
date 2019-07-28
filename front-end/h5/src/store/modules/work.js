@@ -2,6 +2,7 @@
 import Element from '../../components/core/models/element'
 import strapi from '../../utils/strapi'
 import Page from '../../components/core/models/page'
+import { AxiosWrapper } from '../../utils/http.js'
 
 export const actions = {
   previewWork ({ commit }, payload = {}) {
@@ -26,13 +27,19 @@ export const actions = {
     }
     commit('setWork', work)
   },
-  saveWork ({ commit, state }, payload = {}) {
+  saveWork ({ commit, dispatch, state }, payload = {}) {
     // update work with strapi
     const work = {
       ...state.work,
       ...payload
     }
-    strapi.updateEntry('works', state.work.id, work)
+
+    new AxiosWrapper({
+      dispatch,
+      loading_name: 'saveWork_loading',
+      successMsg: '保存作品成功',
+      customRequest: strapi.updateEntry.bind(strapi)
+    }).put('works', state.work.id, work)
   },
   fetchWork ({ commit, state }, workId) {
     strapi.getEntry('works', workId).then(entry => {

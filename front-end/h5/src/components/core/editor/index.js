@@ -43,6 +43,9 @@ export default {
       editingElement: state => state.editingElement,
       elements: state => state.editingPage.elements,
       pages: state => state.work.pages
+    }),
+    ...mapState('loading', {
+      saveWork_loading: state => state.saveWork_loading
     })
   },
   methods: {
@@ -112,7 +115,7 @@ export default {
               </a-button-group>
             </a-menu-item>
             <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>预览</a-button></a-menu-item>
-            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()}>保存</a-button></a-menu-item>
+            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()} loading={this.saveWork_loading}>保存</a-button></a-menu-item>
             <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
           </a-menu>
         </a-layout-header>

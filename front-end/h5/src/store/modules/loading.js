@@ -1,6 +1,6 @@
 // initial state
 const state = {
-
+  saveWork_loading: false
 }
 
 // getters
@@ -10,12 +10,16 @@ const getters = {
 
 // actions
 const actions = {
-
+  update ({ commit }, payload) {
+    commit('update', payload)
+  }
 }
 
 // mutations
 const mutations = {
-
+  update (state, { type, payload }) {
+    state[type] = payload
+  }
 }
 
 export default {

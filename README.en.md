@@ -36,17 +36,16 @@ English | [简体中文](./README.md)
     - [ ] Photo Gallery
     - [ ] Third Party uncopyrighted Image Search
 
-4. Data Statistics
+
+4. back-end API
+    - [x] create work
+    - [x] save work
+    - [x] update work
     - [ ] Form Statistics
+    - [x] Online Preview
+    - [x] QR Code Preview
 
-5. Others
-    - [ ] Online preview
-    - [ ] QR Code Preview
-
-### Technology Stack (current)
-  1. Front end: Vue.js
-  2. Back End: Strapi
-  3. Storage: Sqlite
+---
 
 ### Installs
 > proj: project root path
@@ -54,5 +53,14 @@ English | [简体中文](./README.md)
   1. Front End
       Editor: please refer to: [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
 
-### Front-End Component Explanation
+
+---
+### More Explanation
+#### Front-End Component Explanation
 1. `lbp-`: `lu-ban-plugin-`, means `Luban H5 plugin`, location: `proj/front-end/h5/src/components/plugins`
+
+
+#### Technology Stack (current)
+  1. Front end: Vue.js
+  2. Back End: Strapi
+  3. Storage: Sqlite
