@@ -1,5 +1,15 @@
 简体中文 | [English](./README.en.md)
 
+目录
+- [鲁班H5是什么？](#%E9%B2%81%E7%8F%ADh5%E6%98%AF%E4%BB%80%E4%B9%88)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [安装](#%E5%AE%89%E8%A3%85)
+- [更多说明](#%E6%9B%B4%E5%A4%9A%E8%AF%B4%E6%98%8E)
+  * [前端组件说明](#%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E8%AF%B4%E6%98%8E)
+  * [技术栈（当前）](#%E6%8A%80%E6%9C%AF%E6%A0%88%E5%BD%93%E5%89%8D)
+- [👨🏻‍💻👩🏻‍💻交流群](#%E4%BA%A4%E6%B5%81%E7%BE%A4)
+
 ### 鲁班H5是什么？
 鲁班H5是基于Vue2.0开发的，通过拖拽的形式，生成页面的工具，类似[易企秀](http://www.eqxiu.com/)、[百度 H5](https://h5.baidu.com) 等工具
 
@@ -71,7 +81,7 @@
 
 ---
 
-### 交流群 (#!en Join Discussion Group)
+### 交流群
 钉钉讨论组（推荐） 和 QQ讨论组 (QQ 群号：251936377)
 > #!en: Scan the DingTalk QR code using [Dingtalk App](https://www.dingtalk.com) or Scan the QQ QR code using [QQ App](https://im.qq.com) to join in discussion group
 
