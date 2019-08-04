@@ -5,6 +5,7 @@ import { actions as elementActions, mutations as elementMutations } from './elem
 import { actions as workActions, mutations as workMutations } from './work'
 
 const state = {
+  works: [],
   work: new Work(),
   editingPage: { elements: [] },
   editingElement: null,

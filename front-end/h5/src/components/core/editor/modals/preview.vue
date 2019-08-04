@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 import QRCode from 'qrcode'
 import { API_ORIGIN } from '../../../../constants/api.js'
 
@@ -12,12 +12,16 @@ export default {
     handleClose: {
       type: Function,
       default: () => {}
+    },
+    work: {
+      type: Object,
+      default: () => {}
     }
   },
   computed: {
-    ...mapState('editor', {
-      work: state => state.work
-    }),
+    // ...mapState('editor', {
+    //   work: state => state.work
+    // }),
     releaseUrl () {
       return `${API_ORIGIN}/works/preview/${this.work.id}`
     }

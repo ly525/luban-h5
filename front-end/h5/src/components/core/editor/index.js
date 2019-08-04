@@ -42,7 +42,8 @@ export default {
     ...mapState('editor', {
       editingElement: state => state.editingElement,
       elements: state => state.editingPage.elements,
-      pages: state => state.work.pages
+      pages: state => state.work.pages,
+      work: state => state.work
     }),
     ...mapState('loading', {
       saveWork_loading: state => state.saveWork_loading
@@ -98,7 +99,7 @@ export default {
   },
   render (h) {
     return (
-      <a-layout id="luban-layout" style={{ height: '100vh' }}>
+      <a-layout id="luban-editor-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
           <div class="logo">鲁班 H5</div>
           {/* TODO we can show the plugins shortcuts here */}
@@ -190,14 +191,16 @@ export default {
             </a-tabs>
           </a-layout-sider>
         </a-layout>
-        <PreviewDialog visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} />
+        {
+          this.previewVisible && <PreviewDialog work={this.work} visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} />
+        }
       </a-layout>
     )
   },
   created () {
-    let workId = this.$route.query.workId
+    let workId = this.$route.params.workId
+    console.log(workId)
     if (workId) {
-      // this.$store.dispatch('getWorkById', workId)
       this.fetchWork(workId)
     } else {
       this.createWork()

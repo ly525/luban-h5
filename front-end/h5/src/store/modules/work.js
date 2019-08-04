@@ -1,8 +1,8 @@
-// import Work from '../../components/core/models/work'
 import Element from '../../components/core/models/element'
 import strapi from '../../utils/strapi'
 import Page from '../../components/core/models/page'
 import { AxiosWrapper } from '../../utils/http.js'
+import router from '@/router.js'
 
 export const actions = {
   previewWork ({ commit }, payload = {}) {
@@ -13,7 +13,8 @@ export const actions = {
   },
   createWork ({ commit }, payload) {
     strapi.createEntry('works').then(entry => {
-      window.location = `${window.location.origin}/#/?workId=${entry.id}`
+      router.replace({ name: 'editor', params: { workId: entry.id } })
+      // window.location = `${window.location.origin}/#/editor/${entry.id}`
     })
     // commit('createWork')
     // commit('pageManager', { type: 'add' })
@@ -46,11 +47,19 @@ export const actions = {
       commit('setWork', entry)
       commit('setEditingPage')
     })
+  },
+  fetchWorks ({ commit, state }, workId) {
+    strapi.getEntries('works', {}).then(entries => {
+      commit('setWorks', entries)
+    })
   }
 }
 
 // mutations
 export const mutations = {
+  setWorks (state, works) {
+    state.works = works
+  },
   setWork (state, work) {
     work.pages = work.pages.map(page => {
       page.elements = page.elements.map(element => new Element(element))

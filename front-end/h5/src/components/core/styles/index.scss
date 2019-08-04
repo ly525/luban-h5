@@ -1,4 +1,5 @@
-#luban-layout  {
+#luban-editor-layout,
+#luban-work-manager-layout  {
   .header {
     padding: 0 10px;
 
@@ -92,4 +93,10 @@
 
 .no-border {
   border: none !important;
+}
+
+.flex-center {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
