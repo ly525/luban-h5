@@ -1,4 +1,4 @@
-const ProxyAgent = require('proxy-agent')
+// const ProxyAgent = require('proxy-agent')
 const isProd = process.env.NODE_ENV === 'production'
 
 const PROD_API_ORIGIN = 'https://radiant-depths-79548.herokuapp.com'
@@ -10,10 +10,11 @@ module.exports = {
   devServer: {
     // proxy: API_ORIGIN
     proxy: {
-      '/': {
-        agent: new ProxyAgent('socks5://127.0.0.1:1086'),
+      '/works': {
+        // agent: new ProxyAgent('socks5://127.0.0.1:1086'),
         target: isProd ? PROD_API_ORIGIN : DEV_API_ORIGIN,
-        changeOrigin: true
+        changeOrigin: true,
+        ws: false
       }
     }
   },

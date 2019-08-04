@@ -3,40 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>work.html</title>
-  <!-- <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"> -->
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <meta content="email=no" name="format-detection">
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="/engine-libs/vue.js"></script>
+  <script type="text/javascript" src="/engine-libs/flexible.js"></script>
+  <link rel="stylesheet" href="/engine-libs/swiper.min.css">
+  <script src="/engine-libs/swiper.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
   <!-- <script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/flexible.js"></script> -->
-  <!-- <link rel="stylesheet" href="/be-static/be-static-luban-h5/engine/engine.css"> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-  <!-- <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css"> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script> -->
   <script>
-    function setDocFontSize(base) {
-      var width = 375,
-      domEle = document.documentElement;
-      dw = domEle.clientWidth || width,
-      iw = window.innerWidth || width,
-      sw = window.screen.width || iw,
-      saw = window.screen.availWidth || iw,
-      w = Math.min(dw, iw, sw, saw);
-      base = base || 750;
-      if (w > base) {
-          w = base;
-      }
-      if (window.devicePixelRatio) {
-          dpr = window.devicePixelRatio;
-      } else {
-          dpr = navigator.userAgent.match(/iphone/i) ? (w > 818 ? 3 : w > 480 ? 2 : 1) : 1;
-      }
-      dpr = Math.floor(dpr);
-      domEle.style.fontSize = w / base * 100 + "px";
-      domEle.dataset.dpr = dpr;
-    }
-    setDocFontSize(320)
+    // function setDocFontSize(base) {
+    //   var width = 375,
+    //   domEle = document.documentElement;
+    //   dw = domEle.clientWidth || width,
+    //   iw = window.innerWidth || width,
+    //   sw = window.screen.width || iw,
+    //   saw = window.screen.availWidth || iw,
+    //   w = Math.min(dw, iw, sw, saw);
+    //   base = base || 750;
+    //   if (w > base) {
+    //       w = base;
+    //   }
+    //   if (window.devicePixelRatio) {
+    //       dpr = window.devicePixelRatio;
+    //   } else {
+    //       dpr = navigator.userAgent.match(/iphone/i) ? (w > 818 ? 3 : w > 480 ? 2 : 1) : 1;
+    //   }
+    //   dpr = Math.floor(dpr);
+    //   // domEle.style.fontSize = w / base * 100 + "px";
+    //   // domEle.body.style.fontSize = w / base * 100 + "px";
+    //   domEle.dataset.dpr = dpr;
+    // }
+    // setDocFontSize(320)
   </script>
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.js"></script>
@@ -64,9 +67,6 @@
       data: {
         message: 'Hello Vue!'
       },
-      // render: function (h) {
-      //   return (<engine />)
-      // }
     });
   </script>
   <script>
@@ -90,7 +90,7 @@
     });
 
     function displayMessage ({ origin, data }) {
-      if (data && origin === window.location.origin) {
+      if (['next', 'prev'].includes(data)  && origin === window.location.origin) {
         document.querySelector(`.swiper-button-${data}`).click()
       }
     }
