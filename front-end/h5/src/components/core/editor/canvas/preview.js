@@ -15,12 +15,8 @@ export default {
                * -> renderBaseElementWithEvent()
                * -> renderBaseElementWithCustomStyle()
                */
-              const style = element.getStyle({ position: 'absolute' })
-              const data = {
-                style,
-                props: element.getProps({ mode: 'preview' })
-              }
-              return h(element.name, data)
+
+              return h(element.name, element.getPreviewData())
             })
           }
         </div>
