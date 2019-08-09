@@ -1,5 +1,7 @@
 import { parsePx } from '../../../utils/element.js'
 
+// #! 编辑状态，不可以点击的按钮，因为点击按钮会触发一些默认行为，比如表单提交等
+const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button']
 const clone = (value) => JSON.parse(JSON.stringify(value))
 
 const defaultProps = {
@@ -78,7 +80,7 @@ class Element {
   getProps ({ mode = 'edit' } = {}) {
     return {
       ...this.pluginProps,
-      disabled: this.name === 'lbp-form-input' && mode === 'edit'
+      disabled: disabledPluginsForEditMode.includes(this.name) && mode === 'edit'
     }
   }
 
@@ -88,6 +90,22 @@ class Element {
 
   getData () {
 
+  }
+
+  getAttrs () {
+    return {
+      'data-uuid': this.uuid
+    }
+  }
+
+  getPreviewData () {
+    const style = this.getStyle({ position: 'absolute' })
+    const data = {
+      style,
+      props: this.getProps({ mode: 'preview' }),
+      attrs: this.getAttrs()
+    }
+    return data
   }
 
   clone ({ zindex }) {

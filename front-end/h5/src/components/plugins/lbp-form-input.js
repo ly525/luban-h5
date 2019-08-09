@@ -19,7 +19,7 @@ export default {
       name={this.name}
       placeholder={this.placeholder}
       autocomplete="off"
-      data-type="form-input"
+      data-type="lbp-form-input" // 点击[表单提交]按钮的时候,找到data-type为:lbp-form-input 的输入框，并将其值添加到formData,提交到后台
     />
   },
   props: {

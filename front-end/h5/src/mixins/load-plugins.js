@@ -3,6 +3,7 @@ import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'
 import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
+import LbpFormButton from '../components/plugins/lbp-form-button'
 
 export const pluginsList = [
   {
@@ -39,14 +40,14 @@ export const pluginsList = [
     component: LbpFormInput,
     visible: true,
     name: LbpFormInput.name
+  },
+  {
+    title: '表单提交',
+    icon: 'hand-pointer-o',
+    component: LbpFormButton,
+    visible: true,
+    name: LbpFormButton.name
   }
-  // {
-  //   title: '表单提交',
-  //   icon: 'hand-pointer-o',
-  //   component: LbpFormButton,
-  //   visible: true,
-  //   name: LbpFormButton.name
-  // },
 ]
 
 export default {
