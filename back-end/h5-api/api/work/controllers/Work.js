@@ -11,5 +11,14 @@ module.exports = {
   previewOne: async (ctx) => {
     const work = await strapi.services.work.findOne(ctx.params);
     return ctx.render('engine', { work });
-  }
+  },
+  submitForm: async (ctx) => {
+    const work = await strapi.services.work.findOne(ctx.params);
+    const formData = ctx.request.body.fields;
+    // eslint-disable-next-line no-unused-vars
+    const workform = await strapi.services.workform.create({ form: formData, work });
+
+    // eslint-disable-next-line require-atomic-updates
+    ctx.body = { message: 'success', status: 0 };
+  },
 };

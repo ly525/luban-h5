@@ -181,7 +181,7 @@ export default {
               return (
                 <Shape
                   style={element.getStyle({ position: 'absolute' })}
-                  defaultPosition={element.commonStyle}
+                  defaultPosition={element.commonStyle} // {top, left}
                   element={element}
                   active={this.editingElement === element}
                   handleMousedownProp={() => {

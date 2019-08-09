@@ -37,6 +37,9 @@
     },
     "pages": {
       "type": "json"
+    },
+    "formData": {
+      "type": "json"
     }
   }
 }

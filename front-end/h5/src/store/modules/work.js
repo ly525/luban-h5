@@ -61,6 +61,7 @@ export const mutations = {
     state.works = works
   },
   setWork (state, work) {
+    window.__work = work
     work.pages = work.pages.map(page => {
       page.elements = page.elements.map(element => new Element(element))
       return new Page(page)

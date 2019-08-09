@@ -55,6 +55,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/works/form/submit/:id",
+      "handler": "Work.submitForm",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
