@@ -92,7 +92,6 @@ export default {
   },
   methods: {
     handleClick () {
-      debugger
       if (this.disabled) return
 
       // #!zh: data-type=lbp-form-input 在 lbp-form-input 组件中定义
