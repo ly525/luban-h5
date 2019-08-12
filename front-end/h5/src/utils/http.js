@@ -17,13 +17,14 @@ export const baseClient = axios.create({
 
 export class AxiosWrapper {
   // eslint-disable-next-line camelcase
-  constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {
+  constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {
     this.name = name
     // eslint-disable-next-line camelcase
     this.loading_name = loading_name
     // eslint-disable-next-line camelcase
     this.responseType = responseType
     this.dispatch = dispatch
+    this.commit = commit
     this.router = router
     this.successMsg = successMsg
     this.failMsg = failMsg
@@ -80,7 +81,7 @@ export class AxiosWrapper {
       return this.customRequest(...args)
         .then(data => {
           const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-          handler.call(this, { data: { status: 200, data } })
+          handler.call(this, { status: 200, data: { data } })
         })
         .finally(() => this.setLoadingValue(false))
     }
@@ -112,7 +113,8 @@ export class AxiosWrapper {
   }
 
   setLoadingValue (payload) {
-    this.dispatch('loading/update', { type: this.loading_name, payload }, { root: true })
+    // this.dispatch('loading/update', { type: this.loading_name, payload }, { root: true })
+    this.commit('loading/update', { type: this.loading_name, payload }, { root: true })
   }
 
   setDefaultLoadingName (...args) {
@@ -134,16 +136,16 @@ export class AxiosWrapper {
     return (response) => {
       if (!response.data) {
         myMessage.warn(this.failMsg || failMsg)
-      } else if (response.data.status === 200) {
+      } else if (response.status === 200) {
         this.successMsg && myMessage.success(this.successMsg)
         if (this.successCallback) {
           this.successCallback(response)
         } else {
-          // this.dispatch({ type: this.name, payload: response.data.data })
+          this.commit({ type: this.name, value: response.data }, { root: true })
         }
       } else if (this.responseType === 'json') {
         myMessage.error(response.data.msg)
-        if (response.data.status === 401) {
+        if (response.status === 401) {
           if (this.router) {
             this.router.push('/login')
           }

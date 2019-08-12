@@ -20,7 +20,8 @@ const sidebarMenus = [
         label: '基础数据',
         value: 'basicData',
         antIcon: 'snippets',
-        key: '2-1'
+        key: '2-1',
+        routerName: 'form-stat'
       },
       {
         label: '表单统计',
@@ -89,7 +90,11 @@ export default {
                     ? <a-sub-menu key={menu.key}>
                       <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span>
                       {
-                        (menu.children).map(submenu => (<a-menu-item key={submenu.key}>{submenu.label}</a-menu-item>))
+                        (menu.children).map(submenu => (
+                          <a-menu-item key={submenu.key}>
+                            { submenu.routerName ? <router-link to={{ name: submenu.routerName }}>{submenu.label}</router-link> : submenu.label }
+                          </a-menu-item>
+                        ))
                       }
                     </a-sub-menu>
                     : <a-menu-item key={menu.key}>

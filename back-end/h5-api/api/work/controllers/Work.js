@@ -21,4 +21,32 @@ module.exports = {
     // eslint-disable-next-line require-atomic-updates
     ctx.body = { message: 'success', status: 0 };
   },
+  queryFormsOfOneWork: async (ctx) => {
+    // move to util module or front-end
+    function getUuidMap2Name(work) {
+      const uuidMap2Name = {};
+      work.pages.forEach(page => {
+        page.elements.forEach(ele => {
+          if (ele.name === 'lbp-form-input') {
+            uuidMap2Name[ele.uuid] = ele.pluginProps.placeholder;
+          }
+        });
+      });
+      return uuidMap2Name;
+    }
+
+    let work = await strapi.services.work.findOne(ctx.params);
+    work = work.toJSON();
+
+    // learn the query from: https://github.com/strapi/foodadvisor/blob/master/api/api/restaurant/controllers/Restaurant.js#L40
+    // eslint-disable-next-line no-undef
+    let formDetails = await Workform.query(qb => {
+      qb.where('work', '=', work.id);
+    }).fetchAll();
+    formDetails = formDetails.toJSON();
+
+    const uuidMap2Name = getUuidMap2Name(work);
+    // eslint-disable-next-line require-atomic-updates
+    return ctx.body = { uuidMap2Name, formDetails };
+  },
 };

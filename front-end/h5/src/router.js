@@ -23,7 +23,12 @@ export default new Router({
         {
           path: '/work-manager/form-stat',
           name: 'form-stat',
-          component: () => import('@/views/work-manager/form-stat.vue')
+          component: () => import('@/views/work-manager/form-stat/index.vue')
+        },
+        {
+          path: '/work-manager/stat-detail/:id',
+          name: 'stat-detail',
+          component: () => import('@/views/work-manager/form-stat/detail.vue')
         }
       ]
     },

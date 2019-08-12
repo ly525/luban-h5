@@ -63,6 +63,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/works/form/query/:id",
+      "handler": "Work.queryFormsOfOneWork",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
