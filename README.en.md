@@ -25,8 +25,8 @@ English | [简体中文](./README.md)
 
     - [x] Text
     - [x] Normal Button
-    - [ ] Form Button
-    - [ ] Form Field
+    - [x] Form Button
+    - [x] Form Field
     - [x] Picture
     - [ ] Background Image
     - [ ] Video (Iframe format)
@@ -41,7 +41,7 @@ English | [简体中文](./README.md)
     - [x] create work
     - [x] save work
     - [x] update work
-    - [ ] Form Statistics
+    - [x] Form Statistics
     - [x] Online Preview
     - [x] QR Code Preview
 
