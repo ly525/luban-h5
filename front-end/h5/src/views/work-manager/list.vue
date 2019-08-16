@@ -46,7 +46,7 @@ const ListItemCard = {
         </div>
         <template class="ant-card-actions" slot="actions">
           <a-tooltip effect="dark" placement="bottom" title="编辑">
-            <router-link to={{ name: 'editor', params: { workId: this.work.id }}} target="_blank">
+            <router-link to={{ name: 'editor', params: { workId: this.work.id } }} target="_blank">
               <a-icon type="edit" title="编辑"/>
             </router-link>
           </a-tooltip>

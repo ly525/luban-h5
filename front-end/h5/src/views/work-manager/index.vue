@@ -8,7 +8,8 @@ const sidebarMenus = [
     label: '我的作品',
     value: 'workManager',
     antIcon: 'bars',
-    key: '1'
+    key: '1',
+    routerName: 'work-manager-list'
   },
   {
     label: '数据中心',
@@ -22,12 +23,6 @@ const sidebarMenus = [
         antIcon: 'snippets',
         key: '2-1',
         routerName: 'form-stat'
-      },
-      {
-        label: '表单统计',
-        value: 'formData',
-        antIcon: 'snippets',
-        key: '2-2'
       }
     ]
   },
@@ -58,6 +53,32 @@ export default {
     // PreView,
     // Sidebar
   },
+  methods: {
+    renderSidebar (menus) {
+      const renderLabel = menu => menu.routerName ? <router-link to={{ name: menu.routerName }} >{menu.label}</router-link> : menu.label
+
+      return menus.map(menu => (
+        menu.children
+          ? (
+            <a-sub-menu key={menu.key}>
+              <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span>
+              {
+                (menu.children).map(submenu => (
+                  <a-menu-item key={submenu.key}>{renderLabel(submenu)}</a-menu-item>
+                ))
+              }
+            </a-sub-menu>
+          )
+          : (
+            <a-menu-item key={menu.key}>
+              <a-icon type={menu.antIcon}></a-icon>
+              {/** 这边有个疑惑，不知是否为 antd-vue 的 bug，需要用 span 包裹，否则不会显示 label */}
+              <span>{renderLabel(menu)}</span>
+            </a-menu-item>
+          )
+      ))
+    }
+  },
   render (h) {
     return (
       <a-layout id="luban-work-manager-layout" style={{ height: '100vh' }}>
@@ -84,25 +105,7 @@ export default {
               defaultOpenKeys={['1', '2', '3']}
               style="height: 100%"
             >
-              {
-                sidebarMenus.map(menu => (
-                  menu.children
-                    ? <a-sub-menu key={menu.key}>
-                      <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span>
-                      {
-                        (menu.children).map(submenu => (
-                          <a-menu-item key={submenu.key}>
-                            { submenu.routerName ? <router-link to={{ name: submenu.routerName }}>{submenu.label}</router-link> : submenu.label }
-                          </a-menu-item>
-                        ))
-                      }
-                    </a-sub-menu>
-                    : <a-menu-item key={menu.key}>
-                      <a-icon type={menu.antIcon} />
-                      <span>{menu.label}</span>
-                    </a-menu-item>
-                ))
-              }
+              {this.renderSidebar(sidebarMenus)}
             </a-menu>
           </a-layout-sider>
           <a-layout style="padding: 0 24px 24px">
