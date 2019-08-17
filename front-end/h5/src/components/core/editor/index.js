@@ -29,6 +29,53 @@ const sidebarMenus = [
     antIcon: 'appstore'
   }
 ]
+
+const fixedTools = [
+  {
+    'tooltip': '撤消', // TODO 支持快捷键
+    'text': '撤消',
+    'icon': 'mail-reply',
+    'action': () => undoRedoHistory.undo()
+  },
+  {
+    'tooltip': '恢复',
+    'text': '恢复',
+    'icon': 'mail-forward',
+    'action': () => undoRedoHistory.redo()
+  },
+  {
+    'tooltip': '刷新预览',
+    'text': '刷新预览',
+    'icon': 'eye',
+    'action': function () { this.previewVisible = true }
+  },
+  {
+    'tooltip': '复制当前页',
+    'text': '复制当前页',
+    'icon': 'copy',
+    'action': function () { this.pageManager({ type: 'copy' }) }
+  },
+  {
+    'tooltip': '导入PSD',
+    'text': 'Ps',
+    'icon': '',
+    'action': '',
+    'disabled': true
+  },
+  {
+    'tooltip': '放大画布',
+    'text': '放大画布',
+    'icon': 'plus',
+    'action': function () { this.scaleRate += 0.25 }
+  },
+  {
+    'tooltip': '缩小画布',
+    'text': '缩小画布',
+    'icon': 'minus',
+    'action': function () { this.scaleRate -= 0.25 }
+  }
+]
+
 export default {
   name: 'Editor',
   components: {},
@@ -36,7 +83,8 @@ export default {
     activeMenuKey: 'pluginList',
     isPreviewMode: false,
     activeTabKey: '属性',
-    previewVisible: false
+    previewVisible: false,
+    scaleRate: 1
   }),
   computed: {
     ...mapState('editor', {
@@ -145,16 +193,17 @@ export default {
             <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
               <div style="text-align: center;">
                 <a-radio-group
+                  size="small"
                   value={this.isPreviewMode}
                   onInput={value => {
                     this.isPreviewMode = value
                   }}
                 >
-                  <a-radio-button label={false} value={false}>Edit</a-radio-button>
-                  <a-radio-button label={true} value={true}>Preview</a-radio-button>
+                  <a-radio-button label={false} value={false}>编辑模式</a-radio-button>
+                  <a-radio-button label={true} value={true}>预览模式</a-radio-button>
                 </a-radio-group>
               </div>
-              <div class='canvas-wrapper'>
+              <div class='canvas-wrapper' style={{ transform: `scale(${this.scaleRate})` }}>
                 {/* { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) } */}
                 { this.isPreviewMode
                   ? <RenderPreviewCanvas elements={this.elements}/>
@@ -165,6 +214,23 @@ export default {
               </div>
             </a-layout-content>
           </a-layout>
+          <a-layout-sider width="40" theme='light' style={{ background: '#fff', border: '1px solid #eee' }}>
+            {/* <div>
+              <a-button shape="circle" icon="search" type="link" />
+            </div> */}
+            <a-button-group style={{ display: 'flex', flexDirection: 'column' }}>
+              {
+                fixedTools.map(tool => (
+                  <a-tooltip effect="dark" placement="left" title={tool.tooltip}>
+                    <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
+                      { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : tool.text }
+                    </a-button>
+                  </a-tooltip>
+                ))
+              }
+              <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div>
+            </a-button-group>
+          </a-layout-sider>
           <a-layout-sider width="340" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
             <a-tabs
               style="height: 100%;"
@@ -190,6 +256,7 @@ export default {
               <a-tab-pane label="脚本" key='脚本' tab='脚本'><RenderScriptEditor/></a-tab-pane>
             </a-tabs>
           </a-layout-sider>
+
         </a-layout>
         {
           this.previewVisible && <PreviewDialog work={this.work} visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} />
