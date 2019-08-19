@@ -87,10 +87,11 @@
 ---
 
 ### 交流群
-#### 钉钉讨论组（推荐）
 *** 
 因为微信群二维码会过期，所以 微信群和QQ群 的二维码请前往查看[鲁班-H5 微信群和QQ群](https://github.com/ly525/luban-h5/issues/57) 查看
 ***
+
+#### 钉钉讨论组（推荐, 对代码排版相对友好）
 
 > #!en: Scan the DingTalk QR code using [Dingtalk App](https://www.dingtalk.com)
 
