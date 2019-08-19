@@ -87,12 +87,16 @@
 ---
 
 ### 交流群
-钉钉讨论组（推荐） 和 QQ讨论组 (QQ 群号：251936377)
-> #!en: Scan the DingTalk QR code using [Dingtalk App](https://www.dingtalk.com) or Scan the QQ QR code using [QQ App](https://im.qq.com) to join in discussion group
+#### 钉钉讨论组（推荐）
+*** 
+因为微信群二维码会过期，所以 微信群和QQ群 的二维码请前往查看[鲁班-H5 微信群和QQ群](https://github.com/ly525/luban-h5/issues/57) 查看
+***
+
+> #!en: Scan the DingTalk QR code using [Dingtalk App](https://www.dingtalk.com)
 
 > For users in other languages, please keep using Github issue tracker. 🤟
 
-<img src="https://user-images.githubusercontent.com/12668546/62009529-d184e580-b192-11e9-93ba-e23c1fb5c72a.png" width="500px">
+<img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200px">
 
 
 ### 代码目录说明
