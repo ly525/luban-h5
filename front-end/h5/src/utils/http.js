@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { message } from 'ant-design-vue'
+import { API_ORIGIN } from '../constants/api.js'
 
 message.config({
   maxCount: 3
@@ -25,7 +26,7 @@ export class AxiosWrapper {
     this.failCallback = failCallback
     this.source = axios.CancelToken.source()
     this.instance = axios.create({
-      // baseURL: '/v1',
+      baseURL: API_ORIGIN,
       responseType,
       headers,
       cancelToken: this.source.token
