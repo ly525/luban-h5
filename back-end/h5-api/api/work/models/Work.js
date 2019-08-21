@@ -7,7 +7,19 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {},
+  beforeSave: async (model, attrs, options) => {
+    // https://github.com/strapi/strapi/issues/2882
+    // need to remove this after this pr will be merged(https://github.com/strapi/strapi/pull/3664)
+    Object.keys(model.constructor.attributes).forEach(k => {
+      if (model.constructor.attributes[k].type === 'json') {
+        const value = model.get(k);
+
+        if (Array.isArray(value)) {
+          model.set(k, JSON.stringify(value));
+        }
+      }
+    });
+  },
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
