@@ -1,4 +1,1 @@
-// export const API_HOST = 'https://radiant-depths-79548.herokuapp.com'
-// export const API_PORT = ''
-// export const API_ORIGIN = `${API_HOST}:${API_PORT}`
-export const API_ORIGIN = 'http://localhost:1337'
+export const API_ORIGIN = process.env.NODE_ENV === 'production' ? 'https://luban-h5-api.herokuapp.com' : 'http://localhost:1337' // for local dev

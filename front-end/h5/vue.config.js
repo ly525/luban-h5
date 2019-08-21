@@ -1,12 +1,15 @@
 // const ProxyAgent = require('proxy-agent')
 const isProd = process.env.NODE_ENV === 'production'
 
-const PROD_API_ORIGIN = 'https://radiant-depths-79548.herokuapp.com'
+const PROD_API_ORIGIN = 'https://luban-h5-api.herokuapp.com'
 const DEV_API_ORIGIN = 'http://localhost:1337'
+// const DEV_API_ORIGIN = 'https://luban-h5-api.herokuapp.com'
 
 module.exports = {
   runtimeCompiler: true,
+  // 因为需要部署到 github pages，所以需要将 publicPath 设为 "/< GitHub Repo Name>/"
   publicPath: isProd ? '/luban-h5/' : '/',
+  productionSourceMap: false,
   devServer: {
     // proxy: API_ORIGIN
     proxy: {
