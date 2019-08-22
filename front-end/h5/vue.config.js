@@ -1,7 +1,7 @@
 // const ProxyAgent = require('proxy-agent')
 const isProd = process.env.NODE_ENV === 'production'
 
-const PROD_API_ORIGIN = 'https://luban-h5-api.herokuapp.com'
+const PROD_API_ORIGIN = process.env.PROD_API_ORIGIN | 'https://luban-h5-api.herokuapp.com'
 const DEV_API_ORIGIN = 'http://localhost:1337'
 // const DEV_API_ORIGIN = 'https://luban-h5-api.herokuapp.com'
 
