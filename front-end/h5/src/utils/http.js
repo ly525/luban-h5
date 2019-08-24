@@ -7,14 +7,6 @@ message.config({
 
 export const myMessage = message
 
-export const client = axios.create({
-  baseURL: '/v1',
-  responseType: 'json'
-})
-export const baseClient = axios.create({
-  responseType: 'json'
-})
-
 export class AxiosWrapper {
   // eslint-disable-next-line camelcase
   constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {

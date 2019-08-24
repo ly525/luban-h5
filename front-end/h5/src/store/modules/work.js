@@ -51,6 +51,7 @@ export const actions = {
   },
   fetchWorks ({ commit, state }, workId) {
     strapi.getEntries('works', {}).then(entries => {
+      entries.sort((a, b) => b.id - a.id)
       commit('setWorks', entries)
     })
   },
