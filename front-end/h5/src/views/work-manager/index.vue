@@ -2,6 +2,8 @@
 // import PreView from '@/pages/preview';
 // import Sidebar from './components/sidebar.vue'
 import '@/components/core/styles/index.scss'
+import LogoOfHeader from '@/components/common/header/logo.js'
+import ExternalLinksOfHeader from '@/components/common/header/links.js'
 
 const sidebarMenus = [
   {
@@ -52,6 +54,8 @@ export default {
   components: {
     // PreView,
     // Sidebar
+    LogoOfHeader,
+    ExternalLinksOfHeader
   },
   methods: {
     renderSidebar (menus) {
@@ -83,7 +87,7 @@ export default {
     return (
       <a-layout id="luban-work-manager-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
-          <div class="logo">鲁班 H5</div>
+          <LogoOfHeader />
           {/* TODO we can show the plugins shortcuts here */}
           <a-dropdown style={{ float: 'right', background: 'transparent', margin: '16px 28px 16px 0' }}>
             <a-menu slot="overlay" onClick={() => {}}>
@@ -96,6 +100,7 @@ export default {
             </a-menu>
             <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
           </a-dropdown>
+          <ExternalLinksOfHeader />
         </a-layout-header>
         <a-layout>
           <a-layout-sider width="160" style="background: #fff">

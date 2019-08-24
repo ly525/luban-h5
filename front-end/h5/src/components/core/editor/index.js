@@ -12,6 +12,9 @@ import RenderActoionEditor from './edit-panel/action'
 import RenderShortcutsPanel from './shortcuts-panel/index'
 import PreviewDialog from './modals/preview.vue'
 
+import LogoOfHeader from '@/components/common/header/logo.js'
+import ExternalLinksOfHeader from '@/components/common/header/links.js'
+
 const sidebarMenus = [
   {
     label: '组件列表',
@@ -78,7 +81,10 @@ const fixedTools = [
 
 export default {
   name: 'Editor',
-  components: {},
+  components: {
+    LogoOfHeader,
+    ExternalLinksOfHeader
+  },
   data: () => ({
     activeMenuKey: 'pluginList',
     isPreviewMode: false,
@@ -149,7 +155,7 @@ export default {
     return (
       <a-layout id="luban-editor-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
-          <div class="logo">鲁班 H5</div>
+          <LogoOfHeader />
           {/* TODO we can show the plugins shortcuts here */}
           <a-menu
             theme="dark"
@@ -157,16 +163,11 @@ export default {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
           >
-            <a-menu-item key="4" class="transparent-bg">
-              <a-button-group>
-                <a-button class="transparent-bg" style={{ color: 'white' }} type="dashed" size="small" onClick={() => undoRedoHistory.undo()}><i class={['shortcut-icon', 'fa', `fa-mail-reply`]} aria-hidden='true'/> 撤销</a-button>
-                <a-button class="transparent-bg" style={{ color: 'white' }} type="dashed" size="small" onClick={() => undoRedoHistory.redo()}><i class={['shortcut-icon', 'fa', `fa-mail-forward`]} aria-hidden='true'/> 重做</a-button>
-              </a-button-group>
-            </a-menu-item>
             <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>预览</a-button></a-menu-item>
             <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()} loading={this.saveWork_loading}>保存</a-button></a-menu-item>
             <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
           </a-menu>
+          <ExternalLinksOfHeader />
         </a-layout-header>
         <a-layout>
           <a-layout-sider width="160" style="background: #fff" collapsed>
