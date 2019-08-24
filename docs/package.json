@@ -1,0 +1,26 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev",
+    "docs:build": "vuepress build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vssue/api-github-v3": "^1.0.0",
+    "@vssue/vuepress-plugin-vssue": "^1.0.2",
+    "cache-loader": "1.2.2",
+    "directory-tree": "^2.1.0",
+    "markdown-it-decorate": "^1.2.2",
+    "markdown-it-task-lists": "^2.1.1",
+    "vue-tabs-component": "^1.5.0",
+    "vuepress": "^1.0.3",
+    "vuepress-tabs": "^0.1.6"
+  },
+  "devDependencies": {
+    "markdown-it-container": "^2.0.0"
+  }
+}
