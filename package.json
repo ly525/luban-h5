@@ -1,0 +1,23 @@
+{
+  "name": "luban-h5",
+  "version": "1.1.0",
+  "description": "en: A mobile page builder/editor,  similar with amolink. zh: 类似易企秀的H5制作、建站工具.",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "release-f": "standard-version -f",
+    "release-major": "standard-version -r major",
+    "release-minor": "standard-version -r minor",
+    "release-patch": "standard-version -r patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ly525/luban-h5.git"
+  },
+  "author": "ly525",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ly525/luban-h5/issues"
+  },
+  "homepage": "https://github.com/ly525/luban-h5#readme"
+}
