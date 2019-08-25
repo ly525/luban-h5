@@ -49,11 +49,15 @@ export const actions = {
       commit('setEditingPage')
     })
   },
-  fetchWorks ({ commit, state }, workId) {
-    strapi.getEntries('works', {}).then(entries => {
-      entries.sort((a, b) => b.id - a.id)
-      commit('setWorks', entries)
-    })
+  fetchWorks ({ commit, dispatch, state }, workId) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorks',
+      loading_name: 'fetchWorks_loading',
+      successMsg: '获取作品列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works', {})
   },
   /**
    *
@@ -129,8 +133,15 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setWorks (state, works) {
-    state.works = works
+  /**
+   * payload: {
+   *  type:   @params {String} "editor/setWorks",
+   *  value:  @params {Array}  work list
+   * }
+   */
+  setWorks (state, { type, value }) {
+    value.sort((a, b) => b.id - a.id)
+    state.works = value
   },
   setWork (state, work) {
     window.__work = work

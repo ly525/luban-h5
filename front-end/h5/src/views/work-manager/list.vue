@@ -104,7 +104,8 @@ export default {
     previewVisible: false
   }),
   computed: {
-    ...mapState('editor', ['works'])
+    ...mapState('editor', ['works']),
+    ...mapState('loading', ['fetchWorks_loading'])
   },
   methods: {
     ...mapActions('editor', [
@@ -125,14 +126,18 @@ export default {
             <AddNewCard handleCreate={this.createWork} />
           </a-col>
           {
-            this.works.map(work => (
-              <a-col span={6} key={work.id} style="margin-bottom: 20px;">
-                <ListItemCard work={work} handleClickPreview={e => {
-                  this.previewVisible = true
-                  this.activeWork = work
-                }} />
+            this.fetchWorks_loading
+              ? <a-col span={18} style="margin-bottom: 10px;text-align: center;height: 355px;line-height: 355px;border-bottom: 1px solid #ebedf0;background: rgba(255, 255, 255, 0.5);">
+                <a-spin tip="作品列表获取中..."/>
               </a-col>
-            ))
+              : this.works.map(work => (
+                <a-col span={6} key={work.id} style="margin-bottom: 20px;">
+                  <ListItemCard work={work} handleClickPreview={e => {
+                    this.previewVisible = true
+                    this.activeWork = work
+                  }} />
+                </a-col>
+              ))
           }
         </a-row>
         {

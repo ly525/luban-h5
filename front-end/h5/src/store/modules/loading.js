@@ -1,6 +1,7 @@
 // initial state
 const state = {
-  saveWork_loading: false
+  saveWork_loading: false,
+  fetchWorks_loading: false
 }
 
 // getters
