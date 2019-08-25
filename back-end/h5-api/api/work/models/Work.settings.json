@@ -35,10 +35,13 @@
     "update_time": {
       "type": "date"
     },
-    "pages": {
+    "formData": {
       "type": "json"
     },
-    "formData": {
+    "is_template": {
+      "type": "boolean"
+    },
+    "pages": {
       "type": "json"
     }
   }

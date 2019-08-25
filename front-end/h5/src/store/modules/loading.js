@@ -1,7 +1,10 @@
 // initial state
 const state = {
   saveWork_loading: false,
-  fetchWorks_loading: false
+  fetchWorks_loading: false,
+  setWorkAsTemplate_loading: false,
+  fetchWorkTemplates_loading: false,
+  useTemplate_loading: false
 }
 
 // getters

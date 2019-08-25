@@ -38,7 +38,8 @@ const sidebarMenus = [
         label: '免费模板',
         value: 'freeTemplates',
         antIcon: 'snippets',
-        key: '3-1'
+        key: '3-1',
+        routerName: 'work-manager-templates'
       }
     ]
   },

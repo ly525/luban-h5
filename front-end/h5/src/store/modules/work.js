@@ -13,6 +13,7 @@ export const actions = {
   },
   createWork ({ commit }, payload) {
     strapi.createEntry('works').then(entry => {
+      commit('setWork', entry)
       router.replace({ name: 'editor', params: { workId: entry.id } })
       // window.location = `${window.location.origin}/#/editor/${entry.id}`
     })
@@ -35,7 +36,7 @@ export const actions = {
       ...payload
     }
 
-    new AxiosWrapper({
+    return new AxiosWrapper({
       dispatch,
       commit,
       loading_name: 'saveWork_loading',
@@ -57,7 +58,17 @@ export const actions = {
       loading_name: 'fetchWorks_loading',
       successMsg: '获取作品列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works', {})
+    }).get('works', { is_template: false })
+  },
+  fetchWorkTemplates ({ commit, dispatch, state }, workId) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorkTemplates',
+      loading_name: 'fetchWorkTemplates_loading',
+      successMsg: '获取模板列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works', { is_template: true })
   },
   /**
    *
@@ -128,6 +139,24 @@ export const actions = {
       loading_name: 'queryFormsOfWork_loading',
       successMsg: '表单查询完毕'
     }).get(`/works/form/query/${workId}`)
+  },
+  setWorkAsTemplate ({ commit, state, dispatch }, workId) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      // name: 'editor/formDetailOfWork',
+      loading_name: 'setWorkAsTemplate_loading',
+      successMsg: '设置为模板成功'
+    }).post(`/works/set-as-template/${workId || state.work.id}`)
+  },
+  useTemplate ({ commit, state, dispatch }, workId) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      // name: 'editor/formDetailOfWork',
+      loading_name: 'useTemplate_loading',
+      successMsg: '使用模板成功'
+    }).post(`/works/use-template/${workId}`)
   }
 }
 
@@ -142,6 +171,16 @@ export const mutations = {
   setWorks (state, { type, value }) {
     value.sort((a, b) => b.id - a.id)
     state.works = value
+  },
+  /**
+   * payload: {
+   *  type:   @params {String} "editor/setWorks",
+   *  value:  @params {Array}  work list
+   * }
+   */
+  setWorkTemplates (state, { type, value }) {
+    value.sort((a, b) => b.id - a.id)
+    state.workTemplates = value
   },
   setWork (state, work) {
     window.__work = work

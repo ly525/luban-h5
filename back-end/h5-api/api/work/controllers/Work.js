@@ -49,4 +49,20 @@ module.exports = {
     // eslint-disable-next-line require-atomic-updates
     return ctx.body = { uuidMap2Name, formDetails };
   },
+  setAsTemplate: async (ctx) => {
+    let work = await strapi.services.work.findOne(ctx.params);
+    work = work.toJSON();
+
+    // eslint-disable-next-line no-unused-vars
+    const templateWork = await strapi.services.work.create();
+    return strapi.services.work.update({id: templateWork.id}, { pages: work.pages, is_template: true });
+  },
+  useTemplate: async (ctx) => {
+    let templateWork = await strapi.services.work.findOne(ctx.params);
+    templateWork = templateWork.toJSON();
+
+    // eslint-disable-next-line no-unused-vars
+    const work = await strapi.services.work.create();
+    return strapi.services.work.update({id: work.id}, { pages: templateWork.pages, is_template: false });
+  },
 };

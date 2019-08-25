@@ -100,7 +100,8 @@ export default {
       work: state => state.work
     }),
     ...mapState('loading', {
-      saveWork_loading: state => state.saveWork_loading
+      saveWork_loading: state => state.saveWork_loading,
+      setWorkAsTemplate_loading: state => state.setWorkAsTemplate_loading
     })
   },
   methods: {
@@ -109,8 +110,12 @@ export default {
       'pageManager',
       'saveWork',
       'createWork',
-      'fetchWork'
+      'fetchWork',
+      'setWorkAsTemplate'
     ]),
+    ...mapActions('loading', {
+      updateLoading: 'update'
+    }),
     /**
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
      * #!en click the plugin shortcut, create new Element with the plugin's meta data
@@ -165,7 +170,29 @@ export default {
           >
             <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>预览</a-button></a-menu-item>
             <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork()} loading={this.saveWork_loading}>保存</a-button></a-menu-item>
-            <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item>
+            {/* <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item> */}
+            <a-menu-item key="3" class="transparent-bg">
+              <a-dropdown-button onClick={() => {}} size="small">
+                发布
+                <a-menu slot="overlay" onClick={({ key }) => {
+                  switch (key) {
+                    case 'setAsTemplate':
+                      this.updateLoading({ type: 'setWorkAsTemplate_loading', value: true })
+                      this.saveWork().then(() => {
+                        this.setWorkAsTemplate()
+                      })
+                  }
+                }}>
+                  <a-menu-item key="setAsTemplate">
+                    <a-spin spinning={this.setWorkAsTemplate_loading} size="small">
+                      <a-icon type="cloud-upload" />设置为模板
+                    </a-spin>
+                  </a-menu-item>
+                  {/* <a-menu-item key="2"><a-icon type="user" />2nd menu item</a-menu-item> */}
+                  {/* <a-menu-item key="3"><a-icon type="user" />3rd item</a-menu-item> */}
+                </a-menu>
+              </a-dropdown-button>
+            </a-menu-item>
           </a-menu>
           <ExternalLinksOfHeader />
         </a-layout-header>

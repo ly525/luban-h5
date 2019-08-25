@@ -21,6 +21,11 @@ export default new Router({
           component: () => import('@/views/work-manager/list.vue')
         },
         {
+          path: '/work-manager/templates',
+          name: 'work-manager-templates',
+          component: () => import('@/views/work-manager/templates.vue')
+        },
+        {
           path: '/work-manager/form-stat',
           name: 'form-stat',
           component: () => import('@/views/work-manager/form-stat/index.vue')

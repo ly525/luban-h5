@@ -71,6 +71,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/works/set-as-template/:id",
+      "handler": "Work.setAsTemplate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/works/use-template/:id",
+      "handler": "Work.useTemplate",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

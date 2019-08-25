@@ -13,7 +13,8 @@ const state = {
   formDetailOfWork: {
     uuidMap2Name: {},
     formDetails: []
-  }
+  },
+  workTemplates: []
 }
 
 // getters

@@ -7,19 +7,19 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  beforeSave: async (model, attrs, options) => {
-    // https://github.com/strapi/strapi/issues/2882
-    // need to remove this after this pr will be merged(https://github.com/strapi/strapi/pull/3664)
-    Object.keys(model.constructor.attributes).forEach(k => {
-      if (model.constructor.attributes[k].type === 'json') {
-        const value = model.get(k);
+  // beforeSave: async (model, attrs, options) => {
+  //   // https://github.com/strapi/strapi/issues/2882
+  //   // need to remove this after this pr will be merged(https://github.com/strapi/strapi/pull/3664)
+  //   Object.keys(model.constructor.attributes).forEach(k => {
+  //     if (model.constructor.attributes[k].type === 'json') {
+  //       const value = model.get(k);
 
-        if (Array.isArray(value)) {
-          model.set(k, JSON.stringify(value));
-        }
-      }
-    });
-  },
+  //       if (Array.isArray(value)) {
+  //         model.set(k, JSON.stringify(value));
+  //       }
+  //     }
+  //   });
+  // },
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
@@ -48,6 +48,7 @@ module.exports = {
       elements: []
     }];
     model.set('pages', JSON.stringify(defaultPages));
+    model.set('is_template', false);
   },
 
   // After creating a value.
@@ -56,7 +57,17 @@ module.exports = {
 
   // Before updating a value.
   // Fired before an `update` query.
-  // beforeUpdate: async (model, attrs, options) => {},
+  // beforeUpdate: async (model, attrs, options) => {
+  //   Object.keys(model.constructor.attributes).forEach(k => {
+  //     if (model.constructor.attributes[k].type === 'json') {
+  //       const value = model.get(k);
+
+  //       if (Array.isArray(value)) {
+  //         model.set(k, JSON.stringify(value));
+  //       }
+  //     }
+  //   });
+  // },
 
   // After updating a value.
   // Fired after an `update` query.

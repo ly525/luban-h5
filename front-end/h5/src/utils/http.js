@@ -43,6 +43,14 @@ export class AxiosWrapper {
     this.setDefaultLoadingName(args)
 
     this.setLoadingValue(true)
+    if (this.customRequest) {
+      return this.customRequest(...args)
+        .then(data => {
+          const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
+          handler.call(this, { status: 200, data })
+        })
+        .finally(() => this.setLoadingValue(false))
+    }
     return this.instance.get(...args).then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Query Failed.' })
       handler.call(this, response)
@@ -59,6 +67,7 @@ export class AxiosWrapper {
     return this.instance.post(...args).then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
       handler.call(this, response)
+      return response.data
     }).catch(error => {
       // handle error
       myMessage.error(error.message)
