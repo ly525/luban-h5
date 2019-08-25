@@ -38,7 +38,12 @@ export default {
                 props: {
                   ...item.prop,
                   // https://vuejs.org/v2/guide/render-function.html#v-model
-                  value: editingElement.pluginProps[propKey] || item.defaultPropValue
+
+                  // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：
+                  // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
+                  // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
+                  // value: editingElement.pluginProps[propKey] || item.defaultPropValue
+                  value: editingElement.pluginProps[propKey]
                 },
                 on: {
                   // https://vuejs.org/v2/guide/render-function.html#v-model

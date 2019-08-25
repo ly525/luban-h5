@@ -35,7 +35,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请填写提示文字'
+      default: '姓名'
     },
     required: {
       type: Boolean,
@@ -89,7 +89,7 @@ export default {
         type: 'a-input',
         label: '提示文字',
         require: true,
-        defaultPropValue: '请填写提示文字'
+        defaultPropValue: '姓名'
       },
       fontSize: {
         type: 'a-input-number',
