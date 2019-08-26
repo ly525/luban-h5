@@ -11,6 +11,7 @@ const undoRedoPlugin = (store) => {
 
   store.subscribe((mutation, state) => {
     const { type } = mutation
+    console.log(type, 'type--')
     if (unRecordHistoryMutationTypes.includes(type)) return
     // is called AFTER every mutation
     undoRedoHistory.addState(cloneDeep(state))
