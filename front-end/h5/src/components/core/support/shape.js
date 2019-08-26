@@ -94,6 +94,7 @@ export default {
         this.handlePointMoveProp(pos)
       }
       let up = () => {
+        this.handlePointMouseUpProp()
         document.removeEventListener('mousemove', move)
         document.removeEventListener('mouseup', up)
       }
@@ -125,6 +126,7 @@ export default {
       }
 
       let up = moveEvent => {
+        this.handleElementMouseUpProp()
         document.removeEventListener('mousemove', move, true)
         document.removeEventListener('mouseup', up, true)
       }
