@@ -1,0 +1,22 @@
+.lbp-radio {
+  input[type=checkbox],
+  input[type=radio] {
+
+    width: 16px;
+    height: 16px;
+
+    vertical-align: middle;
+    margin: 5px;
+    box-sizing: border-box;
+
+    resize: none;
+    overflow: hidden;
+    line-height: 120%;
+    display: inline-block!important;
+
+    box-shadow: inherit;
+    border: 1px solid #ccd5db;
+    padding: 6px;
+    outline: none!important;
+  }
+}

@@ -4,6 +4,7 @@ import LbpPicture from '../components/plugins/lbp-picture'
 import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
 import LbpFormButton from '../components/plugins/lbp-form-button'
+import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
 
 export const pluginsList = [
   {
@@ -47,6 +48,20 @@ export const pluginsList = [
     component: LbpFormButton,
     visible: true,
     name: LbpFormButton.name
+  },
+  // {
+  //   title: '表单单选',
+  //   icon: 'hand-pointer-o',
+  //   component: LbpFormRadio,
+  //   visible: true,
+  //   name: LbpFormRadio.name
+  // },
+  {
+    title: '表单单选',
+    icon: 'hand-pointer-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name
   }
 ]
 
