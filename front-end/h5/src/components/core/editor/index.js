@@ -111,7 +111,8 @@ export default {
       'saveWork',
       'createWork',
       'fetchWork',
-      'setWorkAsTemplate'
+      'setWorkAsTemplate',
+      'setEditingElement'
     ]),
     ...mapActions('loading', {
       updateLoading: 'update'
@@ -223,8 +224,12 @@ export default {
                 <a-radio-group
                   size="small"
                   value={this.isPreviewMode}
-                  onInput={value => {
-                    this.isPreviewMode = value
+                  onInput={isPreviewMode => {
+                    this.isPreviewMode = isPreviewMode
+                    if (isPreviewMode) {
+                      // 当切换到预览模式的时候，清空当前编辑元素
+                      this.setEditingElement() // 相当于  setEditingElement(null)
+                    }
                   }}
                 >
                   <a-radio-button label={false} value={false}>编辑模式</a-radio-button>
