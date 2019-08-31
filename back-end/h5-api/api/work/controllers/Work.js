@@ -30,6 +30,9 @@ module.exports = {
           if (ele.name === 'lbp-form-input') {
             uuidMap2Name[ele.uuid] = ele.pluginProps.placeholder;
           }
+          if (ele.name === 'lbp-form-radio-group') {
+            uuidMap2Name[ele.uuid] = ele.pluginProps.aliasName;
+          }
         });
       });
       return uuidMap2Name;
