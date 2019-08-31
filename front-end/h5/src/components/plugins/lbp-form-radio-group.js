@@ -25,12 +25,23 @@ export default {
     items: {
       type: Array,
       default: () => defaultItems
+    },
+    type: {
+      type: String,
+      default: 'radio'
     }
   },
-  data: () => ({
-    value: undefined,
-    uuid: undefined
-  }),
+  data () {
+    return {
+      value: this.type === 'radio' ? '' : [],
+      uuid: undefined
+    }
+  },
+  computed: {
+    value_ () {
+      return this.type === 'radio' ? this.value : this.value.join(',')
+    }
+  },
   editorConfig: {
     propsConfig: {
       items: {
@@ -44,6 +55,19 @@ export default {
         label: '填写标题',
         require: true,
         defaultPropValue: '标题演示'
+      },
+      type: {
+        type: 'a-radio-group',
+        label: '选择模式',
+        require: true,
+        prop: {
+          options: [
+            { label: '单选', value: 'radio' },
+            { label: '多选', value: 'checkbox' }
+          ],
+          name: 'mode'
+        },
+        defaultPropValue: 'radio'
       }
     },
     components: {
@@ -100,11 +124,36 @@ export default {
   mounted () {
     this.uuid = this.$el.dataset.uuid
   },
+  methods: {
+    onChange (val) {
+      switch (this.type) {
+        case 'radio':
+          this.toggleRadio(val)
+          break
+        case 'checkbox':
+          this.toggleCheckbox(val)
+          break
+        default:
+          break
+      }
+    },
+    toggleCheckbox (val) {
+      const index = this.value.indexOf(val)
+      if (index === -1) {
+        this.value.push(val)
+      } else {
+        this.value.splice(index, 1)
+      }
+    },
+    toggleRadio (val) {
+      this.value = val
+    }
+  },
   render () {
     return (
       <div>
         <h3>{this.aliasName}</h3>
-        <input type="text" hidden value={this.value} data-type="lbp-form-input" data-uuid={this.uuid} />
+        <input type="text" hidden value={this.value_} data-type="lbp-form-input" data-uuid={this.uuid} />
         {
           this.items.map(item => (
             <lbp-form-radio
@@ -112,9 +161,8 @@ export default {
               value={item.value}
               checked={this.value === item.value}
               aliasName={this.aliasName}
-              onChange={e => {
-                this.value = e
-              }}
+              type={this.type}
+              onChange={this.onChange}
             >{item.value}</lbp-form-radio>
           ))
         }
