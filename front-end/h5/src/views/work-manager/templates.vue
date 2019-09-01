@@ -4,6 +4,7 @@ import QRCode from 'qrcode'
 
 import { API_ORIGIN } from '@/constants/api.js'
 import PreviewDialog from '@/components/core/editor/modals/preview.vue'
+import CardCover from '@/components/common/work/card-cover.js'
 
 const ListItemCard = {
   props: {
@@ -46,7 +47,7 @@ const ListItemCard = {
     return (
       <a-card hoverable >
         <div slot="cover" class="flex-center" style="height: 200px;font-size: 24px;border: 1px dashed #eee;color: #aaa;background: #f7f5f557;" >
-          { this.qrcodeUrl ? <img src={this.qrcodeUrl} /> : <span>Luban H5</span> }
+          <CardCover qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
         </div>
         <template class="ant-card-actions" slot="actions">
           {/**
