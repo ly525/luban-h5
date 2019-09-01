@@ -25,7 +25,7 @@ plan.target('production', {
  * 2. 同步本地在 git 中的文件（你也可以在服务器端git clone）
  * 3. 在 h5-api 目录安装依赖
  * 4. 使用pm2 重启服务
- * 5. 给 nginx 文件做一个软件链接
+ * 5. 在 /etc/nginx/conf.d 中给 luban-h5 新建一个软连接
  *
  */
 
