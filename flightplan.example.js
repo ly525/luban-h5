@@ -5,6 +5,7 @@ var plan = require('flightplan');
 local_dist_dir = './'; // root path for luban-h5
 remote_project_dir = '~/codebase/luban/luban-h5'; // root path for luban-h5 on server
 remote_project_api_dir = '~/codebase/luban/luban-h5/back-end/h5-api'; // api root path for luban-h5 on server
+remote_nginx_conf_path = `${remote_project_dir}/deploy/api.luban-h5.conf`
 
 // production server config
 plan.target('production', {
@@ -29,14 +30,12 @@ plan.target('production', {
  *
  */
 
-// init remove server path
-// 在第一步的时候，需要打开这一项：初始化服务器，现在还不完整，需要补充
+// // init remove server path
+// // 在第一步的时候，需要打开这一项：初始化服务器，现在还不完整，需要补充
 // plan.remote(remote => {
-//   // remove.exec(`mkdir -p ${remote_project_dir}`)
-//   remove.sudo(`yum install nginx -y`)
+//   remote.sudo(`ln -sfv ${remote_nginx_conf_path} /etc/nginx/conf.d`)
+
 //   remote.with(`mkdir -p ${remote_project_dir}`, () => {
-//     // remote.log('Install dependencies');
-//     // remote.exec('yarn');
 //     remote.exec('pwd');
 //   });
 // });
@@ -44,10 +43,6 @@ plan.target('production', {
 
 // run commands on localhost
 plan.local(local => {
-  // local.log('=> Run build');
-  // local.exec('npm run build');
-  // local.log('=> Build finish');
-
   local.log('=> Copy files to remote hosts');
   // TODO reference: https://github.com/pstadler/flightplan/issues/142
   local.with(`cd ${local_dist_dir}`, () => {
@@ -56,7 +51,6 @@ plan.local(local => {
 
     local.transfer(filesToCopy, remote_project_dir);
     local.log('=> Copy finish');
-
   });
 });
 
@@ -65,6 +59,7 @@ plan.remote(remote => {
   remote.with(`cd ${remote_project_api_dir}`, () => {
     remote.log('Install dependencies');
     remote.exec('yarn');
+    // !! 第一次同步的时候，需要执行 npm run build 来构建 admin ui
     remote.exec('pm2 restart server')
   });
 });
