@@ -1,6 +1,7 @@
 import Element from '../../components/core/models/element'
 import strapi from '../../utils/strapi'
 import Page from '../../components/core/models/page'
+import Work from '../../components/core/models/work'
 import { AxiosWrapper } from '../../utils/http.js'
 import router from '@/router.js'
 
@@ -12,7 +13,7 @@ export const actions = {
     commit('previewWork', payload)
   },
   createWork ({ commit }, payload) {
-    strapi.createEntry('works').then(entry => {
+    strapi.createEntry('works', new Work()).then(entry => {
       commit('setWork', entry)
       router.replace({ name: 'editor', params: { workId: entry.id } })
       // window.location = `${window.location.origin}/#/editor/${entry.id}`
