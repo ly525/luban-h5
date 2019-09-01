@@ -68,4 +68,9 @@ module.exports = {
     const work = await strapi.services.work.create();
     return strapi.services.work.update({id: work.id}, { pages: templateWork.pages, is_template: false });
   },
+  uploadPSD: async (ctx) => {
+    const pageJSON = await strapi.services.work.parsePSD(ctx.request.body.files.file);
+    // eslint-disable-next-line
+    ctx.body = pageJSON;
+  }
 };

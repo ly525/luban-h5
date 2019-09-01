@@ -7,19 +7,7 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {
-  //   // https://github.com/strapi/strapi/issues/2882
-  //   // need to remove this after this pr will be merged(https://github.com/strapi/strapi/pull/3664)
-  //   Object.keys(model.constructor.attributes).forEach(k => {
-  //     if (model.constructor.attributes[k].type === 'json') {
-  //       const value = model.get(k);
-
-  //       if (Array.isArray(value)) {
-  //         model.set(k, JSON.stringify(value));
-  //       }
-  //     }
-  //   });
-  // },
+  // beforeSave: async (model, attrs, options) => {},
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
@@ -32,7 +20,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-
+  
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},
@@ -43,13 +31,7 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  beforeCreate: async (model, attrs, options) => {
-    const defaultPages = [{
-      elements: []
-    }];
-    model.set('pages', JSON.stringify(defaultPages));
-    model.set('is_template', false);
-  },
+  // beforeCreate: async (model, attrs, options) => {},
 
   // After creating a value.
   // Fired after an `insert` query.
@@ -57,17 +39,7 @@ module.exports = {
 
   // Before updating a value.
   // Fired before an `update` query.
-  // beforeUpdate: async (model, attrs, options) => {
-  //   Object.keys(model.constructor.attributes).forEach(k => {
-  //     if (model.constructor.attributes[k].type === 'json') {
-  //       const value = model.get(k);
-
-  //       if (Array.isArray(value)) {
-  //         model.set(k, JSON.stringify(value));
-  //       }
-  //     }
-  //   });
-  // },
+  // beforeUpdate: async (model, attrs, options) => {},
 
   // After updating a value.
   // Fired after an `update` query.

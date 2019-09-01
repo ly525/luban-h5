@@ -1,33 +1,27 @@
 {
   "connection": "default",
-  "collectionName": "work",
+  "collectionName": "works",
   "info": {
     "name": "work",
-    "description": "用户的一个H5作品"
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
     "title": {
-      "required": true,
-      "type": "string",
-      "default": "default title"
-    },
-    "description": {
-      "type": "text",
-      "default": "default desc"
-    },
-    "cover_image_url": {
       "type": "string"
     },
-    "is_publish": {
-      "type": "boolean"
+    "description": {
+      "type": "text"
+    },
+    "cover_image_url": {
+      "type": "text"
+    },
+    "pages": {
+      "type": "json"
     },
     "create_time": {
       "type": "date"
@@ -35,14 +29,15 @@
     "update_time": {
       "type": "date"
     },
-    "formData": {
-      "type": "json"
+    "is_publish": {
+      "type": "boolean"
     },
     "is_template": {
       "type": "boolean"
     },
-    "pages": {
-      "type": "json"
+    "workforms": {
+      "collection": "workform",
+      "via": "work"
     }
   }
 }

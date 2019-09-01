@@ -15,7 +15,8 @@
       "type": "json"
     },
     "work": {
-      "model": "work"
+      "model": "work",
+      "via": "workforms"
     }
   }
 }
