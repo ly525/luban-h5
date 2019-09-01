@@ -7,13 +7,10 @@
  *
  */
 import Vue from 'vue'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-import 'font-awesome/css/font-awesome.min.css'
+// import 'font-awesome/css/font-awesome.min.css'
 import { pluginsList } from './mixins/load-plugins.js'
 import Element from './components/core/models/element'
-Vue.config.productionTip = false
-Vue.use(Antd)
+Vue.config.productionTip = true
 
 const Engine = {
   name: 'engine',

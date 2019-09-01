@@ -5,13 +5,15 @@ let rm = require('rimraf')
 let chalk = require('chalk')
 let webpack = require('webpack')
 
+// 图片】字体等资源相对于 engineBuildOutputDir 的路径
+// 如果 assetsSubDirectory 填写/，则为 engine-assets/img, engine-assets/fonts
+// 如果 assetsSubDirectory 填写/libs，则为 engine-assets/libs/img, engine-assets/libs/fonts
 function assetsPath (_path) {
-  let assetsSubDirectory = '/engine-assets'
+  let assetsSubDirectory = '/'
   return path.posix.join(assetsSubDirectory, _path)
 }
 
 function resolve (dir) {
-  // console.log(path.join(__dirname, '..', '../../back-end/preview/public/be-static-luban-h5/engine'));
   return path.join(__dirname, '..', dir)
 }
 
@@ -27,8 +29,7 @@ let webpackConfig = {
   entry: {
     engine: './src/engine-entry.js'
   },
-  //   devtool: config.build.productionSourceMap ? '#source-map' : false,
-  devtool: '#source-map',
+  devtool: false, // or '#source-map',
   output: {
     path: engineBuildOutputDir,
     filename: '[name].js',
@@ -58,6 +59,20 @@ let webpackConfig = {
               // customize generated class names
               localIdentName: '[local]_[hash:base64:8]'
             }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'vue-style-loader' // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          },
+          {
+            loader: 'sass-loader' // compiles Sass to CSS
           }
         ]
       },
@@ -96,15 +111,15 @@ rm(engineBuildOutputDir, err => {
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
     if (err) throw err
-    // process.stdout.write(
-    //   stats.toString({
-    //     colors: true,
-    //     modules: true,
-    //     children: true,
-    //     chunks: true,
-    //     chunkModules: true
-    //   }) + '\n\n'
-    // )
+    process.stdout.write(
+      stats.toString({
+        colors: true,
+        modules: true,
+        children: true,
+        chunks: true,
+        chunkModules: true
+      }) + '\n\n'
+    )
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(
