@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/ly525/luban-h5/compare/v1.1.0...v1.2.0) (2019-09-01)
+
+
+### Bug Fixes
+
+* correct the type for undo-redo plugin ([e3d7ccc](https://github.com/ly525/luban-h5/commit/e3d7ccc))
+
+
+### Features
+
+* **plugin:** form radio ([6eb308f](https://github.com/ly525/luban-h5/commit/6eb308f))
+* **plugin:** support form checkbox ([7f823fc](https://github.com/ly525/luban-h5/commit/7f823fc))
+
 ## [1.1.0](https://github.com/ly525/luban-h5/compare/v1.0.0...v1.1.0) (2019-08-25)
 
 
