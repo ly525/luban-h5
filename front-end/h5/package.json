@@ -15,6 +15,7 @@
     "core-js": "^2.6.5",
     "element-ui": "^2.9.1",
     "font-awesome": "4.7.0",
+    "html2canvas": "^1.0.0-rc.3",
     "node-sass": "^4.12.0",
     "proxy-agent": "^3.1.0",
     "qrcode": "^1.4.1",

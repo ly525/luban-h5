@@ -4,6 +4,7 @@ import Page from '../../components/core/models/page'
 import Work from '../../components/core/models/work'
 import { AxiosWrapper } from '../../utils/http.js'
 import router from '@/router.js'
+import { takeScreenshot } from '../../utils/helper.js'
 
 export const actions = {
   previewWork ({ commit }, payload = {}) {
@@ -30,20 +31,30 @@ export const actions = {
     }
     commit('setWork', work)
   },
-  saveWork ({ commit, dispatch, state }, payload = {}) {
-    // update work with strapi
-    const work = {
-      ...state.work,
-      ...payload
+  /**
+   * isSaveCover {Boolean} 保存作品时，是否保存封面图
+   */
+  saveWork ({ commit, dispatch, state }, { isSaveCover = false } = {}) {
+    const fn = (callback) => {
+      new AxiosWrapper({
+        dispatch,
+        commit,
+        loading_name: 'saveWork_loading',
+        successMsg: '保存作品成功',
+        customRequest: strapi.updateEntry.bind(strapi)
+      }).put('works', state.work.id, state.work).then(callback)
     }
-
-    return new AxiosWrapper({
-      dispatch,
-      commit,
-      loading_name: 'saveWork_loading',
-      successMsg: '保存作品成功',
-      customRequest: strapi.updateEntry.bind(strapi)
-    }).put('works', state.work.id, work)
+    return new Promise((resolve, reject) => {
+      if (isSaveCover) {
+        takeScreenshot().then(file => {
+          dispatch('uploadCover', { file }).then(() => {
+            fn(resolve)
+          }) // uploadCover
+        }) // takeScreenshot
+      } else {
+        fn(resolve)
+      }
+    })
   },
   fetchWork ({ commit, state }, workId) {
     strapi.getEntry('works', workId).then(entry => {
@@ -158,11 +169,51 @@ export const actions = {
       loading_name: 'useTemplate_loading',
       successMsg: '使用模板成功'
     }).post(`/works/use-template/${workId}`)
+  },
+  uploadCover ({ commit, state, dispatch }, { file } = {}) {
+    const formData = new FormData()
+    formData.append('files', file, `${+new Date()}.png`)
+    formData.append('workId', state.work.id)
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorkCover',
+      loading_name: 'uploadWorkCover_loading',
+      successMsg: '上传封面图成功!'
+    // }).post(`/works/uploadCover/${state.work.id}`, formData)
+    }).post(`/upload/`, formData)
   }
 }
 
 // mutations
 export const mutations = {
+  /**
+   *
+   * @param {*} state
+   * @param {Object} payload
+   *
+    value example: [
+      {
+        "id": 1,
+        "name": "1567769149231.png",
+        "hash": "1660b11229e7473b90f99a9f9afe7675",
+        "sha256": "lKl7f_csUAgOjf0VRYkBZ64EcTjvt4Dt4beNIhELpTU",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": "6.57",
+        "url": "/uploads/1660b11229e7473b90f99a9f9afe7675.png",
+        "provider": "local",
+        "public_id": null,
+        "created_at": "2019-09-06T11:25:49.255Z",
+        "updated_at": "2019-09-06T11:25:49.261Z",
+        "related": []
+      }
+    ]
+   */
+  setWorkCover (state, { type, value }) {
+    const [cover] = value
+    state.work.cover_image_url = cover.url
+  },
   /**
    * payload: {
    *  type:   @params {String} "editor/setWorks",

@@ -4,7 +4,8 @@ const state = {
   fetchWorks_loading: false,
   setWorkAsTemplate_loading: false,
   fetchWorkTemplates_loading: false,
-  useTemplate_loading: false
+  useTemplate_loading: false,
+  uploadWorkCover_loading: false
 }
 
 // getters
