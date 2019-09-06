@@ -1,5 +1,13 @@
 [中文在线文档](http://docs.luban-h5.surge.sh/) | [English](./README.en.md)
 
+<p align="left">
+<a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
+</p>
+
+
+
+
+
 
 目录
 - [鲁班H5是什么？](#%E9%B2%81%E7%8F%ADh5%E6%98%AF%E4%BB%80%E4%B9%88)
