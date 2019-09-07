@@ -58,7 +58,7 @@ module.exports = {
 
     // eslint-disable-next-line no-unused-vars
     const templateWork = await strapi.services.work.create();
-    return strapi.services.work.update({id: templateWork.id}, { pages: work.pages, is_template: true });
+    return strapi.services.work.update({id: templateWork.id}, { pages: work.pages, is_template: true, cover_image_url: work.cover_image_url });
   },
   useTemplate: async (ctx) => {
     let templateWork = await strapi.services.work.findOne(ctx.params);
