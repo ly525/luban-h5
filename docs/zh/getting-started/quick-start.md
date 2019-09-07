@@ -1,6 +1,5 @@
 # 快速开始
 
-# 概述
 ## 基础概念
 > 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
 我们接下来会花一分钟介绍一下基础概念. 我们默认你知道 Linux 和 Git 的基本操作
@@ -19,7 +18,7 @@
 > 1. 假如这个版本(假设当前版本为 v.8.0.0)不符合要求，你可以通过 `nvm install v10.15.3` 来安装 `v10.15.3` 
 
 
-### Node、Yarn、npm 安装 
+### Node、Yarn、npm 安装
 
 1. 请参照 [Strapi 的 预安装文档指导](https://strapi.io/documentation/3.0.0-beta.x/getting-started/install-requirements.html#installation-requirements) ，安装 Node、npm 和 Yarn
 1. 因为 yarn 的仓库源在海外，所以，请配置国内镜像源，提高速度
@@ -27,7 +26,7 @@
 ```bash
 
 yarn config get registry
-# -> https://registry.yarnpkg.com 
+# -> https://registry.yarnpkg.com
 
 # 改成 taobao 的源：
 yarn config set registry https://registry.npm.taobao.org
@@ -38,14 +37,15 @@ yarn config set registry https://registry.npm.taobao.org
 ```
 
 ## 技术栈(当前)
-前端：Vue.js
-后端：Strapi
-存储：Sqlite
+- 前端：Vue.js
+- 后端：Strapi
+- 存储：Sqlite
 
 # 项目环境搭建
 
 1. 鲁班H5的后端接口，由 [Strapi](https://github.com/strapi/strapi/) 强力驱动
-1. 后端部分文档会尽量和 `[github-后端部分文档说明(project/back-end/h5-api/README.md)](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)`保持同步
+1. 后端部分文档会尽量和 `[github-后端部分文档说明(project/back-end/h5-api/README.md)](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)`保持同步
+
 ## 后端环境搭建
 ### 1. 快速上手
 
@@ -56,7 +56,7 @@ yarn install # 安装依赖
 yarn add psd # 安装psd 依赖
 
 # 安装 ejs 渲染引擎，主要用来预览作品
-yarn add strapi-hook-ejs 
+yarn add strapi-hook-ejs
 # 需要在 h5-api/hook.json中添加如下配置：
 # strapi-hook-ejs 更多细节参见：https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs#configuration
 
@@ -96,7 +96,7 @@ h5-api/hook.json 配置如下：
 
 ### 2. 注意事项
 
-1. 本地开发，如果后端接口报错 403 Forbidden，请按照下图的操作，打开接口的访问权限接口：`[Roles And Permission] -> [Public] - [Permissions]`  
+1. 本地开发，如果后端接口报错 403 Forbidden，请按照下图的操作，打开接口的访问权限接口：`[Roles And Permission] -> [Public] - [Permissions]`
 
 ![](https://cdn.nlark.com/yuque/0/2019/png/358499/1567438464273-e0892ee2-5dca-45ec-a528-8090d80b23bd.png#align=left&display=inline&height=1016&originHeight=1016&originWidth=1906&size=0&status=done&width=1906)
 
@@ -112,7 +112,7 @@ error TypeError: ctx.render is not a function
 ```
 
 ## 前端环境搭建
-这部分会尽量和  `[project/front-end/h5/README.md](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)` 保持同步
+这部分会尽量和  `[project/front-end/h5/README.md](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)` 保持同步
 
 ### 1. 快速上手
 
@@ -124,16 +124,21 @@ yarn # install dependencies
 yarn serve # develop
 
 # 更多命令
-请参见 project/front-end/h5/package.json 
+请参见 project/front-end/h5/package.json
 ```
 
 ### 2. 构建预览所需的渲染引擎
-> 参见 [https://www.yuque.com/liuyan-ew1qk/luban-h5-docs/gmk13a#962e6e56](https://www.yuque.com/liuyan-ew1qk/luban-h5-docs/gmk13a#962e6e56)
+1. 在 front-end/h5 目录下，运行：`node build/engine.webpack.js` (这个是用来生成预览引擎的东西)
+2. 构建完成之后,看下 后端的 `h5-api/public` 里面会多一个文件夹 `engine-assets`
+3. 打开的预览窗口（preview.vue）,里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
+  也就是说，这个预览其实依赖后端的渲染引擎 比如 ejs 或者 jade 这种模板引擎，所以 `build/engine.webpack.js` 的 `output dir` 是在`back-end/h5-api/public`中的
 
 
 ### 3. 前端组件说明
 
 1. `lbp-`
-
 全称为 `lu-ban-plugin:``鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
 
+---
+
+<Vssue issueId="6" />
