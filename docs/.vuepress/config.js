@@ -67,7 +67,10 @@ module.exports = {
   },
   title,
   description,
-  base: '/', // why '/documentation' not work for surge.sh
+  // why '/documentation' not work for surge.sh
+  // base: '/' for surge.sh
+  // base '/luban-h5/' for github pages
+  base: '/luban-h5/',
   // ga: '',
   themeConfig: {
     nav: [
