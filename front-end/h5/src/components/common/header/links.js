@@ -13,7 +13,7 @@ export default {
         style={{ lineHeight: '64px', display: 'inline-block', float: 'right' }}
       >
         <a-menu-item key="document">
-          <a href="http://docs.luban-h5.surge.sh/" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />文档</a>
+          <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />文档</a>
         </a-menu-item>
         <a-menu-item key="dingtalk" >
           <a-popover title="👨🏻‍💻👩🏻‍💻欢迎加入鲁班-H5交流群">

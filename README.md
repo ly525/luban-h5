@@ -1,4 +1,4 @@
-[中文在线文档](http://docs.luban-h5.surge.sh/) | [English](./README.en.md)
+[中文在线文档](https://ly525.github.io/luban-h5) | [English](./README.en.md)
 
 <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
@@ -101,4 +101,4 @@
 #### 钉钉讨论组（推荐, 对代码排版相对友好）
 <img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200px">
 
-更多细节请阅读[在线文档](http://docs.luban-h5.surge.sh/)
+更多细节请阅读[在线文档](https://ly525.github.io/luban-h5)
