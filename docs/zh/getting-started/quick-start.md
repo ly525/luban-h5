@@ -1,41 +1,139 @@
 # 快速开始
 
-## Requirements
-1. [Node.js](https://nodejs.org/)
-2. [Yarn](https://yarnpkg.com/en/docs/getting-started)
+# 概述
+## 基础概念
+> 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
+我们接下来会花一分钟介绍一下基础概念. 我们默认你知道 Linux 和 Git 的基本操作
+### Node.js、npm、nvm
+
+1. `Node.js` 
+ 服务器端的JavaScript 运行环境，你可以理解为和Python、Java等一样，它也是一门后端语言
+1. `npm(or yarn)` Node.js 的包版本工具
+> 1. 类似于 Python 的pip，或 Centos 的yum，或 Ubuntu 的 apt-get
+> 1. 你在python 中安装requrest 库，通常是通过 `pip install requests` 来安装
+> 1. 在 Node.js 中，也是一样的，只是把 `pip` 换成 `pip` or `yarn` 即可： `npm install requests`  or `yarn add requests` 
+
+
+3. `nvm` ：Node.js 版本工具
+> 1. 使用 nvm可以快速安装 Node 的某个版本，比如通过 `node -v` 查看你的Node 当前版本。
+> 1. 假如这个版本(假设当前版本为 v.8.0.0)不符合要求，你可以通过 `nvm install v10.15.3` 来安装 `v10.15.3` 
+
+
+### Node、Yarn、npm 安装 
+
+1. 请参照 [Strapi 的 预安装文档指导](https://strapi.io/documentation/3.0.0-beta.x/getting-started/install-requirements.html#installation-requirements) ，安装 Node、npm 和 Yarn
+1. 因为 yarn 的仓库源在海外，所以，请配置国内镜像源，提高速度
+
+```bash
+
+yarn config get registry
+# -> https://registry.yarnpkg.com 
+
+# 改成 taobao 的源：
+yarn config set registry https://registry.npm.taobao.org
+# -> yarn config v0.15.0
+# -> success Set "registry" to "https://registry.npm.taobao.org".
+
+# 看到 succes 表示安装完毕
+```
 
 ## 技术栈(当前)
-1. 前端：[Vue.js](https://vuejs.org/v2/guide/)
-2. 后端：[Strapi](https://strapi.io/)
-3. 存储：[Sqlite](https://mongodb.com)
+前端：Vue.js
+后端：Strapi
+存储：Sqlite
 
-## 安装
-说明：project：项目根目录
+# 项目环境搭建
 
-### 前端
-细节部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
+1. 鲁班H5的后端接口，由 [Strapi](https://github.com/strapi/strapi/) 强力驱动
+1. 后端部分文档会尽量和 `[github-后端部分文档说明(project/back-end/h5-api/README.md)](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)`保持同步
+## 后端环境搭建
+### 1. 快速上手
 
 ```bash
+# 默认当前目录为 luban 项目的根目录
+cd back-end/h5-api
+yarn install # 安装依赖
+yarn add psd # 安装psd 依赖
+
+# 安装 ejs 渲染引擎，主要用来预览作品
+yarn add strapi-hook-ejs 
+# 需要在 h5-api/hook.json中添加如下配置：
+# strapi-hook-ejs 更多细节参见：https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs#configuration
+
+npm run dev # 本地开发使用
+# 补充说明: 如果需要在 vscode 中进行debug ，请使用 npm run localdev
+
+# #!en: default database is sqlite3(h5-api/.tmp/data.db)
+# #!zh: 默认数据库是 sqlite3，位置在 h5-api/.tmp/data.db
+
+# 访问 http://locahost:1337/admin
+# visit http://locahost:1337/admin
+```
+
+h5-api/hook.json 配置如下：
+
+```json
+{
+  "timeout": 3000,
+  "load": {
+    "before": [],
+    "order": [
+      "Define the hooks' load order by putting their names in this array in the right order"
+    ],
+    "after": []
+  },
+  "ejs": {
+    "enabled": true,
+    "viewExt": "ejs",
+    "partial": true,
+    "cache": false,
+    "debug": false,
+    "layout": false
+  }
+}
+```
+
+
+### 2. 注意事项
+
+1. 本地开发，如果后端接口报错 403 Forbidden，请按照下图的操作，打开接口的访问权限接口：`[Roles And Permission] -> [Public] - [Permissions]`  
+
+![](https://cdn.nlark.com/yuque/0/2019/png/358499/1567438464273-e0892ee2-5dca-45ec-a528-8090d80b23bd.png#align=left&display=inline&height=1016&originHeight=1016&originWidth=1906&size=0&status=done&width=1906)
+
+![](https://cdn.nlark.com/yuque/0/2019/png/358499/1567438463824-d6b87f12-eecf-4ae2-aa9c-bb4c73c4127d.png#align=left&display=inline&height=1646&originHeight=1646&originWidth=1918&size=0&status=done&width=1918)
+
+##### 上传封面图使用
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/358499/1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24.png#align=left&display=inline&height=314&name=image.png&originHeight=628&originWidth=2004&size=288569&status=done&width=1002)
+
+2. 如果后端没有安装 strapi-hook-ejs 或者 没有在 hook.json 中进行配置，会报错(如下)。解决方案：只要装了 ejs 插件并且正确配置即可
+```javascript
+error TypeError: ctx.render is not a function
+  at previewOne (~/luban-h5/back-end/h5-api/api/work/controllers/Work.js:13:16)
+```
+
+## 前端环境搭建
+这部分会尽量和  `[project/front-end/h5/README.md](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)` 保持同步
+
+### 1. 快速上手
+
+```bash
+# 默认当前位置目录为 luban-h5 项目的根目录
+cd front-end/h5
+
 yarn # install dependencies
 yarn serve # develop
-yarn build # build
+
+# 更多命令
+请参见 project/front-end/h5/package.json 
 ```
 
-### 后端
-后端 API 部分请参照 [`project/back-end/h5-api/README.md`](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)
-
-```bash
-yarn
-npm run dev
-```
+### 2. 构建预览所需的渲染引擎
+> 参见 [https://www.yuque.com/liuyan-ew1qk/luban-h5-docs/gmk13a#962e6e56](https://www.yuque.com/liuyan-ew1qk/luban-h5-docs/gmk13a#962e6e56)
 
 
-## 更多说明
-### 前端组件说明
-1. `lbp-` 全称为 `lu-ban-plugin-`, 意思为 `鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
+### 3. 前端组件说明
 
+1. `lbp-`
 
+全称为 `lu-ban-plugin:``鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
 
----
-
-<Vssue issueId="6" />
