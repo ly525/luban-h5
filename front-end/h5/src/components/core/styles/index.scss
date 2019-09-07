@@ -15,6 +15,17 @@
       color: white;
       font-size: 16px;
     }
+
+    .user-avatar-activator {
+      float: right;
+      background: transparent;
+      margin: 0 28px 16px 0;
+      cursor: pointer;
+
+      .anticon {
+        color: white;
+      }
+    }
   }
 
   .shortcut-button {
@@ -83,6 +94,7 @@
     }
 
   }
+
 }
 
 

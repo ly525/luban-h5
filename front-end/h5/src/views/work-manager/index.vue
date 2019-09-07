@@ -90,7 +90,7 @@ export default {
         <a-layout-header class="header">
           <LogoOfHeader />
           {/* TODO we can show the plugins shortcuts here */}
-          <a-dropdown style={{ float: 'right', background: 'transparent', margin: '0 28px 16px 0', cursor: 'pointer' }}>
+          <a-dropdown>
             <a-menu slot="overlay" onClick={() => {}}>
               <a-menu-item key="1">
                 <span>someone@luban</span>
@@ -99,7 +99,9 @@ export default {
               <a-menu-item key="2"><a-icon type="setting" />账号设置</a-menu-item>
               <a-menu-item key="3"><a-icon type="logout" />退出登录</a-menu-item>
             </a-menu>
-            <a-menu-item><a-icon type="user" style={{ color: 'white' }} /></a-menu-item>
+            <a class="user-avatar-activator" href="#">
+              <a-icon type="user"/>
+            </a>
           </a-dropdown>
           <ExternalLinksOfHeader />
         </a-layout-header>
