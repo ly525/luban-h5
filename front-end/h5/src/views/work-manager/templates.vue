@@ -2,7 +2,6 @@
 import { mapState, mapActions } from 'vuex'
 import QRCode from 'qrcode'
 
-import { API_ORIGIN } from '@/constants/api.js'
 import PreviewDialog from '@/components/core/editor/modals/preview.vue'
 import CardCover from '@/components/common/work/card-cover.js'
 
@@ -36,7 +35,7 @@ const ListItemCard = {
       return displayTime
     },
     genQRCodeUrl (work) {
-      const url = `${API_ORIGIN}/works/preview/${work.id}`
+      const url = `/works/preview/${work.id}`
       QRCode.toDataURL(url, (err, url) => {
         if (err) console.log(err)
         this.qrcodeUrl = url

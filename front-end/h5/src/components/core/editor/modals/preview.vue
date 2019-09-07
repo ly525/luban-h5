@@ -23,7 +23,7 @@ export default {
     //   work: state => state.work
     // }),
     releaseUrl () {
-      return `${API_ORIGIN}/works/preview/${this.work.id}`
+      return `/works/preview/${this.work.id}`
     }
   },
   data () {
