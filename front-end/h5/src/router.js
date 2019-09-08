@@ -9,11 +9,9 @@ export default new Router({
   // mode: 'history',
   routes: [
     {
-      path: '/work-manager',
+      path: '/',
       component: Home,
-      name: 'work-manager',
       redirect: '/work-manager/list',
-      alias: '/',
       children: [
         {
           path: '/work-manager/list',

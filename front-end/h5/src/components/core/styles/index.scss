@@ -97,6 +97,14 @@
 
 }
 
+.default-router-link {
+  color: rgba(0, 0, 0, 0.65);
+}
+.router-link-active {
+  color: #1890ff !important;
+  background-color: transparent;
+  text-decoration: none;
+}
 
 
 .transparent-bg {

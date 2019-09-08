@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     renderSidebar (menus) {
-      const renderLabel = menu => menu.routerName ? <router-link to={{ name: menu.routerName }} >{menu.label}</router-link> : menu.label
+      const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{menu.label}</router-link> : menu.label
 
       return menus.map(menu => (
         menu.children
