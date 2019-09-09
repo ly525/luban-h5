@@ -76,29 +76,35 @@ export default {
       textDecoration: 'none',
       display: vertical ? 'block' : 'inline-block'
     }
+
+    const checkedClass = checked && 'is-checked'
     return (
       <label role="radio" tabindex="0" class="lbp-radio" style={style} aria-checked="true">
-        <input
-          name={aliasName}
-          id={id}
-          type={type}
-          ref="input"
-          value={value}
-          disabled={disabled}
-          checked={!!checked}
-          onChange={this.handleChange}
-        // readOnly={readOnly}
-        // tabIndex={tabIndex}
-        // className={`${prefixCls}-input`}
-        // onClick={this.onClick}
-        // onFocus={this.onFocus}
-        // onBlur={this.onBlur}
-        // onInput={this.onInput}
-        // autoFocus={autoFocus}
-        // data-type="lbp-form-input"
-        // {...globalProps}
-        />
-        <span><slot>{value}</slot></span>
+        <span class={'lbp-radio__input' + checkedClass}>
+          <span class="lbp-radio__inner"></span>
+          <input
+            class="lbp-radio__original"
+            name={aliasName}
+            id={id}
+            type={type}
+            ref="input"
+            value={value}
+            disabled={disabled}
+            checked={!!checked}
+            onChange={this.handleChange}
+          // readOnly={readOnly}
+          // tabIndex={tabIndex}
+          // className={`${prefixCls}-input`}
+          // onClick={this.onClick}
+          // onFocus={this.onFocus}
+          // onBlur={this.onBlur}
+          // onInput={this.onInput}
+          // autoFocus={autoFocus}
+          // data-type="lbp-form-input"
+          // {...globalProps}
+          />
+          <span class="lbp-radio__label"><slot>{value}</slot></span>
+        </span>
       </label>
     )
   }

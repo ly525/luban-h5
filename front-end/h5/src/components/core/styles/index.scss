@@ -29,21 +29,37 @@
   }
 
   .shortcut-button {
+    border: 1px dashed #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .25s;
+    background-color: #f5f8fb;
+    margin-bottom: 15px;
+    flex-direction: column;
+    color: #393e46;
     width: 100%;
-    height: 30px;
-    font-size: 14px;
-
     .shortcut-icon {
-      padding-right: 4px;
+      padding: 4px;
       // display: block;
       // font-size: 16px;
       // margin-bottom: 10px;
     }
   }
 
+  .canvas-wrapper {
+    border: 1px dashed #e7e7e7;
+    // padding: '12px';
+  }
+
   .canvas-editor-wrapper {
+    // box-shadow: 0 0 0 1px #d9d9d9;
     // inspired by https://github.com/Heboy/h5-maker/blob/38136192bab1427b9d5741a5dae0b5186d4b2ea0/src/scss/Page.scss#L8
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADVJREFUeNpifPHixQEGGgMWEPH161cHWlrCxEAHMGrJqCWjloxaMmrJqCWjloxaMrgtAQgwAL+YBst5kqDgAAAAAElFTkSuQmCC);
+    // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADVJREFUeNpifPHixQEGGgMWEPH161cHWlrCxEAHMGrJqCWjloxaMmrJqCWjloxaMrgtAQgwAL+YBst5kqDgAAAAAElFTkSuQmCC);
+    // background-image: url(https://i.imgur.com/SuyR7Vq.png);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlQTFRF9fX18PDwAAAABQ8/pgAAAAN0Uk5T/yIA41y2EwAAABhJREFUeJxjYIAC0VAQcGCQWgUCDUONBgDH8Fwzu33LswAAAABJRU5ErkJggg==');
     .element--editing {
       outline: 1px dashed #70c0ff !important;
     }

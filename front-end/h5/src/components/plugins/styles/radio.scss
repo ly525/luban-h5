@@ -1,22 +1,73 @@
+// thanks for element-ui
 .lbp-radio {
-  input[type=checkbox],
-  input[type=radio] {
+  color: #606266;
+  font-weight: 500;
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  outline: none;
+  font-size: 14px;
+  margin-right: 30px;
 
-    width: 16px;
-    height: 16px;
+  .lbp-radio__label {
+    padding-left: 10px;
+  }
 
+  .lbp-radio__input {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
     vertical-align: middle;
-    margin: 5px;
-    box-sizing: border-box;
 
-    resize: none;
-    overflow: hidden;
-    line-height: 120%;
-    display: inline-block!important;
+    .lbp-radio__inner {
+      border: 1px solid #dcdfe6;
+      border-radius: 100%;
+      width: 14px;
+      height: 14px;
+      background-color: #fff;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      box-sizing: border-box;
 
-    box-shadow: inherit;
-    border: 1px solid #ccd5db;
-    padding: 6px;
-    outline: none!important;
+      &:after {
+        width: 6px;
+        height: 6px;
+        border-radius: 100%;
+        background-color: #fff;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%) scale(0);
+        transition: transform .15s ease-in;
+      }
+    }
+
+    &.is-checked .lbp-radio__inner {
+      border-color: #409eff;
+      background: #409eff;
+    }
+
+    &.is-checked .lbp-radio__inner:after {
+      transform: translate(-50%,-50%) scale(1);
+    }
+
+    .lbp-radio__original {
+      opacity: 0;
+      outline: none;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+    }
   }
 }
