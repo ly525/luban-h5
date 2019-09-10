@@ -1,4 +1,4 @@
-[中文在线文档](https://ly525.github.io/luban-h5) | [English](./README.en.md)
+[中文在线文档](https://ly525.github.io/luban-h5/zh/) | [English](./README.en.md)
 
 <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
