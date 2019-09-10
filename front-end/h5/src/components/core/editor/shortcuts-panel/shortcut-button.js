@@ -12,6 +12,10 @@ export default {
     clickFn: {
       required: false,
       type: Function
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   render: (h, { props, listeners, slots }) => {
@@ -20,6 +24,7 @@ export default {
       <a-button
         class="shortcut-button"
         onClick={onClick}
+        disabled={props.disabled}
       >
         <i
           class={['shortcut-icon', 'fa', `fa-${props.faIcon}`]}

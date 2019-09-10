@@ -16,17 +16,41 @@ export const pluginsList = [
   },
   {
     title: '文字',
-    icon: 'font',
+    icon: 'text-width',
     component: LbpText,
     visible: true,
     name: LbpText.name
   },
   {
-    title: '按钮',
+    title: '普通按钮',
     icon: 'hand-pointer-o',
     component: LbpButton,
     visible: true,
     name: LbpButton.name
+  },
+  {
+    title: '轮播图',
+    icon: 'photo',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name,
+    disabled: true
+  },
+  {
+    title: '地图',
+    icon: 'map-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name,
+    disabled: true
+  },
+  {
+    title: '视频',
+    icon: 'file-video-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name,
+    disabled: true
   },
   // {
   //   title: '视频',
@@ -58,7 +82,14 @@ export const pluginsList = [
   // },
   {
     title: '表单单选',
-    icon: 'hand-pointer-o',
+    icon: 'check-square-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name
+  },
+  {
+    title: '表单单选',
+    icon: 'dot-circle-o',
     component: LbpFormRadioGroup,
     visible: true,
     name: LbpFormRadioGroup.name

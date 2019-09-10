@@ -41,6 +41,10 @@
     flex-direction: column;
     color: #393e46;
     width: 100%;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
     .shortcut-icon {
       padding: 4px;
       // display: block;

@@ -93,6 +93,7 @@ export default {
                 clickFn={this.onClickShortcut.bind(this, plugin)}
                 title={plugin.title}
                 faIcon={plugin.icon}
+                disabled={plugin.disabled}
               />
             </a-col>
           ))
