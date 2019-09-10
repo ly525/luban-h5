@@ -59,7 +59,7 @@
 
 ### Installs
 > proj: project root path
-please refer to: [`Document/Quick Start`](https://www.yuque.com/liuyan-ew1qk/oh5d0n/gpfy6g)
+please refer to: [`Document/Quick Start`](https://www.yuque.com/liuyan-ew1qk/oh5d0n/gpfy6g?language=en-us)
 
 
 ---
