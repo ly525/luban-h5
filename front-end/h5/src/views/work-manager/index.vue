@@ -117,7 +117,7 @@ export default {
             </a-menu>
           </a-layout-sider>
           <a-layout style="padding: 0 24px 24px">
-            <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
+            <a-layout-content style={{ padding: '24px', minHeight: '280px' }}>
               <router-view />
             </a-layout-content>
           </a-layout>

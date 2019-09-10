@@ -38,8 +38,8 @@ export default {
   },
   render (h) {
     return (
-      <div class="works-wrapper">
-        <a-table columns={columns} dataSource={this.computedWorks} row-key="id" scopedSlots={{
+      <div class="works-wrapper" style="background-color:white;padding: 12px;margin-top: 24px;">
+        <a-table size="middle" columns={columns} dataSource={this.computedWorks} row-key="id" scopedSlots={{
           action: function (props) {
             return [<router-link to={{ name: 'stat-detail', params: { id: props.id } }} >查看数据</router-link>]
           }

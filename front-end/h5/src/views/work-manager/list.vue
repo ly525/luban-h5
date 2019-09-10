@@ -121,7 +121,7 @@ export default {
   render (h) {
     return (
       <div class="works-wrapper">
-        <a-row gutter={24}>
+        <a-row gutter={48}>
           <a-col span={6} style="margin-bottom: 10px;">
             <AddNewCard handleCreate={this.createWork} />
           </a-col>
