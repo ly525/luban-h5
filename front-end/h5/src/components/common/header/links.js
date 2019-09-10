@@ -12,9 +12,6 @@ export default {
         defaultSelectedKeys={['2']}
         style={{ lineHeight: '64px', display: 'inline-block', float: 'right' }}
       >
-        <a-menu-item key="document">
-          <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />文档</a>
-        </a-menu-item>
         <a-menu-item key="dingtalk" >
           <a-popover title="👨🏻‍💻👩🏻‍💻欢迎加入鲁班-H5交流群">
             <template slot="content">
@@ -25,6 +22,12 @@ export default {
             </template>
             <span style={{ color: 'white', lineHeight: '64px', height: '64px', display: 'inline-block' }}><a-icon type="qrcode" />交流群</span>
           </a-popover>
+        </a-menu-item>
+        <a-menu-item key="document">
+          <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />文档</a>
+        </a-menu-item>
+        <a-menu-item key="document-en">
+          <a href="https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />Document(En)</a>
         </a-menu-item>
         <a-menu-item key="github">
           <a href="https://github.com/ly525/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="github" />Github</a>

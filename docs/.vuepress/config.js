@@ -74,6 +74,7 @@ module.exports = {
   // ga: '',
   themeConfig: {
     nav: [
+      { text: 'Document(En)', link: 'https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us' },
       { text: 'Website', link: 'https://ly525.github.io/luban-h5' },
     ],
     versions: [
