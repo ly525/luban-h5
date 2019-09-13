@@ -115,6 +115,14 @@
 
   }
 
+  .work-cover-img {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
 }
 
 .default-router-link {
