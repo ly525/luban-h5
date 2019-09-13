@@ -12,7 +12,7 @@ export function takeScreenshot (selector = '.canvas-wrapper', fileName = `${+new
     // allowTaint: Whether to allow cross-origin images to taint the canvas
     // if you use allowTaint: true, the cors image will taint the canvas, and canvas.toDataURL won't work
     // 会对canvas造成污染，导致 canvas.toDataURL 无效
-    html2canvas(el, { allowTaint: true }).then(canvas => {
+    html2canvas(el, { proxy: '/works/cors-proxy' }).then(canvas => {
       // document.body.appendChild(canvas) use this line to test the generated canvas
       canvas.toBlob(blob => {
         const file = new window.File([blob], fileName, { type: 'image/png' })

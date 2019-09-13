@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/works/cors-proxy",
+      "handler": "Work.corsProxy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/works",
       "handler": "Work.find",
       "config": {

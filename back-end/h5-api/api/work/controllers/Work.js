@@ -1,4 +1,5 @@
 'use strict';
+const request = require('request');
 
 /**
  * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
@@ -72,5 +73,8 @@ module.exports = {
     const pageJSON = await strapi.services.work.parsePSD(ctx.request.body.files.file);
     // eslint-disable-next-line
     ctx.body = pageJSON;
+  },
+  corsProxy: async (ctx) => {
+    ctx.body = request(ctx.query.url);
   }
 };
