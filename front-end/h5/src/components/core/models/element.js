@@ -4,7 +4,7 @@ import { parsePx } from '../../../utils/element.js'
 const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button']
 const clone = (value) => JSON.parse(JSON.stringify(value))
 
-const defaultProps = {
+const defaultStyle = {
   top: 100,
   left: 100,
   width: 100,
@@ -19,7 +19,7 @@ const defaultProps = {
 class Element {
   constructor (ele) {
     this.name = ele.name
-    this.uuid = +new Date()
+    this.uuid = ele.uuid || +new Date()
     /**
      * #!zh:
      * 之前版本代码：https://github.com/ly525/luban-h5/blob/a7875cbc73c0d18bc2459985ca3ce1d4dc44f141/front-end/h5/src/components/core/models/element.js#L21
@@ -32,17 +32,8 @@ class Element {
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
     this.pluginProps = (typeof ele.pluginProps === 'object' && clone(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
-    const commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || this.getDefaultCommonStyle()
-    this.commonStyle = {
-      ...commonStyle,
-      zindex: ele.zindex
-    }
-
+    this.commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || { ...defaultStyle }
     this.events = []
-  }
-
-  getDefaultCommonStyle () {
-    return { ...defaultProps }
   }
 
   getDefaultPluginProps (editorConfig) {
@@ -72,6 +63,7 @@ class Element {
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
       textAlign: pluginProps.textAlign || commonStyle.textAlign,
+      'z-index': commonStyle.zindex,
       position
     }
     return style
