@@ -1,3 +1,28 @@
+@mixin shortcut-button {
+  border: 1px dashed #fff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .25s;
+  background-color: #f5f8fb;
+  margin-bottom: 15px;
+  flex-direction: column;
+  color: #393e46;
+  width: 100%;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+  .shortcut-icon {
+    padding: 4px;
+    // display: block;
+    // font-size: 16px;
+    // margin-bottom: 10px;
+  }
+}
+
 #luban-editor-layout,
 #luban-work-manager-layout  {
   .header {
@@ -29,29 +54,9 @@
   }
 
   .shortcut-button {
-    border: 1px dashed #fff;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all .25s;
-    background-color: #f5f8fb;
-    margin-bottom: 15px;
-    flex-direction: column;
-    color: #393e46;
-    width: 100%;
-
-    &:disabled {
-      cursor: not-allowed;
-    }
-    .shortcut-icon {
-      padding: 4px;
-      // display: block;
-      // font-size: 16px;
-      // margin-bottom: 10px;
-    }
+    @include shortcut-button;
   }
+
 
   .canvas-wrapper {
     border: 1px dashed #e7e7e7;
@@ -122,7 +127,25 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+}
 
+.shortcut-button {
+  @include shortcut-button;
+}
+
+// 动画编辑面板定制
+#animation-edit-panel {
+  .ant-collapse-header {
+    padding: 6px 0 6px 40px;
+  }
+
+  .collapse-wrapper {
+    margin-top: 12px;
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .default-router-link {

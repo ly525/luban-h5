@@ -8,6 +8,7 @@ import RenderEditCanvas from './canvas/edit'
 import RenderPreviewCanvas from './canvas/preview'
 import RenderPropsEditor from './edit-panel/props'
 import RenderScriptEditor from './edit-panel/script'
+import RenderAnimationEditor from './edit-panel/animation'
 import RenderActoionEditor from './edit-panel/action'
 import RenderShortcutsPanel from './shortcuts-panel/index'
 import PreviewDialog from './modals/preview.vue'
@@ -281,7 +282,7 @@ export default {
                 {/* { this.renderPropsEditorPanel(h) } */}
                 <RenderPropsEditor/>
               </a-tab-pane>
-              <a-tab-pane label="动画" key='动画' tab='动画'>动画</a-tab-pane>
+              <a-tab-pane label="动画" key='动画' tab='动画'><RenderAnimationEditor /></a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab='动作'>{this.activeTabKey === '动作'}{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
               <a-tab-pane label="脚本" key='脚本' tab='脚本'><RenderScriptEditor/></a-tab-pane>
             </a-tabs>
