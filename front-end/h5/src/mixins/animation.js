@@ -46,9 +46,10 @@ export default {
   created () {
     const that = this
     window.getEditorApp.$on('RUN_ANIMATIONS', () => {
-      if (that.active) {
-        that.runAnimations()
-      }
+      that.runAnimations()
+      // if (that.active) {
+      //   that.runAnimations()
+      // }
     })
   }
 

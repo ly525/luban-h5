@@ -91,8 +91,8 @@ class Element {
     }
   }
 
-  getPreviewData () {
-    const style = this.getStyle({ position: 'absolute' })
+  getPreviewData ({ position = 'static', isRem = false } = {}) {
+    const style = this.getStyle({ position })
     const data = {
       style,
       props: this.getProps({ mode: 'preview' }),
