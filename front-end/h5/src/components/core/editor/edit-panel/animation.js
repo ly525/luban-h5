@@ -1,10 +1,13 @@
+import { mapState } from 'vuex'
 import { animationOptions, animationValue2Name, firstLevelAnimationOptions } from '@/constants/animation.js'
-import 'animate.css'
 
 export default {
+  computed: {
+    ...mapState('editor', ['editingElement'])
+  },
   data: () => ({
     animationQueue: [],
-    activeCollapsePanel: [],
+    activeCollapsePanel: 0,
     activePreviewAnimation: '',
     drawerVisible: false
   }),
@@ -17,7 +20,7 @@ export default {
         countNum: 1,
         infinite: false
       })
-      this.activeCollapsePanel = `${this.animationQueue.length - 1}`
+      this.activeCollapsePanel = this.animationQueue.length - 1
     },
     deleteAnimate (index) {
       this.animationQueue.splice(index, 1)
@@ -48,6 +51,10 @@ export default {
                     <a-list-item>
                       <div
                         class={[this.activePreviewAnimation === item.value && item.value + ' animated', 'shortcut-button']}
+                        onClick={(e) => {
+                          // TODO move this to vuex mutation
+                          this.editingElement.animations[this.activeCollapsePanel].type = item.value
+                        }}
                         onMouseenter={(e) => {
                           this.activePreviewAnimation = item.value
                         }}
@@ -117,6 +124,8 @@ export default {
     }
   },
   render (h) {
+    const ele = this.editingElement
+    if (!ele) return (<span>请先选择一个元素</span>)
     return (
       <div class="main-animate widget" id="animation-edit-panel">
         <a-button-group>
@@ -125,13 +134,13 @@ export default {
         </a-button-group>
         {
           this.animationQueue.length &&
-          <a-collapse activeKey={this.activeCollapsePanel} onChange={(val) => { this.activeCollapsePanel = val }} class="collapse-wrapper">
+          <a-collapse activeKey={'' + this.activeCollapsePanel} onChange={(val) => { this.activeCollapsePanel = val }} class="collapse-wrapper">
             {
               this.animationQueue.map((addedAnimation, index) => (
                 <a-collapse-panel key={`${index}`}>
                   <template slot="header">
                     <span>动画{index + 1}</span>
-                    <a-tag color="orange">{animationValue2Name[addedAnimation.type] }</a-tag>
+                    <a-tag color="orange">{animationValue2Name[addedAnimation.type] || addedAnimation.type }</a-tag>
                     {/* <a-icon onClick={this.deleteAnimate(index)}></a-icon> */}
                   </template>
                   {this.renderAnimationOptions()}
