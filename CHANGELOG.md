@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/ly525/luban-h5/compare/v1.3.0...v1.4.0) (2019-09-15)
+
+
+### Bug Fixes
+
+* set collapse as accordion ([e7b6ed0](https://github.com/ly525/luban-h5/commit/e7b6ed0))
+* set proxy for html2canvas ([bd486ce](https://github.com/ly525/luban-h5/commit/bd486ce))
+* set router-link-active for active link ([d5366ff](https://github.com/ly525/luban-h5/commit/d5366ff))
+* set z-index for element ([0208a79](https://github.com/ly525/luban-h5/commit/0208a79))
+
+
+### Features
+
+* show avaiable animation list ([28a7203](https://github.com/ly525/luban-h5/commit/28a7203))
+* **animation:** run animations in edit mode ([58d0048](https://github.com/ly525/luban-h5/commit/58d0048))
+* **animation:** run animations in preview mode ([65311e9](https://github.com/ly525/luban-h5/commit/65311e9))
+* **animation:** support duration, delay, interation-count and infinite ([9e04d09](https://github.com/ly525/luban-h5/commit/9e04d09))
+
 ## [1.3.0](https://github.com/ly525/luban-h5/compare/v1.2.0...v1.3.0) (2019-09-06)
 
 
