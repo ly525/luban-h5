@@ -3,29 +3,36 @@ import { animationOptions, animationValue2Name, firstLevelAnimationOptions } fro
 
 export default {
   computed: {
-    ...mapState('editor', ['editingElement'])
+    ...mapState('editor', ['editingElement']),
+    animationQueue () {
+      return (this.editingElement && this.editingElement.animations) || []
+    }
   },
   data: () => ({
-    animationQueue: [],
+    // animationQueue: [],
     activeCollapsePanel: 0,
     activePreviewAnimation: '',
     drawerVisible: false
   }),
   methods: {
     addAnimation () {
+      // TODO move this to vuex
       this.animationQueue.push({
         type: '',
-        duration: 0,
+        duration: 2,
         delay: 0,
-        countNum: 1,
+        interationCount: 1,
         infinite: false
       })
       this.activeCollapsePanel = this.animationQueue.length - 1
     },
     deleteAnimate (index) {
+      // TODO move this to vuex
       this.animationQueue.splice(index, 1)
     },
     runAnimate () {
+      // front-end/h5/src/components/core/editor/index.js created()
+      window.getEditorApp.$emit('RUN_ANIMATIONS')
     },
     renderSecondAnimationTabs (animations) {
       return (
@@ -50,11 +57,11 @@ export default {
                     // https://www.quirksmode.org/js/events_mouse.html#mouseenter
                     <a-list-item>
                       <div
-                        class={[this.activePreviewAnimation === item.value && item.value + ' animated', 'shortcut-button']}
                         onClick={(e) => {
                           // TODO move this to vuex mutation
                           this.editingElement.animations[this.activeCollapsePanel].type = item.value
                         }}
+                        class={[this.activePreviewAnimation === item.value && item.value + ' animated', 'shortcut-button']}
                         onMouseenter={(e) => {
                           this.activePreviewAnimation = item.value
                         }}

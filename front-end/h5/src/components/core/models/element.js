@@ -34,6 +34,7 @@ class Element {
     this.pluginProps = (typeof ele.pluginProps === 'object' && clone(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
     this.commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || { ...defaultStyle }
     this.events = []
+    this.animations = []
   }
 
   getDefaultPluginProps (editorConfig) {
@@ -51,7 +52,7 @@ class Element {
     return pluginProps
   }
 
-  getStyle ({ position = 'static', isRem = false }) {
+  getStyle ({ position = 'static', isRem = false } = {}) {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {

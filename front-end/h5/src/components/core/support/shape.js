@@ -1,3 +1,5 @@
+import animationMixin from '@/mixins/animation.js'
+
 /**
  * #!zh: 上下左右 对应的 东南西北
  * #!en: top(north)、bottom(south)、left(west)、right(east)
@@ -13,7 +15,8 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
-  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp'],
+  mixins: [animationMixin],
+  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp', 'element'],
   computed: {
     position () {
       return { ...this.defaultPosition }

@@ -3,6 +3,7 @@ import undoRedoHistory from '../../../store/plugins/undo-redo/History'
 import { getEditorConfigForEditingElement } from '../../../utils/element'
 
 import '../styles/index.scss'
+import 'animate.css'
 
 import RenderEditCanvas from './canvas/edit'
 import RenderPreviewCanvas from './canvas/preview'
@@ -296,6 +297,8 @@ export default {
     )
   },
   created () {
+    // event bus for editor
+    window.getEditorApp = this
     let workId = this.$route.params.workId
     console.log(workId)
     if (workId) {
