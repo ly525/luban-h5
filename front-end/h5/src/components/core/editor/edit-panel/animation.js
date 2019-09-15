@@ -103,7 +103,7 @@ export default {
         </a-tabs>
       )
     },
-    renderAnimationOptions () {
+    renderAnimationOptions (animationOption) {
       return (
         <a-form layout="horizontal">
           <a-form-item label="动画类型" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }}>
@@ -117,14 +117,86 @@ export default {
           </a-form-item>
           <a-form-item label="动画时间" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
-              <a-slider id="test" defaultValue={30} />
+              <a-slider
+                defaultValue={2}
+                min={0}
+                max={20}
+                value={animationOption.duration}
+                onChange={value => {
+                  animationOption.duration = value
+                }}
+              />
             </a-form-item>
+            <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginLeft: '4px' }}>
+              <a-input-number
+                min={0}
+                max={20}
+                size="small"
+                formatter={value => `${value}秒`}
+                value={animationOption.duration}
+                onChange={value => {
+                  animationOption.duration = value
+                }}
+              />
+            </a-form-item>
+          </a-form-item>
+          <a-form-item label="延迟时间" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
-              <a-input-number min={1} max={20} size="small" formatter={value => `${value}秒`}/>
+              <a-slider
+                defaultValue={2}
+                min={0}
+                max={20}
+                value={animationOption.delay}
+                onChange={value => {
+                  animationOption.delay = value
+                }}
+              />
+            </a-form-item>
+            <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginLeft: '4px' }}>
+              <a-input-number
+                min={0}
+                max={20}
+                size="small"
+                formatter={value => `${value}秒`}
+                value={animationOption.delay}
+                onChange={value => {
+                  animationOption.delay = value
+                }}
+              />
+            </a-form-item>
+          </a-form-item>
+          <a-form-item label="运行次数" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
+            <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
+              <a-slider
+                defaultValue={2}
+                min={0}
+                max={20}
+                value={animationOption.interationCount}
+                onChange={value => {
+                  animationOption.interationCount = value
+                }}
+              />
+            </a-form-item>
+            <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginLeft: '4px' }}>
+              <a-input-number
+                min={0}
+                max={20}
+                size="small"
+                formatter={value => `${value}次`}
+                value={animationOption.interationCount}
+                onChange={value => {
+                  animationOption.interationCount = value
+                }}
+              />
             </a-form-item>
           </a-form-item>
           <a-form-item label="循环播放" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
-            <a-switch v-decorator="['switch', { valuePropName: 'checked' }]" />
+            <a-switch
+              value={animationOption.infinite}
+              onChange={value => {
+                animationOption.infinite = value
+              }}
+            />
           </a-form-item>
         </a-form>
       )
@@ -140,7 +212,9 @@ export default {
           <a-button type="primary" onClick={this.runAnimate}>运行动画<a-icon type="right-circle" /></a-button>
         </a-button-group>
         {
-          this.animationQueue.length &&
+          // Q：这边为何这样写：this.animationQueue.length && ?
+          // A：如果这样写的话，当 length === 0，的时候，0会显示在 UI 上
+          !!this.animationQueue.length &&
           <a-collapse activeKey={'' + this.activeCollapsePanel} onChange={(val) => { this.activeCollapsePanel = val }} class="collapse-wrapper">
             {
               this.animationQueue.map((addedAnimation, index) => (
@@ -148,9 +222,9 @@ export default {
                   <template slot="header">
                     <span>动画{index + 1}</span>
                     <a-tag color="orange">{animationValue2Name[addedAnimation.type] || addedAnimation.type }</a-tag>
-                    {/* <a-icon onClick={this.deleteAnimate(index)}></a-icon> */}
+                    <a-icon type="delete" onClick={() => this.deleteAnimate(index)} title="删除动画"></a-icon>
                   </template>
-                  {this.renderAnimationOptions()}
+                  {this.renderAnimationOptions(addedAnimation)}
                 </a-collapse-panel>
               ))
             }
