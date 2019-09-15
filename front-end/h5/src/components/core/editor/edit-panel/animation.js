@@ -19,7 +19,7 @@ export default {
       // TODO move this to vuex
       this.animationQueue.push({
         type: '',
-        duration: 2,
+        duration: 1,
         delay: 0,
         interationCount: 1,
         infinite: false
@@ -88,7 +88,7 @@ export default {
           defaultActiveKey={firstLevelAnimationOptions[0].label}
           onChange={tab => {}}
           style="width:100%;"
-          tabBarStyle={{}}
+          // tabBarStyle={{}}
           size="small"
           tabBarGutter={0}
         >
@@ -215,7 +215,15 @@ export default {
           // Q：这边为何这样写：this.animationQueue.length && ?
           // A：如果这样写的话，当 length === 0，的时候，0会显示在 UI 上
           !!this.animationQueue.length &&
-          <a-collapse activeKey={'' + this.activeCollapsePanel} onChange={(val) => { this.activeCollapsePanel = val }} class="collapse-wrapper">
+          <a-collapse
+            accordion
+            class="collapse-wrapper"
+            activeKey={'' + this.activeCollapsePanel}
+            onChange={(key) => {
+              // 当全部收起来时候，key 为 undefined
+              this.activeCollapsePanel = typeof key !== 'undefined' ? +key : -1
+            }}
+          >
             {
               this.animationQueue.map((addedAnimation, index) => (
                 <a-collapse-panel key={`${index}`}>
