@@ -5,6 +5,7 @@ import editor from './modules/editor'
 import user from './modules/user'
 import visible from './modules/visible'
 import loading from './modules/loading'
+import i18n from './modules/i18n'
 
 Vue.use(Vuex)
 
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     editor,
     user,
     visible,
-    loading
+    loading,
+    i18n
   },
   plugins: [undoRedoPlugin]
 })

@@ -16,6 +16,7 @@ import PreviewDialog from './modals/preview.vue'
 
 import LogoOfHeader from '@/components/common/header/logo.js'
 import ExternalLinksOfHeader from '@/components/common/header/links.js'
+import LangSelect from '@/components/common/header/LangSelect.vue'
 
 const sidebarMenus = [
   {
@@ -85,7 +86,8 @@ export default {
   name: 'Editor',
   components: {
     LogoOfHeader,
-    ExternalLinksOfHeader
+    ExternalLinksOfHeader,
+    LangSelect
   },
   data: () => ({
     activeMenuKey: 'pluginList',
@@ -195,6 +197,7 @@ export default {
             </a-menu-item>
           </a-menu>
           <ExternalLinksOfHeader />
+          <LangSelect />
         </a-layout-header>
         <a-layout>
           <a-layout-sider width="160" style="background: #fff" collapsed>
@@ -217,7 +220,7 @@ export default {
           <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '12px' }}>
             { this._renderMenuContent() }
           </a-layout-sider>
-          <a-layout style="padding: 0 24px 24px">
+          <a-layout style="padding: 0 0 24px">
             <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
               <div style="text-align: center;">
                 <a-radio-group

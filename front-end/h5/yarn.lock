@@ -10885,6 +10885,11 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha1-J1b0bLMlgFTF9HI96K5+hzAqHM8=
 
+vue-i18n@^8.14.1:
+  version "8.14.1"
+  resolved "https://registry.npm.taobao.org/vue-i18n/download/vue-i18n-8.14.1.tgz#0ca0a2742c14e0144481655157fffcc7cc313e50"
+  integrity sha1-DKCidCwU4BREgWVRV//8x8wxPlA=
+
 vue-jest@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npm.taobao.org/vue-jest/download/vue-jest-3.0.4.tgz#b6a2b0d874968f26fa775ac901903fece531e08b"
