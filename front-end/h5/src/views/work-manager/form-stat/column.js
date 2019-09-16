@@ -1,6 +1,6 @@
 export const columns = [
   {
-    title: '标题',
+    title: 'Title',
     dataIndex: 'title',
     key: 'title'
   },
@@ -15,7 +15,7 @@ export const columns = [
     key: 'uv'
   },
   {
-    title: '表单数',
+    title: 'Form Count',
     key: 'formCount',
     dataIndex: 'formCount'
   },

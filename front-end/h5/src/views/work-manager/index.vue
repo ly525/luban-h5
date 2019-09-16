@@ -4,10 +4,12 @@
 import '@/components/core/styles/index.scss'
 import LogoOfHeader from '@/components/common/header/logo.js'
 import ExternalLinksOfHeader from '@/components/common/header/links.js'
+import LangSelect from '@/components/common/header/LangSelect.vue'
 
 const sidebarMenus = [
   {
     label: '我的作品',
+    i18nLabel: 'sidebar.myWorks',
     value: 'workManager',
     antIcon: 'bars',
     key: '1',
@@ -15,12 +17,14 @@ const sidebarMenus = [
   },
   {
     label: '数据中心',
+    i18nLabel: 'sidebar.dataCenter',
     value: 'dataCenter',
     antIcon: 'snippets',
     key: '2',
     children: [
       {
         label: '基础数据',
+        i18nLabel: 'sidebar.basicData',
         value: 'basicData',
         antIcon: 'snippets',
         key: '2-1',
@@ -30,12 +34,14 @@ const sidebarMenus = [
   },
   {
     label: '模板中心',
+    i18nLabel: 'sidebar.templateCenter',
     value: 'templateCenter',
     antIcon: 'snippets',
     key: '3',
     children: [
       {
-        label: '免费模板',
+        label: '模板列表',
+        i18nLabel: 'sidebar.freeTemplates',
         value: 'freeTemplates',
         antIcon: 'snippets',
         key: '3-1',
@@ -45,6 +51,7 @@ const sidebarMenus = [
   },
   {
     label: '账号中心',
+    i18nLabel: 'sidebar.accountCenter',
     value: 'freeTemplate',
     antIcon: 'appstore',
     key: '4'
@@ -56,17 +63,20 @@ export default {
     // PreView,
     // Sidebar
     LogoOfHeader,
-    ExternalLinksOfHeader
+    ExternalLinksOfHeader,
+    LangSelect
   },
   methods: {
     renderSidebar (menus) {
-      const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{menu.label}</router-link> : menu.label
+      // const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{menu.label}</router-link> : menu.label
+      const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{this.$t(menu.i18nLabel)}</router-link> : this.$t(menu.i18nLabel)
 
       return menus.map(menu => (
         menu.children
           ? (
             <a-sub-menu key={menu.key}>
-              <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span>
+              {/** <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span> */}
+              <span slot="title"><a-icon type={menu.antIcon} />{this.$t(menu.i18nLabel)}</span>
               {
                 (menu.children).map(submenu => (
                   <a-menu-item key={submenu.key}>{renderLabel(submenu)}</a-menu-item>
@@ -89,6 +99,7 @@ export default {
       <a-layout id="luban-work-manager-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
           <LogoOfHeader />
+          <LangSelect />
           {/* TODO we can show the plugins shortcuts here */}
           <a-dropdown>
             <a-menu slot="overlay" onClick={() => {}}>
@@ -116,7 +127,7 @@ export default {
               {this.renderSidebar(sidebarMenus)}
             </a-menu>
           </a-layout-sider>
-          <a-layout style="padding: 0 24px 24px">
+          <a-layout style="padding: 0 0 24px">
             <a-layout-content style={{ padding: '24px', minHeight: '280px' }}>
               <router-view />
             </a-layout-content>

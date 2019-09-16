@@ -45,13 +45,15 @@ const ListItemCard = {
           <CardCover qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
         </div>
         <template class="ant-card-actions" slot="actions">
-          <a-tooltip effect="dark" placement="bottom" title="编辑">
+          {/** 编辑 */}
+          <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.edit')}>
             <router-link to={{ name: 'editor', params: { workId: this.work.id } }} target="_blank">
-              <a-icon type="edit" title="编辑"/>
+              <a-icon type="edit" title={this.$t('workCard.edit')}/>
             </router-link>
           </a-tooltip>
-          <a-tooltip effect="dark" placement="bottom" title="预览">
-            <a-icon type="eye" title="预览" onClick={this.handleClickPreview} />
+          {/** 预览 */}
+          <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.preview')}>
+            <a-icon type="eye" title={this.$t('workCard.preview')} onClick={this.handleClickPreview} />
           </a-tooltip>
           {
             this.qrcodeUrl
@@ -69,8 +71,9 @@ const ListItemCard = {
             {this.work.title}({this.work.id})
           </div>
           <div slot="description" style="font-size: 12px;">
-            <div>描述：{this.work.description}</div>
-            <div>时间：{this.timeFmt(this.work.created_at)}</div>
+            {/** 描述 时间 */}
+            <div>{this.$t('workCard.description')}: {this.work.description}</div>
+            <div>{this.$t('workCard.createTime')}: {this.timeFmt(this.work.created_at)}</div>
           </div>
         </a-card-meta>
       </a-card>
@@ -80,14 +83,16 @@ const ListItemCard = {
 
 const AddNewCard = {
   functional: true,
-  render (h, { props }) {
+  render (h, { props, parent }) {
     return (
       <a-card hoverable>
         <div slot="cover" class="flex-center" style="height: 305px;background: #f7f5f557;" onClick={props.handleCreate}>
           <a-icon type="plus" />
         </div>
         <template class="ant-card-actions" slot="actions">
-          <span onClick={props.handleCreate}>创建新作品</span>
+          {/** 创建新作品 */}
+          {/** https://kazupon.github.io/vue-i18n/guide/component.html#translation-in-functional-component */}
+          <span onClick={props.handleCreate}>{parent.$t('workCard.createNewWork')}</span>
         </template>
       </a-card>
     )
@@ -121,7 +126,7 @@ export default {
   render (h) {
     return (
       <div class="works-wrapper">
-        <a-row gutter={48}>
+        <a-row gutter={12}>
           <a-col span={6} style="margin-bottom: 10px;">
             <AddNewCard handleCreate={this.createWork} />
           </a-col>

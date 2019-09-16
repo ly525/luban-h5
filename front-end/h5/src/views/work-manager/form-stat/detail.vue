@@ -81,7 +81,8 @@ export default {
       <div class="works-wrapper">
         <a-table columns={this.columns} dataSource={this.rows} row-key="id" scopedSlots={{
           action: function (props) {
-            return [<router-link to={{ name: 'stat-detail', params: { id: props.id } }} >查看数据</router-link>]
+            // 查看数据
+            return [<router-link to={{ name: 'stat-detail', params: { id: props.id } }} >{this.$t('basicData.viewData')}</router-link>]
           }
         }}>
         </a-table>

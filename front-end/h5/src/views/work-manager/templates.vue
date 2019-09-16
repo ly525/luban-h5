@@ -49,20 +49,14 @@ const ListItemCard = {
           <CardCover qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
         </div>
         <template class="ant-card-actions" slot="actions">
-          {/**
-          <router-link to={{ name: 'editor', params: { workId: this.work.id } }} target="_blank">
-            <a-tooltip effect="dark" placement="bottom" title="立即使用">
-              <a-icon type="plus-square" title="立即使用"/>
-            </a-tooltip>
-          </router-link>
-          */}
-          <a-tooltip effect="dark" placement="bottom" title="立即使用">
-            <a-icon type="plus-square" title="立即使用" onClick={() => {
+          <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.useNow')}>
+            <a-icon type="plus-square" title={this.$t('workCard.useNow')} onClick={() => {
               this.handleUseTemplate(this.work)
             }} />
           </a-tooltip>
-          <a-tooltip effect="dark" placement="bottom" title="预览">
-            <a-icon type="eye" title="预览" onClick={this.handleClickPreview} />
+          {/** 预览 */}
+          <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.preview')}>
+            <a-icon type="eye" title={this.$t('workCard.preview')} onClick={this.handleClickPreview} />
           </a-tooltip>
           {
             this.qrcodeUrl
@@ -80,8 +74,9 @@ const ListItemCard = {
             {this.work.title}({this.work.id})
           </div>
           <div slot="description" style="font-size: 12px;">
-            <div>描述：{this.work.description}</div>
-            <div>时间：{this.timeFmt(this.work.created_at)}</div>
+            {/** 描述 时间 */}
+            <div>{this.$t('workCard.description')}: {this.work.description}</div>
+            <div>{this.$t('workCard.createTime')}: {this.timeFmt(this.work.created_at)}</div>
           </div>
         </a-card-meta>
       </a-card>
@@ -120,7 +115,7 @@ export default {
   render (h) {
     return (
       <div class="works-wrapper">
-        <a-row gutter={24}>
+        <a-row gutter={12}>
           {
             this.fetchWorkTemplates_loading
               ? <a-col span={24} style="margin-bottom: 10px;text-align: center;height: 355px;line-height: 355px;border-bottom: 1px solid #ebedf0;background: rgba(255, 255, 255, 0.5);">
