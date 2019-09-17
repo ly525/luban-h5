@@ -5,13 +5,9 @@
 #!zh: 项目启动
 
 ```bash
-# install strapi globally
-# #!zh: 全局安装 strapi
-npm install strapi@beta -g
+yarn
 
-yarn install
-
-strapi develop
+yarn dev
 
 # #!en: default database is sqlite3(h5-api/.tmp/data.db)
 # #!zh: 默认数据库是 sqlite3，位置在 h5-api/.tmp/data.db
