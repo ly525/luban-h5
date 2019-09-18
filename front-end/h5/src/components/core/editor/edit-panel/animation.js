@@ -106,16 +106,17 @@ export default {
     renderAnimationOptions (animationOption) {
       return (
         <a-form layout="horizontal">
-          <a-form-item label="动画类型" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }}>
+          <a-form-item label={this.$t('editor.editPanel.animation.type')} labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }}>
             {/* <a-popover placement="left" title="动画列表" trigger="click">
               <template slot="content">
                 {this.renderAvaiableAnimations()}
               </template>
               <a-button type="primary">动画列表</a-button>
             </a-popover> */}
-            <a-button type="link" size="small" icon="ordered-list" onClick={() => { this.drawerVisible = true }}>动画列表</a-button>
+            {/* 动画列表 */}
+            <a-button type="link" size="small" icon="ordered-list" onClick={() => { this.drawerVisible = true }}>{this.$t('editor.editPanel.animation.list')}</a-button>
           </a-form-item>
-          <a-form-item label="动画时间" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
+          <a-form-item label={this.$t('editor.editPanel.animation.duration')} labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
               <a-slider
                 defaultValue={2}
@@ -132,7 +133,7 @@ export default {
                 min={0}
                 max={20}
                 size="small"
-                formatter={value => `${value}秒`}
+                formatter={value => `${value}秒(s)`}
                 value={animationOption.duration}
                 onChange={value => {
                   animationOption.duration = value
@@ -140,7 +141,7 @@ export default {
               />
             </a-form-item>
           </a-form-item>
-          <a-form-item label="延迟时间" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
+          <a-form-item label={this.$t('editor.editPanel.animation.type')} labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
               <a-slider
                 defaultValue={2}
@@ -157,7 +158,7 @@ export default {
                 min={0}
                 max={20}
                 size="small"
-                formatter={value => `${value}秒`}
+                formatter={value => `${value}秒(s)`}
                 value={animationOption.delay}
                 onChange={value => {
                   animationOption.delay = value
@@ -165,7 +166,7 @@ export default {
               />
             </a-form-item>
           </a-form-item>
-          <a-form-item label="运行次数" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
+          <a-form-item label={this.$t('editor.editPanel.animation.iteration')} labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-form-item style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
               <a-slider
                 defaultValue={2}
@@ -182,7 +183,7 @@ export default {
                 min={0}
                 max={20}
                 size="small"
-                formatter={value => `${value}次`}
+                formatter={value => `${value}次(times)`}
                 value={animationOption.interationCount}
                 onChange={value => {
                   animationOption.interationCount = value
@@ -190,7 +191,7 @@ export default {
               />
             </a-form-item>
           </a-form-item>
-          <a-form-item label="循环播放" labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
+          <a-form-item label={this.$t('editor.editPanel.animation.inifinite')} labelCol={{ span: 5 }} wrapperCol={{ span: 16, offset: 2 }} style="margin-bottom:0;">
             <a-switch
               value={animationOption.infinite}
               onChange={value => {
@@ -204,12 +205,13 @@ export default {
   },
   render (h) {
     const ele = this.editingElement
-    if (!ele) return (<span>请先选择一个元素</span>)
+    if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
     return (
       <div class="main-animate widget" id="animation-edit-panel">
         <a-button-group>
-          <a-button type="primary" onClick={this.addAnimation}><a-icon type="plus" />添加动画</a-button>
-          <a-button type="primary" onClick={this.runAnimate}>运行动画<a-icon type="right-circle" /></a-button>
+          {/* 添加动画、运行动画 */}
+          <a-button type="primary" onClick={this.addAnimation}><a-icon type="plus" />{this.$t('editor.editPanel.animation.add')}</a-button>
+          <a-button type="primary" onClick={this.runAnimate}>{this.$t('editor.editPanel.animation.run')}<a-icon type="right-circle" /></a-button>
         </a-button-group>
         {
           // Q：这边为何这样写：this.animationQueue.length && ?
@@ -228,7 +230,9 @@ export default {
               this.animationQueue.map((addedAnimation, index) => (
                 <a-collapse-panel key={`${index}`}>
                   <template slot="header">
-                    <span>动画{index + 1}</span>
+                    {/* #!zh: 动画{index + 1} */}
+                    {/* #!en: Animation{index + 1}</span> */}
+                    <span>{this.$t('editor.editPanel.animation.title', { index: index + 1 })}</span>
                     <a-tag color="orange">{animationValue2Name[addedAnimation.type] || addedAnimation.type }</a-tag>
                     <a-icon type="delete" onClick={() => this.deleteAnimate(index)} title="删除动画"></a-icon>
                   </template>

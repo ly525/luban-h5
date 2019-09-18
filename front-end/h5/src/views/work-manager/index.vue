@@ -99,7 +99,7 @@ export default {
       <a-layout id="luban-work-manager-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
           <LogoOfHeader />
-          <LangSelect />
+          <LangSelect style="float: right;cursor: pointer;" />
           {/* TODO we can show the plugins shortcuts here */}
           <a-dropdown>
             <a-menu slot="overlay" onClick={() => {}}>

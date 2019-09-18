@@ -3,26 +3,32 @@ import Shape from '../../support/shape'
 
 const contextmenuOptions = [
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.copy',
     label: '复制',
     value: 'copy'
   },
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.delete',
     label: '删除',
     value: 'delete'
   },
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.moveToTop',
     label: '置顶',
     value: 'move2Top'
   },
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.moveToBottom',
     label: '置底',
     value: 'move2Bottom'
   },
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.moveUp',
     label: '上移',
     value: 'addZindex'
   },
   {
+    i18nLabel: 'editor.centerPanel.contextMenu.moveDown',
     label: '下移',
     value: 'minusZindex'
   }
@@ -231,7 +237,7 @@ export default {
                   zIndex: 999
                 }}
               >
-                { contextmenuOptions.map(option => <a-menu-item key={option.value} data-command={option.value}>{option.label}</a-menu-item>) }
+                { contextmenuOptions.map(option => <a-menu-item key={option.value} data-command={option.value}>{this.$t(option.i18nLabel)}</a-menu-item>) }
               </a-menu>
               : null
           }

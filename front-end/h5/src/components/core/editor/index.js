@@ -20,16 +20,19 @@ import LangSelect from '@/components/common/header/LangSelect.vue'
 
 const sidebarMenus = [
   {
+    i18nLabel: 'editor.sidebar.components',
     label: '组件列表',
     value: 'pluginList',
     antIcon: 'bars'
   },
   {
+    i18nLabel: 'editor.sidebar.pages',
     label: '页面管理',
     value: 'pageManagement',
     antIcon: 'snippets'
   },
   {
+    i18nLabel: 'editor.sidebar.templates',
     label: '免费模板',
     value: 'freeTemplate',
     antIcon: 'appstore'
@@ -38,30 +41,35 @@ const sidebarMenus = [
 
 const fixedTools = [
   {
+    i18nTooltip: 'editor.fixedTool.undo',
     'tooltip': '撤消', // TODO 支持快捷键
     'text': '撤消',
     'icon': 'mail-reply',
     'action': () => undoRedoHistory.undo()
   },
   {
+    i18nTooltip: 'editor.fixedTool.redo',
     'tooltip': '恢复',
     'text': '恢复',
     'icon': 'mail-forward',
     'action': () => undoRedoHistory.redo()
   },
   {
+    i18nTooltip: 'editor.fixedTool.preview',
     'tooltip': '刷新预览',
     'text': '刷新预览',
     'icon': 'eye',
     'action': function () { this.previewVisible = true }
   },
   {
+    i18nTooltip: 'editor.fixedTool.copyCurrentPage',
     'tooltip': '复制当前页',
     'text': '复制当前页',
     'icon': 'copy',
     'action': function () { this.pageManager({ type: 'copy' }) }
   },
   {
+    i18nTooltip: 'editor.fixedTool.importPSD',
     'tooltip': '导入PSD',
     'text': 'Ps',
     'icon': '',
@@ -69,12 +77,14 @@ const fixedTools = [
     'disabled': true
   },
   {
+    i18nTooltip: 'editor.fixedTool.zoomOut',
     'tooltip': '放大画布',
     'text': '放大画布',
     'icon': 'plus',
     'action': function () { this.scaleRate += 0.25 }
   },
   {
+    i18nTooltip: 'editor.fixedTool.zoomIn',
     'tooltip': '缩小画布',
     'text': '缩小画布',
     'icon': 'minus',
@@ -139,15 +149,15 @@ export default {
           return (
             this.pages.map((page, index) => (
               <span style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0' }}>
-                <span>第{index + 1}页</span>
+                {/* #!en: Page<Index> */}
+                {/* #!zh: 第<Index>页面 */}
+                <span>{this.$t('editor.pageManager.title', { index })}</span>
                 <a-dropdown trigger={['hover']} placement='bottomCenter'>
-                  <a class="ant-dropdown-link" href="#">
-                    <a-icon type="down" />
-                  </a>
+                  <a class="ant-dropdown-link" href="#"><a-icon type="down" /></a>
                   <a-menu slot="overlay" onClick={({ key }) => { this.pageManager({ type: key }) }}>
-                    <a-menu-item key="add"><a-icon type="user" />新增页面</a-menu-item>
-                    <a-menu-item key="copy"><a-icon type="user" />复制页面</a-menu-item>
-                    <a-menu-item key="delete"><a-icon type="user" />删除页面</a-menu-item>
+                    <a-menu-item key="add"><a-icon type="user" />{this.$t('editor.pageManager.actions.add')}</a-menu-item>
+                    <a-menu-item key="copy"><a-icon type="user" />{this.$t('editor.pageManager.actions.copy')}</a-menu-item>
+                    <a-menu-item key="delete"><a-icon type="user" />{this.$t('editor.pageManager.actions.delete')}</a-menu-item>
                   </a-menu>
                 </a-dropdown>
               </span>
@@ -163,6 +173,7 @@ export default {
       <a-layout id="luban-editor-layout" style={{ height: '100vh' }}>
         <a-layout-header class="header">
           <LogoOfHeader />
+          <LangSelect style="float: right;cursor: pointer;" />
           {/* TODO we can show the plugins shortcuts here */}
           <a-menu
             theme="dark"
@@ -170,12 +181,14 @@ export default {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
           >
-            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>预览</a-button></a-menu-item>
-            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork({ isSaveCover: true })} loading={this.saveWork_loading || this.uploadWorkCover_loading}>保存</a-button></a-menu-item>
+            {/* 保存、预览、发布、设置为模板 */}
+            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>{this.$t('editor.header.preview')}</a-button></a-menu-item>
+            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork({ isSaveCover: true })} loading={this.saveWork_loading || this.uploadWorkCover_loading}>{this.$t('editor.header.save')}</a-button></a-menu-item>
             {/* <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item> */}
             <a-menu-item key="3" class="transparent-bg">
               <a-dropdown-button onClick={() => {}} size="small">
-                发布
+                {/* 发布 */}
+                {this.$t('editor.header.publish')}
                 <a-menu slot="overlay" onClick={({ key }) => {
                   switch (key) {
                     case 'setAsTemplate':
@@ -187,7 +200,8 @@ export default {
                 }}>
                   <a-menu-item key="setAsTemplate">
                     <a-spin spinning={this.setWorkAsTemplate_loading} size="small">
-                      <a-icon type="cloud-upload" />设置为模板
+                      {/* 设置为模板 */}
+                      <a-icon type="cloud-upload" />{this.$t('editor.header.setAsTemplate')}
                     </a-spin>
                   </a-menu-item>
                   {/* <a-menu-item key="2"><a-icon type="user" />2nd menu item</a-menu-item> */}
@@ -197,7 +211,6 @@ export default {
             </a-menu-item>
           </a-menu>
           <ExternalLinksOfHeader />
-          <LangSelect />
         </a-layout-header>
         <a-layout>
           <a-layout-sider width="160" style="background: #fff" collapsed>
@@ -211,7 +224,8 @@ export default {
                 sidebarMenus.map(menu => (
                   <a-menu-item key={menu.value}>
                     <a-icon type={menu.antIcon} />
-                    <span>{menu.label}</span>
+                    {/* <span>{menu.label}</span> */}
+                    <span>{this.$t(menu.i18nLabel)}</span>
                   </a-menu-item>
                 ))
               }
@@ -234,8 +248,9 @@ export default {
                     }
                   }}
                 >
-                  <a-radio-button label={false} value={false}>编辑模式</a-radio-button>
-                  <a-radio-button label={true} value={true}>预览模式</a-radio-button>
+                  {/* 编辑模式、预览模式 */}
+                  <a-radio-button label={false} value={false}>{this.$t('editor.centerPanel.mode.edit')}</a-radio-button>
+                  <a-radio-button label={true} value={true}>{this.$t('editor.centerPanel.mode.preview')}</a-radio-button>
                 </a-radio-group>
               </div>
               <div class='canvas-wrapper' style={{ transform: `scale(${this.scaleRate})` }}>
@@ -256,7 +271,8 @@ export default {
             <a-button-group style={{ display: 'flex', flexDirection: 'column' }}>
               {
                 fixedTools.map(tool => (
-                  <a-tooltip effect="dark" placement="left" title={tool.tooltip}>
+                  // <a-tooltip effect="dark" placement="left" title={tool.tooltip}>
+                  <a-tooltip effect="dark" placement="left" title={this.$t(tool.i18nTooltip)}>
                     <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
                       { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : tool.text }
                     </a-button>
@@ -278,17 +294,10 @@ export default {
                   ElementUI：label
                   Ant Design Vue：tab
               */}
-              <a-tab-pane key="属性">
-                <span slot="tab">
-                  <a-icon type="apple" />
-                  属性
-                </span>
-                {/* { this.renderPropsEditorPanel(h) } */}
-                <RenderPropsEditor/>
-              </a-tab-pane>
-              <a-tab-pane label="动画" key='动画' tab='动画'><RenderAnimationEditor /></a-tab-pane>
-              <a-tab-pane label="动作" key='动作' tab='动作'>{this.activeTabKey === '动作'}{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
-              <a-tab-pane label="脚本" key='脚本' tab='脚本'><RenderScriptEditor/></a-tab-pane>
+              <a-tab-pane key="属性"><span slot="tab"><a-icon type="apple" />{this.$t('editor.editPanel.tab.prop')}</span><RenderPropsEditor/></a-tab-pane>
+              <a-tab-pane label="动画" key='动画' tab={this.$t('editor.editPanel.tab.animation')}><RenderAnimationEditor /></a-tab-pane>
+              <a-tab-pane label="动作" key='动作' tab={this.$t('editor.editPanel.tab.action')}>{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
+              <a-tab-pane label="脚本" key='脚本' tab={this.$t('editor.editPanel.tab.script')}><RenderScriptEditor/></a-tab-pane>
             </a-tabs>
           </a-layout-sider>
 

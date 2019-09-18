@@ -69,7 +69,7 @@ export default {
   },
   render (h) {
     const ele = this.editingElement
-    if (!ele) return (<span>请先选择一个元素</span>)
+    if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
     this.mixinEnhancedPropsEditor(ele)
     return this.renderPropsEditorPanel(h, ele)
   }

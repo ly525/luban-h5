@@ -9,12 +9,20 @@ import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
 export const pluginsList = [
   {
     title: '图片',
+    i18nTitle: {
+      'en-US': 'Picture',
+      'zh-CN': '图片'
+    },
     icon: 'photo',
     component: LbpPicture,
     visible: true,
     name: LbpPicture.name
   },
   {
+    i18nTitle: {
+      'en-US': 'Text',
+      'zh-CN': '文字'
+    },
     title: '文字',
     icon: 'text-width',
     component: LbpText,
@@ -22,6 +30,10 @@ export const pluginsList = [
     name: LbpText.name
   },
   {
+    i18nTitle: {
+      'en-US': 'Button',
+      'zh-CN': '普通按钮'
+    },
     title: '普通按钮',
     icon: 'hand-pointer-o',
     component: LbpButton,
@@ -29,6 +41,10 @@ export const pluginsList = [
     name: LbpButton.name
   },
   {
+    i18nTitle: {
+      'en-US': 'Carousel',
+      'zh-CN': '轮播图'
+    },
     title: '轮播图',
     icon: 'photo',
     component: LbpFormRadioGroup,
@@ -37,6 +53,10 @@ export const pluginsList = [
     disabled: true
   },
   {
+    i18nTitle: {
+      'en-US': 'Map',
+      'zh-CN': '地图'
+    },
     title: '地图',
     icon: 'map-o',
     component: LbpFormRadioGroup,
@@ -45,6 +65,10 @@ export const pluginsList = [
     disabled: true
   },
   {
+    i18nTitle: {
+      'en-US': 'Video',
+      'zh-CN': '视频'
+    },
     title: '视频',
     icon: 'file-video-o',
     component: LbpFormRadioGroup,
@@ -60,6 +84,10 @@ export const pluginsList = [
   //   name: LbpVideo.name
   // },
   {
+    i18nTitle: {
+      'en-US': 'Form Input',
+      'zh-CN': '表单输入'
+    },
     title: '表单输入',
     icon: 'pencil-square-o',
     component: LbpFormInput,
@@ -67,6 +95,10 @@ export const pluginsList = [
     name: LbpFormInput.name
   },
   {
+    i18nTitle: {
+      'en-US': 'Form Submit',
+      'zh-CN': '表单提交'
+    },
     title: '表单提交',
     icon: 'hand-pointer-o',
     component: LbpFormButton,
@@ -81,6 +113,10 @@ export const pluginsList = [
   //   name: LbpFormRadio.name
   // },
   {
+    i18nTitle: {
+      'en-US': 'Form Checkbox',
+      'zh-CN': '表单多选'
+    },
     title: '表单单选',
     icon: 'check-square-o',
     component: LbpFormRadioGroup,
@@ -88,6 +124,10 @@ export const pluginsList = [
     name: LbpFormRadioGroup.name
   },
   {
+    i18nTitle: {
+      'en-US': 'Form Radio',
+      'zh-CN': '表单单选'
+    },
     title: '表单单选',
     icon: 'dot-circle-o',
     component: LbpFormRadioGroup,

@@ -16,7 +16,7 @@ export default {
   created () {},
   render (h) {
     const ele = this.editingElement
-    if (!ele) return (<span>请先选择一个元素</span>)
+    if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
     return (<div>
       TODO
     </div>)

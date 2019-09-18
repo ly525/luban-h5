@@ -26,5 +26,72 @@ export default {
   },
   basicData: {
     viewData: 'View Data'
+  },
+  editor: {
+    sidebar: {
+      components: 'Components',
+      pages: 'Pages',
+      templates: 'Templates'
+    },
+    pageManager: {
+      title: 'Page {index}',
+      action: {
+        add: 'Add Page',
+        copy: 'Copy Page',
+        delete: 'Delete Page'
+      }
+    },
+    header: {
+      preview: 'Preview',
+      save: 'Save',
+      publish: 'Publish',
+      setAsTemplate: 'Set As Template'
+    },
+
+    centerPanel: {
+      mode: {
+        edit: 'Edit',
+        preview: 'Preview'
+      },
+      contextMenu: {
+        copy: 'Copy',
+        delete: 'Delete',
+        moveToTop: 'Move To Top',
+        moveToBottom: 'Move To Bottom',
+        moveUp: 'Move Up',
+        moveDown: 'Move Down'
+      }
+    },
+    fixedTool: {
+      undo: 'Undo',
+      redo: 'Redo',
+      preview: 'Preview',
+      copyCurrentPage: 'CopyCurrentPage',
+      importPSD: 'Import PSD',
+      zoomIn: 'Zoom In',
+      zoomOut: 'Zoom Out'
+    },
+    editPanel: {
+      tab: {
+        prop: 'Prop',
+        animation: 'Animation',
+        action: 'Action',
+        script: 'Script'
+      },
+      animation: {
+        add: 'Add',
+        run: 'Run',
+        type: 'Type',
+        duration: 'Duration',
+        delay: 'Delay',
+        iteration: 'Iteration',
+        inifinite: 'Inifinite',
+        list: 'Select Animation',
+        title: 'Animation {index}'
+      },
+      common: {
+        empty: 'Select an element first please!'
+      }
+    }
   }
 }

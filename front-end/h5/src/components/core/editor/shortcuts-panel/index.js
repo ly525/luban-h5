@@ -1,5 +1,7 @@
 import ShortcutButton from './shortcut-button'
+import langMixin from '@/mixins/i18n'
 export default {
+  mixins: [langMixin],
   props: {
     pluginsList: {
       required: false,
@@ -91,7 +93,8 @@ export default {
             <a-col span={12} style={{ marginTop: '10px' }}>
               <ShortcutButton
                 clickFn={this.onClickShortcut.bind(this, plugin)}
-                title={plugin.title}
+                // title={plugin.title}
+                title={plugin.i18nTitle[this.currentLang] || plugin.title}
                 faIcon={plugin.icon}
                 disabled={plugin.disabled}
               />

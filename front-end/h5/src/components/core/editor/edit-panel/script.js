@@ -46,7 +46,7 @@ export default {
   },
   render (h) {
     const ele = this.editingElement
-    if (!ele) return (<span>请先选择一个元素</span>)
+    if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
     return <div>
       <a-button onClick={this.mixinScript} disabled>使用脚本</a-button>
       <div style={{ margin: '20px' }}></div>
