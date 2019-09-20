@@ -1,19 +1,14 @@
-[中文在线文档](https://ly525.github.io/luban-h5/zh/) | [English](./README.en.md)
+ [📖中文在线文档](https://ly525.github.io/luban-h5/zh/) | [📖English](./README.en.md)
 
 <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
 </p>
 
-
-
-
-
-
 目录
 - [鲁班H5是什么？](#%E9%B2%81%E7%8F%ADh5%E6%98%AF%E4%BB%80%E4%B9%88)
 - [Screenshots](#screenshots)
 - [Features](#features)
-- [安装](#%E5%AE%89%E8%A3%85)
+- [快速开始](#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
 - [更多说明](#%E6%9B%B4%E5%A4%9A%E8%AF%B4%E6%98%8E)
   * [前端组件说明](#%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E8%AF%B4%E6%98%8E)
   * [技术栈（当前）](#%E6%8A%80%E6%9C%AF%E6%A0%88%E5%BD%93%E5%89%8D)
@@ -73,15 +68,8 @@
 
 ---
 
-### 安装
-> 说明：project：项目根目录
-
-1. 前端
-    1. 编辑器部分请参照 [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
-
-2. 后端
-     1. 后端 API 部分请参照 [`project/back-end/h5-api/README.md`](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)
-
+### 快速开始
+请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 `快速开始` 章节
 
 ### 更多说明
 #### 前端组件说明

@@ -1,4 +1,4 @@
-[Online English Document](https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us) | [简体中文](./README.md)
+📖 [Online English Document](https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us) | [简体中文](./README.md)
 
 
 <p align="left">
