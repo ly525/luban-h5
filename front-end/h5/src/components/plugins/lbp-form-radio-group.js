@@ -39,7 +39,17 @@ export default {
   },
   computed: {
     value_ () {
-      return this.type === 'radio' ? this.value : this.value.join(',')
+      if (this.type === 'radio') {
+        return this.value
+      } else {
+        const value = (Array.isArray(this.value) && this.value) || []
+        return value.join(',')
+      }
+    }
+  },
+  watch: {
+    type (type) {
+      this.value = type === 'radio' ? '' : []
     }
   },
   editorConfig: {
@@ -125,6 +135,9 @@ export default {
     this.uuid = this.$el.dataset.uuid
   },
   methods: {
+    /**
+     * @param {String, Number} val radioValue or checkboxValue
+     */
     onChange (val) {
       switch (this.type) {
         case 'radio':
