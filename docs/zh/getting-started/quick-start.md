@@ -98,12 +98,12 @@ h5-api/hook.json 配置如下：
 
 1. 本地开发，如果后端接口报错 403 Forbidden，请按照下图的操作，打开接口的访问权限接口：`[Roles And Permission] -> [Public] - [Permissions]`
 
-![](https://cdn.nlark.com/yuque/0/2019/png/358499/1567438464273-e0892ee2-5dca-45ec-a528-8090d80b23bd.png#align=left&display=inline&height=1016&originHeight=1016&originWidth=1906&size=0&status=done&width=1906)
+![1567438464273-e0892ee2-5dca-45ec-a528-8090d80b23bd](https://user-images.githubusercontent.com/12668546/65381949-32addd00-dd2e-11e9-967a-e313dc6fca89.png)
 
-![](https://cdn.nlark.com/yuque/0/2019/png/358499/1567438463824-d6b87f12-eecf-4ae2-aa9c-bb4c73c4127d.png#align=left&display=inline&height=1646&originHeight=1646&originWidth=1918&size=0&status=done&width=1918)
+![1567438463824-d6b87f12-eecf-4ae2-aa9c-bb4c73c4127d](https://user-images.githubusercontent.com/12668546/65381950-32addd00-dd2e-11e9-859a-dbec0941dc5a.png)
 
 ##### 上传封面图使用
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/358499/1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24.png#align=left&display=inline&height=314&name=image.png&originHeight=628&originWidth=2004&size=288569&status=done&width=1002)
+![1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24](https://user-images.githubusercontent.com/12668546/65381948-32154680-dd2e-11e9-95ea-589f808ce095.png)
 
 2. 如果后端没有安装 strapi-hook-ejs 或者 没有在 hook.json 中进行配置，会报错(如下)。解决方案：只要装了 ejs 插件并且正确配置即可
 ```javascript
