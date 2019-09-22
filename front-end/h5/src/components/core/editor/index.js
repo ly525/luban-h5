@@ -155,9 +155,9 @@ export default {
                 <a-dropdown trigger={['hover']} placement='bottomCenter'>
                   <a class="ant-dropdown-link" href="#"><a-icon type="down" /></a>
                   <a-menu slot="overlay" onClick={({ key }) => { this.pageManager({ type: key }) }}>
-                    <a-menu-item key="add"><a-icon type="user" />{this.$t('editor.pageManager.actions.add')}</a-menu-item>
-                    <a-menu-item key="copy"><a-icon type="user" />{this.$t('editor.pageManager.actions.copy')}</a-menu-item>
-                    <a-menu-item key="delete"><a-icon type="user" />{this.$t('editor.pageManager.actions.delete')}</a-menu-item>
+                    <a-menu-item key="add"><a-icon type="user" />{this.$t('editor.pageManager.action.add')}</a-menu-item>
+                    <a-menu-item key="copy"><a-icon type="user" />{this.$t('editor.pageManager.action.copy')}</a-menu-item>
+                    <a-menu-item key="delete"><a-icon type="user" />{this.$t('editor.pageManager.action.delete')}</a-menu-item>
                   </a-menu>
                 </a-dropdown>
               </span>
