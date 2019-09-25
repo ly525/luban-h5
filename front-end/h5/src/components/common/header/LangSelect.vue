@@ -1,6 +1,6 @@
 <template>
   <a-dropdown>
-    <span class="action global-lang">
+    <span class="action lang-select-activator">
       <!-- <a-icon type="global" style="font-size: 16px"/> -->
       {{langFlag}}
     </span>
