@@ -1,39 +1,21 @@
-# luban-h5
+## The Front-End Module For Luban H5
+includes 
+1. editor module
+2. work list module
+3. template list module
+4. preview module
 
-## Project setup
-```
-yarn install
-```
+## Getting Started
+<a href="https://www.yuque.com/liuyan-ew1qk/oh5d0n/gpfy6g" target="_blank">Read the Getting Started tutorial</a>
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## 鲁班H5前端模块
+包含
+1. 编辑器模块
+2. 作品列表模块
+3. 模板列表模块
+4. 预览模块、
 
-### Run your tests
-```
-yarn run test
-```
+## Getting Started
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your end-to-end tests
-```
-yarn run test:e2e
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<a href="https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html" target="_blank">快速上手指南</a>
