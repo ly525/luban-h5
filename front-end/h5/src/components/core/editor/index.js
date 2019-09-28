@@ -108,6 +108,7 @@ export default {
   }),
   computed: {
     ...mapState('editor', {
+      editingPage: state => state.editingPage,
       editingElement: state => state.editingElement,
       elements: state => state.editingPage.elements,
       pages: state => state.work.pages,
@@ -123,7 +124,8 @@ export default {
       'createWork',
       'fetchWork',
       'setWorkAsTemplate',
-      'setEditingElement'
+      'setEditingElement',
+      'setEditingPage'
     ]),
     ...mapActions('loading', {
       updateLoading: 'update'
@@ -148,7 +150,16 @@ export default {
         case sidebarMenus[1].value:
           return (
             this.pages.map((page, index) => (
-              <span style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0' }}>
+              <span
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  padding: '12px 0',
+                  color: page.uuid === this.editingPage.uuid ? '#1593ff' : ''
+                }}
+                class="cursor-pointer"
+                onClick={() => { this.setEditingPage(index) }}
+              >
                 {/* #!en: Page<Index> */}
                 {/* #!zh: 第<Index>页面 */}
                 <span>{this.$t('editor.pageManager.title', { index })}</span>
@@ -282,7 +293,7 @@ export default {
               <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div>
             </a-button-group>
           </a-layout-sider>
-          <a-layout-sider width="340" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+          <a-layout-sider width="380" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}
@@ -294,7 +305,7 @@ export default {
                   ElementUI：label
                   Ant Design Vue：tab
               */}
-              <a-tab-pane key="属性"><span slot="tab"><a-icon type="apple" />{this.$t('editor.editPanel.tab.prop')}</span><RenderPropsEditor/></a-tab-pane>
+              <a-tab-pane key="属性"><span slot="tab">{this.$t('editor.editPanel.tab.prop')}</span><RenderPropsEditor/></a-tab-pane>
               <a-tab-pane label="动画" key='动画' tab={this.$t('editor.editPanel.tab.animation')}><RenderAnimationEditor /></a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab={this.$t('editor.editPanel.tab.action')}>{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
               <a-tab-pane label="脚本" key='脚本' tab={this.$t('editor.editPanel.tab.script')}><RenderScriptEditor/></a-tab-pane>

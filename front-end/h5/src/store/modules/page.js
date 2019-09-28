@@ -2,8 +2,8 @@ import Page from '../../components/core/models/page'
 
 // actions
 export const actions = {
-  setEditingPage ({ commit }, payload) {
-    commit('setEditingPage', payload)
+  setEditingPage ({ commit }, pageIndex = 0) {
+    commit('setEditingPage', pageIndex)
   },
   pageManager ({ commit }, payload) {
     commit('pageManager', payload)
@@ -12,9 +12,8 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  setEditingPage (state, payload) {
-    payload = payload || state.work.pages[0]
-    state.editingPage = payload
+  setEditingPage (state, pageIndex = 0) {
+    state.editingPage = state.work.pages[pageIndex]
   },
   pageManager (state, { type, value }) {
     switch (type) {
