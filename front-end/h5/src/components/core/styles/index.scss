@@ -118,15 +118,14 @@
     .active-page {
       color: #2981fa;
     }
-
   }
 
-  .work-cover-img {
-    background-size: contain;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
+  .card-cover-wrapper {
+    position: relative;
+    height: 300px;
+    border: 1px dashed #eee;
+    color: #aaa;
+    padding: 4px;
   }
 }
 
@@ -171,4 +170,8 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }

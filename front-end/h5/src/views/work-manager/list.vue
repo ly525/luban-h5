@@ -41,9 +41,7 @@ const ListItemCard = {
   render (h) {
     return (
       <a-card hoverable >
-        <div slot="cover" class="flex-center" style="height: 200px;font-size: 24px;border: 1px dashed #eee;color: #aaa;background: #f7f5f557;" >
-          <CardCover qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
-        </div>
+        <CardCover slot="cover" qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
         <template class="ant-card-actions" slot="actions">
           {/** 编辑 */}
           <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.edit')}>
@@ -86,7 +84,7 @@ const AddNewCard = {
   render (h, { props, parent }) {
     return (
       <a-card hoverable>
-        <div slot="cover" class="flex-center" style="height: 305px;background: #f7f5f557;" onClick={props.handleCreate}>
+        <div slot="cover" class="flex-center" style="height: 415px;background: #f7f5f557;" onClick={props.handleCreate}>
           <a-icon type="plus" />
         </div>
         <template class="ant-card-actions" slot="actions">

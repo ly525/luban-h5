@@ -45,9 +45,7 @@ const ListItemCard = {
   render (h) {
     return (
       <a-card hoverable >
-        <div slot="cover" class="flex-center" style="height: 200px;font-size: 24px;border: 1px dashed #eee;color: #aaa;background: #f7f5f557;" >
-          <CardCover qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
-        </div>
+        <CardCover slot="cover" qrcodeUrl={this.qrcodeUrl} coverImageUrl={this.work.cover_image_url} />
         <template class="ant-card-actions" slot="actions">
           <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.useNow')}>
             <a-icon type="plus-square" title={this.$t('workCard.useNow')} onClick={() => {
