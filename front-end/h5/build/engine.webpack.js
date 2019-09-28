@@ -29,7 +29,7 @@ let webpackConfig = {
   entry: {
     engine: './src/engine-entry.js'
   },
-  devtool: false, // or '#source-map',
+  devtool: false, // or devtool: '#source-map',
   output: {
     path: engineBuildOutputDir,
     filename: '[name].js',
@@ -37,7 +37,11 @@ let webpackConfig = {
     library: 'Engine'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json']
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src')
+    }
   },
   externals: {
   },

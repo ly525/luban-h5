@@ -10,10 +10,15 @@ import Vue from 'vue'
 // import 'font-awesome/css/font-awesome.min.css'
 import { pluginsList } from './mixins/load-plugins.js'
 import Element from './components/core/models/element'
+import NodeWrapper from '@/components/preview/node-wrapper.js'
+
 Vue.config.productionTip = true
 
 const Engine = {
   name: 'engine',
+  components: {
+    NodeWrapper
+  },
   methods: {
     renderPreview (h, _elements) {
       const elements = _elements.map(element => new Element(element))
@@ -21,12 +26,15 @@ const Engine = {
         <div style={{ height: '100%', position: 'relative' }}>
           {
             elements.map((element, index) => {
-              const style = element.getStyle({ position: 'absolute', isRem: true })
-              const data = {
-                style,
-                props: element.getProps({ mode: 'preview' })
-              }
-              return h(element.name, data)
+              // const style = element.getStyle({ position: 'absolute', isRem: true })
+              // const data = {
+              //   style,
+              //   props: element.getProps({ mode: 'preview' })
+              // }
+              // return h(element.name, data)
+              return <node-wrapper element={element}>
+                {h(element.name, element.getPreviewData({ position: 'static' }))}
+              </node-wrapper>
             })
           }
         </div>
