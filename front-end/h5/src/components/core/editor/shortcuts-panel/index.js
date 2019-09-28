@@ -89,7 +89,7 @@ export default {
     return (
       <a-row gutter={20}>
         {
-          this.pluginsList.map(plugin => (
+          this.pluginsList.filter(plugin => plugin.visible).map(plugin => (
             <a-col span={12} style={{ marginTop: '10px' }}>
               <ShortcutButton
                 clickFn={this.onClickShortcut.bind(this, plugin)}

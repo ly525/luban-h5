@@ -41,18 +41,18 @@ export const pluginsList = [
     visible: true,
     name: LbpButton.name
   },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Carousel',
-  //     'zh-CN': '轮播图'
-  //   },
-  //   title: '轮播图',
-  //   icon: 'photo',
-  //   component: LbpFormRadioGroup,
-  //   visible: true,
-  //   name: LbpFormRadioGroup.name,
-  //   disabled: true
-  // },
+  {
+    i18nTitle: {
+      'en-US': 'Carousel',
+      'zh-CN': '轮播图'
+    },
+    title: '轮播图',
+    icon: 'photo',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name,
+    disabled: true
+  },
   {
     i18nTitle: {
       'en-US': 'Map',
