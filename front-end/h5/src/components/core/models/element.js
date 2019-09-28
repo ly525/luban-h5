@@ -34,7 +34,7 @@ class Element {
     this.pluginProps = (typeof ele.pluginProps === 'object' && clone(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
     this.commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || { ...defaultStyle }
     this.events = []
-    this.animations = []
+    this.animations = ele.animations || []
   }
 
   getDefaultPluginProps (editorConfig) {
