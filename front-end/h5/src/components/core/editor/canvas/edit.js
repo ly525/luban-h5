@@ -165,6 +165,11 @@ export default {
         >
           {
             elements.map((element, index) => {
+              if (element.name === 'lbp-background') {
+                return h('lbp-background', {
+                  props: element.getProps()
+                })
+              }
               const data = {
                 style: {
                   width: '100%',

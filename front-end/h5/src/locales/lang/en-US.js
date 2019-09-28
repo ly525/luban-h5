@@ -76,7 +76,8 @@ export default {
         prop: 'Prop',
         animation: 'Animation',
         action: 'Action',
-        script: 'Script'
+        script: 'Script',
+        background: 'Background'
       },
       animation: {
         add: 'Add',

@@ -5,6 +5,7 @@ import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
 import LbpFormButton from '../components/plugins/lbp-form-button'
 import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
+import LbpBackground from '../components/plugins/lbp-background'
 
 export const pluginsList = [
   {
@@ -40,18 +41,18 @@ export const pluginsList = [
     visible: true,
     name: LbpButton.name
   },
-  {
-    i18nTitle: {
-      'en-US': 'Carousel',
-      'zh-CN': '轮播图'
-    },
-    title: '轮播图',
-    icon: 'photo',
-    component: LbpFormRadioGroup,
-    visible: true,
-    name: LbpFormRadioGroup.name,
-    disabled: true
-  },
+  // {
+  //   i18nTitle: {
+  //     'en-US': 'Carousel',
+  //     'zh-CN': '轮播图'
+  //   },
+  //   title: '轮播图',
+  //   icon: 'photo',
+  //   component: LbpFormRadioGroup,
+  //   visible: true,
+  //   name: LbpFormRadioGroup.name,
+  //   disabled: true
+  // },
   {
     i18nTitle: {
       'en-US': 'Map',
@@ -133,6 +134,17 @@ export const pluginsList = [
     component: LbpFormRadioGroup,
     visible: true,
     name: LbpFormRadioGroup.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Background',
+      'zh-CN': '背景'
+    },
+    title: '背景',
+    icon: 'dot-circle-o',
+    component: LbpBackground,
+    visible: false,
+    name: LbpBackground.name
   }
 ]
 

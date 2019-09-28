@@ -53,6 +53,12 @@ class Element {
   }
 
   getStyle ({ position = 'static', isRem = false } = {}) {
+    if (this.name === 'lbp-background') {
+      return {
+        width: '100%',
+        height: '100%'
+      }
+    }
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {

@@ -75,7 +75,8 @@ export default {
         prop: '属性',
         animation: '动画',
         action: '动作',
-        script: '脚本'
+        script: '脚本',
+        background: '背景'
       },
       animation: {
         add: '添加动画',
