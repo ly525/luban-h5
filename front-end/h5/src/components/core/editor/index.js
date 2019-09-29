@@ -11,6 +11,7 @@ import RenderPropsEditor from './edit-panel/props'
 import RenderScriptEditor from './edit-panel/script'
 import RenderAnimationEditor from './edit-panel/animation'
 import RenderActoionEditor from './edit-panel/action'
+import RenderBackgroundEditor from './edit-panel/background'
 import RenderShortcutsPanel from './shortcuts-panel/index'
 import PreviewDialog from './modals/preview.vue'
 
@@ -297,7 +298,13 @@ export default {
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}
-              onChange={activeTabKey => { this.activeTabKey = activeTabKey }}
+              onChange={activeTabKey => {
+                this.activeTabKey = activeTabKey
+                if (activeTabKey === 'background') {
+                  const bgElement = this.elements.find(e => e.name === 'lbp-background')
+                  this.setEditingElement(bgElement)
+                }
+              }}
             >
               {/*
                 #!zh tab 标题：
@@ -309,6 +316,7 @@ export default {
               <a-tab-pane label="动画" key='动画' tab={this.$t('editor.editPanel.tab.animation')}><RenderAnimationEditor /></a-tab-pane>
               <a-tab-pane label="动作" key='动作' tab={this.$t('editor.editPanel.tab.action')}>{ this.activeTabKey === '动作' && <RenderActoionEditor/> }</a-tab-pane>
               <a-tab-pane label="脚本" key='脚本' tab={this.$t('editor.editPanel.tab.script')}><RenderScriptEditor/></a-tab-pane>
+              <a-tab-pane label="背景" key='background' tab={this.$t('editor.editPanel.tab.background')}><RenderBackgroundEditor/></a-tab-pane>
             </a-tabs>
           </a-layout-sider>
 

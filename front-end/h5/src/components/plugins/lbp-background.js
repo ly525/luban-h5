@@ -34,7 +34,8 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: 'transparent'
+      // TODO 为什么 transparent 无效？
+      default: '#ffffff'
     }
   },
   editorConfig: {

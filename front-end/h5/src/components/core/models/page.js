@@ -1,9 +1,10 @@
 import Element from '../models/element'
+import LbpBackground from '../../plugins/lbp-background'
 
 class Page {
   constructor (page = {}) {
     this.uuid = +new Date()
-    this.elements = page.elements || []
+    this.elements = page.elements || [new Element(LbpBackground)]
   }
 
   clone () {
