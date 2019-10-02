@@ -1,7 +1,6 @@
 <script>
 import { mapActions } from 'vuex'
 import QRCode from 'qrcode'
-import { API_ORIGIN } from '../../../../constants/api.js'
 
 export default {
   props: {
@@ -64,7 +63,7 @@ export default {
     },
     postMessage2Iframe (message) {
       let iframeWin = document.getElementById('iframe-for-preview').contentWindow
-      iframeWin.postMessage(message, API_ORIGIN)
+      iframeWin.postMessage(message, window.location.origin)
     },
     openNewTab () {
       window.open(this.releaseUrl)
