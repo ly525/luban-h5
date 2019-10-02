@@ -6,6 +6,7 @@ import LbpFormInput from '../components/plugins/lbp-form-input'
 import LbpFormButton from '../components/plugins/lbp-form-button'
 import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
 import LbpBackground from '../components/plugins/lbp-background'
+import LbpSlide from '../components/plugins/lbp-slide'
 
 export const pluginsList = [
   {
@@ -48,10 +49,10 @@ export const pluginsList = [
     },
     title: '轮播图',
     icon: 'photo',
-    component: LbpFormRadioGroup,
+    component: LbpSlide,
     visible: true,
-    name: LbpFormRadioGroup.name,
-    disabled: true
+    name: LbpSlide.name
+    // disabled: true
   },
   {
     i18nTitle: {
