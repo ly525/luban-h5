@@ -1,6 +1,5 @@
-// const defaultPngPath = 'http://jietu-10024907.file.myqcloud.com/kblthjeuhituluuaalpiuyvfwrldpkrj.jpg'
 // issue 34
-import placeholderImg from './lbp-picture-placeholder.jpg'
+import placeholderImg from './lbp-picture-placeholder.png'
 export default {
   name: 'lbp-picture',
   render () {
