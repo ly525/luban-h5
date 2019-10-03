@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'
+import LbpVideo from '../components/plugins/lbp-video'
 import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
 import LbpFormButton from '../components/plugins/lbp-form-button'
@@ -73,10 +74,9 @@ export const pluginsList = [
     },
     title: '视频',
     icon: 'file-video-o',
-    component: LbpFormRadioGroup,
+    component: LbpVideo,
     visible: true,
-    name: LbpFormRadioGroup.name,
-    disabled: true
+    name: LbpVideo.name
   },
   // {
   //   title: '视频',
