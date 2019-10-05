@@ -172,6 +172,11 @@
   justify-content: center;
 }
 
+.flex-space-between {
+  display: flex !important;
+  justify-content: space-between;
+}
+
 .cursor-pointer {
   cursor: pointer !important;
 }

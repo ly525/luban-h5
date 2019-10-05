@@ -1,3 +1,5 @@
+import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
+
 export default {
   name: 'lbp-background',
   render () {
@@ -41,8 +43,8 @@ export default {
   editorConfig: {
     propsConfig: {
       imgSrc: {
-        // type: 'picture-picker',
-        type: 'a-input',
+        type: 'image-gallery',
+        // type: 'a-input',
         label: '图片url',
         prop: {
           type: 'textarea'
@@ -60,7 +62,7 @@ export default {
       }
     },
     components: {
-    //   'picture-picker': PicturePicker,
+      'image-gallery': ImageGallery
     }
   }
 }
