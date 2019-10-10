@@ -32,10 +32,10 @@ export default {
         <div style={style}></div>
       ]
     },
-    getCoverBg (img) {
+    getCoverBg (img, isQrcode = false) {
       const style = {
         ...getDefaultStyle(img),
-        filter: 'blur(10px)'
+        filter: !isQrcode && 'blur(10px)'
       }
       return [
         <div style={style}></div>
@@ -47,7 +47,7 @@ export default {
     const coverImg = this.coverImageUrl
 
     if (this.qrcodeUrl) {
-      covers = this.getCover(this.qrcodeUrl)
+      covers = this.getCoverBg(this.qrcodeUrl, true)
     } else if (coverImg) {
       covers = [this.getCover(coverImg), this.getCoverBg(coverImg)]
     }
