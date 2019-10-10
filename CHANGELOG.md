@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/ly525/luban-h5/compare/v1.4.1...v1.5.0) (2019-10-10)
+
+
+### Bug Fixes
+
+* qrcode style ([b70ec62](https://github.com/ly525/luban-h5/commit/b70ec62))
+* start with local cli ([a1a5542](https://github.com/ly525/luban-h5/commit/a1a5542))
+
+
+### Features
+
+* pick image from image gallery ([33db8e9](https://github.com/ly525/luban-h5/commit/33db8e9))
+
 ### [1.4.1](https://github.com/ly525/luban-h5/compare/v1.4.0...v1.4.1) (2019-09-18)
 
 
