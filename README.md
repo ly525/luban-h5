@@ -28,19 +28,16 @@
 
 <img src="https://s2.ax1x.com/2019/10/11/u7WzUx.gif" style="margin: 10px;" width="60%" />
 
----
-
 
 ### 快速开始
 请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 `快速开始` 章节
 
----
 
 ### 交流群
 
 | 钉钉群  | 微信公众号  |  微信 |
 |---|---|---|
-| <img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="140" />| <img src="https://user-images.githubusercontent.com/12668546/65471913-ab827580-dea3-11e9-919c-870c9605c60f.png" width="140" />  | <img src="https://user-images.githubusercontent.com/12668546/66585418-5cce1e80-ebb9-11e9-91c0-56f658f09e27.png" width="140" /> | 
+| <img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200" />| <img src="https://user-images.githubusercontent.com/12668546/65471913-ab827580-dea3-11e9-919c-870c9605c60f.png" width="200" />  | <img src="https://user-images.githubusercontent.com/12668546/66585418-5cce1e80-ebb9-11e9-91c0-56f658f09e27.png" width="200" /> <br />请备注：鲁班H5交流| 
 
 ## 更多细节请阅读[在线文档](https://ly525.github.io/luban-h5)
 
