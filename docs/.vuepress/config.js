@@ -5,7 +5,7 @@ const title = '鲁班H5 文档';
 const description = '前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀.';
 const color = '#2F80ED';
 const author = 'ly525';
-const url = 'http://docs.huban-h5.surge.sh/';
+const url = 'https://ly525.github.io/luban-h5';
 
 module.exports = {
   head: [
@@ -93,6 +93,7 @@ module.exports = {
     // },
     editLinks: true,
     editLinkText: 'Improve this page',
+    docsBranch: 'dev',
     serviceWorker: true,
     hiddenLinks: [
       '/zh/cli/CLI.html',

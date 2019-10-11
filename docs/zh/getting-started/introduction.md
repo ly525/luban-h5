@@ -26,8 +26,7 @@
 
 > [更多作品演示图片，点击查看](https://github.com/ly525/luban-h5/issues/15)
 
-![image](https://s2.ax1x.com/2019/08/23/mBLuqI.gif)
-![image](https://user-images.githubusercontent.com/12668546/63207252-4f367400-c0f5-11e9-952a-9a3f6f72a710.png)
+![image](https://s2.ax1x.com/2019/10/11/u7WzUx.gif)
 
 ---
 
