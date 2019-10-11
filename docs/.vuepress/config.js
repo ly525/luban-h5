@@ -75,7 +75,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'Document(En)', link: 'https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us' },
-      { text: 'Website', link: 'https://ly525.github.io/luban-h5' },
+      { text: 'Website', link: 'https://api.luban-h5.wxjcart.com' },
     ],
     versions: [
       ['zh', '/zh/'],
@@ -107,6 +107,7 @@ module.exports = {
             '/zh/getting-started/introduction',
             '/zh/getting-started/features',
             '/zh/getting-started/quick-start',
+            '/zh/getting-started/engine',
             '/zh/getting-started/code-structure',
             '/zh/getting-started/deployment',
             '/zh/getting-started/feedback',

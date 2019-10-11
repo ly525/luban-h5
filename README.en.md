@@ -1,19 +1,16 @@
-📖 [Online English Document](https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us) | [简体中文](./README.md)
-
-
 <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
 </p>
 
+📖 [Online English Document](https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us) | [简体中文](./README.md)
 
 ### What's LuBan-H5?
 > LuBan-H5 is a mobile page builder based on Vue.js, which is similar with [Amolink](www.amolink.com) [eqx](http://www.eqxiu.com)(it's a chinese website, you may need to translate the page). It also supports parsing PSD file to HMTL5 Page
 
-### Screenshots
-<img src="https://user-images.githubusercontent.com/12668546/64076899-3df88480-ccfd-11e9-877b-8e6a86888da3.png" style="margin: 10px;" width="60%" />
-<img src="https://user-images.githubusercontent.com/12668546/64076911-6d0ef600-ccfd-11e9-9376-e65a42478853.png" style="margin: 10px;" width="60%" />
-<img src="https://user-gold-cdn.xitu.io/2019/8/17/16ca02d61136ed30?imageslim" style="margin: 10px;" width="60%" />
-<img src="https://user-images.githubusercontent.com/12668546/63207252-4f367400-c0f5-11e9-952a-9a3f6f72a710.png" style="margin: 10px;" width="60%"/>
+### Demo
+> [Preview Website](https://api.luban-h5.wxjcart.com)
+
+<img src="https://s2.ax1x.com/2019/10/11/u7WzUx.gif" style="margin: 10px;" width="60%" />
 
 
 

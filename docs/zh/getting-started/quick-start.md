@@ -1,4 +1,5 @@
 # 快速开始
+> 重要：关于此部分有疑惑，请在下面直接评论
 
 ## 基础概念
 > 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
@@ -128,7 +129,7 @@ yarn serve # develop
 ```
 
 ### 2. 构建预览所需的渲染引擎
-1. 在 front-end/h5 目录下，运行：`node build/engine.webpack.js` (这个是用来生成预览引擎的东西)
+1. 在 front-end/h5 目录下，运行：`yarn engine:build` (这个是用来生成预览引擎的东西)
 2. 构建完成之后,看下 后端的 `h5-api/public` 里面会多一个文件夹 `engine-assets`
 3. 打开的预览窗口（preview.vue）,里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
   也就是说，这个预览其实依赖后端的渲染引擎 比如 ejs 或者 jade 这种模板引擎，所以 `build/engine.webpack.js` 的 `output dir` 是在`back-end/h5-api/public`中的
