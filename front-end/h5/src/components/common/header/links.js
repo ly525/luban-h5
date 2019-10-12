@@ -30,6 +30,9 @@ export default {
         <a-menu-item key="document-en">
           <a href="https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />Document(En)</a>
         </a-menu-item>
+        <a-menu-item key="gitee">
+          <a href="https://gitee.com/ly525/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}>Gitee</a>
+        </a-menu-item>
         <a-menu-item key="github">
           <a href="https://github.com/ly525/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="github" />Github</a>
         </a-menu-item>
