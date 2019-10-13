@@ -1,0 +1,29 @@
+@import './custom.less';
+.footer0-wrapper {
+  background-color: @template-bg-color;
+  height: 80px;
+  overflow: hidden;
+  .footer0 {
+    height: 100%;
+    padding: 0 24px;
+    line-height: 80px;
+    text-align: center;
+    color: @template-footer-text-color;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer0-wrapper {
+    .footer0 {
+      font-size: 12px;
+      &.home-page {
+        padding: 0;
+      }
+      >div {
+        width: 90%;
+        margin: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^3.23.6",
+    "enquire-js": "^0.2.1",
+    "qrcode.react": "^0.9.3",
+    "rc-banner-anim": "^2.4.2",
+    "rc-queue-anim": "^1.8.2",
+    "rc-scroll-anim": "^2.6.2",
+    "rc-tween-one": "^2.6.5",
+    "react": "^16.10.2",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.10.2",
+    "umi-plugin-react": "^1.12.3"
+  },
+  "devDependencies": {
+    "atool-build": "^1.0.8",
+    "umi": "^2.10.2"
+  },
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "deploy": "rm -rf dist && umi build &&  ./deploy.sh"
+  }
+}

@@ -1,0 +1,33 @@
+@import "~antd/lib/style/v2-compatible-reset.less";
+@import "~antd/lib/style/themes/default.less";
+
+@line-color: #e9e9e9;
+
+@shadow-color: rgba(0, 0, 0, 0.15);
+
+// @template-bg-color: #001529;
+@template-bg-color: #fff;
+@template-bg-color-light: #ececec;
+@template-nav-bg-color: fade(@template-bg-color, 95%);
+@template-text-color: #ccc;
+@template-text-title-color: #bcbcbc;
+@template-text-color-light: #fff;
+@template-footer-text-color: #999;
+
+@animate-duration: .45s;
+
+// 详细页图片或框框的样式;
+.page-shadow() {
+  box-shadow: 0 5px 8px @shadow-color;
+}
+
+.page-pro() {
+  border-radius: 6px;
+  border: 1px solid @line-color;
+  transform: translateY(0);
+  transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+  &:hover {
+    .page-shadow();
+    transform: translateY(-5px);
+  }
+}

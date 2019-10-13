@@ -1,0 +1,1 @@
+scp -r dist/* centos@aliyun:/home/centos/codebase/luban/luban-h5-dist/landing-page
