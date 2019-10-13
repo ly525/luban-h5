@@ -6,7 +6,7 @@ includes
 4. preview module
 
 ## Getting Started
-<a href="https://www.yuque.com/liuyan-ew1qk/oh5d0n/gpfy6g" target="_blank">Read the Getting Started tutorial</a>
+<a href="https://ly525.github.io/luban-h5/en/getting-started/quick-start.html" target="_blank">Read the Getting Started tutorial</a>
 
 
 ## 鲁班H5前端模块

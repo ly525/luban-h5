@@ -55,7 +55,7 @@
 
 ### Installs
 > proj: project root path
-please refer to: [`Document/Quick Start`](https://www.yuque.com/liuyan-ew1qk/oh5d0n/gpfy6g?language=en-us)
+please refer to: [`Document/Quick Start`](https://ly525.github.io/luban-h5/en/getting-started/quick-start.html?language=en-us)
 
 
 ---
@@ -70,7 +70,7 @@ please refer to: [`Document/Quick Start`](https://www.yuque.com/liuyan-ew1qk/oh5
   3. Storage: Sqlite
 
 
-Read more here [Online English Document](https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us)
+Read more here [Online English Document](https://ly525.github.io/luban-h5)
 
 ---
 

@@ -1,6 +1,6 @@
 # Features
 
-### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#53733cd6)Editor
+### Editor
 - [x]  Reference line
 - [x]  Adsorption line, assembly alignment
 - [x]  Towing change component shape
@@ -14,9 +14,9 @@
 - [x]  Undo, redo
 
 
-### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#40fb9f22)Component System
+### Component System
 
-#### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#GQa0Y)Basic component
+#### Basic component
 
 - [x]  Ordinary text
 - [x]  Normal button
@@ -25,7 +25,7 @@
 - [ ]  Video (Iframe form)
 
 
-#### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#Ibh4H)Form Component
+#### Form Component
 
 - [x]  Form button
 - [x]  Form input box
@@ -34,7 +34,7 @@
 
 
 
-### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#4uFaO)Enhancements [open source]
+### Enhancements [open source]
 
 - [x]  Template list
 - [x]  Making H5 based on template
@@ -45,13 +45,13 @@
 
 
 
-### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#kDYKy)Enhancements [may not open source]
+### Enhancements [may not open source]
 > Has been investigated, can be realized, advanced functions, not yet open
 
 - [x]  Upload PSD, one-click conversion to H5
 - [x] Custom script
 
-### [](https://www.yuque.com/liuyan-ew1qk/oh5d0n/siwn9y?translate=en#289dcb17)Backend API
+### Backend API
 
 - [x]  Create, save, and update works
 - [x]  Form data collection

@@ -1,5 +1,6 @@
 module.exports = {
   title: '鲁班H5',
+  base: '/luban-h5/',
   locales: {
     '/': {
       lang: 'en-US',
@@ -17,6 +18,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     editLinks: true,
     docsDir: 'docs',
+    docsBranch: 'dev',
     serviceWorker: {
       updatePopup: {
         message: 'New content is available.',

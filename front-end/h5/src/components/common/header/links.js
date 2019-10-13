@@ -25,10 +25,10 @@ export default {
         </a-menu-item>
         <a-menu-item key="document">
           {/* <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />文档</a> */}
-          <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />{this.$t('header.chineseDocument')}</a>
+          <a href="https://ly525.github.io/luban-h5/zh/" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />{this.$t('header.chineseDocument')}</a>
         </a-menu-item>
         <a-menu-item key="document-en">
-          <a href="https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />Document(En)</a>
+          <a href="https://ly525.github.io/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}><a-icon type="read" />Document(En)</a>
         </a-menu-item>
         <a-menu-item key="gitee">
           <a href="https://gitee.com/ly525/luban-h5" target="_blank" rel="noopener" style={{ color: 'white' }}>Gitee</a>

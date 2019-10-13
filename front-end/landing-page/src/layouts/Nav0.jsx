@@ -132,7 +132,7 @@ class Header extends React.Component {
                     window.open('https://ly525.github.io/luban-h5/zh/')
                   }}>中文文档</Menu.Item>
                   <Menu.Item key="setting:2" onClick={() => {
-                    window.open('https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us')
+                    window.open('https://ly525.github.io/luban-h5')
                   }}>English Doc</Menu.Item>
                 </Menu.ItemGroup>
               </SubMenu>

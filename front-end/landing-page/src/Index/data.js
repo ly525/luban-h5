@@ -257,7 +257,7 @@ export const page4 = [
 export const footer = [
   // { text: '解决方案', src: '#' },
   { text: '中文文档', src: 'https://ly525.github.io/luban-h5' },
-  { text: 'English Document', src: 'https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us' },
+  { text: 'English Document', src: 'https://ly525.github.io/luban-h5' },
   // { text: '模板开发文档', src: '#' },
   { text: '联系我们', src: 'https://github.com/ly525/luban-h5#%E4%BA%A4%E6%B5%81%E7%BE%A4' },
   // { text: '联系我们', src: 'mailto:zhao.wuz@antfin.com' },
