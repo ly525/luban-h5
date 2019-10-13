@@ -1,4 +1,11 @@
- <p align="left">
+<h2 align="center">
+ 鲁班 H5
+</h2>
+<p align="center">
+基于Vue开发，通过拖拽的形式，生成移动页面
+</p>
+
+<p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
 </p>
 
