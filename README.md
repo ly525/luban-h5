@@ -1,11 +1,13 @@
  <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
 </p>
- 
- [📖中文在线文档](https://ly525.github.io/luban-h5/zh/) | [📖English](./README.en.md)
 
-1. GitHub 地址：https://github.com/ly525/luban-h5
-2. Gitee 地址(国内镜像)：https://gitee.com/ly525/luban-h5
+### 🔗Links/相关链接
+1. [中文社区/论坛](https://support.qq.com/product/93432)
+2. [📖中文在线文档](https://ly525.github.io/luban-h5/zh/) 
+3. [📖English README](./README.en.md)
+4. GitHub：https://github.com/ly525/luban-h5
+5. Gitee (国内镜像)：https://gitee.com/ly525/luban-h5
 
 目录
 - [鲁班H5是什么？](#%E9%B2%81%E7%8F%ADh5%E6%98%AF%E4%BB%80%E4%B9%88)
