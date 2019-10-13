@@ -1,4 +1,5 @@
 const path = require('path')
+const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
 const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
 
@@ -17,7 +18,8 @@ switch (process.env.PAGE) {
       template: 'public/index.html',
       filename: 'index.html',
       title: 'Index Page',
-      outputDir: 'dist'
+      outputDir: 'dist',
+      publicPath: isProd ? '/main/' : '/'
     }
 }
 
@@ -31,6 +33,7 @@ const configureWebpack = {
 
 module.exports = {
   outputDir: page.outputDir,
+  publicPath: page.publicPath,
   lintOnSave: process.env.NODE_ENV !== 'production',
   productionSourceMap: process.env.NODE_ENV !== 'production',
   pages: { index: page },

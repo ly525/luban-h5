@@ -75,7 +75,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'Document(En)', link: 'https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us' },
-      { text: 'Website', link: 'https://api.luban-h5.wxjcart.com' },
+      { text: 'Website', link: 'https://api.luban-h5.wxjcart.com/main' },
     ],
     versions: [
       ['zh', '/zh/'],
