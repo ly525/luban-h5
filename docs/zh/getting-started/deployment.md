@@ -1,33 +1,35 @@
-# Deployment/部署
+# 部署
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 ## 阿里云/腾讯云/Digital Ocean
-#### 云服务器(centos)
-首先需要安装一些基础的软件包，请自行安装（具体参照其官网文档）
+> 以 Centos 为例，Ubuntu等其它发行版，请自行调整
 
--  node
--  npm
--  nginx
--  yarn
--  pm2
+1. 预安装：
 
-以下脚本仅供参考
+  - 首先需要安装一些基础的软件包，请自行安装（具体参照其官网文档）
+    -  node
+    -  npm
+    -  nginx
+    -  yarn
+    -  pm2
 
-```bash
-# install yarn
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo yum install yarn -y
+  - 1.2 以下脚本仅供参考
 
-# install nginx
-sudo yum install nginx -y
-# install pm2
-npm install pm2 -g
-# pm2 examples
-# pm2 start server.js
-# pm2 stop server
-# pm2 restart server
-# pm2 stop all
+  ```bash
+  # install yarn
+  curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+  sudo yum install yarn -y
 
-```
+  # install nginx
+  sudo yum install nginx -y
+  # install pm2
+  npm install pm2 -g
+  # pm2 examples
+  # pm2 start server.js
+  # pm2 stop server
+  # pm2 restart server
+  # pm2 stop all
+  ```
 
 nginx 配置文件 demo
 
@@ -43,8 +45,8 @@ server {
   proxy_busy_buffers_size 20M;
 
   ssl on;
-  ssl_certificate cert/luban-api.pem;
-  ssl_certificate_key cert/luban-api.key;
+  ssl_certificate cert/your-https.pem;
+  ssl_certificate_key cert/your-https.key;
   ssl_session_timeout 5s;
   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -65,8 +67,8 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_pass http://localhost:1337;
   }
-  location / {
 
+  location / {
     root /home/centos/codebase/luban/luban-h5-dist/front-end/;
     #try_files $uri $uri/ /index.html;
   }
@@ -165,7 +167,8 @@ plan.remote(remote => {
 #### 中间可能遇到的一些问题：
 
 1. `Cannot parse privateKey: Unsupported key format` 
-解决方案请参照：[Cannot parse privateKey: Unsupported key format](https://stackoverflow.com/questions/53400628/cannot-parse-privatekey-unsupported-key-format)
+
+    解决方案请参照：[Cannot parse privateKey: Unsupported key format](https://stackoverflow.com/questions/53400628/cannot-parse-privatekey-unsupported-key-format)
 
 
 ## Docker 部署
@@ -174,11 +177,10 @@ plan.remote(remote => {
 > 但仅供参考，此方案不是鲁班的官方的解决方案
 >
 > 鲁班决定暂时不按照这种方案来做，可以先使用上面部署脚本来发布到服务器上，进行部署。
-> 鲁班后期考虑出一个简单版本docker image的部署方案，直接拉镜像，在服务器端就能直接跑起来。
 >
+> 鲁班后期考虑出一个简单版本docker image的部署方案，直接拉镜像，在服务器端就能直接跑起来。
 
-请确保您的`80`端口和`443`端口均打开，如果已经配置了其它项目，请进行手工调整。
-
+1. 请确保您的`80`端口和`443`端口均打开，如果已经配置了其它项目，请进行手工调整。
 1. 修改`yourdomain.tld`为您的前端域名并解析到服务器。
 1. 修改`api.yourdomain.tld`为您的后端域名并解析到服务器。
 1. 依次执行以下命令。
@@ -317,8 +319,11 @@ Docker命令详解（run篇）
 
 
 ## Heroku
-> 因为 Strapi + postgresql  在 Heroku 上还有一些坑，需要官方解决，这个方案暂时pending
+> TODO
 
 ---
+
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+
 
 <Vssue issueId="7" />

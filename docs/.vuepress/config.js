@@ -1,147 +1,114 @@
-const container = require('markdown-it-container');
-
-const ogprefix = 'og: http://ogp.me/ns#';
-const title = '鲁班H5 文档';
-const description = '前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀.';
-const color = '#2F80ED';
-const author = 'ly525';
-const url = 'https://ly525.github.io/luban-h5';
-
 module.exports = {
-  head: [
-    ['link', { rel: 'icon', href: `/luban-logo.png` }],
-    ['meta', { name: 'theme-color', content: color }],
-    ['meta', { prefix: ogprefix, property: 'og:title', content: title }],
-    ['meta', { prefix: ogprefix, property: 'twitter:title', content: title }],
-    ['meta', { prefix: ogprefix, property: 'og:type', content: 'article' }],
-    ['meta', { prefix: ogprefix, property: 'og:url', content: url }],
-    [
-      'meta',
-      { prefix: ogprefix, property: 'og:description', content: description },
-    ],
-    [
-      'meta',
-      { prefix: ogprefix, property: 'og:image', content: `${url}luban-logo.png` },
-    ],
-    [
-      'meta',
-      { prefix: ogprefix, property: 'og:article:author', content: author },
-    ],
-    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    [
-      'meta',
-      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    ],
-    // ['link', { rel: 'apple-touch-icon', href: `/assets/apple-touch-icon.png` }],
-    // ['link', { rel: 'mask-icon', href: '/assets/safari-pinned-tab.svg', color: color }],
-    ['meta', { name: 'msapplication-TileImage', content: '/luban-logo.png' }],
-    ['meta', { name: 'msapplication-TileColor', content: color }],
-    ['script', { src: '/yandex.js' }],
-  ],
-  markdown: {
-    anchor: {
-      permalink: true,
+  title: '鲁班H5',
+  locales: {
+    '/': {
+      lang: 'en-US',
+      // description: 'OpenSource Mobile Page Builder&Generator with Drag&Drop\r\n前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀',
+      description: 'OpenSource Mobile Page Builder&Generator',
     },
-    // config: md => {
-    //   md.use(require('markdown-it-decorate')) // https://github.com/vuejs/vuepress/issues/986
-    //     .use(require('markdown-it-task-lists'))
-    //     .use(...createContainer('intro'))
-    //     .use(...createContainer('windows'))
-    //     .use(...createContainer('ubuntu'))
-    //     .use(...createContainer('mac'))
-    //     .use(...createContainer('note'));
-    //   const vuepressTabs = require('vuepress-tabs');
-    //   vuepressTabs(md);
-    // },
+    '/zh/': {
+      lang: 'zh-CN',
+      // description: '前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀',
+    },
   },
-  extendMarkdown (md) {
-    md.use(require('markdown-it-decorate')) // https://github.com/vuejs/vuepress/issues/986
-      .use(require('markdown-it-task-lists'))
-      .use(...createContainer('intro'))
-      .use(...createContainer('windows'))
-      .use(...createContainer('ubuntu'))
-      .use(...createContainer('mac'))
-      .use(...createContainer('note'));
-    const vuepressTabs = require('vuepress-tabs');
-    vuepressTabs(md);
-  },
-  title,
-  description,
-  // why '/documentation' not work for surge.sh
-  // base: '/' for surge.sh
-  // base '/luban-h5/' for github pages
-  base: '/luban-h5/',
-  // ga: '',
+  serviceWorker: {},
   themeConfig: {
-    nav: [
-      { text: 'Document(En)', link: 'https://www.yuque.com/liuyan-ew1qk/oh5d0n?language=en-us' },
-      { text: 'Website', link: 'https://api.luban-h5.wxjcart.com/main' },
-    ],
-    versions: [
-      ['zh', '/zh/'],
-      ['en', '/en/'],
-    ],
     repo: 'ly525/luban-h5',
-    // website: 'https://ly525.github.io/luban-h5',
-    // slack: 'https://github.com/ly525/luban-h5',
-    // blog: 'https://github.com/ly525/luban-h5',
-    // liveDemo: 'https://ly525.github.io/luban-h5',
-    docsDir: 'docs',
-    // algolia: {
-    //   apiKey: '0d43b0d883366a06e0f2ff8fe988ae51',
-    //   indexName: 'luban-h5-docs',
-    // },
+    lastUpdated: 'Last Updated',
     editLinks: true,
-    editLinkText: 'Improve this page',
-    docsBranch: 'dev',
-    serviceWorker: true,
-    hiddenLinks: [
-      '/zh/cli/CLI.html',
-      '/zh/api-reference/reference.html',
-    ],
-    sidebar: {
-      '/zh/': [
-        {
-          collapsable: false,
-          title: '🚀 Getting started',
-          children: [
-            '/zh/getting-started/introduction',
-            '/zh/getting-started/features',
-            '/zh/getting-started/quick-start',
-            '/zh/getting-started/engine',
-            '/zh/getting-started/code-structure',
-            '/zh/getting-started/deployment',
-            '/zh/getting-started/feedback',
-            '/zh/getting-started/qa',
-            '/zh/getting-started/discussion',
+    docsDir: 'docs',
+    serviceWorker: {
+      updatePopup: {
+        message: 'New content is available.',
+        buttonText: 'Refresh',
+      },
+    },
+    locales: {
+      '/': {
+        selectText: 'Languages',
+        label: 'English',
+        editLinkText: 'Edit this page on GitHub',
+        nav: [
+          // { text: 'Guide', link: '/guide/' },
+          // { text: 'Config', link: '/config/' },
+          // { text: 'API', link: '/api/' },
+          { text: 'Website', link: 'https://api.luban-h5.wxjcart.com/' },
+          { text: 'Changelog', link: 'https://github.com/ly525/luban-h5/releases' },
+        ],
+        sidebar: {
+          '/': [
+            {
+              collapsable: false,
+              title: '🚀 Getting started',
+              children: [
+                '/en/getting-started/introduction',
+                '/en/getting-started/features',
+                '/en/getting-started/quick-start',
+                '/en/getting-started/deployment',
+                '/en/getting-started/discussion',
+              ],
+            },
+            {
+              collapsable: true,
+              title: '💡Implementation',
+              children: [
+                '/en/implementation/code-structure',
+                '/en/implementation/form-submit',
+              ],
+            },
+            {
+              collapsable: true,
+              title: '🔌 Local plugins',
+              children: [
+                '/en/plugin-development/quick-start',
+              ],
+            },
           ],
         },
-        {
-          collapsable: true,
-          title: '💡 实现思路',
-          children: [
-            '/zh/guides/form-submit',
+      },
+      '/zh/': {
+        selectText: '选择语言',
+        label: '简体中文',
+        editLinkText: '在 GitHub 上编辑此页',
+        nav: [
+          // { text: '指南', link: '/zh/guide/' },
+          // { text: '配置', link: '/zh/config/' },
+          // { text: 'API', link: '/zh/api/' },
+          // { text: '插件', link: '/zh/plugin/' },
+          { text: '首页', link: 'https://api.luban-h5.wxjcart.com/' },
+          { text: '发布日志', link: 'https://github.com/ly525/luban-h5/releases' },
+        ],
+        sidebar: {
+          '/': [
+            {
+              collapsable: false,
+              title: '🚀 Getting started',
+              children: [
+                '/zh/getting-started/introduction',
+                '/zh/getting-started/features',
+                '/zh/getting-started/quick-start',
+                '/zh/getting-started/deployment',
+                '/zh/getting-started/discussion',
+              ],
+            },
+            {
+              collapsable: false,
+              title: '💡实现原理',
+              children: [
+                '/zh/implementation/code-structure',
+                '/zh/implementation/form-submit',
+              ],
+            },
+            {
+              collapsable: true,
+              title: '🔌 Local plugins',
+              children: [
+                '/zh/plugin-development/quick-start',
+              ],
+            },
           ],
         },
-        {
-          collapsable: true,
-          title: '🔌 Local plugins',
-          children: [
-            '/zh/plugin-development/quick-start',
-          ],
-        },
-        // {
-        //   collapsable: false,
-        //   title: '📚 Resources',
-        //   children: [
-        //     [
-        //       'https://github.com/ly525/luban-h5-docs/blob/master/CONTRIBUTING.md',
-        //       'Contributing guide',
-        //     ],
-        //     '/zh/migration-guide/',
-        //   ],
-        // },
-      ],
+      },
     },
   },
   plugins: {
@@ -158,21 +125,12 @@ module.exports = {
       prefix: '[From Comment]',
     },
   },
+  // plugins: [
+  //   [
+  //     '@vuepress/google-analytics',
+  //     {
+  //       ga: 'UA-149864185-1',
+  //     },
+  //   ],
+  // ],
 };
-
-function createContainer(className) {
-  return [
-    container,
-    className,
-    {
-      render(tokens, idx) {
-        const token = tokens[idx];
-        if (token.nesting === 1) {
-          return `<div class="${className} custom-block">\n`;
-        } else {
-          return `</div>\n`;
-        }
-      },
-    },
-  ];
-}

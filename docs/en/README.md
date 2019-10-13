@@ -1,7 +1,5 @@
 ::: intro
 <!-- ![Logo](https://cldup.com/7umchwdUBh.png) -->
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
-
 ## 鲁班H5
 鲁班H5是基于Vue2.0开发的，通过拖拽+配置的形式，生成页面的工具。
 

@@ -1,5 +1,8 @@
 # 快速开始
-> 重要：关于此部分有疑惑，请在下面直接评论
+> 重要：关于此部分有疑惑，请在下面直接评论，或者到社区讨论
+
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+
 
 ## 基础概念
 > 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
@@ -129,9 +132,21 @@ yarn serve # develop
 ```
 
 ### 2. 构建预览所需的渲染引擎
-1. 在 front-end/h5 目录下，运行：`yarn engine:build` (这个是用来生成预览引擎的东西)
-2. 构建完成之后,看下 后端的 `h5-api/public` 里面会多一个文件夹 `engine-assets`
-3. 打开的预览窗口（preview.vue）,里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
+> 关于此部分有疑惑，请直接评论
+
+#### 基本原理
+作品预览的基本原理参见 [luban-h5/back-end/h5-api/api/work/controllers/Work.js/previewOne](https://github.com/ly525/luban-h5/blob/bd486ce16fc24bfd7030fc51857a579776e12e68/back-end/h5-api/api/work/controllers/Work.js#L12)
+
+```js
+previewOne: async (ctx) => {
+  const work = await strapi.services.work.findOne(ctx.params);
+  return ctx.render('engine', { work });
+},
+```
+#### 如何构建
+1. 在`front-end/h5`目录下，运行：`yarn engine:build`
+2. 构建完成之后,后端的`h5-api/public`里面会多一个文件夹 `engine-assets`
+3. 打开的预览窗口`preview.vue`, 里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
   也就是说，这个预览其实依赖后端的渲染引擎 比如 ejs 或者 jade 这种模板引擎，所以 `build/engine.webpack.js` 的 `output dir` 是在`back-end/h5-api/public`中的
 
 
@@ -141,5 +156,7 @@ yarn serve # develop
 全称为 `lu-ban-plugin:``鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
 
 ---
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+
 
 <Vssue issueId="6" />

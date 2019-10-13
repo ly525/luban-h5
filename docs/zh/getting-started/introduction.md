@@ -22,12 +22,14 @@
 
 
 ### Screenshots
-> [在线访问地址](https://ly525.github.io/luban-h5)
+> [主页](http://api.luban-h5.wxjcart.com)
 
 > [更多作品演示图片，点击查看](https://github.com/ly525/luban-h5/issues/15)
 
 ![image](https://s2.ax1x.com/2019/10/11/u7WzUx.gif)
 
 ---
+
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 <Vssue issueId="12" />
