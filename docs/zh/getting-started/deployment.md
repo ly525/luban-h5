@@ -82,7 +82,7 @@ server {
 
 ```bash
 yarn add flightplan // 部署脚本，官方链接
-npm run deploy:esc // 云服务器 (Elastic Compute Service, 简称 ECS)
+npm run deploy:ecs // 云服务器 (Elastic Compute Service, 简称 ECS)
 ```
 
 本地部署脚本
