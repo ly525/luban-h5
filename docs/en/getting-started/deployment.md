@@ -82,7 +82,7 @@ Do the following in the root path of the project:
 
 ```bash
 yarn add flightplan
-npm run deploy:esc // Elastic Compute Service
+npm run deploy:ecs // Elastic Compute Service
 ```
 
 Local deployment script
