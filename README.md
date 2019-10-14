@@ -10,6 +10,8 @@ Mobile Page Builder&Generator with Drag&Drop
 
 <p align="left">
 <a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
+<a href="https://gitter.im/luban-h5/community"><img alt="Gitter" src="https://img.shields.io/gitter/room/luban-h5/community"></a>
+ 
 </p>
 
 ### 🔗Links/相关链接
