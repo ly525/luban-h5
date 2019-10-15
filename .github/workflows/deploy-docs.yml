@@ -1,0 +1,32 @@
+name: Build&Deploy Document
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'docs/**/**'
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+      with:
+        ref: dev
+
+    - name: build
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: |
+        cd docs
+        npm install
+        npm run docs:build
+
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./docs/.vuepress/dist
