@@ -36,7 +36,6 @@ export default {
               dataSource={this.items}
               renderItem={(item, index) => (
                 <a-list-item onClick={() => {
-                  debugger
                   this.$emit('changeItem', item)
                 }}>
                   <ImageItem item={item} />

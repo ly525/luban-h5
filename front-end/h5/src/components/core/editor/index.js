@@ -13,6 +13,7 @@ import RenderAnimationEditor from './edit-panel/animation'
 import RenderActoionEditor from './edit-panel/action'
 import RenderBackgroundEditor from './edit-panel/background'
 import RenderShortcutsPanel from './shortcuts-panel/index'
+import RenderPageManager from './page-manager/index'
 import PreviewDialog from './modals/preview.vue'
 
 import LogoOfHeader from '@/components/common/header/logo.js'
@@ -147,33 +148,36 @@ export default {
     _renderMenuContent () {
       switch (this.activeMenuKey) {
         case sidebarMenus[0].value:
-          return <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
+          return (
+            <a-tabs
+              style="height: 100%;"
+              tabBarGutter={10}
+            >
+              <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
+                <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
+              </a-tab-pane>
+              <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
+                <RenderPageManager
+                  pages={this.pages}
+                  editingPage={this.editingPage}
+                  onSelectMenuItem={(menuKey) => {
+                    this.pageManager({ type: menuKey })
+                  }}
+                  onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
+                />
+              </a-tab-pane>
+            </a-tabs>
+          )
         case sidebarMenus[1].value:
           return (
-            this.pages.map((page, index) => (
-              <span
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  padding: '12px 0',
-                  color: page.uuid === this.editingPage.uuid ? '#1593ff' : ''
-                }}
-                class="cursor-pointer"
-                onClick={() => { this.setEditingPage(index) }}
-              >
-                {/* #!en: Page<Index> */}
-                {/* #!zh: 第<Index>页面 */}
-                <span>{this.$t('editor.pageManager.title', { index })}</span>
-                <a-dropdown trigger={['hover']} placement='bottomCenter'>
-                  <a class="ant-dropdown-link" href="#"><a-icon type="down" /></a>
-                  <a-menu slot="overlay" onClick={({ key }) => { this.pageManager({ type: key }) }}>
-                    <a-menu-item key="add"><a-icon type="user" />{this.$t('editor.pageManager.action.add')}</a-menu-item>
-                    <a-menu-item key="copy"><a-icon type="user" />{this.$t('editor.pageManager.action.copy')}</a-menu-item>
-                    <a-menu-item key="delete"><a-icon type="user" />{this.$t('editor.pageManager.action.delete')}</a-menu-item>
-                  </a-menu>
-                </a-dropdown>
-              </span>
-            ))
+            <RenderPageManager
+              pages={this.pages}
+              editingPage={this.editingPage}
+              onSelectMenuItem={(menuKey) => {
+                this.pageManager({ type: menuKey })
+              }}
+              onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
+            />
           )
         default:
           return null
@@ -225,7 +229,7 @@ export default {
           <ExternalLinksOfHeader />
         </a-layout-header>
         <a-layout>
-          <a-layout-sider width="160" style="background: #fff" collapsed>
+          {/* <a-layout-sider collapsedWidth={40} style="background: #fff" collapsed>
             <a-menu
               mode="inline"
               defaultSelectedKeys={['pluginList']}
@@ -236,13 +240,12 @@ export default {
                 sidebarMenus.map(menu => (
                   <a-menu-item key={menu.value}>
                     <a-icon type={menu.antIcon} />
-                    {/* <span>{menu.label}</span> */}
                     <span>{this.$t(menu.i18nLabel)}</span>
                   </a-menu-item>
                 ))
               }
             </a-menu>
-          </a-layout-sider>
+          </a-layout-sider> */}
           <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '12px' }}>
             { this._renderMenuContent() }
           </a-layout-sider>
