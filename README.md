@@ -1,3 +1,5 @@
+[📖中文在线文档](https://ly525.github.io/luban-h5/zh/) | [📖English README](./README.en.md) | [English Document](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)
+
 <h2 align="center">
  鲁班 H5
 </h2>
