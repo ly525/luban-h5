@@ -14,8 +14,8 @@ export default {
   },
   render (h) {
     const addPageText = this.$t('editor.pageManager.action.add')
-    const copyPageText = this.$t('editor.pageManager.action.add')
-    const deletePageText = this.$t('editor.pageManager.action.add')
+    const copyPageText = this.$t('editor.pageManager.action.copy')
+    const deletePageText = this.$t('editor.pageManager.action.delete')
     return (
       <div class="page-manager-panel">
         {
