@@ -57,14 +57,8 @@ yarn config set registry https://registry.npm.taobao.org
 # 默认当前目录为 luban 项目的根目录
 cd back-end/h5-api
 yarn install # 安装依赖
-yarn add psd # 安装psd 依赖
 
-# 安装 ejs 渲染引擎，主要用来预览作品
-yarn add strapi-hook-ejs
-# 需要在 h5-api/hook.json中添加如下配置：
-# strapi-hook-ejs 更多细节参见：https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs#configuration
-
-npm run dev # 本地开发使用
+npm run dev
 # 补充说明: 如果需要在 vscode 中进行debug ，请使用 npm run localdev
 
 # #!en: default database is sqlite3(h5-api/.tmp/data.db)
@@ -73,30 +67,6 @@ npm run dev # 本地开发使用
 # 访问 http://locahost:1337/admin
 # visit http://locahost:1337/admin
 ```
-
-h5-api/hook.json 配置如下：
-
-```json
-{
-  "timeout": 3000,
-  "load": {
-    "before": [],
-    "order": [
-      "Define the hooks' load order by putting their names in this array in the right order"
-    ],
-    "after": []
-  },
-  "ejs": {
-    "enabled": true,
-    "viewExt": "ejs",
-    "partial": true,
-    "cache": false,
-    "debug": false,
-    "layout": false
-  }
-}
-```
-
 
 ### 2. 注意事项
 
@@ -147,7 +117,7 @@ previewOne: async (ctx) => {
 1. 在`front-end/h5`目录下，运行：`yarn engine:build`
 2. 构建完成之后,后端的`h5-api/public`里面会多一个文件夹 `engine-assets`
 3. 打开的预览窗口`preview.vue`, 里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
-  也就是说，这个预览其实依赖后端的渲染引擎 比如 ejs 或者 jade 这种模板引擎，所以 `build/engine.webpack.js` 的 `output dir` 是在`back-end/h5-api/public`中的
+  也就是说，这个预览其实依赖后端的渲染引擎，比如 ejs 或者 jade 这种模板引擎，所以参照这里：`luban-h5/front-end/h5/vue.config.js` `engineOutputDir` 变量，preview engine 构建完成，会生成到后端的 `back-end/h5-api/public/engine-assets` 目录
 
 
 ### 3. 前端组件说明

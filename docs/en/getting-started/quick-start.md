@@ -28,15 +28,8 @@ Vue.js: Front-end framework<br />Strapi.js: Open source Node.js Headless CMS to
 # by default, the current path is the root path for luban-h5
 cd back-end/h5-api
 yarn install # install dependencies
-yarn add psd # install dependency of psd
 
-# install ejs engine, mainly used for preview work
-yarn add strapi-hook-ejs
-
-# modify h5-api/hook.json (next paragraph)
-# see more details about strapi-hook-ejs：https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs#configuration
-
-npm run dev # local dev
+npm run dev # dev
 # additional notes: run `npm run localdev` if you want to debug it in vscode
 
 # #!en: default database is sqlite3(db location: h5-api/.tmp/data.db)
@@ -44,31 +37,6 @@ npm run dev # local dev
 # 访问 http://locahost:1337/admin
 # visit http://locahost:1337/admin
 ```
-
-`h5-api/hook. json`  is configured as follows:
-
-```json
-{
-  "timeout": 3000,
-  "load": {
-    "before": [],
-    "order": [
-      "Define the hooks' load order by putting their names in this array in the right order"
-    ],
-    "after": []
-  },
-  "ejs": {
-    "enabled": true,
-    "viewExt": "ejs",
-    "partial": true,
-    "cache": false,
-    "debug": false,
-    "layout": false
-  }
-}
-```
-
-
 
 ### 2. Something important
 
@@ -121,7 +89,7 @@ previewOne: async (ctx) => {
 #### How to build preview engine
 1. cd `front-end/h5`, run `yarn engine:build`
 2. after build finished, an folder named `engine-assets`  is auto generated at `back-end/h5-api/public`
-3. `preview.vue` is preview modal, the mobile div is an iframe which a wrapper for builded `engine-entry`
+3. `preview.vue` is preview modal, the mobile div is an iframe which a wrapper for builded `engine-entry`, learn more about engine here: `luban-h5/front-end/h5/vue.config.js`
 
 
 ### 3. explanation for front-end components
