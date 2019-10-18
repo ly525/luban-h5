@@ -26,7 +26,7 @@
     "strapi": "3.0.0-beta.13",
     "strapi-admin": "3.0.0-beta.13",
     "strapi-hook-bookshelf": "3.0.0-beta.13",
-    "strapi-hook-ejs": "^3.0.0-alpha.13",
+    "strapi-hook-ejs": "3.0.0-alpha.13",
     "strapi-hook-knex": "3.0.0-beta.13",
     "strapi-plugin-content-manager": "3.0.0-beta.13",
     "strapi-plugin-content-type-builder": "3.0.0-beta.13",
