@@ -58,10 +58,12 @@ export const mutations = {
         {
           const index = elements.findIndex(e => e.uuid === editingElement.uuid)
           if (index !== -1) {
-            let newElements = elements.slice()
-            newElements.splice(index, 1)
-            state.editingPage.elements = newElements
+            // let newElements = elements.slice()
+            // newElements.splice(index, 1)
+            // state.editingPage.elements = newElements
+            state.editingPage.elements.splice(index, 1)
           }
+          state.editingElement = null
         }
         break
       case 'move2Top':
