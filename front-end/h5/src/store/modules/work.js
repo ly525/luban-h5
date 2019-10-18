@@ -6,6 +6,10 @@ import { AxiosWrapper } from '../../utils/http.js'
 import router from '@/router.js'
 import { takeScreenshot } from '../../utils/helper.js'
 
+function setLoading (commit, loadingName, isLoading) {
+  commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })
+}
+
 export const actions = {
   previewWork ({ commit }, payload = {}) {
     commit('previewWork', payload)
@@ -46,8 +50,10 @@ export const actions = {
     }
     return new Promise((resolve, reject) => {
       if (isSaveCover) {
+        setLoading(commit, 'uploadWorkCover_loading', true)
         takeScreenshot().then(file => {
           dispatch('uploadCover', { file }).then(() => {
+            setLoading(commit, 'uploadWorkCover_loading', false)
             fn(resolve)
           }) // uploadCover
         }) // takeScreenshot
