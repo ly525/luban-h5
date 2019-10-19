@@ -148,7 +148,7 @@ export default {
         prop: {
           step: 0.1,
           min: 0,
-          max: 10
+          max: 200
         },
         defaultPropValue: 0
       },
