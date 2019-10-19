@@ -1,5 +1,6 @@
 import { mapState, mapActions } from 'vuex'
 import Shape from '../../support/shape'
+import { contains } from '../../../../utils/dom-helper'
 
 const contextmenuOptions = [
   {
@@ -231,8 +232,23 @@ export default {
           {
             this.contextmenuPos.length
               ? <a-menu
+                ref="contextmenu"
                 onSelect={({ item, key, selectedKeys }) => {
                   this.elementManager({ type: key })
+                }}
+                // refrence: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
+                onMouseleave={(e) => {
+                  const contextmenu = this.$refs.contextmenu
+                  if (
+                    e &&
+                    e.relatedTarget &&
+                    contextmenu &&
+                    contextmenu.$el &&
+                    contains(e.relatedTarget, contextmenu.$el)
+                  ) {
+                    return
+                  }
+                  this.hideContextMenu()
                 }}
                 style={{
                   left: this.contextmenuPos[0] + 'px',
@@ -242,7 +258,13 @@ export default {
                   zIndex: 999
                 }}
               >
-                { contextmenuOptions.map(option => <a-menu-item key={option.value} data-command={option.value}>{this.$t(option.i18nLabel)}</a-menu-item>) }
+                { contextmenuOptions.map(option => (
+                  <a-menu-item
+                    key={option.value}
+                    data-command={option.value}
+                  >{this.$t(option.i18nLabel)}</a-menu-item>
+                ))
+                }
               </a-menu>
               : null
           }
