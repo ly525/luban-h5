@@ -2,7 +2,7 @@ import { parsePx } from '../../../utils/element.js'
 
 // #! 编辑状态，不可以点击的按钮，因为点击按钮会触发一些默认行为，比如表单提交等
 const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button']
-const clone = (value) => JSON.parse(JSON.stringify(value))
+const cloneObj = (value) => JSON.parse(JSON.stringify(value))
 
 const defaultStyle = {
   top: 100,
@@ -31,8 +31,8 @@ class Element {
      * 3. 为何需要 clone，因为会有 element.clone() 以及 page.clone()，
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
-    this.pluginProps = (typeof ele.pluginProps === 'object' && clone(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
-    this.commonStyle = (typeof ele.commonStyle === 'object' && clone(ele.commonStyle)) || { ...defaultStyle }
+    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
+    this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex }
     this.events = []
     this.animations = ele.animations || []
   }

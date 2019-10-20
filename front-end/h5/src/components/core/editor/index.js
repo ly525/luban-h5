@@ -138,11 +138,11 @@ export default {
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      */
     clone ({ name }) {
-      const zindex = this.elements.length + 1
+      // const zindex = this.elements.length + 1
       const editorConfig = getEditorConfigForEditingElement(name)
       this.elementManager({
         type: 'add',
-        value: { name, zindex, editorConfig }
+        value: { name, editorConfig }
       })
     },
     _renderMenuContent () {
