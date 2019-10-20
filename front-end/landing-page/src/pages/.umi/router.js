@@ -12,6 +12,11 @@ const routes = [
     component: require('../../layouts/index.js').default,
     routes: [
       {
+        path: '/index-en',
+        exact: true,
+        component: require('../index-en.js').default,
+      },
+      {
         path: '/',
         exact: true,
         component: require('../index.js').default,

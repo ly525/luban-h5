@@ -1,4 +1,5 @@
 export default {
+  history: 'hash',
   disableCSSModules: true,
   plugins: [
     [

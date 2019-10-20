@@ -10,10 +10,10 @@ export const Nav00DataSource = {
   Menu: {
     className: 'header0-menu',
     children: [
-      { name: 'item0', a: { children: '导航一', href: '/' } },
-      { name: 'item1', a: { children: '导航二', href: '/page2' } },
-      { name: 'item2', a: { children: '导航三', href: '' } },
-      { name: 'item3', a: { children: '导航四', href: '' } },
+      { name: 'item0', a: { children: '中文', href: '/' } },
+      { name: 'item1', a: { children: 'EN', href: '/index-en' } },
+      // { name: 'item2', a: { children: '导航三', href: '/page2' } },
+      // { name: 'item3', a: { children: '导航四', href: '' } },
     ],
   },
   mobileMenu: { className: 'header0-mobile-menu' },

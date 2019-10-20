@@ -61,7 +61,7 @@ class Header extends React.Component {
           >
             {/* <img width="100%" src={dataSource.logo.children} alt="img" /> */}
             <h1>
-              <a href="">Luban H5</a>
+              <a href="/">Luban H5</a>
             </h1>
           </TweenOne>
           <TweenOne
@@ -95,17 +95,17 @@ class Header extends React.Component {
               defaultSelectedKeys={['0']}
               theme={isMobile ? 'dark' : 'default'}
             >
-              {/* {navChildren} */}
+              {navChildren}
               <SubMenu
                 style={{color: 'black'}}
                 title={
                   <span className="submenu-title-wrapper">
-                    <Icon type="appstore" />
-                    相关链接
+                    {/* <Icon type="appstore" /> */}
+                    🔗Links
                   </span>
                 }
               >
-                <Menu.ItemGroup title="项目地址">
+                <Menu.ItemGroup title="Project URL">
                   <Menu.Item key="setting:3" onClick={() => {
                     window.open('https://api.luban-h5.wxjcart.com/main')
                   }}>Website</Menu.Item>
@@ -116,7 +116,10 @@ class Header extends React.Component {
                     window.open('https://gitee.com/ly525/luban-h5')
                   }}>Gitee</Menu.Item>
                 </Menu.ItemGroup>
-                <Menu.ItemGroup title="联系方式">
+                <Menu.ItemGroup title="Contact">
+                  <Menu.Item key="setting:5.0" onClick={() => {
+                    window.open('https://gitter.im/luban-h5/community')
+                  }}>Gitter</Menu.Item>
                   <Menu.Item key="setting:5.0" onClick={() => {
                     window.open('https://support.qq.com/products/93432/')
                   }}>论坛</Menu.Item>

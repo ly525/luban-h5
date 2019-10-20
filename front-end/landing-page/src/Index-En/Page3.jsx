@@ -10,7 +10,7 @@ export default function Page3() {
       <QueueAnim
         type="bottom"
         className="content-wrapper home-hover"
-        onClick={() => {  }}
+        onClick={() => { }}
       >
         <div key="image" className="image">{d.svg}</div>
         <h3 key="h3">{d.title}</h3>
@@ -23,7 +23,7 @@ export default function Page3() {
     <div className="home-layout-wrapper home-serve-wrapper">
       <OverPack className="home-layout" playScale={0.4}>
         <QueueAnim className="home-serve" type="bottom" key="home-func" ease="easeOutQuart" leaveReverse>
-          <h2 key="h2">服务方案</h2>
+          <h2 key="h2">Plans</h2>
           <i key="i" className="line" />
           <QueueAnim
             key="content"
