@@ -6,7 +6,7 @@ function antCloudFooter() {
   return (<div>
     <div className="logo" key="logo">
       {/* <img src="https://gw.alipayobjects.com/zos/rmsportal/dnIbXmAgGbRxQJksRsJL.svg" width="72" height="82" /> */}
-      <h1 style={{color: 'white'}}>鲁班 H5</h1>
+      <h1 style={{color: 'white'}}>Luban H5</h1>
     </div>
     <div key="nav" className="home-footer-nav-wrapper">
       {children}
