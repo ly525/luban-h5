@@ -1,5 +1,5 @@
-// issue 34
-import placeholderImg from './lbp-picture-placeholder.png'
+import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
+import placeholderImg from './lbp-picture-placeholder.png' // issue #34
 export default {
   name: 'lbp-picture',
   render () {
@@ -17,8 +17,7 @@ export default {
   editorConfig: {
     propsConfig: {
       imgSrc: {
-        // type: 'picture-picker',
-        type: 'a-input',
+        type: 'image-gallery',
         label: '图片url',
         prop: {
           type: 'textarea'
@@ -27,7 +26,7 @@ export default {
       }
     },
     components: {
-    //   'picture-picker': PicturePicker,
+      'image-gallery': ImageGallery
     }
   }
 }
