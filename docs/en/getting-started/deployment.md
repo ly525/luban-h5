@@ -132,7 +132,7 @@ plan.local(local => {
   // local.log('=> Build finish');
 
   local.log('=> Copy files to remote hosts');
-  // TODO reference: https://github.com/pstadler/flightplan/issues/142
+  // reference: https://github.com/pstadler/flightplan/issues/142
   local.with(`cd ${local_dist_dir}`, () => {
     // const filesToCopy = local.exec('find . -type f', { silent: true })
     const filesToCopy = local.git('ls-files', {silent: true}) // get list of files under version control

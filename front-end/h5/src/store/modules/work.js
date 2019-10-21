@@ -149,7 +149,7 @@ export const actions = {
     }
    */
   fetchFormsOfWork ({ commit, state, dispatch }, workId) {
-    // TODO 考虑 return Promise
+    // 可以 return Promise
     new AxiosWrapper({
       dispatch,
       commit,

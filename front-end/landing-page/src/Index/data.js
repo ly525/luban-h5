@@ -135,8 +135,8 @@ export const page3 = [
       <p key="3">支持数据统计</p>,
       <p key="3">支持PSD导入</p>,
       <p key="3">支持自定义脚本</p>,
-      <p key="6">支持成员管理(TODO)</p>,
-      <p key="6">支持项目管理(TODO)</p>,
+      <p key="6">支持成员管理</p>,
+      <p key="6">支持项目管理</p>,
     ],
     svg: (
       <svg width="32px" height="32px" viewBox="0 0 32 32">

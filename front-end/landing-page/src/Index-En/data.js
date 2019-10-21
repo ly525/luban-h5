@@ -127,8 +127,8 @@ export const page3 = [
       <p key="3">Data statistics</p>,
       <p key="3">PSD to HTML5</p>,
       <p key="3">Custom Script</p>,
-      <p key="6">User Management(TODO)</p>,
-      <p key="6">Project Management(TODO)</p>,
+      <p key="6">User Management</p>,
+      <p key="6">Project Management</p>,
     ],
     svg: (
       <svg width="32px" height="32px" viewBox="0 0 32 32">

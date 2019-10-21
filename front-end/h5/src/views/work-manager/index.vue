@@ -100,7 +100,7 @@ export default {
         <a-layout-header class="header">
           <LogoOfHeader />
           <LangSelect style="float: right;cursor: pointer;" />
-          {/* TODO we can show the plugins shortcuts here */}
+          {/* we can also put the plugins shortcuts here */}
           <a-dropdown>
             <a-menu slot="overlay" onClick={() => {}}>
               <a-menu-item key="1">
