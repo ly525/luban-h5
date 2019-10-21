@@ -1,6 +1,7 @@
 import {
   Slide
 } from 'cube-ui'
+import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
 
 const defaultItems = [
   {
@@ -61,8 +62,28 @@ export default {
     components: {
       'lbs-slide-items-editor': {
         render () {
+          const currentItem = this.value_[this.current - 1]
           return <div>
             {
+              <a-pagination
+                current={this.current}
+                onChange={(page) => {
+                  this.current = page
+                }}
+                size="small"
+                total={this.value_.length}
+                defaultPageSize={1}
+                itemRender={this.itemRender}
+              />
+            }
+            <ImageGallery
+              style={{ margin: '16px 0' }}
+              value={currentItem.image}
+              onChange={url => {
+                currentItem.image = url
+              }}
+            />
+            {/* {
               this.value_.map((item, index) => (
                 <div>
                   <label>图片 {index + 1}</label>
@@ -73,7 +94,7 @@ export default {
                   </a-button-group>
                 </div>
               ))
-            }
+            } */}
           </div>
         },
         props: {
@@ -92,12 +113,24 @@ export default {
             }
           }
         },
+        data: () => ({
+          current: 1
+        }),
         methods: {
+          itemRender (current, type, originalElement) {
+            if (type === 'prev') {
+              return <a-button style={{ marginRight: '8px' }} size="small" icon="minus" onClick={this.minus}></a-button>
+            } else if (type === 'next') {
+              return <a-button style={{ marginLeft: '8px' }} size="small" icon="plus" onClick={this.add}></a-button>
+            }
+            return originalElement
+          },
           add () {
             console.log(this.value_.length)
             this.$emit('change', [
               ...this.value_,
               {
+                image: '',
                 value: `选项${this.value_.length + 1}-value`,
                 label: `选项${this.value_.length + 1}-label`
               }
