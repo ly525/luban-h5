@@ -75,7 +75,7 @@ export default {
           class="default-activator cursor-pointer "
           onClick={() => { this.innerVisible = true }}
         >
-          <img src={this.value} style={{ width: '100%' }} />
+          <img src={this.value} />
           <div class="flex-space-between" style="margin-top: 8px;">
             <a-button>更换图片</a-button>
             <a-button onClick={e => {
