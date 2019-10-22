@@ -126,6 +126,8 @@ module.exports = {
       clientSecret: '08bbe2bf798d61f2814c8d4914c5fff145f4904e',
       prefix: '[From Comment]',
     },
+    // reference: https://github.com/vuejs/vuepress/issues/1435
+    'dehydrate': {}
   },
   // plugins: [
   //   [

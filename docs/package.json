@@ -19,6 +19,7 @@
     "markdown-it-task-lists": "^2.1.1",
     "vue-tabs-component": "^1.5.0",
     "vuepress": "^1.0.3",
+    "vuepress-plugin-dehydrate": "^1.0.3",
     "vuepress-tabs": "^0.1.6"
   },
   "devDependencies": {
