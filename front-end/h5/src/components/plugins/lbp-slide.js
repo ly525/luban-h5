@@ -33,17 +33,6 @@ export default {
       default: () => defaultItems
     }
   },
-  data () {
-    return {
-      value: this.type === 'radio' ? '' : [],
-      uuid: undefined
-    }
-  },
-  computed: {
-    value_ () {
-      return this.type === 'radio' ? this.value : this.value.join(',')
-    }
-  },
   editorConfig: {
     propsConfig: {
       interval: {
