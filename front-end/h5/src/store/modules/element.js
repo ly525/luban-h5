@@ -52,7 +52,7 @@ export const mutations = {
         elements.push(element)
         break
       case 'copy':
-        elements.push(state.editingElement.clone())
+        elements.push(state.editingElement.clone({ zindex: len + 1 }))
         break
       case 'delete':
         {

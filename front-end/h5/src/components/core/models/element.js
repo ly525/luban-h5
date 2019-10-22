@@ -107,7 +107,7 @@ class Element {
     return data
   }
 
-  clone ({ zindex }) {
+  clone ({ zindex = this.commonStyle.zindex + 1 } = {}) {
     return new Element({
       zindex,
       name: this.name,
