@@ -6,6 +6,7 @@ import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
 import LbpFormButton from '../components/plugins/lbp-form-button'
 import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
+import LbpFormCheckboxGroup from '../components/plugins/lbp-form-checkbox-group'
 import LbpBackground from '../components/plugins/lbp-background'
 import LbpSlide from '../components/plugins/lbp-slide'
 
@@ -119,11 +120,11 @@ export const pluginsList = [
       'en-US': 'Form Checkbox',
       'zh-CN': '表单多选'
     },
-    title: '表单单选',
+    title: '表单多选',
     icon: 'check-square-o',
-    component: LbpFormRadioGroup,
+    component: LbpFormCheckboxGroup,
     visible: true,
-    name: LbpFormRadioGroup.name
+    name: LbpFormCheckboxGroup.name
   },
   {
     i18nTitle: {
