@@ -1,26 +1,24 @@
 import LbpFormRadio from './lbp-form-radio.js'
+import { genUUID } from '../../utils/element.js'
 
 const defaultItems = [
   {
-    value: '选项A-value'
+    value: '选项A'
   },
   {
-    value: '选项B-value'
+    value: '选项B'
   },
   {
-    value: '选项C-value'
+    value: '选项C'
   }
 ]
 
 export default {
   name: 'lbp-form-radio-group',
-  components: {
-    LbpFormRadio
-  },
   props: {
     aliasName: {
       type: String,
-      default: '标题演示'
+      default: `标题演示-${genUUID().slice(0, 6)}`
     },
     items: {
       type: Array,
@@ -64,7 +62,7 @@ export default {
         type: 'a-input',
         label: '填写标题',
         require: true,
-        defaultPropValue: '标题演示'
+        defaultPropValue: `标题演示-${genUUID().slice(0, 6)}`
       },
       type: {
         type: 'a-radio-group',
@@ -117,7 +115,7 @@ export default {
             this.$emit('change', [
               ...this.value_,
               {
-                value: `选项${this.value_.length + 1}-value`,
+                value: `选项${this.value_.length + 1}`,
                 label: `选项${this.value_.length + 1}-label`
               }
             ])
@@ -169,14 +167,15 @@ export default {
         <input type="text" hidden value={this.value_} data-type="lbp-form-input" data-uuid={this.uuid} />
         {
           this.items.map(item => (
-            <lbp-form-radio
+            <LbpFormRadio
               vertical
               value={item.value}
               checked={this.value === item.value}
               aliasName={this.aliasName}
               type={this.type}
               onChange={this.onChange}
-            >{item.value}</lbp-form-radio>
+            >{item.value}
+            </LbpFormRadio>
           ))
         }
       </div>

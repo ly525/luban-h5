@@ -1,73 +1,95 @@
-// thanks for element-ui
-.lbp-radio {
-  color: #606266;
-  font-weight: 500;
-  line-height: 1;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  white-space: nowrap;
-  outline: none;
-  font-size: 14px;
-  margin-right: 30px;
+// rc -> radio & checkbox
+// https://www.inserthtml.com/2012/06/custom-form-radio-checkbox/
+$radio-size: 6px;
+$radio-label-size: $radio-size ;
+$radio-offset: $radio-size / 2;
 
-  .lbp-radio__label {
-    padding-left: 10px;
-  }
+$checkbox-size: 6px;
+$checkbox-check-width: $checkbox-size / 4 * 3;
+$checkbox-check-height: $checkbox-size / 4 * 5;
 
-  .lbp-radio__input {
+.lbp-rc-wrapper {
+	position: relative;
+	height: 20px;
+	clear: both;
+
+	.lbp-rc-input {
+		display: none;
+	}
+
+  .tag {
+		float: left;
+		margin-left: 20px;
+		overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    cursor: pointer;
-    outline: none;
-    display: inline-block;
-    line-height: 1;
-    position: relative;
-    vertical-align: middle;
-
-    .lbp-radio__inner {
-      border: 1px solid #dcdfe6;
-      border-radius: 100%;
-      width: 14px;
-      height: 14px;
-      background-color: #fff;
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      box-sizing: border-box;
-
-      &:after {
-        width: 6px;
-        height: 6px;
-        border-radius: 100%;
-        background-color: #fff;
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%) scale(0);
-        transition: transform .15s ease-in;
-      }
-    }
-
-    &.is-checked .lbp-radio__inner {
-      border-color: #409eff;
-      background: #409eff;
-    }
-
-    &.is-checked .lbp-radio__inner:after {
-      transform: translate(-50%,-50%) scale(1);
-    }
-
-    .lbp-radio__original {
-      opacity: 0;
-      outline: none;
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-    }
+    // position: absolute;
+    // left: 24px;
   }
+
+  .lbp-rc-input + label {
+    position: absolute;
+		left: 0;
+		top: 2px;
+
+		appearance: none;
+		background-color: #fafafa;
+		border: 1px solid #cacece;
+  }
+}
+
+
+.lbp-checkbox {
+	& + label {
+		top: 2px;
+		padding: $checkbox-size; // 控制 checkbox 的大小
+		border-radius: 2px;
+	}
+
+	&:checked + label:after {
+		content: " ";
+
+		position: absolute;
+		top: $checkbox-size / 4 - 1px ;
+		left: $checkbox-size / 4 * 3 - 1px;
+		z-index: 999;
+		width: $checkbox-check-width;
+		height: $checkbox-check-height;
+		// width: 5px;
+		// height: 11px;
+		border-style: solid;
+		border-width: 0 1px 1px 0;
+		transform: rotate(45deg);
+		// color: #3396fb;
+	}
+}
+
+.lbp-radio {
+	& + label {
+		padding: $radio-size;
+		border-radius: 50px;
+		display: inline-block;
+	}
+	// &:checked + label {
+	// 	background-color: #e9ecee;
+	// 	color: #99a1a7;
+	// 	border: 1px solid #adb8c0;
+	// 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+	// }
+
+	// // thanks for https://mobile.ant.design/components/checkbox-cn/
+	&:checked + label:after {
+		content: ' ';
+		position: absolute;
+		top: $radio-offset;
+		left: $radio-offset;
+
+		width: $radio-label-size;
+		height: $radio-label-size;
+		border-radius: 50px;
+		background: #99a1a7;
+		box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+		text-shadow: 0px;
+		font-size: 32px;
+	}
 }
