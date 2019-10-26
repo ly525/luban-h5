@@ -58,7 +58,7 @@ export default {
               grid={{ gutter: 12, column: this.isVertial ? 4 : 3 }}
               dataSource={this.items}
               renderItem={(item, index) => (
-                <a-list-item onClick={item => {
+                <a-list-item onClick={(event /** mouseEvent */) => {
                   this.$emit('changeItem', item)
                 }}>
                   <ImageItem item={item} height={this.isVertial ? 240 : 142 } />

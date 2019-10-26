@@ -55,7 +55,7 @@ export default {
             this.handleSelectImage(item)
           }}/>
         case 'pixabay':
-          return <PixabayTab onChange={item => {
+          return <PixabayTab onChangeItem={item => {
             this.handleSelectImage(item)
           }}/>
       }
