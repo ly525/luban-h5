@@ -1,3 +1,5 @@
+import LbpTextAlign from '@luban-h5/lbs-text-align'
+
 export default {
   render (h) {
     const self = this
@@ -209,51 +211,7 @@ export default {
       }
     },
     components: {
-      'lbs-text-align': {
-        template: `
-          <div class="wrap">
-            <a-radio-group v-model="value_" size="small">
-              <a-tooltip effect="dark" :content="item.label" placement="top" :key="index" v-for="(item, index) in textAlignTabs">
-                <a-radio-button :label="item.value">
-                  <!-- issue #8 -->
-                  <i :class="['fa', 'fa-align-'+item.value]" aria-hidden="true"></i>
-                </a-radio-button>
-              </a-tooltip>
-            </a-radio-group>
-          </div>`,
-        props: {
-          value: {
-            type: [String, Number]
-          }
-        },
-        data: () => ({
-          textAlignTabs: [{
-            label: '左对齐',
-            value: 'left'
-          },
-          {
-            label: '居中对齐',
-            value: 'center'
-          },
-          {
-            label: '右对齐',
-            value: 'right'
-          }]
-        }),
-        computed: {
-          value_: {
-            // TODO 关于箭头函数中的this：这里不能写成箭头函数，否则 this 为 undefined，为何？
-            // http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/
-            // https://tangxiaolang101.github.io/2016/08/01/%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8JavaScript%E7%9A%84%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E6%A0%88%EF%BC%88What%20is%20the%20Execution%20Context%20&%20Stack%20in%20JavaScript%EF%BC%89/
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
-          }
-        }
-      },
+      'lbs-text-align': LbpTextAlign,
       'lbs-select-input-type': {
         props: ['value'],
         computed: {

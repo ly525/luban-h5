@@ -1,3 +1,5 @@
+import LbpTextAlign from '@luban-h5/lbs-text-align'
+
 export default {
   name: 'lbp-form-input',
   render (h) {
@@ -171,48 +173,7 @@ export default {
       }
     },
     components: {
-      'lbs-text-align': {
-        render (h) {
-          return (
-            <div class="wrap">
-              <a-radio-group value={this.value} onChange={value => {
-                this.$emit('change', value)
-                this.$emit('input', value)
-              }} size="small">
-                {
-                  this.textAlignTabs.map(item => (
-                    // <a-radio-button value={item.value} key={item.value}><i class={['fa', 'fa-align-' + item.value]} aria-hidden="true"></i></a-radio-button>
-                    <a-tooltip effect="dark" placement="top" key={item.value} title={item.label}>
-                      <a-radio-button value={item.value}>
-                        <i class={['fa', 'fa-align-' + item.value]} aria-hidden="true"></i>
-                      </a-radio-button>
-                    </a-tooltip>
-                  ))
-                }
-              </a-radio-group>
-            </div>
-          )
-        },
-        props: {
-          value: {
-            type: [String, Number]
-          }
-        },
-        data: () => ({
-          textAlignTabs: [{
-            label: '左对齐',
-            value: 'left'
-          },
-          {
-            label: '居中对齐',
-            value: 'center'
-          },
-          {
-            label: '右对齐',
-            value: 'right'
-          }]
-        })
-      },
+      'lbs-text-align': LbpTextAlign,
       'lbs-select-input-type': {
         props: ['value'],
         computed: {

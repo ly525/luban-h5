@@ -740,6 +740,14 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
+"@luban-h5/lbs-text-align@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@luban-h5/lbs-text-align/-/lbs-text-align-0.0.3.tgz#b25a66ad846ee2530e7519c691f74d3c51c352fd"
+  integrity sha512-wVjHHtkXAWl0idDHSI/1IOc7kjAtug8Zw9QBcMavMrZd5u/Jb/KR37k5eG/wFxtimUh9quPlqQ9uQhfi/VlsCg==
+  dependencies:
+    core-js "^3.3.2"
+    vue "^2.6.10"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@mrmlnc/readdir-enhanced/download/@mrmlnc/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -2938,6 +2946,11 @@ core-js@^2.4.0, core-js@^2.5.0, core-js@^2.6.5:
   version "2.6.9"
   resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.9.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha1-a0shRiDINBUuF5Mjcn/Bl0GwhPI=
+
+core-js@^3.3.2:
+  version "3.3.4"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.3.4.tgz?cache=0&sync_timestamp=1572001770461&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-3.3.4.tgz#6b0a23392958317bfb46e40b090529a923add669"
+  integrity sha1-awojOSlYMXv7RuQLCQUpqSOt1mk=
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
