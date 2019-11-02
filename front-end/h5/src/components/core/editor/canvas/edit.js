@@ -92,16 +92,22 @@ export default {
       this.calcY(top)
     },
     bindContextMenu (e) {
-      e.preventDefault() // 不显示默认的右击菜单
-      if (
-        e.target.classList.contains('element-on-edit-canvas') ||
-        e.target.parentElement.classList.contains('element-on-edit-canvas')
-      ) {
-        const { x, y } = this.$el.getBoundingClientRect()
-        this.contextmenuPos = [e.clientX - x, e.clientY - y]
-      } else {
-        this.hideContextMenu()
-      }
+      // 优化右击菜单的显示，去除冗余的无效逻辑
+      const { x, y } = this.$el.getBoundingClientRect()
+      this.contextmenuPos = [e.clientX - x, e.clientY - y]
+      // console.log(e.target)
+      // console.log(e.target.classList)
+      // // e.preventDefault() // 不显示默认的右击菜单
+      // if (
+      //   e.target.classList.contains('element-on-edit-canvas') ||
+      //   e.target.parentElement.classList.contains('element-on-edit-canvas')
+      // ) {
+      //   const { x, y } = this.$el.getBoundingClientRect()
+      //   console.log(x, y)
+      //   this.contextmenuPos = [e.clientX - x, e.clientY - y]
+      // } else {
+      //   this.hideContextMenu()
+      // }
     },
     hideContextMenu () {
       this.contextmenuPos = []
@@ -128,7 +134,9 @@ export default {
             this.handleClickCanvas(e)
           }}
           onContextmenu={e => {
-            this.bindContextMenu(e)
+            e.preventDefault()
+            e.stopPropagation()
+            // this.bindContextMenu(e)
           }}
         >
           {
@@ -147,6 +155,11 @@ export default {
                 // 当点击编辑画布上的其它区域（clickEvent.target.classList 不包含下面的 className）的时候，设置 editingElement=null
                 class: 'element-on-edit-canvas',
                 props: element.getProps(), // #6 #3
+                // nativeOn: {
+                //   contextmenu: e => {
+                //     this.bindContextMenu(e)
+                //   }
+                // },
                 on: {
                   // 高亮当前点击的元素
                   // click: () => this.setEditingElement(element)
@@ -180,6 +193,9 @@ export default {
                   handlePointMouseUpProp={() => {
                     this.recordElementRect()
                   }}
+                  nativeOnContextmenu={e => {
+                    this.bindContextMenu(e)
+                  }}
                 >
                   {h(element.name, data)}
                 </Shape>
@@ -202,6 +218,7 @@ export default {
               position={this.contextmenuPos}
               onSelect={({ item, key, selectedKeys }) => {
                 this.elementManager({ type: key })
+                this.hideContextMenu()
               }}
               onHideMenu={this.hideContextMenu}
             />

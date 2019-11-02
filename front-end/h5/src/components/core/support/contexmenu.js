@@ -1,5 +1,5 @@
 
-import { contains } from '../../../utils/dom-helper.js'
+// import { contains } from '../../../utils/dom-helper.js'
 
 const contextmenuOptions = [
   {
@@ -42,7 +42,6 @@ const horizontalMenuStyle = {
   lineHeight: '35px',
   border: 'none',
   borderTop: '1px solid #eee'
-  // borderRight: '1px solid #eee'
 }
 
 export default {
@@ -54,23 +53,22 @@ export default {
   },
   methods: {
     handleSelectMenu ({ item, key, selectedKeys }) {
-      // this.elementManager({ type: key })
-      this.$emit('select', { item, key, selectedKeys })
+      this.$emit('select', { item, key, selectedKeys }) // elementManager({ type: key })
     },
     hideContextMenu () {
-      this.$emit('hide-menu')
+      this.$emit('hideMenu')
     },
     handleMouseLeave (e) {
-      const contextmenu = this.$refs.contextmenu
-      if (
-        e &&
-        e.relatedTarget &&
-        contextmenu &&
-        contextmenu.$el &&
-        contains(e.relatedTarget, contextmenu.$el)
-      ) {
-        return
-      }
+      // const contextmenu = this.$refs.contextmenu
+      // if (
+      //   e &&
+      //   e.relatedTarget &&
+      //   contextmenu &&
+      //   contextmenu.$el &&
+      //   contains(e.relatedTarget, contextmenu.$el)
+      // ) {
+      //   return
+      // }
       this.hideContextMenu()
     }
   },
