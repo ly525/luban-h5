@@ -1,39 +1,6 @@
 import { mapState, mapActions } from 'vuex'
 import Shape from '../../support/shape'
-import { contains } from '../../../../utils/dom-helper'
-
-const contextmenuOptions = [
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.copy',
-    label: '复制',
-    value: 'copy'
-  },
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.delete',
-    label: '删除',
-    value: 'delete'
-  },
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.moveToTop',
-    label: '置顶',
-    value: 'move2Top'
-  },
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.moveToBottom',
-    label: '置底',
-    value: 'move2Bottom'
-  },
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.moveUp',
-    label: '上移',
-    value: 'addZindex'
-  },
-  {
-    i18nLabel: 'editor.centerPanel.contextMenu.moveDown',
-    label: '下移',
-    value: 'minusZindex'
-  }
-]
+import ContextMenu from '../../support/contexmenu'
 
 export default {
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
@@ -230,43 +197,14 @@ export default {
             ))
           }
           {
-            this.contextmenuPos.length
-              ? <a-menu
-                ref="contextmenu"
-                onSelect={({ item, key, selectedKeys }) => {
-                  this.elementManager({ type: key })
-                }}
-                // refrence: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
-                onMouseleave={(e) => {
-                  const contextmenu = this.$refs.contextmenu
-                  if (
-                    e &&
-                    e.relatedTarget &&
-                    contextmenu &&
-                    contextmenu.$el &&
-                    contains(e.relatedTarget, contextmenu.$el)
-                  ) {
-                    return
-                  }
-                  this.hideContextMenu()
-                }}
-                style={{
-                  left: this.contextmenuPos[0] + 'px',
-                  top: this.contextmenuPos[1] + 'px',
-                  userSelect: 'none',
-                  position: 'absolute',
-                  zIndex: 999
-                }}
-              >
-                { contextmenuOptions.map(option => (
-                  <a-menu-item
-                    key={option.value}
-                    data-command={option.value}
-                  >{this.$t(option.i18nLabel)}</a-menu-item>
-                ))
-                }
-              </a-menu>
-              : null
+            this.contextmenuPos.length &&
+            <ContextMenu
+              position={this.contextmenuPos}
+              onSelect={({ item, key, selectedKeys }) => {
+                this.elementManager({ type: key })
+              }}
+              onHideMenu={this.hideContextMenu}
+            />
           }
         </div>
       )
