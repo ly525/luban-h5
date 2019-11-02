@@ -58,6 +58,7 @@ export default {
               }
               return (
                 <a-form-item label={item.label} labelCol={{ span: 8 }} wrapperCol={{ span: 14, offset: 2 }}>
+                  { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
                   { h(item.type, data) }
                 </a-form-item>
               )
