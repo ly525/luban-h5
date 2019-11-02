@@ -325,7 +325,11 @@ export default {
 
         </a-layout>
         {
-          this.previewVisible && <PreviewDialog work={this.work} visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} />
+          <PreviewDialog
+            work={this.work}
+            visible={this.previewVisible}
+            handleClose={() => { this.previewVisible = false }}
+          />
         }
       </a-layout>
     )

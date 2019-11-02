@@ -126,12 +126,12 @@ export default {
                   ></a-input>
                 </div>
                 <div class="qrcode my-4">
-                  <div class="label">手机扫码分享给好友</div>
+                  <div class="label">
+                    <span>手机扫码分享给好友</span>
+                    <a-button type="link" icon="link" onClick={() => this.openNewTab()}>打开预览 URL(For Debug) </a-button>
+                  </div>
                   <div class="code">
                     <canvas style="float: left" id="qrcode-container"></canvas>
-                    <div>
-                      <a-button type="dashed" onClick={() => this.openNewTab()}>打开预览 URL </a-button>
-                    </div>
                     {/**
                     <a-radio-group class="radios" value={this.qrcodeSize} onChange={e => { this.qrcodeSize = e.target.value }}>
                       <a-radio label={500} value={500}>500x500</a-radio>
@@ -147,8 +147,6 @@ export default {
         </div>
       </a-modal>
     )
-  },
-  mounted () {
   }
 }
 </script>
@@ -217,6 +215,10 @@ export default {
     }
     .qrcode {
       margin-top: 20px;
+
+      .label span {
+        margin-right: 10px;
+      }
     }
     .code {
       // !#zh 防止浮动塌陷
