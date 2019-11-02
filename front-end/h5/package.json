@@ -13,6 +13,7 @@
     "engine:build": "PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
   },
   "dependencies": {
+    "@luban-h5/lbc-button": "^0.0.2",
     "@luban-h5/lbs-text-align": "^0.0.3",
     "animate.css": "^3.7.2",
     "ant-design-vue": "^1.3.14",
