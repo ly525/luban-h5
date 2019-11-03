@@ -1,7 +1,8 @@
-import LbpTextAlign from '@luban-h5/lbs-text-align'
-import MediumEditor from 'vue2-medium-editor'
-import 'medium-editor/dist/css/medium-editor.css'
-import 'medium-editor/dist/css/themes/default.css'
+import { quillEditor } from 'vue-quill-editor'
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import './styles/text-overwrite-quil-snow-theme.scss'
 
 export default {
   render (h) {
@@ -41,78 +42,34 @@ export default {
       >
         {
           this.canEdit
-            ? <MediumEditor
-              text={this.text}
+            ? <quillEditor
+              content={this.text}
               options={{
-                toolbar: {
-                  /* These are the default options for the toolbar,
-                       if nothing is passed this is what is used */
-                  allowMultiParagraphSelection: true,
-                  buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote', 'justifyCenter'],
-                  diffLeft: 0,
-                  diffTop: -10,
-                  firstButtonClass: 'medium-editor-button-first',
-                  lastButtonClass: 'medium-editor-button-last',
-                  relativeContainer: null,
-                  standardizeSelectionStart: false,
-                  static: true,
-
-                  /* options which only apply when static is true */
-                  align: 'center',
-                  sticky: true,
-                  updateOnEmptySelection: false
-                }
+                modules: {
+                  // toolbar: '#toolbar-wrapper'
+                  toolbar: [
+                    ['bold', 'italic', 'underline', 'strike'], // 切换按钮
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }], // 主题默认下拉，使用主题提供的值
+                    [{ 'align': [] }],
+                    ['clean'], // 清除格式
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }]
+                    // https://github.com/quilljs/quill/issues/1208
+                  ]
+                },
+                theme: 'snow'
               }}
-              onEdit={(ev) => {
-                if (this.canEdit) {
-                  // ev.preventDefault()
-                  // ev.stopPropagation()
-                }
-                if (ev.event.target) {
-                  this.text = ev.event.target.innerHTML
-                }
-                // this.$emit('input', {
-                //   value: ev.event.target.innerHTML,
-                //   pluginName: 'lbp-text'
-                // })
-              }}
-              custom-tag='div'>
-            </MediumEditor>
+              onChange={({ quill, html, text }) => {
+                this.$emit('input', {
+                  value: html,
+                  pluginName: 'lbp-text'
+                })
+              }}>
+            </quillEditor>
             : pureText
         }
       </div>
     )
-    // return h('div', {
-    //   style,
-    //   on: {
-    //     dblclick () {
-    //       self.canEdit = true
-    //     }
-    //   }
-    // }, [
-    //   h('div', {
-    //     ref: 'editableText',
-    //     style: {
-    //       height: '100%'
-    //     },
-    //     domProps: {
-    //       innerHTML: self.innerText,
-    //       contentEditable: self.canEdit
-    //     },
-    //     on: {
-    //       blur () {
-    //         self.canEdit = false
-    //       },
-    //       input () {
-    //         self.$emit('input', {
-    //           value: self.$refs.editableText.innerHTML,
-    //           pluginName: 'lbp-text'
-    //         })
-    //       }
-    //     }
-    //   })
-
-    // ])
   },
   name: 'lbp-text',
   data () {
@@ -126,18 +83,6 @@ export default {
       type: String,
       default: '双击修改文字'
     },
-    type: {
-      type: String,
-      default: 'text'
-    },
-    placeholder: {
-      type: String,
-      default: '请填写提示文字'
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
     disabled: {
       type: Boolean,
       default: false
@@ -145,14 +90,6 @@ export default {
     backgroundColor: {
       type: String,
       default: 'transparent'
-    },
-    color: {
-      type: String,
-      default: 'black'
-    },
-    fontSize: {
-      type: Number,
-      default: 14
     },
     lineHeight: {
       type: Number,
@@ -173,50 +110,10 @@ export default {
     borderStyle: {
       type: String,
       default: 'solid'
-    },
-    textAlign: {
-      type: String,
-      default: 'center'
     }
   },
   editorConfig: {
     propsConfig: {
-      // text: {
-      //   type: 'a-input',
-      //   label: '按钮文字',
-      //   require: true,
-      //   defaultPropValue: '双击修改文字'
-      // },
-      fontSize: {
-        type: 'a-input-number',
-        label: '字号(px)',
-        require: true,
-        prop: {
-          step: 1,
-          min: 12,
-          max: 144
-        },
-        defaultPropValue: 14
-      },
-      color: {
-        type: 'a-input',
-        label: '文字颜色',
-        // !#zh 为编辑组件指定 prop
-        prop: {
-          type: 'color'
-        },
-        require: true,
-        defaultPropValue: 'black'
-      },
-      backgroundColor: {
-        type: 'a-input', // lbs-color-picker
-        label: '背景颜色',
-        prop: {
-          type: 'color'
-        },
-        require: true,
-        defaultPropValue: '#ffffff' // TODO why logogram for color does't work?
-      },
       borderColor: {
         type: 'a-input', // lbs-color-picker
         label: '边框颜色',
@@ -264,62 +161,6 @@ export default {
           max: 10
         },
         defaultPropValue: 1
-      },
-      textAlign: {
-        type: 'lbs-text-align',
-        label: '文字对齐',
-        require: true,
-        defaultPropValue: 'center'
-      }
-    },
-    components: {
-      'lbs-text-align': LbpTextAlign,
-      'lbs-select-input-type': {
-        props: ['value'],
-        computed: {
-          value_: {
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
-          }
-        },
-        template: `
-          <a-select v-model="value_" placeholder="类型">
-            <a-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </a-option>
-          </a-select>
-        `,
-        data: () => ({
-          options: [
-            {
-              label: '文字',
-              value: 'text'
-            },
-            {
-              label: '密码',
-              value: 'password'
-            },
-            {
-              label: '日期',
-              value: 'date'
-            },
-            {
-              label: '邮箱',
-              value: 'email'
-            },
-            {
-              label: '手机号',
-              value: 'tel'
-            }
-          ]
-        })
       }
     }
   }
