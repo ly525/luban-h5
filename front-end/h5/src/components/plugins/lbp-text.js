@@ -1,56 +1,118 @@
 import LbpTextAlign from '@luban-h5/lbs-text-align'
+import MediumEditor from 'vue2-medium-editor'
+import 'medium-editor/dist/css/medium-editor.css'
+import 'medium-editor/dist/css/themes/default.css'
 
 export default {
   render (h) {
-    const self = this
     const {
       color,
       textAlign,
       fontSize,
       lineHeight,
-      borderColor
+      borderColor,
+      borderWidth
     } = this
 
     const style = {
-      color: `${color} !important`,
+      position: 'relative',
       textAlign,
+      fontSize,
+      color: `${color} !important`,
+      textDecoration: 'none',
       backgroundColor: 'transparent',
-      fontSize: fontSize,
       lineHeight: lineHeight + 'em',
-      borderColor,
-      textDecoration: 'none'
+      border: `${borderWidth}px solid ${borderColor}`
     }
-    return h('div', {
-      style,
-      on: {
-        dblclick () {
-          self.canEdit = true
-        }
-      }
-    }, [
-      h('div', {
-        ref: 'editableText',
-        style: {
-          height: '100%'
-        },
-        domProps: {
-          innerHTML: self.innerText,
-          contentEditable: self.canEdit
-        },
-        on: {
-          blur () {
-            self.canEdit = false
-          },
-          input () {
-            self.$emit('input', {
-              value: self.$refs.editableText.innerHTML,
-              pluginName: 'lbp-text'
-            })
-          }
-        }
-      })
+    const pureText = <div domPropsInnerHTML={this.text} class="ql-editor ql-container"></div>
+    return (
+      <div
+        onDblclick={e => {
+          this.canEdit = true
+          e.stopPropagation()
+        }}
+        onMousedown={e => {
+          if (this.canEdit) { e.stopPropagation() }
+        }}
+        v-click-outside={(e) => {
+          this.canEdit = false
+        }}
+        style={style}
+      >
+        {
+          this.canEdit
+            ? <MediumEditor
+              text={this.text}
+              options={{
+                toolbar: {
+                  /* These are the default options for the toolbar,
+                       if nothing is passed this is what is used */
+                  allowMultiParagraphSelection: true,
+                  buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote', 'justifyCenter'],
+                  diffLeft: 0,
+                  diffTop: -10,
+                  firstButtonClass: 'medium-editor-button-first',
+                  lastButtonClass: 'medium-editor-button-last',
+                  relativeContainer: null,
+                  standardizeSelectionStart: false,
+                  static: true,
 
-    ])
+                  /* options which only apply when static is true */
+                  align: 'center',
+                  sticky: true,
+                  updateOnEmptySelection: false
+                }
+              }}
+              onEdit={(ev) => {
+                if (this.canEdit) {
+                  // ev.preventDefault()
+                  // ev.stopPropagation()
+                }
+                if (ev.event.target) {
+                  this.text = ev.event.target.innerHTML
+                }
+                // this.$emit('input', {
+                //   value: ev.event.target.innerHTML,
+                //   pluginName: 'lbp-text'
+                // })
+              }}
+              custom-tag='div'>
+            </MediumEditor>
+            : pureText
+        }
+      </div>
+    )
+    // return h('div', {
+    //   style,
+    //   on: {
+    //     dblclick () {
+    //       self.canEdit = true
+    //     }
+    //   }
+    // }, [
+    //   h('div', {
+    //     ref: 'editableText',
+    //     style: {
+    //       height: '100%'
+    //     },
+    //     domProps: {
+    //       innerHTML: self.innerText,
+    //       contentEditable: self.canEdit
+    //     },
+    //     on: {
+    //       blur () {
+    //         self.canEdit = false
+    //       },
+    //       input () {
+    //         self.$emit('input', {
+    //           value: self.$refs.editableText.innerHTML,
+    //           pluginName: 'lbp-text'
+    //         })
+    //       }
+    //     }
+    //   })
+
+    // ])
   },
   name: 'lbp-text',
   data () {
@@ -98,7 +160,7 @@ export default {
     },
     borderWidth: {
       type: Number,
-      default: 1
+      default: 0
     },
     borderRadius: {
       type: Number,
@@ -170,10 +232,10 @@ export default {
         require: true,
         prop: {
           step: 1,
-          min: 1,
+          min: 0,
           max: 10
         },
-        defaultPropValue: 1
+        defaultPropValue: 0
       },
       borderRadius: {
         type: 'a-input-number',
