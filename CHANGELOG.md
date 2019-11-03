@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/ly525/luban-h5/compare/v1.6.0...v1.6.1) (2019-11-03)
+
+
+### Bug Fixes
+
+* **local dev:** fix [#92](https://github.com/ly525/luban-h5/issues/92) ([b8f89c8](https://github.com/ly525/luban-h5/commit/b8f89c8))
+* fix [#98](https://github.com/ly525/luban-h5/issues/98) ([8635c9f](https://github.com/ly525/luban-h5/commit/8635c9f))
+* fix the object will be copied is not passed to the clone function & set a default value for zindex ([2de1aa8](https://github.com/ly525/luban-h5/commit/2de1aa8))
+* pick image from pixabay gallery ([8adfef6](https://github.com/ly525/luban-h5/commit/8adfef6))
+
+
+### Features
+
+* import luban components from npm ([b6b27d3](https://github.com/ly525/luban-h5/commit/b6b27d3))
+
 ## [1.6.0](https://github.com/ly525/luban-h5/compare/v1.5.0...v1.6.0) (2019-10-13)
 
 ## [1.5.0](https://github.com/ly525/luban-h5/compare/v1.4.1...v1.5.0) (2019-10-10)
