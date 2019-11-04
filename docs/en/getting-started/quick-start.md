@@ -27,15 +27,18 @@ Vue.js: Front-end framework<br />Strapi.js: Open source Node.js Headless CMS to
 ```bash
 # by default, the current path is the root path for luban-h5
 cd back-end/h5-api
+# use yarn (⚠️not npm) install dependencies
+# reference: https://github.com/ly525/luban-h5/issues/92
 yarn install # install dependencies
 
-npm run dev # dev
-# additional notes: run `npm run localdev` if you want to debug it in vscode
+yarn dev # dev
+# additional notes: run `yarn localdev` if you want to debug it in vscode
 
-# #!en: default database is sqlite3(db location: h5-api/.tmp/data.db)
+#!en: default database is sqlite3(db location: h5-api/.tmp/data.db)
 
-# 访问 http://locahost:1337/admin
 # visit http://locahost:1337/admin
+
+Please read on to config the strapi admin
 ```
 
 ### 2. Something important
