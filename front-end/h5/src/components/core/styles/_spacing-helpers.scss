@@ -1,0 +1,29 @@
+$spaceamounts: (1, 2, 3, 4, 5, 6);
+$sides: (top, bottom, left, right, all);
+$gutter: 4;
+
+@function gen_spacing($space) {
+  @return #{$space * $gutter}px !important;
+}
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    @if $side == 'all' {
+      .m#{str-slice($side, 0, 1)}-#{$space} {
+        margin: gen_spacing($space);
+      }
+
+      .p#{str-slice($side, 0, 1)}-#{$space} {
+        padding: gen_spacing($space);
+      }
+    } @else {
+      .m#{str-slice($side, 0, 1)}-#{$space} {
+        margin-#{$side}: gen_spacing($space);
+      }
+
+      .p#{str-slice($side, 0, 1)}-#{$space} {
+        padding-#{$side}: gen_spacing($space);
+      }
+    }
+  }
+}
