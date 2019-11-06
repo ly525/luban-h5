@@ -17,6 +17,10 @@ export const mutations = {
   },
   pageManager (state, { type, value }) {
     switch (type) {
+      case 'editTitle':
+        const { pageIndexForEditingTitle, newTitle } = value
+        state.work.pages[pageIndexForEditingTitle].title = newTitle
+        break
       case 'add':
         const page = new Page(value)
         state.work.pages.push(page)

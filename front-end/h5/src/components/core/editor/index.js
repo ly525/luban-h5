@@ -163,6 +163,10 @@ export default {
                   onSelectMenuItem={(menuKey) => {
                     this.pageManager({ type: menuKey })
                   }}
+                  onEditTitle={({ pageIndexForEditingTitle, newTitle }) => {
+                    this.pageManager({ type: 'editTitle', value: { pageIndexForEditingTitle, newTitle } })
+                    this.saveWork({ isSaveCover: false })
+                  }}
                   onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
                 />
               </a-tab-pane>
