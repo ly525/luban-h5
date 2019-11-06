@@ -19,6 +19,7 @@ import PreviewDialog from './modals/preview.vue'
 import LogoOfHeader from '@/components/common/header/logo.js'
 import ExternalLinksOfHeader from '@/components/common/header/links.js'
 import LangSelect from '@/components/common/header/LangSelect.vue'
+import Feedback from '@/components/common/feedback/index'
 
 const sidebarMenus = [
   {
@@ -335,6 +336,7 @@ export default {
             handleClose={() => { this.previewVisible = false }}
           />
         }
+        <Feedback />
       </a-layout>
     )
   },
