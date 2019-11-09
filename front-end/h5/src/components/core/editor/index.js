@@ -147,46 +147,70 @@ export default {
       })
     },
     _renderMenuContent () {
-      switch (this.activeMenuKey) {
-        case sidebarMenus[0].value:
-          return (
-            <a-tabs
-              style="height: 100%;"
-              tabBarGutter={10}
-            >
-              <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
-                <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
-              </a-tab-pane>
-              <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
-                <RenderPageManager
-                  pages={this.pages}
-                  editingPage={this.editingPage}
-                  onSelectMenuItem={(menuKey) => {
-                    this.pageManager({ type: menuKey })
-                  }}
-                  onEditTitle={({ pageIndexForEditingTitle, newTitle }) => {
-                    this.pageManager({ type: 'editTitle', value: { pageIndexForEditingTitle, newTitle } })
-                    this.saveWork({ isSaveCover: false })
-                  }}
-                  onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
-                />
-              </a-tab-pane>
-            </a-tabs>
-          )
-        case sidebarMenus[1].value:
-          return (
+      return (
+        <a-tabs
+          style="height: 100%;"
+          tabBarGutter={10}
+        >
+          <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
+            <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
+          </a-tab-pane>
+          <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
             <RenderPageManager
               pages={this.pages}
               editingPage={this.editingPage}
               onSelectMenuItem={(menuKey) => {
                 this.pageManager({ type: menuKey })
               }}
+              onEditTitle={({ pageIndexForEditingTitle, newTitle }) => {
+                this.pageManager({ type: 'editTitle', value: { pageIndexForEditingTitle, newTitle } })
+                this.saveWork({ isSaveCover: false })
+              }}
               onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
             />
-          )
-        default:
-          return null
-      }
+          </a-tab-pane>
+        </a-tabs>
+      )
+      // switch (this.activeMenuKey) {
+      //   case sidebarMenus[0].value:
+      //     return (
+      //       <a-tabs
+      //         style="height: 100%;"
+      //         tabBarGutter={10}
+      //       >
+      //         <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
+      //           <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
+      //         </a-tab-pane>
+      //         <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
+      //           <RenderPageManager
+      //             pages={this.pages}
+      //             editingPage={this.editingPage}
+      //             onSelectMenuItem={(menuKey) => {
+      //               this.pageManager({ type: menuKey })
+      //             }}
+      //             onEditTitle={({ pageIndexForEditingTitle, newTitle }) => {
+      //               this.pageManager({ type: 'editTitle', value: { pageIndexForEditingTitle, newTitle } })
+      //               this.saveWork({ isSaveCover: false })
+      //             }}
+      //             onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
+      //           />
+      //         </a-tab-pane>
+      //       </a-tabs>
+      //     )
+      //   case sidebarMenus[1].value:
+      //     return (
+      //       <RenderPageManager
+      //         pages={this.pages}
+      //         editingPage={this.editingPage}
+      //         onSelectMenuItem={(menuKey) => {
+      //           this.pageManager({ type: menuKey })
+      //         }}
+      //         onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
+      //       />
+      //     )
+      //   default:
+      //     return null
+      // }
     }
   },
   render (h) {
@@ -195,7 +219,7 @@ export default {
         <a-layout-header class="header">
           <LogoOfHeader />
           <LangSelect style="float: right;cursor: pointer;" />
-          {/* TODO we can show the plugins shortcuts here */}
+          {/* we can show the plugins shortcuts here */}
           <a-menu
             theme="dark"
             mode="horizontal"
@@ -302,7 +326,7 @@ export default {
               <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div>
             </a-button-group>
           </a-layout-sider>
-          <a-layout-sider width="380" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+          <a-layout-sider width="300" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}
