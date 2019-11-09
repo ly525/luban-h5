@@ -85,9 +85,9 @@ export default {
             {
               this.value_.map((item, index) => (
                 <div>
-                  <a-input value={item.value} onChange={e => { item.value = e.target.value }}></a-input>
-                  <a-button type="dashed" shape="circle" icon="plus" onClick={this.add} />
-                  <a-button type="dashed" shape="circle" icon="minus" onClick={(item, index) => this.minus(item, index)} />
+                  <a-input value={item.value} onChange={e => { item.value = e.target.value }} style={{ width: '70%' }}></a-input>
+                  <a-icon type="plus-circle" onClick={this.add} class="ml-2" />
+                  <a-icon type="minus-circle" onClick={(item, index) => this.minus(item, index)} class="ml-1"></a-icon>
                 </div>
               ))
             }
