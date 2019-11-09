@@ -38,6 +38,9 @@ export default {
     }
   },
   methods: {
+    showGallery () {
+      this.innerVisible = true
+    },
     handleClose () {
       this.innerVisible = false
     },
@@ -63,24 +66,25 @@ export default {
     renderDefaultActivator () {
       const activatorWithoutImg = (
         <div
-          class="default-activator cursor-pointer "
-          onClick={() => { this.innerVisible = true }}
+          class="default-activator cursor-pointer empty-bg-activator"
+          onClick={this.showGallery}
         >
           <a-icon type="plus" />
         </div>
       )
 
       const activatorWithImg = (
-        <div
-          class="default-activator cursor-pointer "
-          onClick={() => { this.innerVisible = true }}
-        >
-          <img src={this.value} />
+        <div onClick={this.showGallery}>
+          <div class="default-activator cursor-pointer "><img src={this.value} width="50%" style={{ margin: 'auto' }} /></div>
           <div class="flex-space-between" style="margin-top: 8px;">
-            <a-button>更换图片</a-button>
-            <a-button onClick={e => {
+            <a-button size="small">更换</a-button>
+            <a-button size="small" onClick={e => {
               e.stopPropagation()
-            }}>裁剪图片</a-button>
+            }}>裁剪</a-button>
+            <a-button size="small" onClick={(e) => {
+              e.stopPropagation()
+              this.handleSelectImage({ previewURL: '' })
+            }}>移除</a-button>
           </div>
         </div>
       )
