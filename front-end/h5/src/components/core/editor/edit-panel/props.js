@@ -1,6 +1,12 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  props: {
+    layout: {
+      type: String,
+      default: 'horizontal'
+    }
+  },
   computed: {
     ...mapState('editor', ['editingElement', 'editingElementEditorConfig'])
   },
@@ -25,9 +31,7 @@ export default {
           ref="form"
           size="mini"
           id="props-edit-form"
-          label-width="100px"
-          label-position="left"
-
+          layout={this.layout}
         >
           {
             Object.keys(propsConfig).map(propKey => {
@@ -56,8 +60,17 @@ export default {
                   }
                 }
               }
+              const formItemLayout = this.layout === 'horizontal' ? {
+                labelCol: { span: 6 }, wrapperCol: { span: 16, offset: 2 }
+              } : {}
+              const formItemData = {
+                props: {
+                  ...formItemLayout,
+                  label: item.label
+                }
+              }
               return (
-                <a-form-item label={item.label} labelCol={{ span: 8 }} wrapperCol={{ span: 14, offset: 2 }}>
+                <a-form-item {...formItemData}>
                   { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
                   { h(item.type, data) }
                 </a-form-item>

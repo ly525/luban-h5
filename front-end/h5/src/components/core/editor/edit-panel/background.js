@@ -1,5 +1,7 @@
 import propsEditPanel from './props.js'
 
 export default {
-  extends: propsEditPanel
+  render () {
+    return <propsEditPanel layout="vertical" />
+  }
 }
