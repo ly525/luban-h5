@@ -1,36 +1,42 @@
-import {
-  Slide
-} from 'cube-ui'
+import { Swipe, SwipeItem } from 'vant'
+import 'vant/lib/swipe/style'
+import 'vant/lib/swipe-item/style'
 import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
 
 const defaultItems = [
   {
-    // url: 'http://www.didichuxing.com/',
-    image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png'
+    image: 'https://img.yzcdn.cn/vant/apple-1.jpg'
   },
   {
-    // url: 'http://www.didichuxing.com/',
-    image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png'
-  },
-  {
-    // url: 'http://www.didichuxing.com/',
-    image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide03.png'
+    image: 'https://img.yzcdn.cn/vant/apple-2.jpg'
   }
 ]
 
+function getDefaultDataSource () {
+  return {
+    activeIndex: 0,
+    items: defaultItems.slice(0)
+  }
+}
+
 export default {
   name: 'lbp-slide',
-  components: {
-    Slide
-  },
   props: {
     interval: {
       type: Number,
       default: 4000
     },
-    items: {
-      type: Array,
-      default: () => defaultItems
+    dataSource: {
+      type: Object,
+      default: () => getDefaultDataSource()
+    },
+    editorMode: {
+      type: String,
+      default: 'preview'
+    },
+    activeIndex: {
+      type: Number,
+      default: 0
     }
   },
   editorConfig: {
@@ -41,26 +47,30 @@ export default {
         require: true,
         defaultPropValue: 4000
       },
-      items: {
+      dataSource: {
         type: 'lbs-slide-items-editor',
         label: '图片列表',
         require: true,
-        defaultPropValue: defaultItems
+        defaultPropValue: getDefaultDataSource()
       }
     },
     components: {
       'lbs-slide-items-editor': {
         render () {
-          const currentItem = this.value_[this.current - 1]
+          const currentItem = this.innerItems[this.current - 1] || {}
           return <div>
             {
               <a-pagination
                 current={this.current}
                 onChange={(page) => {
                   this.current = page
+                  this.$emit('change', {
+                    items: this.innerItems,
+                    activeIndex: page - 1
+                  })
                 }}
                 size="small"
-                total={this.value_.length}
+                total={this.innerItems.length}
                 defaultPageSize={1}
                 itemRender={this.itemRender}
               />
@@ -72,34 +82,17 @@ export default {
                 currentItem.image = url
               }}
             />
-            {/* {
-              this.value_.map((item, index) => (
-                <div>
-                  <label>图片 {index + 1}</label>
-                  <a-textarea value={item.image} onChange={e => { item.image = e.target.value }} autosize={{ minRows: 2, maxRows: 6 }}></a-textarea>
-                  <a-button-group size="small">
-                    <a-button type="default" icon="plus" onClick={this.add}/>
-                    <a-button type="default" icon="minus" onClick={this.minus}/>
-                  </a-button-group>
-                </div>
-              ))
-            } */}
           </div>
         },
         props: {
           value: {
-            type: Array,
-            default: () => defaultItems
+            type: Object,
+            default: () => getDefaultDataSource()
           }
         },
         computed: {
-          value_: {
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
+          innerItems () {
+            return this.value.items
           }
         },
         data: () => ({
@@ -108,27 +101,33 @@ export default {
         methods: {
           itemRender (current, type, originalElement) {
             if (type === 'prev') {
-              return <a-button style={{ marginRight: '8px' }} size="small" icon="minus" onClick={this.minus}></a-button>
+              return <a-button style={{ marginRight: '8px' }} size="small" icon="minus" onClick={() => this.minus(current)} disabled={this.innerItems.length === 1}></a-button>
             } else if (type === 'next') {
               return <a-button style={{ marginLeft: '8px' }} size="small" icon="plus" onClick={this.add}></a-button>
             }
             return originalElement
           },
           add () {
-            console.log(this.value_.length)
-            this.$emit('change', [
-              ...this.value_,
-              {
-                image: '',
-                value: `选项${this.value_.length + 1}-value`,
-                label: `选项${this.value_.length + 1}-label`
-              }
-            ])
+            this.$emit('change', {
+              activeIndex: this.innerItems.length,
+              items: [
+                ...this.innerItems,
+                {
+                  image: '',
+                  value: `选项${this.innerItems.length + 1}-value`,
+                  label: `选项${this.innerItems.length + 1}-label`
+                }
+              ]
+            })
           },
-          minus (item, index) {
-            const items = this.value_.slice(0)
+          minus (index) {
+            if (this.innerItems.length === 1) return
+            const items = this.innerItems.slice(0)
             items.splice(index, 1)
-            this.$emit('change', items)
+            this.$emit('change', {
+              items,
+              activeIndex: index > 0 ? index - 1 : 0
+            })
           }
         }
       }
@@ -139,10 +138,18 @@ export default {
   methods: {
 
   },
-
   render () {
+    const { items, activeIndex } = this.dataSource
     return (
-      <slide data={this.items} interval={+this.interval} />
+      this.editorMode === 'edit'
+        ? items.length && <img src={items[activeIndex].image} />
+        : <Swipe autoplay={+this.interval} indicator-color="red">
+          {
+            items.map(item => (
+              <SwipeItem><img src={item.image} width="100%" height="100%" /></SwipeItem>
+            ))
+          }
+        </Swipe>
     )
   }
 }

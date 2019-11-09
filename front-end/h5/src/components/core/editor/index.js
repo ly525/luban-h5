@@ -21,26 +21,26 @@ import ExternalLinksOfHeader from '@/components/common/header/links.js'
 import LangSelect from '@/components/common/header/LangSelect.vue'
 import Feedback from '@/components/common/feedback/index'
 
-const sidebarMenus = [
-  {
-    i18nLabel: 'editor.sidebar.components',
-    label: '组件列表',
-    value: 'pluginList',
-    antIcon: 'bars'
-  },
-  {
-    i18nLabel: 'editor.sidebar.pages',
-    label: '页面管理',
-    value: 'pageManagement',
-    antIcon: 'snippets'
-  },
-  {
-    i18nLabel: 'editor.sidebar.templates',
-    label: '免费模板',
-    value: 'freeTemplate',
-    antIcon: 'appstore'
-  }
-]
+// const sidebarMenus = [
+//   {
+//     i18nLabel: 'editor.sidebar.components',
+//     label: '组件列表',
+//     value: 'pluginList',
+//     antIcon: 'bars'
+//   },
+//   {
+//     i18nLabel: 'editor.sidebar.pages',
+//     label: '页面管理',
+//     value: 'pageManagement',
+//     antIcon: 'snippets'
+//   },
+//   {
+//     i18nLabel: 'editor.sidebar.templates',
+//     label: '免费模板',
+//     value: 'freeTemplate',
+//     antIcon: 'appstore'
+//   }
+// ]
 
 const fixedTools = [
   {

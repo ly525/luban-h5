@@ -18,7 +18,6 @@
     "animate.css": "^3.7.2",
     "ant-design-vue": "^1.3.14",
     "core-js": "^2.6.5",
-    "cube-ui": "^1.12.31",
     "element-ui": "^2.9.1",
     "font-awesome": "4.7.0",
     "html2canvas": "^1.0.0-rc.3",
@@ -31,6 +30,7 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "v-click-outside": "^2.1.4",
+    "vant": "^2.2.12",
     "vue": "^2.6.10",
     "vue-i18n": "^8.14.1",
     "vue-quill-editor": "^3.0.6",
@@ -56,13 +56,6 @@
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-cli-plugin-cube-ui": "^0.2.5",
     "vue-template-compiler": "^2.6.10"
-  },
-  "transformModules": {
-    "cube-ui": {
-      "transform": "cube-ui/src/modules/${member}",
-      "kebabCase": true
-    }
   }
 }

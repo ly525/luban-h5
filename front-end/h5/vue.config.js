@@ -57,11 +57,5 @@ module.exports = {
       }
     },
     extract: false
-  },
-  pluginOptions: {
-    'cube-ui': {
-      postCompile: true,
-      theme: true
-    }
   }
 }
