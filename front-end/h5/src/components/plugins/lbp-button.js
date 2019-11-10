@@ -33,7 +33,6 @@ export default {
   },
   name: 'lbp-button',
   props: {
-    ...commonProps,
     text: {
       type: String,
       default: '按钮',
@@ -43,18 +42,16 @@ export default {
         require: true
       }
     },
-    type: {
-      type: String,
-      default: 'text'
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
+    vertical: commonProps.vertical,
+    backgroundColor: commonProps.backgroundColor,
+    color: commonProps.color,
+    fontSize: commonProps.fontSize,
+    lineHeight: commonProps.lineHeight,
+    borderWidth: commonProps.borderWidth,
+    borderRadius: commonProps.borderRadius,
+    borderColor: commonProps.borderColor,
+    textAlign: commonProps.textAlign
+
   },
   editorConfig: {
     components: {

@@ -3,27 +3,18 @@ import { quillEditor } from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import './styles/text-overwrite-quil-snow-theme.scss'
+import commonProps from './common/props.js'
 
 export default {
   render (h) {
-    const {
-      color,
-      textAlign,
-      fontSize,
-      lineHeight,
-      borderColor,
-      borderWidth
-    } = this
-
     const style = {
       position: 'relative',
-      textAlign,
-      fontSize,
-      color: `${color} !important`,
+      color: `${this.color} !important`,
       textDecoration: 'none',
-      backgroundColor: 'transparent',
-      lineHeight: lineHeight + 'em',
-      border: `${borderWidth}px solid ${borderColor}`
+      backgroundColor: this.backgroundColor || 'transparent',
+      lineHeight: `${this.lineHeight}em`,
+      border: `${this.borderWidth}px solid ${this.borderColor}`,
+      borderRadius: `${this.borderRadius}px`
     }
     const pureText = <div domPropsInnerHTML={this.text} class="ql-editor ql-container"></div>
     return (
@@ -79,89 +70,15 @@ export default {
     }
   },
   props: {
+    backgroundColor: commonProps.backgroundColor,
+    borderWidth: commonProps.borderWidth,
+    borderRadius: commonProps.borderRadius,
+    borderColor: commonProps.borderColor,
     text: {
       type: String,
       default: '双击修改文字'
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    backgroundColor: {
-      type: String,
-      default: 'transparent'
-    },
-    lineHeight: {
-      type: Number,
-      default: 1
-    },
-    borderWidth: {
-      type: Number,
-      default: 0
-    },
-    borderRadius: {
-      type: Number,
-      default: 0
-    },
-    borderColor: {
-      type: String,
-      default: '#ced4da'
-    },
-    borderStyle: {
-      type: String,
-      default: 'solid'
     }
   },
   editorConfig: {
-    propsConfig: {
-      borderColor: {
-        type: 'a-input', // lbs-color-picker
-        label: '边框颜色',
-        prop: {
-          type: 'color'
-        },
-        require: true,
-        defaultPropValue: '#333333'
-      },
-      borderWidth: {
-        type: 'a-input-number',
-        label: '边框宽度(px)',
-        require: true,
-        prop: {
-          step: 1,
-          min: 0,
-          max: 10
-        },
-        defaultPropValue: 0
-      },
-      borderRadius: {
-        type: 'a-input-number',
-        label: '圆角(px)',
-        require: true,
-        prop: {
-          step: 0.1,
-          min: 0,
-          max: 10
-        },
-        defaultPropValue: 0
-      },
-      borderStyle: {
-        type: 'a-input',
-        label: '边框形式',
-        require: true,
-        defaultPropValue: 'solid'
-      },
-      lineHeight: {
-        type: 'a-input-number',
-        label: '行高',
-        require: true,
-        prop: {
-          step: 0.1,
-          min: 0.1,
-          max: 10
-        },
-        defaultPropValue: 1
-      }
-    }
   }
 }

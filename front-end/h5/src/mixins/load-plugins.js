@@ -3,7 +3,7 @@ import Vue from 'vue'
 import LbpButton from '../components/plugins/lbp-button'
 // import LbpPicture from '../components/plugins/lbp-picture'
 // import LbpVideo from '../components/plugins/lbp-video'
-// import LbpText from '../components/plugins/lbp-text'
+import LbpText from '../components/plugins/lbp-text'
 // import LbpFormInput from '../components/plugins/lbp-form-input'
 // import LbpFormButton from '../components/plugins/lbp-form-button'
 // import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
@@ -23,17 +23,17 @@ export const pluginsList = [
   //   visible: true,
   //   name: LbpPicture.name
   // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Text',
-  //     'zh-CN': '文字'
-  //   },
-  //   title: '文字',
-  //   icon: 'text-width',
-  //   component: LbpText,
-  //   visible: true,
-  //   name: LbpText.name
-  // },
+  {
+    i18nTitle: {
+      'en-US': 'Text',
+      'zh-CN': '文字'
+    },
+    title: '文字',
+    icon: 'text-width',
+    component: LbpText,
+    visible: true,
+    name: LbpText.name
+  },
   {
     i18nTitle: {
       'en-US': 'Button',
