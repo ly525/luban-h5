@@ -9,6 +9,11 @@ export function getEditorConfigForEditingElement (elementName) {
   return new Ctor().$options.editorConfig
 }
 
+export function getVM (pluginName) {
+  const Ctor = Vue.component(pluginName)
+  return new Ctor()
+}
+
 export function swapZindex (x, y) {
   const tmp = y[styleKey].zindex
   y[styleKey].zindex = x[styleKey].zindex

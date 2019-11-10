@@ -37,20 +37,34 @@ class Element {
     this.animations = ele.animations || []
   }
 
-  getDefaultPluginProps (editorConfig) {
-    // init prop of plugin
-    const propConf = editorConfig.propsConfig
+  // init prop of plugin
+  getDefaultPluginProps (propsConfig) {
     const pluginProps = {}
-    Object.keys(propConf).forEach(key => {
+    Object.keys(propsConfig).forEach(key => {
       // #6
       if (key === 'name') {
         console.warn('Please do not use {name} as plugin prop')
         return
       }
-      pluginProps[key] = propConf[key].defaultPropValue
+      const defaultValue = propsConfig[key].default
+      pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue
     })
     return pluginProps
   }
+  // getDefaultPluginProps (editorConfig) {
+  //   // init prop of plugin
+  //   const propConf = editorConfig.propsConfig
+  //   const pluginProps = {}
+  //   Object.keys(propConf).forEach(key => {
+  //     // #6
+  //     if (key === 'name') {
+  //       console.warn('Please do not use {name} as plugin prop')
+  //       return
+  //     }
+  //     pluginProps[key] = propConf[key].defaultPropValue
+  //   })
+  //   return pluginProps
+  // }
 
   getStyle ({ position = 'static', isRem = false } = {}) {
     if (this.name === 'lbp-background') {

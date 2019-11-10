@@ -1,6 +1,5 @@
 import { mapState, mapActions } from 'vuex'
 import undoRedoHistory from '../../../store/plugins/undo-redo/History'
-import { getEditorConfigForEditingElement } from '../../../utils/element'
 
 import '../styles/index.scss'
 import 'animate.css'
@@ -139,11 +138,9 @@ export default {
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      */
     clone ({ name }) {
-      // const zindex = this.elements.length + 1
-      const editorConfig = getEditorConfigForEditingElement(name)
       this.elementManager({
         type: 'add',
-        value: { name, editorConfig }
+        value: { name }
       })
     },
     _renderMenuContent () {

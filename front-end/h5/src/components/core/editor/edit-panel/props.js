@@ -1,4 +1,5 @@
 import { mapState, mapActions } from 'vuex'
+import { getVM } from '../../../../utils/element'
 
 export default {
   props: {
@@ -25,7 +26,9 @@ export default {
       }
     },
     renderPropsEditorPanel (h, editingElement) {
-      const propsConfig = this.editingElementEditorConfig.propsConfig
+      const vm = getVM(editingElement.name)
+      const props = vm.$options.props
+
       return (
         <a-form
           ref="form"
@@ -34,48 +37,51 @@ export default {
           layout={this.layout}
         >
           {
-            Object.keys(propsConfig).map(propKey => {
-              const item = propsConfig[propKey]
-              // https://vuejs.org/v2/guide/render-function.html
-              const data = {
-                style: { width: '100%' },
-                props: {
-                  ...item.prop || {},
-                  // https://vuejs.org/v2/guide/render-function.html#v-model
+            Object
+              .entries(props)
+              .filter(([propKey, obj]) => obj.editor)
+              .map(([propKey, obj]) => {
+                const item = obj.editor
+                // https://vuejs.org/v2/guide/render-function.html
+                const data = {
+                  style: { width: '100%' },
+                  props: {
+                    ...item.prop || {},
+                    // https://vuejs.org/v2/guide/render-function.html#v-model
 
-                  // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：
-                  // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
-                  // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
-                  // value: editingElement.pluginProps[propKey] || item.defaultPropValue
-                  value: editingElement.pluginProps[propKey]
-                },
-                on: {
+                    // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：
+                    // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
+                    // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
+                    // value: editingElement.pluginProps[propKey] || item.defaultPropValue
+                    value: editingElement.pluginProps[propKey]
+                  },
+                  on: {
                   // https://vuejs.org/v2/guide/render-function.html#v-model
                   // input (e) {
                   //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
                   // }
-                  change (e) {
+                    change (e) {
                     // TODO fixme: update plugin props in vuex with dispatch
-                    editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+                      editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+                    }
                   }
                 }
-              }
-              const formItemLayout = this.layout === 'horizontal' ? {
-                labelCol: { span: 6 }, wrapperCol: { span: 16, offset: 2 }
-              } : {}
-              const formItemData = {
-                props: {
-                  ...formItemLayout,
-                  label: item.label
+                const formItemLayout = this.layout === 'horizontal' ? {
+                  labelCol: { span: 6 }, wrapperCol: { span: 16, offset: 2 }
+                } : {}
+                const formItemData = {
+                  props: {
+                    ...formItemLayout,
+                    label: item.label
+                  }
                 }
-              }
-              return (
-                <a-form-item {...formItemData}>
-                  { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
-                  { h(item.type, data) }
-                </a-form-item>
-              )
-            })
+                return (
+                  <a-form-item {...formItemData}>
+                    { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
+                    { h(item.type, data) }
+                  </a-form-item>
+                )
+              })
           }
         </a-form>
       )
