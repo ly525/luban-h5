@@ -1,7 +1,11 @@
+import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import { getVM } from '../../../../utils/element'
 
 export default {
+  data: () => ({
+    loadCustomEditorFlag: false
+  }),
   props: {
     layout: {
       type: String,
@@ -9,12 +13,31 @@ export default {
     }
   },
   computed: {
-    ...mapState('editor', ['editingElement', 'editingElementEditorConfig'])
+    ...mapState('editor', ['editingElement', 'editingElementEditorConfig']),
+    customEditorName () {
+      return `${this.editingElement.name}-custom-editor`
+    }
   },
   methods: {
     ...mapActions('editor', [
       'setEditingElement'
     ]),
+    loadCustomEditorForPlugin () {
+      this.loadCustomEditorFlag = false
+      if (!this.editingElement) return
+
+      if (Vue.component(this.customEditorName)) {
+        this.loadCustomEditorFlag = true
+      } else {
+        import(`../../../plugins/${this.editingElement.name}__editor`).then(component => {
+          this.loadCustomEditorFlag = true
+          Vue.component(this.customEditorName, component.default)
+        }).catch(err => {
+          console.log(err)
+          console.warn('没有发现组件对应的编辑器')
+        })
+      }
+    },
     /**
      * 将插件属性的 自定义增强编辑器注入 属性编辑面板中
      */
@@ -37,9 +60,18 @@ export default {
           layout={this.layout}
         >
           {
+            // plugin-custom-editor
+            this.loadCustomEditorFlag &&
+            h(this.customEditorName, {
+              props: {
+                elementProps: editingElement.pluginProps
+              }
+            })
+          }
+          {
             Object
               .entries(props)
-              .filter(([propKey, obj]) => obj.editor)
+              .filter(([propKey, obj]) => obj.editor && !obj.editor.custom)
               .map(([propKey, obj]) => {
                 const item = obj.editor
                 // https://vuejs.org/v2/guide/render-function.html
@@ -92,5 +124,8 @@ export default {
     if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
     this.mixinEnhancedPropsEditor(ele)
     return this.renderPropsEditorPanel(h, ele)
+  },
+  created () {
+    window.getEditorApp.$on('setEditingElement', this.loadCustomEditorForPlugin)
   }
 }

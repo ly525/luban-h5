@@ -8,6 +8,8 @@ export const actions = {
 
     const vm = (payload && payload.name) ? getEditorConfigForEditingElement(payload.name) : null
     commit('setEditingElementEditorConfig', vm)
+
+    window.getEditorApp.$emit('setEditingElement')
   },
   setElementPosition ({ commit }, payload) {
     commit('setElementCommonStyle', payload)
