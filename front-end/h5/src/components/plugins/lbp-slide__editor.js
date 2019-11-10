@@ -66,7 +66,7 @@ export default {
           onChange={(page) => {
             this.current = page
 
-            this.activeIndex = page - 1
+            this.elementProps.activeIndex = page - 1
             // this.$emit('change', {
             //   items: this.innerItems,
             //   activeIndex: page - 1
