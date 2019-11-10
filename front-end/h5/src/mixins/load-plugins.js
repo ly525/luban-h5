@@ -1,28 +1,28 @@
 import Vue from 'vue'
 // import LbpButton from '@luban-h5/lbc-button'
 import LbpButton from '../components/plugins/lbp-button'
-// import LbpPicture from '../components/plugins/lbp-picture'
-// import LbpVideo from '../components/plugins/lbp-video'
+import LbpPicture from '../components/plugins/lbp-picture'
+import LbpVideo from '../components/plugins/lbp-video'
 import LbpText from '../components/plugins/lbp-text'
-// import LbpFormInput from '../components/plugins/lbp-form-input'
-// import LbpFormButton from '../components/plugins/lbp-form-button'
-// import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
-// import LbpFormCheckboxGroup from '../components/plugins/lbp-form-checkbox-group'
+import LbpFormInput from '../components/plugins/lbp-form-input'
+import LbpFormButton from '../components/plugins/lbp-form-button'
+import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
+import LbpFormCheckboxGroup from '../components/plugins/lbp-form-checkbox-group'
 import LbpBackground from '../components/plugins/lbp-background'
-// import LbpSlide from '../components/plugins/lbp-slide'
+import LbpSlide from '../components/plugins/lbp-slide'
 
 export const pluginsList = [
-  // {
-  //   title: '图片',
-  //   i18nTitle: {
-  //     'en-US': 'Picture',
-  //     'zh-CN': '图片'
-  //   },
-  //   icon: 'photo',
-  //   component: LbpPicture,
-  //   visible: true,
-  //   name: LbpPicture.name
-  // },
+  {
+    title: '图片',
+    i18nTitle: {
+      'en-US': 'Picture',
+      'zh-CN': '图片'
+    },
+    icon: 'photo',
+    component: LbpPicture,
+    visible: true,
+    name: LbpPicture.name
+  },
   {
     i18nTitle: {
       'en-US': 'Text',
@@ -45,99 +45,85 @@ export const pluginsList = [
     visible: true,
     name: LbpButton.name
   },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Carousel',
-  //     'zh-CN': '轮播图'
-  //   },
-  //   title: '轮播图',
-  //   icon: 'photo',
-  //   component: LbpSlide,
-  //   visible: true,
-  //   name: LbpSlide.name
-  //   // disabled: true
-  // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Map',
-  //     'zh-CN': '地图'
-  //   },
-  //   title: '地图',
-  //   icon: 'map-o',
-  //   component: LbpFormRadioGroup,
-  //   visible: true,
-  //   name: LbpFormRadioGroup.name,
-  //   disabled: true
-  // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Video',
-  //     'zh-CN': '视频'
-  //   },
-  //   title: '视频',
-  //   icon: 'file-video-o',
-  //   component: LbpVideo,
-  //   visible: true,
-  //   name: LbpVideo.name
-  // },
-  // // {
-  // //   title: '视频',
-  // //   icon: 'play-circle-o',
-  // //   component: LbpVideo,
-  // //   visible: true,
-  // //   name: LbpVideo.name
-  // // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Form Input',
-  //     'zh-CN': '表单输入'
-  //   },
-  //   title: '表单输入',
-  //   icon: 'pencil-square-o',
-  //   component: LbpFormInput,
-  //   visible: true,
-  //   name: LbpFormInput.name
-  // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Form Submit',
-  //     'zh-CN': '表单提交'
-  //   },
-  //   title: '表单提交',
-  //   icon: 'hand-pointer-o',
-  //   component: LbpFormButton,
-  //   visible: true,
-  //   name: LbpFormButton.name
-  // },
-  // // {
-  // //   title: '表单单选',
-  // //   icon: 'hand-pointer-o',
-  // //   component: LbpFormRadio,
-  // //   visible: true,
-  // //   name: LbpFormRadio.name
-  // // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Form Checkbox',
-  //     'zh-CN': '表单多选'
-  //   },
-  //   title: '表单多选',
-  //   icon: 'check-square-o',
-  //   component: LbpFormCheckboxGroup,
-  //   visible: true,
-  //   name: LbpFormCheckboxGroup.name
-  // },
-  // {
-  //   i18nTitle: {
-  //     'en-US': 'Form Radio',
-  //     'zh-CN': '表单单选'
-  //   },
-  //   title: '表单单选',
-  //   icon: 'dot-circle-o',
-  //   component: LbpFormRadioGroup,
-  //   visible: true,
-  //   name: LbpFormRadioGroup.name
-  // },
+  {
+    i18nTitle: {
+      'en-US': 'Carousel',
+      'zh-CN': '轮播图'
+    },
+    title: '轮播图',
+    icon: 'photo',
+    component: LbpSlide,
+    visible: true,
+    name: LbpSlide.name
+    // disabled: true
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Map',
+      'zh-CN': '地图'
+    },
+    title: '地图',
+    icon: 'map-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name,
+    disabled: true
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Video',
+      'zh-CN': '视频'
+    },
+    title: '视频',
+    icon: 'file-video-o',
+    component: LbpVideo,
+    visible: true,
+    name: LbpVideo.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Form Input',
+      'zh-CN': '表单输入'
+    },
+    title: '表单输入',
+    icon: 'pencil-square-o',
+    component: LbpFormInput,
+    visible: true,
+    name: LbpFormInput.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Form Submit',
+      'zh-CN': '表单提交'
+    },
+    title: '表单提交',
+    icon: 'hand-pointer-o',
+    component: LbpFormButton,
+    visible: true,
+    name: LbpFormButton.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Form Checkbox',
+      'zh-CN': '表单多选'
+    },
+    title: '表单多选',
+    icon: 'check-square-o',
+    component: LbpFormCheckboxGroup,
+    visible: true,
+    name: LbpFormCheckboxGroup.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Form Radio',
+      'zh-CN': '表单单选'
+    },
+    title: '表单单选',
+    icon: 'dot-circle-o',
+    component: LbpFormRadioGroup,
+    visible: true,
+    name: LbpFormRadioGroup.name
+  },
   {
     i18nTitle: {
       'en-US': 'Background',

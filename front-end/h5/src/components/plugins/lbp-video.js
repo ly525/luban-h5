@@ -7,7 +7,18 @@ export default {
   props: {
     src: {
       type: String,
-      default: ``
+      default: ``,
+      editor: {
+        type: 'a-input',
+        label: '视频url',
+        prop: {
+          type: 'textarea'
+        },
+        extra: (h) => {
+          return <a href='https://github.com/ly525/luban-h5/issues/85' target='_blank'>教程(Tutorial)</a>
+        },
+        defaultPropValue: ''
+      }
     },
     disabled: {
       type: Boolean,
@@ -42,19 +53,6 @@ export default {
     )
   },
   editorConfig: {
-    propsConfig: {
-      src: {
-        type: 'a-input',
-        label: '视频url',
-        prop: {
-          type: 'textarea'
-        },
-        extra: (h) => {
-          return <a href='https://github.com/ly525/luban-h5/issues/85' target='_blank'>教程(Tutorial)</a>
-        },
-        defaultPropValue: ''
-      }
-    },
     components: {
     }
   }

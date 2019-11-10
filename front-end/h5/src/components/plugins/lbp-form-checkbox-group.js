@@ -21,15 +21,38 @@ export default {
   props: {
     aliasName: {
       type: String,
-      default: `标题演示-${genUUID().slice(0, 6)}`
+      default: `标题演示-${genUUID().slice(0, 6)}`,
+      editor: {
+        type: 'a-input',
+        label: '填写标题',
+        require: true
+      }
     },
     items: {
       type: Array,
-      default: () => defaultItems
+      default: () => defaultItems,
+      editor: {
+        type: 'lbs-form-radio-items-editor',
+        label: '选项列表',
+        require: true,
+        defaultPropValue: defaultItems
+      }
     },
     type: {
       type: String,
-      default: 'checkbox'
+      default: 'checkbox',
+      editor: {
+        type: 'a-radio-group',
+        label: '选择模式',
+        require: true,
+        prop: {
+          options: [
+            { label: '单选', value: 'radio' },
+            { label: '多选', value: 'checkbox' }
+          ],
+          name: 'mode'
+        }
+      }
     }
   },
   data () {
@@ -54,33 +77,6 @@ export default {
     }
   },
   editorConfig: {
-    propsConfig: {
-      items: {
-        type: 'lbs-form-radio-items-editor',
-        label: '选项列表',
-        require: true,
-        defaultPropValue: defaultItems
-      },
-      aliasName: {
-        type: 'a-input',
-        label: '填写标题',
-        require: true,
-        defaultPropValue: `标题演示-${genUUID().slice(0, 6)}`
-      },
-      type: {
-        type: 'a-radio-group',
-        label: '选择模式',
-        require: true,
-        prop: {
-          options: [
-            { label: '单选', value: 'radio' },
-            { label: '多选', value: 'checkbox' }
-          ],
-          name: 'mode'
-        },
-        defaultPropValue: 'checkbox'
-      }
-    },
     components: {
       'lbs-form-radio-items-editor': {
         render () {

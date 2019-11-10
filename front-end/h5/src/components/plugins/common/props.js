@@ -1,21 +1,26 @@
 export default {
-  text: {
+  text: ({ defaultValue = '按钮', label = '按钮文字' } = {}) => ({
     type: String,
-    default: '按钮'
-  },
+    default: defaultValue,
+    editor: {
+      type: 'a-input',
+      label,
+      require: true
+    }
+  }),
   type: {
     type: String,
-    default: 'radio'
+    default: 'text'
   },
-  // placeholder: {
-  //   type: String,
-  //   default: '请填写提示文字',
-  //   editor: {
-  //     type: 'a-input',
-  //     label: '提示文字',
-  //     require: true
-  //   }
-  // },
+  placeholder: ({ defaultValue = '请填写提示文字' } = {}) => ({
+    type: String,
+    default: defaultValue,
+    editor: {
+      type: 'a-input',
+      label: '提示文字',
+      require: true
+    }
+  }),
   required: {
     type: Boolean,
     default: false
@@ -117,13 +122,13 @@ export default {
       require: true
     }
   },
-  textAlign: {
+  textAlign: ({ defaultValue = 'center' } = {}) => ({
     type: String,
-    default: 'center',
+    default: defaultValue,
     editor: {
       type: 'lbs-text-align',
       label: '文字对齐',
       require: true
     }
-  }
+  })
 }

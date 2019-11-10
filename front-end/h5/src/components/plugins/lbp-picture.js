@@ -8,15 +8,8 @@ export default {
   props: {
     imgSrc: {
       type: String,
-      default: placeholderImg
-    }
-  },
-  data: () => ({
-    placeholderImg
-  }),
-  editorConfig: {
-    propsConfig: {
-      imgSrc: {
+      default: placeholderImg,
+      editor: {
         type: 'image-gallery',
         label: '图片url',
         prop: {
@@ -24,7 +17,12 @@ export default {
         },
         defaultPropValue: ''
       }
-    },
+    }
+  },
+  data: () => ({
+    placeholderImg
+  }),
+  editorConfig: {
     components: {
       'image-gallery': ImageGallery
     }

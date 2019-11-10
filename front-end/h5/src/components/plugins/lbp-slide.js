@@ -24,11 +24,23 @@ export default {
   props: {
     interval: {
       type: Number,
-      default: 4000
+      default: 4000,
+      editor: {
+        type: 'a-input-number',
+        label: '间隔时间',
+        require: true,
+        defaultPropValue: 4000
+      }
     },
     dataSource: {
       type: Object,
-      default: () => getDefaultDataSource()
+      default: () => getDefaultDataSource(),
+      editor: {
+        type: 'lbs-slide-items-editor',
+        label: '图片列表',
+        require: true,
+        defaultPropValue: getDefaultDataSource()
+      }
     },
     editorMode: {
       type: String,
@@ -40,20 +52,6 @@ export default {
     }
   },
   editorConfig: {
-    propsConfig: {
-      interval: {
-        type: 'a-input-number',
-        label: '间隔时间',
-        require: true,
-        defaultPropValue: 4000
-      },
-      dataSource: {
-        type: 'lbs-slide-items-editor',
-        label: '图片列表',
-        require: true,
-        defaultPropValue: getDefaultDataSource()
-      }
-    },
     components: {
       'lbs-slide-items-editor': {
         render () {

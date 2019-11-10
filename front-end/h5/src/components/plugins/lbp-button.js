@@ -33,15 +33,7 @@ export default {
   },
   name: 'lbp-button',
   props: {
-    text: {
-      type: String,
-      default: '按钮',
-      editor: {
-        type: 'a-input',
-        label: '按钮文字',
-        require: true
-      }
-    },
+    text: commonProps.text(),
     vertical: commonProps.vertical,
     backgroundColor: commonProps.backgroundColor,
     color: commonProps.color,
@@ -50,7 +42,7 @@ export default {
     borderWidth: commonProps.borderWidth,
     borderRadius: commonProps.borderRadius,
     borderColor: commonProps.borderColor,
-    textAlign: commonProps.textAlign
+    textAlign: commonProps.textAlign()
 
   },
   editorConfig: {
