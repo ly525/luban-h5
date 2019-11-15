@@ -48,7 +48,8 @@ export default {
     minus (index) {
       if (this.innerItems.length === 1) return
       this.elementProps.items.splice(index, 1)
-      this.elementProps.activeIndex = index > 0 ? index - 1 : 0
+      // this.elementProps.activeIndex = index > 0 ? index - 1 : 0
+      this.elementProps.activeIndex = Math.max(index - 1, 0)
       // const items = this.innerItems.slice(0)
       // items.splice(index, 1)
       // this.$emit('change', {
