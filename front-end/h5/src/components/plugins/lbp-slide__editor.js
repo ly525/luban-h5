@@ -1,5 +1,3 @@
-import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
-
 export default {
   props: {
     elementProps: {
@@ -79,7 +77,7 @@ export default {
           itemRender={this.itemRender}
         />
       }
-      <ImageGallery
+      <lbs-image-gallery
         style={{ margin: '16px 0' }}
         value={currentItem.image}
         onChange={url => {

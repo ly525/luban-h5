@@ -1,5 +1,3 @@
-import ImageGallery from '@/components/core/support/image-gallery/gallery.js'
-
 export default {
   name: 'lbp-background',
   render () {
@@ -32,26 +30,21 @@ export default {
   props: {
     imgSrc: {
       type: String,
-      default: ''
-    },
-    backgroundColor: {
-      type: String,
-      // TODO 为什么 transparent 无效？
-      default: '#ffffff'
-    }
-  },
-  editorConfig: {
-    propsConfig: {
-      imgSrc: {
-        type: 'image-gallery',
-        // type: 'a-input',
+      default: '',
+      editor: {
+        type: 'lbs-image-gallery',
         label: '图片url',
         prop: {
           type: 'textarea'
         },
         defaultPropValue: ''
-      },
-      backgroundColor: {
+      }
+    },
+    backgroundColor: {
+      type: String,
+      // TODO 为什么 transparent 无效？
+      default: '#ffffff',
+      editor: {
         type: 'a-input', // lbs-color-picker
         label: '背景颜色',
         prop: {
@@ -60,9 +53,6 @@ export default {
         require: true,
         defaultPropValue: '#ffffff' // TODO why logogram for color does't work?
       }
-    },
-    components: {
-      'image-gallery': ImageGallery
     }
   }
 }

@@ -3,6 +3,7 @@ import PersonalTab from './tabs/personal.js'
 import PixabayTab from './tabs/pixabay.js'
 
 export default {
+  name: 'lbs-image-gallery',
   components: {
   },
   props: {

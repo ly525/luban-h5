@@ -42,6 +42,7 @@ export default {
      * 将插件属性的 自定义增强编辑器注入 属性编辑面板中
      */
     mixinEnhancedPropsEditor (editingElement) {
+      if (!this.editingElementEditorConfig || !this.editingElementEditorConfig.components) return
       const { components } = this.editingElementEditorConfig
       for (const key in components) {
         if (this.$options.components[key]) return
