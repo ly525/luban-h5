@@ -32,7 +32,7 @@ export default {
       type: Array,
       default: () => defaultItems,
       editor: {
-        type: 'lbs-form-radio-items-editor',
+        type: 'lbs-prop-text-enum-editor',
         label: '选项列表',
         require: true,
         defaultPropValue: defaultItems
@@ -74,58 +74,6 @@ export default {
   watch: {
     type (type) {
       this.value = type === 'radio' ? '' : []
-    }
-  },
-  editorConfig: {
-    components: {
-      'lbs-form-radio-items-editor': {
-        render () {
-          return <div>
-            {
-              this.value_.map((item, index) => (
-                <div>
-                  <a-input value={item.value} onChange={e => { item.value = e.target.value }}></a-input>
-                  <a-button type="dashed" shape="circle" icon="plus" onClick={this.add} />
-                  <a-button type="dashed" shape="circle" icon="minus" onClick={(item, index) => this.minus(item, index)} />
-                </div>
-              ))
-            }
-          </div>
-        },
-        props: {
-          value: {
-            type: Array,
-            default: () => defaultItems
-          }
-        },
-        computed: {
-          value_: {
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
-          }
-        },
-        methods: {
-          add () {
-            console.log(this.value_.length)
-            this.$emit('change', [
-              ...this.value_,
-              {
-                value: `选项${this.value_.length + 1}`,
-                label: `选项${this.value_.length + 1}-label`
-              }
-            ])
-          },
-          minus (item, index) {
-            const items = this.value_.slice(0)
-            items.splice(index, 1)
-            this.$emit('change', items)
-          }
-        }
-      }
     }
   },
   mounted () {
