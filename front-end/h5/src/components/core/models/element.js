@@ -111,11 +111,11 @@ class Element {
     }
   }
 
-  getPreviewData ({ position = 'static', isRem = false } = {}) {
+  getPreviewData ({ position = 'static', isRem = false, mode = 'preview' } = {}) {
     const style = this.getStyle({ position })
     const data = {
       style,
-      props: this.getProps({ mode: 'preview' }),
+      props: this.getProps({ mode }),
       attrs: this.getAttrs()
     }
     return data
