@@ -44,14 +44,14 @@ module.exports = {
 
     // learn the query from: https://github.com/strapi/foodadvisor/blob/master/api/api/restaurant/controllers/Restaurant.js#L40
     // eslint-disable-next-line no-undef
-    let formDetails = await Workform.query(qb => {
+    let formRecords = await Workform.query(qb => {
       qb.where('work', '=', work.id);
     }).fetchAll();
-    formDetails = formDetails.toJSON();
+    formRecords = formRecords.toJSON();
 
     const uuidMap2Name = getUuidMap2Name(work);
     // eslint-disable-next-line require-atomic-updates
-    return ctx.body = { uuidMap2Name, formDetails };
+    return ctx.body = { uuidMap2Name, formRecords };
   },
   setAsTemplate: async (ctx) => {
     let work = await strapi.services.work.findOne(ctx.params);

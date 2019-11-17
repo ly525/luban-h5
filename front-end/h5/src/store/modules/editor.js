@@ -12,7 +12,7 @@ const state = {
   editingElementEditorConfig: null,
   formDetailOfWork: {
     uuidMap2Name: {},
-    formDetails: []
+    formRecords: []
   },
   workTemplates: []
 }

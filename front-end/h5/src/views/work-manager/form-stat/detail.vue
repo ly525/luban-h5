@@ -38,7 +38,7 @@ export default {
     /**
      * rows demo: [{"title":"姓名","key":"1565596393441"},{"title":"学校","key":"1565596397671"}]
      *
-     * formDetails example: <[{
+     * formRecords example: <[{
         "id": 4,
         "form": {
           "1565595388440": "ddd",
@@ -50,8 +50,8 @@ export default {
       }]>
     */
     rows () {
-      const { formDetails, uuidMap2Name } = this.formDetailOfWork
-      const rows = formDetails.map(({ form, id }) => {
+      const { formRecords, uuidMap2Name } = this.formDetailOfWork
+      const rows = formRecords.map(({ form, id }) => {
         const row = {}
         Object.entries(form).forEach(([uuid, inputValue = '-']) => {
           if (uuidMap2Name[uuid]) {

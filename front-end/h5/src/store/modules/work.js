@@ -97,7 +97,7 @@ export const actions = {
         "1565596393441": "姓名",
         "1565596397671": "学校"
     },
-    "formDetails": [
+    "formRecords": [
         {
             "id": 3,
             "form": {
