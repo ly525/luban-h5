@@ -128,7 +128,6 @@ export default {
       return (
         <div
           style={{ height: '100%', position: 'relative' }}
-          class="canvas-editor-wrapper"
           onClick={(e) => {
             this.hideContextMenu()
             this.handleClickCanvas(e)

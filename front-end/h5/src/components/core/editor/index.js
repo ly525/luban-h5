@@ -299,6 +299,7 @@ export default {
                 { this.isPreviewMode
                   ? <RenderPreviewCanvas elements={this.elements}/>
                   : <RenderEditCanvas
+                    class="edit-mode"
                     elements={this.elements}
                   />
                 }

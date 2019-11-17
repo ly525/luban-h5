@@ -1,0 +1,19 @@
+.page-manager-panel {
+  position: relative;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    height: 60px;
+    border-bottom: 1px solid #f0f4f5;
+
+    &.active {
+      color: #1593ff;
+    }
+  }
+
+  .footer-actions {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,23 @@
+.shortcut-button {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60px !important;
+  width: 100%;
+  margin-bottom: 15px;
+
+  border: 1px dashed #fff !important;
+  background-color: #f5f8fb !important;
+  color: #393e46 !important;
+
+  transition: all .25s;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+  .shortcut-icon {
+    padding: 4px;
+  }
+}

@@ -1,29 +1,10 @@
-@import url("./_spacing-helpers.scss");
-
-@mixin shortcut-button {
-  border: 1px dashed #fff;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all .25s;
-  background-color: #f5f8fb;
-  margin-bottom: 15px;
-  flex-direction: column;
-  color: #393e46;
-  width: 100%;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-  .shortcut-icon {
-    padding: 4px;
-    // display: block;
-    // font-size: 16px;
-    // margin-bottom: 10px;
-  }
-}
+@import url("./helpers.scss");
+@import url("./spacing-helpers.scss");
+@import url("./shape.scss");
+@import url("./align-guides.scss");
+@import url("./shortcut-btn.scss");
+@import url("./page-manager.scss");
+@import url("./canvas-wrapper.scss");
 
 #luban-editor-layout,
 #luban-work-manager-layout  {
@@ -56,69 +37,9 @@
     }
   }
 
-  .shortcut-button {
-    @include shortcut-button;
-  }
-
-
-  .canvas-wrapper {
-    border: 1px dashed #e7e7e7;
-    // padding: '12px';
-  }
-
-  .canvas-editor-wrapper {
-    // box-shadow: 0 0 0 1px #d9d9d9;
-    // inspired by https://github.com/Heboy/h5-maker/blob/38136192bab1427b9d5741a5dae0b5186d4b2ea0/src/scss/Page.scss#L8
-    // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADVJREFUeNpifPHixQEGGgMWEPH161cHWlrCxEAHMGrJqCWjloxaMmrJqCWjloxaMrgtAQgwAL+YBst5kqDgAAAAAElFTkSuQmCC);
-    // background-image: url(https://i.imgur.com/SuyR7Vq.png);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlQTFRF9fX18PDwAAAABQ8/pgAAAAN0Uk5T/yIA41y2EwAAABhJREFUeJxjYIAC0VAQcGCQWgUCDUONBgDH8Fwzu33LswAAAABJRU5ErkJggg==');
-    .element--editing {
-      outline: 1px dashed #70c0ff !important;
-    }
-
-    // !#zh 控制缩放大小的圆点
-    .shape__scale-point {
-      position: absolute;
-      background: #fff;
-      border: 1px solid rgb(89, 199, 249);
-      width: 6px;
-      height: 6px;
-      z-index: 1;
-      border-radius: 50%;
-    }
-    // TODO #!zh: 写一个辅助线基类： base-line
-    .v-line {
-      position: absolute;
-      height: 100vh;
-      width: 1px;
-      top: 0;
-      background-color: #94f5ff;
-    }
-    .h-line {
-      position: absolute;
-      height: 1px;
-      width: 100vh;
-      left: 0;
-      background-color: #94f5ff;
-    }
-  }
-
   #props-edit-form {
     .ant-form-item {
       margin-bottom: 12px;
-    }
-  }
-
-  .page-manager-container {
-    margin-top: 16px;
-    .page-button {
-      padding: 18px 8px;
-      border-bottom: 1px solid #ebeef5;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-    .active-page {
-      color: #2981fa;
     }
   }
 
@@ -128,30 +49,6 @@
     border: 1px dashed #eee;
     color: #aaa;
     padding: 4px;
-  }
-}
-
-.shortcut-button {
-  @include shortcut-button;
-}
-
-.page-manager-panel {
-  position: relative;
-
-  &__item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    height: 60px;
-    border-bottom: 1px solid #f0f4f5;
-
-    &.active {
-      color: #1593ff;
-    }
-  }
-
-  .footer-actions {
-    margin-top: 40px;
   }
 }
 
@@ -181,28 +78,4 @@
   color: #1890ff !important;
   background-color: transparent;
   text-decoration: none;
-}
-
-
-.transparent-bg {
-  background: transparent !important;
-}
-
-.no-border {
-  border: none !important;
-}
-
-.flex-center {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-space-between {
-  display: flex !important;
-  justify-content: space-between;
-}
-
-.cursor-pointer {
-  cursor: pointer !important;
 }

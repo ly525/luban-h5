@@ -1,0 +1,15 @@
+// !#zh 控制缩放大小的圆点
+.shape__scale-point {
+  position: absolute;
+  background: #fff;
+  border: 1px solid rgb(89, 199, 249);
+  width: 6px;
+  height: 6px;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.shape__wrapper-active {
+  // #bcbcbc
+  outline: 1px dashed #70c0ff !important;
+}
