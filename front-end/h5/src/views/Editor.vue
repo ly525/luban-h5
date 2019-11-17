@@ -1,11 +1,11 @@
 <script>
 import CoreEditor from '../components/core/editor/index.js'
 import loadPluginMixin from '../mixins/load-plugins.js'
-import loadEnhancePropsEditorMixin from '../components/core/support/index.js'
+import '../components/core/support/index.js'
 
 export default {
   extends: CoreEditor,
-  mixins: [loadPluginMixin, loadEnhancePropsEditorMixin]
+  mixins: [loadPluginMixin]
 }
 </script>
 <style lang="scss">

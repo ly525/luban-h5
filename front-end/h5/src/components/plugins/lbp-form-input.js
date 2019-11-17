@@ -1,4 +1,3 @@
-import LbpTextAlign from '@luban-h5/lbs-text-align'
 import commonProps from './common/props.js'
 
 export default {
@@ -58,7 +57,6 @@ export default {
   },
   editorConfig: {
     components: {
-      'lbs-text-align': LbpTextAlign,
       'lbs-select-input-type': {
         props: ['value'],
         computed: {
