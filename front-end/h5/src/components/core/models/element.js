@@ -31,7 +31,7 @@ class Element {
      * 3. 为何需要 clone，因为会有 element.clone() 以及 page.clone()，
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
-    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj(ele.pluginProps)) || this.getDefaultPluginProps(ele.editorConfig || {})
+    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj({ ...ele.pluginProps, uuid: this.uuid })) || this.getDefaultPluginProps(ele.editorConfig || {})
     this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex }
     this.events = []
     this.animations = ele.animations || []
@@ -39,7 +39,9 @@ class Element {
 
   // init prop of plugin
   getDefaultPluginProps (propsConfig) {
-    const pluginProps = {}
+    const pluginProps = {
+      uuid: this.uuid
+    }
     Object.keys(propsConfig).forEach(key => {
       // #6
       if (key === 'name') {

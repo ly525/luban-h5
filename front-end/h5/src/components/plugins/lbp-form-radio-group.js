@@ -18,7 +18,7 @@ export default {
   props: {
     aliasName: {
       type: String,
-      default: `标题演示-${genUUID().slice(0, 6)}`,
+      default: `标题演示`,
       editor: {
         type: 'a-input',
         label: '填写标题',
@@ -115,7 +115,7 @@ export default {
               vertical
               value={item.value}
               checked={this.value === item.value}
-              aliasName={this.aliasName}
+              aliasName={this.uuid}
               type={this.type}
               onChange={this.onChange}
             >{item.value}

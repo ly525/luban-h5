@@ -1,5 +1,4 @@
 import LbpFormRadio from './lbp-form-radio.js'
-import { genUUID } from '../../utils/element.js'
 
 const defaultItems = [
   {
@@ -21,7 +20,7 @@ export default {
   props: {
     aliasName: {
       type: String,
-      default: `标题演示-${genUUID().slice(0, 6)}`,
+      default: `标题演示`,
       editor: {
         type: 'a-input',
         label: '填写标题',
@@ -110,7 +109,7 @@ export default {
   render () {
     return (
       <div>
-        <h3>{this.aliasName}{this.type}</h3>
+        <h3>{this.aliasName}</h3>
         <input type="text" hidden value={this.value_} data-type="lbp-form-input" data-uuid={this.uuid} />
         {
           this.items.map(item => (
@@ -118,7 +117,7 @@ export default {
               vertical
               value={item.value}
               checked={this.type === 'radio' ? this.value === item.value : this.value.includes(item.value)}
-              aliasName={this.aliasName}
+              aliasName={this.uuid}
               type={this.type}
               onChange={this.onChange}
             >{item.value}</lbp-form-radio>
