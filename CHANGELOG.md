@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/ly525/luban-h5/compare/v1.6.1...v1.7.0) (2019-11-23)
+
+
+### Bug Fixes
+
+* [#107](https://github.com/ly525/luban-h5/issues/107) ([0bf1d9e](https://github.com/ly525/luban-h5/commit/0bf1d9e))
+
+
+### Features
+
+* load plugins from npm ([0d765ed](https://github.com/ly525/luban-h5/commit/0d765ed))
+
 ### [1.6.1](https://github.com/ly525/luban-h5/compare/v1.6.0...v1.6.1) (2019-11-03)
 
 
