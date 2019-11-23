@@ -31,7 +31,7 @@ export default {
   },
   backgroundColor: {
     type: String,
-    default: 'transparent',
+    default: '#ffffff',
     editor: {
       type: 'a-input', // lbs-color-picker
       label: '背景颜色',
@@ -43,7 +43,10 @@ export default {
   },
   color: {
     type: String,
-    default: 'black',
+    // 注意，根据 MDN 文档，颜色选择器的 value 只能是：# + 6个16进制字符串
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value
+    // The value of an <input> element of type color is always a DOMString which contains a 7-character string specifying an RGB color in hexadecimal format.
+    default: '#000000',
     editor: {
       type: 'a-input',
       label: '文字颜色',

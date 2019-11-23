@@ -11,7 +11,7 @@ export default {
       position: 'relative',
       color: `${this.color} !important`,
       textDecoration: 'none',
-      backgroundColor: this.backgroundColor || 'transparent',
+      backgroundColor: this.backgroundColor || '#ffffff',
       lineHeight: `${this.lineHeight}em`,
       border: `${this.borderWidth}px solid ${this.borderColor}`,
       borderRadius: `${this.borderRadius}px`
