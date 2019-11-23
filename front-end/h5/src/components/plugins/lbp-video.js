@@ -16,8 +16,7 @@ export default {
         },
         extra: (h) => {
           return <a href='https://github.com/ly525/luban-h5/issues/85' target='_blank'>教程(Tutorial)</a>
-        },
-        defaultPropValue: ''
+        }
       }
     },
     disabled: {

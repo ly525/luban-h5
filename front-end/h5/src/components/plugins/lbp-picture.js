@@ -13,8 +13,7 @@ export default {
         label: '图片url',
         prop: {
           type: 'textarea'
-        },
-        defaultPropValue: ''
+        }
       }
     }
   },

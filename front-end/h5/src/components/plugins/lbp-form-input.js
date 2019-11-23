@@ -36,8 +36,7 @@ export default {
       default: 'text',
       editor: {
         type: 'lbs-select-input-type',
-        label: '类型',
-        defaultPropValue: 'text'
+        label: '类型'
       }
     },
     disabled: {

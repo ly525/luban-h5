@@ -33,8 +33,7 @@ export default {
       editor: {
         type: 'lbs-prop-text-enum-editor',
         label: '选项列表',
-        require: true,
-        defaultPropValue: defaultItems
+        require: true
       }
     },
     type: {

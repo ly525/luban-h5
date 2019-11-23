@@ -36,8 +36,7 @@ export default {
         label: '图片url',
         prop: {
           type: 'textarea'
-        },
-        defaultPropValue: ''
+        }
       }
     },
     backgroundColor: {
@@ -54,8 +53,7 @@ export default {
         prop: {
           type: 'color'
         },
-        require: true,
-        defaultPropValue: '#ffffff' // TODO why logogram for color does't work?
+        require: true
       }
     }
   }
