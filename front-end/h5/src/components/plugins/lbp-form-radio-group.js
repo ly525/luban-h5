@@ -1,5 +1,5 @@
 import LbpFormRadio from './lbp-form-radio.js'
-import { genUUID } from '../../utils/element.js'
+// import { genUUID } from '../../utils/element.js'
 
 const defaultItems = [
   {
