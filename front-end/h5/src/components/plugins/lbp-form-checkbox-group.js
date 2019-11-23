@@ -1,16 +1,24 @@
 import LbpFormRadio from './lbp-form-radio.js'
 
-const defaultItems = [
-  {
-    value: '选项A'
-  },
-  {
-    value: '选项B'
-  },
-  {
-    value: '选项C'
-  }
-]
+function getDefaultItems () {
+  // defaultItems.slice(0)[0] === defaultItems.slice(0)[0] -> true
+  // Object.assign(defaultItems)[0] === Object.assign(defaultItems)[0] -> true
+  // clone = (val) => JSON.parse(JSON.stringify(val))
+  // clone(defaultItems)[0] === clone(defaultItems)[0] -> false
+  const defaultItems = [
+    {
+      value: '选项A'
+    },
+    {
+      value: '选项B'
+    },
+    {
+      value: '选项C'
+    }
+  ]
+
+  return defaultItems
+}
 
 export default {
   name: 'lbp-form-checkbox-group',
@@ -29,7 +37,7 @@ export default {
     },
     items: {
       type: Array,
-      default: () => defaultItems,
+      default: () => getDefaultItems(),
       editor: {
         type: 'lbs-prop-text-enum-editor',
         label: '选项列表',

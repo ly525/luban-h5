@@ -1,15 +1,30 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-11-23 12:35:21
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-23 19:53:14
+ * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-slide.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: #!zh: 轮播图组件 #!en slide component
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
+
 import { Swipe, SwipeItem } from 'vant'
 import 'vant/lib/swipe/style'
 import 'vant/lib/swipe-item/style'
 
-const defaultItems = [
-  {
-    image: 'https://img.yzcdn.cn/vant/apple-1.jpg'
-  },
-  {
-    image: 'https://img.yzcdn.cn/vant/apple-2.jpg'
-  }
-]
+function getDefaultItems () {
+  const defaultItems = [
+    {
+      image: 'https://img.yzcdn.cn/vant/apple-1.jpg'
+    },
+    {
+      image: 'https://img.yzcdn.cn/vant/apple-2.jpg'
+    }
+  ]
+
+  return defaultItems
+}
 
 export default {
   name: 'lbp-slide',
@@ -36,7 +51,7 @@ export default {
     },
     items: {
       type: Array,
-      default: () => defaultItems.slice(0),
+      default: () => getDefaultItems(),
       editor: {
         custom: true
       }

@@ -1,17 +1,35 @@
-import LbpFormRadio from './lbp-form-radio.js'
-// import { genUUID } from '../../utils/element.js'
+/*
+ * @Author: ly525
+ * @Date: 2019-11-23 12:35:43
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-23 19:50:57
+ * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-form-radio-group.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: 表单单选组组件 #!en: radio group component
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 
-const defaultItems = [
-  {
-    value: '选项A'
-  },
-  {
-    value: '选项B'
-  },
-  {
-    value: '选项C'
-  }
-]
+import LbpFormRadio from './lbp-form-radio.js'
+
+function getDefaultItems () {
+  // defaultItems.slice(0)[0] === defaultItems.slice(0)[0] -> true
+  // Object.assign(defaultItems)[0] === Object.assign(defaultItems)[0] -> true
+  // clone = (val) => JSON.parse(JSON.stringify(val))
+  // clone(defaultItems)[0] === clone(defaultItems)[0] -> false
+  const defaultItems = [
+    {
+      value: '选项A'
+    },
+    {
+      value: '选项B'
+    },
+    {
+      value: '选项C'
+    }
+  ]
+
+  return defaultItems
+}
 
 export default {
   name: 'lbp-form-radio-group',
@@ -27,7 +45,7 @@ export default {
     },
     items: {
       type: Array,
-      default: () => defaultItems,
+      default: () => getDefaultItems(),
       editor: {
         type: 'lbs-prop-text-enum-editor',
         label: '选项列表',
