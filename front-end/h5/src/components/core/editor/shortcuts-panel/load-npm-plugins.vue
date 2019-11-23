@@ -1,3 +1,14 @@
+<!--
+ * @Author: ly525
+ * @Date: 2019-11-23 12:35:43
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-23 19:37:29
+ * @FilePath: /luban-h5/front-end/h5/src/components/core/editor/shortcuts-panel/load-npm-plugins.vue
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: Do not edit
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ -->
+
 <template>
   <div style="text-align: center">
     <a-button type="primary" @click="showModal">配置 NPM 组件列表</a-button>
