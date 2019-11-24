@@ -3,6 +3,8 @@
 
 > 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
+# 视频教程
+<iframe src="//player.bilibili.com/player.html?aid=76827615&cid=131403430&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 基础概念
 > 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
