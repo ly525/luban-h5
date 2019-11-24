@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2019-11-23 22:56:04
  # @LastEditors: ly525
- # @LastEditTime: 2019-11-23 23:04:08
+ # @LastEditTime: 2019-11-24 10:25:05
  # @FilePath: /luban-h5/helpers/mirror.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description:
@@ -57,37 +57,37 @@ npm cache clean --force # clean npm cache
 # YARN
 # ==========================================================
 
-yarn set registry "https://registry.npm.taobao.org"
-yarn set disturl "https://npm.taobao.org/dist"
-yarn set chromedriver-cdnurl "https://npm.taobao.org/mirrors/chromedriver"
-yarn set couchbase-binary-host-mirror "https://npm.taobao.org/mirrors/couchbase/v{version}"
-yarn set debug-binary-host-mirror "https://npm.taobao.org/mirrors/node-inspector"
-yarn set electron-mirror "https://npm.taobao.org/mirrors/electron/"
-yarn set flow-bin-binary-host-mirror "https://npm.taobao.org/mirrors/flow/v"
-yarn set fse-binary-host-mirror "https://npm.taobao.org/mirrors/fsevents"
-yarn set fuse-bindings-binary-host-mirror "https://npm.taobao.org/mirrors/fuse-bindings/v{version}"
-yarn set git4win-mirror "https://npm.taobao.org/mirrors/git-for-windows"
-yarn set gl-binary-host-mirror "https://npm.taobao.org/mirrors/gl/v{version}"
-yarn set grpc-node-binary-host-mirror "https://npm.taobao.org/mirrors"
-yarn set hackrf-binary-host-mirror "https://npm.taobao.org/mirrors/hackrf/v{version}"
-yarn set leveldown-binary-host-mirror "https://npm.taobao.org/mirrors/leveldown/v{version}"
-yarn set leveldown-hyper-binary-host-mirror "https://npm.taobao.org/mirrors/leveldown-hyper/v{version}"
-yarn set mknod-binary-host-mirror "https://npm.taobao.org/mirrors/mknod/v{version}"
-yarn set node-sqlite3-binary-host-mirror "https://npm.taobao.org/mirrors"
-yarn set node-tk5-binary-host-mirror "https://npm.taobao.org/mirrors/node-tk5/v{version}"
-yarn set nodegit-binary-host-mirror "https://npm.taobao.org/mirrors/nodegit/v{version}/"
-yarn set operadriver-cdnurl "https://npm.taobao.org/mirrors/operadriver"
-yarn set phantomjs-cdnurl "https://npm.taobao.org/mirrors/phantomjs"
-yarn set profiler-binary-host-mirror "https://npm.taobao.org/mirrors/node-inspector/"
-yarn set puppeteer-download-host "https://npm.taobao.org/mirrors"
-yarn set python-mirror "https://npm.taobao.org/mirrors/python"
-yarn set rabin-binary-host-mirror "https://npm.taobao.org/mirrors/rabin/v{version}"
-yarn set sass-binary-site "https://npm.taobao.org/mirrors/node-sass"
-yarn set sodium-prebuilt-binary-host-mirror "https://npm.taobao.org/mirrors/sodium-prebuilt/v{version}"
-yarn set sqlite3-binary-site "https://npm.taobao.org/mirrors/sqlite3"
-yarn set utf-8-validate-binary-host-mirror "https://npm.taobao.org/mirrors/utf-8-validate/v{version}"
-yarn set utp-native-binary-host-mirror "https://npm.taobao.org/mirrors/utp-native/v{version}"
-yarn set zmq-prebuilt-binary-host-mirror "https://npm.taobao.org/mirrors/zmq-prebuilt/v{version}"
+yarn config set registry "https://registry.npm.taobao.org"
+yarn config set disturl "https://npm.taobao.org/dist"
+yarn config set chromedriver-cdnurl "https://npm.taobao.org/mirrors/chromedriver"
+yarn config set couchbase-binary-host-mirror "https://npm.taobao.org/mirrors/couchbase/v{version}"
+yarn config set debug-binary-host-mirror "https://npm.taobao.org/mirrors/node-inspector"
+yarn config set electron-mirror "https://npm.taobao.org/mirrors/electron/"
+yarn config set flow-bin-binary-host-mirror "https://npm.taobao.org/mirrors/flow/v"
+yarn config set fse-binary-host-mirror "https://npm.taobao.org/mirrors/fsevents"
+yarn config set fuse-bindings-binary-host-mirror "https://npm.taobao.org/mirrors/fuse-bindings/v{version}"
+yarn config set git4win-mirror "https://npm.taobao.org/mirrors/git-for-windows"
+yarn config set gl-binary-host-mirror "https://npm.taobao.org/mirrors/gl/v{version}"
+yarn config set grpc-node-binary-host-mirror "https://npm.taobao.org/mirrors"
+yarn config set hackrf-binary-host-mirror "https://npm.taobao.org/mirrors/hackrf/v{version}"
+yarn config set leveldown-binary-host-mirror "https://npm.taobao.org/mirrors/leveldown/v{version}"
+yarn config set leveldown-hyper-binary-host-mirror "https://npm.taobao.org/mirrors/leveldown-hyper/v{version}"
+yarn config set mknod-binary-host-mirror "https://npm.taobao.org/mirrors/mknod/v{version}"
+yarn config set node-sqlite3-binary-host-mirror "https://npm.taobao.org/mirrors"
+yarn config set node-tk5-binary-host-mirror "https://npm.taobao.org/mirrors/node-tk5/v{version}"
+yarn config set nodegit-binary-host-mirror "https://npm.taobao.org/mirrors/nodegit/v{version}/"
+yarn config set operadriver-cdnurl "https://npm.taobao.org/mirrors/operadriver"
+yarn config set phantomjs-cdnurl "https://npm.taobao.org/mirrors/phantomjs"
+yarn config set profiler-binary-host-mirror "https://npm.taobao.org/mirrors/node-inspector/"
+yarn config set puppeteer-download-host "https://npm.taobao.org/mirrors"
+yarn config set python-mirror "https://npm.taobao.org/mirrors/python"
+yarn config set rabin-binary-host-mirror "https://npm.taobao.org/mirrors/rabin/v{version}"
+yarn config set sass-binary-site "https://npm.taobao.org/mirrors/node-sass"
+yarn config set sodium-prebuilt-binary-host-mirror "https://npm.taobao.org/mirrors/sodium-prebuilt/v{version}"
+yarn config set sqlite3-binary-site "https://npm.taobao.org/mirrors/sqlite3"
+yarn config set utf-8-validate-binary-host-mirror "https://npm.taobao.org/mirrors/utf-8-validate/v{version}"
+yarn config set utp-native-binary-host-mirror "https://npm.taobao.org/mirrors/utp-native/v{version}"
+yarn config set zmq-prebuilt-binary-host-mirror "https://npm.taobao.org/mirrors/zmq-prebuilt/v{version}"
 
 yarn cache clean # clean yarn cache
 
