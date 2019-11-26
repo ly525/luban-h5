@@ -1,5 +1,11 @@
 export const columns = [
   {
+    title: 'Id',
+    // dataIndex: 'id',
+    key: 'id',
+    scopedSlots: { customRender: 'id' }
+  },
+  {
     title: 'Title',
     dataIndex: 'title',
     key: 'title'
@@ -15,6 +21,7 @@ export const columns = [
     key: 'uv'
   },
   {
+    // i18n for title
     title: 'Form Count',
     key: 'formCount',
     dataIndex: 'formCount'

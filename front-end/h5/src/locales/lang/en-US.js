@@ -22,7 +22,8 @@ export default {
     useNow: 'Use it Now',
     preview: 'Preview',
     edit: 'Edit',
-    createNewWork: 'Create New'
+    createNewWork: 'Create New',
+    view: 'View Work'
   },
   basicData: {
     viewData: 'View Data'

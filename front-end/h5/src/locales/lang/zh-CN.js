@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-11-24 18:51:58
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-25 22:06:54
+ * @FilePath: /luban-h5/front-end/h5/src/locales/lang/zh-CN.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: Do not edit
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 export default {
   app: {
     title: '鲁班 H5'
@@ -22,10 +32,11 @@ export default {
     useNow: '立即使用',
     preview: '预览',
     createNewWork: '创建新作品',
-    edit: '编辑'
+    edit: '编辑',
+    view: '查看作品'
   },
   basicData: {
-    viewData: 'View Data'
+    viewData: '查看数据'
   },
   editor: {
     sidebar: {
