@@ -6,6 +6,7 @@ npm run dev # dev back-end or docs
 yarn serve # dev front-end
 ```
 
+
 # Overview
 
 ## Basic Concepts
@@ -15,6 +16,14 @@ yarn serve # dev front-end
 
 ## Build With(current version)
 Vue.js: Front-end framework<br />Strapi.js: Open source Node.js Headless CMS to easily build customisable APIs<br />Sqlite: Database
+
+## Cases you may meet in local development
+
+> suitable for whose who are a little careless, who have only read half of the documents
+
+1. API `403 Forbidden`, the solution: [# _2-Caution] (#_ 2-Caution)
+
+2. The `preview page shows blank` in the dialog, the solution : [2. Rendering engine required for building preview] (# _2-Rendering engine required for building preview)
 
 
 # Setup

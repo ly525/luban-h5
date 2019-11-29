@@ -91,6 +91,13 @@ const fixedTools = [
     'text': '缩小画布',
     'icon': 'minus',
     'action': function () { this.scaleRate -= 0.25 }
+  },
+  {
+    i18nTooltip: 'editor.fixedTool.issues',
+    'tooltip': 'issues',
+    'text': '常见问题',
+    'icon': 'question',
+    'action': function () { window.open('https://github.com/ly525/luban-h5/issues/110') }
   }
 ]
 
@@ -318,10 +325,10 @@ export default {
                     <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
                       { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : tool.text }
                     </a-button>
+                    { tool.icon === 'minus' && <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div> }
                   </a-tooltip>
                 ))
               }
-              <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div>
             </a-button-group>
           </a-layout-sider>
           <a-layout-sider width="300" theme='light' style={{ background: '#fff', padding: '0 12px' }}>

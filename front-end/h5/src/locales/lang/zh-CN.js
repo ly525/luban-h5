@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-11-25 22:06:54
+ * @LastEditTime: 2019-11-30 00:31:54
  * @FilePath: /luban-h5/front-end/h5/src/locales/lang/zh-CN.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -79,7 +79,8 @@ export default {
       copyCurrentPage: '复制当前页面',
       importPSD: '导入PSD',
       zoomIn: '缩小',
-      zoomOut: '放大'
+      zoomOut: '放大',
+      issues: '常见问题'
     },
     editPanel: {
       tab: {

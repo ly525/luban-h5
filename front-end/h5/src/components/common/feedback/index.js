@@ -8,7 +8,7 @@ export default {
             <div class="logo"></div>
           </div>
           <div class="tips-wrap fade-in">
-            <div class="tips"><span>意见反馈</span>
+            <div class="tips"><span>社区/论坛/说点啥</span>
             </div>
           </div>
         </div>

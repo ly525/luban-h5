@@ -1,7 +1,17 @@
 # 快速开始
 > 重要：关于此部分有疑惑，请在下面直接评论，或者到社区讨论
 
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接交流
+
+# 常见问题
+> 这部分一般是按照下面的教程运行之后，仍然可能、也许会遇到的问题
+
+> 比较适合些许粗心、些许文档只看了一半、比较着急的同学
+
+1. 接口 `403 Forbidden`，解决方案看这里：[#_2-注意事项](#_2-注意事项)
+
+2. 弹框中的 `预览页面显示空白`，解决方案看这里：[2. 构建预览所需的渲染引擎](#_2-构建预览所需的渲染引擎)
+
 
 # 视频教程
 <iframe src="//player.bilibili.com/player.html?aid=76827615&cid=131403430&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="600"> </iframe>

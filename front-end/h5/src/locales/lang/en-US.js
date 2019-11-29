@@ -70,7 +70,8 @@ export default {
       copyCurrentPage: 'CopyCurrentPage',
       importPSD: 'Import PSD',
       zoomIn: 'Zoom In',
-      zoomOut: 'Zoom Out'
+      zoomOut: 'Zoom Out',
+      issues: 'Issues'
     },
     editPanel: {
       tab: {
