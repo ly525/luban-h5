@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/ly525/luban-h5/compare/v1.7.0...v1.7.1) (2019-11-30)
+
+
+### Bug Fixes
+
+* update mirror.sh ([3cf794b](https://github.com/ly525/luban-h5/commit/3cf794b))
+* **plugin:** clone the default items for slide,radio group, checkbox group ([141036f](https://github.com/ly525/luban-h5/commit/141036f))
+* [#105](https://github.com/ly525/luban-h5/issues/105) ([35965ff](https://github.com/ly525/luban-h5/commit/35965ff))
+* **text:** set default border radius: 0 ([f21bf35](https://github.com/ly525/luban-h5/commit/f21bf35))
+
+
+### Features
+
+* **install:** add one click install script for Ubuntu18.04 ([2e123b6](https://github.com/ly525/luban-h5/commit/2e123b6))
+
 ## [1.7.0](https://github.com/ly525/luban-h5/compare/v1.6.1...v1.7.0) (2019-11-23)
 
 
