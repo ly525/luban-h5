@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-11-24 18:51:58
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-30 23:01:55
+ * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-text.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: luban-h5 text component/plugin
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 import { quillEditor } from 'vue-quill-editor'
 // require styles
 import 'quill/dist/quill.core.css'
@@ -11,7 +21,7 @@ export default {
       position: 'relative',
       color: `${this.color} !important`,
       textDecoration: 'none',
-      backgroundColor: this.backgroundColor || '#ffffff',
+      backgroundColor: this.backgroundColor || 'rgba(255, 255, 255, 0.2)',
       lineHeight: `${this.lineHeight}em`,
       border: `${this.borderWidth}px solid ${this.borderColor}`,
       borderRadius: `${this.borderRadius}px`
