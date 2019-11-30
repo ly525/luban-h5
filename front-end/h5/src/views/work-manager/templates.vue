@@ -138,9 +138,8 @@ export default {
           }
         </a-row>
         {
-          this.previewVisible &&
           <PreviewDialog
-            work={this.activeWork}
+            work={this.activeWork || {}}
             visible={this.previewVisible}
             handleClose={() => { this.previewVisible = false }}
           />
