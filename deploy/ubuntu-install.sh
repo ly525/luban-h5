@@ -1,5 +1,50 @@
 #/usr/bin/env
 
+
+###
+# @Author: ly525
+ # @Date: 2019-11-30 13:24:57
+ # @LastEditors: ly525
+ # @LastEditTime: 2019-11-30 13:30:07
+ # @FilePath: /luban-h5/deploy/ubuntu-install.sh
+ # @Github: https://github.com/ly525/luban-h5
+ # @Description:
+ ## #!en: One-Click Setup Script to Install Luban-H5 on Ubuntu 18.04
+ ## #!zh: 鲁班H5 Ubuntu18.04 一键安装脚本
+ # @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ ###
+
+## !en:
+######################################################
+#    One-Click Setup Script to Install Luban-H5 on Ubuntu 18.04
+######################################################
+
+
+######################################################
+#         Step1: Download && Run the Script
+# docker pull ubuntu
+# docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
+# wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+######################################################
+
+######################################################
+#          Step2: After the Script Runs
+# 1. Luban H5 Admin
+# 1.1 visit on your host machine：http://localhost:1234/admin,   custom the username and password, then login the admin
+# 1.2 config the permission,see more here：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
+
+# 2. Luban H5 Front-End
+# 2.1visit on your host machine ：http://localhost:1234/main, enjoy it!
+######################################################
+
+######################################################
+#           Feedback
+
+# GitHub：https://github.com/ly525/luban-h5/issues
+######################################################
+
+
+## #!zh
 ######################################################
 #           [鲁班H5] Ubuntu18.04 一键安装脚本
 ######################################################
@@ -84,7 +129,7 @@ function set_apt_mirror {
   # 或替换为中科大镜像：https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu
   # sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
   # sudo sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
-  # 
+  #
   sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
   apt update
 
@@ -154,7 +199,7 @@ function install_yarn {
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     # https://yarnpkg.com/en/docs/install#debian-stable
-    apt-get remove -y cmdtest 
+    apt-get remove -y cmdtest
     apt-get update
     apt-get install -y yarn
     success yarn
@@ -312,7 +357,7 @@ function install_luban-h5 {
     cd -
 
     # 鲁班后端
-    cd luban-h5/back-end/h5-api/ 
+    cd luban-h5/back-end/h5-api/
     yarn
     yarn build # build strapi admin
     pm2 start server.js

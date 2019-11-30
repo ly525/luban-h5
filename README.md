@@ -16,6 +16,30 @@ Mobile Page Builder&Generator with Drag&Drop
 
 </p>
 
+
+### 快速体验
+> * 使用官方提供的 [***一键安装脚本***](https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh)，简化安装步骤，在本地通过使用 Docker+Ubuntu 镜像，即可快速安装+体验 鲁班H5
+
+> * [快速体验-完整文档](https://github.com/ly525/luban-h5/wiki/Quick-Start(%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E7%AF%87)%EF%BC%9ADocker-Ubuntu-Image-for-Quick-Local-Dev)
+
+> * 简而言之：
+
+```bash
+docker pull ubuntu
+docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
+wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+
+# 安装完成之后
+# 1. visit ：http://localhost:1234/admin，自定义配置账号密码，登录即可
+# 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
+
+# 2. 鲁班前端
+# 2.1 宿主机访问 「鲁班前端」：localhost:1234/main, 即可看到鲁班的前端
+```
+
+<a href="https://terminalizer.com/view/b1432a8c2508"><img width="70%" alt="Gitter" src="https://user-images.githubusercontent.com/12668546/69896337-55d1ba00-1379-11ea-8a56-5122930d2501.png"></a>
+
+
 ### 🔗Links/相关链接
 - 文档
     * [📖中文在线文档](https://ly525.github.io/luban-h5/zh/)
