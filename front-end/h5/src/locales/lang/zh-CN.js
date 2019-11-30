@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-11-30 00:31:54
+ * @LastEditTime: 2019-11-30 19:39:09
  * @FilePath: /luban-h5/front-end/h5/src/locales/lang/zh-CN.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -29,7 +29,7 @@ export default {
   workCard: {
     description: '描述',
     createTime: '时间',
-    useNow: '立即使用',
+    useNow: '立即查看',
     preview: '预览',
     createNewWork: '创建新作品',
     edit: '编辑',

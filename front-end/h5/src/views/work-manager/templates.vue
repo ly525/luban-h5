@@ -172,7 +172,7 @@ export default {
                         window.open(routeData.href, '_blank')
                       }}
                       style={{ marginLeft: '12px' }}
-                    >立即使用</a-button>
+                    >立即查看</a-button>
                   </div>
                   : <a-spin tip="复制中" />
               }
