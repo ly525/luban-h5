@@ -12,7 +12,7 @@ const defaultStyle = {
   zindex: 1,
   textAlign: 'center',
   color: '#000000',
-  backgroundColor: '#ffffff',
+  backgroundColor: 'rgba(255, 255, 255, 0)',
   fontSize: 14
 }
 

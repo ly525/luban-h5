@@ -19,7 +19,7 @@
     "animate.css": "^3.7.2",
     "ant-design-vue": "^1.3.14",
     "core-js": "^2.6.5",
-    "element-ui": "^2.9.1",
+    "element-ui": "^2.13.0",
     "font-awesome": "4.7.0",
     "html2canvas": "^1.0.0-rc.3",
     "medium-editor": "^5.23.3",
@@ -39,7 +39,6 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "dart-sass": "^1.23.7",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",
@@ -50,6 +49,8 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-plugin-component": "^1.1.1",
+    "dart-sass": "^1.23.7",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",

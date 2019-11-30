@@ -31,12 +31,13 @@ export default {
   },
   backgroundColor: {
     type: String,
-    default: '#ffffff',
+    default: 'rgba(255, 255, 255, 0.2)',
     editor: {
-      type: 'a-input', // lbs-color-picker
+      type: 'el-color-picker',
       label: '背景颜色',
       prop: {
-        type: 'color'
+        size: 'mini',
+        showAlpha: true
       },
       require: true
     }
@@ -48,11 +49,12 @@ export default {
     // The value of an <input> element of type color is always a DOMString which contains a 7-character string specifying an RGB color in hexadecimal format.
     default: '#000000',
     editor: {
-      type: 'a-input',
+      type: 'el-color-picker',
       label: '文字颜色',
       // !#zh 为编辑组件指定 prop
       prop: {
-        type: 'color'
+        size: 'mini',
+        showAlpha: true
       },
       require: true
     }
@@ -117,10 +119,11 @@ export default {
     type: String,
     default: '#ced4da',
     editor: {
-      type: 'a-input', // lbs-color-picker
+      type: 'el-color-picker',
       label: '边框颜色',
       prop: {
-        type: 'color'
+        size: 'mini',
+        showAlpha: true
       },
       require: true
     }

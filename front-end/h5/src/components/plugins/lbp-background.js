@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-11-24 18:51:58
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-11-30 23:02:31
+ * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-background.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: luban-h5 background image/color component/plugin
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 export default {
   name: 'lbp-background',
   render () {
@@ -46,12 +56,13 @@ export default {
       // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value
       // The value of an <input> element of type color is always a DOMString which contains a 7-character string specifying an RGB color in hexadecimal format.
 
-      default: '#ffffff',
+      default: 'rgba(255, 255, 255, 0.2)',
       editor: {
-        type: 'a-input', // lbs-color-picker
+        type: 'el-color-picker',
         label: '背景颜色',
         prop: {
-          type: 'color'
+          size: 'mini',
+          showAlpha: true
         },
         require: true
       }
