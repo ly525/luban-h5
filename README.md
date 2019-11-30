@@ -18,11 +18,11 @@ Mobile Page Builder&Generator with Drag&Drop
 
 
 ### 快速体验
-> * 使用官方提供的 [***一键安装脚本***](https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh)，简化安装步骤，在本地通过使用 Docker+Ubuntu 镜像，即可快速安装+体验 鲁班H5
+> 使用官方提供的 [***一键安装脚本***](https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh)，简化安装步骤，在本地通过使用 Docker+Ubuntu 镜像，即可快速安装+体验 鲁班H5
 
-> * [快速体验-完整文档](https://github.com/ly525/luban-h5/wiki/Quick-Start(%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E7%AF%87)%EF%BC%9ADocker-Ubuntu-Image-for-Quick-Local-Dev)
+> [快速体验-完整文档](https://github.com/ly525/luban-h5/wiki/Quick-Start(%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E7%AF%87)%EF%BC%9ADocker-Ubuntu-Image-for-Quick-Local-Dev)
 
-> * 简而言之：
+> 简而言之：
 
 ```bash
 docker pull ubuntu
