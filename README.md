@@ -42,40 +42,11 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 
 
 ### 🔗Links/相关链接
-- 文档
-    * [📖中文在线文档](https://ly525.github.io/luban-h5/zh/)
-    * [📖English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)
-    * [README(En)](./README.en.md)
-
-- 教程
-    * [视频教程：快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)
-
-
-- 源码
-    * GitHub：https://github.com/ly525/luban-h5
-    * [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)
-
-- 社区
-    * [中文社区/论坛](https://support.qq.com/product/93432)
-    * [Gitter](https://gitter.im/luban-h5/community)
-
-- 生态
-    * 后端集成
-        * [Strapi.js (Node.js 官方后端API)](/luban-h5/tree/dev/back-end/h5-api)
-        * [Spring Boot API Demo](https://github.com/luban-h5/spring-boot-api-for-editor)
-
-    * 自定义组件
-        * [快速开发脚手架](https://github.com/luban-h5/vue-cli-plugin-lbhc)
-
-    * 官方组件库
-        * [轮播图](https://github.com/luban-h5-components/lbp-slide)
-        * [普通按钮](https://github.com/luban-h5-components/lbc-button)
-
-    * 支撑组件(辅助类组件)
-        * 图片库：用于从图库中快速选择图片
-        * [文本对齐-Repo](https://github.com/luban-h5/lbs-text-align)：用于按钮文字对齐
-
-- [RoadMap/开发计划](https://github.com/ly525/luban-h5/projects)
+| 文档   | 教程     | 源码 | 社区 | 后端集成   | 官方组件库     | 支撑/辅助组件 | RoadMap |
+| ------ | -------- | ------ | ------ | ------ | -------- | ------ | ------ |
+| [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)     | [GitHub](https://github.com/ly525/luban-h5)   | [中文社区/论坛](https://support.qq.com/product/93432)     | [Strapi.js (官方后端API)](/luban-h5/tree/dev/back-end/h5-api) | [轮播图](https://github.com/luban-h5-components/lbp-slide) | 图片库 | [RoadMap/开发计划](https://github.com/ly525/luban-h5/projects)
+| [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |      | [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)   | [Gitter](https://gitter.im/luban-h5/community)    | [SpringBoot2-JPA](https://github.com/luban-h5/spring-boot-api-for-editor) | [普通按钮](https://github.com/luban-h5-components/lbc-button) | [文本对齐](https://github.com/luban-h5/lbs-text-align)
+| [README(En)](./README.en.md) |      |  |      |
 
 
 目录
