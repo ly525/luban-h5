@@ -1,4 +1,4 @@
-name: Build&Deploy Document
+name: docs
 # This workflow is triggered on pushes to the repository.
 on:
   push:
