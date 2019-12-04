@@ -14,7 +14,7 @@
     "react": "^16.10.2",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.10.2",
-    "umi-plugin-react": "^1.12.3"
+    "umi-plugin-react": "^1.14.7"
   },
   "devDependencies": {
     "atool-build": "^1.0.8",

@@ -22,17 +22,17 @@ export const page2 = [
   {
     title: 'Invitation',
     url: '/works/preview/1552',
-    image: 'https://i.loli.net/2019/10/13/RjQkhE3OsrVv7uz.png',
+    image: 'https://i.loli.net/2019/12/04/haEim2C6QnzVPOY.png',
   },
   {
     title: 'Good Morning',
     url: '/works/preview/1551',
-    image: 'https://i.loli.net/2019/10/13/kyzhsWFbmZT1JrN.png',
+    image: 'https://i.loli.net/2019/12/04/qBCmSl4Du8jn2XZ.png',
   },
   {
     title: 'Day of the Programmer',
     url: '/works/preview/833',
-    image: 'https://i.loli.net/2019/10/10/FtWXY3wDNJLT4GP.png',
+    image: 'https://i.loli.net/2019/12/04/s7S1no4YcuJe8Qb.png',
   },
 ];
 

@@ -1077,6 +1077,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.4.0":
+  version "7.7.4"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
+  integrity sha1-sjqFZ1HkvwmSYvhndniJwOP+F1s=
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.npm.taobao.org/@babel/template/download/@babel/template-7.0.0-beta.44.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Ftemplate%2Fdownload%2F%40babel%2Ftemplate-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -1453,6 +1460,14 @@
   resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
   integrity sha1-hWyZzcFVHSLCKxi1QCcZr/7Jg5o=
 
+"@types/hoist-non-react-statics@^3.3.0":
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/isomorphic-fetch@^0.0.35":
   version "0.0.35"
   resolved "https://registry.npm.taobao.org/@types/isomorphic-fetch/download/@types/isomorphic-fetch-0.0.35.tgz#c1c0d402daac324582b6186b91f8905340ea3361"
@@ -1513,7 +1528,26 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
-"@types/react-router-dom@^4.3.1", "@types/react-router-dom@~4.3.4":
+"@types/react-redux@^7.1.0":
+  version "7.1.5"
+  resolved "https://registry.npm.taobao.org/@types/react-redux/download/@types/react-redux-7.1.5.tgz#c7a528d538969250347aa53c52241051cf886bd3"
+  integrity sha1-x6Uo1TiWklA0eqU8UiQQUc+Ia9M=
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
+
+"@types/react-router-dom@^5.1.2":
+  version "5.1.3"
+  resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-5.1.3.tgz#b5d28e7850bd274d944c0fbbe5d57e6b30d71196"
+  integrity sha1-tdKOeFC9J02UTA+75dV+azDXEZY=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router-dom@~4.3.4":
   version "4.3.5"
   resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-4.3.5.tgz#72f229967690c890d00f96e6b85e9ee5780db31f"
   integrity sha1-cvIplnaQyJDQD5bmuF6e5XgNsx8=
@@ -4819,9 +4853,9 @@ connect-history-api-fallback@^1.6.0:
   resolved "https://registry.npm.taobao.org/connect-history-api-fallback/download/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
   integrity sha1-izIIk1kwjRERFdgcrT/Oq4iPl7w=
 
-connected-react-router@^6.3.2:
+connected-react-router@6.5.2:
   version "6.5.2"
-  resolved "https://registry.npm.taobao.org/connected-react-router/download/connected-react-router-6.5.2.tgz#422af70f86cb276681e20ab4295cf27dd9b6c7e3"
+  resolved "https://registry.npm.taobao.org/connected-react-router/download/connected-react-router-6.5.2.tgz?cache=0&sync_timestamp=1574665387667&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fconnected-react-router%2Fdownload%2Fconnected-react-router-6.5.2.tgz#422af70f86cb276681e20ab4295cf27dd9b6c7e3"
   integrity sha1-Qir3D4bLJ2aB4gq0KVzyfdm2x+M=
   dependencies:
     immutable "^3.8.1"
@@ -5880,6 +5914,11 @@ dotenv@8.0.0:
   resolved "https://registry.npm.taobao.org/dotenv/download/dotenv-8.0.0.tgz#ed310c165b4e8a97bb745b0a9d99c31bda566440"
   integrity sha1-7TEMFltOipe7dFsKnZnDG9pWZEA=
 
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.npm.taobao.org/dotenv/download/dotenv-8.2.0.tgz?cache=0&sync_timestamp=1571190782798&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdotenv%2Fdownload%2Fdotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha1-l+YZJZradQ7qPk6j4mvO6lQksWo=
+
 draft-js@^0.10.0, draft-js@~0.10.0:
   version "0.10.5"
   resolved "https://registry.npm.taobao.org/draft-js/download/draft-js-0.10.5.tgz#bfa9beb018fe0533dbb08d6675c371a6b08fa742"
@@ -5919,10 +5958,10 @@ duplicate-package-checker-webpack-plugin@3.0.0:
     lodash "^4.17.4"
     semver "^5.4.1"
 
-dva-core@1.6.0-beta.5:
-  version "1.6.0-beta.5"
-  resolved "https://registry.npm.taobao.org/dva-core/download/dva-core-1.6.0-beta.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdva-core%2Fdownload%2Fdva-core-1.6.0-beta.5.tgz#368d2d291740934f27bc19f984c8b67d5e7911e4"
-  integrity sha1-No0tKRdAk08nvBn5hMi2fV55EeQ=
+dva-core@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/dva-core/download/dva-core-2.0.1.tgz#7cd33f11225c099f1962b4862b8c7d10ea66283c"
+  integrity sha1-fNM/ESJcCZ8ZYrSGK4x9EOpmKDw=
   dependencies:
     "@babel/runtime" "^7.0.0"
     flatten "^1.0.2"
@@ -5947,22 +5986,23 @@ dva-loading@3.0.6:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-dva@2.6.0-beta.6:
-  version "2.6.0-beta.6"
-  resolved "https://registry.npm.taobao.org/dva/download/dva-2.6.0-beta.6.tgz?cache=0&sync_timestamp=1567669329026&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdva%2Fdownload%2Fdva-2.6.0-beta.6.tgz#fc8b9fc3869a5b72e08634402bdc5aa056d4511d"
-  integrity sha1-/Iufw4aaW3LghjRAK9xaoFbUUR0=
+dva@^2.6.0-beta.16:
+  version "2.6.0-beta.19"
+  resolved "https://registry.npm.taobao.org/dva/download/dva-2.6.0-beta.19.tgz#b3fafe02d7fd1a1637fe803c6b76005872ae3b77"
+  integrity sha1-s/r+Atf9GhY3/oA8a3YAWHKuO3c=
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@types/isomorphic-fetch" "^0.0.35"
-    "@types/react-router-dom" "^4.3.1"
-    connected-react-router "^6.3.2"
-    dva-core "1.6.0-beta.5"
+    "@types/react-redux" "^7.1.0"
+    "@types/react-router-dom" "^5.1.2"
+    connected-react-router "6.5.2"
+    dva-core "2.0.1"
     global "^4.3.2"
     history "^4.7.2"
     invariant "^2.2.4"
     isomorphic-fetch "^2.2.1"
     react-redux "^7.1.0"
-    react-router-dom "^4.3.1"
+    react-router-dom "^5.1.2"
     redux "^4.0.1"
 
 ecc-jsbn@~0.1.1:
@@ -7989,7 +8029,7 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-history@^4.7.2:
+history@^4.7.2, history@^4.9.0:
   version "4.10.1"
   resolved "https://registry.npm.taobao.org/history/download/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
   integrity sha1-MzcaZeOoOyZ0NOKz87G0xYqtTPM=
@@ -8024,6 +8064,13 @@ hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0, hoist-non-react-
   version "2.5.5"
   resolved "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha1-xZA89AnA39kI84jmGdhrnBF0y0c=
+
+hoist-non-react-statics@^3.1.0:
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.1.tgz#101685d3aff3b23ea213163f6e8e12f4f111e19f"
+  integrity sha1-EBaF06/zsj6iExY/bo4S9PER4Z8=
+  dependencies:
+    react-is "^16.7.0"
 
 hoist-non-react-statics@^3.3.0:
   version "3.3.0"
@@ -8302,6 +8349,11 @@ immer@^2.1.1:
   version "2.1.5"
   resolved "https://registry.npm.taobao.org/immer/download/immer-2.1.5.tgz#0389947455c5a2c7a47f1e6f415c9d1a62a1ebed"
   integrity sha1-A4mUdFXFosekfx5vQVydGmKh6+0=
+
+immer@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/immer/download/immer-5.0.0.tgz?cache=0&sync_timestamp=1572467962490&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fimmer%2Fdownload%2Fimmer-5.0.0.tgz#07f462b7d95f7e86c214a861ecacd766d42b8c0a"
+  integrity sha1-B/Rit9lffobCFKhh7KzXZtQrjAo=
 
 immutability-helper@^2.7.1:
   version "2.9.1"
@@ -10711,6 +10763,15 @@ min-document@^2.19.0:
   integrity sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
   dependencies:
     dom-walk "^0.1.0"
+
+mini-create-react-context@^0.3.0:
+  version "0.3.2"
+  resolved "https://registry.npm.taobao.org/mini-create-react-context/download/mini-create-react-context-0.3.2.tgz#79fc598f283dd623da8e088b05db8cddab250189"
+  integrity sha1-efxZjyg91iPajgiLBduM3aslAYk=
+  dependencies:
+    "@babel/runtime" "^7.4.0"
+    gud "^1.0.0"
+    tiny-warning "^1.0.2"
 
 mini-css-extract-plugin@0.7.0:
   version "0.7.0"
@@ -13987,7 +14048,7 @@ react-router-config@1.0.0-beta.4:
   resolved "https://registry.npm.taobao.org/react-router-config/download/react-router-config-1.0.0-beta.4.tgz#d202496dd0eabdf06cf24eb0793031f6891eef01"
   integrity sha1-0gJJbdDqvfBs8k6weTAx9oke7wE=
 
-react-router-dom@4.3.1, react-router-dom@^4.3.1:
+react-router-dom@4.3.1:
   version "4.3.1"
   resolved "https://registry.npm.taobao.org/react-router-dom/download/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   integrity sha1-TCYZ/CTE+ofJ/Rj0+0pD/mP71cY=
@@ -13998,6 +14059,19 @@ react-router-dom@4.3.1, react-router-dom@^4.3.1:
     prop-types "^15.6.1"
     react-router "^4.3.1"
     warning "^4.0.1"
+
+react-router-dom@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/react-router-dom/download/react-router-dom-5.1.2.tgz#06701b834352f44d37fbb6311f870f84c76b9c18"
+  integrity sha1-BnAbg0NS9E03+7YxH4cPhMdrnBg=
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    history "^4.9.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.6.2"
+    react-router "5.1.2"
+    tiny-invariant "^1.0.2"
+    tiny-warning "^1.0.0"
 
 react-router@4.3.1, react-router@^4.3.1:
   version "4.3.1"
@@ -14011,6 +14085,22 @@ react-router@4.3.1, react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-router@5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/react-router/download/react-router-5.1.2.tgz#6ea51d789cb36a6be1ba5f7c0d48dd9e817d3418"
+  integrity sha1-bqUdeJyzamvhul98DUjdnoF9NBg=
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    history "^4.9.0"
+    hoist-non-react-statics "^3.1.0"
+    loose-envify "^1.3.1"
+    mini-create-react-context "^0.3.0"
+    path-to-regexp "^1.7.0"
+    prop-types "^15.6.2"
+    react-is "^16.6.0"
+    tiny-invariant "^1.0.2"
+    tiny-warning "^1.0.0"
 
 react-side-effect@^1.0.2:
   version "1.2.0"
@@ -14237,7 +14327,7 @@ redux-saga@^0.16.0:
   resolved "https://registry.npm.taobao.org/redux-saga/download/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
   integrity sha1-mTZi6GvJRdhQmsK42ro6jGFcyXE=
 
-redux@^4.0.1:
+redux@^4.0.0, redux@^4.0.1:
   version "4.0.4"
   resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.4.tgz#4ee1aeb164b63d6a1bcc57ae4aa0b6e6fa7a3796"
   integrity sha1-TuGusWS2PWobzFeuSqC25vp6N5Y=
@@ -16391,7 +16481,7 @@ tiny-invariant@^1.0.2:
   resolved "https://registry.npm.taobao.org/tiny-invariant/download/tiny-invariant-1.0.6.tgz#b3f9b38835e36a41c843a3b0907a5a7b3755de73"
   integrity sha1-s/mziDXjakHIQ6OwkHpaezdV3nM=
 
-tiny-warning@^1.0.0:
+tiny-warning@^1.0.0, tiny-warning@^1.0.2:
   version "1.0.3"
   resolved "https://registry.npm.taobao.org/tiny-warning/download/tiny-warning-1.0.3.tgz?cache=0&sync_timestamp=1562634862962&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftiny-warning%2Fdownload%2Ftiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha1-lKMNtFPfTGQ9D9VmBg1gqHXYR1Q=
@@ -16877,21 +16967,21 @@ umi-notify@^0.1.1:
     chalk "^2.4.1"
     is-ali-env "^0.1.4"
 
-umi-plugin-dll@1.6.0-beta.2:
-  version "1.6.0-beta.2"
-  resolved "https://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.6.0-beta.2.tgz#17aceed0af4c3c86a12e598b195060e8e5b31363"
-  integrity sha1-F6zu0K9MPIahLlmLGVBg6OWzE2M=
+umi-plugin-dll@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npm.taobao.org/umi-plugin-dll/download/umi-plugin-dll-1.6.0.tgz?cache=0&sync_timestamp=1574229007806&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-dll%2Fdownload%2Fumi-plugin-dll-1.6.0.tgz#46421e3d365ccf406fc58a622d2a46c94dedd300"
+  integrity sha1-RkIePTZcz0BvxYpiLSpGyU3t0wA=
   dependencies:
     rimraf "2.6.3"
     serve-static "1.14.1"
 
-umi-plugin-dva@1.9.1:
-  version "1.9.1"
-  resolved "https://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.9.1.tgz#21068390e73e0f284e0d11737db42e0d44993277"
-  integrity sha1-IQaDkOc+DyhODRFzfbQuDUSZMnc=
+umi-plugin-dva@1.11.0:
+  version "1.11.0"
+  resolved "https://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-1.11.0.tgz?cache=0&sync_timestamp=1574006328659&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-dva%2Fdownload%2Fumi-plugin-dva-1.11.0.tgz#cb48a3c7bb9df12f8e96ba41e302df0b8b5e91e4"
+  integrity sha1-y0ijx7ud8S+OlrpB4wLfC4tekeQ=
   dependencies:
     babel-plugin-dva-hmr "0.4.2"
-    dva "2.6.0-beta.6"
+    dva "^2.6.0-beta.16"
     dva-immer "0.4.5"
     dva-loading "3.0.6"
     globby "7.1.1"
@@ -16899,7 +16989,7 @@ umi-plugin-dva@1.9.1:
     object-assign "4.1.1"
     path-is-root "0.1.0"
     path-to-regexp "1.7.0"
-    umi-utils "1.7.1"
+    umi-utils "1.7.2"
 
 umi-plugin-hd@1.7.0-beta.2:
   version "1.7.0-beta.2"
@@ -16909,10 +16999,10 @@ umi-plugin-hd@1.7.0-beta.2:
     postcss-plugin-px2rem "0.8.1"
     umi-hd "5.0.1"
 
-umi-plugin-locale@2.11.1:
-  version "2.11.1"
-  resolved "https://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.11.1.tgz#0d568bab2b8bac84bf39ace18eb27f650e9c5fe4"
-  integrity sha1-DVaLqyuLrIS/OazhjrJ/ZQ6cX+Q=
+umi-plugin-locale@2.11.3:
+  version "2.11.3"
+  resolved "https://registry.npm.taobao.org/umi-plugin-locale/download/umi-plugin-locale-2.11.3.tgz?cache=0&sync_timestamp=1572617770332&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-locale%2Fdownload%2Fumi-plugin-locale-2.11.3.tgz#b2c3a991bc28b235eb2adf357c038cf20b3b381c"
+  integrity sha1-ssOpkbwosjXrKt81fAOM8gs7OBw=
   dependencies:
     "@ant-design/create-react-context" "0.2.4"
     globby "7.1.1"
@@ -16922,7 +17012,7 @@ umi-plugin-locale@2.11.1:
     mustache "3.0.1"
     prop-types "15.6.2"
     react-intl "2.7.2"
-    umi-utils "1.7.1"
+    umi-utils "1.7.2"
 
 umi-plugin-polyfills@1.4.2:
   version "1.4.2"
@@ -16935,10 +17025,10 @@ umi-plugin-polyfills@1.4.2:
     umi-utils "1.4.2"
     url-polyfill "1.1.3"
 
-umi-plugin-react@^1.12.3:
-  version "1.12.3"
-  resolved "https://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.12.3.tgz#bc146e5c211ae0eaf2791d246db06bbb201d6b2f"
-  integrity sha1-vBRuXCEa4OryeR0kbbBruyAday8=
+umi-plugin-react@^1.14.7:
+  version "1.14.7"
+  resolved "https://registry.npm.taobao.org/umi-plugin-react/download/umi-plugin-react-1.14.7.tgz?cache=0&sync_timestamp=1575386090741&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-react%2Fdownload%2Fumi-plugin-react-1.14.7.tgz#7f0c7cb2a66d0bf4243973b38fac5aadf62fb6d8"
+  integrity sha1-fwx8sqZtC/QkOXOzj6xarfYvttg=
   dependencies:
     antd "3.x"
     antd-mobile "2.x"
@@ -16949,21 +17039,21 @@ umi-plugin-react@^1.12.3:
     preact "8.4.2"
     preact-compat "3.19.0"
     register-service-worker "1.6.2"
-    umi-plugin-dll "1.6.0-beta.2"
-    umi-plugin-dva "1.9.1"
+    umi-plugin-dll "1.6.0"
+    umi-plugin-dva "1.11.0"
     umi-plugin-hd "1.7.0-beta.2"
-    umi-plugin-locale "2.11.1"
+    umi-plugin-locale "2.11.3"
     umi-plugin-polyfills "1.4.2"
-    umi-plugin-routes "1.6.3"
-    umi-plugin-ui "1.2.8"
-    umi-utils "1.7.1"
+    umi-plugin-routes "1.8.3"
+    umi-plugin-ui "1.4.7"
+    umi-utils "1.7.2"
     webpack "4.41.1"
     workbox-webpack-plugin "3.6.3"
 
-umi-plugin-routes@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.6.3.tgz#2883b49884bac90152f8d75911029f7009f83258"
-  integrity sha1-KIO0mIS6yQFS+NdZEQKfcAn4Mlg=
+umi-plugin-routes@1.8.3:
+  version "1.8.3"
+  resolved "https://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-1.8.3.tgz?cache=0&sync_timestamp=1575386091263&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-routes%2Fdownload%2Fumi-plugin-routes-1.8.3.tgz#9b136407a0087799a3e902e20d73247e81240ce1"
+  integrity sha1-mxNkB6AId5mj6QLiDXMkfoEkDOE=
 
 umi-plugin-ui@1.2.8:
   version "1.2.8"
@@ -16975,6 +17065,19 @@ umi-plugin-ui@1.2.8:
     sockjs-client "1.3.0"
     styled-components "^4.4.0"
     umi-ui-tasks "1.1.8"
+
+umi-plugin-ui@1.4.7:
+  version "1.4.7"
+  resolved "https://registry.npm.taobao.org/umi-plugin-ui/download/umi-plugin-ui-1.4.7.tgz?cache=0&sync_timestamp=1575386091683&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-plugin-ui%2Fdownload%2Fumi-plugin-ui-1.4.7.tgz#0f7d21aa3a864a03016cd66cec444b126eb0393e"
+  integrity sha1-D30hqjqGSgMBbNZs7ERLEm6wOT4=
+  dependencies:
+    got "9.6.0"
+    immer "^5.0.0"
+    is-mobile "2.1.0"
+    mkdirp "^0.5.1"
+    sockjs-client "1.3.0"
+    styled-components "^4.4.0"
+    umi-ui-tasks "1.3.4"
 
 umi-test@1.8.1:
   version "1.8.1"
@@ -17007,6 +17110,17 @@ umi-ui-tasks@1.1.8:
   version "1.1.8"
   resolved "https://registry.npm.taobao.org/umi-ui-tasks/download/umi-ui-tasks-1.1.8.tgz?cache=0&sync_timestamp=1570869147449&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-ui-tasks%2Fdownload%2Fumi-ui-tasks-1.1.8.tgz#081d4ac717e25cae41c7fe52be6dc10638c5640e"
   integrity sha1-CB1KxxfiXK5Bx/5Svm3BBjjFZA4=
+  dependencies:
+    binary-mirror-config "1.20.3"
+    mkdirp "^0.5.1"
+    portfinder "^1.0.24"
+    rimraf "^3.0.0"
+    umi-webpack-bundle-analyzer "^3.5.0"
+
+umi-ui-tasks@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.npm.taobao.org/umi-ui-tasks/download/umi-ui-tasks-1.3.4.tgz?cache=0&sync_timestamp=1575386092600&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fumi-ui-tasks%2Fdownload%2Fumi-ui-tasks-1.3.4.tgz#825be55efaab8462d69bb9ce66f466e8bf9e30f2"
+  integrity sha1-glvlXvqrhGLWm7nOZvRm6L+eMPI=
   dependencies:
     binary-mirror-config "1.20.3"
     mkdirp "^0.5.1"
@@ -17103,6 +17217,18 @@ umi-utils@1.7.1, umi-utils@^1.5.1:
   integrity sha1-qe6ZOK7M3vf22X0dlc7RocIBlso=
   dependencies:
     chalk "2.4.2"
+    is-url "1.2.4"
+    node-fetch "2.6.0"
+    prettier "1.15.3"
+    slash2 "2.0.0"
+
+umi-utils@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.npm.taobao.org/umi-utils/download/umi-utils-1.7.2.tgz#940448f1241630843dd55e7b3b48a5c3d1aff53d"
+  integrity sha1-lARI8SQWMIQ91V57O0ilw9Gv9T0=
+  dependencies:
+    chalk "2.4.2"
+    dotenv "^8.2.0"
     is-url "1.2.4"
     node-fetch "2.6.0"
     prettier "1.15.3"

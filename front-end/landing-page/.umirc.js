@@ -4,6 +4,7 @@ export default {
   plugins: [
     [
       'umi-plugin-react', {
+        dynamicImport: true,
         antd: true,
       }
     ],
