@@ -65,8 +65,15 @@ export default {
       let iframeWin = document.getElementById('iframe-for-preview').contentWindow
       iframeWin.postMessage(message, window.location.origin)
     },
-    openNewTab () {
-      window.open(this.releaseUrl)
+    openNewTab (urlType) {
+      switch (urlType) {
+        case 'previewDebug':
+          window.open(this.releaseUrl)
+          break
+        case 'buildEngineDocs':
+          window.open('https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#_2-%E6%9E%84%E5%BB%BA%E9%A2%84%E8%A7%88%E6%89%80%E9%9C%80%E7%9A%84%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E')
+          break
+      }
     }
   },
   render (h) {
@@ -128,7 +135,6 @@ export default {
                 <div class="qrcode my-4">
                   <div class="label">
                     <span>手机扫码分享给好友</span>
-                    <a-button type="link" icon="link" onClick={() => this.openNewTab()}>打开预览 URL(For Debug) </a-button>
                   </div>
                   <div class="code">
                     <canvas style="float: left" id="qrcode-container"></canvas>
@@ -140,6 +146,10 @@ export default {
                     </a-radio-group>
                     */}
                   </div>
+                </div>
+                <div style="background: #fafafa;">
+                  <a-button type="link" icon="link" onClick={() => this.openNewTab('previewDebug')}>打开预览 URL(For Debug) </a-button>
+                  <a-button type="link" icon="link" onClick={() => this.openNewTab('buildEngineDocs')}>如果本地预览显示空白，点此查看文档</a-button>
                 </div>
               </div>
             </a-col>
