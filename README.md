@@ -37,7 +37,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 # 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 
 # 2. 鲁班前端
-# 2.1 宿主机访问 「鲁班前端」：localhost:1234/main, 即可看到鲁班的前端
+# 2.1 宿主机访问 「鲁班前端」：localhost:1234, 即可看到鲁班的前端
 ```
 
 

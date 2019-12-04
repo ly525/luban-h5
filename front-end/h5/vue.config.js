@@ -1,5 +1,5 @@
 const path = require('path')
-const isProd = process.env.NODE_ENV === 'production'
+// const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
 const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
 
@@ -18,8 +18,8 @@ switch (process.env.PAGE) {
       template: 'public/index.html',
       filename: 'index.html',
       title: 'Index Page',
-      outputDir: 'dist',
-      publicPath: isProd ? '/main/' : '/'
+      outputDir: 'dist'
+      // publicPath: isProd ? '/main/' : '/'
     }
 }
 

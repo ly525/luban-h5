@@ -5,7 +5,7 @@
 # @Author: ly525
  # @Date: 2019-11-30 13:24:57
  # @LastEditors: ly525
- # @LastEditTime: 2019-11-30 13:30:07
+ # @LastEditTime: 2019-12-04 21:13:20
  # @FilePath: /luban-h5/deploy/ubuntu-install.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description:
@@ -34,7 +34,7 @@
 # 1.2 config the permission,see more here：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 
 # 2. Luban H5 Front-End
-# 2.1visit on your host machine ：http://localhost:1234/main, enjoy it!
+# 2.1visit on your host machine ：http://localhost:1234, enjoy it!
 ######################################################
 
 ######################################################
@@ -64,7 +64,7 @@
 # 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 
 # 2. 鲁班前端
-# 2.1 宿主机访问 「鲁班前端」：localhost:1234/main, 即可看到鲁班的前端了
+# 2.1 宿主机访问 「鲁班前端」：localhost:1234, 即可看到鲁班的前端了
 ######################################################
 
 ######################################################
@@ -312,8 +312,8 @@ server {
   # }
 
 
-  location ^~ /main {
-    alias /root/luban-h5/front-end/h5/dist/;
+  location / {
+    root /root/luban-h5/front-end/h5/dist/;
     # index index.html;
     #try_files \$uri \$uri/ /index.html;
   }

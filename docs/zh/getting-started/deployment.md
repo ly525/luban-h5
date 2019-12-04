@@ -68,11 +68,6 @@ server {
     proxy_pass http://localhost:1337;
   }
 
-  # 注意：
-  # 鲁班H5 核心App 部分URL 路径为: https://domain-for-luban/main
-  # 因此 `luban-h5/front-end/h5/vue.config.js` 中 publicPath 中的配置为 `publicPath: isProd ? '/main/' : '/'`
-  # 请根据自己的实际情况做调整，如果你的项目是部署在根路径(比如：https://domain-for-luban)，修改为： publicPath: '/' 即可
-
   location / {
     root /home/centos/codebase/luban/luban-h5-dist/front-end/;
     #try_files $uri $uri/ /index.html;
