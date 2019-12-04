@@ -66,7 +66,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 
 
 ### Demo
-> [在线访问地址](https://api.luban-h5.wxjcart.com)
+> [在线访问地址](https://h5.luban-h5.com)
 
 > [更多作品演示图片，点击查看](https://github.com/ly525/luban-h5/issues/15)
 

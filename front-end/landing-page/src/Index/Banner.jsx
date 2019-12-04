@@ -31,7 +31,7 @@ class Banner extends React.PureComponent {
               <Button
                 type="primary"
                 onClick={() => {
-                  window.open('https://api.luban-h5.wxjcart.com/main')
+                  window.open('https://h5.luban-h5.com')
                 }}
               >
                 开始使用

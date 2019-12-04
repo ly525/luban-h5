@@ -34,7 +34,7 @@ module.exports = {
           // { text: 'Guide', link: '/guide/' },
           // { text: 'Config', link: '/config/' },
           // { text: 'API', link: '/api/' },
-          { text: 'Website', link: 'https://api.luban-h5.wxjcart.com/' },
+          { text: 'Website', link: 'https://h5.luban-h5.com' },
           { text: 'Changelog', link: 'https://github.com/ly525/luban-h5/releases' },
         ],
         sidebar: {
@@ -77,7 +77,7 @@ module.exports = {
           // { text: '配置', link: '/zh/config/' },
           // { text: 'API', link: '/zh/api/' },
           // { text: '插件', link: '/zh/plugin/' },
-          { text: '首页', link: 'https://api.luban-h5.wxjcart.com/' },
+          { text: '首页', link: 'https://h5.luban-h5.com' },
           { text: '发布日志', link: 'https://github.com/ly525/luban-h5/releases' },
         ],
         sidebar: {

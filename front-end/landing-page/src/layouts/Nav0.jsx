@@ -107,7 +107,7 @@ class Header extends React.Component {
               >
                 <Menu.ItemGroup title="Project URL">
                   <Menu.Item key="setting:3" onClick={() => {
-                    window.open('https://api.luban-h5.wxjcart.com/main')
+                    window.open('https://h5.luban-h5.com')
                   }}>Website</Menu.Item>
                   <Menu.Item key="setting:3.1" onClick={() => {
                     window.open('https://github.com/ly525/luban-h5')
