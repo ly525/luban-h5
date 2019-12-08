@@ -123,7 +123,12 @@ export default {
       pages: state => state.work.pages,
       work: state => state.work
     }),
-    ...mapState('loading', ['saveWork_loading', 'setWorkAsTemplate_loading', 'uploadWorkCover_loading'])
+    ...mapState('loading', [
+      'saveWork_loading',
+      'previewWork_loading',
+      'setWorkAsTemplate_loading',
+      'uploadWorkCover_loading'
+    ])
   },
   methods: {
     ...mapActions('editor', [
@@ -239,7 +244,7 @@ export default {
             style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
           >
             {/* 保存、预览、发布、设置为模板 */}
-            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.previewVisible = true }}>{this.$t('editor.header.preview')}</a-button></a-menu-item>
+            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.saveWork({ loadingName: 'previewWork_loading' }).then(() => { this.previewVisible = true }) }} loading={this.previewWork_loading}>{this.$t('editor.header.preview')}</a-button></a-menu-item>
             <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork({ isSaveCover: true })} loading={this.saveWork_loading || this.uploadWorkCover_loading}>{this.$t('editor.header.save')}</a-button></a-menu-item>
             {/* <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item> */}
             <a-menu-item key="3" class="transparent-bg">
