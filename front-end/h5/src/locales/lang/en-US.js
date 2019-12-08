@@ -95,6 +95,10 @@ export default {
       common: {
         empty: 'Select an element first please!'
       }
+    },
+    tip: {
+      componentUsage: 'Tip: just {0} on component',
+      click: 'click'
     }
   }
 }

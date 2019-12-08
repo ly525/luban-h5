@@ -157,6 +157,14 @@ export default {
           tabBarGutter={10}
         >
           <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
+            <div class="plugin-usage-tip ">
+              <a-icon type="info-circle" />
+              {/* <span class="ml-1">使用提示: <strong>点击</strong>组件即可</span> */}
+              {/* Tip: just click on component */}
+              <i18n path="editor.tip.componentUsage" tag="span" class="ml-1">
+                <strong>{ this.$t('editor.tip.click') }</strong>{ this.$t('editor.tip.click') }
+              </i18n>
+            </div>
             <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
           </a-tab-pane>
           <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
@@ -373,11 +381,10 @@ export default {
     // event bus for editor
     window.getEditorApp = this
     let workId = this.$route.params.workId
-    console.log(workId)
     if (workId) {
       this.fetchWork(workId)
     } else {
-      this.createWork()
+      this.$message.error('no work id!')
     }
   }
 }
