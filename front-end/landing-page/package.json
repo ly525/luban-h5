@@ -23,6 +23,6 @@
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",
-    "deploy": "rm -rf dist && umi build &&  ./deploy.sh"
+    "deploy": "rm -rf dist && ./deploy.sh"
   }
 }
