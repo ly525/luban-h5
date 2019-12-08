@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/ly525/luban-h5/compare/v1.7.1...v1.7.2) (2019-12-08)
+
+
+### Bug Fixes
+
+* replace router.place with window.open new tab to aviod could not save and preview the work when create the work ([cf953c2](https://github.com/ly525/luban-h5/commit/cf953c2))
+* **build:** set publicURL to index ([abfb167](https://github.com/ly525/luban-h5/commit/abfb167))
+* **editor:** update  mutation type for undo-redo ([0f4a2cb](https://github.com/ly525/luban-h5/commit/0f4a2cb))
+* **preview:** show qrcode in preview dialog if open from work list ([8c62271](https://github.com/ly525/luban-h5/commit/8c62271))
+
 ### [1.7.1](https://github.com/ly525/luban-h5/compare/v1.7.0...v1.7.1) (2019-11-30)
 
 
