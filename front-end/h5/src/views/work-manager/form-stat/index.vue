@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-11-26 10:48:17
+ * @LastEditTime: 2019-12-08 15:28:33
  * @FilePath: /luban-h5/front-end/h5/src/views/work-manager/form-stat/index.vue
  * @Github: https://github.com/ly525/luban-h5
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
@@ -19,8 +19,6 @@ export default {
   components: {
   },
   data: () => ({
-    activeWork: null,
-    previewVisible: false
   }),
   computed: {
     ...mapState('editor', ['works']),
@@ -37,13 +35,7 @@ export default {
   methods: {
     ...mapActions('editor', [
       'fetchWorks'
-    ]),
-    deleteWork (item) {
-      // TODO delete work from work list
-    },
-    createWork () {
-      this.$router.push({ name: 'editor' })
-    }
+    ])
   },
   render (h) {
     const that = this
