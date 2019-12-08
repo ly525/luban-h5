@@ -112,13 +112,11 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
-      'fetchWorks'
+      'fetchWorks',
+      'createWork'
     ]),
     deleteWork (item) {
       // TODO delete work from work list
-    },
-    createWork () {
-      this.$router.push({ name: 'editor' })
     }
   },
   render (h) {

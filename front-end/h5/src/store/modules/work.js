@@ -19,13 +19,9 @@ export const actions = {
   },
   createWork ({ commit }, payload) {
     strapi.createEntry('works', new Work()).then(entry => {
-      commit('setWork', entry)
-      router.replace({ name: 'editor', params: { workId: entry.id } })
-      // window.location = `${window.location.origin}/#/editor/${entry.id}`
+      const routeData = router.resolve({ name: 'editor', params: { workId: entry.id } })
+      window.open(routeData.href, '_blank')
     })
-    // commit('createWork')
-    // commit('pageManager', { type: 'add' })
-    // commit('setEditingPage')
   },
   updateWork ({ commit, state }, payload = {}) {
     // update work with strapi
@@ -248,9 +244,6 @@ export const mutations = {
     })
     state.work = work
   },
-  // createWork (state) {
-  //   state.work = new Work()
-  // },
   previewWork (state, { type, value }) {},
   deployWork (state, { type, value }) {},
   formDetailOfWork (state, { type, value }) {

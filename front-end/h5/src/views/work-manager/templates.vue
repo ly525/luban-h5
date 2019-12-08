@@ -104,10 +104,6 @@ export default {
     ]),
     deleteWork (item) {
       // TODO delete work from work list
-    },
-    createWork () {
-      this.$router.push({ name: 'editor' })
-      // window.open('#/editor', '_blank')
     }
   },
   render (h) {
