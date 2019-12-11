@@ -44,11 +44,20 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 
 
 ### 🔗Links/相关链接
-| 文档   | 教程     | 源码 | 社区 | 后端集成   | 官方组件库     | 支撑/辅助组件 | RoadMap |
-| ------ | -------- | ------ | ------ | ------ | -------- | ------ | ------ |
-| [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)     | [GitHub](https://github.com/ly525/luban-h5)   | [中文社区/论坛](https://support.qq.com/product/93432)     | [Strapi.js (官方后端API)](/luban-h5/tree/dev/back-end/h5-api) | [轮播图](https://github.com/luban-h5-components/lbp-slide) | 图片库 | [RoadMap/开发计划](https://github.com/ly525/luban-h5/projects)
-| [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |      | [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)   | [Gitter](https://gitter.im/luban-h5/community)    | [SpringBoot2-JPA](https://github.com/luban-h5/spring-boot-api-for-editor) | [普通按钮](https://github.com/luban-h5-components/lbc-button) | [文本对齐](https://github.com/luban-h5/lbs-text-align)
-| [README(En)](./README.en.md) |      |  |      |
+ | 源码   | 文档   | 教程     | 社区 |
+| ------ | -------- | ------ | ------ |
+| [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [中文社区/论坛](https://support.qq.com/product/93432)
+| [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)  | [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |   自定义组件教程-TODO    | [Gitter](https://gitter.im/luban-h5/community)    |
+|  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |      |
+
+
+### 🔗生态
+| 后端集成                                                                                           | 官方组件库                                                     | 支撑/辅助组件                                            | 自定义组件                                                             | RoadMap                                                    |
+|------------------------------------------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------|
+| [Strapi.js (官方后端API)](/luban-h5/tree/dev/back-end/h5-api)                                      | [轮播图](https://github.com/luban-h5-components/lbp-slide)   | 图片库                                                | [自定义组件开发脚手架](https://github.com/luban-h5/vue-cli-plugin-lbhc)     | [RoadMap/开发计划](https://github.com/ly525/luban-h5/projects) |
+| [SpringBoot2-JPA](https://github.com/luban-h5/spring-boot-api-for-editor)                      | [普通按钮](https://github.com/luban-h5-components/lbc-button) | [文本对齐](https://github.com/luban-h5/lbs-text-align) | [自定义组件开发教程](https://github.com/luban-h5/vue-cli-plugin-lbhc/wiki) |                                                            |
+| [SpringBoot2-Mybatis-plus](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) | 其它组件会陆续发不到对应的仓库                                         |                                                    | 视频教程-TODO                                                         |                                                            |
+
 
 
 目录
