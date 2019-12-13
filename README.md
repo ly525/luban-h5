@@ -56,7 +56,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 |------------------------------------------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------|
 | [Strapi.js (官方后端API)](/luban-h5/tree/dev/back-end/h5-api)                                      | [轮播图](https://github.com/luban-h5-components/lbp-slide)   | 图片库                                                | [自定义组件开发脚手架](https://github.com/luban-h5/vue-cli-plugin-lbhc)     | [RoadMap/开发计划](https://github.com/ly525/luban-h5/projects) |
 | [SpringBoot2-JPA](https://github.com/luban-h5/spring-boot-api-for-editor)                      | [普通按钮](https://github.com/luban-h5-components/lbc-button) | [文本对齐](https://github.com/luban-h5/lbs-text-align) | [自定义组件开发教程](https://github.com/luban-h5/vue-cli-plugin-lbhc/wiki) |                                                            |
-| [SpringBoot2-Mybatis-plus](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) | 其它组件会陆续发不到对应的仓库                                         |                                                    | 视频教程-TODO                                                         |                                                            |
+| [SpringBoot2-Mybatis-plus](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) |                                          |                                                    | 视频教程-TODO                                                         |                                                            |
 
 
 
