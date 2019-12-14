@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-12-04 19:55:24
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-12-14 21:34:57
+ * @FilePath: /luban-h5/back-end/h5-api/api/work/controllers/Work.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description:
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 'use strict';
 const request = require('request');
 
@@ -10,7 +20,8 @@ module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
-    const work = await strapi.services.work.findOne(ctx.params);
+    let work = await strapi.services.work.findOne(ctx.params);
+    work = work.toJSON();
     return ctx.render('engine', { work });
   },
   submitForm: async (ctx) => {
