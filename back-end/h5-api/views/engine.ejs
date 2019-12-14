@@ -1,73 +1,258 @@
+<!--
+ * @Author: ly525
+ * @Date: 2019-12-04 20:24:04
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-12-14 21:46:01
+ * @FilePath: /luban-h5/back-end/h5-api/views/engine.ejs
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: 手机端预览模板
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ -->
+
 <html>
 
 <head>
   <meta charset="UTF-8">
   <title>work.html</title>
-  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <meta content="email=no" name="format-detection">
   <script src="/third-libs/vue.js"></script>
-  <script type="text/javascript" src="/third-libs/flexible.js"></script>
   <link rel="stylesheet" href="/third-libs/animate.min.css">
   <link rel="stylesheet" href="/third-libs/swiper.min.css">
   <script src="/third-libs/swiper.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-  <!-- <script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/flexible.js"></script> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script> -->
-  <script>
-    // function setDocFontSize(base) {
-    //   var width = 375,
-    //   domEle = document.documentElement;
-    //   dw = domEle.clientWidth || width,
-    //   iw = window.innerWidth || width,
-    //   sw = window.screen.width || iw,
-    //   saw = window.screen.availWidth || iw,
-    //   w = Math.min(dw, iw, sw, saw);
-    //   base = base || 750;
-    //   if (w > base) {
-    //       w = base;
-    //   }
-    //   if (window.devicePixelRatio) {
-    //       dpr = window.devicePixelRatio;
-    //   } else {
-    //       dpr = navigator.userAgent.match(/iphone/i) ? (w > 818 ? 3 : w > 480 ? 2 : 1) : 1;
-    //   }
-    //   dpr = Math.floor(dpr);
-    //   // domEle.style.fontSize = w / base * 100 + "px";
-    //   // domEle.body.style.fontSize = w / base * 100 + "px";
-    //   domEle.dataset.dpr = dpr;
-    // }
-    // setDocFontSize(320)
-  </script>
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.umd.js"></script>
+  <style>
+    /*
+      scss 文件，用来生成下面一段 style 中的 css
+      css 在线转 css：https://www.sassmeister.com/
+    */
+    /* * {
+      outline: none;
+    }
+
+    .bg-wrapper {
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    }
+
+    .preview-wrapper {
+      position: relative;
+      display: flex;
+      flex-wrap: nowrap;
+      width: 320px;
+      height: 568px;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .phone-wrapper {
+        position: absolute;
+        width: 320px;
+        height: 568px;
+        display: inline-block;
+        background: #fff;
+        box-sizing: content-box;
+        border: 10px solid #f6f6f6;
+      }
+
+      .float-shortcuts {
+        position: absolute;
+        top: 100px;
+        right: 0;
+
+        .page-controller {
+          position: absolute;
+          left: 0 !important;
+          display: block;
+          box-sizing: border-box;
+          width: 22px;
+          height: 60px;
+          padding: 4px;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+
+          cursor: pointer;
+          background: #2096f9;
+          font-size: 12px;
+          border: 1px solid #2096f9;
+          color: #fff;
+
+          &.next {
+            top: 80px;
+          }
+        }
+      }
+
+      .work-info {
+        color: #4a4a4a;
+        font-size: 14px;
+        margin-left: 380px;
+
+        .qrcode-wrapper {
+          .qrcode-label {
+          }
+
+          .qrcode-img {
+          }
+        }
+      }
+    } */
+  </style>
   <style>
     * {
       outline: none;
     }
-    .swiper-container {
+
+    .bg-wrapper {
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    }
+    /* .swiper-container {
       width: 100%;
       height: 100vh;
+    } */
+
+    .preview-wrapper {
+      position: relative;
+      display: flex;
+      flex-wrap: nowrap;
+      width: 320px;
+      height: 568px;
+      /* position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto; */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+    .preview-wrapper .phone-wrapper {
+      position: absolute;
+      width: 320px;
+      height: 568px;
+      display: inline-block;
+      background: #fff;
+      box-sizing: content-box;
+      border: 10px solid #f6f6f6;
+    }
+    .preview-wrapper .float-shortcuts {
+      position: absolute;
+      top: 100px;
+      right: 0;
+    }
+    .preview-wrapper .float-shortcuts .page-controller {
+      position: absolute;
+      left: 0 !important;
+      display: block;
+      box-sizing: border-box;
+      width: 22px;
+      height: 60px;
+      padding: 4px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      cursor: pointer;
+      background: #2096f9;
+      font-size: 12px;
+      /* border: 1px solid #2096f9; */
+      color: #fff;
+    }
+    .preview-wrapper .float-shortcuts .page-controller.next {
+      top: 80px;
+    }
+    .preview-wrapper .work-info {
+      color: #4a4a4a;
+      font-size: 14px;
+      margin-left: 380px;
+    }
+
   </style>
 </head>
-<!-- <body onload="setDocFontSize(320)"> -->
 <body>
-  <div id="app">
-    <button class="swiper-button-next" style="position: fixed;left: 1000px">Next</button>
-    <button class="swiper-button-prev" style="position: fixed;left: 1000px">Prev</button>
-    <engine />
+  <div class="bg-wrapper"></div>
+  <div class="preview-wrapper">
+    <div class="phone-wrapper">
+      <div class="float-shortcuts">
+        <a class="page-controller swiper-button-prev prev">上一页</a>
+        <a class="page-controller swiper-button-next next">下一页</a>
+      </div>
+      <div id="app">
+        <engine />
+      </div>
+    </div>
+    <div class="work-info">
+      <div class="qrcode-wrapper">
+        <div class="qrcode-label">
+          <span>手机扫码分享给好友</span>
+        </div>
+        <div class="qrcode-img">
+          <canvas style="float: left" id="qrcode-canvas"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
+  <script>
+    !function () {
+      function isMobile() {
+        var mobileDeviceReg = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i
+        return mobileDeviceReg.test(navigator.userAgent) || window.innerWidth < 500
+      }
+
+      function updateViewport() {
+        var scale = 1;
+        var w = document.documentElement.clientWidth || 320;
+        var h = document.documentElement.clientHeight || 568;
+        scale = w/h >= 320/568 ? h/568 : w/320;
+        var viewport = "width=320, initial-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
+        document.getElementById("viewport").setAttribute("content", viewport)
+      }
+
+      function doMobileActions () {
+        updateViewport();
+        var app = document.getElementById('app');
+        document.body.innerHTML = '';
+        document.body.appendChild(app);
+      }
+
+      var loadJS = function (url, callback, location) {
+        location = location || document.head
+
+        var scriptTag = document.createElement('script');
+        scriptTag.onload = callback;
+        // scriptTag.onreadystatechange = callback;
+        scriptTag.src = url;
+        location.appendChild(scriptTag);
+      };
+
+      function drawQRcode () {
+        var canvas = document.getElementById('qrcode-canvas')
+        QRCode.toCanvas(canvas, window.location.href, {
+          scale: 4
+        })
+      }
+
+      function doPCActions() {
+        loadJS('https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js', drawQRcode);
+      }
+
+      isMobile() ? doMobileActions() : doPCActions();
+    }();
+  </script>
   <script>
     // Vue.component('engine', window.Engine)
     new Vue({
       el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      },
+      data: {},
     });
   </script>
   <script>
