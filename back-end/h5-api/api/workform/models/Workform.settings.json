@@ -7,7 +7,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "comment": ""
   },
   "attributes": {
@@ -15,8 +18,7 @@
       "type": "json"
     },
     "work": {
-      "model": "work",
-      "via": "workforms"
+      "model": "work"
     }
   }
 }

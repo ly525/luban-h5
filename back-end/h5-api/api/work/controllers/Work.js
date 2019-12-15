@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-04 19:55:24
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-14 21:34:57
+ * @LastEditTime: 2019-12-15 18:56:44
  * @FilePath: /luban-h5/back-end/h5-api/api/work/controllers/Work.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
@@ -20,13 +20,12 @@ module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
-    let work = await strapi.services.work.findOne(ctx.params);
-    work = work.toJSON();
+    const work = await strapi.services.work.findOne(ctx.params);
     return ctx.render('engine', { work });
   },
   submitForm: async (ctx) => {
     const work = await strapi.services.work.findOne(ctx.params);
-    const formData = ctx.request.body.fields;
+    const formData = ctx.request.body;
     // eslint-disable-next-line no-unused-vars
     const workform = await strapi.services.workform.create({ form: formData, work });
 
@@ -50,8 +49,7 @@ module.exports = {
       return uuidMap2Name;
     }
 
-    let work = await strapi.services.work.findOne(ctx.params);
-    work = work.toJSON();
+    const work = await strapi.services.work.findOne(ctx.params);
 
     // learn the query from: https://github.com/strapi/foodadvisor/blob/master/api/api/restaurant/controllers/Restaurant.js#L40
     // eslint-disable-next-line no-undef
@@ -65,16 +63,14 @@ module.exports = {
     return ctx.body = { uuidMap2Name, formRecords };
   },
   setAsTemplate: async (ctx) => {
-    let work = await strapi.services.work.findOne(ctx.params);
-    work = work.toJSON();
+    const work = await strapi.services.work.findOne(ctx.params);
 
     // eslint-disable-next-line no-unused-vars
     const templateWork = await strapi.services.work.create();
     return strapi.services.work.update({id: templateWork.id}, { pages: work.pages, is_template: true, cover_image_url: work.cover_image_url });
   },
   useTemplate: async (ctx) => {
-    let templateWork = await strapi.services.work.findOne(ctx.params);
-    templateWork = templateWork.toJSON();
+    const templateWork = await strapi.services.work.findOne(ctx.params);
 
     // eslint-disable-next-line no-unused-vars
     const work = await strapi.services.work.create();

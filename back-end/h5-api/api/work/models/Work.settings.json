@@ -31,10 +31,6 @@
     },
     "is_template": {
       "type": "boolean"
-    },
-    "workforms": {
-      "collection": "workform",
-      "via": "work"
     }
   }
 }
