@@ -44,7 +44,11 @@ export default {
     borderWidth: commonProps.borderWidth,
     borderRadius: commonProps.borderRadius,
     borderColor: commonProps.borderColor,
-    textAlign: commonProps.textAlign()
+    textAlign: commonProps.textAlign(),
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     handleClick () {
