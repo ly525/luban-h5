@@ -7,7 +7,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "comment": ""
   },
   "attributes": {
@@ -22,12 +25,6 @@
     },
     "pages": {
       "type": "json"
-    },
-    "create_time": {
-      "type": "date"
-    },
-    "update_time": {
-      "type": "date"
     },
     "is_publish": {
       "type": "boolean"
