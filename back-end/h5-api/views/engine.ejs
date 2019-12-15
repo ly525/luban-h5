@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-04 20:24:04
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-14 21:46:23
+ * @LastEditTime: 2019-12-15 16:39:33
  * @FilePath: /luban-h5/back-end/h5-api/views/engine.ejs
  * @Github: https://github.com/ly525/luban-h5
  * @Description: 手机端预览模板
@@ -275,9 +275,18 @@
       },
     });
 
+    function title(str) {
+      if (str.length <= 1) return str.toUpperCase()
+      return str.slice(0,1).toUpperCase() + str.slice(1)
+    }
+
     function displayMessage ({ origin, data }) {
       if (['next', 'prev'].includes(data)  && origin === window.location.origin) {
-        document.querySelector(`.swiper-button-${data}`).click()
+        // 不采用下面的原因：在移动端和小屏幕上，会移除：.swiper-button-prev, .swiper-button-next 按钮
+        // document.querySelector(`.swiper-button-${data}`).click()
+
+        var action = `slide${title(data)}`
+        mySwiper[action]()
       }
     }
 
