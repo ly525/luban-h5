@@ -1,5 +1,5 @@
 {
-  "timeout": 3000,
+  "timeout": 30000,
   "load": {
     "before": [],
     "order": [

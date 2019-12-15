@@ -4,11 +4,22 @@
     "default": {
       "connector": "strapi-hook-bookshelf",
       "settings": {
-        "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "client": "mysql",
+        "host": "${process.env.DATABASE_HOST || 'localhost'}",
+        "port": "${process.env.DATABASE_PORT || '3306'}",
+        "database": "${process.env.DATABASE_NAME || 'lubanh5'}",
+        "username": "${process.env.DATABASE_USERNAME || ''}",
+        "password": "${process.env.DATABASE_PASSWORD || ''}"
       },
       "options": {
-        "useNullAsDefault": true
+        "debug": true,
+        "pool": {
+          "min": 0,
+          "max": 10,
+          "idleTimeoutMillis": 30000,
+          "createTimeoutMillis": 30000,
+          "acquireTimeoutMillis": 30000
+        }
       }
     }
   }
