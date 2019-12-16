@@ -9,8 +9,8 @@
     "deploy": "rm -rf dist && npm run build && ./deploy.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "editor:build": "PAGE=EDITOR vue-cli-service build",
-    "engine:build": "PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
+    "editor:build": "cross-env PAGE=EDITOR vue-cli-service build",
+    "engine:build": "cross-env PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
   },
   "dependencies": {
     "@luban-h5/lbc-button": "^0.0.2",
@@ -50,6 +50,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-plugin-component": "^1.1.1",
+    "cross-env": "^6.0.3",
     "dart-sass": "^1.23.7",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
