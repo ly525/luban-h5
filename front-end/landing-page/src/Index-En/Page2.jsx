@@ -16,7 +16,7 @@ export default function Page2() {
           <div className="image" style={{ backgroundImage: `url(${d.image})` }} />
           <div className="code-wrapper">
             <h4>Scan Qr code to preview</h4>
-            <QRCode value={window.location.origin + d.url} size={160} />
+            <QRCode value={d.url} size={160} />
           </div>
         </div>
       </Col>);

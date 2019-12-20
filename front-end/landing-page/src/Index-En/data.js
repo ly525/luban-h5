@@ -1,4 +1,5 @@
 import React from 'react';
+import { H5_HOST } from '@/constants/config';
 
 export const page1 = [
   {
@@ -21,17 +22,17 @@ export const page1 = [
 export const page2 = [
   {
     title: 'Invitation',
-    url: '/works/preview/1552',
+    url: `${H5_HOST}/works/preview/1552`,
     image: 'https://i.loli.net/2019/12/04/haEim2C6QnzVPOY.png',
   },
   {
     title: 'Good Morning',
-    url: '/works/preview/1551',
+    url: `${H5_HOST}/works/preview/1551`,
     image: 'https://i.loli.net/2019/12/04/qBCmSl4Du8jn2XZ.png',
   },
   {
     title: 'Day of the Programmer',
-    url: '/works/preview/833',
+    url: `${H5_HOST}/works/preview/833`,
     image: 'https://i.loli.net/2019/12/04/s7S1no4YcuJe8Qb.png',
   },
 ];

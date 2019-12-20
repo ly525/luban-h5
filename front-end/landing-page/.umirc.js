@@ -1,3 +1,5 @@
+var path = require('path')
+
 export default {
   publicPath: "/luban-h5/",
   history: 'hash',
@@ -9,5 +11,8 @@ export default {
         antd: true,
       }
     ],
-  ]
+  ],
+  chainWebpack(config) {
+    config.resolve.alias.set('@', path.resolve(__dirname, 'src'));
+  },
 }
