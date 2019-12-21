@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.3](https://github.com/ly525/luban-h5/compare/v1.7.2...v1.7.3) (2019-12-21)
+
+
+### Bug Fixes
+
+* [#118](https://github.com/ly525/luban-h5/issues/118) ([425e44d](https://github.com/ly525/luban-h5/commit/425e44d))
+* add landing page host ([79ec52a](https://github.com/ly525/luban-h5/commit/79ec52a))
+* **engine:** add $message function to display message ([fad25b8](https://github.com/ly525/luban-h5/commit/fad25b8))
+* **engine:** click the next or prev not working; (zh) 修正预览弹窗中，点击上一页和下一页失败的问题 ([3eab119](https://github.com/ly525/luban-h5/commit/3eab119))
+* **plugin:submit-button:** add disabled prop to disable submit form in edit mode ([230d5bb](https://github.com/ly525/luban-h5/commit/230d5bb))
+* [#113](https://github.com/ly525/luban-h5/issues/113) ([a2fb4ac](https://github.com/ly525/luban-h5/commit/a2fb4ac))
+* [#62](https://github.com/ly525/luban-h5/issues/62) display a message if user delete the page if only one page; ([bbe623b](https://github.com/ly525/luban-h5/commit/bbe623b))
+
+
+### Features
+
+* show form stat results; (zh) 显示表单统计结果 ([f5e1385](https://github.com/ly525/luban-h5/commit/f5e1385))
+* **docs:** use strapi documentation plugin to generate api your documentation(swagger ui); 使用strapi document plugin 自动生成API 文档(由swagger ui 驱动) ([cb6cf47](https://github.com/ly525/luban-h5/commit/cb6cf47))
+* **preview:** set page title for released page; (zh) 为发布的作品设置页面标题 ([e8e0117](https://github.com/ly525/luban-h5/commit/e8e0117))
+
 ### [1.7.2](https://github.com/ly525/luban-h5/compare/v1.7.1...v1.7.2) (2019-12-08)
 
 
