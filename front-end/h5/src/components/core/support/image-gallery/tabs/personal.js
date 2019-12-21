@@ -11,7 +11,7 @@ export default {
   methods: {
     uploadSuccess ({ file, fileList }) {
       const response = file.response.length && file.response[0]
-      this.items = [{ name: response.name, previewURL: response.url }, ...this.cachedItems]
+      this.items = [{ name: response.name, previewURL: response.url.replace('http://localhost:1337', '') }, ...this.cachedItems]
     },
     beforeUpload (file) {
       this.items.unshift({
