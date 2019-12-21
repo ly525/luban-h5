@@ -10,21 +10,22 @@ export const columns = [
     dataIndex: 'title',
     key: 'title'
   },
-  {
-    title: 'PV',
-    dataIndex: 'pv',
-    key: 'pv'
-  },
-  {
-    title: 'Uv',
-    dataIndex: 'uv',
-    key: 'uv'
-  },
+  // {
+  //   title: 'PV',
+  //   dataIndex: 'pv',
+  //   key: 'pv'
+  // },
+  // {
+  //   title: 'Uv',
+  //   dataIndex: 'uv',
+  //   key: 'uv'
+  // },
   {
     // i18n for title
-    title: 'Form Count',
+    title: 'Forms',
     key: 'formCount',
-    dataIndex: 'formCount'
+    dataIndex: 'formCount',
+    align: 'center'
   },
   {
     title: 'Action',

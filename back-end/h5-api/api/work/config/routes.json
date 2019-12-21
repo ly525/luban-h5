@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/works/has-forms",
+      "handler": "Work.queryWorksWithForms",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/works",
       "handler": "Work.find",
       "config": {

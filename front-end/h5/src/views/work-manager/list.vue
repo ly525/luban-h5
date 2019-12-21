@@ -84,7 +84,7 @@ const AddNewCard = {
   render (h, { props, parent }) {
     return (
       <a-card hoverable>
-        <div slot="cover" class="flex-center" style="height: 415px;background: #f7f5f557;" onClick={props.handleCreate}>
+        <div slot="cover" class="flex-center" style="height: 405px;background: #f7f5f557;" onClick={props.handleCreate}>
           <a-icon type="plus" />
         </div>
         <template class="ant-card-actions" slot="actions">

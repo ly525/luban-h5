@@ -1,8 +1,8 @@
 <!--
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
- * @LastEditors: ly525
- * @LastEditTime: 2019-12-08 15:28:33
+ * @LastEditors  : ly525
+ * @LastEditTime : 2019-12-21 19:19:38
  * @FilePath: /luban-h5/front-end/h5/src/views/work-manager/form-stat/index.vue
  * @Github: https://github.com/ly525/luban-h5
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
@@ -28,13 +28,13 @@ export default {
         title: w.title,
         pv: w.pv || 0,
         uv: w.uv || 0,
-        formCount: w.formCount || 0
+        formCount: w.form_count || 0
       }))
     }
   },
   methods: {
     ...mapActions('editor', [
-      'fetchWorks'
+      'fetchWorksWithForms'
     ])
   },
   render (h) {
@@ -60,7 +60,7 @@ export default {
     )
   },
   created () {
-    this.fetchWorks()
+    this.fetchWorksWithForms()
   }
 }
 </script>

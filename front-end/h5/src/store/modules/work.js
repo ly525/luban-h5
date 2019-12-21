@@ -79,6 +79,16 @@ export const actions = {
       customRequest: strapi.getEntries.bind(strapi)
     }).get('works', { is_template: false })
   },
+  fetchWorksWithForms ({ commit, dispatch, state }, workId) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorks',
+      loading_name: 'fetchWorks_loading',
+      successMsg: '获取作品列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works/has-forms', { is_template: false })
+  },
   fetchWorkTemplates ({ commit, dispatch, state }, workId) {
     new AxiosWrapper({
       dispatch,
