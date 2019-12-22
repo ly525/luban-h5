@@ -23,7 +23,6 @@
     "element-ui": "^2.13.0",
     "font-awesome": "4.7.0",
     "html2canvas": "^1.0.0-rc.3",
-    "medium-editor": "^5.23.3",
     "proxy-agent": "^3.1.0",
     "qrcode": "^1.4.1",
     "register-service-worker": "^1.6.2",
@@ -36,7 +35,6 @@
     "vue-i18n": "^8.14.1",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
-    "vue2-medium-editor": "^1.1.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
