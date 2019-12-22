@@ -215,15 +215,15 @@ export default {
             ))
           }
           {
-            this.contextmenuPos.length &&
-            <ContextMenu
-              position={this.contextmenuPos}
-              onSelect={({ item, key, selectedKeys }) => {
-                this.elementManager({ type: key })
-                this.hideContextMenu()
-              }}
-              onHideMenu={this.hideContextMenu}
-            />
+            this.contextmenuPos.length
+              ? <ContextMenu
+                position={this.contextmenuPos}
+                onSelect={({ item, key, selectedKeys }) => {
+                  this.elementManager({ type: key })
+                  this.hideContextMenu()
+                }}
+                onHideMenu={this.hideContextMenu}
+              /> : null
           }
         </div>
       )
