@@ -3,6 +3,17 @@
 
 > 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接交流
 
+> 如果您已经熟悉并已经安装了 `Node`、`Yarn`，可以直接参照下面的命令，快速上手
+
+> 如果您不熟悉，请阅读下面的详细教程
+
+```bash
+cd back-end/h5-api && yarn && yarn dev
+
+# 新开一个终端，回到项目根目录
+cd front-end/h5 && yarn && yarn engine:build && yarn dev
+```
+
 # 常见问题
 > 这部分一般是按照下面的教程运行之后，仍然可能、也许会遇到的问题
 
@@ -63,6 +74,7 @@ yarn config set registry https://registry.npm.taobao.org
 1. 后端部分文档会尽量和 `[github-后端部分文档说明(project/back-end/h5-api/README.md)](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)`保持同步
 
 ## 后端环境搭建
+> 如果遇到接口 403 问题，请看：`2. 注意事项`
 ### 1. 快速上手
 
 ```bash
@@ -72,7 +84,7 @@ cd back-end/h5-api
 # 原因参见：https://github.com/ly525/luban-h5/issues/92
 yarn install # 安装依赖
 
-npm run dev
+yarn dev
 # 补充说明: 如果需要在 vscode 中进行debug ，请使用 npm run localdev
 
 # #!en: default database is sqlite3(h5-api/.tmp/data.db)
@@ -108,10 +120,7 @@ error TypeError: ctx.render is not a function
 
 ```bash
 # 默认当前位置目录为 luban-h5 项目的根目录
-cd front-end/h5
-
-yarn # install dependencies
-yarn serve # develop
+cd front-end/h5 && yarn && yarn engine:build && yarn dev
 
 # 更多命令
 请参见 project/front-end/h5/package.json

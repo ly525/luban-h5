@@ -1,11 +1,17 @@
 # Quick Start
 
-# commands commonly used for local dev
-```bash
-npm run dev # dev back-end or docs
-yarn serve # dev front-end
-```
 
+> if you are familiar with `Node`, `Yarn`(and already installed), please follow the commands to start quickly:
+
+> if you are not familiar with the tech stack, please read the following detailed tutorial
+
+```bash
+cd back-end/h5-api && yarn && yarn dev
+
+# open a new terminal and goto the project root path
+
+cd front-end/h5 && yarn && yarn engine:build && yarn dev
+```
 
 # Overview
 
@@ -76,10 +82,7 @@ error TypeError: ctx.render is not a function
 ### 1. quick start
 ```bash
 # by default, the current path is the root path of luban-h5
-cd front-end/h5
-
-yarn # install dependencies
-yarn serve # develop
+cd front-end/h5 && yarn && yarn engine:build && yarn dev
 
 # more commands
 # please refer to project/front-end/h5/package.json
