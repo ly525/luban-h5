@@ -64,7 +64,7 @@ export const actions = {
     })
   },
   fetchWork ({ commit, state }, workId) {
-    strapi.getEntry('works', workId).then(entry => {
+    return strapi.getEntry('works', workId).then(entry => {
       commit('setWork', entry)
       commit('setEditingPage')
     })

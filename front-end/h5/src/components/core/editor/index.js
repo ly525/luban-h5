@@ -111,7 +111,7 @@ export default {
   data: () => ({
     activeMenuKey: 'pluginList',
     isPreviewMode: false,
-    activeTabKey: '属性',
+    activeTabKey: 'background',
     previewVisible: false,
     scaleRate: 1
   }),
@@ -154,6 +154,21 @@ export default {
         type: 'add',
         value: { name }
       })
+    },
+    /**
+     * #!zh: 设置 背景图tab 作为 active tab
+     * #!en: set background(bg) tab as active tab
+     */
+    setActiveTab (activeTabKey) {
+      this.activeTabKey = activeTabKey
+      switch (activeTabKey) {
+        case 'background':
+          const bgElement = this.elements.find(e => e.name === 'lbp-background')
+          this.setEditingElement(bgElement)
+          break
+        default:
+          this.setEditingElement()
+      }
     },
     _renderMenuContent () {
       return (
@@ -344,17 +359,13 @@ export default {
               }
             </a-button-group>
           </a-layout-sider>
-          <a-layout-sider width="300" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+          <a-layout-sider width="320" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}
-              onChange={activeTabKey => {
-                this.activeTabKey = activeTabKey
-                if (activeTabKey === 'background') {
-                  const bgElement = this.elements.find(e => e.name === 'lbp-background')
-                  this.setEditingElement(bgElement)
-                }
-              }}
+              defaultActiveKey={this.activeTabKey}
+              activeKey={this.activeTabKey}
+              onChange={this.setActiveTab}
             >
               {/*
                 #!zh tab 标题：
@@ -387,7 +398,7 @@ export default {
     window.getEditorApp = this
     let workId = this.$route.params.workId
     if (workId) {
-      this.fetchWork(workId)
+      this.fetchWork(workId).then(() => this.setActiveTab('background'))
     } else {
       this.$message.error('no work id!')
     }
