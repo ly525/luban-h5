@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-04 19:55:24
  * @LastEditors  : ly525
- * @LastEditTime : 2019-12-21 19:32:05
+ * @LastEditTime : 2020-01-01 18:42:41
  * @FilePath: /luban-h5/back-end/h5-api/api/work/controllers/Work.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
@@ -53,17 +53,14 @@ module.exports = {
     const work = await strapi.services.work.findOne(ctx.params);
 
     // learn the query from: https://github.com/strapi/foodadvisor/blob/master/api/api/restaurant/controllers/Restaurant.js#L40
-    let formRecords = await strapi.services.workform.query(qb => {
-      qb.where('work', '=', work.id);
-    }).fetchAll();
-    formRecords = formRecords.toJSON();
+    let formRecords = await strapi.services.workform.find({ work: work.id });
 
     const uuidMap2Name = getUuidMap2Name(work);
     // eslint-disable-next-line require-atomic-updates
     return ctx.body = { uuidMap2Name, formRecords };
   },
   queryWorksWithForms: async (ctx) => {
-    let formRecords = await strapi.services.workform.fetchAll({
+    let formRecords = await strapi.query('workform').model.fetchAll({
       withRelated: [
         {'work': qb => qb.column('id') }
       ],
@@ -72,12 +69,12 @@ module.exports = {
     formRecords = formRecords.toJSON();
     const groupedFormRecords = _.groupBy(formRecords, 'work.id');
 
-    let workRecords = await strapi.services.work.fetchAll({
+    let workRecords = await strapi.query('work').model.fetchAll({
       columns: ['id', 'title']
     });
     workRecords = workRecords.toJSON().map(work => ({
       ...work,
-      form_count: groupedFormRecords[work.id].length
+      form_count: groupedFormRecords[work.id] && groupedFormRecords[work.id].length
     })).filter(work => work.form_count);
 
     return ctx.body = workRecords;
