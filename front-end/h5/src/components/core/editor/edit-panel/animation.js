@@ -85,6 +85,7 @@ export default {
     renderAvaiableAnimations () {
       return (
         <a-tabs
+          class="avaiable-animations-tabs"
           defaultActiveKey={firstLevelAnimationOptions[0].label}
           onChange={tab => {}}
           style="width:100%;"
