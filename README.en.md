@@ -65,12 +65,13 @@
     - [x] Form Button
     - [x] Form Field
     - [x] Picture
-    - [ ] Background Image
-    - [ ] Video (Iframe format)
+    - [x] Background Image
+    - [x] Background Music
+    - [x] Video (Iframe format)
 
 3. enhanced function
     - [ ] parsing PSD file to HTML Page
-    - [ ] Photo Gallery
+    - [x] Photo Gallery
     - [ ] Third Party uncopyrighted Image Search
 
 

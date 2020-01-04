@@ -114,6 +114,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
     - [x] 表单输入框
     - [x] 普通图片
     - [x] 背景图
+    - [x] 背景音乐
     - [x] 视频（Iframe形式）
 
 3. 增强功能

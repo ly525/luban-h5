@@ -21,8 +21,10 @@
 - [x]  Ordinary text
 - [x]  Normal button
 - [x]  Ordinary picture
-- [ ]  Background
-- [ ]  Video (Iframe form)
+- [x]  Background Image
+- [x]  Background Color
+- [x]  Background Music
+- [x]  Video (Iframe form)
 
 
 #### Form Component
