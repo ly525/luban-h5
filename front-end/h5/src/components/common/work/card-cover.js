@@ -1,8 +1,8 @@
 /*
  * @Author: ly525
  * @Date: 2019-12-01 18:11:49
- * @LastEditors: ly525
- * @LastEditTime: 2020-01-01 19:29:14
+ * @LastEditors  : ly525
+ * @LastEditTime : 2020-01-04 13:51:26
  * @FilePath: /luban-h5/front-end/h5/src/components/common/work/card-cover.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -54,11 +54,11 @@ export default {
   },
   render (h) {
     let covers = [this.getCover(placeholderImg, true/** isPlaceholder */)]
-    const coverImg = this.coverImageUrl.replace('http://localhost:1337', '')
 
     if (this.qrcodeUrl) {
       covers = this.getCoverBg(this.qrcodeUrl, true)
-    } else if (coverImg) {
+    } else if (this.coverImageUrl) {
+      const coverImg = this.coverImageUrl.replace('http://localhost:1337', '')
       covers = [this.getCover(coverImg), this.getCoverBg(coverImg)]
     }
 
