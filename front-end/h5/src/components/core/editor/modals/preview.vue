@@ -101,12 +101,16 @@ export default {
                     <a-icon type="down" class="page-controller"  onClick={() => { this.postMessage2Iframe('next') }}/>
                     */}
                   </div>
-                  <iframe
-                    id="iframe-for-preview"
-                    src={this.releaseUrl}
-                    frameborder="0"
-                    style="height: 100%;width: 100%;"
-                  ></iframe>
+                  {
+                    // 类似 v-if="this.visible" 的目的：关闭预览弹框之后，销毁 iframe，避免继续播放音乐、视频
+                    // similar with v-if="this.visible": destory the iframe after close the preview dialog to avoid playing the music and video
+                    this.visible && <iframe
+                      id="iframe-for-preview"
+                      src={this.releaseUrl}
+                      frameborder="0"
+                      style="height: 100%;width: 100%;"
+                    ></iframe>
+                  }
                   {/** <engine :work="editingWork" :map-config="{}" /> */}
                 </div>
               </div>

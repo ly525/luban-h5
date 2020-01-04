@@ -10,6 +10,7 @@ import LbpFormRadioGroup from '../components/plugins/lbp-form-radio-group'
 import LbpFormCheckboxGroup from '../components/plugins/lbp-form-checkbox-group'
 import LbpBackground from '../components/plugins/lbp-background'
 import LbpSlide from '../components/plugins/lbp-slide'
+import LbpBgMusic from '../components/plugins/lbp-bg-music'
 
 export const pluginsList = [
   {
@@ -134,6 +135,17 @@ export const pluginsList = [
     component: LbpBackground,
     visible: false,
     name: LbpBackground.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'BgMusic',
+      'zh-CN': '背景音乐'
+    },
+    title: '背景音乐',
+    icon: 'music',
+    component: LbpBgMusic,
+    visible: true,
+    name: LbpBgMusic.name
   }
 ]
 

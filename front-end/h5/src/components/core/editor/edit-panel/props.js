@@ -77,7 +77,7 @@ export default {
                 const item = obj.editor
                 // https://vuejs.org/v2/guide/render-function.html
                 const data = {
-                  style: { width: '100%' },
+                  // style: { width: '100%' },
                   props: {
                     ...item.prop || {},
                     // https://vuejs.org/v2/guide/render-function.html#v-model
@@ -86,7 +86,9 @@ export default {
                     // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
                     // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
                     // value: editingElement.pluginProps[propKey] || item.defaultPropValue
-                    value: editingElement.pluginProps[propKey]
+
+                    // https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model
+                    [item.type === 'a-switch' ? 'checked' : 'value']: editingElement.pluginProps[propKey]
                   },
                   on: {
                   // https://vuejs.org/v2/guide/render-function.html#v-model
