@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.4](https://github.com/ly525/luban-h5/compare/v1.7.3...v1.7.4) (2020-01-04)
+
+
+### Bug Fixes
+
+* [#121](https://github.com/ly525/luban-h5/issues/121) ([18bbe16](https://github.com/ly525/luban-h5/commit/18bbe16))
+* do not set editingElement null if change tab(not background) ([3e068da](https://github.com/ly525/luban-h5/commit/3e068da))
+* form stat api 500; (zh) 修正表单统计接口无法获取数据 ([bd620f1](https://github.com/ly525/luban-h5/commit/bd620f1))
+* remove localhost:1337 temporarily in cover url ([5933eed](https://github.com/ly525/luban-h5/commit/5933eed))
+* **typo:** animation delay ([47bd979](https://github.com/ly525/luban-h5/commit/47bd979))
+* remove 0 on canvas ([90e6fa6](https://github.com/ly525/luban-h5/commit/90e6fa6))
+
+
+### Features
+
+* **plugin:** background music ([e0f5359](https://github.com/ly525/luban-h5/commit/e0f5359))
+
 ### [1.7.3](https://github.com/ly525/luban-h5/compare/v1.7.2...v1.7.3) (2019-12-21)
 
 
