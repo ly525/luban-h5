@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-12-14 22:43:55
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-01-05 22:09:02
+ * @FilePath: /luban-h5/front-end/h5/vue.config.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: Do not edit
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 const path = require('path')
 // const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
@@ -57,5 +67,14 @@ module.exports = {
       }
     },
     extract: false
+  },
+  pwa: {
+    iconPaths: {
+      favicon32: 'img/icons/favicon.ico',
+      favicon16: 'img/icons/favicon.ico',
+      appleTouchIcon: 'img/icons/favicon.ico',
+      maskIcon: 'img/icons/favicon.ico',
+      msTileImage: 'img/icons/favicon.ico'
+    }
   }
 }
