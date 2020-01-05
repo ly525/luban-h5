@@ -5,13 +5,13 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run build:editor && npm run build:editor",
     "lint": "vue-cli-service lint --fix",
-    "deploy": "rm -rf dist && npm run build && ./deploy.sh",
+    "deploy": "rm -rf dist && npm run build:editor && npm run build:engine && ./deploy.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "editor:build": "cross-env PAGE=EDITOR vue-cli-service build",
-    "engine:build": "cross-env PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
+    "build:editor": "cross-env PAGE=EDITOR vue-cli-service build",
+    "build:engine": "cross-env PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
   },
   "dependencies": {
     "@luban-h5/lbc-button": "^0.0.2",
