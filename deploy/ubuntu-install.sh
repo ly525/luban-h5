@@ -2,81 +2,60 @@
 
 
 ###
-# @Author: ly525
+ # @Author: ly525
  # @Date: 2019-11-30 13:24:57
- # @LastEditors: ly525
- # @LastEditTime: 2019-12-04 21:13:20
+ # @LastEditors  : ly525
+ # @LastEditTime : 2020-01-05 16:22:19
  # @FilePath: /luban-h5/deploy/ubuntu-install.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description:
  ## #!en: One-Click Setup Script to Install Luban-H5 on Ubuntu 18.04
  ## #!zh: 鲁班H5 Ubuntu18.04 一键安装脚本
  # @Copyright 2018 - 2019 luban-h5. All Rights Reserved
- ###
-
-## !en:
-######################################################
-#    One-Click Setup Script to Install Luban-H5 on Ubuntu 18.04
-######################################################
-
+###
 
 ######################################################
-#         Step1: Download && Run the Script
+#          #!zh [鲁班H5] Ubuntu18.04 一键安装脚本
+
+# [一、本地一键安装步骤]
 # docker pull ubuntu
 # docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
 # wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+
+# [二、安装完成之后，在浏览器中的访问鲁班的步骤]
+# 1. 鲁班后台
+# 1.1 宿主机访问 [鲁班后台]：http://localhost:1234/admin，自定义配置账号密码，登录即可
+# 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
+
+# 2. 鲁班前端
+# 2.1 宿主机访问 「鲁班前端」：http://localhost:1234, 即可看到鲁班的前端了
+
+# [三、问题反馈]
+# GitHub：https://github.com/ly525/luban-h5
 ######################################################
 
+
 ######################################################
-#          Step2: After the Script Runs
+#   #!en One-Click Setup Script to Install Luban-H5 on Ubuntu 18.04
+
+# [Step1: Download && Run the Script]
+# docker pull ubuntu
+# docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
+# wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+
+# [Step2: After the Installation Finished, Visit Luban in the browser]
 # 1. Luban H5 Admin
 # 1.1 visit on your host machine：http://localhost:1234/admin,   custom the username and password, then login the admin
 # 1.2 config the permission,see more here：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 
 # 2. Luban H5 Front-End
-# 2.1visit on your host machine ：http://localhost:1234, enjoy it!
-######################################################
+# 2.1 visit on your host machine ：http://localhost:1234, enjoy it!
 
-######################################################
-#           Feedback
-
+# [Feedback]
 # GitHub：https://github.com/ly525/luban-h5/issues
 ######################################################
 
-
-## #!zh
-######################################################
-#           [鲁班H5] Ubuntu18.04 一键安装脚本
-######################################################
-
-
-######################################################
-#           [本地一键安装步骤]
-# docker pull ubuntu
-# docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
-# wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
-######################################################
-
-######################################################
-#           [安装完成之后]
-# 1. 鲁班后台
-# 1.1 宿主机访问 [鲁班后台]：localhost:1234/admin，自定义配置账号密码，登录即可
-# 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
-
-# 2. 鲁班前端
-# 2.1 宿主机访问 「鲁班前端」：localhost:1234, 即可看到鲁班的前端了
-######################################################
-
-######################################################
-#           [问题反馈]
-
-# GitHub：https://github.com/ly525/luban-h5
-######################################################
-
-
 #
-#
-
 ## Variables
 #
 
