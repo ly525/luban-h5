@@ -10,7 +10,7 @@ cd back-end/h5-api && yarn && yarn dev
 
 # open a new terminal and goto the project root path
 
-cd front-end/h5 && yarn && yarn engine:build && yarn dev
+cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 
 # Overview
@@ -82,7 +82,7 @@ error TypeError: ctx.render is not a function
 ### 1. quick start
 ```bash
 # by default, the current path is the root path of luban-h5
-cd front-end/h5 && yarn && yarn engine:build && yarn dev
+cd front-end/h5 && yarn && yarn build:engine && yarn dev
 
 # more commands
 # please refer to project/front-end/h5/package.json
@@ -102,7 +102,7 @@ previewOne: async (ctx) => {
 ```
 
 #### How to build preview engine
-1. cd `front-end/h5`, run `yarn engine:build`
+1. cd `front-end/h5`, run `yarn build:engine`
 2. after build finished, an folder named `engine-assets`  is auto generated at `back-end/h5-api/public`
 3. `preview.vue` is preview modal, the mobile div is an iframe which a wrapper for builded `engine-entry`, learn more about engine here: `luban-h5/front-end/h5/vue.config.js`
 

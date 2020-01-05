@@ -11,7 +11,7 @@
 cd back-end/h5-api && yarn && yarn dev
 
 # 新开一个终端，回到项目根目录
-cd front-end/h5 && yarn && yarn engine:build && yarn dev
+cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 
 # 常见问题
@@ -120,7 +120,7 @@ error TypeError: ctx.render is not a function
 
 ```bash
 # 默认当前位置目录为 luban-h5 项目的根目录
-cd front-end/h5 && yarn && yarn engine:build && yarn dev
+cd front-end/h5 && yarn && yarn build:engine && yarn dev
 
 # 更多命令
 请参见 project/front-end/h5/package.json
@@ -139,7 +139,7 @@ previewOne: async (ctx) => {
 },
 ```
 #### 如何构建
-1. 在`front-end/h5`目录下，运行：`yarn engine:build`
+1. 在`front-end/h5`目录下，运行：`yarn build:engine`
 2. 构建完成之后,后端的`h5-api/public`里面会多一个文件夹 `engine-assets`
 3. 打开的预览窗口`preview.vue`, 里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
   也就是说，这个预览其实依赖后端的渲染引擎，比如 ejs 或者 jade 这种模板引擎，所以参照这里：`luban-h5/front-end/h5/vue.config.js` `engineOutputDir` 变量，preview engine 构建完成，会生成到后端的 `back-end/h5-api/public/engine-assets` 目录
