@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-11-24 18:51:58
+ * @LastEditors  : ly525
+ * @LastEditTime : 2020-01-09 21:57:30
+ * @FilePath: /luban-h5/front-end/h5/src/mixins/animation.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description:
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 // https://stackoverflow.com/questions/26874769/getcomputedstyle-and-csstext-in-ie-and-firefox
 function getComputedCSSText (style) {
   let cssText = ''
@@ -12,7 +22,7 @@ function getComputedCSSText (style) {
 
 export default {
   methods: {
-    async runAnimations () {
+    runAnimations () {
       const animationQueue = this.animations || this.element.animations || []
       let len = animationQueue.length
       if (len === 0) return
