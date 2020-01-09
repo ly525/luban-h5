@@ -81,7 +81,7 @@ front-end/h5/src                # source code for front end, includes: editor, w
 │   │   ├── index.vue
 │   │   └── list.vue
 │   ├── About.vue
-│   ├── Editor.vue           # a wrapper around the core editor, where the list of plug-ins is loaded
+│   ├── Editor.vue           # a wrapper around the core editor, where the list of plugins is loaded
 │   └── Home.vue
 ├── App.vue
 ├── engine-entry.js          # preview engine for previewing and viewing mobie page on your phone
@@ -89,6 +89,13 @@ front-end/h5/src                # source code for front end, includes: editor, w
 ├── registerServiceWorker.js
 └── router.js                #
 ```
+
+
+## explanation for front-end components
+1. `lbp-`
+    - means `lu-ban-plugin: plugins for luban-h5`
+    - location `front-end/h5/src/components/plugins`
+
 
 ---
 

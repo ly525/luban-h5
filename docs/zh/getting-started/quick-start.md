@@ -1,26 +1,21 @@
 # 快速开始
-> 重要：关于此部分有疑惑，请在下面直接评论，或者到社区讨论
-
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接交流
-
-> 如果您已经熟悉并已经安装了 `Node`、`Yarn`，可以直接参照下面的命令，快速上手
-
-> 如果您不熟悉，请阅读下面的详细教程
+- 重要：关于此部分有疑惑，请在下面直接评论，或者到[社区](https://support.qq.com/products/93432/)讨论
+- 如果您已经熟悉并已经安装了 `Node`、`Yarn`，可以直接参照下面的命令，快速上手
+- 如果您不熟悉，请阅读下面的详细教程
 
 ```bash
+# 后端
 cd back-end/h5-api && yarn && yarn dev
 
-# 新开一个终端，回到项目根目录
+# 前端
+# 新开一个终端，在项目根目录执行如下命令
 cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 
 # 常见问题
-> 这部分一般是按照下面的教程运行之后，仍然可能、也许会遇到的问题
-
-> 比较适合些许粗心、些许文档只看了一半、比较着急的同学
+> 这部分一般是按照下面的教程运行之后，仍然可能会遇到的问题。比较适合粗心、文档只看了一半、比较着急的同学
 
 1. 接口 `403 Forbidden`，解决方案看这里：[#_2-注意事项](#_2-注意事项)
-
 2. 弹框中的 `预览页面显示空白`，解决方案看这里：[2. 构建预览所需的渲染引擎](#_2-构建预览所需的渲染引擎)
 
 
@@ -29,7 +24,7 @@ cd front-end/h5 && yarn && yarn build:engine && yarn dev
 
 ## 基础概念
 > 首先你需要大概了解下 Node.js 的相关生态、Node.js 的安装
-我们接下来会花一分钟介绍一下基础概念. 我们默认你知道 Linux 和 Git 的基本操作
+我们接下来会花几分钟介绍一下基础概念. 我们默认你知道 Linux 和 Git 的基本操作
 ### Node.js、npm、nvm
 
 1. `Node.js` 
@@ -51,7 +46,6 @@ cd front-end/h5 && yarn && yarn build:engine && yarn dev
 1. 因为 yarn 的仓库源在海外，所以，请配置国内镜像源，提高速度
 
 ```bash
-
 yarn config get registry
 # -> https://registry.yarnpkg.com
 
@@ -69,12 +63,10 @@ yarn config set registry https://registry.npm.taobao.org
 - 存储：Sqlite
 
 # 项目环境搭建
-
-1. 鲁班H5的后端接口，由 [Strapi](https://github.com/strapi/strapi/) 强力驱动
-1. 后端部分文档会尽量和 `[github-后端部分文档说明(project/back-end/h5-api/README.md)](https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/README.md)`保持同步
+> 鲁班H5的后端接口，由 [Strapi.js](https://github.com/strapi/strapi/) 驱动
 
 ## 后端环境搭建
-> 如果遇到接口 403 问题，请看：`2. 注意事项`
+> 如果遇到接口 403 问题，请看：[#_2-注意事项](#_2-注意事项)
 ### 1. 快速上手
 
 ```bash
@@ -90,8 +82,8 @@ yarn dev
 # #!en: default database is sqlite3(h5-api/.tmp/data.db)
 # #!zh: 默认数据库是 sqlite3，位置在 h5-api/.tmp/data.db
 
-# 访问 http://locahost:1337/admin
-# visit http://locahost:1337/admin
+# 访问 http://localhost:1337/admin
+# visit http://localhost:1337/admin
 
 请继续阅读，进行相关配置
 ```
@@ -107,30 +99,26 @@ yarn dev
 ##### 上传封面图使用
 ![1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24](https://user-images.githubusercontent.com/12668546/65381948-32154680-dd2e-11e9-95ea-589f808ce095.png)
 
-2. 如果后端没有安装 strapi-hook-ejs 或者 没有在 hook.json 中进行配置，会报错(如下)。解决方案：只要装了 ejs 插件并且正确配置即可
-```javascript
-error TypeError: ctx.render is not a function
-  at previewOne (~/luban-h5/back-end/h5-api/api/work/controllers/Work.js:13:16)
-```
 
 ## 前端环境搭建
-这部分会尽量和  `[project/front-end/h5/README.md](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)` 保持同步
-
 ### 1. 快速上手
 
 ```bash
 # 默认当前位置目录为 luban-h5 项目的根目录
 cd front-end/h5 && yarn && yarn build:engine && yarn dev
 
-# 更多命令
-请参见 project/front-end/h5/package.json
+# 更多命令请参见 project/front-end/h5/package.json
 ```
 
 ### 2. 构建预览所需的渲染引擎
-> 关于此部分有疑惑，请直接评论
+- 如果在`「1. 快速上手」` 已经执行了 `yarn build:engine`，这一步可以跳过
+- 关于此部分有疑惑，请直接到[社区](https://support.qq.com/products/93432/)评论即可
 
-#### 基本原理
-作品预览的基本原理参见 [luban-h5/back-end/h5-api/api/work/controllers/Work.js/previewOne](https://github.com/ly525/luban-h5/blob/bd486ce16fc24bfd7030fc51857a579776e12e68/back-end/h5-api/api/work/controllers/Work.js#L12)
+1. 只需要在`front-end/h5`目录下，运行：`yarn build:engine` 即可
+2. 下面的内容感兴趣可以了解，感觉内容太多可以不看
+
+#### 2.1 基本原理
+作品预览的基本原理参见 [previewOne](https://github.com/ly525/luban-h5/blob/bd486ce16fc24bfd7030fc51857a579776e12e68/back-end/h5-api/api/work/controllers/Work.js#L12)，关键代码如下：
 
 ```js
 previewOne: async (ctx) => {
@@ -138,17 +126,14 @@ previewOne: async (ctx) => {
   return ctx.render('engine', { work });
 },
 ```
-#### 如何构建
+
+#### 2.2 如何构建
 1. 在`front-end/h5`目录下，运行：`yarn build:engine`
-2. 构建完成之后,后端的`h5-api/public`里面会多一个文件夹 `engine-assets`
+2. 构建完成之后，后端的`h5-api/public`里面会多一个文件夹 `engine-assets`
 3. 打开的预览窗口`preview.vue`, 里面的预览部分对应的其实是一个 iframe，可以看看对应的源码
-  也就是说，这个预览其实依赖后端的渲染引擎，比如 ejs 或者 jade 这种模板引擎，所以参照这里：`luban-h5/front-end/h5/vue.config.js` `engineOutputDir` 变量，preview engine 构建完成，会生成到后端的 `back-end/h5-api/public/engine-assets` 目录
+4. 这个预览其实依赖后端的模板引擎（比如 ejs、jade等）
+5. 参照这里`luban-h5/front-end/h5/vue.config.js`的`engineOutputDir` 变量（这个变量就是预览引擎构建完成，生成的文件所在的目录。默认是后端的 `back-end/h5-api/public/engine-assets` 目录）
 
-
-### 3. 前端组件说明
-
-1. `lbp-`
-全称为 `lu-ban-plugin:``鲁班H5的插件`，位置：`front-end/h5/src/components/plugins`
 
 ---
 > 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动

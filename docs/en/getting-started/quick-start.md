@@ -1,15 +1,13 @@
 # Quick Start
-
-
-> if you are familiar with `Node`, `Yarn`(and already installed), please follow the commands to start quickly:
-
-> if you are not familiar with the tech stack, please read the following detailed tutorial
+- if you are familiar with `Node`, `Yarn`(and already installed), please follow the commands to start quickly:
+- if you are not familiar with the tech stack, please read the following detailed tutorial
 
 ```bash
+# back-end
 cd back-end/h5-api && yarn && yarn dev
 
+# front-end
 # open a new terminal and goto the project root path
-
 cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 
@@ -33,11 +31,9 @@ Vue.js: Front-end framework<br />Strapi.js: Open source Node.js Headless CMS to
 
 
 # Setup
-
-1. the API is powered by strapi.js
+> the API is powered by [strapi.js](https://strapi.io/)
 
 ## Setup backend
-
 ### 1. quick start
 ```bash
 # by default, the current path is the root path for luban-h5
@@ -47,12 +43,12 @@ cd back-end/h5-api
 yarn install # install dependencies
 
 yarn dev # dev
-# additional notes: run `yarn localdev` if you want to debug it in vscode
+# additional notes:
+# if you want to debug it in vscode, please run `yarn localdev`
 
 #!en: default database is sqlite3(db location: h5-api/.tmp/data.db)
 
-# visit http://locahost:1337/admin
-
+# visit http://localhost:1337/admin
 Please read on to config the strapi admin
 ```
 
@@ -68,14 +64,6 @@ Please read on to config the strapi admin
 ##### Used for upload work cover
 ![1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24](https://user-images.githubusercontent.com/12668546/65381948-32154680-dd2e-11e9-95ea-589f808ce095.png)
 
-2. `ctx.render is not a function` <br />solution:`Setup backend/quick start/strap-hook-ejs` 
-
-<br />
-```javascript
-error TypeError: ctx.render is not a function
-  at previewOne (~/luban-h5/back-end/h5-api/api/work/controllers/Work.js:13:16)
-```
-
 
 ## setup front-end
 
@@ -89,10 +77,10 @@ cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 
 ### 2. build preview engine
+- just run `cd front-end/h5 && yarn && yarn build:engine`
 
-#### Basic
-[luban-h5/back-end/h5-api/api/work/controllers/Work.js/previewOne](https://github.com/ly525/luban-h5/blob/bd486ce16fc24bfd7030fc51857a579776e12e68/back-end/h5-api/api/work/controllers/Work.js#L12)
-
+#### 2.1 Basic(TLDR)
+[previewOne](https://github.com/ly525/luban-h5/blob/bd486ce16fc24bfd7030fc51857a579776e12e68/back-end/h5-api/api/work/controllers/Work.js#L12), here is the key code:
 
 ```js
 previewOne: async (ctx) => {
@@ -101,13 +89,7 @@ previewOne: async (ctx) => {
 },
 ```
 
-#### How to build preview engine
+#### 2.2 How to build preview engine(TLDR)
 1. cd `front-end/h5`, run `yarn build:engine`
 2. after build finished, an folder named `engine-assets`  is auto generated at `back-end/h5-api/public`
 3. `preview.vue` is preview modal, the mobile div is an iframe which a wrapper for builded `engine-entry`, learn more about engine here: `luban-h5/front-end/h5/vue.config.js`
-
-
-### 3. explanation for front-end components
-
-1. `lbp-`
-> `lu-ban-plugin: plugins for luban-h5`：location: `front-end/h5/src/components/plugins`

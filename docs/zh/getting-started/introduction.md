@@ -1,19 +1,9 @@
-<!--
- * @Author: ly525
- * @Date: 2019-12-01 18:11:49
- * @LastEditors: ly525
- * @LastEditTime: 2019-12-04 20:31:22
- * @FilePath: /luban-h5/docs/zh/getting-started/introduction.md
- * @Github: https://github.com/ly525/luban-h5
- * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
- -->
 # 简介
 
 <!-- 简体中文 | [English](./README.en.md) -->
 
-目录
-[[toc]]
+<!-- 目录
+[[toc]] -->
 
 <!-- 目录
 - [鲁班H5是什么？](#%E9%B2%81%E7%8F%ADh5%E6%98%AF%E4%BB%80%E4%B9%88)
@@ -33,8 +23,6 @@
 
 ### Screenshots
 > [主页](https://h5.luban-h5.com)
-
-> [更多作品演示图片，点击查看](https://github.com/ly525/luban-h5/issues/15)
 
 ![image](https://s2.ax1x.com/2019/10/11/u7WzUx.gif)
 

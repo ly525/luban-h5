@@ -75,8 +75,6 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 ### Demo
 > [在线访问地址](https://h5.luban-h5.com)
 
-> [更多作品演示图片，点击查看](https://github.com/ly525/luban-h5/issues/15)
-
 <img src="https://s2.ax1x.com/2019/10/11/u7WzUx.gif" style="margin: 10px;" width="60%" />
 
 

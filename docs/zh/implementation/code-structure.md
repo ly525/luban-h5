@@ -89,6 +89,10 @@ front-end/h5/src                # 前端源码目录：包含编辑器、作品�
 └── router.js                # 页面路由
 ```
 
+## 组件说明
+> `lbp-` 全称为 `lu-ban-plugin:` `鲁班H5的插件`，位置 `front-end/h5/src/components/plugins`
+
+
 ---
 
 > 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动

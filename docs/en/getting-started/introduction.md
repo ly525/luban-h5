@@ -53,24 +53,17 @@
 
 ---
 
-### Installs
-> proj: project root path
-please refer to: [`Document/Quick Start`](https://ly525.github.io/luban-h5/en/getting-started/quick-start.html?language=en-us)
-
-
----
-### More Explanation
-#### Front-End Component Explanation
-1. `lbp-`: `lu-ban-plugin-`, means `Luban H5 plugin`, location: `proj/front-end/h5/src/components/plugins`
+### Installation
+please refer to: [`Quick Start`](https://ly525.github.io/luban-h5/en/getting-started/quick-start.html?language=en-us)
 
 
 #### Build With (current)
-  1. Front end: Vue.js
-  2. Back End: Strapi
-  3. Storage: Sqlite
+- Front end: Vue.js
+- Back End: Strapi
+- Storage: Sqlite
 
 
-Read more here [Online English Document](https://ly525.github.io/luban-h5)
+Read more here [English Document](https://ly525.github.io/luban-h5)
 
 ---
 
