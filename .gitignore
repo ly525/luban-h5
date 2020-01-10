@@ -94,6 +94,7 @@ pids
 logs
 results
 build
+build-editor
 node_modules
 .node_history
 package-lock.json
