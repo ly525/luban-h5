@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2020-01-10 22:23:34
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-10 23:27:59
+ # @LastEditTime : 2020-01-11 09:11:36
  # @FilePath: /luban-h5/luban-h5.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: Do not edit
@@ -16,6 +16,11 @@ cur_dir=`pwd`
 
 help_usage() {
 cat << EOT
+---------------------------------------------------------------------------
+#!en Please make sure that node(>v10), npm, yarn have been installed
+#!zh 在使用该脚本之前，请确认：Node(>v10)、npm、yarn 已经安装
+---------------------------------------------------------------------------
+
 Usage:
   $(basename $0) [--help|-h] [init|start|restart|stop]
 
