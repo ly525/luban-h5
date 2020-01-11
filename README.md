@@ -28,6 +28,9 @@ Mobile Page Builder&Generator with Drag&Drop
 ```shell
 docker pull ubuntu
 docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
+# 使用清华大学 Ubuntu 软件镜像
+sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+apt update && apt install -y wget git
 wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
 
 # 安装完成之后
