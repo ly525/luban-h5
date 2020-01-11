@@ -27,6 +27,7 @@
 
 ```bash
 git clone https://github.com/ly525/luban-h5.git
+cd luban-h5
 ./luban-h5.sh init  # 安装依赖，构建前后端
 ./luban-h5.sh start # 启动项目即可
 ./luban-h5.sh stop  # 停止服务

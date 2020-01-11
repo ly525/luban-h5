@@ -31,6 +31,7 @@ npm install pm2 -g
 ```bash
 # just run the following code on the server
 git clone https://github.com/ly525/luban-h5.git
+cd luban-h5
 ./luban-h5.sh init  # installation dependency, build front-end and back-end
 ./luban-h5.sh start # just start the service
 ./luban-h5.sh stop # stop the service
