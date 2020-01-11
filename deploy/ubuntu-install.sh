@@ -5,7 +5,7 @@
  # @Author: ly525
  # @Date: 2019-11-30 13:24:57
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-05 21:39:42
+ # @LastEditTime : 2020-01-11 12:20:31
  # @FilePath: /luban-h5/deploy/ubuntu-install.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description:
@@ -330,16 +330,19 @@ function install_luban-h5 {
     cd ~/
     git clone https://github.com/ly525/luban-h5
 
-    # 鲁班前端
-    cd luban-h5/front-end/h5 && yarn && yarn build # build editor and preview engine
+    # # 鲁班前端
+    # cd luban-h5/front-end/h5 && yarn && yarn build # build editor and preview engine
 
-    cd -
+    # cd -
 
-    # 鲁班后端
-    cd luban-h5/back-end/h5-api/ && yarn && yarn build # build strapi admin
-    pm2 start server.js
-    pwd
-    success luban-h5
+    # # 鲁班后端
+    # cd luban-h5/back-end/h5-api/ && yarn && yarn build # build strapi admin
+    # pm2 start server.js
+    # pwd
+    # success luban-h5
+
+    ./luban-h5.sh init
+    ./luban-h5.sh start
   fi
 }
 
@@ -369,7 +372,7 @@ install_yarn
 set_npm_mirror
 install_strapi
 install_pm2
-install_nginx
+# install_nginx
 install_luban-h5
 exitBanner
 
