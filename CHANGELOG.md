@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/ly525/luban-h5/compare/v1.7.4...v1.8.0) (2020-01-11)
+
+
+### Bug Fixes
+
+* build engine if front-end build ([d5142a3](https://github.com/ly525/luban-h5/commit/d5142a3))
+* could not replace localhost:1337 if coverUrl is null ([942ad39](https://github.com/ly525/luban-h5/commit/942ad39))
+
+
+### Features
+
+* serve editor(front-end) with strapi(koa-static) ([1f9f1ab](https://github.com/ly525/luban-h5/commit/1f9f1ab))
+
 ### [1.7.4](https://github.com/ly525/luban-h5/compare/v1.7.3...v1.7.4) (2020-01-04)
 
 
