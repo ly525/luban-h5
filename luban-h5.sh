@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2020-01-10 22:23:34
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-11 09:11:36
+ # @LastEditTime : 2020-01-11 09:37:40
  # @FilePath: /luban-h5/luban-h5.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: Do not edit
@@ -54,7 +54,7 @@ luban_h5_init() {
   cd ${cur_dir}
 
   # 在后端目录，编译后台管理系统
-  cd back-end/h5-api && yarn && yarn build
+  cd back-end/h5-api && yarn && NODE_ENV=production yarn build
   cd ${cur_dir}
 }
 
