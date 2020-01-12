@@ -11,7 +11,7 @@ export default {
   methods: {
     uploadSuccess ({ file, fileList }) {
       const response = file.response.length && file.response[0]
-      this.items = [{ name: response.name, previewURL: response.url.replace('http://localhost:1337', '') }, ...this.cachedItems]
+      this.items = [{ name: response.name, url: response.url.replace('http://localhost:1337', '') }, ...this.cachedItems]
     },
     beforeUpload (file) {
       this.items.unshift({
@@ -51,10 +51,16 @@ export default {
   mounted () {
     // demo code
     axios
-      .get('https://pixabay.com/api/?key=12120348-2ad26e4cc05d9bc068097ab3b&q=yellow+flowers&image_type=photo&pretty=true')
+      .get('/upload/files', {
+        params: {
+          '_limit': 10,
+          '_start': 0,
+          mime: 'image/png'
+        }
+      })
       .then(res => {
-        this.items = res.data.hits
-        this.cachedItems = res.data.hits.slice(0)
+        this.items = res.data
+        this.cachedItems = []
       })
   }
 }

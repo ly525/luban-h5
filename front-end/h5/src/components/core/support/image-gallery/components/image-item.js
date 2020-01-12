@@ -29,7 +29,7 @@ export default {
         <div
           slot="cover"
           style={{
-            backgroundImage: `url(${this.item.previewURL})`,
+            backgroundImage: `url(${this.item.url})`,
             backgroundSize: 'cover',
             height: `${this.height}px`
           }}>

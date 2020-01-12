@@ -1,3 +1,13 @@
+/*
+ * @Author: ly525
+ * @Date: 2019-12-01 18:11:50
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-01-13 00:48:13
+ * @FilePath: /luban-h5/front-end/h5/src/components/core/support/image-gallery/tabs/pixabay.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: Do not edit
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 import axios from 'axios'
 import ImageItem from '../components/image-item.js'
 
@@ -23,7 +33,7 @@ export default {
       axios
         .get('https://pixabay.com/api/', { params: this.options })
         .then(res => {
-          this.items = res.data.hits
+          this.items = res.data.hits.map(item => ({ ...item, url: item.previewURL }))
         })
     }
   },

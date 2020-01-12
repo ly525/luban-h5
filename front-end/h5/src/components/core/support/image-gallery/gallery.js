@@ -50,7 +50,7 @@ export default {
     },
     handleSelectImage (item) {
       this.handleClose()
-      this.$emit('change', item.previewURL)
+      this.$emit('change', item.url)
     },
     renderContent () {
       switch (this.activeTab) {
@@ -79,12 +79,12 @@ export default {
           <div class="default-activator cursor-pointer "><img src={this.value} width="50%" style={{ margin: 'auto' }} /></div>
           <div class="flex-space-between" style="margin-top: 8px;">
             <a-button size="small">更换</a-button>
-            <a-button size="small" onClick={e => {
+            {/* <a-button size="small" onClick={e => {
               e.stopPropagation()
-            }}>裁剪</a-button>
+            }}>裁剪</a-button> */}
             <a-button size="small" onClick={(e) => {
               e.stopPropagation()
-              this.handleSelectImage({ previewURL: '' })
+              this.handleSelectImage({ url: '' })
             }}>移除</a-button>
           </div>
         </div>
