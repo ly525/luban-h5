@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2020-01-12 11:21:11
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-12 16:29:05
+ # @LastEditTime : 2020-01-12 16:30:08
  # @FilePath: /luban-h5/sync2server.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: script for sync source code from local to server
@@ -56,7 +56,7 @@ sync_source() {
       --exclude "*.db"\
       --exclude "db.sqlite3"\
       --exclude "vagrant"\
-     ./* root@$SERVER_HOST:$SOURCE_PATH
+     ./* centos@$SERVER_HOST:$SOURCE_PATH
 }
 
 #!zh: 正式同步代码前的试运行，不会真正同步代码，主要用来检测本地和服务器代码有哪些不同
@@ -86,7 +86,7 @@ sync_sourcedryrun() {
       --exclude "*.db"\
       --exclude "db.sqlite3"\
       --exclude "vagrant"\
-     ./* root@$SERVER_HOST:$SOURCE_PATH
+     ./* centos@$SERVER_HOST:$SOURCE_PATH
 }
 
 case "$2" in
