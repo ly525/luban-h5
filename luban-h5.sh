@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2020-01-10 22:23:34
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-11 09:37:40
+ # @LastEditTime : 2020-01-12 15:44:23
  # @FilePath: /luban-h5/luban-h5.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: Do not edit
@@ -22,9 +22,13 @@ cat << EOT
 ---------------------------------------------------------------------------
 
 Usage:
-  $(basename $0) [--help|-h] [init|start|restart|stop]
+  $(basename $0) [--help|-h] [version|clean|init|start|restart|stop]
 
   help	   Show usage.
+  version	 Show version.
+
+  clean	   #!en Install dependencies, build front-end && back-end.
+           #!zh 初始化: 安装依赖并编译前后端
 
   init	   #!en Install dependencies, build front-end && back-end.
            #!zh 初始化: 安装依赖并编译前后端
@@ -39,6 +43,7 @@ Usage:
            #!zh 停止luban-h5
 
 e.g.
+  ./luban-h5.sh version
   ./luban-h5.sh init
   ./luban-h5.sh start
   ./luban-h5.sh stop
@@ -46,6 +51,31 @@ EOT
 exit
 }
 
+
+luban_h5_version() {
+  # https://gist.github.com/yvele/e98e3a155335a6e00e71
+  # Version key/value should be on his own line
+  PACKAGE_VERSION=$(cat package.json \
+    | grep version \
+    | head -1 \
+    | awk -F: '{ print $2 }' \
+    | sed 's/[",]//g' \
+    | tr -d '[[:space:]]')
+
+  echo $PACKAGE_VERSION
+}
+
+luban_h5_clean() {
+  luban_h5_stop
+  cd back-end/h5-api && rm -rf node_modules .cache build
+
+  echo "===========================================================================\n"
+  echo "clean node_modules, .cache, build finish."
+  echo "please run the following commands to start the app\n"
+  echo "1. ./luban-h5 init"
+  echo "1. ./luban-h5 start"
+  echo "==========================================================================="
+}
 
 luban_h5_init() {
   # 到前端目录安装依赖，并编译核心编辑器 + 预览引擎
@@ -78,7 +108,7 @@ luban_h5_stop() {
 # Initialization step
 action=$1
 case "$action" in
-    init|start|restart|stop)
+    version|clean|init|start|restart|stop)
         luban_h5_${action}
         ;;
     *)
