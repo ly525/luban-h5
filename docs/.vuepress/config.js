@@ -65,6 +65,13 @@ module.exports = {
                 '/en/plugin-development/quick-start',
               ],
             },
+            {
+              collapsable: false,
+              title: 'Migrating',
+              children: [
+                '/en/migration-guide/',
+              ],
+            },
           ],
         },
       },
@@ -106,6 +113,13 @@ module.exports = {
               title: '🔌 Local plugins',
               children: [
                 '/zh/plugin-development/quick-start',
+              ],
+            },
+            {
+              collapsable: false,
+              title: '迁移',
+              children: [
+                '/zh/migration-guide/',
               ],
             },
           ],
