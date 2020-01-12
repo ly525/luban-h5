@@ -4,7 +4,7 @@
  # @Author: ly525
  # @Date: 2020-01-10 22:23:34
  # @LastEditors  : ly525
- # @LastEditTime : 2020-01-12 15:44:23
+ # @LastEditTime : 2020-01-12 16:21:22
  # @FilePath: /luban-h5/luban-h5.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: Do not edit
@@ -69,12 +69,12 @@ luban_h5_clean() {
   luban_h5_stop
   cd back-end/h5-api && rm -rf node_modules .cache build
 
-  echo "===========================================================================\n"
-  echo "clean node_modules, .cache, build finish."
-  echo "please run the following commands to start the app\n"
+  echo "-------------------------------------------------------"
+  echo "clean folder [node_modules, .cache, build] finish."
+  echo "please run the following commands to start the app.\n"
   echo "1. ./luban-h5 init"
   echo "1. ./luban-h5 start"
-  echo "==========================================================================="
+  echo "-------------------------------------------------------"
 }
 
 luban_h5_init() {
