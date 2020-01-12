@@ -24,18 +24,17 @@
     "mysql": "latest",
     "psd": "^3.2.0",
     "sqlite3": "latest",
-    "strapi": "3.0.0-beta.17.8",
-    "strapi-admin": "3.0.0-beta.17.8",
-    "strapi-hook-bookshelf": "3.0.0-beta.17.8",
     "strapi-hook-ejs": "3.0.0-beta.17.8",
-    "strapi-hook-knex": "3.0.0-beta.17.8",
-    "strapi-plugin-content-manager": "3.0.0-beta.17.8",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.17.8",
-    "strapi-plugin-documentation": "3.0.0-beta.17.8",
-    "strapi-plugin-email": "3.0.0-beta.17.8",
-    "strapi-plugin-upload": "3.0.0-beta.17.8",
-    "strapi-plugin-users-permissions": "3.0.0-beta.17.8",
-    "strapi-utils": "3.0.0-beta.17.8"
+    "strapi": "3.0.0-beta.18.4",
+    "strapi-admin": "3.0.0-beta.18.4",
+    "strapi-connector-bookshelf": "3.0.0-beta.18.4",
+    "strapi-plugin-content-manager": "3.0.0-beta.18.4",
+    "strapi-plugin-content-type-builder": "3.0.0-beta.18.4",
+    "strapi-plugin-email": "3.0.0-beta.18.4",
+    "strapi-plugin-graphql": "3.0.0-beta.18.4",
+    "strapi-plugin-upload": "3.0.0-beta.18.4",
+    "strapi-plugin-users-permissions": "3.0.0-beta.18.4",
+    "strapi-utils": "3.0.0-beta.18.4"
   },
   "author": {
     "name": "A Strapi developer"
