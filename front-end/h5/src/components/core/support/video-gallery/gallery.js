@@ -1,6 +1,5 @@
 import './gallery.scss'
 import PersonalTab from './tabs/personal.js'
-import PixabayTab from './tabs/pixabay.js'
 
 export default {
   name: 'lbs-video-gallery',
@@ -22,10 +21,6 @@ export default {
         value: 'personal',
         label: '我的视频'
       }
-      // {
-      //   value: 'pixabay',
-      //   label: 'Pixabay图库'
-      // }
     ],
     activeTab: 'personal',
     innerVisible: false,
@@ -56,10 +51,6 @@ export default {
       switch (this.activeTab) {
         case 'personal':
           return <PersonalTab onChangeItem={item => {
-            this.handleSelectImage(item)
-          }}/>
-        case 'pixabay':
-          return <PixabayTab onChangeItem={item => {
             this.handleSelectImage(item)
           }}/>
       }
