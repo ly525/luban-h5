@@ -49,6 +49,60 @@ export default {
         this.$options.components[key] = components[key]
       }
     },
+    /**
+     *
+     * propKey: e.g:'color'
+     * propConfig: {
+     *  editor: {},
+     *  default: 'red'
+     * }
+     */
+    renderPropFormItem (h, { propKey, propConfig }) {
+      const editingElement = this.editingElement
+      const item = propConfig.editor
+      // https://vuejs.org/v2/guide/render-function.html
+      const data = {
+        // style: { width: '100%' },
+        props: {
+          ...item.prop || {},
+          // https://vuejs.org/v2/guide/render-function.html#v-model
+
+          // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：
+          // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
+          // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
+          // value: editingElement.pluginProps[propKey] || item.defaultPropValue
+
+          // https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model
+          [item.type === 'a-switch' ? 'checked' : 'value']: editingElement.pluginProps[propKey]
+        },
+        on: {
+        // https://vuejs.org/v2/guide/render-function.html#v-model
+        // input (e) {
+        //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+        // }
+          change (e) {
+          // TODO fixme: update plugin props in vuex with dispatch
+            editingElement.pluginProps[propKey] = e.target ? e.target.value : e
+          }
+        }
+      }
+      const formItemLayout = this.layout === 'horizontal' ? {
+        labelCol: { span: 6 }, wrapperCol: { span: 16, offset: 2 }
+      } : {}
+      const formItemData = {
+        props: {
+          ...formItemLayout,
+          label: item.label
+        }
+      }
+      return (
+        <a-form-item {...formItemData}>
+          {/* extra: 操作补充说明 */}
+          { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
+          { h(item.type, data) }
+        </a-form-item>
+      )
+    },
     renderPropsEditorPanel (h, editingElement) {
       const vm = getVM(editingElement.name)
       const props = vm.$options.props
@@ -72,51 +126,8 @@ export default {
           {
             Object
               .entries(props)
-              .filter(([propKey, obj]) => obj.editor && !obj.editor.custom)
-              .map(([propKey, obj]) => {
-                const item = obj.editor
-                // https://vuejs.org/v2/guide/render-function.html
-                const data = {
-                  // style: { width: '100%' },
-                  props: {
-                    ...item.prop || {},
-                    // https://vuejs.org/v2/guide/render-function.html#v-model
-
-                    // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：
-                    // 比如表单 input，如果用户手动删除了 placeholder的内容，程序会用defaultPropValue填充，
-                    // 表现在UI上就是：用户永远无法彻底删掉默认值（必须保留至少一个字符）
-                    // value: editingElement.pluginProps[propKey] || item.defaultPropValue
-
-                    // https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model
-                    [item.type === 'a-switch' ? 'checked' : 'value']: editingElement.pluginProps[propKey]
-                  },
-                  on: {
-                  // https://vuejs.org/v2/guide/render-function.html#v-model
-                  // input (e) {
-                  //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
-                  // }
-                    change (e) {
-                    // TODO fixme: update plugin props in vuex with dispatch
-                      editingElement.pluginProps[propKey] = e.target ? e.target.value : e
-                    }
-                  }
-                }
-                const formItemLayout = this.layout === 'horizontal' ? {
-                  labelCol: { span: 6 }, wrapperCol: { span: 16, offset: 2 }
-                } : {}
-                const formItemData = {
-                  props: {
-                    ...formItemLayout,
-                    label: item.label
-                  }
-                }
-                return (
-                  <a-form-item {...formItemData}>
-                    { item.extra && <div slot="extra">{typeof item.extra === 'function' ? item.extra(h) : item.extra}</div>}
-                    { h(item.type, data) }
-                  </a-form-item>
-                )
-              })
+              .filter(([propKey, propConfig]) => propConfig.editor && !propConfig.editor.custom)
+              .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
           }
         </a-form>
       )
