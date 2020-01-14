@@ -1,8 +1,8 @@
 /*
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
- * @LastEditors: ly525
- * @LastEditTime: 2019-11-30 23:02:31
+ * @LastEditors  : ly525
+ * @LastEditTime : 2020-01-14 23:33:22
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-background.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: luban-h5 background image/color component/plugin
@@ -43,7 +43,7 @@ export default {
       default: '',
       editor: {
         type: 'lbs-image-gallery',
-        label: '图片url',
+        label: '图片',
         prop: {
           type: 'textarea'
         }

@@ -10,7 +10,7 @@ export default {
       default: placeholderImg,
       editor: {
         type: 'lbs-image-gallery',
-        label: '图片url',
+        label: '图片',
         prop: {
           type: 'textarea'
         }
