@@ -394,5 +394,9 @@ export default {
     } else {
       this.$message.error('no work id!')
     }
+
+    window.getEditorApp.$on('setEditingElement', ({ name }) => {
+      this.setActiveTab(name === 'lbp-background' ? 'background' : '属性')
+    })
   }
 }
