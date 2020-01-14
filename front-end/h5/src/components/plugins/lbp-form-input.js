@@ -54,66 +54,64 @@ export default {
     lineHeight: commonProps.lineHeight,
     textAlign: commonProps.textAlign({ defaultValue: 'left' })
   },
-  editorConfig: {
-    components: {
-      'lbs-select-input-type': {
-        props: ['value'],
-        computed: {
-          value_: {
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
+  componentsForPropsEditor: {
+    'lbs-select-input-type': {
+      props: ['value'],
+      computed: {
+        value_: {
+          get () {
+            return this.value
+          },
+          set (val) {
+            this.$emit('input', val)
           }
-        },
-        render (h) {
-          return (
-            <a-select
-              placeholder="类型"
-              value={this.value}
-              onChange={(value) => {
-                this.$emit('input', value)
-                this.$emit('change', value)
-              }}
-            >
-              {
-                this.options.map(option => (
-                  <a-select-option
-                    key={option.value}
-                    value={option.value}
-                  >{option.label}</a-select-option>
-                ))
-              }
-            </a-select>
-          )
-        },
-        data: () => ({
-          options: [
+        }
+      },
+      render (h) {
+        return (
+          <a-select
+            placeholder="类型"
+            value={this.value}
+            onChange={(value) => {
+              this.$emit('input', value)
+              this.$emit('change', value)
+            }}
+          >
             {
-              label: '文字',
-              value: 'text'
-            },
-            {
-              label: '密码',
-              value: 'password'
-            },
-            {
-              label: '日期',
-              value: 'date'
-            },
-            {
-              label: '邮箱',
-              value: 'email'
-            },
-            {
-              label: '手机号',
-              value: 'tel'
+              this.options.map(option => (
+                <a-select-option
+                  key={option.value}
+                  value={option.value}
+                >{option.label}</a-select-option>
+              ))
             }
-          ]
-        })
-      }
+          </a-select>
+        )
+      },
+      data: () => ({
+        options: [
+          {
+            label: '文字',
+            value: 'text'
+          },
+          {
+            label: '密码',
+            value: 'password'
+          },
+          {
+            label: '日期',
+            value: 'date'
+          },
+          {
+            label: '邮箱',
+            value: 'email'
+          },
+          {
+            label: '手机号',
+            value: 'tel'
+          }
+        ]
+      })
     }
   }
 }

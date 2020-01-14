@@ -31,42 +31,28 @@ class Element {
      * 3. 为何需要 clone，因为会有 element.clone() 以及 page.clone()，
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
-    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj({ ...ele.pluginProps, uuid: this.uuid })) || this.getDefaultPluginProps(ele.editorConfig || {})
+    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj({ ...ele.pluginProps, uuid: this.uuid })) || this.getDefaultPluginProps(ele.props || {})
     this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex }
     this.events = []
     this.animations = ele.animations || []
   }
 
   // init prop of plugin
-  getDefaultPluginProps (propsConfig) {
+  getDefaultPluginProps (props) {
     const pluginProps = {
       uuid: this.uuid
     }
-    Object.keys(propsConfig).forEach(key => {
+    Object.keys(props).forEach(key => {
       // #6
       if (key === 'name') {
         console.warn('Please do not use {name} as plugin prop')
         return
       }
-      const defaultValue = propsConfig[key].default
+      const defaultValue = props[key].default
       pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue
     })
     return pluginProps
   }
-  // getDefaultPluginProps (editorConfig) {
-  //   // init prop of plugin
-  //   const propConf = editorConfig.propsConfig
-  //   const pluginProps = {}
-  //   Object.keys(propConf).forEach(key => {
-  //     // #6
-  //     if (key === 'name') {
-  //       console.warn('Please do not use {name} as plugin prop')
-  //       return
-  //     }
-  //     pluginProps[key] = propConf[key].defaultPropValue
-  //   })
-  //   return pluginProps
-  // }
 
   getStyle ({ position = 'static', isRem = false } = {}) {
     if (this.name === 'lbp-background') {

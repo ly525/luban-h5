@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
-import { getVM } from '../../../../utils/element'
+import { getVM, getComponentsForPropsEditor } from '../../../../utils/element'
 
 export default {
   data: () => ({
@@ -10,12 +10,22 @@ export default {
     layout: {
       type: String,
       default: 'horizontal'
+    },
+    // 优先级更高的当前编辑元素
+    realEditingElement: {
+      type: Object,
+      default: () => null
     }
   },
   computed: {
-    ...mapState('editor', ['editingElement', 'editingElementEditorConfig']),
+    ...mapState('editor', {
+      stateEditingElement: state => state.editingElement
+    }),
     customEditorName () {
       return `${this.editingElement.name}-custom-editor`
+    },
+    editingElement () {
+      return this.realEditingElement || this.stateEditingElement
     }
   },
   methods: {
@@ -42,11 +52,10 @@ export default {
      * 将插件属性的 自定义增强编辑器注入 属性编辑面板中
      */
     mixinEnhancedPropsEditor (editingElement) {
-      if (!this.editingElementEditorConfig || !this.editingElementEditorConfig.components) return
-      const { components } = this.editingElementEditorConfig
-      for (const key in components) {
+      if (!this.componentsForPropsEditor) return
+      for (const key in this.componentsForPropsEditor) {
         if (this.$options.components[key]) return
-        this.$options.components[key] = components[key]
+        this.$options.components[key] = this.componentsForPropsEditor[key]
       }
     },
     /**
@@ -81,7 +90,7 @@ export default {
         //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
         // }
           change (e) {
-          // TODO fixme: update plugin props in vuex with dispatch
+            // TODO fixme: update plugin props in vuex with dispatch
             editingElement.pluginProps[propKey] = e.target ? e.target.value : e
           }
         }
@@ -140,6 +149,9 @@ export default {
     return this.renderPropsEditorPanel(h, ele)
   },
   created () {
-    window.getEditorApp.$on('setEditingElement', this.loadCustomEditorForPlugin)
+    window.getEditorApp.$on('setEditingElement', (ele) => {
+      this.loadCustomEditorForPlugin()
+      this.componentsForPropsEditor = getComponentsForPropsEditor(ele.name)
+    })
   }
 }

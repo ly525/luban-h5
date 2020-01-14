@@ -1,14 +1,10 @@
 import Element from '../../components/core/models/element'
-import { getEditorConfigForEditingElement, swapZindex, getVM } from '../../utils/element'
+import { swapZindex, getVM } from '../../utils/element'
 
 // actions
 export const actions = {
   setEditingElement ({ commit }, payload) {
     commit('setEditingElement', payload)
-
-    const vm = (payload && payload.name) ? getEditorConfigForEditingElement(payload.name) : null
-    commit('setEditingElementEditorConfig', vm)
-
     payload && window.getEditorApp.$emit('setEditingElement', payload)
   },
   setElementPosition ({ commit }, payload) {
@@ -29,9 +25,6 @@ export const actions = {
 export const mutations = {
   setEditingElement (state, payload) {
     state.editingElement = payload
-  },
-  setEditingElementEditorConfig (state, payload) {
-    state.editingElementEditorConfig = payload
   },
   setElementCommonStyle (state, payload) {
     state.editingElement.commonStyle = {
@@ -54,7 +47,7 @@ export const mutations = {
           ...value,
           zindex: len + 1
         }
-        const element = new Element({ name, editorConfig: props })
+        const element = new Element({ name, props })
         elements.push(element)
         break
       case 'copy':

@@ -75,21 +75,20 @@ export default {
       req.send(formData)
     }
   },
-  editorConfig: {
-    components: {
-      'lbs-select-input-type': {
-        props: ['value'],
-        computed: {
-          value_: {
-            get () {
-              return this.value
-            },
-            set (val) {
-              this.$emit('input', val)
-            }
+  componentsForPropsEditor: {
+    'lbs-select-input-type': {
+      props: ['value'],
+      computed: {
+        value_: {
+          get () {
+            return this.value
+          },
+          set (val) {
+            this.$emit('input', val)
           }
-        },
-        template: `
+        }
+      },
+      template: `
           <a-select v-model="value_" placeholder="类型">
             <a-option
               v-for="item in options"
@@ -99,31 +98,30 @@ export default {
             </a-option>
           </a-select>
         `,
-        data: () => ({
-          options: [
-            {
-              label: '文字',
-              value: 'text'
-            },
-            {
-              label: '密码',
-              value: 'password'
-            },
-            {
-              label: '日期',
-              value: 'date'
-            },
-            {
-              label: '邮箱',
-              value: 'email'
-            },
-            {
-              label: '手机号',
-              value: 'tel'
-            }
-          ]
-        })
-      }
+      data: () => ({
+        options: [
+          {
+            label: '文字',
+            value: 'text'
+          },
+          {
+            label: '密码',
+            value: 'password'
+          },
+          {
+            label: '日期',
+            value: 'date'
+          },
+          {
+            label: '邮箱',
+            value: 'email'
+          },
+          {
+            label: '手机号',
+            value: 'tel'
+          }
+        ]
+      })
     }
   }
 }

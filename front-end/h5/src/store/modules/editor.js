@@ -9,7 +9,6 @@ const state = {
   work: new Work(),
   editingPage: { elements: [] },
   editingElement: null,
-  editingElementEditorConfig: null,
   formDetailOfWork: {
     uuidMap2Name: {},
     formRecords: []

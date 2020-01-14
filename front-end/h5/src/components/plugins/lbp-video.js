@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-01 18:11:50
  * @LastEditors  : ly525
- * @LastEditTime : 2020-01-13 00:31:39
+ * @LastEditTime : 2020-01-15 00:53:48
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-video.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -96,8 +96,6 @@ export default {
       </div>
     )
   },
-  editorConfig: {
-    components: {
-    }
+  componentsForPropsEditor: {
   }
 }

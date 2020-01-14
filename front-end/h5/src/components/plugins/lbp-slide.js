@@ -57,9 +57,7 @@ export default {
       }
     }
   },
-  editorConfig: {
-    components: {
-    }
+  componentsForPropsEditor: {
   },
   mounted () {
   },
