@@ -351,7 +351,7 @@ export default {
               }
             </a-button-group>
           </a-layout-sider>
-          <a-layout-sider width="320" theme='light' style={{ background: '#fff', padding: '0 12px' }}>
+          <a-layout-sider width="320" theme='light' style={{ background: '#fff', padding: '0 0 0 12px' }}>
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}

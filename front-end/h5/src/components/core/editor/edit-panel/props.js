@@ -122,6 +122,7 @@ export default {
           size="mini"
           id="props-edit-form"
           layout={this.layout}
+          style="overflow: auto;position: absolute;top: 50px;bottom: 0;width: 100%; "
         >
           {
             // plugin-custom-editor
