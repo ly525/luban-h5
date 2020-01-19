@@ -302,26 +302,26 @@ export default {
           <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '12px' }}>
             { this._renderMenuContent() }
           </a-layout-sider>
-          <a-layout style="padding: 0 0 24px">
-            <a-layout-content style={{ padding: '24px', margin: 0, minHeight: '280px' }}>
-              <div style="text-align: center;">
-                <a-radio-group
-                  size="small"
-                  value={this.isPreviewMode}
-                  onInput={isPreviewMode => {
-                    this.isPreviewMode = isPreviewMode
-                    if (isPreviewMode) {
-                      // 当切换到预览模式的时候，清空当前编辑元素
-                      this.setEditingElement() // 相当于  setEditingElement(null)
-                    }
-                  }}
-                >
-                  {/* 编辑模式、预览模式 */}
-                  <a-radio-button label={false} value={false}>{this.$t('editor.centerPanel.mode.edit')}</a-radio-button>
-                  <a-radio-button label={true} value={true}>{this.$t('editor.centerPanel.mode.preview')}</a-radio-button>
-                </a-radio-group>
-              </div>
-              <div class='canvas-wrapper' style={{ transform: `scale(${this.scaleRate})` }}>
+          <a-layout>
+            <div class="mode-toggle-wrapper">
+              <a-radio-group
+                size="small"
+                value={this.isPreviewMode}
+                onInput={isPreviewMode => {
+                  this.isPreviewMode = isPreviewMode
+                  if (isPreviewMode) {
+                    // 当切换到预览模式的时候，清空当前编辑元素
+                    this.setEditingElement() // 相当于  setEditingElement(null)
+                  }
+                }}
+              >
+                {/* 编辑模式、预览模式 */}
+                <a-radio-button label={false} value={false}>{this.$t('editor.centerPanel.mode.edit')}</a-radio-button>
+                <a-radio-button label={true} value={true}>{this.$t('editor.centerPanel.mode.preview')}</a-radio-button>
+              </a-radio-group>
+            </div>
+            <a-layout-content style={{ transform: `scale(${this.scaleRate})`, 'transform-origin': 'center top' }}>
+              <div class='canvas-wrapper'>
                 {/* { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) } */}
                 { this.isPreviewMode
                   ? <RenderPreviewCanvas elements={this.elements}/>

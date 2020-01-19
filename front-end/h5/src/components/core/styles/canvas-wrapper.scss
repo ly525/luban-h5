@@ -2,8 +2,19 @@
  * 编辑器中间的画布
  */
 
+$cellSize: 35.6px;
+$designerWidth: 320px;
+$designerHeight: 568px;
+$designerWidthHalf: $designerWidth / 2;
+
 .canvas-wrapper {
-  border: 1px dashed #e7e7e7;
+  position: relative;
+  top: 60px;
+  width: $designerWidth;
+  height: $designerHeight;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e7e7e7;
 
   .edit-mode {
     // box-shadow: 0 0 0 1px #d9d9d9;
@@ -12,4 +23,13 @@
     // background-image: url(https://i.imgur.com/SuyR7Vq.png);
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlQTFRF9fX18PDwAAAABQ8/pgAAAAN0Uk5T/yIA41y2EwAAABhJREFUeJxjYIAC0VAQcGCQWgUCDUONBgDH8Fwzu33LswAAAABJRU5ErkJggg==');
   }
+}
+
+// 切换编辑、预览模式 的按钮组
+.mode-toggle-wrapper {
+  position: fixed;
+  z-index: 999;
+  top: 80px;
+  left: calc(50% - 120px);
+  text-align: center;
 }
