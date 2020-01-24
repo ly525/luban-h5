@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.2](https://github.com/ly525/luban-h5/compare/v1.8.1...v1.8.2) (2020-01-24)
+
+
+### Bug Fixes
+
+* [#119](https://github.com/ly525/luban-h5/issues/119) run animation when slide changes; (zh) 滚动页面时候执行动画 ([796a5e1](https://github.com/ly525/luban-h5/commit/796a5e1))
+* [#124](https://github.com/ly525/luban-h5/issues/124) ([c8bc04b](https://github.com/ly525/luban-h5/commit/c8bc04b))
+* [#130](https://github.com/ly525/luban-h5/issues/130) ([8c6056f](https://github.com/ly525/luban-h5/commit/8c6056f))
+* [#131](https://github.com/ly525/luban-h5/issues/131) ([51f21d7](https://github.com/ly525/luban-h5/commit/51f21d7))
+* [#132](https://github.com/ly525/luban-h5/issues/132)  [#134](https://github.com/ly525/luban-h5/issues/134) ([be2d3eb](https://github.com/ly525/luban-h5/commit/be2d3eb))
+* [#133](https://github.com/ly525/luban-h5/issues/133) ([cda6d96](https://github.com/ly525/luban-h5/commit/cda6d96))
+* do not generate page uuid and set uuid from api ([edea576](https://github.com/ly525/luban-h5/commit/edea576))
+
+
+### Features
+
+* upload video ([2e6cd48](https://github.com/ly525/luban-h5/commit/2e6cd48))
+
 ### [1.8.1](https://github.com/ly525/luban-h5/compare/v1.8.0...v1.8.1) (2020-01-12)
 
 
