@@ -94,9 +94,17 @@ class Element {
   }
 
   getAttrs () {
-    return {
+    const attrs = {
       'data-uuid': this.uuid
     }
+
+    if (this.animations.length > 0) {
+      const animation = this.animations[0]
+      attrs['data-swiper-animation'] = animation.type // "fadeIn"
+      attrs['data-duration'] = `${animation.duration}s` // ".5s"
+      attrs['data-delay'] = `${animation.delay}s` // "1s"
+    }
+    return attrs
   }
 
   getPreviewData ({ position = 'static', isRem = false, mode = 'preview' } = {}) {

@@ -1,8 +1,8 @@
 <!--
  * @Author: ly525
  * @Date: 2019-12-04 20:24:04
- * @LastEditors: ly525
- * @LastEditTime: 2019-12-15 16:39:33
+ * @LastEditors  : ly525
+ * @LastEditTime : 2020-01-24 21:03:29
  * @FilePath: /luban-h5/back-end/h5-api/views/engine.ejs
  * @Github: https://github.com/ly525/luban-h5
  * @Description: 手机端预览模板
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="/third-libs/animate.min.css">
   <link rel="stylesheet" href="/third-libs/swiper.min.css">
   <script src="/third-libs/swiper.min.js"></script>
+  <script src="/third-libs/swiper-animation.umd.min.js"></script>
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.umd.js"></script>
   <style>
@@ -256,6 +257,8 @@
     });
   </script>
   <script>
+    const swiperAnimation = new SwiperAnimation();
+
     var mySwiper = new Swiper('.swiper-container', {
       // Optional parameters
       direction: 'vertical',
@@ -273,6 +276,14 @@
       scrollbar: {
         el: '.swiper-scrollbar',
       },
+      on: {
+        init: function () {
+          swiperAnimation.init(this).animate();
+        },
+        slideChange: function () {
+          swiperAnimation.init(this).animate();
+        }
+      }
     });
 
     function title(str) {
