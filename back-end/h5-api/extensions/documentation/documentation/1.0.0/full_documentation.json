@@ -1,20 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
-    "title": "DOCUMENTATION",
-    "description": "",
-    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
+    "version": "0.0.1",
+    "title": "#!zh: 鲁班H5-后端API 文档",
+    "description": "#!zh: 鲁班H5-后端API 文档（#!en: API docs for luban-h5）",
     "contact": {
-      "name": "TEAM",
-      "email": "contact-email@something.io",
-      "url": "mywebsite.io"
+      "name": "Feedback",
+      "url": "https://github.com/ly525/luban-h5/issues/new?title=[api-docs-feedback]"
     },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "x-generation-date": "01/04/2020 12:13:39 AM"
+    "x-generation-date": "01/26/2020 5:36:49 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -35,8 +29,8 @@
     }
   ],
   "externalDocs": {
-    "description": "Find out more",
-    "url": "https://strapi.io/documentation/3.0.0-beta.x/"
+    "description": "#!zh 鲁班H5完整文档(#!en Full Docs for Luban-H5)",
+    "url": "https://ly525.github.io/luban-h5/"
   },
   "security": [
     {
@@ -328,7 +322,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -338,7 +335,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -1182,7 +1182,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -1192,7 +1195,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -2266,7 +2272,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -2276,7 +2285,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -2665,7 +2677,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -2675,7 +2690,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
@@ -3381,7 +3399,10 @@
             "required": false,
             "description": "Get records that matches any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           },
@@ -3391,7 +3412,10 @@
             "required": false,
             "description": "Get records that doesn't match any value in the array of values",
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "deprecated": false
           }
