@@ -1,14 +1,42 @@
 # 快速开始
-TODO
+> 以下内容与 [vue-cli-plugin-lbhc README](https://github.com/luban-h5/vue-cli-plugin-lbhc) 相同
 
-### 如何进行插件开发
+> vue-cli-plugin-lbhc 全称为：vue-cli-plugin-luban-h5-component
 
-我现在的认知里面，做成插件的模式，还是需要clone 下来 debug 插件的实际效果的
-不过可以改进插件的开发流程，让插件作者尽量低成本的开发，只要注重插件本身的逻辑就可以了
+## 安装
 
-它山之石：Vuepress、Grafana
+### 使用preset自动安装插件
+```
+vue create --preset luban-h5/vue-cli-plugin-lbhc my-luban-component-demo
+```
 
 
----
+### 目录结构
 
-<Vssue issueId="10" />
+```bash
+mini-editor 模拟鲁班H5的核心编辑器功能
+component   你要编写组件的目录
+  index.js  组件入口
+  editor.js 组件的编辑面板配置
+
+```
+
+
+### 开发流程
+
+```bash
+vue create --preset luban-h5/vue-cli-plugin-lbhc lbc-demo
+cd lbc-demo
+yarn serve
+
+# 构建、发布个人组件
+yarn build
+npm login
+npm publish
+
+
+# 构建发布 scope 组件
+yarn build
+npm login
+npm publish --access publish
+```

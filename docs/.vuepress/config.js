@@ -36,6 +36,7 @@ module.exports = {
           // { text: 'API', link: '/api/' },
           { text: 'Website', link: 'https://h5.luban-h5.com' },
           { text: 'Changelog', link: 'https://github.com/ly525/luban-h5/releases' },
+          { text: 'Api Docs', link: 'https://h5.luban-h5.com/documentation/' },
         ],
         sidebar: {
           '/': [
@@ -59,10 +60,17 @@ module.exports = {
               ],
             },
             {
-              collapsable: true,
-              title: '🔌 Local plugins',
+              collapsable: false,
+              title: '🔌Plugins Development',
               children: [
-                '/en/plugin-development/quick-start',
+                '/zh/plugin-development/',
+                '/zh/plugin-development/how-it-works/simple-prop',
+                '/zh/plugin-development/how-it-works/custom-editor-single-prop',
+                '/zh/plugin-development/how-it-works/custom-editor-multiple-props',
+                '/zh/plugin-development/quick-start',
+                '/zh/plugin-development/cli-params',
+                '/zh/plugin-development/plugin-default-inject-props',
+                '/zh/plugin-development/reference',
               ],
             },
             {
@@ -86,6 +94,7 @@ module.exports = {
           // { text: '插件', link: '/zh/plugin/' },
           { text: '首页', link: 'https://h5.luban-h5.com' },
           { text: '发布日志', link: 'https://github.com/ly525/luban-h5/releases' },
+          { text: '后端API文档', link: 'https://h5.luban-h5.com/documentation/' },
         ],
         sidebar: {
           '/': [
@@ -109,10 +118,17 @@ module.exports = {
               ],
             },
             {
-              collapsable: true,
-              title: '🔌 Local plugins',
+              collapsable: false,
+              title: '🔌插件/自定义组件开发(Alpha)',
               children: [
+                '/zh/plugin-development/',
+                '/zh/plugin-development/how-it-works/simple-prop',
+                '/zh/plugin-development/how-it-works/custom-editor-single-prop',
+                '/zh/plugin-development/how-it-works/custom-editor-multiple-props',
                 '/zh/plugin-development/quick-start',
+                '/zh/plugin-development/cli-params',
+                '/zh/plugin-development/plugin-default-inject-props',
+                '/zh/plugin-development/reference',
               ],
             },
             {
