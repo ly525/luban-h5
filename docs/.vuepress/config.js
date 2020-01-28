@@ -35,6 +35,7 @@ module.exports = {
           // { text: 'Config', link: '/config/' },
           // { text: 'API', link: '/api/' },
           { text: 'Website', link: 'https://h5.luban-h5.com' },
+          { text: 'Ecosystem', link: '/zh/ecosystem/' },
           { text: 'Changelog', link: 'https://github.com/ly525/luban-h5/releases' },
           { text: 'Api Docs', link: 'https://h5.luban-h5.com/documentation/' },
         ],
@@ -52,11 +53,10 @@ module.exports = {
               ],
             },
             {
-              collapsable: true,
-              title: '💡Implementation',
+              collapsable: false,
+              title: '🤝社区生态-周边建设',
               children: [
-                '/en/implementation/code-structure',
-                '/en/implementation/form-submit',
+                '/zh/ecosystem/',
               ],
             },
             {
@@ -80,6 +80,14 @@ module.exports = {
                 '/en/migration-guide/',
               ],
             },
+            {
+              collapsable: true,
+              title: '💡Implementation',
+              children: [
+                '/en/implementation/code-structure',
+                '/en/implementation/form-submit',
+              ],
+            },
           ],
         },
       },
@@ -91,8 +99,8 @@ module.exports = {
           // { text: '指南', link: '/zh/guide/' },
           // { text: '配置', link: '/zh/config/' },
           // { text: 'API', link: '/zh/api/' },
-          // { text: '插件', link: '/zh/plugin/' },
           { text: '首页', link: 'https://h5.luban-h5.com' },
+          { text: '生态', link: '/zh/ecosystem/' },
           { text: '发布日志', link: 'https://github.com/ly525/luban-h5/releases' },
           { text: '后端API文档', link: 'https://h5.luban-h5.com/documentation/' },
         ],
@@ -111,10 +119,9 @@ module.exports = {
             },
             {
               collapsable: false,
-              title: '💡实现原理',
+              title: '🤝社区生态-周边建设',
               children: [
-                '/zh/implementation/code-structure',
-                '/zh/implementation/form-submit',
+                '/zh/ecosystem/',
               ],
             },
             {
@@ -136,6 +143,14 @@ module.exports = {
               title: '迁移',
               children: [
                 '/zh/migration-guide/',
+              ],
+            },
+            {
+              collapsable: false,
+              title: '💡实现原理',
+              children: [
+                '/zh/implementation/code-structure',
+                '/zh/implementation/form-submit',
               ],
             },
           ],
