@@ -157,7 +157,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 #### 技术栈（当前）
 1. 前端：[Vue.js](https://vuejs.org/v2/guide/)
 2. 后端：[Strapi](https://strapi.io/)
-3. 存储：[Sqlite](https://mongodb.com)
+3. 存储：[Sqlite](https://www.sqlite.org/)
 
 #### 如何贡献
 所有合理的改动、优化、修正，新的组件，或者文档的修正、更新 相关的提交都会被接收
