@@ -13,7 +13,8 @@ import { quillEditor } from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import './styles/text-overwrite-quil-snow-theme.scss'
-import commonProps from './common/props.js'
+// https://github.com/luban-h5-components/plugin-common-props
+import commonProps from '@luban-h5/plugin-common-props'
 
 export default {
   render (h) {

@@ -1,4 +1,5 @@
-import commonProps from './common/props.js'
+// https://github.com/luban-h5-components/plugin-common-props
+import commonProps from '@luban-h5/plugin-common-props'
 
 export default {
   name: 'lbp-form-input',
