@@ -1,15 +1,17 @@
 module.exports = {
-  title: '鲁班H5',
+  title: 'LubanH5',
   base: '/luban-h5/',
   locales: {
     '/': {
+      title: 'LubanH5',
       lang: 'en-US',
       // description: 'OpenSource Mobile Page Builder&Generator with Drag&Drop\r\n前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀',
       description: 'OpenSource Mobile Page Builder&Generator',
     },
     '/zh/': {
+      title: '鲁班H5',
       lang: 'zh-CN',
-      // description: '前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀',
+      description: '前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀',
     },
   },
   serviceWorker: {},
@@ -54,9 +56,10 @@ module.exports = {
             },
             {
               collapsable: false,
-              title: '🤝社区生态-周边建设',
+              title: '🤝Ecosystem',
               children: [
                 '/zh/ecosystem/',
+                '/zh/ecosystem/backend-intergration'
               ],
             },
             {
@@ -122,6 +125,8 @@ module.exports = {
               title: '🤝社区生态-周边建设',
               children: [
                 '/zh/ecosystem/',
+                '/zh/ecosystem/backend-intergration'
+
               ],
             },
             {
