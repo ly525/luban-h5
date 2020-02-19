@@ -19,9 +19,26 @@ Mobile Page Builder&Generator with Drag&Drop
 [![码云](https://img.shields.io/badge/Gitee--yellow.svg?style=social&logo=data:image/svg+xml;base64,PHN2ZyB0PSIxNTc0ODM3MTM4ODM3IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE3NzAiICAgICB3aWR0aD0iMTYiIGhlaWdodD0iMTYiPiAgICA8cGF0aCBkPSJNODkxIDQyOC44SDQ2NS44Yy0yMC40IDAtMzcgMTYuNS0zNyAzN3Y5Mi40YzAgMjAuNCAxNi41IDM3IDM3IDM3aDI1OC45YzIwLjQgMCAzNyAxNi42IDM3IDM3djE4LjRjMCA2MS4zLTQ5LjcgMTEwLjktMTEwLjkgMTEwLjlIMjk5LjRjLTIwLjQgMC0zNy0xNi42LTM3LTM3VjM3My4yYzAtNjEuMyA0OS43LTExMC45IDExMC45LTExMC45aDUxNy42YzIwLjQgMCAzNy0xNi41IDM3LTM3bDAuMS05Mi4zYzAtMjAuNC0xNi41LTM3LTM3LTM3SDM3My4zQzIyMC4yIDk2IDk2IDIyMC4yIDk2IDM3My4zVjg5MWMwIDIwLjQgMTYuNiAzNyAzNyAzN2g1NDUuNEM4MTYuMiA5MjggOTI4IDgxNi4zIDkyOCA2NzguNFY0NjUuOGMwLTIwLjQtMTYuNi0zNy0zNy0zN3oiICAgICAgICAgIGZpbGw9IiNkODFlMDYiIHAtaWQ9IjE3NzEiPjwvcGF0aD48L3N2Zz4=)](https://gitee.com/ly525/luban-h5.git)
 
 ## 快速体验
-> 以下两种方式，任选其中一种即可
+> 以下三种方式，任选其中一种即可
 
-#### 一、本地安装了 Node、Yarn
+#### 一、一键脚本
+```bash
+git clone https://github.com/ly525/luban-h5 && cd luban-h5
+# 安装依赖，构建前后端（安装依赖会耗时略长，请耐心等待）
+./luban-h5.sh init
+
+# 启动项目访问 http://localhost:1337 即可
+./luban-h5.sh start
+
+# ./luban-h5.sh stop
+```
+
+- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
+
+- 如果遇到接口 403 问题，请参照 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，搜索关键字：403 即可
+
+
+#### 二、本地安装了 Node、Yarn
 ```bash
 git clone https://github.com/ly525/luban-h5
 cd luban-h5 # 项目根目录
