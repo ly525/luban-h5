@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.3](https://github.com/ly525/luban-h5/compare/v1.8.2...v1.8.3) (2020-02-19)
+
+
+### Bug Fixes
+
+* [#136](https://github.com/ly525/luban-h5/issues/136) ([532ed11](https://github.com/ly525/luban-h5/commit/532ed11))
+
 ### [1.8.2](https://github.com/ly525/luban-h5/compare/v1.8.1...v1.8.2) (2020-01-24)
 
 
