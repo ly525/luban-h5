@@ -1,7 +1,7 @@
 /*
  * @Author: ly525
  * @Date: 2019-12-14 22:43:55
- * @LastEditors  : ly525
+ * @LastEditors: ly525
  * @LastEditTime : 2020-01-15 08:35:17
  * @FilePath: /luban-h5/front-end/h5/vue.config.js
  * @Github: https://github.com/ly525/luban-h5
@@ -29,8 +29,8 @@ switch (process.env.PAGE) {
       template: 'public/index.html',
       filename: 'index.html',
       title: 'Index Page',
-      outputDir: 'dist'
-      // outputDir: editorBuildOutputDir
+      // outputDir: 'dist',
+      outputDir: editorBuildOutputDir
       // publicPath: isProd ? '/main/' : '/'
     }
 }
