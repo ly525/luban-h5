@@ -59,7 +59,8 @@ module.exports = {
               title: '🤝Ecosystem',
               children: [
                 '/zh/ecosystem/',
-                '/zh/ecosystem/backend-intergration'
+                '/zh/ecosystem/backend-intergration',
+                '/zh/ecosystem/database-oracle'
               ],
             },
             {
@@ -125,8 +126,8 @@ module.exports = {
               title: '🤝社区生态-周边建设',
               children: [
                 '/zh/ecosystem/',
-                '/zh/ecosystem/backend-intergration'
-
+                '/zh/ecosystem/backend-intergration',
+                '/zh/ecosystem/database-oracle'
               ],
             },
             {
