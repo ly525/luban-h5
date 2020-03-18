@@ -3,7 +3,31 @@
 - 如果您已经熟悉并已经安装了 `Node`、`Yarn`，可以直接参照下面的命令，快速上手
 - 如果您不熟悉，请阅读下面的详细教程
 
+## 快速体验
+> 以下三种方式，任选其中一种即可
+
+#### 一、一键脚本（推荐！）
 ```bash
+git clone https://github.com/ly525/luban-h5 && cd luban-h5
+# 安装依赖，构建前后端（安装依赖会耗时略长，请耐心等待）
+./luban-h5.sh init
+
+# 启动项目访问 http://localhost:1337 即可
+./luban-h5.sh start
+
+# ./luban-h5.sh stop
+```
+
+- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
+
+- 如果遇到接口 403 问题，请参照 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，搜索关键字：403 即可
+
+
+#### 二、本地安装了 Node、Yarn
+```bash
+git clone https://github.com/ly525/luban-h5
+cd luban-h5 # 项目根目录
+
 # 后端
 cd back-end/h5-api && yarn && yarn dev
 
@@ -11,6 +35,31 @@ cd back-end/h5-api && yarn && yarn dev
 # 新开一个终端，在项目根目录执行如下命令
 cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
+- 按照提示，在浏览器中访问终端中提示的 URL 即可
+- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
+
+
+#### 三、熟悉 Docker（迭代中，不推荐使用，后期会推出docker image）
+> 使用官方提供的 [***一键安装脚本***](https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh)，简化安装步骤，在本地通过使用 `Docker+Ubuntu 镜像`，即可`快速安装+体验` 鲁班H5
+
+> [快速体验-完整文档](https://github.com/ly525/luban-h5/wiki/Quick-Start(%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E7%AF%87)%EF%BC%9ADocker-Ubuntu-Image-for-Quick-Local-Dev)，简而言之：
+
+```shell
+docker pull ubuntu
+docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
+# 使用清华大学 Ubuntu 软件镜像
+sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+apt update && apt install -y wget git
+wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+
+# 安装完成之后
+# 1. visit ：http://localhost:1234/admin，自定义配置账号密码，登录即可
+# 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
+
+# 2. 鲁班前端
+# 2.1 宿主机访问 「鲁班前端」：localhost:1234, 即可看到鲁班的前端
+```
+
 
 # 常见问题
 > 这部分一般是按照下面的教程运行之后，仍然可能会遇到的问题。比较适合粗心、文档只看了一半、比较着急的同学
