@@ -121,7 +121,7 @@ yarn config set registry https://registry.npm.taobao.org
 ```bash
 # 默认当前目录为 luban 项目的根目录
 cd back-end/h5-api
-# 使用 yarn 安装依赖，而非 yarn
+# 使用 yarn 安装依赖，而非 npm
 # 原因参见：https://github.com/ly525/luban-h5/issues/92
 yarn install # 安装依赖
 
