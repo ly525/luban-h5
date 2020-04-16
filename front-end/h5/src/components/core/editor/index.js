@@ -1,4 +1,5 @@
 import { mapState, mapActions } from 'vuex'
+import hotkeys from 'hotkeys-js'
 import undoRedoHistory from '../../../store/plugins/undo-redo/History'
 
 import '../styles/index.scss'
@@ -41,17 +42,18 @@ import Feedback from '@/components/common/feedback/index'
 //   }
 // ]
 
-// TODO 支持快捷键
 const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.undo',
     'icon': 'mail-reply',
-    'action': () => undoRedoHistory.undo()
+    'action': () => undoRedoHistory.undo(),
+    'hotkey': 'ctrl&z,⌘&z'
   },
   {
     i18nTooltip: 'editor.fixedTool.redo',
     'icon': 'mail-forward',
-    'action': () => undoRedoHistory.redo()
+    'action': () => undoRedoHistory.redo(),
+    'hotkey': 'ctrl&y,⌘&u'
   },
   {
     i18nTooltip: 'editor.fixedTool.preview',
@@ -61,7 +63,8 @@ const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.copyCurrentPage',
     'icon': 'copy',
-    'action': function () { this.pageManager({ type: 'copy' }) }
+    'action': function () { this.pageManager({ type: 'copy' }) },
+    'hotkey': 'ctrl&c,⌘&c'
   },
   {
     i18nTooltip: 'editor.fixedTool.importPSD',
@@ -72,12 +75,14 @@ const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.zoomOut',
     'icon': 'plus',
-    'action': function () { this.scaleRate += 0.25 }
+    'action': function () { this.scaleRate += 0.25 },
+    'hotkey': 'ctrl&=,⌘&='
   },
   {
     i18nTooltip: 'editor.fixedTool.zoomIn',
     'icon': 'minus',
-    'action': function () { this.scaleRate -= 0.25 }
+    'action': function () { this.scaleRate -= 0.25 },
+    'hotkey': 'ctrl&-,⌘&-'
   },
   {
     i18nTooltip: 'editor.fixedTool.issues',
@@ -221,6 +226,15 @@ export default {
       //     return null
       // }
     }
+  },
+  mounted () {
+    fixedTools.map(tool => {
+      tool.hotkey && hotkeys(tool.hotkey, { splitKey: '&' }, (event, handler) => {
+        event.preventDefault()
+        event.stopPropagation()
+        tool.action && tool.action.call(this)
+      })
+    })
   },
   render (h) {
     return (
