@@ -23,45 +23,34 @@ export default {
     // TODO #!zh: 优化代码
     // generate vertical line
     drawVLine (newLeft) {
-      // this.editingElement.commonStyle.left = newLeft
-      this.setElementPosition({ left: newLeft })
       this.vLines = [{ left: newLeft }]
+    },
+    clearVLine () {
+      this.vLines = []
     },
     // generate horizontal line
     drawHLine (newTop) {
-      // this.editingElement.commonStyle.top = newTop
-      this.setElementPosition({ top: newTop })
       this.hLines = [{ top: newTop }]
     },
-    calcX (newLeft) {
+    clearHLine () {
+      this.hLines = []
+    },
+    calcVHLine () {
       const uuid = this.editingElement.uuid
       let xCoords = []
+      let yCoords = []
       this.elements.filter(e => e.uuid !== uuid).forEach(e => {
         const width = e.commonStyle.width
         const left = e.commonStyle.left
+        const height = e.commonStyle.height
+        const top = e.commonStyle.top
+
         xCoords = [
           ...xCoords,
           left,
           left + (width / 2),
           left + width
         ]
-      })
-
-      xCoords.some(x => {
-        if (Math.abs(newLeft - x) <= 5) {
-          this.drawVLine(x)
-          return true
-        } else {
-          this.vLines = []
-        }
-      })
-    },
-    calcY (newTop) {
-      const uuid = this.editingElement.uuid
-      let yCoords = []
-      this.elements.filter(e => e.uuid !== uuid).forEach(e => {
-        const height = e.commonStyle.height
-        const top = e.commonStyle.top
         yCoords = [
           ...yCoords,
           top,
@@ -70,26 +59,50 @@ export default {
         ]
       })
 
-      yCoords.some(y => {
-        if (Math.abs(newTop - y) <= 5) {
-          this.drawHLine(y)
-          return true
-        } else {
-          this.hLines = []
-        }
+      const eleft = this.editingElement.commonStyle.left
+      const etop = this.editingElement.commonStyle.top
+      const ewidth = this.editingElement.commonStyle.width
+      const eheight = this.editingElement.commonStyle.height
+      let exCoords = [eleft, eleft + (ewidth / 2), eleft + ewidth]
+      let eyCoords = [etop, etop + (eheight / 2), etop + eheight]
+      let hasVLine = false
+      let hasHLine = false
+      exCoords.forEach(v => {
+        xCoords.forEach(x => {
+          if (Math.abs(v - x) <= 5) {
+            // TODO 如果是Point移动的情况下，应该是修改width
+            this.setElementPosition({ left: x - (v - eleft) })
+            this.drawVLine(x)
+            hasVLine = true
+          }
+        })
       })
+      eyCoords.forEach(v => {
+        yCoords.forEach(y => {
+          if (Math.abs(v - y) <= 5) {
+            this.setElementPosition({ top: y - (v - etop) })
+            this.drawHLine(y)
+            hasHLine = true
+          }
+        })
+      })
+      if (!hasVLine) {
+        this.clearVLine()
+      }
+      if (!hasHLine) {
+        this.clearHLine()
+      }
     },
     /**
      * #!zh: 在元素移动过程中，计算和生成辅助线
      */
     handleElementMove (pos) {
       this.setElementPosition(pos)
-      this.calcX(pos.left)
-      this.calcY(pos.top)
+      this.calcVHLine()
     },
-    handlePointMove ({ top, left }) {
-      this.calcX(left)
-      this.calcY(top)
+    handlePointMove (pos) {
+      this.setElementPosition(pos)
+      this.calcVHLine()
     },
     bindContextMenu (e) {
       // 优化右击菜单的显示，去除冗余的无效逻辑
@@ -185,9 +198,7 @@ export default {
                     this.setEditingElement(element)
                   }}
                   // TODO 矩形四周的点叫什么？暂时叫 Point 吧
-                  handlePointMoveProp={pos => {
-                    this.setElementPosition(pos)
-                  }}
+                  handlePointMoveProp={this.handlePointMove}
                   handleElementMoveProp={this.handleElementMove}
                   handleElementMouseUpProp={() => {
                     this.recordElementRect()
