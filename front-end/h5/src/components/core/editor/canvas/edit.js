@@ -37,58 +37,62 @@ export default {
     },
     calcVHLine (isPointMove) {
       const uuid = this.editingElement.uuid
-      let xCoords = []
-      let yCoords = []
-      this.elements.filter(e => e.uuid !== uuid).forEach(e => {
+      const referElements = this.elements.filter(e => e.uuid !== uuid)
+      let referElementsXCooords = []
+      let referElementsYCooords = []
+      referElements.forEach(e => {
         const width = e.commonStyle.width
         const left = e.commonStyle.left
         const height = e.commonStyle.height
         const top = e.commonStyle.top
 
-        xCoords = [
-          ...xCoords,
+        referElementsXCooords = [
+          ...referElementsXCooords,
           left,
           left + (width / 2),
           left + width
         ]
-        yCoords = [
-          ...yCoords,
+        referElementsYCooords = [
+          ...referElementsYCooords,
           top,
           top + (height / 2),
           top + height
         ]
       })
 
+      // e代表 editingElement
       const eleft = this.editingElement.commonStyle.left
       const etop = this.editingElement.commonStyle.top
       const ewidth = this.editingElement.commonStyle.width
       const eheight = this.editingElement.commonStyle.height
-      let exCoords = [eleft, eleft + (ewidth / 2), eleft + ewidth]
-      let eyCoords = [etop, etop + (eheight / 2), etop + eheight]
+      const exCoords = [eleft + ewidth, eleft + (ewidth / 2), eleft]
+      const eyCoords = [etop + eheight, etop + (eheight / 2), etop]
       let hasVLine = false
       let hasHLine = false
-      exCoords.forEach(v => {
-        xCoords.forEach(x => {
-          if (Math.abs(v - x) <= 5) {
+      exCoords.forEach(eX => {
+        referElementsXCooords.forEach(referX => {
+          let offset = referX - eX
+          if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              this.setElementPosition({ width: ewidth + x - v })
+              this.setElementPosition({ width: ewidth + offset })
             } else {
-              this.setElementPosition({ left: x - (v - eleft) })
+              this.setElementPosition({ left: eleft + offset })
             }
-            this.drawVLine(x)
+            this.drawVLine(referX)
             hasVLine = true
           }
         })
       })
-      eyCoords.forEach(v => {
-        yCoords.forEach(y => {
-          if (Math.abs(v - y) <= 5) {
+      eyCoords.forEach(eY => {
+        referElementsYCooords.forEach(referY => {
+          let offset = referY - eY
+          if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              this.setElementPosition({ height: eheight + y - v })
+              this.setElementPosition({ height: eheight + offset })
             } else {
-              this.setElementPosition({ top: y - (v - etop) })
+              this.setElementPosition({ top: etop + offset })
             }
-            this.drawHLine(y)
+            this.drawHLine(referY)
             hasHLine = true
           }
         })
@@ -208,9 +212,13 @@ export default {
                   handlePointMoveProp={this.handlePointMove}
                   handleElementMoveProp={this.handleElementMove}
                   handleElementMouseUpProp={() => {
+                    this.clearHLine()
+                    this.clearVLine()
                     this.recordElementRect()
                   }}
                   handlePointMouseUpProp={() => {
+                    this.clearHLine()
+                    this.clearVLine()
                     this.recordElementRect()
                   }}
                   nativeOnContextmenu={e => {
