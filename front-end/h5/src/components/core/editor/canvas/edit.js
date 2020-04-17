@@ -38,22 +38,22 @@ export default {
     calcVHLine (isPointMove) {
       const uuid = this.editingElement.uuid
       const referElements = this.elements.filter(e => e.uuid !== uuid)
-      let referElementsXCooords = []
-      let referElementsYCooords = []
+      let referElementsXCoords = []
+      let referElementsYCoords = []
       referElements.forEach(e => {
         const width = e.commonStyle.width
         const left = e.commonStyle.left
         const height = e.commonStyle.height
         const top = e.commonStyle.top
 
-        referElementsXCooords = [
-          ...referElementsXCooords,
+        referElementsXCoords = [
+          ...referElementsXCoords,
           left,
           left + (width / 2),
           left + width
         ]
-        referElementsYCooords = [
-          ...referElementsYCooords,
+        referElementsYCoords = [
+          ...referElementsYCoords,
           top,
           top + (height / 2),
           top + height
@@ -70,7 +70,7 @@ export default {
       let hasVLine = false
       let hasHLine = false
       exCoords.forEach(eX => {
-        referElementsXCooords.forEach(referX => {
+        referElementsXCoords.forEach(referX => {
           let offset = referX - eX
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
@@ -84,7 +84,7 @@ export default {
         })
       })
       eyCoords.forEach(eY => {
-        referElementsYCooords.forEach(referY => {
+        referElementsYCoords.forEach(referY => {
           let offset = referY - eY
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
