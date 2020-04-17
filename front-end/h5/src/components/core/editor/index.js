@@ -68,7 +68,8 @@ const fixedTools = [
   },
   {
     i18nTooltip: 'editor.fixedTool.importPSD',
-    'icon': '',
+    'text': 'Ps',
+    'icon': '', // 优先级: icon > text > i18nTooltip
     'action': '',
     'disabled': true
   },
@@ -341,7 +342,7 @@ export default {
                 fixedTools.map(tool => (
                   <a-tooltip effect="dark" placement="left" title={this.$t(tool.i18nTooltip)}>
                     <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
-                      { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : this.$t(tool.i18nTooltip) }
+                      { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : (tool.text || this.$t(tool.i18nTooltip)) }
                     </a-button>
                     { tool.icon === 'minus' && <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div> }
                   </a-tooltip>
