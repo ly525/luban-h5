@@ -35,7 +35,7 @@ export default {
     clearHLine () {
       this.hLines = []
     },
-    calcVHLine () {
+    calcVHLine (isPointMove) {
       const uuid = this.editingElement.uuid
       let xCoords = []
       let yCoords = []
@@ -70,8 +70,11 @@ export default {
       exCoords.forEach(v => {
         xCoords.forEach(x => {
           if (Math.abs(v - x) <= 5) {
-            // TODO 如果是Point移动的情况下，应该是修改width
-            this.setElementPosition({ left: x - (v - eleft) })
+            if (isPointMove) {
+              this.setElementPosition({ width: ewidth + x - v })
+            } else {
+              this.setElementPosition({ left: x - (v - eleft) })
+            }
             this.drawVLine(x)
             hasVLine = true
           }
@@ -80,7 +83,11 @@ export default {
       eyCoords.forEach(v => {
         yCoords.forEach(y => {
           if (Math.abs(v - y) <= 5) {
-            this.setElementPosition({ top: y - (v - etop) })
+            if (isPointMove) {
+              this.setElementPosition({ height: eheight + y - v })
+            } else {
+              this.setElementPosition({ top: y - (v - etop) })
+            }
             this.drawHLine(y)
             hasHLine = true
           }
@@ -98,11 +105,11 @@ export default {
      */
     handleElementMove (pos) {
       this.setElementPosition(pos)
-      this.calcVHLine()
+      this.calcVHLine(false)
     },
     handlePointMove (pos) {
       this.setElementPosition(pos)
-      this.calcVHLine()
+      this.calcVHLine(true)
     },
     bindContextMenu (e) {
       // 优化右击菜单的显示，去除冗余的无效逻辑
