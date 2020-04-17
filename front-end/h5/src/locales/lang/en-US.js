@@ -64,13 +64,13 @@ export default {
       }
     },
     fixedTool: {
-      undo: 'Undo',
-      redo: 'Redo',
+      undo: 'Undo{hotkey}',
+      redo: 'Redo{hotkey}',
       preview: 'Preview',
       copyCurrentPage: 'CopyCurrentPage',
       importPSD: 'Import PSD',
-      zoomIn: 'Zoom In',
-      zoomOut: 'Zoom Out',
+      zoomIn: 'Zoom In{hotkey}',
+      zoomOut: 'Zoom Out{hotkey}',
       issues: 'Issues'
     },
     editPanel: {

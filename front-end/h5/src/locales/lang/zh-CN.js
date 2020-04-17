@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-08 16:15:35
+ * @LastEditTime: 2020-04-18 00:30:40
  * @FilePath: /luban-h5/front-end/h5/src/locales/lang/zh-CN.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -73,13 +73,13 @@ export default {
       }
     },
     fixedTool: {
-      undo: '撤销',
-      redo: '重做',
+      undo: '撤销{hotkey}',
+      redo: '重做{hotkey}',
       preview: '预览',
       copyCurrentPage: '复制当前页面',
       importPSD: '导入PSD',
-      zoomIn: '缩小',
-      zoomOut: '放大',
+      zoomIn: '缩小{hotkey}',
+      zoomOut: '放大{hotkey}',
       issues: '常见问题'
     },
     editPanel: {

@@ -47,13 +47,15 @@ const fixedTools = [
     i18nTooltip: 'editor.fixedTool.undo',
     'icon': 'mail-reply',
     'action': () => undoRedoHistory.undo(),
-    'hotkey': 'ctrl&z,⌘&z'
+    'hotkey': 'ctrl&z,⌘&z',
+    'hotkeyTooltip': '(ctrl+z)'
   },
   {
     i18nTooltip: 'editor.fixedTool.redo',
     'icon': 'mail-forward',
     'action': () => undoRedoHistory.redo(),
-    'hotkey': 'ctrl&y,⌘&u'
+    'hotkey': 'ctrl&y,⌘&u',
+    'hotkeyTooltip': '(ctrl+y)'
   },
   {
     i18nTooltip: 'editor.fixedTool.preview',
@@ -77,13 +79,15 @@ const fixedTools = [
     i18nTooltip: 'editor.fixedTool.zoomOut',
     'icon': 'plus',
     'action': function () { this.scaleRate += 0.25 },
-    'hotkey': 'ctrl&=,⌘&='
+    'hotkey': 'ctrl&=,⌘&=',
+    'hotkeyTooltip': '(ctrl +)'
   },
   {
     i18nTooltip: 'editor.fixedTool.zoomIn',
     'icon': 'minus',
     'action': function () { this.scaleRate -= 0.25 },
-    'hotkey': 'ctrl&-,⌘&-'
+    'hotkey': 'ctrl&-,⌘&-',
+    'hotkeyTooltip': '(ctrl -)'
   },
   {
     i18nTooltip: 'editor.fixedTool.issues',
@@ -340,7 +344,7 @@ export default {
             <a-button-group style={{ display: 'flex', flexDirection: 'column' }}>
               {
                 fixedTools.map(tool => (
-                  <a-tooltip effect="dark" placement="left" title={this.$t(tool.i18nTooltip)}>
+                  <a-tooltip effect="dark" placement="left" title={this.$t(tool.i18nTooltip, { hotkey: tool.hotkeyTooltip })}>
                     <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
                       { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : (tool.text || this.$t(tool.i18nTooltip)) }
                     </a-button>
