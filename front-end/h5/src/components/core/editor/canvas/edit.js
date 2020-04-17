@@ -23,73 +23,97 @@ export default {
     // TODO #!zh: 优化代码
     // generate vertical line
     drawVLine (newLeft) {
-      // this.editingElement.commonStyle.left = newLeft
-      this.setElementPosition({ left: newLeft })
       this.vLines = [{ left: newLeft }]
+    },
+    clearVLine () {
+      this.vLines = []
     },
     // generate horizontal line
     drawHLine (newTop) {
-      // this.editingElement.commonStyle.top = newTop
-      this.setElementPosition({ top: newTop })
       this.hLines = [{ top: newTop }]
     },
-    calcX (newLeft) {
+    clearHLine () {
+      this.hLines = []
+    },
+    calcVHLine (isPointMove) {
       const uuid = this.editingElement.uuid
-      let xCoords = []
-      this.elements.filter(e => e.uuid !== uuid).forEach(e => {
+      const referElements = this.elements.filter(e => e.uuid !== uuid)
+      let referElementsXCoords = []
+      let referElementsYCoords = []
+      referElements.forEach(e => {
         const width = e.commonStyle.width
         const left = e.commonStyle.left
-        xCoords = [
-          ...xCoords,
+        const height = e.commonStyle.height
+        const top = e.commonStyle.top
+
+        referElementsXCoords = [
+          ...referElementsXCoords,
           left,
           left + (width / 2),
           left + width
         ]
-      })
-
-      xCoords.some(x => {
-        if (Math.abs(newLeft - x) <= 5) {
-          this.drawVLine(x)
-          return true
-        } else {
-          this.vLines = []
-        }
-      })
-    },
-    calcY (newTop) {
-      const uuid = this.editingElement.uuid
-      let yCoords = []
-      this.elements.filter(e => e.uuid !== uuid).forEach(e => {
-        const height = e.commonStyle.height
-        const top = e.commonStyle.top
-        yCoords = [
-          ...yCoords,
+        referElementsYCoords = [
+          ...referElementsYCoords,
           top,
           top + (height / 2),
           top + height
         ]
       })
 
-      yCoords.some(y => {
-        if (Math.abs(newTop - y) <= 5) {
-          this.drawHLine(y)
-          return true
-        } else {
-          this.hLines = []
-        }
+      // e代表 editingElement
+      const eleft = this.editingElement.commonStyle.left
+      const etop = this.editingElement.commonStyle.top
+      const ewidth = this.editingElement.commonStyle.width
+      const eheight = this.editingElement.commonStyle.height
+      const exCoords = [eleft + ewidth, eleft + (ewidth / 2), eleft]
+      const eyCoords = [etop + eheight, etop + (eheight / 2), etop]
+      let hasVLine = false
+      let hasHLine = false
+      exCoords.forEach(eX => {
+        referElementsXCoords.forEach(referX => {
+          let offset = referX - eX
+          if (Math.abs(offset) <= 5) {
+            if (isPointMove) {
+              this.setElementPosition({ width: ewidth + offset })
+            } else {
+              this.setElementPosition({ left: eleft + offset })
+            }
+            this.drawVLine(referX)
+            hasVLine = true
+          }
+        })
       })
+      eyCoords.forEach(eY => {
+        referElementsYCoords.forEach(referY => {
+          let offset = referY - eY
+          if (Math.abs(offset) <= 5) {
+            if (isPointMove) {
+              this.setElementPosition({ height: eheight + offset })
+            } else {
+              this.setElementPosition({ top: etop + offset })
+            }
+            this.drawHLine(referY)
+            hasHLine = true
+          }
+        })
+      })
+      if (!hasVLine) {
+        this.clearVLine()
+      }
+      if (!hasHLine) {
+        this.clearHLine()
+      }
     },
     /**
      * #!zh: 在元素移动过程中，计算和生成辅助线
      */
     handleElementMove (pos) {
       this.setElementPosition(pos)
-      this.calcX(pos.left)
-      this.calcY(pos.top)
+      this.calcVHLine(false)
     },
-    handlePointMove ({ top, left }) {
-      this.calcX(left)
-      this.calcY(top)
+    handlePointMove (pos) {
+      this.setElementPosition(pos)
+      this.calcVHLine(true)
     },
     bindContextMenu (e) {
       // 优化右击菜单的显示，去除冗余的无效逻辑
@@ -185,14 +209,16 @@ export default {
                     this.setEditingElement(element)
                   }}
                   // TODO 矩形四周的点叫什么？暂时叫 Point 吧
-                  handlePointMoveProp={pos => {
-                    this.setElementPosition(pos)
-                  }}
+                  handlePointMoveProp={this.handlePointMove}
                   handleElementMoveProp={this.handleElementMove}
                   handleElementMouseUpProp={() => {
+                    this.clearHLine()
+                    this.clearVLine()
                     this.recordElementRect()
                   }}
                   handlePointMouseUpProp={() => {
+                    this.clearHLine()
+                    this.clearVLine()
                     this.recordElementRect()
                   }}
                   nativeOnContextmenu={e => {

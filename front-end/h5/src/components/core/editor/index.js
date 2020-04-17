@@ -1,4 +1,5 @@
 import { mapState, mapActions } from 'vuex'
+import hotkeys from 'hotkeys-js'
 import undoRedoHistory from '../../../store/plugins/undo-redo/History'
 
 import '../styles/index.scss'
@@ -44,58 +45,47 @@ import Feedback from '@/components/common/feedback/index'
 const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.undo',
-    'tooltip': '撤消', // TODO 支持快捷键
-    'text': '撤消',
     'icon': 'mail-reply',
-    'action': () => undoRedoHistory.undo()
+    'action': () => undoRedoHistory.undo(),
+    'hotkey': 'ctrl&z,⌘&z'
   },
   {
     i18nTooltip: 'editor.fixedTool.redo',
-    'tooltip': '恢复',
-    'text': '恢复',
     'icon': 'mail-forward',
-    'action': () => undoRedoHistory.redo()
+    'action': () => undoRedoHistory.redo(),
+    'hotkey': 'ctrl&y,⌘&u'
   },
   {
     i18nTooltip: 'editor.fixedTool.preview',
-    'tooltip': '刷新预览',
-    'text': '刷新预览',
     'icon': 'eye',
     'action': function () { this.previewVisible = true }
   },
   {
     i18nTooltip: 'editor.fixedTool.copyCurrentPage',
-    'tooltip': '复制当前页',
-    'text': '复制当前页',
     'icon': 'copy',
-    'action': function () { this.pageManager({ type: 'copy' }) }
+    'action': function () { this.pageManager({ type: 'copy' }) },
+    'hotkey': 'ctrl&c,⌘&c'
   },
   {
     i18nTooltip: 'editor.fixedTool.importPSD',
-    'tooltip': '导入PSD',
-    'text': 'Ps',
     'icon': '',
     'action': '',
     'disabled': true
   },
   {
     i18nTooltip: 'editor.fixedTool.zoomOut',
-    'tooltip': '放大画布',
-    'text': '放大画布',
     'icon': 'plus',
-    'action': function () { this.scaleRate += 0.25 }
+    'action': function () { this.scaleRate += 0.25 },
+    'hotkey': 'ctrl&=,⌘&='
   },
   {
     i18nTooltip: 'editor.fixedTool.zoomIn',
-    'tooltip': '缩小画布',
-    'text': '缩小画布',
     'icon': 'minus',
-    'action': function () { this.scaleRate -= 0.25 }
+    'action': function () { this.scaleRate -= 0.25 },
+    'hotkey': 'ctrl&-,⌘&-'
   },
   {
     i18nTooltip: 'editor.fixedTool.issues',
-    'tooltip': 'issues',
-    'text': '常见问题',
     'icon': 'question',
     'action': function () { window.open('https://github.com/ly525/luban-h5/issues/110') }
   }
@@ -237,6 +227,15 @@ export default {
       // }
     }
   },
+  mounted () {
+    fixedTools.map(tool => {
+      tool.hotkey && hotkeys(tool.hotkey, { splitKey: '&' }, (event, handler) => {
+        event.preventDefault()
+        event.stopPropagation()
+        tool.action && tool.action.call(this)
+      })
+    })
+  },
   render (h) {
     return (
       <a-layout id="luban-editor-layout" style={{ height: '100vh' }}>
@@ -340,10 +339,9 @@ export default {
             <a-button-group style={{ display: 'flex', flexDirection: 'column' }}>
               {
                 fixedTools.map(tool => (
-                  // <a-tooltip effect="dark" placement="left" title={tool.tooltip}>
                   <a-tooltip effect="dark" placement="left" title={this.$t(tool.i18nTooltip)}>
                     <a-button block class="transparent-bg" type="link" size="small" style={{ height: '40px', color: '#000' }} onClick={() => tool.action && tool.action.call(this) } disabled={!!tool.disabled}>
-                      { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : tool.text }
+                      { tool.icon ? <i class={['shortcut-icon', 'fa', `fa-${tool.icon}`]} aria-hidden='true'/> : this.$t(tool.i18nTooltip) }
                     </a-button>
                     { tool.icon === 'minus' && <div style={{ fontSize: '12px', textAlign: 'center' }}>{this.scaleRate * 100}%</div> }
                   </a-tooltip>
