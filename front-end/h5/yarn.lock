@@ -792,6 +792,11 @@
   resolved "https://registry.yarnpkg.com/@luban-h5/plugin-common-props/-/plugin-common-props-0.0.1.tgz#10fe5d5b2dda1db64912b3b99779aec60b5ea956"
   integrity sha512-D8UEBht2BCJt8YDHqcYj0hQmn3WM3QdX3Rw8eaZP02o0NeNe2oDPKE4mCM3eN9U1ygcrDf9bR48RB9YgHJRHGA==
 
+"@luban-h5/plugin-common-props@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@luban-h5/plugin-common-props/-/plugin-common-props-0.0.2.tgz#17ac100c241fa16b4de7c259837a0af0862693ef"
+  integrity sha512-6lsjSq6nPYD1EdbIBugf3dDFAr55ijzyOH4gd6oor/rQ8o8qDlh4UH2L4zaXCUJnMgi8osF8mXnfLx4oBd0JMQ==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@mrmlnc/readdir-enhanced/download/@mrmlnc/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -9895,7 +9900,7 @@ stylus-loader@^3.0.2:
     lodash.clonedeep "^4.5.0"
     when "~3.6.x"
 
-stylus@^0.54.7:
+stylus@^0.54.5:
   version "0.54.7"
   resolved "https://registry.npm.taobao.org/stylus/download/stylus-0.54.7.tgz#c6ce4793965ee538bcebe50f31537bfc04d88cd2"
   integrity sha1-xs5Hk5Ze5Ti86+UPMVN7/ATYjNI=
