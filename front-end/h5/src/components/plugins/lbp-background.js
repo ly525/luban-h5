@@ -1,8 +1,8 @@
 /*
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-14 23:33:22
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-04-23 23:17:55
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-background.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: luban-h5 background image/color component/plugin
@@ -32,7 +32,8 @@ export default {
     }
 
     return (
-      <div style="width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: -1; opacity: 1;">
+      // [知识点:CSS] : https://codesandbox.io/s/ziyuansuzindexzaigao-wufafugaifuyuansudexiongdiyuansu-n15rd?file=/index.html
+      <div style="width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 0; opacity: 1;">
         <div style={style}></div>
       </div>
     )
