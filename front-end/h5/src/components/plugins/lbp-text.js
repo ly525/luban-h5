@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-11-30 23:01:55
+ * @LastEditTime: 2020-04-25 11:14:38
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-text.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: luban-h5 text component/plugin
@@ -27,7 +27,13 @@ export default {
       border: `${this.borderWidth}px solid ${this.borderColor}`,
       borderRadius: `${this.borderRadius}px`
     }
-    const pureText = <div domPropsInnerHTML={this.text} class="ql-editor ql-container"></div>
+    /**
+     * https://github.com/ly525/luban-h5/issues/155
+     * 需要给预览模式的文字添加 ql-snow 样式原因：文字样式和文字编辑器(ql-editor)的 theme 有关系
+     * 比如编辑模式 h1 样式为：.ql-snow .ql-editor h1 {font-size: 2em;}
+     * 因此预览模式的文字内容也需要加上 div.ql-snow > div.ql-editor 作为wrapper
+     */
+    const previewText = <div class="ql-snow"><div domPropsInnerHTML={this.text} class="ql-editor ql-container"></div></div>
     return (
       <div
         onDblclick={e => {
@@ -68,7 +74,7 @@ export default {
                 })
               }}>
             </quillEditor>
-            : pureText
+            : previewText
         }
       </div>
     )
