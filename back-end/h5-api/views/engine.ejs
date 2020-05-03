@@ -1,8 +1,8 @@
 <!--
  * @Author: ly525
  * @Date: 2019-12-04 20:24:04
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-24 21:03:29
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-05-03 14:30:37
  * @FilePath: /luban-h5/back-end/h5-api/views/engine.ejs
  * @Github: https://github.com/ly525/luban-h5
  * @Description: 手机端预览模板
@@ -212,8 +212,9 @@
       function updateViewport() {
         var scale = 1;
         var w = document.documentElement.clientWidth || 320;
-        var h = document.documentElement.clientHeight || 568;
-        scale = w/h >= 320/568 ? h/568 : w/320;
+        // var h = document.documentElement.clientHeight || 568;
+        // scale = w/h >= 320/568 ? h/568 : w/320;
+        scale = w/320;
         var viewport = "width=320, initial-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
         document.getElementById("viewport").setAttribute("content", viewport)
       }
