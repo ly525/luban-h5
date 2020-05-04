@@ -3,8 +3,8 @@
 ###
  # @Author: ly525
  # @Date: 2020-01-10 22:23:34
- # @LastEditors  : ly525
- # @LastEditTime : 2020-01-24 22:02:16
+ # @LastEditors: ly525
+ # @LastEditTime: 2020-05-04 11:15:43
  # @FilePath: /luban-h5/luban-h5.sh
  # @Github: https://github.com/ly525/luban-h5
  # @Description: Do not edit
@@ -101,12 +101,12 @@ luban_h5_init() {
 }
 
 luban_h5_start() {
-  cd back-end/h5-api && npx pm2 start --name luban-h5-service server.js
+  cd back-end/h5-api && pm2 start --name luban-h5-service server.js
   cd ${cur_dir}
 }
 
 luban_h5_restart() {
-  cd back-end/h5-api && npx pm2 restart luban-h5-service
+  cd back-end/h5-api && pm2 restart luban-h5-service
   cd ${cur_dir}
 }
 
@@ -126,7 +126,7 @@ luban_h5_rebuild_editor() {
 }
 
 luban_h5_stop() {
-  cd back-end/h5-api && npx pm2 stop luban-h5-service
+  cd back-end/h5-api && pm2 stop luban-h5-service
   cd ${cur_dir}
 }
 
