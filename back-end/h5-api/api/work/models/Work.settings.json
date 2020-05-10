@@ -31,6 +31,18 @@
     },
     "is_template": {
       "type": "boolean"
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": [
+        "h5_swipper",
+        "h5_long_page",
+        "h5_form"
+      ]
+    },
+    "height": {
+      "type": "integer",
+      "default": 568
     }
   }
 }

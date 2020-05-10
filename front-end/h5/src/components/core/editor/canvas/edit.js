@@ -10,7 +10,7 @@ export default {
     contextmenuPos: []
   }),
   computed: {
-    ...mapState('editor', ['editingElement'])
+    ...mapState('editor', ['editingElement', 'work'])
   },
   methods: {
     ...mapActions('editor', [
@@ -18,7 +18,8 @@ export default {
       'setElementPosition',
       'setElementShape',
       'recordElementRect',
-      'elementManager'
+      'elementManager',
+      'updateWork'
     ]),
     // TODO #!zh: 优化代码
     // generate vertical line
@@ -142,6 +143,43 @@ export default {
       }
     },
     /**
+     * 更新作品高度
+     * @param {Number} height
+     */
+    updateWorkHeight (height) {
+      this.updateWork({ height })
+    },
+    /**
+     * TODO 封装 adjust editor scale 组件
+     * scale: height/width
+     * @param {MouseEvent} e
+     */
+    mousedownForAdjustLine (e) {
+      let startY = e.clientY
+      let startHeight = this.work.height
+
+      const canvasOuterWrapper = document.querySelector('#canvas-outer-wrapper')
+
+      let move = moveEvent => {
+        // !#zh 移动的时候，不需要向后代元素传递事件，只需要单纯的移动就OK
+        moveEvent.stopPropagation()
+        moveEvent.preventDefault()
+
+        let currY = moveEvent.clientY
+        let currentHeight = currY - startY + startHeight
+        this.updateWorkHeight(currentHeight)
+        // 交互效果：滚动条同步滚动至底部
+        canvasOuterWrapper && (canvasOuterWrapper.scrollTop = canvasOuterWrapper.scrollHeight)
+      }
+
+      let up = moveEvent => {
+        document.removeEventListener('mousemove', move, true)
+        document.removeEventListener('mouseup', up, true)
+      }
+      document.addEventListener('mousemove', move, true)
+      document.addEventListener('mouseup', up, true)
+    },
+    /**
      * #!zh: renderCanvas 渲染中间画布
      * elements
      * @param {*} h
@@ -251,6 +289,26 @@ export default {
                 onHideMenu={this.hideContextMenu}
               /> : null
           }
+          <div style={{
+            position: 'absolute',
+            top: `${this.work.height}px`,
+            width: '100%'
+          }}>
+            <div class="long-page-adjust">
+              <div class="adjust-line"></div>
+              <div class="adjust-button" onMousedown={this.mousedownForAdjustLine}><div class="indicator"></div></div>
+              <div class="adjust-tip">
+                <span>320 x</span>
+                <a-input-number
+                  size="small"
+                  style="margin: 0 4px; width:60px;"
+                  value={this.work.height}
+                  onChange={height => { this.updateWork({ height }) }}
+                />
+                <span>px</span>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }

@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-15 16:24:33
+ * @LastEditTime: 2020-05-10 23:23:40
  * @FilePath: /luban-h5/front-end/h5/src/components/core/models/work.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: work model
@@ -12,6 +12,7 @@ import Page from './page.js'
 
 class Work {
   constructor (work = {}) {
+    this.id = work.id
     this.title = work.title || '标题'
     this.description = work.description || '描述'
     this.pages = work.pages || [new Page()]
@@ -30,6 +31,13 @@ class Work {
 
     this.is_publish = false
     this.is_template = false
+    this.height = work.height || 568
+    /**
+     * 页面模式，枚举值
+     * h5_swipper 翻页H5
+     * h5_long_page 长页面H5
+     */
+    this.mode = work.mode || 'h5_swipper'
   }
 }
 

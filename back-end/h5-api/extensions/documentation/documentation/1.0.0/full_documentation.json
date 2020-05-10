@@ -1,14 +1,20 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.1",
-    "title": "#!zh: 鲁班H5-后端API 文档",
-    "description": "#!zh: 鲁班H5-后端API 文档（#!en: API docs for luban-h5）",
+    "version": "1.0.0",
+    "title": "DOCUMENTATION",
+    "description": "",
+    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "Feedback",
-      "url": "https://github.com/ly525/luban-h5/issues/new?title=[api-docs-feedback]"
+      "name": "TEAM",
+      "email": "contact-email@something.io",
+      "url": "mywebsite.io"
     },
-    "x-generation-date": "01/26/2020 5:36:49 PM"
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-generation-date": "05/10/2020 10:31:59 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -29,8 +35,8 @@
     }
   ],
   "externalDocs": {
-    "description": "#!zh 鲁班H5完整文档(#!en Full Docs for Luban-H5)",
-    "url": "https://ly525.github.io/luban-h5/"
+    "description": "Find out more",
+    "url": "https://strapi.io/documentation/3.0.0-beta.x/"
   },
   "security": [
     {
@@ -3706,6 +3712,18 @@
           },
           "is_template": {
             "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "h5_swipper",
+              "h5_long_page",
+              "h5_form"
+            ]
+          },
+          "height": {
+            "type": "integer",
+            "default": 568
           }
         }
       },
@@ -3728,6 +3746,18 @@
           },
           "is_template": {
             "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "h5_swipper",
+              "h5_long_page",
+              "h5_form"
+            ]
+          },
+          "height": {
+            "type": "integer",
+            "default": 568
           }
         }
       },
@@ -3767,6 +3797,12 @@
               },
               "is_template": {
                 "type": "boolean"
+              },
+              "mode": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
               }
             }
           }

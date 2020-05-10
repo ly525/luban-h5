@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import { getVM, getComponentsForPropsEditor } from '../../../../utils/element'
+import RenderGlobalWorkPropsEditor from './props/global-work.vue'
 
 export default {
   data: () => ({
@@ -141,11 +142,14 @@ export default {
           }
         </a-form>
       )
+    },
+    renderWorkGlobalPropsPanel (h) {
+      return <RenderGlobalWorkPropsEditor />
     }
   },
   render (h) {
     const ele = this.editingElement
-    if (!ele) return (<span>{this.$t('editor.editPanel.common.empty')}</span>)
+    if (!ele) return this.renderWorkGlobalPropsPanel(h)
     this.mixinEnhancedPropsEditor(ele)
     return this.renderPropsEditorPanel(h, ele)
   },

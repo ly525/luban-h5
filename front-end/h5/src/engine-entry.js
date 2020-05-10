@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-15 17:09:51
+ * @LastEditTime: 2020-05-10 23:43:42
  * @FilePath: /luban-h5/front-end/h5/src/engine-entry.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
@@ -32,9 +32,22 @@ const Engine = {
   },
   methods: {
     renderPreview (h, _elements) {
+      const isLongPage = window.__work.mode === 'h5_long_page'
       const elements = _elements.map(element => new Element(element))
+      let pageWrapperStyle = {
+        height: '100%',
+        position: 'relative'
+      }
+
+      if (isLongPage) {
+        pageWrapperStyle = {
+          ...pageWrapperStyle,
+          'overflow-y': 'scroll'
+        }
+      }
+
       return (
-        <div style={{ height: '100%', position: 'relative' }}>
+        <div style={pageWrapperStyle}>
           {
             elements.map((element, index) => {
               // const style = element.getStyle({ position: 'absolute', isRem: true })

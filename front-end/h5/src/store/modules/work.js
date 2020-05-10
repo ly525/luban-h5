@@ -257,7 +257,7 @@ export const mutations = {
       page.elements = page.elements.map(element => new Element(element))
       return new Page(page)
     })
-    state.work = work
+    state.work = new Work(work)
   },
   previewWork (state, { type, value }) {},
   deployWork (state, { type, value }) {},

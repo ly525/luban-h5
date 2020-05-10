@@ -311,7 +311,7 @@ export default {
           <a-layout-sider width="240" theme='light' style={{ background: '#fff', padding: '12px' }}>
             { this._renderMenuContent() }
           </a-layout-sider>
-          <a-layout>
+          <a-layout id="canvas-outer-wrapper">
             <div class="mode-toggle-wrapper">
               <a-radio-group
                 size="small"
@@ -330,7 +330,9 @@ export default {
               </a-radio-group>
             </div>
             <a-layout-content style={{ transform: `scale(${this.scaleRate})`, 'transform-origin': 'center top' }}>
-              <div class='canvas-wrapper'>
+              <div class='canvas-wrapper' style={{
+                height: `${this.work.height}px`
+              }}>
                 {/* { this.isPreviewMode ? this.renderPreview(h, this.elements) : this.renderCanvas(h, this.elements) } */}
                 { this.isPreviewMode
                   ? <RenderPreviewCanvas elements={this.elements}/>

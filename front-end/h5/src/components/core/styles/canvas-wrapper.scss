@@ -11,7 +11,8 @@ $designerWidthHalf: $designerWidth / 2;
   position: relative;
   top: 60px;
   width: $designerWidth;
-  height: $designerHeight;
+  // height: $designerHeight;
+  min-height: $designerHeight;
   margin: 0 auto;
   background: #fff;
   border: 1px solid #e7e7e7;
@@ -32,4 +33,42 @@ $designerWidthHalf: $designerWidth / 2;
   top: 80px;
   left: calc(50% - 120px);
   text-align: center;
+}
+
+
+.long-page-adjust {
+  .adjust-line {
+    width: 100%;
+    height: 1px;
+    background-color: #1593ff;
+  }
+
+  .adjust-button {
+    margin: 0 auto;
+    width: 30px;
+    height: 10px;
+    border-radius: 2px;
+    padding-top: 4px;
+    cursor: ns-resize;
+    background-color: #1593ff;
+
+    .indicator {
+        margin: 0 auto;
+        width: 10px;
+        height: 1px;
+        background-color: #ccd5db;
+    }
+  }
+
+  .adjust-tip {
+    letter-spacing: 1px;
+    padding: 0;
+    height: 24px;
+    margin: 2px auto 0;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    color: #868484;
+    vertical-align: middle;
+  }
 }

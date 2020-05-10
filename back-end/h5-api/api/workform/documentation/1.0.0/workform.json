@@ -550,6 +550,12 @@
               },
               "is_template": {
                 "type": "boolean"
+              },
+              "mode": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
               }
             }
           }
