@@ -2,8 +2,8 @@
  * @Author: ly525
  * @Date: 2020-05-10 23:10:52
  * @LastEditors: ly525
- * @LastEditTime: 2020-05-10 23:20:22
- * @FilePath: /luban-h5/front-end/h5/src/components/core/editor/edit-panel/props/global-work.vue
+ * @LastEditTime: 2020-05-13 00:09:56
+ * @FilePath: /h5/src/components/core/editor/edit-panel/props/global-work.vue
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
@@ -13,7 +13,7 @@
     <a-form-item
       label="H5类型"
     >
-      <a-radio-group default-value="h5_swipper" @change="handleChangeMode" size="small">
+      <a-radio-group default-value="h5_swipper" @change="handleModeChange" size="small">
         <a-radio-button value="h5_swipper">
           翻页H5
         </a-radio-button>
