@@ -84,7 +84,7 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 
 | 钉钉群  | 微信公众号  |  微信 |
 |---|---|---|
-| <img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="200" />| <img src="https://user-images.githubusercontent.com/12668546/65471913-ab827580-dea3-11e9-919c-870c9605c60f.png" width="200" />  | <img src="https://user-images.githubusercontent.com/12668546/66585418-5cce1e80-ebb9-11e9-91c0-56f658f09e27.png" width="200" /> <br />请备注：鲁班H5交流|
+| <img src="https://user-images.githubusercontent.com/12668546/61447488-a379f700-a983-11e9-9956-139352a2585d.png" width="100" />| <img src="https://user-images.githubusercontent.com/12668546/65471913-ab827580-dea3-11e9-919c-870c9605c60f.png" width="100" />  | <img src="https://user-images.githubusercontent.com/12668546/66585418-5cce1e80-ebb9-11e9-91c0-56f658f09e27.png" width="100" /> <br />请备注：鲁班H5交流|
 
 ## 更多细节请阅读[在线文档](https://ly525.github.io/luban-h5)
 
@@ -133,3 +133,10 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 
 #### 如何贡献
 所有合理的改动、优化、修正，新的组件，或者文档的修正、更新 相关的提交都会被接受
+
+
+#### 捐赠作者
+如果项目对您有用或者对您有启发，不妨通过微信或者支付宝进行小额捐赠，以支持该项目的持续维护和发展
+| 微信捐赠  | 支付宝捐赠
+|---|---|
+| <img src="https://user-images.githubusercontent.com/12668546/81877522-e6165b00-95b7-11ea-9699-b74670a208d7.png" width="140" />| <img src="https://user-images.githubusercontent.com/12668546/81877535-ef9fc300-95b7-11ea-954a-03ae349908cd.png" width="140" />
