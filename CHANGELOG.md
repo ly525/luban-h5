@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/ly525/luban-h5/compare/v1.9.0...v1.10.0) (2020-05-17)
+
+
+### Features
+
+* **component:** 增加公告组件; ([e839d9c](https://github.com/ly525/luban-h5/commit/e839d9c))
+* **PropTypes:** upgrade PropTypes from object to function; #!zh: 升级 PropTypes: 更新为函数, 便于后期扩展 ([30b9692](https://github.com/ly525/luban-h5/commit/30b9692))
+
 ## [1.9.0](https://github.com/ly525/luban-h5/compare/v1.8.3...v1.9.0) (2020-05-10)
 
 
