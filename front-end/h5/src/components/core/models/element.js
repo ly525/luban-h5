@@ -32,7 +32,7 @@ class Element {
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
     this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj({ ...ele.pluginProps, uuid: this.uuid })) || this.getDefaultPluginProps(ele.props || {})
-    this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex }
+    this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex, ...ele.defaultStyle }
     this.events = []
     this.animations = ele.animations || []
   }
