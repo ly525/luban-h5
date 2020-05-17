@@ -1,3 +1,4 @@
+import PropTypes from '@luban-h5/plugin-common-props'
 import LbpFormRadio from './lbp-form-radio.js'
 
 function getDefaultItems () {
@@ -26,24 +27,15 @@ export default {
     LbpFormRadio
   },
   props: {
-    aliasName: {
-      type: String,
-      default: `标题演示`,
-      editor: {
-        type: 'a-input',
-        label: '填写标题',
-        require: true
-      }
-    },
-    items: {
-      type: Array,
-      default: () => getDefaultItems(),
-      editor: {
-        type: 'lbs-prop-text-enum-editor',
-        label: '选项列表',
-        require: true
-      }
-    },
+    aliasName: PropTypes.string({
+      defaultValue: '标题演示',
+      label: '填写标题'
+    }),
+    items: PropTypes.textOptions({
+      label: '选项列表',
+      defaultValue: () => getDefaultItems()
+    }),
+    // TODO 抽离 radio-group 至 common-props
     type: {
       type: String,
       default: 'checkbox',
@@ -51,7 +43,7 @@ export default {
         type: 'a-radio-group',
         label: '选择模式',
         require: true,
-        prop: {
+        props: {
           options: [
             { label: '单选', value: 'radio' },
             { label: '多选', value: 'checkbox' }

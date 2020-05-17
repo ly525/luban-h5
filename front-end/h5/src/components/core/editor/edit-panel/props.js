@@ -74,7 +74,7 @@ export default {
       const data = {
         // style: { width: '100%' },
         props: {
-          ...item.prop || {},
+          ...item.props || {},
           // https://vuejs.org/v2/guide/render-function.html#v-model
 
           // #!zh:不设置默认值的原因（下一行的代码，注释的代码）：

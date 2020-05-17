@@ -2,13 +2,14 @@
  * @Author: ly525
  * @Date: 2019-11-23 12:35:43
  * @LastEditors: ly525
- * @LastEditTime: 2019-11-23 19:50:57
- * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-form-radio-group.js
+ * @LastEditTime: 2020-05-17 23:17:23
+ * @FilePath: /h5/src/components/plugins/lbp-form-radio-group.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: 表单单选组组件 #!en: radio group component
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
 
+import PropTypes from '@luban-h5/plugin-common-props'
 import LbpFormRadio from './lbp-form-radio.js'
 
 function getDefaultItems () {
@@ -34,24 +35,14 @@ function getDefaultItems () {
 export default {
   name: 'lbp-form-radio-group',
   props: {
-    aliasName: {
-      type: String,
-      default: `标题演示`,
-      editor: {
-        type: 'a-input',
-        label: '填写标题',
-        require: true
-      }
-    },
-    items: {
-      type: Array,
-      default: () => getDefaultItems(),
-      editor: {
-        type: 'lbs-prop-text-enum-editor',
-        label: '选项列表',
-        require: true
-      }
-    },
+    aliasName: PropTypes.string({
+      defaultValue: `标题演示`,
+      label: '填写标题'
+    }),
+    items: PropTypes.textOptions({
+      label: '选项列表',
+      defaultValue: () => getDefaultItems()
+    }),
     type: {
       type: String,
       default: 'radio',
@@ -59,7 +50,7 @@ export default {
         type: 'a-radio-group',
         label: '选择模式',
         require: true,
-        prop: {
+        props: {
           options: [
             { label: '单选', value: 'radio' },
             { label: '多选', value: 'checkbox' }

@@ -2,34 +2,36 @@
  * @Author: ly525
  * @Date: 2020-05-14 08:09:44
  * @LastEditors: ly525
- * @LastEditTime: 2020-05-14 08:36:35
+ * @LastEditTime: 2020-05-17 21:18:32
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-notice-bar.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
 
-import commonProps from '@luban-h5/plugin-common-props'
+import PropTypes from '@luban-h5/plugin-common-props'
 import { NoticeBar } from 'vant'
 import 'vant/lib/notice-bar/style'
 
 export default {
   name: 'lbp-notice-bar',
   props: {
-    text: commonProps.text({
+    text: PropTypes.string({
       defaultValue: '请填写内容，如果过长，将会在手机上滚动显示',
-      label: '公告'
+      label: '公告',
+      props: {
+        type: 'textarea'
+      }
     }),
-    vertical: commonProps.vertical,
-    backgroundColor: commonProps.backgroundColor,
-    color: commonProps.color,
+    vertical: PropTypes.boolean(),
+    backgroundColor: PropTypes.color({ defaultValue: '#fffbe8' }), /** 淡黄色 */
     mode: {
       type: String,
       default: '',
       editor: {
         type: 'a-select',
         label: '模式',
-        prop: {
+        props: {
           options: [
             {
               label: '默认',

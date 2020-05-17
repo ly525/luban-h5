@@ -1,3 +1,5 @@
+import PropTypes from '@luban-h5/plugin-common-props'
+
 import placeholderImg from './lbp-picture-placeholder.png' // issue #34
 export default {
   name: 'lbp-picture',
@@ -5,17 +7,7 @@ export default {
     return <img src={this.imgSrc || placeholderImg} alt="" srcset="" width="100%" />
   },
   props: {
-    imgSrc: {
-      type: String,
-      default: placeholderImg,
-      editor: {
-        type: 'lbs-image-gallery',
-        label: '图片',
-        prop: {
-          type: 'textarea'
-        }
-      }
-    }
+    imgSrc: PropTypes.image()
   },
   data: () => ({
     placeholderImg

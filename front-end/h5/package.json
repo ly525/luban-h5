@@ -17,7 +17,7 @@
     "@luban-h5/lbc-button": "^0.0.3",
     "@luban-h5/lbp-slide": "^0.0.7",
     "@luban-h5/lbs-text-align": "^0.0.3",
-    "@luban-h5/plugin-common-props": "^0.0.2",
+    "@luban-h5/plugin-common-props": "^0.1.3",
     "animate.css": "^3.7.2",
     "ant-design-vue": "^1.3.14",
     "core-js": "^2.6.5",

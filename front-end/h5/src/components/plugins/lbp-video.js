@@ -1,13 +1,15 @@
 /*
  * @Author: ly525
  * @Date: 2019-12-01 18:11:50
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-15 00:53:48
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-05-17 21:12:55
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-video.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
+import PropTypes from '@luban-h5/plugin-common-props'
+
 import playIcon from './play.svg'
 import './styles/video.scss'
 // 这里有个动画演示，可以用来学习 CSS：《CSS制作播放、暂停按钮》https://codepen.io/chriscoyier/full/lotjh
@@ -21,38 +23,24 @@ export default {
       editor: {
         type: 'lbs-video-gallery',
         label: '视频',
-        prop: {
+        props: {
           type: 'textarea'
         }
       }
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    useIframe: {
-      type: Boolean,
-      default: false,
-      editor: {
-        type: 'a-switch',
-        label: '使用iframe'
-      }
-    },
-    iframeSrc: {
-      type: String,
+    disabled: PropTypes.boolean({ label: 'disabled' }),
+    useIframe: PropTypes.boolean({ label: '使用iframe' }),
+    iframeSrc: PropTypes.string({
       default: '',
-      editor: {
-        type: 'a-input',
-        label: 'iframe 地址',
-        prop: {
-          type: 'textarea',
-          placeholder: '只有使用iframe打开的时候，这个才有效'
-        },
-        extra: (h) => {
-          return '「使用iframe」打开的时候，这个才有效；上传视频请忽略该配置'
-        }
+      label: 'iframe 地址',
+      props: {
+        type: 'textarea',
+        placeholder: '只有使用iframe打开的时候，这个才有效'
+      },
+      extra: (h) => {
+        return '「使用iframe」打开的时候，这个才有效；上传视频请忽略该配置'
       }
-    }
+    })
   },
   watch: {
     src () {

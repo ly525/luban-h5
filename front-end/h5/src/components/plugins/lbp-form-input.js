@@ -1,5 +1,5 @@
 // https://github.com/luban-h5-components/plugin-common-props
-import commonProps from '@luban-h5/plugin-common-props'
+import PropTypes from '@luban-h5/plugin-common-props'
 
 export default {
   name: 'lbp-form-input',
@@ -26,12 +26,6 @@ export default {
     />
   },
   props: {
-    name: {
-      type: String,
-      default () {
-        return 'name'
-      }
-    },
     type: {
       type: String,
       default: 'text',
@@ -40,20 +34,18 @@ export default {
         label: '类型'
       }
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    // type: commonProps.type,
-    placeholder: commonProps.placeholder('姓名'),
-    fontSize: commonProps.fontSize,
-    color: commonProps.color,
-    backgroundColor: commonProps.backgroundColor,
-    borderColor: commonProps.borderColor,
-    borderWidth: commonProps.borderWidth,
-    borderRadius: commonProps.borderRadius,
-    lineHeight: commonProps.lineHeight,
-    textAlign: commonProps.textAlign({ defaultValue: 'left' })
+    name: PropTypes.string({ defaultValue: 'name', label: 'name' }),
+    disabled: PropTypes.boolean({ label: 'disabled' }),
+    fontSize: PropTypes.number({ label: '字号(px)' }),
+    placeholder: PropTypes.string({ defaultValue: '提示信息', label: '提示信息' }),
+    color: PropTypes.color(),
+    backgroundColor: PropTypes.color({ label: '背景色', defaultValue: 'rgba(255, 255, 255, 0.2)' }),
+    borderWidth: PropTypes.number({ label: '边框宽度(px)', defaultValue: 1 }),
+    borderRadius: PropTypes.number({ label: '圆角(px)', defaultValue: 0 }),
+    borderColor: PropTypes.color({ label: '边框颜色', defaultValue: '#ced4da' }),
+    textAlign: PropTypes.textAlign({ defaultValue: 'left' }),
+    vertical: PropTypes.boolean(),
+    lineHeight: PropTypes.number({ label: '行高(px)', defaultValue: 1 })
   },
   componentsForPropsEditor: {
     'lbs-select-input-type': {

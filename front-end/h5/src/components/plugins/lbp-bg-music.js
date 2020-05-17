@@ -1,41 +1,34 @@
 /*
  * @Author: ly525
  * @Date: 2020-01-03 23:43:34
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-04 13:27:58
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-05-17 20:58:32
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-bg-music.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
+import PropTypes from '@luban-h5/plugin-common-props'
 import './styles/bg-music.scss'
 
 export default {
   name: 'lbp-bg-music',
   props: {
-    disabled: {
-      type: Boolean,
-      default: true
-    },
-    autoplay: {
-      type: Boolean,
-      default: true,
-      editor: {
-        type: 'a-switch',
-        label: '自动播放'
+    disabled: PropTypes.boolean({
+      defaultValue: true,
+      label: 'disabled'
+    }),
+    autoplay: PropTypes.boolean({
+      defaultValue: true,
+      label: '自动播放'
+    }),
+    src: PropTypes.string({
+      label: '音乐URL',
+      defaultValue: 'http://go.163.com/2018/0209/mengniu/audio/bgm.mp3',
+      props: {
+        type: 'textarea'
       }
-    },
-    src: {
-      type: String,
-      default: 'http://go.163.com/2018/0209/mengniu/audio/bgm.mp3',
-      editor: {
-        type: 'a-input',
-        label: '音乐URL',
-        prop: {
-          type: 'textarea'
-        }
-      }
-    }
+    })
   },
   data: () => ({
     isPlaying: true

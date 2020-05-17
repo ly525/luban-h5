@@ -1,12 +1,20 @@
+/*
+ * @Author: ly525
+ * @Date: 2020-05-17 19:54:20
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-05-17 19:55:02
+ * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-form-radio.js
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description: Do not edit
+ * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ */
 import './styles/radio.scss'
 // https://github.com/luban-h5-components/plugin-common-props
-import commonProps from '@luban-h5/plugin-common-props'
 import { genUUID } from '../../utils/element.js'
 
 export default {
   name: 'lbp-form-radio',
   props: {
-    ...commonProps,
     value: {
       type: [String, Number],
       default: '选项值'

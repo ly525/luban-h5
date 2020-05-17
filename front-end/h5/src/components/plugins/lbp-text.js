@@ -2,19 +2,19 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2020-04-25 11:14:38
+ * @LastEditTime: 2020-05-17 21:11:10
  * @FilePath: /luban-h5/front-end/h5/src/components/plugins/lbp-text.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: luban-h5 text component/plugin
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
+import PropTypes from '@luban-h5/plugin-common-props'
 import { quillEditor } from 'vue-quill-editor'
 // require styles
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import './styles/text-overwrite-quil-snow-theme.scss'
 // https://github.com/luban-h5-components/plugin-common-props
-import commonProps from '@luban-h5/plugin-common-props'
 
 export default {
   render (h) {
@@ -87,14 +87,11 @@ export default {
     }
   },
   props: {
-    backgroundColor: commonProps.backgroundColor,
-    borderWidth: commonProps.borderWidth,
-    borderRadius: commonProps.borderRadius,
-    borderColor: commonProps.borderColor,
-    text: {
-      type: String,
-      default: '双击修改文字'
-    }
+    backgroundColor: PropTypes.color({ label: '背景色' }),
+    borderWidth: PropTypes.number({ label: '边框宽度(px)' }),
+    borderRadius: PropTypes.number({ label: '圆角(px)' }),
+    borderColor: PropTypes.color({ label: '边框颜色' }),
+    text: PropTypes.string({ label: '双击修改文字' })
   },
   editorConfig: {
   }

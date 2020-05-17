@@ -792,10 +792,10 @@
   resolved "https://registry.yarnpkg.com/@luban-h5/plugin-common-props/-/plugin-common-props-0.0.1.tgz#10fe5d5b2dda1db64912b3b99779aec60b5ea956"
   integrity sha512-D8UEBht2BCJt8YDHqcYj0hQmn3WM3QdX3Rw8eaZP02o0NeNe2oDPKE4mCM3eN9U1ygcrDf9bR48RB9YgHJRHGA==
 
-"@luban-h5/plugin-common-props@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@luban-h5/plugin-common-props/-/plugin-common-props-0.0.2.tgz#17ac100c241fa16b4de7c259837a0af0862693ef"
-  integrity sha512-6lsjSq6nPYD1EdbIBugf3dDFAr55ijzyOH4gd6oor/rQ8o8qDlh4UH2L4zaXCUJnMgi8osF8mXnfLx4oBd0JMQ==
+"@luban-h5/plugin-common-props@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@luban-h5/plugin-common-props/-/plugin-common-props-0.1.3.tgz#90cf658d4805f345a93b552cae92124d0e9362b6"
+  integrity sha512-Ubihet2AIK1lW4USp8NtyrO5o0Vza8OtPBK4nlzF4jgdmW6qNrp6+hZbH2m3LAdF395Q/h1ZTtZZ2kS8IC5/cg==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
