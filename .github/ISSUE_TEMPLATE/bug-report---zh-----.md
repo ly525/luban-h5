@@ -1,3 +1,12 @@
+---
+name: 'Bug report<#!zh: 中文>'
+about: Bug Report、反馈问题、提 Bug
+title: "[Bug Report/Feeback]"
+labels: ''
+assignees: ''
+
+---
+
 **问题描述**
 简明扼要的描述你的问题
 
