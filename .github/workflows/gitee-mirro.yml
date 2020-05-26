@@ -27,3 +27,4 @@ jobs:
         static_list: "luban-h5"
         force_update: true
         account_type: user
+        clone_style: ssh
