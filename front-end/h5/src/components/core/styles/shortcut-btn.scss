@@ -11,7 +11,10 @@
   background-color: #f5f8fb !important;
   color: #393e46 !important;
 
-  transition: all .25s;
+  // !#zh: 移除动画，防止因为动画导致的拖拽延迟
+  // !#en: remove animation to prevent moving delay
+  // transition: all .25s;
+  // transition: none !important;
   cursor: pointer;
 
   &:disabled {
@@ -20,4 +23,12 @@
   .shortcut-icon {
     padding: 4px;
   }
+
+  // !#zh: learn from ant-design-vue button style which prevent show the select area
+  // !#en: 从 ant-design-vue 借鉴而来，防止从组件列表拖拽元素至画布过程中，出现用户选中文字内容效果
+  user-select: none;
+  span {
+    pointer-events: none;
+  }
 }
+

@@ -11,7 +11,13 @@ export default {
     },
     clickFn: {
       required: false,
-      type: Function
+      type: Function,
+      default: () => {}
+    },
+    mousedownFn: {
+      required: false,
+      type: Function,
+      default: () => {}
     },
     disabled: {
       type: Boolean,
@@ -19,11 +25,11 @@ export default {
     }
   },
   render: (h, { props, listeners, slots }) => {
-    const onClick = props.clickFn || function () {}
     return (
-      <a-button
+      <button
         class="shortcut-button"
-        onClick={onClick}
+        onClick={props.clickFn}
+        onMousedown={props.mousedownFn}
         disabled={props.disabled}
       >
         <i
@@ -31,7 +37,7 @@ export default {
           aria-hidden='true'
         />
         <span>{ props.title }</span>
-      </a-button>
+      </button>
     )
   }
 }
