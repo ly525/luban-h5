@@ -1,5 +1,5 @@
 export default {
-  name: 'lbs-prop-text-enum-editor',
+  name: 'lbs-props-text-enum-editor',
   render () {
     return <div>
       {
