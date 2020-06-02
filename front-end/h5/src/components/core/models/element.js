@@ -31,10 +31,29 @@ class Element {
      * 3. 为何需要 clone，因为会有 element.clone() 以及 page.clone()，
      *    element.pluginProps 和 elementcommonStyle 是引用类型，如果不做 deep_clone 可能会出现意外错误
      */
-    this.pluginProps = (typeof ele.pluginProps === 'object' && cloneObj({ ...ele.pluginProps, uuid: this.uuid })) || this.getDefaultPluginProps(ele.props || {})
-    this.commonStyle = (typeof ele.commonStyle === 'object' && cloneObj(ele.commonStyle)) || { ...defaultStyle, zindex: ele.zindex, ...ele.defaultStyle }
+    this.pluginProps = this.getPluginProps(ele)
+    this.commonStyle = this.getCommonStyle(ele)
     this.events = []
     this.animations = ele.animations || []
+  }
+
+  getCommonStyle (ele) {
+    if (typeof ele.commonStyle === 'object') {
+      return cloneObj(ele.commonStyle)
+    }
+    return {
+      ...defaultStyle,
+      zindex: ele.zindex,
+      ...ele.defaultStyle,
+      ...ele.customStyle
+    }
+  }
+
+  getPluginProps (ele) {
+    if (typeof ele.pluginProps === 'object') {
+      return cloneObj({ ...ele.pluginProps, uuid: this.uuid })
+    }
+    return this.getDefaultPluginProps(ele.props || {})
   }
 
   // init prop of plugin
