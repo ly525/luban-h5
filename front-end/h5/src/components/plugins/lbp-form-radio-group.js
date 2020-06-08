@@ -34,7 +34,7 @@ function getDefaultItems () {
 
 export default {
   extra: {
-    style: {
+    defaultStyle: {
       width: 120,
       height: 120
     }

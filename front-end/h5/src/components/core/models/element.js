@@ -45,7 +45,7 @@ class Element {
       ...defaultStyle,
       zindex: ele.zindex,
       ...ele.defaultStyle,
-      ...(ele.extra && ele.extra.style)
+      ...(ele.extra && ele.extra.defaultStyle)
     }
   }
 

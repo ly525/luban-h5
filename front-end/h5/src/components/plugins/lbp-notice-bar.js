@@ -15,7 +15,7 @@ import 'vant/lib/notice-bar/style'
 
 export default {
   extra: {
-    style: {
+    defaultStyle: {
       width: 300,
       height: 30
     }
