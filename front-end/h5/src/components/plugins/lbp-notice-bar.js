@@ -14,6 +14,10 @@ import { NoticeBar } from 'vant'
 import 'vant/lib/notice-bar/style'
 
 export default {
+  customStyle: {
+    width: 300,
+    height: 30
+  },
   name: 'lbp-notice-bar',
   props: {
     text: PropTypes.string({

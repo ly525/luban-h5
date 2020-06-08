@@ -33,6 +33,10 @@ function getDefaultItems () {
 }
 
 export default {
+  customStyle: {
+    width: 120,
+    height: 120
+  },
   name: 'lbp-form-radio-group',
   props: {
     aliasName: PropTypes.string({
