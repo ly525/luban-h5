@@ -22,9 +22,11 @@ function getDefaultItems () {
 }
 
 export default {
-  customStyle: {
-    width: 120,
-    height: 120
+  extra: {
+    style: {
+      width: 120,
+      height: 120
+    }
   },
   name: 'lbp-form-checkbox-group',
   components: {
