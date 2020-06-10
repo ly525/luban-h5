@@ -53,12 +53,12 @@ class Element {
     if (typeof ele.pluginProps === 'object') {
       return cloneObj({ ...ele.pluginProps, uuid: this.uuid })
     }
-    return this.getDefaultPluginProps(ele.props || {})
+    return this.getDefaultPluginProps(ele.props, ele.shortcutProps)
   }
 
   // init prop of plugin
-  getDefaultPluginProps (props) {
-    const pluginProps = {
+  getDefaultPluginProps (props = {}, shortcutProps) {
+    let pluginProps = {
       uuid: this.uuid
     }
     Object.keys(props).forEach(key => {
@@ -70,6 +70,12 @@ class Element {
       const defaultValue = props[key].default
       pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue
     })
+
+    pluginProps = {
+      ...pluginProps,
+      ...shortcutProps
+    }
+
     return pluginProps
   }
 

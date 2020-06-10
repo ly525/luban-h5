@@ -148,11 +148,16 @@ export default {
      * !#zh 点击插件，copy 其基础数据到组件树（中间画布）
      * #!en click the plugin shortcut, create new Element with the plugin's meta data
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
+     *
+     * shortcutItem: PluginListItem = {
+      name: String,
+      shortcutProps: {}
+     }
      */
-    clone ({ name }) {
+    clone (shortcutItem) {
       this.elementManager({
         type: 'add',
-        value: { name }
+        value: shortcutItem
       })
     },
     /**

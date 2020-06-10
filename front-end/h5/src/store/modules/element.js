@@ -40,6 +40,7 @@ export const mutations = {
     switch (type) {
       case 'add':
         const vm = getVM(value.name)
+        vm.$options.shortcutProps = value.shortcutProps
         const element = new Element(vm.$options)
         elements.push(element)
         break
