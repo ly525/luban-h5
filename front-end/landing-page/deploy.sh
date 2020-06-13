@@ -17,6 +17,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@gitee.com:ly525/luban-h5.git master:gh-pages-landing-page
+# git push -f git@gitee.com:ly525/luban-h5.git master:gh-pages-landing-page
+git push -f git@github.com:ly525/luban-h5.git master:gh-pages-landing-page
 
 cd -
