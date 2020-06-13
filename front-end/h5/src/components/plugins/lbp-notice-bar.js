@@ -30,7 +30,8 @@ export default {
       }
     }),
     vertical: PropTypes.boolean(),
-    backgroundColor: PropTypes.color({ defaultValue: '#fffbe8' }), /** 淡黄色 */
+    backgroundColor: PropTypes.color({ label: '背景色', defaultValue: '#fffbe8' }), /** 淡黄色 */
+    color: PropTypes.color({ defaultValue: '#ed6a0c' }), /** 淡黄色 */
     mode: {
       type: String,
       default: '',
