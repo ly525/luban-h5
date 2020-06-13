@@ -102,7 +102,8 @@ export default {
       const formItemData = {
         props: {
           ...formItemLayout,
-          label: item.label
+          label: item.label,
+          ...item.layout
         }
       }
       return (
