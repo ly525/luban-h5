@@ -1,4 +1,8 @@
-# This is a basic workflow to help you get started with Actions
+# 使用 GitHub Action 来解决手动同步到 Gitee 的问题
+# 效果：github repo 代码更新之后，会自动同步至 gitee
+# 使用到的 GitHub Action：https://github.com/Yikun/hub-mirror-action
+
+This is a basic workflow to help you get started with Actions
 
 name: gitee-mirror<sync2gitee.com>
 
@@ -6,7 +10,7 @@ name: gitee-mirror<sync2gitee.com>
 # events but only for the master branch
 on:
   push:
-    branches:    
+    branches:
       - '*'
 
 jobs:
@@ -22,9 +26,16 @@ jobs:
       with:
         src: github/ly525
         dst: gitee/ly525
+        # 这里请填写与gitee上公钥匹配的的 ssh private key，参见：https://gitee.com/profile/sshkeys
+        # 填写地址：https://github.com/ly525/luban-h5/settings/secrets
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        # 这里请填写 gitee的令牌，参见：https://gitee.com/profile/personal_access_tokens
+        # 填写地址：https://github.com/ly525/luban-h5/settings/secrets
         dst_token: ${{ secrets.GITEE_TOKEN }}
+        # 项目同步白名单，可以选择填写多个，以英文逗号分割
         static_list: "luban-h5"
+        # 是否强制同步
         force_update: true
+        # 账号类型：对 luban-h5 而言是 user，因为是个人项目；如果是企业项目，请填写 org，因为是组织下的项目
         account_type: user
         clone_style: ssh
