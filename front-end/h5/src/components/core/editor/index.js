@@ -22,26 +22,7 @@ import LangSelect from '@/components/common/header/LangSelect.vue'
 import Feedback from '@/components/common/feedback/index'
 import AdjustLineV from '@/components/core/support/adjust-line/vertical'
 
-// const sidebarMenus = [
-//   {
-//     i18nLabel: 'editor.sidebar.components',
-//     label: '组件列表',
-//     value: 'pluginList',
-//     antIcon: 'bars'
-//   },
-//   {
-//     i18nLabel: 'editor.sidebar.pages',
-//     label: '页面管理',
-//     value: 'pageManagement',
-//     antIcon: 'snippets'
-//   },
-//   {
-//     i18nLabel: 'editor.sidebar.templates',
-//     label: '免费模板',
-//     value: 'freeTemplate',
-//     antIcon: 'appstore'
-//   }
-// ]
+import DragMixin from './drag-mixin'
 
 const fixedTools = [
   {
@@ -103,6 +84,7 @@ const fixedTools = [
 ]
 
 export default {
+  mixins: [DragMixin],
   name: 'Editor',
   components: {
     LogoOfHeader,
@@ -184,7 +166,11 @@ export default {
                 <strong>{ this.$t('editor.tip.click') }</strong>{ this.$t('editor.tip.click') }
               </i18n>
             </div>
-            <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
+            <RenderShortcutsPanel
+              pluginsList={this.pluginsList}
+              handleClickShortcut={this.clone}
+              handleDragStart={this.handleDragStartFromMixin}
+            />
           </a-tab-pane>
           <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
             <RenderPageManager
@@ -202,46 +188,6 @@ export default {
           </a-tab-pane>
         </a-tabs>
       )
-      // switch (this.activeMenuKey) {
-      //   case sidebarMenus[0].value:
-      //     return (
-      //       <a-tabs
-      //         style="height: 100%;"
-      //         tabBarGutter={10}
-      //       >
-      //         <a-tab-pane key="plugin-list" tab={this.$t('editor.sidebar.components')}>
-      //           <RenderShortcutsPanel pluginsList={this.pluginsList} handleClickShortcut={this.clone} />
-      //         </a-tab-pane>
-      //         <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
-      //           <RenderPageManager
-      //             pages={this.pages}
-      //             editingPage={this.editingPage}
-      //             onSelectMenuItem={(menuKey) => {
-      //               this.pageManager({ type: menuKey })
-      //             }}
-      //             onEditTitle={({ pageIndexForEditingTitle, newTitle }) => {
-      //               this.pageManager({ type: 'editTitle', value: { pageIndexForEditingTitle, newTitle } })
-      //               this.saveWork({ isSaveCover: false })
-      //             }}
-      //             onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
-      //           />
-      //         </a-tab-pane>
-      //       </a-tabs>
-      //     )
-      //   case sidebarMenus[1].value:
-      //     return (
-      //       <RenderPageManager
-      //         pages={this.pages}
-      //         editingPage={this.editingPage}
-      //         onSelectMenuItem={(menuKey) => {
-      //           this.pageManager({ type: menuKey })
-      //         }}
-      //         onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
-      //       />
-      //     )
-      //   default:
-      //     return null
-      // }
     }
   },
   mounted () {
