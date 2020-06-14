@@ -1,6 +1,6 @@
 {
   "name": "luban-h5",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "en: A mobile page builder/editor,  similar with amolink. zh: 类似易企秀的H5制作、建站工具.",
   "dependencies": {
     "flightplan": "^0.6.20",

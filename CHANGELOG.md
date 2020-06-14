@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.1](https://github.com/ly525/luban-h5/compare/v1.10.0...v1.10.1) (2020-06-14)
+
+
+### Bug Fixes
+
+* [#170](https://github.com/ly525/luban-h5/issues/170) ([dca845f](https://github.com/ly525/luban-h5/commit/dca845f))
+* [#171](https://github.com/ly525/luban-h5/issues/171) ([1c3d39f](https://github.com/ly525/luban-h5/commit/1c3d39f))
+
+
+### Features
+
+* add customStyle for component to fit size; !#zh: 增加  customStyle 属性，以支持元素自定义大小 ([4632288](https://github.com/ly525/luban-h5/commit/4632288))
+* add shortcutProps to support shortcut themes; !#zh: 增加 shortcutProps 以支持快捷面板定制化/主题化 ([1070215](https://github.com/ly525/luban-h5/commit/1070215))
+* props item support custom layout; !#zh: 组件属性编辑器 支持表单子项目自定义布局 ([6bc3011](https://github.com/ly525/luban-h5/commit/6bc3011))
+* support resize the props panel; !#zh: 支持拖动调整右侧编辑面板 ([45f3bfc](https://github.com/ly525/luban-h5/commit/45f3bfc))
+* **element:**  add defaultStyle for seperate element; ([4d86e95](https://github.com/ly525/luban-h5/commit/4d86e95))
+* **plugin:** add rate componnet; #!zh: 增加评分组件 ([3d813db](https://github.com/ly525/luban-h5/commit/3d813db))
+
 ## [1.10.0](https://github.com/ly525/luban-h5/compare/v1.9.0...v1.10.0) (2020-05-17)
 
 
