@@ -294,8 +294,8 @@ export default {
             top: `${this.work.height}px`,
             width: '100%'
           }}>
-            <div class="long-page-adjust">
-              <div class="adjust-line"></div>
+            <div class="adjust-line-wrapper adjust-line-wrapper-h">
+              <div class="adjust-line adjust-line-h"></div>
               <div class="adjust-button" onMousedown={this.mousedownForAdjustLine}><div class="indicator"></div></div>
               <div class="adjust-tip">
                 <span>320 x</span>

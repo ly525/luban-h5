@@ -20,6 +20,7 @@ import LogoOfHeader from '@/components/common/header/logo.js'
 import ExternalLinksOfHeader from '@/components/common/header/links.js'
 import LangSelect from '@/components/common/header/LangSelect.vue'
 import Feedback from '@/components/common/feedback/index'
+import AdjustLineV from '@/components/core/support/adjust-line/vertical'
 
 // const sidebarMenus = [
 //   {
@@ -113,7 +114,8 @@ export default {
     isPreviewMode: false,
     activeTabKey: '属性',
     previewVisible: false,
-    scaleRate: 1
+    scaleRate: 1,
+    propsPanelWidth: 320
   }),
   computed: {
     ...mapState('editor', {
@@ -349,6 +351,9 @@ export default {
               </div>
             </a-layout-content>
           </a-layout>
+          <AdjustLineV onLineMove={(offset) => {
+            this.propsPanelWidth += offset
+          }} />
           <a-layout-sider width="40" theme='light' style={{ background: '#fff', border: '1px solid #eee' }}>
             {/* <div>
               <a-button shape="circle" icon="search" type="link" />
@@ -366,7 +371,7 @@ export default {
               }
             </a-button-group>
           </a-layout-sider>
-          <a-layout-sider width="320" theme='light' style={{ background: '#fff', padding: '0 0 0 12px' }}>
+          <a-layout-sider width={this.propsPanelWidth} data-set-width={this.propsPanelWidth} theme='light' style={{ background: '#fff', padding: '0 0 0 12px' }}>
             <a-tabs
               style="height: 100%;"
               tabBarGutter={10}
