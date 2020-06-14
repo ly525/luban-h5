@@ -11,6 +11,10 @@ export default {
     },
     handleClickShortcut: {
       type: Function
+    },
+    handleDragStart: {
+      type: Function,
+      default: (e) => {}
     }
   },
   data: () => ({
@@ -97,6 +101,7 @@ export default {
             <a-col span={12} style={{ marginTop: '10px' }}>
               <ShortcutButton
                 clickFn={this.onClickShortcut.bind(this, plugin)}
+                mousedownFn={this.handleDragStart.bind(this, plugin)}
                 // title={plugin.title}
                 title={plugin.i18nTitle[this.currentLang] || plugin.title}
                 faIcon={plugin.icon}
