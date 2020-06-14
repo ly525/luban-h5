@@ -1,0 +1,13 @@
+.lbp-tabs {
+  .van-tabs__content {
+    width: 100%;
+    height: calc(100% - 44px);
+    overflow: hidden;
+  }
+
+  .van-tab__pane {
+    position: relative;
+    min-height: 44px;
+  }
+}
+

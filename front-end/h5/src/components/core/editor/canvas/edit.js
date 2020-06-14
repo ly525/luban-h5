@@ -263,7 +263,7 @@ export default {
                     this.bindContextMenu(e)
                   }}
                 >
-                  {h(element.name, data)}
+                  {h(element.name, data, element.children || [])}
                 </Shape>
               )
             })
