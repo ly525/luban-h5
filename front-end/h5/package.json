@@ -36,7 +36,8 @@
     "vue-matomo": "^3.13.0-2",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "x-data-spreadsheet": "^1.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
@@ -54,6 +55,7 @@
     "dart-sass": "^1.23.7",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less-loader": "^6.1.1",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
