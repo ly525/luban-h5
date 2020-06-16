@@ -13,6 +13,7 @@ import LbpSlide from '../components/plugins/lbp-slide'
 import LbpBgMusic from '../components/plugins/lbp-bg-music'
 import LbpNoticeBar from '../components/plugins/lbp-notice-bar'
 import LbpRate from '../components/plugins/lbp-rate'
+import LbpTable from '../components/plugins/lbp-table'
 // import LbpTabs from '../components/plugins/lbp-tabs'
 
 export const pluginsList = [
@@ -23,6 +24,7 @@ export const pluginsList = [
       'zh-CN': '公告'
     },
     icon: 'volume-up',
+    img: 'notice-bar.png',
     component: LbpNoticeBar,
     visible: true,
     name: LbpNoticeBar.name
@@ -45,6 +47,7 @@ export const pluginsList = [
       'zh-CN': '评分'
     },
     icon: 'star-o',
+    img: 'rate.png',
     component: LbpRate,
     visible: true,
     name: LbpRate.name
@@ -56,6 +59,7 @@ export const pluginsList = [
       'zh-CN': '图片'
     },
     icon: 'photo',
+    img: 'picture.png',
     component: LbpPicture,
     visible: true,
     name: LbpPicture.name
@@ -67,6 +71,7 @@ export const pluginsList = [
     },
     title: '文字',
     icon: 'text-width',
+    img: 'text.png',
     component: LbpText,
     visible: true,
     name: LbpText.name
@@ -78,6 +83,7 @@ export const pluginsList = [
     },
     title: '普通按钮',
     icon: 'hand-pointer-o',
+    img: 'button.png',
     component: LbpButton,
     visible: true,
     name: LbpButton.name
@@ -89,6 +95,7 @@ export const pluginsList = [
     },
     title: '轮播图',
     icon: 'photo',
+    img: 'carousel.png',
     component: LbpSlide,
     visible: true,
     name: LbpSlide.name
@@ -100,7 +107,7 @@ export const pluginsList = [
       'zh-CN': '地图'
     },
     title: '地图',
-    icon: 'map-o',
+    // icon: 'map-o',
     component: LbpFormRadioGroup,
     visible: true,
     name: LbpFormRadioGroup.name,
@@ -113,6 +120,7 @@ export const pluginsList = [
     },
     title: '视频',
     icon: 'file-video-o',
+    img: 'video.png',
     component: LbpVideo,
     visible: true,
     name: LbpVideo.name
@@ -124,6 +132,7 @@ export const pluginsList = [
     },
     title: '表单输入',
     icon: 'pencil-square-o',
+    img: 'input.png',
     component: LbpFormInput,
     visible: true,
     name: LbpFormInput.name
@@ -135,6 +144,7 @@ export const pluginsList = [
     },
     title: '表单提交',
     icon: 'hand-pointer-o',
+    img: 'submit.png',
     component: LbpFormButton,
     visible: true,
     name: LbpFormButton.name
@@ -146,6 +156,7 @@ export const pluginsList = [
     },
     title: '表单多选',
     icon: 'check-square-o',
+    img: 'radio-group.png',
     component: LbpFormCheckboxGroup,
     visible: true,
     name: LbpFormCheckboxGroup.name
@@ -157,6 +168,7 @@ export const pluginsList = [
     },
     title: '表单单选',
     icon: 'dot-circle-o',
+    img: 'radio-group.png',
     component: LbpFormRadioGroup,
     visible: true,
     name: LbpFormRadioGroup.name
@@ -179,9 +191,55 @@ export const pluginsList = [
     },
     title: '背景音乐',
     icon: 'music',
+    img: 'music.png',
     component: LbpBgMusic,
     visible: true,
     name: LbpBgMusic.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table - Theme Blue',
+      'zh-CN': '表格 - 深蓝色主题',
+    },
+    icon: 'table',
+    img: 'table_theme1.png',
+    category: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+    shortcutProps: {
+      className: 'default-table-template1'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table - Theme Gray',
+      'zh-CN': '表格 - 淡灰色主题',
+    },
+    icon: 'table',
+    img: 'table_theme2.png',
+    category: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+    shortcutProps: {
+      className: 'default-table-template2'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table - Default',
+      'zh-CN': '表格 - 默认主题',
+    },
+    icon: 'table',
+    img: 'table_theme3.png',
+    category: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+    shortcutProps: {
+      className: 'default-table-general-a'
+    }
   }
 ]
 
