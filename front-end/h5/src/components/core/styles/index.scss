@@ -52,6 +52,28 @@
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
+// 拖拽出来的控件
+.dragging-dom-ele {
+  position: fixed !important;
+  z-index: 100;
+
+  display: inline-block;
+  box-sizing: border-box;
+
+  height: 30px;
+  width: 130px;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+
+  cursor: grabbing;
+  user-select: none;
+  opacity: 0.6;
+}
+
 .ant-tabs-nav .ant-tabs-tab {
   padding: 12px 0 !important;
 }
