@@ -122,6 +122,9 @@ export default {
       document.body.removeChild(dragDom)
       dragDom = null
 
+      const canMousedown = this.checkCanMousedown(e, { minOffset: 10 })
+      if (!canMousedown) return
+
       const canvasWrapper = document.querySelector('.canvas-wrapper')
       const position = canvasWrapper.getBoundingClientRect()
       this.dragElement && this.clone({
@@ -131,6 +134,12 @@ export default {
           top: e.clientY - layerY - position.top
         }
       })
+    },
+    checkCanMousedown (e, { minOffsetX, minOffsetY, minOffset }) {
+      const offsetX = e.clientX - dragConfig.origin.clientX
+      const offsetY = e.clientY - dragConfig.origin.clientY
+
+      return offsetX >= (minOffsetX || minOffset) || offsetY >= (minOffsetY || minOffset)
     }
   },
   updated () {

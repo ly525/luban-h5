@@ -107,7 +107,7 @@ export default {
     },
     tip: {
       componentUsage: '使用提示: {0} 组件即可',
-      click: '点击'
+      click: '点击或拖拽'
     }
   }
 }

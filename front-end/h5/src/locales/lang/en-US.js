@@ -98,7 +98,7 @@ export default {
     },
     tip: {
       componentUsage: 'Tip: just {0} on component',
-      click: 'click'
+      click: 'click/drag'
     }
   }
 }
