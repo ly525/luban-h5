@@ -40,16 +40,13 @@ export default {
     vertical: PropTypes.boolean(),
     backgroundColor: PropTypes.color({ label: '背景色', defaultValue: 'rgba(255, 255, 255, 0.2)' }),
     color: PropTypes.color(),
-    fontSize: PropTypes.number({ label: '字号(px)' }),
+    fontSize: PropTypes.number({ label: '字号(px)', defaultValue: 14 }),
     lineHeight: PropTypes.number({ label: '行高(px)', defaultValue: 1 }),
     borderWidth: PropTypes.number({ label: '边框宽度(px)', defaultValue: 1 }),
     borderRadius: PropTypes.number({ label: '圆角(px)', defaultValue: 4 }),
     borderColor: PropTypes.color({ label: '边框颜色', defaultValue: '#ced4da' }),
     textAlign: PropTypes.textAlign(),
-    disabled: {
-      type: Boolean,
-      default: false
-    }
+    disabled: PropTypes.boolean()
   },
   methods: {
     handleClick () {
