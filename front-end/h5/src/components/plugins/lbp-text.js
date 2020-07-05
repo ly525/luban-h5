@@ -18,6 +18,7 @@ import './styles/text-overwrite-quil-snow-theme.scss'
 
 export default {
   render (h) {
+    const canEdit = this.canEdit && this.editorMode === 'edit'
     const style = {
       position: 'relative',
       color: `${this.color} !important`,
@@ -49,7 +50,7 @@ export default {
         style={style}
       >
         {
-          this.canEdit
+          canEdit
             ? <quillEditor
               content={this.text}
               options={{
@@ -87,11 +88,16 @@ export default {
     }
   },
   props: {
-    backgroundColor: PropTypes.color({ label: '背景色' }),
-    borderWidth: PropTypes.number({ label: '边框宽度(px)' }),
+    backgroundColor: PropTypes.color({ label: '背景色', defaultValue: 'rgba(0, 0, 0, 0)' }),
+    borderWidth: PropTypes.number({ label: '边框宽度(px)', defaultValue: 0 }),
     borderRadius: PropTypes.number({ label: '圆角(px)' }),
     borderColor: PropTypes.color({ label: '边框颜色' }),
-    text: PropTypes.string({ label: '双击修改文字' })
+    text: PropTypes.string({ label: '内容', defaultValue: '双击修改文字', visible: false }),
+    editorMode: PropTypes.string({
+      defaultValue: 'preview', // 可选值: preview/edit
+      label: '模式',
+      visible: false
+    })
   },
   editorConfig: {
   }

@@ -138,7 +138,7 @@ export default {
           {
             Object
               .entries(props)
-              .filter(([propKey, propConfig]) => propConfig.editor && !propConfig.editor.custom)
+              .filter(([propKey, propConfig]) => propConfig.visible && propConfig.editor && !propConfig.editor.custom)
               .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
           }
         </a-form>
