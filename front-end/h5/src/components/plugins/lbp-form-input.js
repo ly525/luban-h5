@@ -1,6 +1,29 @@
 // https://github.com/luban-h5-components/plugin-common-props
 import PropTypes from '@luban-h5/plugin-common-props'
 
+const typeOptions = [
+  {
+    label: '文字',
+    value: 'text'
+  },
+  {
+    label: '密码',
+    value: 'password'
+  },
+  {
+    label: '日期',
+    value: 'date'
+  },
+  {
+    label: '邮箱',
+    value: 'email'
+  },
+  {
+    label: '手机号',
+    value: 'tel'
+  }
+]
+
 export default {
   name: 'lbp-form-input',
   render (h) {
@@ -26,14 +49,7 @@ export default {
     />
   },
   props: {
-    type: {
-      type: String,
-      default: 'text',
-      editor: {
-        type: 'lbs-select-input-type',
-        label: '类型'
-      }
-    },
+    type: PropTypes.select({ defaultValue: 'text', label: '类型', options: typeOptions }),
     name: PropTypes.string({ defaultValue: 'name', label: 'name' }),
     disabled: PropTypes.boolean({ label: 'disabled' }),
     fontSize: PropTypes.number({ label: '字号(px)' }),
@@ -47,66 +63,6 @@ export default {
     vertical: PropTypes.boolean(),
     lineHeight: PropTypes.number({ label: '行高(px)', defaultValue: 1 })
   },
-  componentsForPropsEditor: {
-    'lbs-select-input-type': {
-      props: ['value'],
-      computed: {
-        value_: {
-          get () {
-            return this.value
-          },
-          set (val) {
-            this.$emit('input', val)
-          }
-        }
-      },
-      render (h) {
-        return (
-          <a-select
-            placeholder="类型"
-            value={this.value}
-            onChange={(value) => {
-              this.$emit('input', value)
-              this.$emit('change', value)
-            }}
-          >
-            {
-              this.options.map(option => (
-                <a-select-option
-                  key={option.value}
-                  value={option.value}
-                >{option.label}</a-select-option>
-              ))
-            }
-          </a-select>
-        )
-      },
-      data: () => ({
-        options: [
-          {
-            label: '文字',
-            value: 'text'
-          },
-          {
-            label: '密码',
-            value: 'password'
-          },
-          {
-            label: '日期',
-            value: 'date'
-          },
-          {
-            label: '邮箱',
-            value: 'email'
-          },
-          {
-            label: '手机号',
-            value: 'tel'
-          }
-        ]
-      })
-    }
-  }
 }
 
 // .lb-plugin__input {
