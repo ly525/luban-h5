@@ -21,7 +21,6 @@ export default {
       'elementManager',
       'updateWork'
     ]),
-    // TODO #!zh: 优化代码
     // generate vertical line
     drawVLine (newLeft) {
       this.vLines = [{ left: newLeft }]
@@ -246,7 +245,10 @@ export default {
                     // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果
                     this.setEditingElement(element)
                   }}
-                  // TODO 矩形四周的点叫什么？暂时叫 Point 吧
+                  // 矩形四周的点叫什么？暂时叫 Point 吧
+                  // maka 用的 dot，易企秀用 circle，canva 暂时看不出来
+                  // dot是指实实在在存在的“点”或者描述在一个实际平面上存在的“点”比如：桌布上的斑斑点点，就可以用dot来表示；再比如水里有个“黑点”，也可以用dot来表达。
+                  // point是指抽象意义上的“点”，比如“AT THIS POINT“，就是说“在这点上”这个“点”并不真实存在
                   handlePointMoveProp={this.handlePointMove}
                   handleElementMoveProp={this.handleElementMove}
                   handleElementMouseUpProp={() => {
