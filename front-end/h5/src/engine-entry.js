@@ -30,34 +30,54 @@ const Engine = {
   components: {
     NodeWrapper
   },
+  data() {
+    return {
+      isLongPage: window.__work.mode === 'h5_long_page',
+    }
+  },
   methods: {
-    renderPreview (h, _elements) {
-      const isLongPage = window.__work.mode === 'h5_long_page'
-      const elements = _elements.map(element => new Element(element))
+    renderLongPage () {
+      const work = window.__work
+      return this.renderPreview(work.pages[0].elements)
+    },
+    renderSwiperPage () {
+      const work = window.__work
+      return (
+        <div class="swiper-container">
+          <div class="swiper-wrapper">{
+            work.pages.map(page => {
+              return (
+                <section class="swiper-slide flat">
+                  {/* this.walk(h, page.elements) */}
+                  { this.renderPreview(page.elements) }
+                </section>
+              )
+            })
+          }</div>
+          <div class="swiper-pagination"></div>
+        </div>
+      )
+    },
+    renderPreview (pageElements) {
       let pageWrapperStyle = {
         height: '100%',
         position: 'relative'
       }
 
-      if (isLongPage) {
+      if (this.isLongPage) {
         pageWrapperStyle = {
           ...pageWrapperStyle,
           'overflow-y': 'scroll'
         }
       }
 
+      const elements = pageElements.map(element => new Element(element))
       return (
         <div style={pageWrapperStyle}>
           {
             elements.map((element, index) => {
-              // const style = element.getStyle({ position: 'absolute', isRem: true })
-              // const data = {
-              //   style,
-              //   props: element.getProps({ mode: 'preview' })
-              // }
-              // return h(element.name, data)
               return <node-wrapper element={element}>
-                {h(element.name, element.getPreviewData({ position: 'static' }))}
+                {this.$createElement(element.name, element.getPreviewData({ position: 'static' }))}
               </node-wrapper>
             })
           }
@@ -67,23 +87,11 @@ const Engine = {
   },
   render (h) {
     const work = window.__work
-    return (
-      <div id="work-container" data-work-id={work.id}>
-        <div class="swiper-container">
-          <div class="swiper-wrapper">{
-            work.pages.map(page => {
-              return (
-                <section class="swiper-slide flat">
-                  {/* this.walk(h, page.elements) */}
-                  { this.renderPreview(h, page.elements) }
-                </section>
-              )
-            })
-          }</div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    )
+    return <div id="work-container" data-work-id={work.id}>
+      {
+        this.isLongPage ?   this.renderLongPage() : this.renderSwiperPage()
+      }
+    </div>
   }
 }
 
