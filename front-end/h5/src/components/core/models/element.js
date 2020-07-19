@@ -61,11 +61,6 @@ class Element {
       uuid: this.uuid
     }
     Object.keys(props).forEach(key => {
-      // #6
-      if (key === 'name') {
-        console.warn('Please do not use {name} as plugin prop')
-        return
-      }
       const defaultValue = props[key].default
       pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue
     })
