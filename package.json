@@ -4,7 +4,7 @@
   "description": "en: A mobile page builder/editor,  similar with amolink. zh: 类似易企秀的H5制作、建站工具.",
   "dependencies": {
     "flightplan": "^0.6.20",
-    "standard-version": "^7.0.0"
+    "standard-version": "^8.0.1"
   },
   "devDependencies": {},
   "scripts": {
