@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/ly525/luban-h5/compare/v1.10.1...v1.10.2) (2020-08-02)
+
+
+### Bug Fixes
+
+* raido&checkbox not show ([3b6b4d3](https://github.com/ly525/luban-h5/commit/3b6b4d3))
+* **preview:** [#196](https://github.com/ly525/luban-h5/issues/196); !#zh: 预览模块支持长页面 !#en: support long page ([10fc6e3](https://github.com/ly525/luban-h5/commit/10fc6e3))
+* [#185](https://github.com/ly525/luban-h5/issues/185) [#145](https://github.com/ly525/luban-h5/issues/145) !#zh: 修正预览页文字模块双击后出现富文本编辑问题 ([b39f638](https://github.com/ly525/luban-h5/commit/b39f638))
+* [#189](https://github.com/ly525/luban-h5/issues/189); !#zh: 修正点击左侧组件，在画布中组件会出现2次 ([2a3a7df](https://github.com/ly525/luban-h5/commit/2a3a7df))
+* [#190](https://github.com/ly525/luban-h5/issues/190) ([abe1aa8](https://github.com/ly525/luban-h5/commit/abe1aa8))
+
+
+### Features
+
+* **component:** add map component; !#zh: 添加地图组件 ([f723096](https://github.com/ly525/luban-h5/commit/f723096))
+* **prop:** add visible config ([3b894fd](https://github.com/ly525/luban-h5/commit/3b894fd))
+* support drag&drop element from the left panel to the canvas; !#: 支持从左侧元素列表中拖拽元素至中间画布 ([67b129a](https://github.com/ly525/luban-h5/commit/67b129a))
+* **PropTypes:** add excel editor ([16dad6a](https://github.com/ly525/luban-h5/commit/16dad6a))
+
 ### [1.10.1](https://github.com/ly525/luban-h5/compare/v1.10.0...v1.10.1) (2020-06-14)
 
 
