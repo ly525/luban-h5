@@ -13,6 +13,7 @@ import LbpSlide from '../components/plugins/lbp-slide'
 import LbpBgMusic from '../components/plugins/lbp-bg-music'
 import LbpNoticeBar from '../components/plugins/lbp-notice-bar'
 import LbpRate from '../components/plugins/lbp-rate'
+import LbpQQMap from '../components/plugins/lbp-qq-map/src'
 // import LbpTabs from '../components/plugins/lbp-tabs'
 
 export const pluginsList = [
@@ -101,10 +102,10 @@ export const pluginsList = [
     },
     title: '地图',
     icon: 'map-o',
-    component: LbpFormRadioGroup,
+    component: LbpQQMap,
     visible: true,
-    name: LbpFormRadioGroup.name,
-    disabled: true
+    name: LbpQQMap.name
+    // disabled: true
   },
   {
     i18nTitle: {
