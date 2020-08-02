@@ -23,6 +23,10 @@ export default {
       type: String,
       default: '标题演示'
     },
+    type: {
+      type: String,
+      default: 'radio'
+    },
     checked: {
       type: Boolean,
       default: false
