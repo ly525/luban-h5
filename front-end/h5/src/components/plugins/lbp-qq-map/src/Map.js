@@ -5,7 +5,7 @@ export default {
   map: null,
   load: function (key) {
     return new Promise(function (resolve, reject) {
-      const src = 'http://map.qq.com/api/js?v=2.exp&libraries=place&callback=init&key=' + key
+      const src = '//map.qq.com/api/js?v=2.exp&libraries=place&callback=init&key=' + key
       if (isScriptLoaded(src)) {
         resolve(window.qq)
         return
