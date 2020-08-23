@@ -19,6 +19,7 @@ import message from 'ant-design-vue/lib/message' // 加载 JS
 import 'ant-design-vue/lib/message/style/css' // 加载 CSS
 
 import { pluginsList } from './mixins/load-plugins.js'
+import { PAGE_MODE } from './constants/work.js'
 import Element from './components/core/models/element'
 import NodeWrapper from '@/components/preview/node-wrapper.js'
 
@@ -32,7 +33,7 @@ const Engine = {
   },
   data() {
     return {
-      isLongPage: window.__work.mode === 'h5_long_page',
+      isLongPage: window.__work.mode === PAGE_MODE.LONG_PAGE
     }
   },
   methods: {

@@ -10,15 +10,10 @@
  -->
 <template>
   <a-form :layout="formLayout">
-    <a-form-item
-      label="H5类型"
-    >
-      <a-radio-group default-value="h5_swipper" @change="handleModeChange" size="small">
-        <a-radio-button value="h5_swipper">
-          翻页H5
-        </a-radio-button>
-        <a-radio-button value="h5_long_page">
-          长页面H5
+    <a-form-item label="H5类型">
+      <a-radio-group v-model="pageMode" @change="handleModeChange" size="small">
+        <a-radio-button v-for="(value, key) in PAGE_MODE" :key="key" :value="value">
+          {{PAGE_MODE_LABEL[key]}}
         </a-radio-button>
       </a-radio-group>
     </a-form-item>
@@ -26,11 +21,29 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { PAGE_MODE, PAGE_MODE_LABEL } from '@/constants/work'
+
 export default {
   data () {
     return {
-      formLayout: 'vertical'
+      formLayout: 'vertical',
+      PAGE_MODE: Object.freeze(PAGE_MODE),
+      PAGE_MODE_LABEL: Object.freeze(PAGE_MODE_LABEL)
+    }
+  },
+  computed: {
+    ...mapState('editor', ['work']),
+    // 翻页模式、长页面模式
+    // src/constants/work -> PAGE_MODE
+    // https://vuex.vuejs.org/zh/guide/forms.html#%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7
+    pageMode: {
+      get () {
+        return this.work.mode
+      },
+      set (model) {
+        this.updateWork({ mode })
+      }
     }
   },
   methods: {

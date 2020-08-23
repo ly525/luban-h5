@@ -9,6 +9,7 @@
  * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
  */
 import Page from './page.js'
+import { PAGE_MODE } from '@/constants/work'
 
 class Work {
   constructor (work = {}) {
@@ -32,12 +33,7 @@ class Work {
     this.is_publish = false
     this.is_template = false
     this.height = work.height || 568
-    /**
-     * 页面模式，枚举值
-     * h5_swipper 翻页H5
-     * h5_long_page 长页面H5
-     */
-    this.mode = work.mode || 'h5_swipper'
+    this.mode = work.mode || PAGE_MODE.SWIPPER_PAGE
   }
 }
 
