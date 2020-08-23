@@ -14,9 +14,67 @@ import LbpBgMusic from '../components/plugins/lbp-bg-music'
 import LbpNoticeBar from '../components/plugins/lbp-notice-bar'
 import LbpRate from '../components/plugins/lbp-rate'
 import LbpQQMap from '../components/plugins/lbp-qq-map/src'
+import LbpLineChart from '../components/plugins/charts/line'
+import LbpTable from '../components/plugins/lbp-table'
 // import LbpTabs from '../components/plugins/lbp-tabs'
 
 export const pluginsList = [
+  {
+    i18nTitle: {
+      'en-US': 'LineChart',
+      'zh-CN': '折线图'
+    },
+    title: '折线图',
+    icon: 'line-chart',
+    component: LbpLineChart,
+    visible: true,
+    name: LbpLineChart.name,
+    shortcutProps: {
+      type: 'line'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'LineChart',
+      'zh-CN': '柱状图'
+    },
+    title: '柱状图',
+    icon: 'bar-chart',
+    component: LbpLineChart,
+    visible: true,
+    name: LbpLineChart.name,
+    shortcutProps: {
+      type: 'histogram'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'LineChart',
+      'zh-CN': '饼状图'
+    },
+    title: '饼状图',
+    icon: 'pie-chart',
+    component: LbpLineChart,
+    visible: true,
+    name: LbpLineChart.name,
+    shortcutProps: {
+      type: 'pie'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'LineChart',
+      'zh-CN': '漏斗图'
+    },
+    title: '漏斗图',
+    icon: 'filter',
+    component: LbpLineChart,
+    visible: true,
+    name: LbpLineChart.name,
+    shortcutProps: {
+      type: 'funnel'
+    }
+  },
   {
     title: '公告',
     i18nTitle: {
@@ -183,7 +241,43 @@ export const pluginsList = [
     component: LbpBgMusic,
     visible: true,
     name: LbpBgMusic.name
-  }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table(Default)',
+      'zh-CN': '默认表格'
+    },
+    icon: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table(Stripe)',
+      'zh-CN': '(斑马线)表格'
+    },
+    icon: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+    shortcutProps: {
+      theme: 'lbp-table-theme-stripe'
+    }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Table(LightBlue)',
+      'zh-CN': '(淡蓝色)表格'
+    },
+    icon: 'table',
+    component: LbpTable,
+    visible: true,
+    name: LbpTable.name,
+    shortcutProps: {
+      theme: 'lbp-table-theme-light-blue'
+    }
+  },
 ]
 
 export default {
