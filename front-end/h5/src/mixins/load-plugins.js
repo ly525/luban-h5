@@ -250,7 +250,7 @@ export const pluginsList = [
     icon: 'table',
     component: LbpTable,
     visible: true,
-    name: LbpTable.name,
+    name: LbpTable.name
   },
   {
     i18nTitle: {
@@ -277,7 +277,7 @@ export const pluginsList = [
     shortcutProps: {
       theme: 'lbp-table-theme-light-blue'
     }
-  },
+  }
 ]
 
 export default {

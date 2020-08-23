@@ -72,5 +72,5 @@ export default {
       req.open('post', `/works/form/submit/${workId}`, true)
       req.send(formData)
     }
-  },
+  }
 }

@@ -31,7 +31,7 @@ const Engine = {
   components: {
     NodeWrapper
   },
-  data() {
+  data () {
     return {
       isLongPage: window.__work.mode === PAGE_MODE.LONG_PAGE
     }

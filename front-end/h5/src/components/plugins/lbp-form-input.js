@@ -62,7 +62,7 @@ export default {
     textAlign: PropTypes.textAlign({ defaultValue: 'left' }),
     vertical: PropTypes.boolean(),
     lineHeight: PropTypes.number({ label: '行高(px)', defaultValue: 1 })
-  },
+  }
 }
 
 // .lb-plugin__input {
