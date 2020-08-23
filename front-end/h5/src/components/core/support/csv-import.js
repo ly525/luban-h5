@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
 
-const validFileMimeTypes =  ['text/csv', 'text/x-csv', 'application/vnd.ms-excel', 'text/plain']
+const validFileMimeTypes = ['text/csv', 'text/x-csv', 'application/vnd.ms-excel', 'text/plain']
 export default {
   name: 'lbs-csv-import',
   methods: {
