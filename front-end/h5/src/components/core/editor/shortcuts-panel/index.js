@@ -95,7 +95,7 @@ export default {
   render (h) {
     // return this.renderShortCutsPanel(this.groups)
     return (
-      <a-row gutter={20}>
+      <a-row gutter={20} style="max-height: calc(100vh - 140px);overflow: scroll;">
         {
           [].concat(this.pluginsList, this.npmPackages).filter(plugin => plugin.visible).map(plugin => (
             <a-col span={12} style={{ marginTop: '10px' }}>
