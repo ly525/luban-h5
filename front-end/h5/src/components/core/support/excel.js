@@ -4,7 +4,7 @@
 
 import Spreadsheet from 'x-data-spreadsheet'
 import Parser from '../../../utils/excel-parser'
-
+import CsvImport from './csv-import'
 // const getDefaultTableMatrix = () => [
 //   [1, 2, 3, 4],
 //   [5, 6, 7, 8],
@@ -34,8 +34,24 @@ export default {
       }
     }
   },
+  methods: {
+    parseCSV (csv) {
+      const sheetData = Parser.binaryMatrix2excel(csv.data)
+      this.$emit('change', csv.data)
+      this.refreshSheet({ rows: sheetData })
+    },
+    refreshSheet (data) {
+      this.sheet.loadData(data)
+      this.sheet.reRender()
+    }
+  },
   render () {
-    return <div id="excel-wrapper" ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
+    return <div>
+      <span>方案1: 选择导入 csv 文件</span>
+      <CsvImport onParse={this.parseCSV} />
+      <span>方案2: 直接编辑 Excel</span>
+      <div id="excel-wrapper" ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
+    </div>
   },
   mounted () {
     const ele = this.$refs.excel
@@ -48,17 +64,17 @@ export default {
       //   width: () => ele.getBoundingClientRect().width
       // }
     }
-    new Spreadsheet(ele, options)
-      .loadData({
-        rows: this.innerItems
-      }) // load data
-      .change(excelData => {
-        // console.log('----------')
-        // console.log(excelData)
-        // console.log(this.formatter(excelData))
-        // console.log('----------')
-        this.$emit('change', this.formatter(excelData) /** BinaryMatrix */)
-        // save data to db
-      })
+    this.sheet = new Spreadsheet(ele, options)
+    this.sheet.loadData({
+      rows: this.innerItems
+    }).change(excelData => {
+      debugger
+      // console.log('----------')
+      // console.log(excelData)
+      // console.log(this.formatter(excelData))
+      // console.log('----------')
+      this.$emit('change', this.formatter(excelData) /** BinaryMatrix */)
+      // save data to db
+    })
   }
 }

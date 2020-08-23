@@ -1,6 +1,6 @@
 // https://github.com/luban-h5-components/plugin-common-props
 import PropTypes from '@luban-h5/plugin-common-props'
-import { addListener as addResizeListener, removeListener } from 'resize-detector'
+import { addListener as addResizeListener, removeListener as removeResizeListener } from 'resize-detector'
 import './styles/table.scss'
 
 function sum (arr = [], key) {
@@ -27,10 +27,10 @@ export default {
     freezeCount: PropTypes.number({ label: '冻结列数(px)', defaultValue: 0 }),
     dataset: PropTypes.excel({
       defaultValue: () => [
-        [ '列A', '列B', '列C'],
-        [ '————', '————', '————'],
-        [ '————', '————', '————'],
-        [ '————', '————', '————']
+        ['列A', '列B', '列C'],
+        ['————', '————', '————'],
+        ['————', '————', '————'],
+        ['————', '————', '————']
       ]
     })
   },
@@ -94,6 +94,12 @@ export default {
       this.mainTableEle = root.querySelector('.main-table-wrapper > table')
       this.fixedTableWrapperEle = root.querySelector('.fixed-table-wrapper')
       this.fixedTableEle = root.querySelector('.left-table')
+    },
+    __resizeHandler () {
+      this.setTableWidth()
+      if (this.freezeCount) {
+        this.setFixedTableStyle()
+      }
     }
   },
 
@@ -101,11 +107,9 @@ export default {
     this.initElements()
     this.setTableWidth()
     this.setFixedTableStyle()
-    addResizeListener(this.$refs.lbpTable, () => {
-      this.setTableWidth()
-      if (this.freezeCount) {
-        this.setFixedTableStyle()
-      }
-    })
+    addResizeListener(this.$refs.lbpTable, this.__resizeHandler)
+  },
+  destroy () {
+    removeResizeListener(this.$el, this.__resizeHandler)
   }
 }
