@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/ly525/luban-h5/compare/v1.10.2...v1.11.0) (2020-08-25)
+
+
+### Features
+
+* **component:** add echarts component !#zh: 支持echarts 图表组件📈 ([e4fc417](https://github.com/ly525/luban-h5/commit/e4fc4173e243afacd7383984c9041661030ff0bf))
+
+
+### Bug Fixes
+
+* **long_page:** long page height not work; !#zh: 长页面高度未生效 ([7163795](https://github.com/ly525/luban-h5/commit/71637956181c93ecb722870e00572937d293e7df))
+* map url ([ef441be](https://github.com/ly525/luban-h5/commit/ef441be677d247b27e8cac2898a3e090818d89f0))
+* update dingtalk url ([e63b59c](https://github.com/ly525/luban-h5/commit/e63b59c170795290658555aed598d1c76c3e9e56))
+
 ### [1.10.2](https://github.com/ly525/luban-h5/compare/v1.10.1...v1.10.2) (2020-08-02)
 
 
