@@ -60,17 +60,10 @@ const Engine = {
       )
     },
     renderPreview (pageElements) {
-      let pageWrapperStyle = {
-        height: '100%',
-        position: 'relative'
-      }
+      const pageWrapperStyle = this.isLongPage ? {
+        height:  window.__work.height + 'px'
 
-      if (this.isLongPage) {
-        pageWrapperStyle = {
-          ...pageWrapperStyle,
-          'overflow-y': 'scroll'
-        }
-      }
+      } : {}
 
       const elements = pageElements.map(element => new Element(element))
       return (
@@ -84,13 +77,26 @@ const Engine = {
           }
         </div>
       )
+    },
+    getContainerStyle(work) {
+      const containerStyle = {
+        position: 'relative',
+        height: '100%',
+      }
+
+      if (this.isLongPage) {
+        containerStyle['overflow-y'] = 'scroll'
+      }
+      return containerStyle
     }
   },
   render (h) {
     const work = window.__work
-    return <div id="work-container" data-work-id={work.id}>
+    const containerStyle = this.getContainerStyle(work)
+
+    return <div id="work-container" data-work-id={work.id} style={containerStyle}>
       {
-        this.isLongPage ?   this.renderLongPage() : this.renderSwiperPage()
+        this.isLongPage ? this.renderLongPage() : this.renderSwiperPage()
       }
     </div>
   }
