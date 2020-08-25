@@ -38,6 +38,7 @@ const Engine = {
   },
   methods: {
     renderLongPage () {
+      if (!window.__work.pages.length) return
       const work = window.__work
       return this.renderPreview(work.pages[0].elements)
     },
@@ -59,10 +60,9 @@ const Engine = {
         </div>
       )
     },
-    renderPreview (pageElements) {
+    renderPreview (pageElements = []) {
       const pageWrapperStyle = this.isLongPage ? {
         height:  window.__work.height + 'px'
-
       } : {}
 
       const elements = pageElements.map(element => new Element(element))
@@ -88,12 +88,20 @@ const Engine = {
         containerStyle['overflow-y'] = 'scroll'
       }
       return containerStyle
-    }
+    },
+    renderUnPublishTip() {
+      return <div style="box-sizing: border-box;min-height: 568px;line-height: 568px;text-align: center;">页面可能暂未发布</div>
+    },
   },
   render (h) {
     const work = window.__work
-    const containerStyle = this.getContainerStyle(work)
 
+    // 预览模式 或者 已经发布 的页面可以正常渲染，否则提示用户暂未发布
+    const query = new URLSearchParams(window.location.search)
+    const canRender = query.get('mode') === 'preview' || work.is_publish
+    if (!canRender) return this.renderUnPublishTip()
+
+    const containerStyle = this.getContainerStyle(work)
     return <div id="work-container" data-work-id={work.id} style={containerStyle}>
       {
         this.isLongPage ? this.renderLongPage() : this.renderSwiperPage()

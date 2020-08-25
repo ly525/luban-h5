@@ -30,7 +30,7 @@ class Work {
     // this.created_at = new Date()
     // this.updated_at = new Date()
 
-    this.is_publish = false
+    this.is_publish = !!work.is_publish
     this.is_template = false
     this.height = work.height || 568
     this.mode = work.mode || PAGE_MODE.SWIPPER_PAGE

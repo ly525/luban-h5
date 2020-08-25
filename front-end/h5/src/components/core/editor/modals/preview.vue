@@ -22,7 +22,7 @@ export default {
     //   work: state => state.work
     // }),
     releaseUrl () {
-      return `${window.location.origin}/works/preview/${this.work.id}`
+      return `${window.location.origin}/works/preview/${this.work.id}?mode=preview`
     }
   },
   data () {
@@ -67,7 +67,7 @@ export default {
     },
     openNewTab (urlType) {
       switch (urlType) {
-        case 'previewDebug':
+        case 'openPreviewPage':
           window.open(this.releaseUrl)
           break
         case 'buildEngineDocs':
@@ -152,7 +152,7 @@ export default {
                   </div>
                 </div>
                 <div style="background: #fafafa;">
-                  <a-button type="link" icon="link" onClick={() => this.openNewTab('previewDebug')}>打开预览 URL(For Debug) </a-button>
+                  <a-button type="link" icon="link" onClick={() => this.openNewTab('openPreviewPage')}>打开预览页面</a-button>
                   <a-button type="link" icon="link" onClick={() => this.openNewTab('buildEngineDocs')}>如果本地预览显示空白，点此查看文档</a-button>
                 </div>
               </div>

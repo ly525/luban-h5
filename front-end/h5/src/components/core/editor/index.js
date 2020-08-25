@@ -42,7 +42,7 @@ const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.preview',
     icon: 'eye',
-    action: function () { this.previewVisible = true }
+    action: function () { this.previewDialogVisible = true }
   },
   {
     i18nTooltip: 'editor.fixedTool.copyCurrentPage',
@@ -95,7 +95,7 @@ export default {
     activeMenuKey: 'pluginList',
     isPreviewMode: false,
     activeTabKey: '属性',
-    previewVisible: false,
+    previewDialogVisible: false,
     scaleRate: 1,
     propsPanelWidth: 320
   }),
@@ -121,6 +121,7 @@ export default {
       'saveWork',
       'createWork',
       'fetchWork',
+      'updateWork',
       'setWorkAsTemplate',
       'setEditingElement',
       'setEditingPage'
@@ -188,6 +189,18 @@ export default {
           </a-tab-pane>
         </a-tabs>
       )
+    },
+    handlePreview () {
+      this.saveWork({ loadingName: 'previewWork_loading' }).then(() => {
+        this.previewDialogVisible = true
+      })
+    },
+    handleSave () {
+      this.saveWork({ isSaveCover: true })
+    },
+    handlePublish () {
+      this.updateWork({ is_publish: true })
+      this.saveWork({ successMsg: '发布成功' })
     }
   },
   mounted () {
@@ -213,11 +226,28 @@ export default {
             style={{ lineHeight: '64px', float: 'right', background: 'transparent' }}
           >
             {/* 保存、预览、发布、设置为模板 */}
-            <a-menu-item key="1" class="transparent-bg"><a-button type="primary" size="small" onClick={() => { this.saveWork({ loadingName: 'previewWork_loading' }).then(() => { this.previewVisible = true }) }} loading={this.previewWork_loading}>{this.$t('editor.header.preview')}</a-button></a-menu-item>
-            <a-menu-item key="2" class="transparent-bg"><a-button size="small" onClick={() => this.saveWork({ isSaveCover: true })} loading={this.saveWork_loading || this.uploadWorkCover_loading}>{this.$t('editor.header.save')}</a-button></a-menu-item>
+            <a-menu-item key="1" class="transparent-bg">
+              <a-button
+                type="primary"
+                size="small"
+                onClick={this.handlePreview}
+                loading={this.previewWork_loading}
+              >{this.$t('editor.header.preview')}</a-button>
+            </a-menu-item>
+            <a-menu-item key="2" class="transparent-bg">
+              <a-button
+                size="small"
+                onClick={this.handleSave}
+                loading={this.saveWork_loading || this.uploadWorkCover_loading}
+              >{this.$t('editor.header.save')}</a-button>
+            </a-menu-item>
             {/* <a-menu-item key="3" class="transparent-bg"><a-button size="small">发布</a-button></a-menu-item> */}
             <a-menu-item key="3" class="transparent-bg">
-              <a-dropdown-button onClick={() => {}} size="small">
+              <a-dropdown-button
+                size="small"
+                onClick={this.handlePublish}
+                loading={this.saveWork_loading || this.uploadWorkCover_loading}
+              >
                 {/* 发布 */}
                 {this.$t('editor.header.publish')}
                 <a-menu slot="overlay" onClick={({ key }) => {
@@ -343,8 +373,8 @@ export default {
         {
           <PreviewDialog
             work={this.work}
-            visible={this.previewVisible}
-            handleClose={() => { this.previewVisible = false }}
+            visible={this.previewDialogVisible}
+            handleClose={() => { this.previewDialogVisible = false }}
           />
         }
         <Feedback />
