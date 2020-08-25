@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/ly525/luban-h5/compare/v1.11.0...v1.12.0) (2020-08-25)
+
+
+### Features
+
+* support import csv; !#zh: 支持导入 csv ([ca2a991](https://github.com/ly525/luban-h5/commit/ca2a9918ce979fb4b96e4a7ce252cd9d6f46dcaa))
+* support publish page !#zh: 支持发布页面 ([85b6cf6](https://github.com/ly525/luban-h5/commit/85b6cf69633b5fce386e09d5c9e8256ca770cdcd))
+* **component:**  支持水印功能  !#en: add watermark ([7cf954c](https://github.com/ly525/luban-h5/commit/7cf954cf2f20f18a3216278ad4cf9cb26c8e84e7))
+* **component:** !#zh: 增加表格组件 !#: add table component ([7b6ce8e](https://github.com/ly525/luban-h5/commit/7b6ce8ec78e5b9ea349b132d8ee1560a3cd103b3))
+
+
+### Bug Fixes
+
+* add scroll for shortcut-panel ([1beb681](https://github.com/ly525/luban-h5/commit/1beb681ab6b2b2e78c15922e39a464beb0f6f925))
+
 ## [1.11.0](https://github.com/ly525/luban-h5/compare/v1.10.2...v1.11.0) (2020-08-25)
 
 
