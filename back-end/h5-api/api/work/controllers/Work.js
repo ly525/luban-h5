@@ -25,11 +25,11 @@ module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
-    const { mode }  = ctx.request.query
+    const { view_mode }  = ctx.request.query
     const work = await strapi.services.work.findOne(ctx.params);
     // 非发布状态, 查看不到内容
     // 非预览模式, 查看不到内容
-    const canRender = mode === VIEW_MODE.PREVIEW || work.is_publish
+    const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish
     if (!canRender) work.pages = []
     return ctx.render('engine', { work });
   },

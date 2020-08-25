@@ -98,7 +98,7 @@ const Engine = {
 
     // 预览模式 或者 已经发布 的页面可以正常渲染，否则提示用户暂未发布
     const query = new URLSearchParams(window.location.search)
-    const canRender = query.get('mode') === 'preview' || work.is_publish
+    const canRender = query.get('view_mode') === 'preview' || work.is_publish
     if (!canRender) return this.renderUnPublishTip()
 
     const containerStyle = this.getContainerStyle(work)
