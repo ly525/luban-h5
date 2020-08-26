@@ -33,7 +33,7 @@ const Engine = {
   },
   data () {
     return {
-      isLongPage: window.__work.mode === PAGE_MODE.LONG_PAGE
+      isLongPage: window.__work.page_mode === PAGE_MODE.LONG_PAGE
     }
   },
   methods: {

@@ -1003,8 +1003,9 @@
           "is_template": {
             "type": "boolean"
           },
-          "mode": {
+          "page_mode": {
             "type": "string",
+            "default": "h5_swipper",
             "enum": [
               "h5_swipper",
               "h5_long_page",
@@ -1037,8 +1038,9 @@
           "is_template": {
             "type": "boolean"
           },
-          "mode": {
+          "page_mode": {
             "type": "string",
+            "default": "h5_swipper",
             "enum": [
               "h5_swipper",
               "h5_long_page",

@@ -11,7 +11,7 @@
 <template>
   <a-form :layout="formLayout">
     <a-form-item label="H5类型">
-      <a-radio-group v-model="pageMode" @change="handleModeChange" size="small">
+      <a-radio-group v-model="pageMode" size="small">
         <a-radio-button v-for="(value, key) in PAGE_MODE" :key="key" :value="value">
           {{PAGE_MODE_LABEL[key]}}
         </a-radio-button>
@@ -39,10 +39,10 @@ export default {
     // https://vuex.vuejs.org/zh/guide/forms.html#%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7
     pageMode: {
       get () {
-        return this.work.mode
+        return this.work.page_mode || PAGE_MODE.SWIPPER_PAGE
       },
-      set (model) {
-        this.updateWork({ mode })
+      set (page_mode) {
+        this.updateWork({ page_mode })
       }
     }
   },
@@ -50,9 +50,6 @@ export default {
     ...mapActions('editor', [
       'updateWork'
     ]),
-    handleModeChange (e) {
-      this.updateWork({ mode: e.target.value })
-    }
   }
 }
 </script>

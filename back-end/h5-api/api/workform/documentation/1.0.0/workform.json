@@ -551,7 +551,7 @@
               "is_template": {
                 "type": "boolean"
               },
-              "mode": {
+              "page_mode": {
                 "type": "string"
               },
               "height": {
