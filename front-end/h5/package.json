@@ -56,7 +56,6 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-component": "^1.1.1",
     "cross-env": "^6.0.3",
-    "dart-sass": "^1.23.7",
     "eslint": "^5.16.0",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-vue": "^5.0.0",
