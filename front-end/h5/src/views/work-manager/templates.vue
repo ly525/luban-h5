@@ -94,7 +94,7 @@ export default {
   }),
   computed: {
     ...mapState('editor', ['works', 'workTemplates']),
-    ...mapState('loading', ['fetchWorks_loading'])
+    ...mapState('loading', ['fetchWorkTemplates_loading'])
   },
   methods: {
     ...mapActions('editor', [
