@@ -39,7 +39,7 @@ export const actions = {
    * 预览作品之前需要先保存，但希望 用户点击保存按钮 和 点击预览按钮 loading_name 能够不同（虽然都调用了 saveWork）
    * 因为 loading 效果要放在不同的按钮上
    */
-  saveWork ({ commit, dispatch, state }, { isSaveCover = false, loadingName = 'saveWork_loading', successMsg="保存作品成功" } = {}) {
+  saveWork ({ commit, dispatch, state }, { isSaveCover = false, loadingName = 'saveWork_loading', successMsg = '保存作品成功' } = {}) {
     const fn = (callback) => {
       new AxiosWrapper({
         dispatch,

@@ -62,7 +62,7 @@ const Engine = {
     },
     renderPreview (pageElements = []) {
       const pageWrapperStyle = this.isLongPage ? {
-        height:  window.__work.height + 'px'
+        height: window.__work.height + 'px'
       } : {}
 
       const elements = pageElements.map(element => new Element(element))
@@ -78,10 +78,10 @@ const Engine = {
         </div>
       )
     },
-    getContainerStyle(work) {
+    getContainerStyle (work) {
       const containerStyle = {
         position: 'relative',
-        height: '100%',
+        height: '100%'
       }
 
       if (this.isLongPage) {
@@ -89,9 +89,9 @@ const Engine = {
       }
       return containerStyle
     },
-    renderUnPublishTip() {
+    renderUnPublishTip () {
       return <div style="box-sizing: border-box;min-height: 568px;line-height: 568px;text-align: center;">页面可能暂未发布</div>
-    },
+    }
   },
   render (h) {
     const work = window.__work
