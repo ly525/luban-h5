@@ -16,6 +16,7 @@ import LbpRate from '../components/plugins/lbp-rate'
 import LbpQQMap from '../components/plugins/lbp-qq-map/src'
 import LbpLineChart from '../components/plugins/charts/line'
 import LbpTable from '../components/plugins/lbp-table'
+import LbpNewsList from '../components/plugins/lbp-news-list'
 // import LbpTabs from '../components/plugins/lbp-tabs'
 
 export const pluginsList = [
@@ -277,6 +278,17 @@ export const pluginsList = [
     shortcutProps: {
       theme: 'lbp-table-theme-light-blue'
     }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'NewsList',
+      'zh-CN': '新闻列表'
+    },
+    title: '新闻列表',
+    icon: 'list',
+    component: LbpNewsList,
+    visible: true,
+    name: LbpNewsList.name
   }
 ]
 

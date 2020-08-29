@@ -41,15 +41,15 @@ export default {
       get () {
         return this.work.page_mode || PAGE_MODE.SWIPPER_PAGE
       },
-      set (page_mode) {
-        this.updateWork({ page_mode })
+      set (pageMode) {
+        this.updateWork({ page_mode: pageMode })
       }
     }
   },
   methods: {
     ...mapActions('editor', [
       'updateWork'
-    ]),
+    ])
   }
 }
 </script>

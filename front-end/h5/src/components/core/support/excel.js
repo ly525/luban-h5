@@ -68,7 +68,6 @@ export default {
     this.sheet.loadData({
       rows: this.innerItems
     }).change(excelData => {
-      debugger
       // console.log('----------')
       // console.log(excelData)
       // console.log(this.formatter(excelData))

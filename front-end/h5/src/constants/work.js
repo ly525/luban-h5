@@ -5,10 +5,10 @@
  */
 export const PAGE_MODE = {
   SWIPPER_PAGE: 'h5_swipper',
-  LONG_PAGE: 'h5_long_page',
+  LONG_PAGE: 'h5_long_page'
 }
 
 export const PAGE_MODE_LABEL = {
   SWIPPER_PAGE: '翻页H5',
-  LONG_PAGE: '长页面',
+  LONG_PAGE: '长页面'
 }

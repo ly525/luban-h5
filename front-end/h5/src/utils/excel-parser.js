@@ -139,7 +139,7 @@ export default class Parser {
       rows: rows.map((row, index) => {
         const obj = {}
         columns.forEach((col, colIndex) => {
-          obj[col] = row[colIndex]
+          obj[col.trim()] = row[colIndex]
         })
         return obj
       })
