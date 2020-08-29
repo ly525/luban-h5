@@ -63,8 +63,8 @@ export default {
   },
   render () {
     const randomId = +new Date()
-    return <div style="height: 50px;">
-      <label for={randomId} class="ant-btn ant-btn-primary ant-btn-sm">请选择CSV文件</label>
+    return <div style="height: 24px;">
+      <label for={randomId} class="ant-btn ant-btn-primary ant-btn-sm">选择导入 csv 文件</label>
       {/* <input id={randomId} style="visibility:hidden;" type="file"></input> */}
       <input ref="input" id={randomId} ref="csv" type="file" onChange={this.validFileMimeType} style="visibility:hidden;" name="csv">xxxx</input>
     </div>

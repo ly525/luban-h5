@@ -34,6 +34,17 @@ export default {
       label: '类型',
       defaultValue: 'line',
       visible: false
+    }),
+    colors: PropTypes.colors({
+      label: '颜色面板',
+      defaultValue: () => [
+        // https://github.com/ElemeFE/v-charts/blob/01ebb541a5d905047dd52957ae0898d529342235/src/constants.js#L20
+        '#19d4ae', '#5ab1ef', '#fa6e86',
+        '#ffb980', '#0067a6', '#c4b4e4',
+        '#d87a80', '#9cbbff', '#d9d0c7',
+        '#87a997', '#d49ea2', '#5b4947',
+        '#7ba3a8'
+      ]
     })
   },
   data () {
@@ -43,19 +54,14 @@ export default {
   },
   render () {
     const chartData = Parser.csv2VChartJson(this.dataset)
-    const settings = {
-      // metrics: ['日期', '销售量'],
-      // dimension: ['日期']
-    }
     switch (this.type) {
       case 'line':
-        return <VeLine data={chartData} settings={settings} />
       case 'histogram':
-        return <VeHistogram data={chartData} settings={settings} />
+        return <VeHistogram data={chartData} colors={this.colors} />
       case 'pie':
-        return <VePie data={chartData} settings={settings} />
+        return <VePie data={chartData} />
       case 'funnel':
-        return <VeFunnel data={chartData} settings={settings} />
+        return <VeFunnel data={chartData} />
       default:
         return null
     }

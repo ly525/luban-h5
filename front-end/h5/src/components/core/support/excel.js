@@ -46,11 +46,12 @@ export default {
     }
   },
   render () {
-    return <div>
-      <span>方案1: 选择导入 csv 文件</span>
-      <CsvImport onParse={this.parseCSV} />
-      <span>方案2: 直接编辑 Excel</span>
-      <div id="excel-wrapper" ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
+    return <div style="max-height: 320px;overflow:scroll;">
+      <div style="line-height:2;">
+        <span>方案1: <CsvImport onParse={this.parseCSV} /></span>
+        <span>方案2: 直接编辑 Excel</span>
+        <div id="excel-wrapper" ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
+      </div>
     </div>
   },
   mounted () {
