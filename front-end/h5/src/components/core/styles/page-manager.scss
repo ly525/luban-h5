@@ -1,6 +1,9 @@
 .page-manager-panel {
   position: relative;
 
+  max-height: calc(100vh - 200px);
+  overflow: scroll;
+
   &__item {
     display: flex;
     justify-content: space-between;
@@ -14,6 +17,8 @@
   }
 
   .footer-actions {
-    margin-top: 40px;
+    position: fixed;
+    bottom: 10px;
+    margin-left: 40px;
   }
 }
