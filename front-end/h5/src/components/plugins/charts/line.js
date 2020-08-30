@@ -1,4 +1,5 @@
 import VeLine from 'v-charts/lib/line.common'
+import VeRadar from 'v-charts/lib/radar.common'
 import VePie from 'v-charts/lib/pie.common'
 import VeHistogram from 'v-charts/lib/histogram.common'
 import VeFunnel from 'v-charts/lib/funnel.common'
@@ -8,6 +9,8 @@ import 'echarts/lib/component/markLine'
 import 'echarts/lib/component/markPoint'
 import 'echarts/lib/component/markArea'
 import Parser from '../../../utils/excel-parser'
+
+// const title = str => str.slice(0, 1).toUpperCase() + str.slice(1)
 
 export default {
   extra: {
@@ -56,12 +59,15 @@ export default {
     const chartData = Parser.csv2VChartJson(this.dataset)
     switch (this.type) {
       case 'line':
+        return <VeLine data={chartData} colors={this.colors} />
       case 'histogram':
         return <VeHistogram data={chartData} colors={this.colors} />
       case 'pie':
-        return <VePie data={chartData} />
+        return <VePie data={chartData} colors={this.colors} />
       case 'funnel':
-        return <VeFunnel data={chartData} />
+        return <VeFunnel data={chartData} colors={this.colors} />
+      case 'radar':
+        return <VeRadar data={chartData} colors={this.colors} />
       default:
         return null
     }

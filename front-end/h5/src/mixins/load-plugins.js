@@ -22,6 +22,20 @@ import LbpNewsList from '../components/plugins/lbp-news-list'
 export const pluginsList = [
   {
     i18nTitle: {
+      'en-US': 'RadarChart',
+      'zh-CN': '雷达图'
+    },
+    title: '雷达图',
+    icon: 'line-chart',
+    component: LbpLineChart,
+    visible: true,
+    name: LbpLineChart.name,
+    shortcutProps: {
+      type: 'radar'
+    }
+  },
+  {
+    i18nTitle: {
       'en-US': 'LineChart',
       'zh-CN': '折线图'
     },
