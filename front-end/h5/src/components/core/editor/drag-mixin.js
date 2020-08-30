@@ -70,7 +70,7 @@ export default {
   methods: {
     /**
      *
-     * @param {*} element
+     * @param {*} element shortcutItem
      * @param {*} e
      */
     handleDragStartFromMixin (element, e) {
@@ -129,7 +129,7 @@ export default {
       const position = canvasWrapper.getBoundingClientRect()
       this.dragElement && this.clone({
         ...this.dragElement,
-        customStyle: {
+        dragStyle: {
           left: e.clientX - layerX - position.left,
           top: e.clientY - layerY - position.top
         }

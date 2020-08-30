@@ -41,6 +41,8 @@ export const mutations = {
       case 'add':
         const vm = getVM(value.name)
         vm.$options.shortcutProps = value.shortcutProps
+        // 用于拖拽结束，确定最终放置的位置
+        vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
         const element = new Element(vm.$options)
         elements.push(element)
         break

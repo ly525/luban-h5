@@ -44,7 +44,8 @@ class Element {
     return {
       ...defaultStyle,
       zindex: ele.zindex,
-      ...(ele.extra && ele.extra.defaultStyle)
+      ...(ele.extra && ele.extra.defaultStyle),
+      ...ele.dragStyle // 拖拽结束落点的top、left
     }
   }
 
@@ -52,11 +53,13 @@ class Element {
     if (typeof ele.pluginProps === 'object') {
       return cloneObj({ ...ele.pluginProps, uuid: this.uuid })
     }
-    return this.getDefaultPluginProps(ele.props, ele.shortcutProps)
+    return this.getDefaultPluginProps(ele)
   }
 
   // init prop of plugin
-  getDefaultPluginProps (props = {}, shortcutProps) {
+  getDefaultPluginProps (ele) {
+    const { props = {}, shortcutProps = {} } = ele
+
     let pluginProps = {
       uuid: this.uuid
     }
