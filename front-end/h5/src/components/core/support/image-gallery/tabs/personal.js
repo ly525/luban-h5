@@ -1,3 +1,6 @@
+/**
+ * https://github.com/ly525/luban-h5/issues/138
+ */
 import axios from 'axios'
 import ImageItem from '../components/image-item.js'
 import Uploader from '../components/uploader.js'
@@ -6,7 +9,10 @@ export default {
   data: () => ({
     items: [],
     cachedItems: [],
-    loading: false
+    loading: false,
+    total: 30,
+    page: 1,
+    pageSize: 30
   }),
   methods: {
     uploadSuccess ({ file, fileList }) {
@@ -18,6 +24,20 @@ export default {
         loading: true
       })
       return file
+    },
+    searchFiles () {
+      axios
+        .get('/upload/files', {
+          params: {
+            '_limit': this.pageSize,
+            '_start': (this.page - 1) * this.pageSize
+          // mime: 'image/png'
+          }
+        })
+        .then(res => {
+          this.items = res.data
+          this.cachedItems = []
+        })
     }
   },
   render (h) {
@@ -31,6 +51,20 @@ export default {
               uploadSuccess={info => this.uploadSuccess(info)}
             />
             <a-list
+              pagination={{
+                showSizeChanger: true,
+                total: this.total,
+                pageSize: this.pageSize,
+                onChange: (page, pageSize) => {
+                  this.page = page
+                  this.searchFiles()
+                  console.log(page)
+                },
+                onShowSizeChange: (currentPage, pageSize) => {
+                  this.pageSize = pageSize
+                  this.searchFiles()
+                }
+              }}
               style="height: 400px; overflow: auto;"
               grid={{ gutter: 12, column: 3 }}
               dataSource={this.items}
@@ -49,18 +83,10 @@ export default {
     )
   },
   mounted () {
+    axios.get('/upload/files/count').then(res => {
+      this.total = res.data.count
+    })
+    this.searchFiles()
     // demo code
-    axios
-      .get('/upload/files', {
-        params: {
-          '_limit': 10,
-          '_start': 0,
-          mime: 'image/png'
-        }
-      })
-      .then(res => {
-        this.items = res.data
-        this.cachedItems = []
-      })
   }
 }
