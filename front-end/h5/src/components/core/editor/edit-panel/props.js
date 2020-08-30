@@ -91,7 +91,7 @@ export default {
         //   editingElement.pluginProps[propKey] = e.target ? e.target.value : e
         // }
           change (e) {
-            // TODO fixme: update plugin props in vuex with dispatch
+            // fixme: update plugin props in vuex with dispatch
             editingElement.pluginProps[propKey] = e.target ? e.target.value : e
           }
         }

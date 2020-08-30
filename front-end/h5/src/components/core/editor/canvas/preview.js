@@ -1,6 +1,7 @@
 import NodeWrapper from '@/components/preview/node-wrapper.js'
 /**
- * TODO extract page preview card used for page list
+ * 预览模块
+ * preview h5 work module
  */
 export default {
   props: ['elements', 'height'],

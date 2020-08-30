@@ -41,7 +41,7 @@ export default {
       'setEditingElement'
     ]),
     mixinScript () {
-      // TODO mixin script
+      // mixin script
     }
   },
   render (h) {

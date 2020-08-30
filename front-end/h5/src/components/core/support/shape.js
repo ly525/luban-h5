@@ -135,8 +135,6 @@ export default {
       }
       document.addEventListener('mousemove', move, true)
       document.addEventListener('mouseup', up, true)
-      // TODO add comment
-      return true
     },
     handleMousedown (e) {
       if (this.handleMousedownProp) {
