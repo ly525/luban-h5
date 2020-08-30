@@ -3,14 +3,15 @@ import NodeWrapper from '@/components/preview/node-wrapper.js'
  * TODO extract page preview card used for page list
  */
 export default {
-  props: ['elements'],
+  props: ['elements', 'height'],
   components: {
     NodeWrapper
   },
   methods: {
     renderPreview (h, elements) {
+      const pageWrapperStyle = { height: this.height || '100%', position: 'relative' }
       return (
-        <div style={{ height: '100%', position: 'relative' }}>
+        <div style={pageWrapperStyle}>
           {
             elements.map((element, index) => {
               return <node-wrapper element={element}>

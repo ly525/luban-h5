@@ -21,6 +21,7 @@ import 'ant-design-vue/lib/message/style/css' // 加载 CSS
 import { pluginsList } from './mixins/load-plugins.js'
 import { PAGE_MODE } from './constants/work.js'
 import Element from './components/core/models/element'
+import RenderPreview from '@/components/core/editor/canvas/preview'
 import NodeWrapper from '@/components/preview/node-wrapper.js'
 
 Vue.config.productionTip = true
@@ -61,22 +62,10 @@ const Engine = {
       )
     },
     renderPreview (pageElements = []) {
-      const pageWrapperStyle = this.isLongPage ? {
-        height: window.__work.height + 'px'
-      } : {}
-
+      const height = this.isLongPage ? window.__work.height + 'px' : '100%'
       const elements = pageElements.map(element => new Element(element))
-      return (
-        <div style={pageWrapperStyle}>
-          {
-            elements.map((element, index) => {
-              return <node-wrapper element={element}>
-                {this.$createElement(element.name, element.getPreviewData({ position: 'static' }))}
-              </node-wrapper>
-            })
-          }
-        </div>
-      )
+      // src/components/core/editor/canvas/preview
+      return <RenderPreview elements={elements} height={height} />
     },
     getContainerStyle (work) {
       const containerStyle = {
