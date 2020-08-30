@@ -3,7 +3,7 @@ name: docs
 on:
   push:
     branches:
-      - dev
+      - mater
     paths:
       - 'docs/**/**'
 
@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
       with:
-        ref: dev
+        ref: master
 
     - name: build
       uses: actions/setup-node@v1
