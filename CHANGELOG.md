@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/ly525/luban-h5/compare/v1.12.0...v1.13.0) (2020-08-30)
+
+
+### Features
+
+* **canvas:** Place the element where the mouse is released; !#zh: 将元素放在鼠标松开的位置 ([cb5569c](https://github.com/ly525/luban-h5/commit/cb5569c044ae14238afd62813f3fe9aadd723277))
+* **chrt component:** support color theme !#zh: echart 支持配色 ([ff762ec](https://github.com/ly525/luban-h5/commit/ff762ec5b3bd97ebb1085196cb5057fff81ea16a))
+* **component:** add news list; !#zh: 新闻列表组件 ([563e14b](https://github.com/ly525/luban-h5/commit/563e14b7ffbdd607f74973aa16968055355fef01))
+
+
+### Bug Fixes
+
+* [#215](https://github.com/ly525/luban-h5/issues/215) ([7cbde58](https://github.com/ly525/luban-h5/commit/7cbde5894db3f59ff7991b9249825f69c64d2b0a))
+* **page manager:** [#158](https://github.com/ly525/luban-h5/issues/158) add scroll for page manger; !#zh: 页面管理器超出滚动 ([c65f71f](https://github.com/ly525/luban-h5/commit/c65f71ff7f5eff2011e0f1f02590c722944e30a8))
+
 ## [1.12.0](https://github.com/ly525/luban-h5/compare/v1.11.0...v1.12.0) (2020-08-25)
 
 
