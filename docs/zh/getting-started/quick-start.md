@@ -146,7 +146,8 @@ yarn dev
 ![1567438463824-d6b87f12-eecf-4ae2-aa9c-bb4c73c4127d](https://user-images.githubusercontent.com/12668546/65381950-32addd00-dd2e-11e9-859a-dbec0941dc5a.png)
 
 ##### 上传封面图使用
-![1567858269172-44561808-5d49-43b5-89c1-f4f876eeec24](https://user-images.githubusercontent.com/12668546/65381948-32154680-dd2e-11e9-95ea-589f808ce095.png)
+![image](https://user-images.githubusercontent.com/12668546/91663261-64245080-eb1a-11ea-9e31-f43f910cbb57.png)
+
 
 
 ## 前端环境搭建
