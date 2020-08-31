@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/ly525/luban-h5/compare/v1.13.0...v1.13.1) (2020-08-31)
+
+
+### Features
+
+* 优化图片库，增加分页; optimize image gallery(add pagination) ([1744cbd](https://github.com/ly525/luban-h5/commit/1744cbd4baedef0d9aef24a28cd8e7c7b3aa5ee7))
+* **chart:** add Radar Chart; !#zh: 雷达图 ([efe28dc](https://github.com/ly525/luban-h5/commit/efe28dcf953e44ce00eb44cc5abedf4c97ab6d27))
+
+
+### Bug Fixes
+
+* [#48](https://github.com/ly525/luban-h5/issues/48) [#56](https://github.com/ly525/luban-h5/issues/56) [#60](https://github.com/ly525/luban-h5/issues/60) [#45](https://github.com/ly525/luban-h5/issues/45) ([6d12467](https://github.com/ly525/luban-h5/commit/6d12467bff1b13ffa8d96c6453520c1ea3b0f18c))
+* update plugin-common-props ([4b85905](https://github.com/ly525/luban-h5/commit/4b85905466f249a287d1db24c02dd45b5fd8f0d9))
+
 ## [1.13.0](https://github.com/ly525/luban-h5/compare/v1.12.0...v1.13.0) (2020-08-30)
 
 
