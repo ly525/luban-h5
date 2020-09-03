@@ -1,4 +1,4 @@
-[中文文档-推荐(语雀)](https://www.yuque.com/luban-h5/docs) || [📖中文在线文档(github.io)](https://ly525.github.io/luban-h5/zh/) | [📖English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html) | [README(en)](./README.en.md)
+[论坛/社区](https://github.com/ly525/luban-h5/discussions) || [中文文档-推荐(语雀)](https://www.yuque.com/luban-h5/docs) || [📖中文在线文档(github.io)](https://ly525.github.io/luban-h5/zh/) | [📖English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html) | [README(en)](./README.en.md) || [Community/Discussions](https://github.com/ly525/luban-h5/discussions)
 
 <h2 align="center">
  鲁班 H5
@@ -44,9 +44,9 @@ Mobile Page Builder&Generator with Drag&Drop
 ### 🔗Links/相关链接
  | 源码   | 文档   | 教程     | 社区 |
 | ------ | -------- | ------ | ------ |
-| [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [中文社区/论坛](https://support.qq.com/product/93432)
+| [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [论坛/社区(官方推荐)](https://github.com/ly525/luban-h5/discussions)
 | [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)  | [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |   自定义组件教程(WIP)    | [Gitter](https://gitter.im/luban-h5/community)    |
-|  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |      |
+|  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |   [中文社区/论坛(腾讯吐个槽)](https://support.qq.com/product/93432)   | 
 
 
 ### 🔗生态
