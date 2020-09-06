@@ -34,47 +34,57 @@ export default {
       }
     }
   },
+  watch: {
+    value() {
+      this.refreshSheet({ rows: this.innerItems })
+    }
+  },
   methods: {
     parseCSV (csv) {
       const sheetData = Parser.binaryMatrix2excel(csv.data)
       this.$emit('change', csv.data)
       this.refreshSheet({ rows: sheetData })
     },
+    /**
+     *
+     * @param {Object} data { rows }
+     */
     refreshSheet (data) {
       this.sheet.loadData(data)
       this.sheet.reRender()
+    },
+    initSheet() {
+      const ele = this.$refs.excel
+      return this.sheet || new Spreadsheet(ele, {
+        showToolbar: false,
+        showGrid: true,
+        showContextmenu: true
+        // view: {
+        //   height: () => 400,
+        //   width: () => ele.getBoundingClientRect().width
+        // }
+      }).change(excelData => {
+        // console.log('----------')
+        // console.log(excelData)
+        // console.log(this.formatter(excelData))
+        // console.log('----------')
+        this.$emit('change', this.formatter(excelData) /** BinaryMatrix */)
+        // save data to db
+      })
     }
   },
+  // 注意(看源码)： 如果不调用 data 或 props 的某个值，则 render 不会执行。watcher 的更新时机是什么？？
   render () {
     return <div style="max-height: 320px;overflow:scroll;">
       <div style="line-height:2;">
         <span>方案1: <CsvImport onParse={this.parseCSV} /></span>
         <span>方案2: 直接编辑 Excel</span>
-        <div id="excel-wrapper" ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
+        <div ref="excel" style="margin-right: 12px;width: 100%;overflow: scroll"></div>
       </div>
     </div>
   },
   mounted () {
-    const ele = this.$refs.excel
-    const options = {
-      showToolbar: false,
-      showGrid: true,
-      showContextmenu: true
-      // view: {
-      //   height: () => 400,
-      //   width: () => ele.getBoundingClientRect().width
-      // }
-    }
-    this.sheet = new Spreadsheet(ele, options)
-    this.sheet.loadData({
-      rows: this.innerItems
-    }).change(excelData => {
-      // console.log('----------')
-      // console.log(excelData)
-      // console.log(this.formatter(excelData))
-      // console.log('----------')
-      this.$emit('change', this.formatter(excelData) /** BinaryMatrix */)
-      // save data to db
-    })
-  }
+    this.sheet = this.initSheet()
+    this.refreshSheet({ rows: this.innerItems })
+  },
 }
