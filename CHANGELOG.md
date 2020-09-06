@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/ly525/luban-h5/compare/v1.13.1...v1.13.2) (2020-09-06)
+
+
+### Bug Fixes
+
+* refresh excel data when prop value update ([76603fd](https://github.com/ly525/luban-h5/commit/76603fdb452cc5854a8c8c008237df44aef6d59f))
+
 ### [1.13.1](https://github.com/ly525/luban-h5/compare/v1.13.0...v1.13.1) (2020-08-31)
 
 
