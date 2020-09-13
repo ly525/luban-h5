@@ -35,7 +35,7 @@ export default {
     }
   },
   watch: {
-    value() {
+    value () {
       this.refreshSheet({ rows: this.innerItems })
     }
   },
@@ -53,7 +53,7 @@ export default {
       this.sheet.loadData(data)
       this.sheet.reRender()
     },
-    initSheet() {
+    initSheet () {
       const ele = this.$refs.excel
       return this.sheet || new Spreadsheet(ele, {
         showToolbar: false,
@@ -86,5 +86,5 @@ export default {
   mounted () {
     this.sheet = this.initSheet()
     this.refreshSheet({ rows: this.innerItems })
-  },
+  }
 }

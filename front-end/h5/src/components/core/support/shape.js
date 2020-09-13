@@ -141,11 +141,35 @@ export default {
         this.handleMousedownProp()
         this.mousedownForElement(e, this.element)
       }
+    },
+    /**
+     * !#en: delete element with keyboard
+     * !#zh: 键盘快捷键删除元素
+     *
+     * TODO: 增加 确认删除 拦截操作
+     */
+    handleDeleteByKeyboard (e) {
+      const key = event.keyCode || event.charCode
+      if (key === 8 || key === 46) {
+        this.$emit('delete')
+      }
+    },
+    /**
+     * detect key pressed on keyboard
+     * 检测键盘按键 按下行为
+     *
+     * 支持如下行为：
+     * - Backspace/Delete 快速删除元素
+     */
+    handleKeyPressed (e) {
+      this.handleDeleteByKeyboard(e)
     }
   },
   render (h) {
     return (
       <div
+        tabIndex="0"
+        onKeydown={this.handleKeyPressed}
         onClick={this.handleWrapperClick}
         onMousedown={this.handleMousedown}
         class={{ 'shape__wrapper-active': this.active }}

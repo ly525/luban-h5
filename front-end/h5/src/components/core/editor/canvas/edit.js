@@ -235,6 +235,7 @@ export default {
               }
               return (
                 <Shape
+                  onDelete={() => this.elementManager({ type: 'delete' }) }
                   style={element.getStyle({ position: 'absolute' })}
                   defaultPosition={element.commonStyle} // {top, left}
                   element={element}
