@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/ly525/luban-h5/compare/v1.13.2...v1.14.0) (2020-09-13)
+
+
+### Features
+
+* **element:** 支持使用键盘快捷键删除元素; !#en: support delete element with keyboard ([a597710](https://github.com/ly525/luban-h5/commit/a5977103361a96f4357736dd70ad20845216a769))
+
 ### [1.13.2](https://github.com/ly525/luban-h5/compare/v1.13.1...v1.13.2) (2020-09-06)
 
 
