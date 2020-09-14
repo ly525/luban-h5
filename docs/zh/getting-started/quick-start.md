@@ -138,6 +138,11 @@ yarn dev
 ```
 
 ### 2. 注意事项
+> 如何打开下图所示的页面呢？对于node 后端框架， 大家知道比较多的可能是 阿里的 egg.js、express.js、koa.js，鲁班H5采用的是 [strapi.js](strapi.io) 作为其后端框架，[答疑:为何采用Strapi.js作为后端?](https://github.com/ly525/luban-h5/discussions/234)
+
+> 我们在上一步`cd back-end/h5/api && yarn && yarn dev`之后，就可以打开 strapi.js 其自带的管理后台了（用来管理数据库Model、接口权限、注册用户、新增用户等），本地访问地址为：http://localhost:1337/admin
+
+> 请将右上角语言改为：zh-Hans(简体中文)，如果你是第一次访问：http://localhost:1337/admin ，那么你需要按照页面的提示进行注册下（和你正常注册淘宝一样，输入邮箱、用户名、密码、确认密码即可），这个注册只是本地注册，没有其它影响。注册完成之后，就可以使用刚才注册的账号、密码登录了
 
 1. 本地开发，如果后端接口报错 403 Forbidden，请按照下图的操作，打开接口的访问权限接口：`[Roles And Permission] -> [Public] - [Permissions]`
 
