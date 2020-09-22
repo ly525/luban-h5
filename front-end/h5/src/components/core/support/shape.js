@@ -68,6 +68,7 @@ export default {
     handleWrapperClick (e) {
       e.stopPropagation()
       e.preventDefault()
+      console.log(e.target, '-----handleWrapperClick---')
     },
     mousedownForMark (point, downEvent) {
       downEvent.stopPropagation()
@@ -119,7 +120,7 @@ export default {
       let move = moveEvent => {
         // !#zh 移动的时候，不需要向后代元素传递事件，只需要单纯的移动就OK
         moveEvent.stopPropagation()
-        moveEvent.preventDefault()
+        // moveEvent.preventDefault()
 
         let currX = moveEvent.clientX
         let currY = moveEvent.clientY
@@ -137,6 +138,7 @@ export default {
       document.addEventListener('mouseup', up, true)
     },
     handleMousedown (e) {
+      e.stopPropagation()
       if (this.handleMousedownProp) {
         this.handleMousedownProp()
         this.mousedownForElement(e, this.element)

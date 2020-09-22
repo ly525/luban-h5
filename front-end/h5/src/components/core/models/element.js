@@ -35,6 +35,7 @@ class Element {
     this.commonStyle = this.getCommonStyle(ele)
     this.events = []
     this.animations = ele.animations || []
+    this.children = ele.children || []
   }
 
   getCommonStyle (ele) {
@@ -60,9 +61,8 @@ class Element {
   getDefaultPluginProps (ele) {
     const { props = {}, shortcutProps = {} } = ele
 
-    let pluginProps = {
-      uuid: this.uuid
-    }
+    let pluginProps = { uuid: this.uuid }
+
     Object.keys(props).forEach(key => {
       const defaultValue = props[key].default
       pluginProps[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue

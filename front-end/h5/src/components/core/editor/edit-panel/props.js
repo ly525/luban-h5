@@ -44,8 +44,8 @@ export default {
           this.loadCustomEditorFlag = true
           Vue.component(this.customEditorName, component.default)
         }).catch(err => {
-          console.log(err)
-          console.warn('没有发现组件对应的编辑器')
+          // console.log(err)
+          // console.warn('没有发现组件对应的编辑器')
         })
       }
     },

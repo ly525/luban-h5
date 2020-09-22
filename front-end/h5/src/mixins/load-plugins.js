@@ -2,6 +2,7 @@ import Vue from 'vue'
 // import LbpButton from '@luban-h5/lbc-button'
 import LbpButton from '../components/plugins/lbp-button'
 import LbpPicture from '../components/plugins/lbp-picture'
+import LbpPictureShoe from '../components/plugins/lbp-picture-shoe'
 import LbpVideo from '../components/plugins/lbp-video'
 import LbpText from '../components/plugins/lbp-text'
 import LbpFormInput from '../components/plugins/lbp-form-input'
@@ -17,6 +18,8 @@ import LbpQQMap from '../components/plugins/lbp-qq-map/src'
 import LbpLineChart from '../components/plugins/charts/line'
 import LbpTable from '../components/plugins/lbp-table'
 import LbpNewsList from '../components/plugins/lbp-news-list'
+import lbpSlotContainer from '../components/plugins/lbp-slot-container'
+import lbpSlotContainerShoe from '../components/plugins/lbp-slot-container-shoe'
 // import LbpTabs from '../components/plugins/lbp-tabs'
 
 export const pluginsList = [
@@ -33,6 +36,30 @@ export const pluginsList = [
     shortcutProps: {
       type: 'radar'
     }
+  },
+  {
+    i18nTitle: {
+      'en-US': 'ShoeContainer',
+      'zh-CN': '空容器-1'
+    },
+    title: '空容器-1',
+    icon: 'line-chart',
+    component: lbpSlotContainerShoe,
+    visible: true,
+    name: lbpSlotContainerShoe.name
+
+  },
+  {
+    i18nTitle: {
+      'en-US': 'SlotContainer',
+      'zh-CN': '空容器'
+    },
+    title: '空容器',
+    icon: 'line-chart',
+    component: lbpSlotContainer,
+    visible: true,
+    name: lbpSlotContainer.name
+
   },
   {
     i18nTitle: {
@@ -133,6 +160,17 @@ export const pluginsList = [
     component: LbpPicture,
     visible: true,
     name: LbpPicture.name
+  },
+  {
+    title: '鞋-图片',
+    i18nTitle: {
+      'en-US': 'PictureShoe',
+      'zh-CN': '鞋-图片'
+    },
+    icon: 'photo',
+    component: LbpPictureShoe,
+    visible: true,
+    name: LbpPictureShoe.name
   },
   {
     i18nTitle: {

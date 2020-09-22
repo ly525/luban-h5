@@ -10,6 +10,12 @@
 }
 
 .shape__wrapper-active {
+  // width: 100%;
+  // height: 100%;
   // #bcbcbc
   outline: 1px solid #70c0ff !important;
+}
+
+.element-on-edit-canvas {
+  height: 100%;
 }

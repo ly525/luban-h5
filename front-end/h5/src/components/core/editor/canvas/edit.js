@@ -1,6 +1,8 @@
+import _ from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import Shape from '../../support/shape'
 import ContextMenu from '../../support/contexmenu'
+// import DraggableNode from '@/components/preview/node-draggable'
 
 export default {
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
@@ -10,7 +12,12 @@ export default {
     contextmenuPos: []
   }),
   computed: {
-    ...mapState('editor', ['editingElement', 'work'])
+    ...mapState('editor', ['editingElement', 'editingPage', 'work']),
+    otherElements () {
+      return this.editingPage.elements.filter(ele => {
+        return ele.uuid !== this.editingElement.uuid && ele.name !== 'lbp-background'
+      })
+    }
   },
   methods: {
     ...mapActions('editor', [
@@ -104,12 +111,46 @@ export default {
         this.clearHLine()
       }
     },
+    checkBounding (pos) {
+      // var targetEle = box.getBoundingClientRect();
+      const baseCurrentEle = pos
+      const currentEle = {
+        ...baseCurrentEle,
+        right: baseCurrentEle.left + baseCurrentEle.width,
+        bottom: baseCurrentEle.top + baseCurrentEle.height
+      }
+      this.otherElements.forEach(baseTargetEle => {
+        const baseTargetEleStyle = baseTargetEle.commonStyle
+        console.log(baseTargetEleStyle)
+        const targetEle = {
+          ...baseTargetEleStyle,
+          right: baseTargetEleStyle.left + baseTargetEleStyle.width,
+          bottom: baseTargetEleStyle.top + baseTargetEleStyle.height
+        }
+        // 如果满足这4个条件的任意一个时候，说明没有发生碰撞，那么相反就是发生了碰撞。
+        const isMeeting = !(
+          targetEle.bottom < currentEle.top ||
+          targetEle.left > currentEle.right ||
+          targetEle.top > currentEle.bottom ||
+          targetEle.right < currentEle.left
+        )
+        console.log(isMeeting, '-checkBounding')
+        if (isMeeting & !baseTargetEle.children.includes(this.editingElement)) {
+          baseTargetEleStyle.backgroundColor = 'red'
+          baseTargetEle.children.push(this.editingElement)
+          this.editingPage.elements = _.remove(this.editingPage.elements, (element) => {
+            return this.editingElement.uuid !== element.uuid
+          })
+        }
+      })
+    },
     /**
      * #!zh: 在元素移动过程中，计算和生成辅助线
      */
     handleElementMove (pos) {
       this.setElementPosition(pos)
       this.calcVHLine(false)
+      this.checkBounding(pos)
     },
     handlePointMove (pos) {
       this.setElementPosition(pos)
@@ -137,7 +178,11 @@ export default {
       this.contextmenuPos = []
     },
     handleClickCanvas (e) {
-      if (!e.target.classList.contains('element-on-edit-canvas')) {
+      console.log('handleClickCanvas')
+      if (
+        !e.target.classList.contains('element-on-edit-canvas') ||
+        !e.target.classList.contains('element-on-edit-canvas-child')
+      ) {
         this.setEditingElement()
       }
     },
@@ -178,6 +223,75 @@ export default {
       document.addEventListener('mousemove', move, true)
       document.addEventListener('mouseup', up, true)
     },
+    getElementData (element, isChild = false) {
+      return {
+        // style: {
+        //   width: '100%'
+        //   height: '100%'
+        // },
+        // 添加 class 的原因：与 handleClickCanvasProp 配合,
+        // 当点击编辑画布上的其它区域（clickEvent.target.classList 不包含下面的 className）的时候，设置 editingElement=null
+        class: !isChild ? 'element-on-edit-canvas' : 'element-on-edit-canvas-child',
+        props: {
+          ...element.getProps(), // #6 #3,
+          editorMode: 'edit'
+        },
+        // nativeOn: {
+        //   contextmenu: e => {
+        //     this.bindContextMenu(e)
+        //   }
+        // },
+        on: {
+          // 高亮当前点击的元素
+          // click: () => this.setEditingElement(element)
+          input: ({ value, pluginName }) => {
+            if (pluginName === 'lbp-text') {
+              element.pluginProps.text = value
+            }
+          }
+        }
+      }
+    },
+    getShapedElement (element, isChild = false) {
+      const data = this.getElementData(element, isChild)
+      return <Shape
+        onDelete={() => this.elementManager({ type: 'delete' }) }
+        style={element.getStyle({ position: 'absolute' })}
+        defaultPosition={element.commonStyle} // {top, left}
+        element={element}
+        active={this.editingElement === element}
+        handleMousedownProp={() => {
+          console.log('handleMousedownProp', element)
+          // 在 shape 上面添加 mousedown，而非 plugin 本身添加 onClick 的原因：
+          // 在 mousedown 的时候，即可激活 editingElement(当前选中元素)
+          // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果
+          this.setEditingElement(element)
+        }}
+        // 矩形四周的点叫什么？暂时叫 Point 吧
+        // maka 用的 dot，易企秀用 circle，canva 暂时看不出来
+        // dot是指实实在在存在的“点”或者描述在一个实际平面上存在的“点”比如：桌布上的斑斑点点，就可以用dot来表示；再比如水里有个“黑点”，也可以用dot来表达。
+        // point是指抽象意义上的“点”，比如“AT THIS POINT“，就是说“在这点上”这个“点”并不真实存在
+        handlePointMoveProp={this.handlePointMove}
+        handleElementMoveProp={this.handleElementMove}
+        handleElementMouseUpProp={() => {
+          this.clearHLine()
+          this.clearVLine()
+          this.recordElementRect()
+        }}
+        handlePointMouseUpProp={() => {
+          this.clearHLine()
+          this.clearVLine()
+          this.recordElementRect()
+        }}
+        nativeOnContextmenu={e => {
+          this.bindContextMenu(e)
+        }}
+      >
+        { this.$createElement(element.name, data, element.children.map(child => this.getShapedElement(child, true))) }
+        {/* <DraggableNode element={element}> */}
+        {/* </DraggableNode> */}
+      </Shape>
+    },
     /**
      * #!zh: renderCanvas 渲染中间画布
      * elements
@@ -206,69 +320,7 @@ export default {
                   props: element.getProps()
                 })
               }
-              const data = {
-                style: {
-                  width: '100%',
-                  height: '100%'
-                },
-                // 添加 class 的原因：与 handleClickCanvasProp 配合,
-                // 当点击编辑画布上的其它区域（clickEvent.target.classList 不包含下面的 className）的时候，设置 editingElement=null
-                class: 'element-on-edit-canvas',
-                props: {
-                  ...element.getProps(), // #6 #3,
-                  editorMode: 'edit'
-                },
-                // nativeOn: {
-                //   contextmenu: e => {
-                //     this.bindContextMenu(e)
-                //   }
-                // },
-                on: {
-                  // 高亮当前点击的元素
-                  // click: () => this.setEditingElement(element)
-                  input: ({ value, pluginName }) => {
-                    if (pluginName === 'lbp-text') {
-                      element.pluginProps.text = value
-                    }
-                  }
-                }
-              }
-              return (
-                <Shape
-                  onDelete={() => this.elementManager({ type: 'delete' }) }
-                  style={element.getStyle({ position: 'absolute' })}
-                  defaultPosition={element.commonStyle} // {top, left}
-                  element={element}
-                  active={this.editingElement === element}
-                  handleMousedownProp={() => {
-                    // 在 shape 上面添加 mousedown，而非 plugin 本身添加 onClick 的原因：
-                    // 在 mousedown 的时候，即可激活 editingElement(当前选中元素)
-                    // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果
-                    this.setEditingElement(element)
-                  }}
-                  // 矩形四周的点叫什么？暂时叫 Point 吧
-                  // maka 用的 dot，易企秀用 circle，canva 暂时看不出来
-                  // dot是指实实在在存在的“点”或者描述在一个实际平面上存在的“点”比如：桌布上的斑斑点点，就可以用dot来表示；再比如水里有个“黑点”，也可以用dot来表达。
-                  // point是指抽象意义上的“点”，比如“AT THIS POINT“，就是说“在这点上”这个“点”并不真实存在
-                  handlePointMoveProp={this.handlePointMove}
-                  handleElementMoveProp={this.handleElementMove}
-                  handleElementMouseUpProp={() => {
-                    this.clearHLine()
-                    this.clearVLine()
-                    this.recordElementRect()
-                  }}
-                  handlePointMouseUpProp={() => {
-                    this.clearHLine()
-                    this.clearVLine()
-                    this.recordElementRect()
-                  }}
-                  nativeOnContextmenu={e => {
-                    this.bindContextMenu(e)
-                  }}
-                >
-                  {h(element.name, data)}
-                </Shape>
-              )
+              return this.getShapedElement(element)
             })
           }
           {
