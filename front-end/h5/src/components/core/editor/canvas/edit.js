@@ -111,33 +111,30 @@ export default {
         this.clearHLine()
       }
     },
-    checkBounding (pos) {
-      // var targetEle = box.getBoundingClientRect();
-      const baseCurrentEle = pos
-      const currentEle = {
-        ...baseCurrentEle,
-        right: baseCurrentEle.left + baseCurrentEle.width,
-        bottom: baseCurrentEle.top + baseCurrentEle.height
+    checkMeeting (pos) {
+      const curElePos = {
+        ...pos,
+        right: pos.left + pos.width,
+        bottom: pos.top + pos.height
       }
-      this.otherElements.forEach(baseTargetEle => {
-        const baseTargetEleStyle = baseTargetEle.commonStyle
-        console.log(baseTargetEleStyle)
-        const targetEle = {
-          ...baseTargetEleStyle,
-          right: baseTargetEleStyle.left + baseTargetEleStyle.width,
-          bottom: baseTargetEleStyle.top + baseTargetEleStyle.height
+      this.otherElements.forEach(targeEle => {
+        const targetElePos = {
+          ...targeEle.commonStyle,
+          right: targeEle.commonStyle.left + targeEle.commonStyle.width,
+          bottom: targeEle.commonStyle.top + targeEle.commonStyle.height
         }
         // 如果满足这4个条件的任意一个时候，说明没有发生碰撞，那么相反就是发生了碰撞。
         const isMeeting = !(
-          targetEle.bottom < currentEle.top ||
-          targetEle.left > currentEle.right ||
-          targetEle.top > currentEle.bottom ||
-          targetEle.right < currentEle.left
+          targetElePos.bottom < curElePos.top ||
+          targetElePos.left > curElePos.right ||
+          targetElePos.top > curElePos.bottom ||
+          targetElePos.right < curElePos.left
         )
-        console.log(isMeeting, '-checkBounding')
-        if (isMeeting & !baseTargetEle.children.includes(this.editingElement)) {
-          baseTargetEleStyle.backgroundColor = 'red'
-          baseTargetEle.children.push(this.editingElement)
+
+        if (isMeeting && targeEle.name.includes('container') && !targeEle.children.includes(this.editingElement)) {
+          targeEle.children.push(this.editingElement)
+          this.editingElement.commonStyle.top = pos.top - targetElePos.top
+          this.editingElement.commonStyle.left = pos.left - targetElePos.left
           this.editingPage.elements = _.remove(this.editingPage.elements, (element) => {
             return this.editingElement.uuid !== element.uuid
           })
@@ -150,7 +147,7 @@ export default {
     handleElementMove (pos) {
       this.setElementPosition(pos)
       this.calcVHLine(false)
-      this.checkBounding(pos)
+      this.checkMeeting(pos)
     },
     handlePointMove (pos) {
       this.setElementPosition(pos)
@@ -338,6 +335,11 @@ export default {
               ? <ContextMenu
                 position={this.contextmenuPos}
                 onSelect={({ item, key, selectedKeys }) => {
+                  // add delete setBottom setTop
+                  // openDialog
+                  // if (key === 'openDialog') {
+                  //   this.DialogVisible = true
+                  // }
                   this.elementManager({ type: key })
                   this.hideContextMenu()
                 }}
@@ -364,6 +366,15 @@ export default {
               </div>
             </div>
           </div>
+          {/* <a-dialog visible="DialogVisible">
+            option1 onClick =() => {
+              this.elementManager({
+                type: 'add',
+                value: 'text',
+                target: 'element-uuid'
+              })
+            }
+          </a-dialog> */}
         </div>
       )
     }

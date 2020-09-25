@@ -19,7 +19,7 @@ export default {
       'elementManager',
       'updateWork'
     ]),
-    checkBounding () {
+    checkMeeting () {
       // var targetEle = box.getBoundingClientRect();
       const baseCurrentEle = this.editingElement.commonStyle
       const currentEle = {
@@ -40,7 +40,7 @@ export default {
           targetEle.top > currentEle.bottom ||
           targetEle.right < currentEle.left
         )
-        console.log(isMeeting, '-checkBounding')
+        console.log(isMeeting, '-checkMeeting')
         if (isMeeting) {
           baseTargetEle.backgroundColor = 'red'
         }
@@ -67,7 +67,7 @@ export default {
             const eleft = this.element.commonStyle.left
             const etop = this.element.commonStyle.top
             this.setElementPosition({ left: eleft + offsetX, top: etop + offsetY })
-            this.checkBounding()
+            this.checkMeeting()
           }
         }}
       >

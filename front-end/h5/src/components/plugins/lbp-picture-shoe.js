@@ -4,7 +4,7 @@ import './styles/picture-shoe.scss'
 import placeholderImg from './lbp-picture-placeholder.png' // issue #34
 let x = 20
 export default {
-  name: 'lbp-picture',
+  name: 'lbp-picture-shoe',
   render () {
     return <div
       class="shoe-picture"

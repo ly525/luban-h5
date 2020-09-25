@@ -46,6 +46,11 @@ export const mutations = {
         vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
         const element = new Element(vm.$options)
         elements.push(element)
+
+        // if (value.targetParent) {
+        //   targetElement = this.editingPage.elements.find(value.targetParent)
+        //   targetElement.children.push(element)
+        // }
         break
       case 'copy':
         elements.push(state.editingElement.clone({ zindex: len + 1 }))

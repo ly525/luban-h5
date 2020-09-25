@@ -42,6 +42,7 @@ export default {
     sidebar: {
       components: '组件列表',
       pages: '页面管理',
+      tree: '页面树',
       templates: '模板'
     },
     pageManager: {

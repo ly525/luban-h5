@@ -14,6 +14,7 @@ import RenderActionEditor from './edit-panel/action'
 import RenderBackgroundEditor from './edit-panel/background'
 import RenderShortcutsPanel from './shortcuts-panel/index'
 import RenderPageManager from './page-manager/index'
+import RenderTree from './tree/index'
 import PreviewDialog from './modals/preview.vue'
 
 import LogoOfHeader from '@/components/common/header/logo.js'
@@ -185,6 +186,11 @@ export default {
                 this.saveWork({ isSaveCover: false })
               }}
               onSelectPage={(pageIndex) => { this.setEditingPage(pageIndex) }}
+            />
+          </a-tab-pane>
+          <a-tab-pane key='tree-manager' tab={this.$t('editor.sidebar.tree')}>
+            <RenderTree
+              elements={this.editingPage.elements}
             />
           </a-tab-pane>
         </a-tabs>
