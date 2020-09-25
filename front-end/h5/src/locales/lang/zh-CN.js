@@ -70,7 +70,8 @@ export default {
         moveToTop: '置顶',
         moveToBottom: '置底',
         moveUp: '上移',
-        moveDown: '下移'
+        moveDown: '下移',
+        addShoePropA: '鞋子属性A'
       }
     },
     fixedTool: {

@@ -337,9 +337,17 @@ export default {
                 onSelect={({ item, key, selectedKeys }) => {
                   // add delete setBottom setTop
                   // openDialog
-                  // if (key === 'openDialog') {
-                  //   this.DialogVisible = true
-                  // }
+                  if (key === 'addShoePropA') {
+                    this.elementManager({
+                      type: 'add',
+                      value: {
+                        name: 'lbp-text',
+                        isChild: true
+                      }
+                    })
+                    this.hideContextMenu()
+                    return
+                  }
                   this.elementManager({ type: key })
                   this.hideContextMenu()
                 }}

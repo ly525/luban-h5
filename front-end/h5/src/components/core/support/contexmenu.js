@@ -11,6 +11,11 @@ const contextmenuOptions = [
     i18nLabel: 'editor.centerPanel.contextMenu.delete',
     label: '删除',
     value: 'delete'
+  },
+  {
+    i18nLabel: 'editor.centerPanel.contextMenu.addShoePropA',
+    label: '鞋子属性A',
+    value: 'addShoePropA'
   }
 ]
 

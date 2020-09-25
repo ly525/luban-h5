@@ -60,7 +60,8 @@ export default {
         moveToTop: 'Move To Top',
         moveToBottom: 'Move To Bottom',
         moveUp: 'Move Up',
-        moveDown: 'Move Down'
+        moveDown: 'Move Down',
+        addShoePropA: 'addShoePropA'
       }
     },
     fixedTool: {

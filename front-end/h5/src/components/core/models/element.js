@@ -35,7 +35,7 @@ class Element {
     this.commonStyle = this.getCommonStyle(ele)
     this.events = []
     this.animations = ele.animations || []
-    this.children = ele.children || []
+    this.children = (ele.children || []).map(childEle => new Element(childEle))
   }
 
   getCommonStyle (ele) {

@@ -2,6 +2,37 @@
 import Element from '../../components/core/models/element'
 import { swapZindex, getVM } from '../../utils/element'
 
+/**
+ *
+ * @param {ArrayTree} array
+ * @param {*} uuid
+ */
+function pruneFn (key) {
+  return function prune (array, value) {
+    for (var i = 0; i < array.length; ++i) {
+      var obj = array[i]
+      if (obj[key] === value) {
+        // splice out 1 element starting at position i
+        array.splice(i, 1)
+        return
+      }
+      prune(obj.children, value)
+    }
+  }
+}
+
+const prune = pruneFn('uuid')
+
+// const search = (tree, target) => {
+//   if (tree.uuid === target) {
+//     return tree
+//   }
+
+//   for (const child of tree.child) {
+//     const res = search(child, target)
+//     if (res) return res
+//   }
+// }
 // actions
 export const actions = {
   setEditingElement ({ commit }, payload) {
@@ -45,25 +76,20 @@ export const mutations = {
         // 用于拖拽结束，确定最终放置的位置
         vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
         const element = new Element(vm.$options)
-        elements.push(element)
-
-        // if (value.targetParent) {
-        //   targetElement = this.editingPage.elements.find(value.targetParent)
-        //   targetElement.children.push(element)
-        // }
+        if (value.isChild) {
+          // editingElement = search(this.editingPage.elements, editingElement.uuid)
+          editingElement.children.push(element)
+        } else {
+          elements.push(element)
+        }
         break
       case 'copy':
         elements.push(state.editingElement.clone({ zindex: len + 1 }))
         break
       case 'delete':
         {
-          const index = elements.findIndex(e => e.uuid === editingElement.uuid)
-          if (index !== -1) {
-            // let newElements = elements.slice()
-            // newElements.splice(index, 1)
-            // state.editingPage.elements = newElements
-            state.editingPage.elements.splice(index, 1)
-          }
+          const editingUUID = state.editingElement.uuid
+          prune(state.editingPage.elements, editingUUID)
           state.editingElement = null
         }
         break
