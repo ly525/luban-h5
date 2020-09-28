@@ -91,7 +91,7 @@ export default {
         ref="contextmenu"
         style={contextStyle}
         // refrence: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
-        onMouseleave={this.handleMouseLeave}
+        // onMouseleave={this.handleMouseLeave}
       >
         <a-menu
           inlineIndent={4}
