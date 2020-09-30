@@ -241,6 +241,11 @@ export default {
                   element={element}
                   active={this.editingElement === element}
                   handleMousedownProp={() => {
+                    // 优化右键菜单的交互体验：
+                    // 原来的交互为：鼠标一旦离开 contextmenu，即刻消失
+                    // 带来的体验问题：有时候鼠标不小心滑到右键菜单外边，还没操作完，菜单消失了
+                    // 改进：1. 鼠标离开，右键菜单不消失 2. 点击画布的时候，隐藏右键菜单（包含点击editingElement + 画布）
+                    this.hideContextMenu()
                     // 在 shape 上面添加 mousedown，而非 plugin 本身添加 onClick 的原因：
                     // 在 mousedown 的时候，即可激活 editingElement(当前选中元素)
                     // 这样，就不用等到鼠标抬起的时候，也就是 plugin 的 onClick 生效的时候，才给选中的元素添加边框等选中效果

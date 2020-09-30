@@ -1,6 +1,9 @@
 
-// import { contains } from '../../../utils/dom-helper.js'
-
+/**
+ * jsx 相关参考链接：
+ * onMouseleave: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
+ *
+ */
 const contextmenuOptions = [
   {
     i18nLabel: 'editor.centerPanel.contextMenu.copy',
@@ -54,22 +57,6 @@ export default {
   methods: {
     handleSelectMenu ({ item, key, selectedKeys }) {
       this.$emit('select', { item, key, selectedKeys }) // elementManager({ type: key })
-    },
-    hideContextMenu () {
-      this.$emit('hideMenu')
-    },
-    handleMouseLeave (e) {
-      // const contextmenu = this.$refs.contextmenu
-      // if (
-      //   e &&
-      //   e.relatedTarget &&
-      //   contextmenu &&
-      //   contextmenu.$el &&
-      //   contains(e.relatedTarget, contextmenu.$el)
-      // ) {
-      //   return
-      // }
-      this.hideContextMenu()
     }
   },
   render (h) {
@@ -85,8 +72,6 @@ export default {
         bodyStyle={{ padding: '4px' }}
         ref="contextmenu"
         style={contextStyle}
-        // refrence: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
-        onMouseleave={this.handleMouseLeave}
       >
         <a-menu
           inlineIndent={4}
