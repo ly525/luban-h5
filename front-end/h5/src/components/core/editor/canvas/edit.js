@@ -119,19 +119,6 @@ export default {
       // 优化右击菜单的显示，去除冗余的无效逻辑
       const { x, y } = this.$el.getBoundingClientRect()
       this.contextmenuPos = [e.clientX - x, e.clientY - y]
-      // console.log(e.target)
-      // console.log(e.target.classList)
-      // // e.preventDefault() // 不显示默认的右击菜单
-      // if (
-      //   e.target.classList.contains('element-on-edit-canvas') ||
-      //   e.target.parentElement.classList.contains('element-on-edit-canvas')
-      // ) {
-      //   const { x, y } = this.$el.getBoundingClientRect()
-      //   console.log(x, y)
-      //   this.contextmenuPos = [e.clientX - x, e.clientY - y]
-      // } else {
-      //   this.hideContextMenu()
-      // }
     },
     hideContextMenu () {
       this.contextmenuPos = []
@@ -289,7 +276,13 @@ export default {
           {
             this.contextmenuPos.length
               ? <ContextMenu
-                position={this.contextmenuPos}
+                style={{
+                  left: this.contextmenuPos[0] + 'px',
+                  top: this.contextmenuPos[1] + 'px',
+                  userSelect: 'none',
+                  position: 'absolute',
+                  zIndex: 999
+                }}
                 onSelect={({ item, key, selectedKeys }) => {
                   this.elementManager({ type: key })
                   this.hideContextMenu()

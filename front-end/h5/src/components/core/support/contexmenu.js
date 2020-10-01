@@ -1,9 +1,20 @@
 
 /**
+ * 右键菜单
+ *
+ * 效果：
+ * - 复制
+ * - 删除
+ * - 置顶、置底、上移、下移
+ *
  * jsx 相关参考链接：
  * onMouseleave: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
  *
  */
+
+import './contexmenu.scss'
+
+// 垂直菜单
 const contextmenuOptions = [
   {
     i18nLabel: 'editor.centerPanel.contextMenu.copy',
@@ -17,6 +28,7 @@ const contextmenuOptions = [
   }
 ]
 
+// 水平菜单
 const zindexContextMenu = [
   {
     i18nLabel: 'editor.centerPanel.contextMenu.moveToTop',
@@ -40,13 +52,6 @@ const zindexContextMenu = [
   }
 ]
 
-const horizontalMenuStyle = {
-  height: '35px',
-  lineHeight: '35px',
-  border: 'none',
-  borderTop: '1px solid #eee'
-}
-
 export default {
   props: {
     position: {
@@ -60,45 +65,36 @@ export default {
     }
   },
   render (h) {
-    const contextStyle = {
-      left: this.position[0] + 'px',
-      top: this.position[1] + 'px',
-      userSelect: 'none',
-      position: 'absolute',
-      zIndex: 999
-    }
     return (
       <a-card
         bodyStyle={{ padding: '4px' }}
-        ref="contextmenu"
-        style={contextStyle}
+        class="contextmenu"
       >
         <a-menu
           inlineIndent={4}
           mode="inline"
           onSelect={this.handleSelectMenu}
-          style={{ border: 'none' }}
+          class="contextmenu__vertical-menus"
         >
           { contextmenuOptions.map(option => (
             <a-menu-item
               key={option.value}
               data-command={option.value}
-              style={{ height: '30px', lineHeight: '30px', margin: 0 }}
+              class="contextmenu__vertical-menus__item"
             >{this.$t(option.i18nLabel)}</a-menu-item>
           ))
           }
         </a-menu>
         <a-menu
           mode="horizontal"
-          ref="contextmenu"
           onSelect={this.handleSelectMenu}
-          style={horizontalMenuStyle}
+          class="contextmenu__horizontal-menus"
         >
           { zindexContextMenu.map(option => (
             <a-menu-item
               key={option.value}
               data-command={option.value}
-              style={{ height: '35px', lineHeight: '35px', padding: '0 4px 4px' }}
+              class="contextmenu__horizontal-menus__item"
             >{this.$t(option.i18nLabel)}</a-menu-item>
           ))
           }
