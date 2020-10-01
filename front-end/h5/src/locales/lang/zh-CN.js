@@ -69,7 +69,9 @@ export default {
         moveToTop: '置顶',
         moveToBottom: '置底',
         moveUp: '上移',
-        moveDown: '下移'
+        moveDown: '下移',
+        showOnlyButton: '只有按钮才显示该选项',
+        showExcludePicture: '除了图片都显示该选项'
       }
     },
     fixedTool: {
