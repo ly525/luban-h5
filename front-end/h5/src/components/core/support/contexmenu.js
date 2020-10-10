@@ -105,7 +105,6 @@ export default {
         }
         if (bl) {
           if (Array.isArray(bl)) return !bl.includes(elementName)
-          debugger
           if (isRegExp(bl)) return !bl.test(elementName)
         }
         return true
