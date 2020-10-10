@@ -5,7 +5,7 @@
  * @LastEditTime : 2019-12-21 19:19:38
  * @FilePath: /luban-h5/front-end/h5/src/views/work-manager/form-stat/index.vue
  * @Github: https://github.com/ly525/luban-h5
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  * @Description:
     #!zh: [基础数据页面](/work-manager/form-stat) 对应的页面
     #!en: [basic data page](/work-manager/form-stat)

@@ -2,11 +2,11 @@
  * @Author: ly525
  * @Date: 2019-12-14 22:43:55
  * @LastEditors: ly525
- * @LastEditTime : 2020-01-15 08:35:17
+ * @LastEditTime: 2020-10-10 23:31:21
  * @FilePath: /luban-h5/front-end/h5/vue.config.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 const path = require('path')
 // const isProd = process.env.NODE_ENV === 'production'
@@ -38,7 +38,8 @@ switch (process.env.PAGE) {
 const configureWebpack = {
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'src')
+      '@': path.join(__dirname, 'src'),
+      'core': path.join(__dirname, 'src/components/core')
     }
   }
 }
@@ -51,7 +52,7 @@ module.exports = {
   pages: { index: page },
   devServer: {
     proxy: {
-      '^/upload|content-manager|users-permissions|works|admin|psd-files|workforms|third-libs|engine-assets/': {
+      '^/auth|upload|content-manager|users-permissions|works|admin|psd-files|workforms|third-libs|engine-assets/': {
         target,
         changeOrigin: true,
         ws: false

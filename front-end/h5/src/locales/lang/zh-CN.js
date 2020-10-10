@@ -6,7 +6,7 @@
  * @FilePath: /luban-h5/front-end/h5/src/locales/lang/zh-CN.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 export default {
   app: {
@@ -90,7 +90,7 @@ export default {
         animation: '动画',
         action: '动作',
         script: '脚本',
-        background: '背景'
+        page: '页面'
       },
       animation: {
         add: '添加动画',

@@ -1,10 +1,10 @@
 <script>
-import CoreEditor from '../components/core/editor/index.js'
-import loadPluginMixin from '../mixins/load-plugins.js'
-import '../components/core/support/index.js'
-
+import CoreEditor from 'core/editor/index.js'
 export default {
-  extends: CoreEditor,
-  mixins: [loadPluginMixin]
+  render () {
+    return (
+      <CoreEditor />
+    )
+  }
 }
 </script>

@@ -1,4 +1,4 @@
-import animationMixin from '@/mixins/animation.js'
+import animationMixin from 'core/mixins/animation.js'
 
 /**
  * #!zh: 上下左右 对应的 东南西北

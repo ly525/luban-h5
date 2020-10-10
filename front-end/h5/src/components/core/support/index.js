@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-01 18:11:50
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-11 10:09:44
+ * @LastEditTime: 2020-10-11 10:13:29
  * @FilePath: /luban-h5/front-end/h5/src/components/core/support/index.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:

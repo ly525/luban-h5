@@ -81,7 +81,7 @@ export default {
         animation: 'Animation',
         action: 'Action',
         script: 'Script',
-        background: 'Background'
+        page: 'Page'
       },
       animation: {
         add: 'Add',

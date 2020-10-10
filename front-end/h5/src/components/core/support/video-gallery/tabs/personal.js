@@ -6,7 +6,7 @@
  * @FilePath: /luban-h5/front-end/h5/src/components/core/support/video-gallery/tabs/personal.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 import axios from 'axios'
 import VideoItem from '../components/video-item.js'

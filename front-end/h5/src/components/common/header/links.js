@@ -10,7 +10,7 @@ export default {
         theme="dark"
         mode="horizontal"
         defaultSelectedKeys={['2']}
-        style={{ lineHeight: '64px', display: 'inline-block', float: 'right' }}
+        style={{ lineHeight: '64px', display: 'inline-block' }}
       >
         <a-menu-item key="dingtalk" >
           <a-popover title="👨🏻‍💻👩🏻‍💻欢迎加入鲁班-H5交流群">

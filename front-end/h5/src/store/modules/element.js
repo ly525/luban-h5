@@ -1,11 +1,11 @@
-import Element from '../../components/core/models/element'
-import { swapZindex, getVM } from '../../utils/element'
+import Element from 'core/models/element'
+import { swapZindex, getVM } from '@/utils/element'
 
 // actions
 export const actions = {
   setEditingElement ({ commit }, payload) {
     commit('setEditingElement', payload)
-    payload && window.getEditorApp.$emit('setEditingElement', payload)
+    payload && window.EditorApp.$emit('setEditingElement', payload)
   },
   setElementPosition ({ commit }, payload) {
     commit('setElementCommonStyle', payload)

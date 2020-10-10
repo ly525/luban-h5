@@ -3,7 +3,7 @@
  */
 
 import Spreadsheet from 'x-data-spreadsheet'
-import Parser from '../../../utils/excel-parser'
+import Parser from '@/utils/excel-parser'
 import CsvImport from './csv-import'
 // const getDefaultTableMatrix = () => [
 //   [1, 2, 3, 4],
