@@ -8,7 +8,7 @@
       <img src="https://luban-h5.com/luban-h5/static/banner.e673e408.svg" width="510px"  alt="" srcset="">
     </div>
     <a-card class="login-page__card">
-      <h2 style="text-align: center;margin-bottom: 24px;">欢迎加入鲁班H5</h2>
+      <div class="card__title">欢迎加入鲁班H5</div>
       <a-form :form="form" class="login-form" @submit="handleSubmit">
         <a-form-item>
           <a-input
@@ -110,18 +110,26 @@ export default {
   justify-content: space-between;
 }
 .login-page__card {
-  border-radius: 8px;
-  /* border-top: 4px solid rgb(28, 93, 231); */
-  padding: 16px;
-  box-shadow: rgb(227, 233, 243) 0px 2px 4px 0px;
-  max-width: 440px;
-  min-width: 340px;
-  height: 340px;
+  width: 360px;
+  border-radius: 4px;
+  background-color: #fff;
+  min-height: 250px;
+  padding: 24px 12px 12px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px rgba(0,0,0,.1);
+}
 
+.card__title {
+  text-align: center;
+  color: rgba(0,0,0,.85);
+  font-size: 32px;
+  font-family: PingFangSC-Regular;
+  line-height: 40px;
+  margin-bottom: 48px;
 }
 
 .login-form-button {
-  margin-top: 30px;
+  margin-top: 12px;
   width: 100%;
 }
 </style>
