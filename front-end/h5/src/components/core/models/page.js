@@ -1,5 +1,5 @@
-import Element from '../models/element'
-import LbpBackground from '../plugins/lbp-background'
+import Element from 'core/models/element'
+import LbpBackground from 'core/plugins/lbp-background'
 
 class Page {
   constructor (page = {}) {

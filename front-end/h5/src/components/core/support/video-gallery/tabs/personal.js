@@ -1,16 +1,16 @@
 /*
  * @Author: ly525
  * @Date: 2020-01-12 20:42:09
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-13 00:39:29
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-10-11 00:01:40
  * @FilePath: /luban-h5/front-end/h5/src/components/core/support/video-gallery/tabs/personal.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
  * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 import axios from 'axios'
-import VideoItem from '../components/video-item.js'
-import Uploader from '../components/uploader.js'
+import VideoItem from 'core/support/video-gallery/components/video-item.js'
+import Uploader from 'core/support/video-gallery/components/uploader.js'
 
 export default {
   data: () => ({

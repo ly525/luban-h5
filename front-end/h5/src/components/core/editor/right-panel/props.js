@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
-import '../../styles/props-config-panel.scss'
+import 'core/styles/props-config-panel.scss'
 
 export default {
   data: () => ({

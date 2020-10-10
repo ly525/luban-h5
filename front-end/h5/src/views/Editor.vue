@@ -1,5 +1,5 @@
 <script>
-import CoreEditor from 'core/editor/index.js'
+import CoreEditor from 'core/index.js'
 export default {
   render () {
     return (
