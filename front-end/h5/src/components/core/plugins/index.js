@@ -17,7 +17,7 @@ import LbpQQMap from 'core/plugins/lbp-qq-map/src'
 import LbpLineChart from 'core/plugins/charts/line'
 import LbpTable from 'core/plugins/lbp-table'
 import LbpNewsList from 'core/plugins/lbp-news-list'
-// import LbpTabs from '../components/plugins/lbp-tabs'
+// import LbpTabs from 'core/components/plugins/lbp-tabs'
 
 export const pluginsList = [
   {

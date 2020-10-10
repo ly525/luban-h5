@@ -1,6 +1,6 @@
 import { mapState, mapActions } from 'vuex'
-import Shape from '../../support/shape'
-import ContextMenu from '../../support/contexmenu'
+import Shape from 'core/support/shape'
+import ContextMenu from 'core/support/contexmenu'
 
 export default {
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],

@@ -2,8 +2,8 @@
  * https://github.com/ly525/luban-h5/issues/138
  */
 import axios from 'axios'
-import ImageItem from '../components/image-item.js'
-import Uploader from '../components/uploader.js'
+import ImageItem from 'core/support/image-gallery/components/image-item.js'
+import Uploader from 'core/support/image-gallery/components/uploader.js'
 
 export default {
   data: () => ({
