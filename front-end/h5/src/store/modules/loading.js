@@ -6,7 +6,7 @@
  * @FilePath: /luban-h5/front-end/h5/src/store/modules/loading.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: loading module
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 // initial state
 const state = {

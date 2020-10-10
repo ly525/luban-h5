@@ -6,52 +6,6 @@
 @import url("./page-manager.scss");
 @import url("./canvas-wrapper.scss");
 
-#luban-editor-layout,
-#luban-work-manager-layout  {
-  .header {
-    padding: 0 10px;
-
-    .logo {
-      width: 120px;
-      height: 31px;
-      // background: rgba(255,255,255,.2);
-      margin: 16px 28px 16px 0;
-      float: left;
-
-      line-height: 31px;
-      text-align: center;
-      color: white;
-      font-size: 16px;
-    }
-
-    .lang-select-activator,
-    .user-avatar-activator {
-      float: right;
-      background: transparent;
-      margin: 0 28px 16px 0;
-      cursor: pointer;
-
-      .anticon {
-        color: white;
-      }
-    }
-  }
-
-  #props-edit-form {
-    .ant-form-item {
-      margin-bottom: 12px;
-    }
-  }
-
-  .card-cover-wrapper {
-    position: relative;
-    height: 300px;
-    border: 1px dashed #eee;
-    color: #aaa;
-    padding: 4px;
-  }
-}
-
 .hidden {
   display: none !important;
 }
@@ -84,7 +38,7 @@
 }
 
 // 动画编辑面板定制
-#animation-edit-panel {
+#animation-right-panel {
   .ant-collapse-header {
     padding: 6px 0 6px 40px;
   }
@@ -180,7 +134,7 @@ $activeHoverColor: #1593ff;
 
 .adjust-line-wrapper-v {
   position: relative;
-  height: 100%;
+  height: 100vh;
   cursor: ew-resize;
 
   .adjust-button {

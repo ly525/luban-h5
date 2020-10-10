@@ -2,15 +2,15 @@
  * @Author: ly525
  * @Date: 2019-12-08 17:05:09
  * @LastEditors: ly525
- * @LastEditTime: 2019-12-15 15:41:56
+ * @LastEditTime: 2020-10-10 23:34:28
  * @FilePath: /luban-h5/front-end/h5/src/store/modules/page.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: page module
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 import { message } from 'ant-design-vue'
 
-import Page from '../../components/core/models/page'
+import Page from 'core/models/page'
 
 // actions
 export const actions = {
