@@ -15,9 +15,20 @@ import Header from '@/components/common/header/index'
 import Feedback from '@/components/common/feedback/index'
 import AdjustLineV from 'core/support/adjust-line/vertical'
 
+import store from 'core/store/index'
+import i18n from '@/locales'
+import '@/plugins/index'
+
 window.EditorApp = new Vue() // event bus
-export default {
-  name: 'Editor',
+const CoreEditor = {
+  name: 'CoreEditor',
+  store,
+  i18n,
+  props: {
+    workId: {
+      type: [Number, String]
+    }
+  },
   data: () => ({
     previewDialogVisible: false,
     propsPanelWidth: 320
@@ -56,11 +67,22 @@ export default {
     )
   },
   created () {
-    let workId = this.$route.params.workId
-    if (workId) {
-      this.fetchWork(workId)
+    if (this.workId) {
+      this.fetchWork(this.workId)
     } else {
       this.$message.error('no work id!')
     }
   }
 }
+
+// Vue install, Vue.use 会调用该方法。
+CoreEditor.install = (Vue, opts = {}) => {
+  Vue.component(CoreEditor.name, CoreEditor)
+}
+
+// 通过script标签引入Vue的环境
+if (typeof window !== 'undefined' && window.Vue) {
+  CoreEditor.install(window.Vue)
+}
+
+export default CoreEditor

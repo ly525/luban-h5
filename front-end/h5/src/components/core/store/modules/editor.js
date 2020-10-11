@@ -1,10 +1,14 @@
 // initial state
 import Work from 'core/models/work'
+import { actions as pageActions, mutations as pageMutations } from './page'
+import { actions as elementActions, mutations as elementMutations } from './element'
 import { actions as workActions, mutations as workMutations } from './work'
 
 const state = {
   works: [],
   work: new Work(),
+  editingPage: { elements: [] },
+  editingElement: null,
   formDetailOfWork: {
     uuidMap2Name: {},
     formRecords: []
@@ -17,11 +21,15 @@ const getters = {}
 
 // actions
 const actions = {
+  ...elementActions,
+  ...pageActions,
   ...workActions
 }
 
 // mutations
 const mutations = {
+  ...elementMutations,
+  ...pageMutations,
   ...workMutations
 }
 
