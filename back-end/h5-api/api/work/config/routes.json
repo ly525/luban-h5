@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/works/editor",
+      "handler": "Work.renderCoreEditor",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/works",
       "handler": "Work.find",
       "config": {
