@@ -3,7 +3,7 @@ import UsageTip from './usage-tip'
 import LoadNpmPlugins from './load-npm-plugins.vue'
 import langMixin from 'core/mixins/i18n'
 import dragMixin from 'core/mixins/drag'
-import loadPluginsMixin from 'core/plugins'
+import loadPluginsMixin from 'core/plugins/index'
 import { mapActions } from 'vuex'
 
 export default {
