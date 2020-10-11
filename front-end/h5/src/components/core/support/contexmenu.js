@@ -10,6 +10,13 @@
  * jsx 相关参考链接：
  * onMouseleave: https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-trigger/Trigger.jsx#L205
  *
+ * 后期考虑提供如下方式，来扩展右键菜单
+  window.GlobalLuban.contextmenu.registerMenu({
+    label: '复制',
+    value: 'copy',
+    elementWhiteList: Array || RegExp
+    elementBlackList: Array || RegExp
+  })
  */
 
 import { mapState } from 'vuex'
@@ -86,13 +93,7 @@ export default {
     ...mapState('editor', ['editingElement', 'work']),
     /**
      * 做一下扩展，提供：黑白名单，来针对某些特定组件，展示特定右键菜单
-     * TODO：后期提供如下方式，来扩展右键菜单
-        window.GlobalLuban.contextmenu.registerMenu({
-          label: '复制',
-          value: 'copy',
-          elementWhiteList: Array || RegExp
-          elementBlackList: Array || RegExp
-        })
+     *
      */
     filteredOptions () {
       const elementName = this.editingElement.name
