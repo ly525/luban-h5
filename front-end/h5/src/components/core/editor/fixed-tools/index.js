@@ -1,7 +1,11 @@
+import { mapActions } from 'vuex'
 import hotkeys from 'hotkeys-js'
 import fixedTools from './options'
 
 export default {
+  methods: {
+    ...mapActions('editor', ['pageManager'])
+  },
   render () {
     return (
       <a-layout-sider

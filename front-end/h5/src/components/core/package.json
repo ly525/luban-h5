@@ -1,0 +1,9 @@
+{
+  "name": "@luban-h5/core-editor",
+  "private": false,
+  "version": "0.0.2",
+  "description": "luban-h5 core-editor",
+  "main": "dist/core-editor.umd.min.js",
+  "author": "ly525",
+  "license": "GPL-3.0"
+}

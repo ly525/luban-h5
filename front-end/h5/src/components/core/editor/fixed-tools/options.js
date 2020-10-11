@@ -1,4 +1,4 @@
-import undoRedoHistory from '@/store/plugins/undo-redo/History'
+import undoRedoHistory from 'core/store/plugins/undo-redo/History'
 
 const fixedTools = [
   {
