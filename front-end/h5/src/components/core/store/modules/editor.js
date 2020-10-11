@@ -1,5 +1,6 @@
 // initial state
 import Work from 'core/models/work'
+import { actions as canvasActions, mutations as canvasMutations } from './canvas'
 import { actions as pageActions, mutations as pageMutations } from './page'
 import { actions as elementActions, mutations as elementMutations } from './element'
 import { actions as workActions, mutations as workMutations } from './work'
@@ -13,7 +14,8 @@ const state = {
     uuidMap2Name: {},
     formRecords: []
   },
-  workTemplates: []
+  workTemplates: [],
+  scaleRate: 1
 }
 
 // getters
@@ -23,14 +25,16 @@ const getters = {}
 const actions = {
   ...elementActions,
   ...pageActions,
-  ...workActions
+  ...workActions,
+  ...canvasActions
 }
 
 // mutations
 const mutations = {
   ...elementMutations,
   ...pageMutations,
-  ...workMutations
+  ...workMutations,
+  ...canvasMutations
 }
 
 export default {

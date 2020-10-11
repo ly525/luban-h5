@@ -1,10 +1,15 @@
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import hotkeys from 'hotkeys-js'
 import fixedTools from './options'
 
 export default {
+  computed: {
+    ...mapState('editor', {
+      scaleRate: state => state.scaleRate
+    })
+  },
   methods: {
-    ...mapActions('editor', ['pageManager'])
+    ...mapActions('editor', ['pageManager', 'elementManager', 'updateScaleRate'])
   },
   render () {
     return (

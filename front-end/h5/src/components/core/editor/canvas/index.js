@@ -6,8 +6,7 @@ import RenderPreviewCanvas from './preview'
 export default {
   name: 'EditorCanvas',
   data: () => ({
-    isPreviewMode: false,
-    scaleRate: 1
+    isPreviewMode: false
   }),
   computed: {
     ...mapState('editor', {
@@ -15,7 +14,8 @@ export default {
       editingElement: state => state.editingElement,
       elements: state => state.editingPage.elements,
       pages: state => state.work.pages,
-      work: state => state.work
+      work: state => state.work,
+      scaleRate: state => state.scaleRate
     }),
     ...mapState('loading', [
       'saveWork_loading',

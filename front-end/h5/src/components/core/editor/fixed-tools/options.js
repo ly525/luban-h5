@@ -41,14 +41,14 @@ const fixedTools = [
   {
     i18nTooltip: 'editor.fixedTool.zoomOut',
     icon: 'plus',
-    action: function () { this.scaleRate += 0.25 },
+    action: function () { this.updateScaleRate(0.25) },
     hotkey: 'ctrl&=,⌘&=',
     hotkeyTooltip: '(ctrl +)'
   },
   {
     i18nTooltip: 'editor.fixedTool.zoomIn',
     icon: 'minus',
-    action: function () { this.scaleRate -= 0.25 },
+    action: function () { this.updateScaleRate(-0.25) },
     hotkey: 'ctrl&-,⌘&-',
     hotkeyTooltip: '(ctrl -)'
   },

@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2020-05-17 17:21:04
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-10 23:27:21
+ * @LastEditTime: 2020-10-11 17:20:39
  * @FilePath: /luban-h5/front-end/h5/src/components/core/mixins/drag.js
  * @Github: https://github.com/ly525/luban-h5
  * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
@@ -50,7 +50,6 @@ class Drag {
   }
 
   _mouseup (e) {
-    console.log('mouseup')
     this.mouseup(e)
     this.toggleListener('remove')
   }
