@@ -16,6 +16,7 @@ import Feedback from '@/components/common/feedback/index'
 import AdjustLineV from 'core/support/adjust-line/vertical'
 
 import store from 'core/store/index'
+import router from 'core/router/index'
 import i18n from '@/locales'
 import '@/plugins/index'
 
@@ -24,6 +25,7 @@ const CoreEditor = {
   name: 'CoreEditor',
   store,
   i18n,
+  router,
   props: {
     workId: {
       type: [Number, String]
