@@ -1,5 +1,6 @@
 import RenderShortcutsPanel from './shortcuts-panel/index'
 import RenderPageManager from './page-manager/index'
+import RenderPageTree from './page-tree/index'
 
 export default {
   name: 'EditorLeftPanel',
@@ -15,6 +16,9 @@ export default {
           </a-tab-pane>
           <a-tab-pane key='page-manager' tab={this.$t('editor.sidebar.pages')}>
             <RenderPageManager />
+          </a-tab-pane>
+          <a-tab-pane key='page-tree' tab={this.$t('editor.sidebar.tree')}>
+            <RenderPageTree />
           </a-tab-pane>
         </a-tabs>
       </a-layout-sider>

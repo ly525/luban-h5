@@ -32,7 +32,8 @@ export default {
     sidebar: {
       components: 'Components',
       pages: 'Pages',
-      templates: 'Templates'
+      templates: 'Templates',
+      tree: 'Tree'
     },
     pageManager: {
       title: 'Page {index}',

@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-13 00:51:57
+ * @LastEditTime: 2020-10-13 01:29:21
  * @FilePath: /h5/src/locales/lang/zh-CN.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -42,7 +42,8 @@ export default {
     sidebar: {
       components: '组件列表',
       pages: '页面管理',
-      templates: '模板'
+      templates: '模板',
+      tree: '组件树'
     },
     pageManager: {
       title: '第{index}页面',
