@@ -70,6 +70,7 @@ export default {
       redo: 'Redo{hotkey}',
       preview: 'Preview',
       copyCurrentPage: 'CopyCurrentPage',
+      copyCurrentElement: 'copyCurrentElement',
       importPSD: 'Import PSD',
       zoomIn: 'Zoom In{hotkey}',
       zoomOut: 'Zoom Out{hotkey}',
