@@ -9,6 +9,7 @@
  * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 const path = require('path')
+const webpack = require('webpack')
 // const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
 const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
@@ -48,6 +49,12 @@ const configureWebpack = {
       '@': path.join(__dirname, 'src'),
       'core': path.join(__dirname, 'src/components/core')
     }
+  },
+  plugins: [
+    // https://github.com/moment/moment/issues/2416
+    new webpack.ContextReplacementPlugin(/moment\/locale$/, /(zh-cn)$/)
+  ],
+  externals: {
   }
 }
 
