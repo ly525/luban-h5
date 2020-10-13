@@ -1,23 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
+import Auth from '@/utils/auth'
 import Home from './views/work-manager/index.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   // mode: 'history',
   routes: [
     {
       path: '/',
       component: Home,
       redirect: '/work-manager/list',
+      meta: { requireAuth: true },
       children: [
         {
           path: '/work-manager/list',
           name: 'work-manager-list',
-          component: () => import('@/views/work-manager/list.vue')
-        },
+          meta: { requireAuth: true },
+          component: () => import('@/views/work-manager/list.vue') },
         {
           path: '/work-manager/templates',
           name: 'work-manager-templates',
@@ -36,9 +37,9 @@ export default new Router({
       ]
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue')
+      path: '/Login',
+      name: 'login',
+      component: () => import('./views/Login.vue')
     },
     {
       path: '/editor/:workId', // #!zh 编辑器页面，核心功能部分
@@ -47,3 +48,11 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  let isAuthenticated = !!Auth.getToken()
+  if (to.name !== 'login' && !isAuthenticated) next({ name: 'Login' })
+  else next()
+})
+
+export default router
