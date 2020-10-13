@@ -1,10 +1,11 @@
 <script>
-import CoreEditor from '../components/core/editor/index.js'
-import loadPluginMixin from '../mixins/load-plugins.js'
-import '../components/core/support/index.js'
-
+import CoreEditor from 'core/index.js'
+// import CoreEditor from '@luban-h5/core-editor'
 export default {
-  extends: CoreEditor,
-  mixins: [loadPluginMixin]
+  render () {
+    return (
+      <CoreEditor workId={this.$route.params.workId} />
+    )
+  }
 }
 </script>

@@ -32,7 +32,8 @@ export default {
     sidebar: {
       components: 'Components',
       pages: 'Pages',
-      templates: 'Templates'
+      templates: 'Templates',
+      tree: 'Tree'
     },
     pageManager: {
       title: 'Page {index}',
@@ -70,6 +71,7 @@ export default {
       redo: 'Redo{hotkey}',
       preview: 'Preview',
       copyCurrentPage: 'CopyCurrentPage',
+      copyCurrentElement: 'copyCurrentElement',
       importPSD: 'Import PSD',
       zoomIn: 'Zoom In{hotkey}',
       zoomOut: 'Zoom Out{hotkey}',
@@ -81,7 +83,7 @@ export default {
         animation: 'Animation',
         action: 'Action',
         script: 'Script',
-        background: 'Background'
+        page: 'Page'
       },
       animation: {
         add: 'Add',

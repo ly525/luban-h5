@@ -1,10 +1,10 @@
-import Element from '../../components/core/models/element'
-import strapi from '../../utils/strapi'
-import Page from '../../components/core/models/page'
-import Work from '../../components/core/models/work'
-import { AxiosWrapper } from '../../utils/http.js'
+import Element from 'core/models/element'
+import strapi from '@/utils/strapi'
+import Page from 'core/models/page'
+import Work from 'core/models/work'
+import { AxiosWrapper } from '@/utils/http.js'
 import router from '@/router.js'
-import { takeScreenshot } from '../../utils/canvas-helper.js'
+import { takeScreenshot } from '@/utils/canvas-helper.js'
 
 function setLoading (commit, loadingName, isLoading) {
   commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })

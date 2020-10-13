@@ -1,8 +1,8 @@
 /*
  * @Author: ly525
  * @Date: 2019-12-04 19:55:24
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-01 18:42:41
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-10-11 20:02:09
  * @FilePath: /luban-h5/back-end/h5-api/api/work/controllers/Work.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
@@ -14,7 +14,7 @@ const _ = require('lodash');
 // 浏览模式
 const VIEW_MODE = {
   PREVIEW: 'preview' // 预览
-}
+};
 
 /**
  * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
@@ -25,13 +25,16 @@ module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
-    const { view_mode }  = ctx.request.query
+    const { view_mode }  = ctx.request.query;
     const work = await strapi.services.work.findOne(ctx.params);
     // 非发布状态, 查看不到内容
     // 非预览模式, 查看不到内容
-    const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish
-    if (!canRender) work.pages = []
+    const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish;
+    if (!canRender) work.pages = [];
     return ctx.render('engine', { work });
+  },
+  renderCoreEditor: async (ctx) => {
+    return ctx.render('core-editor');
   },
   submitForm: async (ctx) => {
     const work = await strapi.services.work.findOne(ctx.params);

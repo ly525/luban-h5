@@ -11,7 +11,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "build:editor": "cross-env PAGE=EDITOR vue-cli-service build",
-    "build:engine": "cross-env PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js"
+    "build:engine": "cross-env PAGE=ENGINE vue-cli-service build --target lib --name engine ./src/engine-entry.js",
+    "build:core_editor": "cross-env PAGE=CORE_EDITOR vue-cli-service build --target lib --name core-editor ./src/components/core/index.js"
   },
   "dependencies": {
     "@luban-h5/lbc-button": "^0.0.3",

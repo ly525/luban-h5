@@ -1,14 +1,15 @@
 /*
  * @Author: ly525
  * @Date: 2019-12-01 18:11:49
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-04 13:51:26
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-10-10 23:29:06
  * @FilePath: /luban-h5/front-end/h5/src/components/common/work/card-cover.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 import placeholderImg from '@/assets/lbp-picture-placeholder.png'
+import './card-cover.scss'
 
 function getDefaultStyle (img, isPlaceholder) {
   return {

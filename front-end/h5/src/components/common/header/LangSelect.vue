@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import langMixin from '@/mixins/i18n'
+import langMixin from 'core/mixins/i18n'
 
 export default {
   name: 'LangSelect',

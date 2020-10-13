@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2020-05-10 23:43:42
+ * @LastEditTime: 2020-10-10 23:35:42
  * @FilePath: /luban-h5/front-end/h5/src/engine-entry.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
@@ -10,7 +10,7 @@
       构建 engine 页面的入口，作用与 src/main.js 类似，都是页面入口
       作用：作品预览的渲染引擎，原理：遍历 work(作品) 的 pages 以及 elements，显示即可
       使用场景：预览弹窗中预览 和 在手机上查看作品使用
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 
 import Vue from 'vue'
@@ -18,11 +18,11 @@ import Vue from 'vue'
 import message from 'ant-design-vue/lib/message' // 加载 JS
 import 'ant-design-vue/lib/message/style/css' // 加载 CSS
 
-import { pluginsList } from './mixins/load-plugins.js'
-import { PAGE_MODE } from './constants/work.js'
-import Element from './components/core/models/element'
-import RenderPreview from '@/components/core/editor/canvas/preview'
-import NodeWrapper from '@/components/preview/node-wrapper.js'
+import { pluginsList } from 'core/plugins/index.js'
+import { PAGE_MODE } from 'core/constants/work.js'
+import Element from 'core/models/element'
+import RenderPreview from 'core/editor/canvas/preview'
+import NodeWrapper from 'core/preview/node-wrapper.js'
 
 Vue.config.productionTip = true
 Vue.prototype.$message = message
@@ -64,7 +64,7 @@ const Engine = {
     renderPreview (pageElements = []) {
       const height = this.isLongPage ? window.__work.height + 'px' : '100%'
       const elements = pageElements.map(element => new Element(element))
-      // src/components/core/editor/canvas/preview
+      // src//core/editor/canvas/preview
       return <RenderPreview elements={elements} height={height} />
     },
     getContainerStyle (work) {

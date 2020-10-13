@@ -1,9 +1,10 @@
 <script>
 // import PreView from '@/pages/preview';
 // import Sidebar from './components/sidebar.vue'
-import '@/components/core/styles/index.scss'
+import 'core/styles/index.scss'
 import LogoOfHeader from '@/components/common/header/logo.js'
-import ExternalLinksOfHeader from '@/components/common/header/links.js'
+import Header from '@/components/common/header/index'
+import Links from '@/components/common/header/links.js'
 import LangSelect from '@/components/common/header/LangSelect.vue'
 
 const sidebarMenus = [
@@ -50,7 +51,7 @@ const sidebarMenus = [
     ]
   },
   {
-    label: '账号中心',
+    label: '商家中心',
     i18nLabel: 'sidebar.accountCenter',
     value: 'freeTemplate',
     antIcon: 'appstore',
@@ -63,59 +64,79 @@ export default {
     // PreView,
     // Sidebar
     LogoOfHeader,
-    ExternalLinksOfHeader,
+    Links,
     LangSelect
   },
   methods: {
     renderSidebar (menus) {
       // const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{menu.label}</router-link> : menu.label
-      const renderLabel = menu => menu.routerName ? <router-link class="default-router-link" to={{ name: menu.routerName }}>{this.$t(menu.i18nLabel)}</router-link> : this.$t(menu.i18nLabel)
+      const renderLabel = menu =>
+        menu.routerName ? (
+          <router-link
+            class="default-router-link"
+            to={{ name: menu.routerName }}
+          >
+            {this.$t(menu.i18nLabel)}
+          </router-link>
+        ) : (
+          this.$t(menu.i18nLabel)
+        )
 
-      return menus.map(menu => (
-        menu.children
-          ? (
-            <a-sub-menu key={menu.key}>
-              {/** <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span> */}
-              <span slot="title"><a-icon type={menu.antIcon} />{this.$t(menu.i18nLabel)}</span>
-              {
-                (menu.children).map(submenu => (
-                  <a-menu-item key={submenu.key}>{renderLabel(submenu)}</a-menu-item>
-                ))
-              }
-            </a-sub-menu>
-          )
-          : (
-            <a-menu-item key={menu.key}>
-              <a-icon type={menu.antIcon}></a-icon>
-              {/** 这边有个疑惑，不知是否为 antd-vue 的 bug，需要用 span 包裹，否则不会显示 label */}
-              <span>{renderLabel(menu)}</span>
-            </a-menu-item>
-          )
-      ))
+      return menus.map(menu =>
+        menu.children ? (
+          <a-sub-menu key={menu.key}>
+            {/** <span slot="title"><a-icon type={menu.antIcon} />{menu.label}</span> */}
+            <span slot="title">
+              <a-icon type={menu.antIcon} />
+              {this.$t(menu.i18nLabel)}
+            </span>
+            {menu.children.map(submenu => (
+              <a-menu-item key={submenu.key}>
+                {renderLabel(submenu)}
+              </a-menu-item>
+            ))}
+          </a-sub-menu>
+        ) : (
+          <a-menu-item key={menu.key}>
+            <a-icon type={menu.antIcon}></a-icon>
+            {/** 这边有个疑惑，不知是否为 antd-vue 的 bug，需要用 span 包裹，否则不会显示 label */}
+            <span>{renderLabel(menu)}</span>
+          </a-menu-item>
+        )
+      )
     }
   },
   render (h) {
     return (
-      <a-layout id="luban-work-manager-layout" style={{ height: '100vh' }}>
-        <a-layout-header class="header">
-          <LogoOfHeader />
-          <LangSelect style="float: right;cursor: pointer;" />
-          {/* we can also put the plugins shortcuts here */}
-          <a-dropdown>
-            <a-menu slot="overlay" onClick={() => {}}>
+      <a-layout style={{ height: '100vh' }}>
+        <Header>
+          <a-dropdown slot="action-menu" style="margin-right: 12px;">
+            <a-menu
+              slot="overlay"
+              onClick={e => {
+                if (!e.key === 3) {
+                  this.$router.push(`/login`)
+                }
+              }}
+            >
               <a-menu-item key="1">
                 <span>someone@luban</span>
               </a-menu-item>
               <a-menu-divider />
-              <a-menu-item key="2"><a-icon type="setting" />账号设置</a-menu-item>
-              <a-menu-item key="3"><a-icon type="logout" />退出登录</a-menu-item>
+              <a-menu-item key="2">
+                <a-icon type="setting" />
+                账号设置
+              </a-menu-item>
+              <a-menu-item key="3">
+                <a-icon type="logout" />
+                退出登录
+              </a-menu-item>
             </a-menu>
             <a class="user-avatar-activator" href="#">
-              <a-icon type="user"/>
+              <a-icon type="user" />
             </a>
           </a-dropdown>
-          <ExternalLinksOfHeader />
-        </a-layout-header>
+        </Header>
         <a-layout>
           <a-layout-sider width="160" style="background: #fff">
             <a-menu
@@ -134,7 +155,8 @@ export default {
           </a-layout>
         </a-layout>
         {/** <PreviewDialog visible={this.previewVisible} handleClose={() => { this.previewVisible = false }} /> */}
-      </a-layout>)
+      </a-layout>
+    )
   }
 }
 </script>

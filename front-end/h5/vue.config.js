@@ -2,18 +2,19 @@
  * @Author: ly525
  * @Date: 2019-12-14 22:43:55
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-12 08:07:03
+ * @LastEditTime: 2020-10-11 11:44:14
  * @FilePath: /luban-h5/front-end/h5/vue.config.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 const path = require('path')
 const webpack = require('webpack')
 // const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
 const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
-const editorBuildOutputDir = path.join(__dirname, '../../back-end/h5-api/build-editor')
+const mainAppOutputDir = path.join(__dirname, '../../back-end/h5-api/build-editor')
+const coreEditorOutputDir = path.join(__dirname, '../../front-end/h5/src/components/core/dist')
 
 let page
 switch (process.env.PAGE) {
@@ -21,6 +22,12 @@ switch (process.env.PAGE) {
     page = {
       entry: 'src/engine-entry.js',
       outputDir: engineOutputDir
+    }
+    break
+  case 'CORE_EDITOR':
+    page = {
+      entry: 'src/components/core/index.js',
+      outputDir: coreEditorOutputDir
     }
     break
   case 'EDITOR':
@@ -31,7 +38,7 @@ switch (process.env.PAGE) {
       filename: 'index.html',
       title: 'Index Page',
       // outputDir: 'dist',
-      outputDir: editorBuildOutputDir
+      outputDir: mainAppOutputDir
       // publicPath: isProd ? '/main/' : '/'
     }
 }
@@ -39,7 +46,8 @@ switch (process.env.PAGE) {
 const configureWebpack = {
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'src')
+      '@': path.join(__dirname, 'src'),
+      'core': path.join(__dirname, 'src/components/core')
     }
   },
   plugins: [
@@ -58,7 +66,7 @@ module.exports = {
   pages: { index: page },
   devServer: {
     proxy: {
-      '^/upload|content-manager|users-permissions|works|admin|psd-files|workforms|third-libs|engine-assets/': {
+      '^/auth|upload|content-manager|users-permissions|works|admin|psd-files|workforms|third-libs|engine-assets/': {
         target,
         changeOrigin: true,
         ws: false

@@ -36,11 +36,6 @@ export default new Router({
       ]
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue')
-    },
-    {
       path: '/editor/:workId', // #!zh 编辑器页面，核心功能部分
       name: 'editor',
       component: () => import('./views/Editor.vue')

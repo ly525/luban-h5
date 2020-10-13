@@ -8,7 +8,7 @@
  * @Description:
     #!zh: 某个作品的的表单统计页
     #!en: forms for the work
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  -->
 
 <script>

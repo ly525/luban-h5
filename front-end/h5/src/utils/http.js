@@ -5,8 +5,6 @@ message.config({
   maxCount: 3
 })
 
-export const myMessage = message
-
 export class AxiosWrapper {
   // eslint-disable-next-line camelcase
   constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {
@@ -56,7 +54,7 @@ export class AxiosWrapper {
       handler.call(this, response)
     }).catch(error => {
       // handle error
-      myMessage.error(error.message)
+      message.error(error.message)
     }).finally(() => this.setLoadingValue(false))
   }
 
@@ -70,7 +68,7 @@ export class AxiosWrapper {
       return response.data
     }).catch(error => {
       // handle error
-      myMessage.error(error.message)
+      message.error(error.message)
     }).finally(() => this.setLoadingValue(false))
   }
 
@@ -92,7 +90,7 @@ export class AxiosWrapper {
       handler()
     }).catch(error => {
       // handle error
-      myMessage.error(error.message)
+      message.error(error.message)
     }).finally(() => this.setLoadingValue(false))
   }
 
@@ -105,7 +103,7 @@ export class AxiosWrapper {
       handler.call(this, response)
     }).catch(error => {
       // handle error
-      myMessage.error(error.message)
+      message.error(error.message)
     }).finally(() => this.setLoadingValue(false))
   }
 
@@ -136,17 +134,18 @@ export class AxiosWrapper {
   getCommonResponseHandler ({ failMsg } = {}) {
     return (response) => {
       if (!response.data) {
-        myMessage.warn(this.failMsg || failMsg)
+        message.warn(this.failMsg || failMsg)
       } else if (response.status === 200) {
-        this.successMsg && myMessage.success(this.successMsg)
+        this.successMsg && message.success(this.successMsg)
         if (this.successCallback) {
           this.successCallback(response)
         } else {
           this.commit({ type: this.name, value: response.data }, { root: true })
         }
       } else if (this.responseType === 'json') {
-        myMessage.error(response.data.msg)
+        message.error(response.data.msg)
         if (response.status === 401) {
+          message.error('401 Session Expired')
           if (this.router) {
             this.router.push('/login')
           }

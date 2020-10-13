@@ -2,7 +2,7 @@
 import { mapState, mapActions } from 'vuex'
 import QRCode from 'qrcode'
 
-import PreviewDialog from '@/components/core/editor/modals/preview.vue'
+import PreviewDialog from 'core/editor/modals/preview.vue'
 import CardCover from '@/components/common/work/card-cover.js'
 
 const ListItemCard = {
