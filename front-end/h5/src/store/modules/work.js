@@ -1,3 +1,4 @@
+import { notification } from 'ant-design-vue'
 import Element from 'core/models/element'
 import strapi from '@/utils/strapi'
 import Page from 'core/models/page'
@@ -8,6 +9,30 @@ import { takeScreenshot } from '@/utils/canvas-helper.js'
 
 function setLoading (commit, loadingName, isLoading) {
   commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })
+}
+
+function handleError (error) {
+  if (error.message === 'Forbidden') {
+    console.log(`
+        ==========================================================================================
+
+            #!zh: 接口 403，解决方案：https://github.com/ly525/luban-h5/discussions/110
+            #!en: API 403 Forbidden, Solution: https://github.com/ly525/luban-h5/discussions/110
+
+        ==========================================================================================
+    `)
+    notification.warn(
+      {
+        message: 'API 403 Forbidden',
+        description: (h) => (
+          <div style="text-align: left;">
+            <div>- #!zh: 接口 403</div>
+            <div>- #!en: API 403 Forbidden</div>
+            <div>- <a href="https://github.com/ly525/luban-h5/discussions/110" target="_blank">#!en: solution(#!zh: 解决方案)</a></div>
+          </div>
+        )
+      })
+  }
 }
 
 export const actions = {
@@ -23,7 +48,7 @@ export const actions = {
       window.open(routeData.href, '_blank')
       // 如果希望不打开新 tab，可以注释上面面两行，启用下面一行的代码即可，不过不推荐。将编辑器单独起一个页面更有利于 vuex 的数据管理
       // router.replace({ name: 'editor', params: { workId: entry.id } })
-    })
+    }).catch(handleError)
   },
   updateWork ({ commit, state }, payload = {}) {
     // update work with strapi
@@ -77,7 +102,7 @@ export const actions = {
       loading_name: 'fetchWorks_loading',
       successMsg: '获取作品列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works', { is_template: false })
+    }).get('works', { is_template: false }).catch(handleError)
   },
   fetchWorksWithForms ({ commit, dispatch, state }, workId) {
     new AxiosWrapper({
@@ -87,7 +112,7 @@ export const actions = {
       loading_name: 'fetchWorks_loading',
       successMsg: '获取作品列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works/has-forms', { is_template: false })
+    }).get('works/has-forms', { is_template: false }).catch(handleError)
   },
   fetchWorkTemplates ({ commit, dispatch, state }, workId) {
     new AxiosWrapper({
@@ -97,7 +122,7 @@ export const actions = {
       loading_name: 'fetchWorkTemplates_loading',
       successMsg: '获取模板列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works', { is_template: true })
+    }).get('works', { is_template: true }).catch(handleError)
   },
   /**
    *
