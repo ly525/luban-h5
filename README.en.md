@@ -16,17 +16,20 @@
 > in short
 
 ```shell
-docker pull ubuntu
-docker run -it -p 1234:80 -p 1235:1337  -v `pwd`:/app ubuntu
-apt update && apt install -y wget git
-wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-install.sh | bash
+git clone https://github.com/ly525/luban-h5 && cd luban-h5
+# install dependencies &&  build front-end && build back-end
+./luban-h5.sh init
+
+./luban-h5.sh start
+
+# ./luban-h5.sh stop
 
 # after the installation finished
-# 1. visit ：http://localhost:1235/admin, add your admin account
+# 1. visit ：http://localhost:1337/admin, create your admin account
 # 1.2 config the api permissions, see more here：https://ly525.github.io/luban-h5/en/getting-started/quick-start.html#_2-something-important
 
 # 2. front-end
-# 2.1 visit https://localhost:1235 to get the front-end of luban-h5
+# 2.1 visit https://localhost:1337 to get the front-end of luban-h5
 ```
 
 ## Links

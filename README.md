@@ -46,7 +46,7 @@ Mobile Page Builder&Generator with Drag&Drop
 | ------ | -------- | ------ | ------ |
 | [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [论坛/社区(官方推荐)](https://github.com/ly525/luban-h5/discussions)
 | [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)  | [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |   自定义组件教程(WIP)    | [Gitter](https://gitter.im/luban-h5/community)    |
-|  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |   [中文社区/论坛(腾讯吐个槽)](https://support.qq.com/product/93432)   | 
+|  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |   [中文社区/论坛(腾讯吐个槽)](https://support.qq.com/product/93432)   |
 
 
 ### 🔗生态
@@ -57,9 +57,10 @@ Mobile Page Builder&Generator with Drag&Drop
 | [SpringBoot2-Mybatis-plus](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) |                                          |                                                    | 视频教程(WIP)                                                         |                                                            |
 
 
-## 快速上手
+## 快速体验
+> 以下方式，任选其中一种即可
 
-#### 一键脚本
+#### 一、一键脚本（推荐！）
 ```bash
 git clone https://github.com/ly525/luban-h5 && cd luban-h5
 # 安装依赖，构建前后端（安装依赖会耗时略长，请耐心等待）
@@ -71,13 +72,25 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 # ./luban-h5.sh stop
 ```
 
+#### 二、本地安装了 Node、Yarn
+```bash
+git clone https://github.com/ly525/luban-h5
+cd luban-h5 # 项目根目录
+
+# 后端
+cd back-end/h5-api && yarn && yarn dev
+
+# 前端
+# 新开一个终端，在项目根目录执行如下命令
+cd front-end/h5 && yarn && yarn build:engine && yarn dev
+
+# 启动项目访问 http://localhost:1337 即可
+```
+
+
 - 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
 
 - 如果遇到接口 403 问题，请参照 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，搜索关键字：403 即可
-
-
-
-
 
 ### 交流群
 
@@ -135,7 +148,7 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 
 
 #### 捐赠作者
-如果项目对您有用或者对您有启发，不妨通过微信或者支付宝进行小额捐赠，以支持该项目的持续维护和发展
+如果你觉得这个项目对你有用或者有所启发，可以请作者喝杯果汁：
 | 微信捐赠  | 支付宝捐赠
 |---|---|
 | <img src="https://user-images.githubusercontent.com/12668546/81877522-e6165b00-95b7-11ea-9699-b74670a208d7.png" width="140" />| <img src="https://user-images.githubusercontent.com/12668546/81877535-ef9fc300-95b7-11ea-954a-03ae349908cd.png" width="140" />
