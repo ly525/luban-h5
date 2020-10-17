@@ -1,7 +1,8 @@
 # 后端集成说明
+[[toc]]
 
 ## 需求
-- 将鲁班H5 编辑器后端模块 由Node.js  换成 Java(Spring Boot)/PHP 等其它后端语言
+- 鲁班H5 后端(Node.js)  ->  Java(Spring Boot)/PHP 等
 
 ## 解决方案
 > 目前鲁班H5的后端是基于 Node.js 写的，社区的很多小伙伴反馈，希望能够提供 Spring Boot 或者 PHP 等其它语言驱动的后端API。因为精力有限，我们提供了如下的解决方案，来尝试解决这个需求：
@@ -13,19 +14,10 @@
     - [springboot2-mybatis-plus-api-for-luban](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) ![GitHub stars](https://img.shields.io/github/stars/luban-h5/springboot2-mybatis-plus-api-for-luban.svg?style=social&label=Star&maxAge=2592000) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
 
 - WIP: Working in Progress 迭代中
-- 版权声明：鲁班H5 版权所有，禁止任何形式的转载和抄袭，侵权必
-
-## 贡献代码或自行开发
-### 前提准备
-
-1. 了解鲁班H5 编辑器的后端 Model
-1. 了解鲁班H5 编辑器的后端 接口
-
----
+- 版权声明：鲁班H5 版权所有，禁止任何形式的转载和抄袭，侵权必究
 
 
-
-## 数据库表/Table(Model/Entity class) + 字段说明
+## 数据库表
 
 ### Work 表：H5 作品
 
@@ -399,3 +391,8 @@ WorkForm Table 结构
 
 ```
 
+## 贡献代码或自行开发
+### 前提准备
+
+1. 了解鲁班H5 编辑器的后端 Model
+1. 了解鲁班H5 编辑器的后端 接口

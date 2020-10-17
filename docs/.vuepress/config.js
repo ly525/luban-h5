@@ -180,6 +180,11 @@ module.exports = {
     // reference: https://github.com/vuejs/vuepress/issues/1435
     'dehydrate': {}
   },
+  markdown: {
+    extendMarkdown: md => {
+      md.use(require('markdown-it-task-lists'))
+    }
+  },
   // plugins: [
   //   [
   //     '@vuepress/google-analytics',
