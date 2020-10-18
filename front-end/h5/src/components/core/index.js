@@ -81,10 +81,26 @@ const CoreEditor = {
 CoreEditor.install = (Vue, opts = {}) => {
   Vue.component(CoreEditor.name, CoreEditor)
 }
+// CoreEditor.init = (options = {}) => {
+//   window.LubanEditor = {
+//     options
+//   }
+// }
 
 // 通过script标签引入Vue的环境
 if (typeof window !== 'undefined' && window.Vue) {
   CoreEditor.install(window.Vue)
+
+  window.LubanEditor = {
+    init: function (options) {
+      this.options = options
+      // eslint-disable-next-line no-new
+      new window.Vue({
+        el: options.el,
+        template: `<core-editor></core-editor>`
+      })
+    }
+  }
 }
 
 export default CoreEditor
