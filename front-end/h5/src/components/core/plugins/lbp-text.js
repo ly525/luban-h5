@@ -2,12 +2,13 @@
  * @Author: ly525
  * @Date: 2019-11-24 18:51:58
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-10 23:33:50
+ * @LastEditTime: 2020-10-18 14:09:11
  * @FilePath: /luban-h5/front-end/h5/src/components/core/plugins/lbp-text.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: luban-h5 text component/plugin
  * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
+import vClickOutside from 'v-click-outside'
 import PropTypes from '@luban-h5/plugin-common-props'
 import { quillEditor } from 'vue-quill-editor'
 // require styles
@@ -17,6 +18,9 @@ import './styles/text-overwrite-quil-snow-theme.scss'
 // https://github.com/luban-h5-components/plugin-common-props
 
 export default {
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   render (h) {
     const canEdit = this.canEdit && this.editorMode === 'edit'
     const style = {
@@ -48,6 +52,14 @@ export default {
           this.canEdit = false
         }}
         style={style}
+        onKeydown={event => {
+          const key = event.keyCode || event.charCode
+          // #!en: backspace/delete key should only delete letter in textarea, do not delete element in canvas
+          // #!zh: 键盘删除，应该只删除文字组件里面的文字，而不是删除画布上的元素
+          if (key === 8 || key === 46) {
+            event.stopPropagation()
+          }
+        }}
       >
         {
           canEdit

@@ -148,7 +148,7 @@ export default {
      *
      * TODO: 增加 确认删除 拦截操作
      */
-    handleDeleteByKeyboard (e) {
+    handleDeleteByKeyboard (event) {
       const key = event.keyCode || event.charCode
       if (key === 8 || key === 46) {
         this.$emit('delete')

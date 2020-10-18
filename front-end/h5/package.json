@@ -34,7 +34,7 @@
     "resize-detector": "^0.2.2",
     "strapi-sdk-javascript": "^0.3.1",
     "v-charts": "^1.19.0",
-    "v-click-outside": "^2.1.4",
+    "v-click-outside": "^3.1.2",
     "vant": "^2.2.12",
     "vue": "^2.6.10",
     "vue-i18n": "^8.14.1",

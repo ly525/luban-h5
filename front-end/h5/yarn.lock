@@ -10780,10 +10780,10 @@ v-charts@^1.19.0:
     numerify "1.2.9"
     utils-lite "0.1.10"
 
-v-click-outside@^2.1.4:
-  version "2.1.5"
-  resolved "https://registry.npm.taobao.org/v-click-outside/download/v-click-outside-2.1.5.tgz#aa69172fb41fcc79b26b9a4bc72a30ccf03f7a3c"
-  integrity sha1-qmkXL7QfzHmya5pLxyowzPA/ejw=
+v-click-outside@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npm.taobao.org/v-click-outside/download/v-click-outside-3.1.2.tgz#1dbaa14bf09a21bd16f23a38f03bfa3988f71281"
+  integrity sha1-HbqhS/CaIb0W8jo48Dv6OYj3EoE=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
