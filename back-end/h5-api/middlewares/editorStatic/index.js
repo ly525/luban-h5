@@ -1,9 +1,9 @@
 /*
  * @Author: ly525
  * @Date: 2020-01-02 21:50:50
- * @LastEditors  : ly525
- * @LastEditTime : 2020-01-11 00:22:10
- * @FilePath: /h5-api/api/work/controllers/Work.js
+ * @LastEditors: ly525
+ * @LastEditTime: 2020-10-18 19:44:49
+ * @FilePath: /luban-h5/back-end/h5-api/middlewares/editorStatic/index.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description:
  * serve luban-h5 front-end dist
@@ -25,6 +25,10 @@ module.exports = strapi => {
       strapi.router.get(
         '/*',
         koaStatic(path.resolve('./build-editor'))
+      );
+      strapi.router.get(
+        '/dev/*',
+        koaStatic(path.resolve('./dev-build-editor'))
       );
     }
   };
