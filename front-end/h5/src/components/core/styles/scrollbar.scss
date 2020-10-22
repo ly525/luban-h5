@@ -1,0 +1,18 @@
+// 重置windows 滚动条样式
+// 仅windows 生效，mac排除当前逻辑。
+html:not([data-useragent*='Mac OS X']) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(188, 188, 188);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
