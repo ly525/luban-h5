@@ -111,7 +111,7 @@ export default {
   render (h) {
     // return this.renderShortCutsPanel(this.groups)
     return (
-      <a-row gutter={20} style="max-height: calc(100vh - 140px);overflow: scroll;">
+      <a-row gutter={20} style="max-height: calc(100vh - 150px);overflow: auto;margin:0;">
         <UsageTip />
         {
           [].concat(this.pluginsList, this.npmPackages)

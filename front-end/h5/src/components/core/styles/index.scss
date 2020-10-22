@@ -1,10 +1,10 @@
-@import url("./helpers.scss");
-@import url("./spacing-helpers.scss");
-@import url("./shape.scss");
-@import url("./align-guides.scss");
-@import url("./shortcut-btn.scss");
-@import url("./page-manager.scss");
-@import url("./canvas-wrapper.scss");
+@import url('./helpers.scss');
+@import url('./spacing-helpers.scss');
+@import url('./shape.scss');
+@import url('./align-guides.scss');
+@import url('./shortcut-btn.scss');
+@import url('./page-manager.scss');
+@import url('./canvas-wrapper.scss');
 
 .hidden {
   display: none !important;
@@ -21,7 +21,7 @@
   height: 30px;
   width: 130px;
   border-radius: 4px;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
 
   cursor: grabbing;
   user-select: none;
@@ -31,7 +31,6 @@
 .ant-tabs-nav .ant-tabs-tab {
   padding: 12px 0 !important;
 }
-
 
 .avaiable-animations-tabs .ant-tabs-nav .ant-tabs-tab {
   padding: 12px 16px !important;
@@ -64,9 +63,9 @@
 .plugin-usage-tip {
   font-size: 12px;
   color: #999;
-  border-left: .2rem solid #dfe2e5;
+  border-left: 0.2rem solid #dfe2e5;
   // margin: 1rem 0;
-  padding: .25rem 0 .25rem 0.5rem;
+  padding: 0.25rem 0 0.25rem 0.5rem;
 }
 
 .ant-layout-sider {
@@ -134,7 +133,6 @@ $activeHoverColor: #1593ff;
 
 .adjust-line-wrapper-v {
   position: relative;
-  height: 100vh;
   cursor: ew-resize;
 
   .adjust-button {
