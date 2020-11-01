@@ -102,7 +102,7 @@ cd back-end/h5-api && yarn && yarn dev
 cd front-end/h5 && yarn && yarn build:engine && yarn dev
 ```
 - 按照提示，在浏览器中访问终端中提示的 URL 即可
-- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
+- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.gitee.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.gitee.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
 
 
 ### 三、熟悉 Docker
@@ -122,7 +122,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 
 # 安装完成之后
 # 1. visit ：http://localhost:1234/admin，自定义配置账号密码，登录即可
-# 1.2 配置相关权限，文档参见：https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
+# 1.2 配置相关权限，文档参见：https://ly525.gitee.io/luban-h5/zh/getting-started/quick-start.html#%E5%90%8E%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 
 # 2. 鲁班前端
 # 2.1 宿主机访问 「鲁班前端」：localhost:1234, 即可看到鲁班的前端

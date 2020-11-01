@@ -62,7 +62,7 @@ wget -qO- https://raw.githubusercontent.com/ly525/luban-h5/dev/deploy/ubuntu-ins
 
 ## Links
 - Documents
-    * [Chinese online document](https://ly525.github.io/luban-h5/zh/)
+    * [Chinese online document](https://ly525.gitee.io/luban-h5/zh/)
     * [English](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)
 
 - Source Code

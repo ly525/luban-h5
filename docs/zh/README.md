@@ -34,14 +34,14 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 # ./luban-h5.sh stop
 ```
 
-- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
+- 更多细节，请参照 [鲁班H5-在线文档](https://ly525.gitee.io/luban-h5/zh/) 的 [`快速开始`](https://ly525.gitee.io/luban-h5/zh/getting-started/quick-start.html) 章节，进行配置即可
 
-- 如果遇到接口 403 问题，请参照 [`快速开始`](https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html) 章节，搜索关键字：403 即可
+- 如果遇到接口 403 问题，请参照 [`快速开始`](https://ly525.gitee.io/luban-h5/zh/getting-started/quick-start.html) 章节，搜索关键字：403 即可
 
 ### 🔗Links/相关链接
  | 源码   | 文档   | 教程     | 社区 |
 | ------ | -------- | ------ | ------ |
-| [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.github.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [中文社区/论坛](https://support.qq.com/product/93432)
+| [GitHub](https://github.com/ly525/luban-h5) | [中文文档](https://ly525.gitee.io/luban-h5/zh/) | [视频-快速开始(哔哩哔哩)](https://space.bilibili.com/121039466/channel/detail?cid=94066)       | [中文社区/论坛](https://support.qq.com/product/93432)
 | [Gitee (国内镜像)](https://gitee.com/ly525/luban-h5)  | [English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)  |   自定义组件教程(WIP)    | [Gitter](https://gitter.im/luban-h5/community)    |
 |  |  [README(En)](./README.en.md)    | [核心实现原理](https://juejin.im/post/5d6df27a6fb9a06b2d77eef9)  |      |
 
@@ -76,7 +76,7 @@ git clone https://github.com/ly525/luban-h5 && cd luban-h5
 
 
 ### 快速开始
-请参照 [鲁班H5-在线文档](https://ly525.github.io/luban-h5/zh/) 的 `快速开始` 章节
+请参照 [鲁班H5-在线文档](https://ly525.gitee.io/luban-h5/zh/) 的 `快速开始` 章节
 
 
 ### 交流群
