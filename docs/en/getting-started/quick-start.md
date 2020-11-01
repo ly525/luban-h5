@@ -46,7 +46,7 @@ yarn dev # dev
 # additional notes:
 # if you want to debug it in vscode, please run `yarn localdev`
 
-#!en: default database is sqlite3(db location: h5-api/.tmp/data.db)
+!#en: default database is sqlite3(db location: h5-api/.tmp/data.db)
 
 # visit http://localhost:1337/admin
 Please read on to config the strapi admin

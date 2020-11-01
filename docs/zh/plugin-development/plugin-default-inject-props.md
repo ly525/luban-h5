@@ -17,7 +17,7 @@ props: {
 
 ```js
 /**
-  * #!zh: 编辑器当前模式：
+  * !#zh: 编辑器当前模式：
   *  preview: 预览模式
   *  edit:   编辑模式
   *
@@ -37,7 +37,7 @@ props: {
   *
   *
   *
-  * #!en: current mode for editor
+  * !#en: current mode for editor
   *  preview: preview mode
   *  edit:    edit mode
   *

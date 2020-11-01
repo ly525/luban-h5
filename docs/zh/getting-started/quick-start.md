@@ -177,8 +177,8 @@ yarn install # 安装依赖
 yarn dev
 # 补充说明: 如果需要在 vscode 中进行debug ，请使用 npm run localdev
 
-# #!en: default database is sqlite3(h5-api/.tmp/data.db)
-# #!zh: 默认数据库是 sqlite3，位置在 h5-api/.tmp/data.db
+# !#en: default database is sqlite3(h5-api/.tmp/data.db)
+# !#zh: 默认数据库是 sqlite3，位置在 h5-api/.tmp/data.db
 
 # 访问 http://localhost:1337/admin
 # visit http://localhost:1337/admin
