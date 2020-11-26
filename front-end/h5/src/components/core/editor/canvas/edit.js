@@ -193,6 +193,7 @@ export default {
                   props: element.getProps()
                 })
               }
+              const isEditingElement = this.editingElement && this.editingElement.uuid === element.uuid
               const data = {
                 style: {
                   width: '100%',
@@ -203,7 +204,8 @@ export default {
                 class: 'element-on-edit-canvas',
                 props: {
                   ...element.getProps(), // #6 #3,
-                  editorMode: 'edit'
+                  editorMode: 'edit',
+                  isEditingElement
                 },
                 // nativeOn: {
                 //   contextmenu: e => {

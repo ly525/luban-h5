@@ -4,6 +4,12 @@ import { parsePx } from '@/utils/element.js'
 const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button', 'lbp-video']
 const cloneObj = (value) => JSON.parse(JSON.stringify(value))
 
+var seed = 0
+var now = Date.now()
+
+function getUuid (ele) {
+  return `element_${ele.name}_${now}_${seed++}`
+}
 const defaultStyle = {
   top: 100,
   left: 100,
@@ -19,7 +25,7 @@ const defaultStyle = {
 class Element {
   constructor (ele) {
     this.name = ele.name
-    this.uuid = ele.uuid || +new Date()
+    this.uuid = ele.uuid || getUuid(ele)
     /**
      * #!zh:
      * 之前版本代码：https://github.com/ly525/luban-h5/blob/a7875cbc73c0d18bc2459985ca3ce1d4dc44f141/front-end/h5/src/components/core/models/element.js#L21
