@@ -2,7 +2,7 @@
  * @Author: ly525
  * @Date: 2019-12-14 22:43:55
  * @LastEditors: ly525
- * @LastEditTime: 2020-10-11 11:44:14
+ * @LastEditTime: 2020-10-18 20:16:27
  * @FilePath: /luban-h5/front-end/h5/vue.config.js
  * @Github: https://github.com/ly525/luban-h5
  * @Description: Do not edit
@@ -13,7 +13,7 @@ const webpack = require('webpack')
 // const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
 const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
-const mainAppOutputDir = path.join(__dirname, '../../back-end/h5-api/build-editor')
+const mainAppOutputDir = path.join(__dirname, '../../back-end/h5-api/dev-build-editor')
 const coreEditorOutputDir = path.join(__dirname, '../../front-end/h5/src/components/core/dist')
 
 let page
@@ -38,8 +38,8 @@ switch (process.env.PAGE) {
       filename: 'index.html',
       title: 'Index Page',
       // outputDir: 'dist',
-      outputDir: mainAppOutputDir
-      // publicPath: isProd ? '/main/' : '/'
+      outputDir: mainAppOutputDir,
+      publicPath: '/dev/'
     }
 }
 
