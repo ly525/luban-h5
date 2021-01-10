@@ -83,7 +83,8 @@ export default {
         animation: 'Animation',
         action: 'Action',
         script: 'Script',
-        page: 'Page'
+        page: 'Page',
+        pelist: 'elementList'
       },
       animation: {
         add: 'Add',
