@@ -3,6 +3,7 @@ import RenderScriptEditor from './script'
 import RenderAnimationEditor from './animation'
 import RenderActionEditor from './action'
 import RenderBackgroundEditor from './background'
+import RenderPelistEditor from './pelist'
 export default {
   name: 'ElementPropsEditor',
   props: {
@@ -38,6 +39,7 @@ export default {
           <a-tab-pane label="动作" key='动作' tab={this.$t('editor.editPanel.tab.action')}>{ this.activeTabKey === '动作' && <RenderActionEditor/> }</a-tab-pane>
           <a-tab-pane label="脚本" key='脚本' tab={this.$t('editor.editPanel.tab.script')}><RenderScriptEditor/></a-tab-pane>
           <a-tab-pane label="页面" key='页面' tab={this.$t('editor.editPanel.tab.page')}>{ this.activeTabKey === '页面' && <RenderBackgroundEditor/> }</a-tab-pane>
+          <a-tab-pane label="元素" key='元素' tab={this.$t('editor.editPanel.tab.pelist')}>{ this.activeTabKey === '元素' && <RenderPelistEditor/> }</a-tab-pane>
         </a-tabs>
       </a-layout-sider>
     )
