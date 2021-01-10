@@ -92,7 +92,8 @@ export default {
         animation: '动画',
         action: '动作',
         script: '脚本',
-        page: '页面'
+        page: '页面',
+        pelist: '元素'
       },
       animation: {
         add: '添加动画',
