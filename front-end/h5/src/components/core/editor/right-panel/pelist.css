@@ -1,0 +1,6 @@
+.notshow {display:none;}
+.ant-table-content {width: 300px;}
+.ant-table-body {overflow: auto;}
+.ant-table-body .ant-table-thead th, .ant-table-body .ant-table-tbody td {white-space: nowrap;padding: 0;}
+.ant-table-body table { border-collapse:collapse; border-spacing:0; border:1px solid #dfdfdf; }
+.ant-table-body table td, .ant-table-body table th{ border:1px solid #dfdfdf; }
