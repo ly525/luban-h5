@@ -4,3 +4,4 @@
 .ant-table-body .ant-table-thead th, .ant-table-body .ant-table-tbody td {white-space: nowrap;padding: 0;}
 .ant-table-body table { border-collapse:collapse; border-spacing:0; border:1px solid #dfdfdf; }
 .ant-table-body table td, .ant-table-body table th{ border:1px solid #dfdfdf; }
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td { padding: 0 0; overflow-wrap: break-word;}
