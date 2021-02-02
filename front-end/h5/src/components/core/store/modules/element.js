@@ -44,8 +44,7 @@ export const mutations = {
   elementManager (state, { type, value }) {
     const { editingPage, editingElement } = state
     const elements = editingPage.elements
-    // const slidePresentation = editingPage.slidePresentation // wmhz
-    const pesaList = editingPage.slidePresentation.pesaList // wmhz
+    const pesaList = editingPage.slidePresentation.pesaList
     const pesaListLength = pesaList.length
     const len = elements.length
 
@@ -57,7 +56,6 @@ export const mutations = {
         vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
         const element = new Element(vm.$options)
         elements.push(element)
- // wmhz
         let pluginPropsText = element['pluginProps']['text']
         if (pluginPropsText) {
           pluginPropsText = pluginPropsText.replace(/<[^>]*>|/g, '')
@@ -80,7 +78,6 @@ export const mutations = {
         pesaList.push(pesaListOf1)
         break
       case 'copy':
-        // wmhz modify
         let editingElementClone = state.editingElement.clone({ zindex: len + 1 })
         let pluginPropsTextClone = editingElementClone['pluginProps']['text']
         if (pluginPropsTextClone) {
@@ -107,11 +104,8 @@ export const mutations = {
       case 'delete':
         {
           const index = elements.findIndex(e => e.uuid === editingElement.uuid)
-          const indexPesaList = pesaList.findIndex(e => e.uuid === editingElement.uuid) // wmhz
+          const indexPesaList = pesaList.findIndex(e => e.uuid === editingElement.uuid)
           if (index !== -1) {
-            // let newElements = elements.slice()
-            // newElements.splice(index, 1)
-            // state.editingPage.elements = newElements
             state.editingPage.elements.splice(index, 1)
             let deleteCsosn = state.editingPage.slidePresentation.pesaList[indexPesaList]['csosn']
             if (deleteCsosn > 0) {
@@ -122,7 +116,7 @@ export const mutations = {
                 }
               }
             }
-            state.editingPage.slidePresentation.pesaList.splice(indexPesaList, 1) // wmhz
+            state.editingPage.slidePresentation.pesaList.splice(indexPesaList, 1)
           }
           state.editingElement = null
         }
