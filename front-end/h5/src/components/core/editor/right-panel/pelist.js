@@ -215,13 +215,7 @@ render () {
       props: {
         draggable: true
       },
-      on: { // 事件 event
-        // click: (event) => { console.log('click') },       // 点击行
-        // dblclick: (event) => { console.log('dblclick') },
-        // contextmenu: (event) => {},
-        // mouseenter: (event) => {console.log('mouseenter event.target ', event.target); console.log('mouseenter event.currentTarget ', event.currentTarget)} 鼠标移入行
-        // mouseleave: (event) => { console.log('mouseleave') }
-        // dragstart开始拖拽
+      on: {
         mouseenter: ($event) => {
           let nodes = document.querySelectorAll('div[eluid]')
           let currentEluid = record.uuid
@@ -242,31 +236,18 @@ render () {
           }
         },
         dragstart: ($event) => {
-            // 兼容IE
             var ev = $event || window.event
-            // 阻止冒泡
             ev.stopPropagation()
-            // 得到源目标数据
-            // this.sourceObj = record
             ev.dataTransfer.setData('sourceRowUuid', record.uuid)
             ev.dataTransfer.setData('sourceRowCsosn', record.csosn)
           },
-
-          // dragover拖动元素经过的元素
           dragover: ($event) => {
-            // 兼容 IE
             var ev = $event || window.event
-            // 阻止默认行为
             ev.preventDefault()
           },
-
-          // drop鼠标松开
           drop: ($event) => {
-            // 兼容IE
             var ev = $event || window.event
-            // 阻止冒泡
             ev.stopPropagation()
-            // 得到目标数据 this.targetObj = record
             let sourceRowUuid = ev.dataTransfer.getData('sourceRowUuid')
             let sourceRowCsosn = ev.dataTransfer.getData('sourceRowCsosn')
             let targetRowUuid = record.uuid
