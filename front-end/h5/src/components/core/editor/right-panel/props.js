@@ -4,8 +4,15 @@ import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
 
 export default {
+  name: 'RightPanelProps',
   data: () => ({
-    loadCustomEditorFlag: false
+    loadCustomEditorFlag: false,
+    editorPositionConfig: [
+      { type: 'a-input', label: 'top', key: 'top' },
+      { type: 'a-input', label: 'left', key: 'left' },
+      { type: 'a-input', label: 'width', key: 'width' },
+      { type: 'a-input', label: 'height', key: 'height' }
+    ]
   }),
   props: {
     layout: {
@@ -31,7 +38,7 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
-      'setEditingElement'
+      'setEditingElement', 'setElementPosition'
     ]),
     loadCustomEditorForPlugin () {
       this.loadCustomEditorFlag = false
@@ -114,10 +121,54 @@ export default {
         </a-form-item>
       )
     },
+    /**
+     * 设置当前编辑元素的位置,通过 key 值(width,height,left,top)来控制更新相应的位置
+     * 在显示层已经通过 this.stateEditingElement 来控制是否选中编辑组件了
+     */
+    onPositionChange (value, key) {
+      this.setElementPosition({
+        [key]: value
+      })
+    },
+    /**
+     * 渲染编辑组件的位置
+     */
+    renderEditorPositionConfig (h) {
+      const _this = this
+      const commonStyle = this.editingElement.commonStyle
+      return this.editorPositionConfig.map(item => {
+        const { type, label, key } = item
+        const data = {
+          props: {
+            placeholder: `请输入${key},支持 %单位`
+          },
+          domProps: {
+            value: commonStyle[key]
+          },
+          on: {
+            change (e) {
+              let value
+              switch (type) {
+                case 'a-input':
+                  value = e.target.value
+                  break
+              }
+              _this.onPositionChange(value, key)
+            }
+          }
+        }
+        return (
+          <a-form-item label={label} label-col={ { span: 6 } } wrapperCol={{ span: 16 }}>
+            {
+              h(type, data)
+            }
+          </a-form-item>
+        )
+      })
+    },
     renderPropsEditorPanel (h, editingElement) {
       const vm = getVM(editingElement.name)
       const props = vm.$options.props
-
       return (
         <a-form
           ref="form"
@@ -125,6 +176,10 @@ export default {
           class="props-config-form"
           layout={this.layout}
         >
+          {/* 只有在选中编辑组件的时候显示 */}
+            {
+              this.stateEditingElement ? this.renderEditorPositionConfig(h) : ''
+            }
           {
             // plugin-custom-editor
             this.loadCustomEditorFlag &&
