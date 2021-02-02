@@ -5,3 +5,4 @@
 .ant-table-body table { border-collapse:collapse; border-spacing:0; border:1px solid #dfdfdf; }
 .ant-table-body table td, .ant-table-body table th{ border:1px solid #dfdfdf; }
 .ant-table-thead > tr > th, .ant-table-tbody > tr > td { padding: 0 0; overflow-wrap: break-word;}
+.elHighlighted {border:1px solid red !important; background-color:rgba(239, 240, 194, 0.945) !important;}
