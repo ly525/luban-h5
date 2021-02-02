@@ -12,11 +12,7 @@ eaphe(pse)隐藏	1(可显示)	play show enable	预览或放映时 1:可显示，
 easte(ste) 显隐	0(不许可Toggle)	show toggle enable	Element所在位置区域，有这样的显示属性:当Click时，要么Show，要么Hidden
 eade(de) 拖动	0(不能拖动)	draggable enable	预览或放映时,长按Element元素Drag时 1:允许拖动 0:不允许拖动
 */
-import Vue from 'vue'
-import Antd from 'ant-design-vue';
-// import { message } from 'ant-design-vue'
 import { mapState, mapActions } from 'vuex'
-import Page from 'core/models/page'
 import 'ant-design-vue/dist/antd.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './pelist.css'
@@ -29,137 +25,266 @@ export default {
       defaultExpandAllRows: false,
       pagination: false,
       pageElements: '',
-      tableScroll: {x:400, y:scrollY},
+      tableScroll: { x: 400, y: scrollY },
       pageShowEnable: true,
       columns: [
-  {
-    dataIndex: 'uuid',
-    key: 'uuid',
-    title: 'uuid',
-    className: 'notshow'
-  },
-  {
-    title: '序号',
-    customRender: (text, record, index) => `${index+1}`,
-    // ellipsis: true,
-    width: 32
-  },
-  {
-    dataIndex: 'ptn',
-    key: 'ptn',
-    title: '类别',
-    customRender: (text, record, index) => `${text}`,
-    // ellipsis: true,
-    width: 50
-  },
-  {
-    dataIndex: 'ppti',
-    key: 'ppti',
-    title: '说明',
-    // ellipsis: true,
-    width: 136,
-    scopedSlots: { customRender: 'ppti' }
-  },
-  {
-    dataIndex: 'csosn',
-    key: 'csosn',
-    title: '顺序',
-    width: 32,
-    // ellipsis: true,
-    scopedSlots: { customRender: 'csosn' }
-  },
-  {
-    dataIndex: 'csosne',
-    key: 'csosne',
-    title: '有序',
-    width: 32,
-    scopedSlots: { customRender: 'csosne' }
-  },
-  {
-    dataIndex: 'pse',
-    key: 'pse',
-    title: '隐藏',
-    width: 32,
-    scopedSlots: { customRender: 'pse' }
-  },
-  {
-    dataIndex: 'ste',
-    key: 'ste',
-    title: '显隐',
-    width: 32,
-    scopedSlots: { customRender: 'ste' }
-  },
-  {
-    dataIndex: 'de',
-    key: 'de',
-    title: '拖动',
-    width: 32,
-    scopedSlots: { customRender: 'de' }
-  },
-  {
-    dataIndex: '',
-    key: '',
-    title: ''
-  }
-]
+                {
+                  dataIndex: 'uuid',
+                  key: 'uuid',
+                  title: 'uuid',
+                  className: 'notshow'
+                },
+                {
+                  title: '序号',
+                  customRender: (text, record, index) => {
+                    return <div class='dragenablerowcell' onmouseover={this.onmouseover1} onmouseleave={this.onmouseleave1}>{ index + 1 }</div>
+                  }
+                },
+                {
+                  dataIndex: 'ptn',
+                  key: 'ptn',
+                  title: '类别',
+                  customRender: (text, record, index) => {
+                    return <div class='dragenablerowcell' onmouseover={this.onmouseover2} onmouseleave={this.onmouseleave2}>{text}</div>
+                  }
+                },
+                {
+                  dataIndex: 'ppti',
+                  key: 'ppti',
+                  title: '说明',
+                  // ellipsis: true,
+                  customRender: (text, record, index) => {
+                    return <a-input
+                    type='text'
+                    placeholder='元素名称'
+                    default-value={record.ppti}
+                    onChange = {
+                       e => { // elementList.item.value = e.target.value
+                      this.onchangePpti(e.target.value, { record })
+                    }
+                  }
+                      >
+                      </a-input>
+                  }
+                },
+                {
+                  dataIndex: 'csosn',
+                  key: 'csosn',
+                  title: '顺序',
+                  sorter: (a, b) => {
+                    let aCsosn = a.csosn
+                    let bCsosn = b.csosn
+                    aCsosn = aCsosn === 0 ? 65536 : aCsosn
+                    bCsosn = bCsosn === 0 ? 65535 : bCsosn
+                    return aCsosn - bCsosn
+                  },
+                  defaultSortOrder: 'ascend',
+                  sortDirections: ['ascend', 'descend'],
+                  customRender: (text, record, index) => {
+                    // return <a-input type='text' placeholder='顺序' default-value={record.csosn} ></a-input>
+                    return <span>{text}</span>
+                  }
+                },
+                {
+                  dataIndex: 'csosne',
+                  key: 'csosne',
+                  title: '有序',
+                  customRender: (text, record, index) => {
+                    let checkedvalue = text === 1
+                    return <a-switch size='small' onChange={(checked) => { this.onchangeCsosne(checked, { record }) } } checked={checkedvalue} checked-children='序' un-checked-children='否' ></a-switch>
+                  }
+                },
+                {
+                  dataIndex: 'pse',
+                  key: 'pse',
+                  title: '注释',
+                  customRender: (text, record, index) => {
+                    let checkedvalue = text === 1
+                    return <a-switch size='small' onChange={(checked) => { this.onchangePse(checked, { record }) } } checked={checkedvalue} checked-children='否' un-checked-children='是' ></a-switch>
+                  }
+                },
+                {
+                  dataIndex: 'ste',
+                  key: 'ste',
+                  title: '显隐',
+                  customRender: (text, record, index) => {
+                    let checkedvalue = text === 1
+                    return <a-switch size='small' onChange={ (checked) => { this.onchangeSte(checked, { record }) } } checked={checkedvalue} checked-children='可' un-checked-children='否' ></a-switch>
+                  }
+                },
+                {
+                  dataIndex: 'de',
+                  key: 'de',
+                  title: '拖动',
+                  customRender: (text, record, index) => {
+                    let checkedvalue = text === 1 // let checkedvalue = text === 1 ? true : false
+                    return <a-switch size='small' onChange={ (checked) => { this.onchangeDe(checked, { record }) } } checked={checkedvalue} checked-children='能' un-checked-children='否' ></a-switch>
+                  }
+                }
+              ],
+             /*  elementList: [], */
+              pptiStyle: { width: '120px' },
+              csosnStyle: { width: '50px' }
 }
 },
  computed: {
     ...mapState('editor', {
       editingPage: state => state.editingPage,
-      editingElement: state => state.editingElement,
+      // editingElement: state => state.editingElement,
       elements: state => state.editingPage.elements,
+      slidePresentation: state => state.editingPage.slidePresentation
     }),
-    pesaList: function() {
-      let elementList = new Array()
-      let elements = this.elements
-      let len = elements.length
-      for(let i = 0; i < len; i++){
-        let element = {}
-        let item = elements[i]
-        let elementName = item['name'].replace('lbp-','')
-            element.ptn = elementName
-            element.uuid = item['uuid']
-            let pluginPropsText = item['pluginProps']['text']
-            if(pluginPropsText){
-              pluginPropsText = pluginPropsText.replace(/<[^>]*>|/g,"")
-            }
-            else{
-              pluginPropsText = ''
-            }
-          element.ci = 0
-          element.ppti = pluginPropsText
-          element.csosn = i
-          element.csosne = 0
-          element.pse = 1
-          element.ste = 0
-          element.de = 0
-          elementList.push(element)
-      }
-      return elementList
+    pesaList: function () {
+      return this.slidePresentation.pesaList
     }
   },
   methods: {
+    ...mapActions('editor', [
+      'setEditingElement',
+      'pesaListElementChangeAttr',
+      'pesaListElementChangeAttrPpti',
+      'pesaListElementRowDragDrog',
+      'elementManager',
+      'pageManager',
+      'setEditingPage'
+    ]),
+    onchangeCsosne: function (checked, record) { // wmhz
+      let payload = {}
+      payload.elementUuid = record['record']['uuid']
+      payload.elementAttrName = 'csosne'
+      payload.elementAttrValue = record['record']['csosne']
+      this.pesaListElementChangeAttr(payload)
+    },
+    onchangePse: function (checked, record) {
+      let payload = {}
+      payload.elementUuid = record['record']['uuid']
+      payload.elementAttrName = 'pse'
+      payload.elementAttrValue = record['record']['pse']
+      this.pesaListElementChangeAttr(payload)
+    },
+    onchangeSte: function (checked, record) {
+      let payload = {}
+      payload.elementUuid = record['record']['uuid']
+      payload.elementAttrName = 'ste'
+      payload.elementAttrValue = record['record']['ste']
+      this.pesaListElementChangeAttr(payload)
+    },
+    onchangeDe: function (checked, record) {
+      let payload = {}
+      payload.elementUuid = record['record']['uuid']
+      payload.elementAttrName = 'de'
+      payload.elementAttrValue = record['record']['de']
+      this.pesaListElementChangeAttr(payload)
+    },
+    onchangePpti: function (pptiValue, record) {
+      let recordValue = record['record']
+      this.pesaListElementChangeAttrPpti({ pptiValue, recordValue })
+    },
+    onmouseover1: function ($event) {
+      let row = $event.target.parentNode.parentNode
+      row.setAttribute('draggable', 'true')
+      row.style.cursor = 'move'
+    },
+    onmouseleave1: function ($event) {
+      let row = $event.target.parentNode.parentNode
+      row.setAttribute('draggable', 'false')
+      row.style.cursor = 'default'
+    },
+    onmouseover2: function ($event) {
+      let row = $event.target.parentNode.parentNode
+      row.setAttribute('draggable', 'true')
+      row.style.cursor = 'move'
+    },
+    onmouseleave2: function ($event) {
+      let row = $event.target.parentNode.parentNode
+      row.setAttribute('draggable', 'false')
+      row.style.cursor = 'default'
+    }
   },
   created () {
   },
-render (h) {
-  console.log(this.$scopedSlots)
-    return (
-            <div style={{ height: '100%', position: 'relative' }}>
-              <a-form layout="vertical">
-                  <a-form-item label="元素列表">
-                      <a-table columns={this.columns} dataSource={this.pesaList} rowKey="uuid" tableLayout="fixed" scroll={this.tableScroll} pagination={false} defaultExpandAllRows={false} style={{tableLayout: 'fixed',wordBreak: 'break-all'}}>
-                        <span slot="ppti" slot-scope="text, record, index"><a-input type="text" v-decorator="['ppti', {}]"  placeholder="元素名称" ></a-input></span>
-                        <span slot="csosn" slot-scope="text, record, index">&nbsp;</span>
-                        <span slot="csosne" slot-scope="text, record, index"><a-switch size="small" default-checked /></span>
-                        <span slot="pse" slot-scope="text, record, index"><a-switch size="small" default-checked /></span>
-                        <span slot="ste" slot-scope="text, record, index"><a-switch size="small" default-checked /></span>
-                        <span slot="de" slot-scope="text, record, index"><a-switch size="small" default-checked /></span>
-                        </a-table>
-                  </a-form-item>
-              </a-form>
-            </div>
-    )
+  mounted () {
+  },
+render () {
+   const table = (<a-table
+     customRow={(record, index) => {
+    return {
+      props: {
+        draggable: true
+      },
+      on: { // 事件 event
+        // click: (event) => { console.log('click') },       // 点击行
+        // dblclick: (event) => { console.log('dblclick') },
+        // contextmenu: (event) => {},
+        // mouseenter: (event) => {console.log('mouseenter event.target ', event.target); console.log('mouseenter event.currentTarget ', event.currentTarget)} 鼠标移入行
+        // mouseleave: (event) => { console.log('mouseleave') }
+        // dragstart开始拖拽
+        mouseenter: ($event) => {
+          let nodes = document.querySelectorAll('div[eluid]')
+          let currentEluid = record.uuid
+          for (let i = 0; i < nodes.length; i++) {
+            let node = nodes[i]
+            let eluid = node.getAttribute('eluid')
+            if (('' + eluid) === ('' + currentEluid)) {
+              document.querySelector('div[eluid="' + eluid + '"]').classList.add('elHighlighted')
+            } else {
+              document.querySelector('div[eluid="' + eluid + '"]').classList.remove('elHighlighted')
+            }
+          }
+        },
+        mouseleave: ($event) => {
+          let nodes = document.querySelectorAll('div[eluid]')
+          for (let i = 0; i < nodes.length; i++) {
+            nodes[i].classList.remove('elHighlighted')
+          }
+        },
+        dragstart: ($event) => {
+            // 兼容IE
+            var ev = $event || window.event
+            // 阻止冒泡
+            ev.stopPropagation()
+            // 得到源目标数据
+            // this.sourceObj = record
+            ev.dataTransfer.setData('sourceRowUuid', record.uuid)
+            ev.dataTransfer.setData('sourceRowCsosn', record.csosn)
+          },
+
+          // dragover拖动元素经过的元素
+          dragover: ($event) => {
+            // 兼容 IE
+            var ev = $event || window.event
+            // 阻止默认行为
+            ev.preventDefault()
+          },
+
+          // drop鼠标松开
+          drop: ($event) => {
+            // 兼容IE
+            var ev = $event || window.event
+            // 阻止冒泡
+            ev.stopPropagation()
+            // 得到目标数据 this.targetObj = record
+            let sourceRowUuid = ev.dataTransfer.getData('sourceRowUuid')
+            let sourceRowCsosn = ev.dataTransfer.getData('sourceRowCsosn')
+            let targetRowUuid = record.uuid
+            let targetRowCsosn = record.csosn
+            let rowDragDrogPayload = {}
+            rowDragDrogPayload.sourceRowUuid = sourceRowUuid
+            rowDragDrogPayload.sourceRowCsosn = sourceRowCsosn
+            rowDragDrogPayload.targetRowUuid = targetRowUuid
+            rowDragDrogPayload.targetRowCsosn = targetRowCsosn
+            if (sourceRowCsosn > 0 && targetRowCsosn > 0) {
+              this.pesaListElementRowDragDrog(rowDragDrogPayload)
+            }
+          }
+      }
+    }
+  }}
+   columns={this.columns} dataSource={this.pesaList} sortDirections={['ascend', 'descend']} scopedSlots={this.$scopedSlots} rowKey="uuid" tableLayout="fixed" scroll={this.tableScroll} pagination={false} defaultExpandAllRows={false} style={{ tableLayout: 'fixed', wordBreak: 'break-all' }}></a-table>)
+   return (
+    <div>
+     { table }
+    </div>
+   )
   }
 }
