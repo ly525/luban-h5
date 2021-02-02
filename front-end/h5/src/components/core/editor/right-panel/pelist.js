@@ -1,5 +1,8 @@
 /*
 Luban-H5 PPT版本分支 html5全屏(Fullscreen) 放映模式 建议稿
+"pageShowEnable":true(放映时可以show),
+"pfst": false(放映时有工具板),
+
 page Element Show attribute List (pesaList jsonArray)
 attribute name	default Value	describe	instructions
 uuid	　	Element uuid	　
