@@ -127,7 +127,7 @@ export default {
      */
     onPositionChange (value, key) {
       this.setElementPosition({
-        [key]: value
+        [key]: Number(value)
       })
     },
     /**
@@ -140,7 +140,7 @@ export default {
         const { type, label, key } = item
         const data = {
           props: {
-            placeholder: `请输入${key},支持 %单位`
+            placeholder: `请输入${key}`
           },
           domProps: {
             value: commonStyle[key]
