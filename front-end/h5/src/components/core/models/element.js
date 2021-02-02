@@ -75,13 +75,7 @@ class Element {
 
     return pluginProps
   }
-  getPositionValue (key, isRem = false) {
-    const pluginProps = this.pluginProps
-    const commonStyle = this.commonStyle
-    const value = pluginProps[key] || commonStyle[key]
-    const isPercent = /^\d+%$/.test(value)
-    return isPercent ? value : parsePx(value, isRem)
-  }
+
   getStyle ({ position = 'static', isRem = false } = {}) {
     if (this.name === 'lbp-background') {
       return {
@@ -92,10 +86,10 @@ class Element {
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
     let style = {
-      top: this.getPositionValue('top', isRem),
-      left: this.getPositionValue('left', isRem),
-      width: this.getPositionValue('width', isRem),
-      height: this.getPositionValue('height', isRem),
+      top: parsePx(pluginProps.top || commonStyle.top, isRem),
+      left: parsePx(pluginProps.left || commonStyle.left, isRem),
+      width: parsePx(pluginProps.width || commonStyle.width, isRem),
+      height: parsePx(pluginProps.height || commonStyle.height, isRem),
       fontSize: parsePx(pluginProps.fontSize || commonStyle.fontSize, isRem),
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
