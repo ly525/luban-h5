@@ -5,10 +5,10 @@ attribute name	default Value	describe	instructions
 uuid	　	Element uuid	　
 eapta(ptn)	　	plugin type name	插件类型名称
 eappti(ppti)	　	plugin PropsText instructions	插件文本文字描述说明
-　	　	　	　
+
 eacsosn(csosn)顺序	1,2,3,4,5,6……	click show order sequence number 	Element插件,Click时，先后Show的顺序，整数值1,2,3…HTML5全屏(Fullscreen)播放时，Click, Enter,这些元素按顺序Show出来，按键SpaceBar时逆顺序Hidden
 eacsosn(csosne)有序	0(无csosn值)	csosn enable	0:取消Click Show的顺序csosn的复位空(0) 1:允许Click Show序,csosn值设为不重复的一个整数
-eaphe(pse)隐藏	1(可显示)	play show enable	预览或放映时 1:可显示，可隐藏 0:总是隐藏
+eaphe(pse)注释(或备注)	1(可显示)	play show enable	预览或放映时 1:可显示，可隐藏 0:总是隐藏
 easte(ste) 显隐	0(不许可Toggle)	show toggle enable	Element所在位置区域，有这样的显示属性:当Click时，要么Show，要么Hidden
 eade(de) 拖动	0(不能拖动)	draggable enable	预览或放映时,长按Element元素Drag时 1:允许拖动 0:不允许拖动
 */
