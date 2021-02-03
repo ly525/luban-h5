@@ -180,11 +180,12 @@ export default {
           class="props-config-form"
           layout={this.layout}
         >
-          <BoxModel></BoxModel>
-          {/* 只有在选中编辑组件的时候显示 */}
+          {/* left,top,width,height编辑 只有在选中编辑组件的时候显示 */}
             {
               this.stateEditingElement ? this.renderEditorPositionConfig(h) : ''
             }
+          {/* margin、padding编辑 */}
+          <BoxModel />
           {
             // plugin-custom-editor
             this.loadCustomEditorFlag &&

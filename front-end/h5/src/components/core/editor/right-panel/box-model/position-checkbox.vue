@@ -3,10 +3,13 @@
     <!-- 只有选中 padding border margin 之后才会显示 -->
     <template v-if="boxModelPart">
       <div class="flex">
-        <a-checkbox @change="onCheckboxChange">
+        <a-checkbox @change="onCheckboxChange" :checked="isChecked">
         </a-checkbox>
         <div class="label">{{label}}</div>
       </div>
+
+    </template>
+    <template v-if="boxModelPart && isChecked">
       <a-input-number style="width:70px" :value="value" :min="0" @change="onInputNumberChange" />
       <a-select :default-value="unitList[0]" style="width:70px">
         <a-select-option v-for="(item,index) in unitList" :key="index" :value="item">
@@ -31,6 +34,11 @@
         default: ''
       }
     },
+    data () {
+      return {
+        isChecked: false
+      }
+    },
     computed: {
       ...mapState('editor', {
         editingElement: state => state.editingElement
@@ -51,6 +59,8 @@
         'setElementPosition'
       ]),
       onCheckboxChange (e) {
+        console.log(e)
+        this.isChecked = e.target.checked
       },
       onInputNumberChange (value) {
         const boxModelPart = this.boxModelPart
@@ -59,6 +69,16 @@
         // 更新值例如: padding-top
         Object.assign(boxModelPartStyle[this.labelKey], { value })
         this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
+      }
+    },
+    watch: {
+      value: {
+        immediate: true,
+        handler (val) {
+          if (val) {
+            this.isChecked = true
+          }
+        }
       }
     }
   }
