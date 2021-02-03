@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import BoxModel from './box-model'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
 
 export default {
   name: 'RightPanelProps',
+  components: {
+    BoxModel
+  },
   data: () => ({
     loadCustomEditorFlag: false,
     editorPositionConfig: [
@@ -176,6 +180,7 @@ export default {
           class="props-config-form"
           layout={this.layout}
         >
+          <BoxModel></BoxModel>
           {/* 只有在选中编辑组件的时候显示 */}
             {
               this.stateEditingElement ? this.renderEditorPositionConfig(h) : ''
