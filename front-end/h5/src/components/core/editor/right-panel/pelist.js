@@ -217,7 +217,7 @@ render () {
       },
       on: {
         mouseenter: ($event) => {
-          let nodes = document.querySelectorAll('[eluid]') // document.querySelectorAll('div[eluid]') document.querySelector('div[eluid="' + eluid + '"]') document.querySelector('[eluid="' + eluid + '"]')
+          let nodes = document.querySelectorAll('[eluid]')
           let currentEluid = record.uuid
           let nodePtn = record.ptn
           for (let i = 0; i < nodes.length; i++) {
