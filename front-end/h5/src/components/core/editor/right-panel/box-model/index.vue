@@ -1,6 +1,6 @@
 <template>
   <div v-if="editingElement" class="box-model">
-    <div v-if="lastSelect" class="prompt">设置 {{ lastSelect }} 大小</div>
+    <div v-if="boxModelPart" class="prompt">设置 {{ boxModelPart }} 大小</div>
     <div v-else>选择 margin/border/padding 设置大小</div>
     <PositionCheckbox label="上" label-key="top" />
     <div class="middle">
@@ -11,6 +11,9 @@
           border
           <div ref="padding" class="padding" data-type="padding">
             padding
+            <div class="content"  data-type="padding">
+              {{ commonStyle.width | digit }} x {{ commonStyle.height | digit }}
+            </div>
           </div>
         </div>
       </div>
@@ -36,7 +39,18 @@
     computed: {
       ...mapState('editor', {
         editingElement: state => state.editingElement
-      })
+      }),
+      boxModelPart () {
+        return this.editingElement && this.editingElement.commonStyle.boxModelPart
+      },
+      commonStyle () {
+        return this.editingElement ? this.editingElement.commonStyle : {}
+      }
+    },
+    filters: {
+      digit (val) {
+        return val.toFixed(0)
+      }
     },
     methods: {
       ...mapActions('editor', [
@@ -60,6 +74,23 @@
           this.lastSelect = type
         }
       }
+    },
+    watch: {
+      /**
+       * 监听当前是否有选中的组件，如果有判断之前是否保存了 boxModelPart
+       * 如果保存了就将之前编辑状态重新复原。
+       */
+      editingElement: {
+        immediate: true,
+        handler (val) {
+          if (!this.boxModelPart) return
+          const selectClass = this.boxModelPart + '-select'
+          this.$nextTick(() => {
+            this.$refs[this.boxModelPart].classList.add(selectClass)
+            this.lastSelect = this.boxModelPart
+          })
+        }
+      }
     }
   }
 </script>
@@ -75,8 +106,6 @@
   &-select{
     background-color: rgb(170, 170, 95);
   }
-}
-.box-model{
 }
 .middle{
   margin:20px 0;
@@ -103,5 +132,10 @@
   width:90px;
   height: 50px;
   .common()
+}
+.content{
+  background-color: rgb(82, 82, 126);
+  width:80%;
+  .inline-block()
 }
 </style>
