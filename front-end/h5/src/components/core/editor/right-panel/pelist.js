@@ -217,22 +217,34 @@ render () {
       },
       on: {
         mouseenter: ($event) => {
-          let nodes = document.querySelectorAll('div[eluid]')
+          let nodes = document.querySelectorAll('[eluid]') // document.querySelectorAll('div[eluid]') document.querySelector('div[eluid="' + eluid + '"]') document.querySelector('[eluid="' + eluid + '"]')
           let currentEluid = record.uuid
+          let nodePtn = record.ptn
           for (let i = 0; i < nodes.length; i++) {
             let node = nodes[i]
             let eluid = node.getAttribute('eluid')
             if (('' + eluid) === ('' + currentEluid)) {
-              document.querySelector('div[eluid="' + eluid + '"]').classList.add('elHighlighted')
+              switch (nodePtn) {
+                case 'text':
+                  document.querySelector('[eluid="' + eluid + '"]').classList.add('elHighlighted')
+                  break
+                  case 'picture':
+                    document.querySelector('[eluid="' + eluid + '"]').parentNode.classList.add('elHighlighted')
+                    break
+                  default :
+                  document.querySelector('[eluid="' + eluid + '"]').classList.add('elHighlighted')
+              }
             } else {
-              document.querySelector('div[eluid="' + eluid + '"]').classList.remove('elHighlighted')
+                  document.querySelector('[eluid="' + eluid + '"]').classList.remove('elHighlighted')
+                  document.querySelector('[eluid="' + eluid + '"]').parentNode.classList.remove('elHighlighted')
             }
           }
         },
         mouseleave: ($event) => {
-          let nodes = document.querySelectorAll('div[eluid]')
+          let nodes = document.querySelectorAll('[eluid]')
           for (let i = 0; i < nodes.length; i++) {
             nodes[i].classList.remove('elHighlighted')
+            nodes[i].parentNode.classList.remove('elHighlighted')
           }
         },
         dragstart: ($event) => {
