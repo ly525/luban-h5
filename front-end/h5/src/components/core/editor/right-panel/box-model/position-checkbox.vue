@@ -1,43 +1,65 @@
 <template>
   <div class="position-checkbox">
-    <div class="flex">
-      <a-checkbox @change="onCheckboxChange">
-      </a-checkbox>
-      <div class="label">{{label}}</div>
-    </div>
-    <a-input-number style="width:70px" v-model="value" :min="0" @change="onInputNumberChange" />
-    <a-select default-value="px" style="width:70px">
-      <a-select-option value="px">
-        px
-      </a-select-option>
-      <a-select-option value="%">
-        %
-      </a-select-option>
-      <a-select-option value="em">
-        em
-      </a-select-option>
-    </a-select>
+    <!-- 只有选中 padding border margin 之后才会显示 -->
+    <template v-if="boxModelPart">
+      <div class="flex">
+        <a-checkbox @change="onCheckboxChange">
+        </a-checkbox>
+        <div class="label">{{label}}</div>
+      </div>
+      <a-input-number style="width:70px" :value="value" :min="0" @change="onInputNumberChange" />
+      <a-select :default-value="unitList[0]" style="width:70px">
+        <a-select-option v-for="(item,index) in unitList" :key="index" :value="item">
+          {{ item }}
+        </a-select-option>
+      </a-select>
+    </template>
   </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
   export default {
     name: 'PositionCheckbox',
     props: {
       label: {
         type: String,
         default: ''
+      },
+      labelKey: {
+        type: String,
+        default: ''
       }
     },
-    data () {
-      return {
-        value: 1
+    computed: {
+      ...mapState('editor', {
+        editingElement: state => state.editingElement
+      }),
+      boxModelPart () {
+        return this.editingElement && this.editingElement.commonStyle.boxModelPart
+      },
+      value () {
+        const { editingElement, labelKey, boxModelPart } = this
+        return this.boxModelPart ? editingElement.commonStyle[boxModelPart][labelKey].value : ''
+      },
+      unitList () {
+        return this.boxModelPart === 'border' ? ['px', 'em'] : ['px', '%', 'em']
       }
     },
-
     methods: {
-      onCheckboxChange () {},
-      onInputNumberChange () {}
+      ...mapActions('editor', [
+        'setElementPosition'
+      ]),
+      onCheckboxChange (e) {
+      },
+      onInputNumberChange (value) {
+        const boxModelPart = this.boxModelPart
+        // 例如 boxModelPart 为 margin 时候
+        const boxModelPartStyle = this.editingElement.commonStyle[boxModelPart]
+        // 更新值例如: padding-top
+        Object.assign(boxModelPartStyle[this.labelKey], { value })
+        this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
+      }
     }
   }
 </script>

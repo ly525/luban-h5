@@ -1,10 +1,10 @@
 <template>
-  <div class="box-model">
+  <div v-if="editingElement" class="box-model">
     <div v-if="lastSelect" class="prompt">设置 {{ lastSelect }} 大小</div>
     <div v-else>选择 margin/border/padding 设置大小</div>
-    <PositionCheckbox label="上" />
+    <PositionCheckbox label="上" label-key="top" />
     <div class="middle">
-      <PositionCheckbox label="左" />
+      <PositionCheckbox label="左" label-key="left" />
       <div ref="margin" class="margin" data-type="margin"  @click="onBoxModelClick">
         margin
         <div ref="border" class="border" data-type="border">
@@ -14,13 +14,14 @@
           </div>
         </div>
       </div>
-      <PositionCheckbox label="右" />
+      <PositionCheckbox label="右" label-key="right" />
     </div>
-    <PositionCheckbox label="下" />
+    <PositionCheckbox label="下" label-key="bottom" />
   </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
   import PositionCheckbox from './position-checkbox'
   export default {
     name: 'BoxModel',
@@ -32,14 +33,24 @@
         lastSelect: ''
       }
     },
-
+    computed: {
+      ...mapState('editor', {
+        editingElement: state => state.editingElement
+      })
+    },
     methods: {
+      ...mapActions('editor', [
+        'setElementPosition'
+      ]),
       onBoxModelClick (e) {
         const target = e.target
         const classList = target.classList
         const type = target.dataset.type
         const selectClass = type + '-select'
-
+        // 更新选中的 boxModelPart，用于判断当前设置的是 margin / border / padding
+        this.setElementPosition({
+          boxModelPart: type
+        })
         if (this.lastSelect && type !== this.lastSelect) {
           this.$refs[this.lastSelect].classList.remove(this.lastSelect + '-select')
         }
