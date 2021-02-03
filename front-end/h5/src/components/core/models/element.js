@@ -13,7 +13,69 @@ const defaultStyle = {
   textAlign: 'center',
   color: '#000000',
   backgroundColor: 'rgba(255, 255, 255, 0)',
-  fontSize: 14
+  fontSize: 14,
+  margin: {
+    top: {
+      value: 10,
+      unit: 'px'
+    },
+    right: {
+      value: 0,
+      unit: 'px'
+    },
+    bottom: {
+      value: 30,
+      unit: 'px'
+    },
+    left: {
+      value: 0,
+      unit: 'px'
+    }
+  },
+  padding: {
+    top: {
+      value: 0,
+      unit: 'px'
+    },
+    right: {
+      value: 0,
+      unit: 'px'
+    },
+    bottom: {
+      value: 0,
+      unit: 'px'
+    },
+    left: {
+      value: 0,
+      unit: 'px'
+    }
+  },
+  border: {
+    top: {
+      value: 0,
+      unit: 'px'
+    },
+    right: {
+      value: 0,
+      unit: 'px'
+    },
+    bottom: {
+      value: 0,
+      unit: 'px'
+    },
+    left: {
+      value: 0,
+      unit: 'px'
+    },
+    color: {
+      value: '#000'
+    },
+    style: {
+      value: 'solid'
+    }
+  },
+  'border-style': 'solid',
+  boxModelPart: '' // 可选值 margin、padding、border
 }
 
 class Element {
@@ -75,7 +137,25 @@ class Element {
 
     return pluginProps
   }
-
+  packPosData (obj, prefix) {
+    let init = {}
+    Object.keys(obj).forEach(key => {
+      init[prefix + '-' + key] = obj[key].value + (obj[key].unit || '')
+    })
+    return init
+  }
+  packBorderData () {
+    const { top, right, bottom, left, color, style } = this.commonStyle.border
+    return {
+      /**
+       * 使用 border-left border-right 等方式，在 chrome 浏览器中会导致渲染问题
+       * 这里就将他拼接成完整的 border-width解决bug，不知道是什么原因
+       */
+      'border-width': `${top.value}px ${right.value}px ${bottom.value}px ${left.value}px `,
+      'border-style': style.value,
+      'border-color': color.value
+    }
+  }
   getStyle ({ position = 'static', isRem = false } = {}) {
     if (this.name === 'lbp-background') {
       return {
@@ -85,12 +165,17 @@ class Element {
     }
     const pluginProps = this.pluginProps
     const commonStyle = this.commonStyle
+    const { margin, padding } = commonStyle
+    // 由于在 defaultStyle 定义的时候是对象，这里需要将数据重新组装成 margin-top 这种形式
+    const boxModel = { ...this.packPosData(margin, 'margin'), ...this.packPosData(padding, 'padding'), ...this.packBorderData() }
     let style = {
       top: parsePx(pluginProps.top || commonStyle.top, isRem),
       left: parsePx(pluginProps.left || commonStyle.left, isRem),
       width: parsePx(pluginProps.width || commonStyle.width, isRem),
       height: parsePx(pluginProps.height || commonStyle.height, isRem),
       fontSize: parsePx(pluginProps.fontSize || commonStyle.fontSize, isRem),
+      ...boxModel,
+      // 'border-style': commonStyle['border-style'],
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
       textAlign: pluginProps.textAlign || commonStyle.textAlign,
