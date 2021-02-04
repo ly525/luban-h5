@@ -175,7 +175,6 @@ class Element {
       height: parsePx(pluginProps.height || commonStyle.height, isRem),
       fontSize: parsePx(pluginProps.fontSize || commonStyle.fontSize, isRem),
       ...boxModel,
-      // 'border-style': commonStyle['border-style'],
       color: pluginProps.color || commonStyle.color,
       // backgroundColor: pluginProps.backgroundColor || commonStyle.backgroundColor,
       textAlign: pluginProps.textAlign || commonStyle.textAlign,
