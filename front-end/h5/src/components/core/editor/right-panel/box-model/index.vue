@@ -5,11 +5,11 @@
     <PositionCheckbox label="上" label-key="top" />
     <div class="middle">
       <PositionCheckbox label="左" label-key="left" />
-      <div ref="margin" class="margin" data-type="margin"  @click="onBoxModelClick">
+      <div ref="margin" class="margin" data-type="margin" :class="{'margin-select':boxModelPart === 'margin'}" @click="onBoxModelClick">
         margin
-        <div ref="border" class="border" data-type="border">
+        <div ref="border" class="border" data-type="border" :class="{'border-select':boxModelPart === 'border'}">
           border
-          <div ref="padding" class="padding" data-type="padding">
+          <div ref="padding" class="padding" data-type="padding" :class="{'padding-select':boxModelPart === 'padding'}">
             padding
             <div class="content"  data-type="padding">
               {{ commonStyle.width | digit }} x {{ commonStyle.height | digit }}
@@ -37,7 +37,8 @@
     },
     data () {
       return {
-        lastSelect: ''
+        lastSelect: '',
+        select: ''
       }
     },
     computed: {
@@ -68,49 +69,17 @@
       ]),
       onBoxModelClick (e) {
         const target = e.target
-        const classList = target.classList
         const type = target.dataset.type
-        const selectClass = type + '-select'
-        // 更新选中的 boxModelPart，用于判断当前设置的是 margin / border / padding
         this.setElementPosition({
           boxModelPart: type
         })
-        if (this.lastSelect && type !== this.lastSelect) {
-          this.$refs[this.lastSelect].classList.remove(this.lastSelect + '-select')
-        }
-        // 选中的元素添加上选中的 className
-        if (!classList.contains(selectClass)) {
-          this.$refs[type].classList.add(selectClass)
-          this.lastSelect = type
-        }
       },
       onColorChange (color) {
-        this.changeCommonStyle(color, 'color')
-      },
-      changeCommonStyle (changeValue, labelKey, key = 'value') {
-         const boxModelPart = this.boxModelPart
-        // 例如 boxModelPart 为 margin 时候
+        const boxModelPart = this.boxModelPart
+        // 取出 commonStyle.border,并更改 border.color.value 的值
         const boxModelPartStyle = this.editingElement.commonStyle[boxModelPart]
-        // 更新值例如: padding-top
-        Object.assign(boxModelPartStyle[labelKey], { [key]: changeValue })
-        this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
-      }
-    },
-    watch: {
-      /**
-       * 监听当前是否有选中的组件，如果有判断之前是否保存了 boxModelPart
-       * 如果保存了就将之前编辑状态重新复原。
-       */
-      editingElement: {
-        immediate: true,
-        handler (val) {
-          if (!this.boxModelPart) return
-          const selectClass = this.boxModelPart + '-select'
-          this.$nextTick(() => {
-            this.$refs[this.boxModelPart].classList.add(selectClass)
-            this.lastSelect = this.boxModelPart
-          })
-        }
+         Object.assign(boxModelPartStyle.color, { value: color })
+         this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
       }
     }
   }
