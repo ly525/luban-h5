@@ -151,7 +151,7 @@ class Element {
        * 使用 border-left border-right 等方式，在 chrome 浏览器中会导致渲染问题
        * 这里就将他拼接成完整的 border-width解决bug，不知道是什么原因
        */
-      'border-width': `${top.value}px ${right.value}px ${bottom.value}px ${left.value}px `,
+      'border-width': `${top.value}${top.unit} ${right.value}${right.unit} ${bottom.value}${bottom.unit} ${left.value}${left.unit} `,
       'border-style': style.value,
       'border-color': color.value
     }
