@@ -1,7 +1,8 @@
 <template>
   <div v-if="editingElement" class="box-model">
-    <div v-if="boxModelPart" class="prompt">设置 {{ boxModelPart }} 大小</div>
-    <div v-else>选择 margin/border/padding 设置大小</div>
+    <div v-if="boxModelPart" class="prompt">设置 {{ boxModelPart }}</div>
+    <div v-else>选择 margin/border/padding 进行设置</div>
+    <el-color-picker v-if="isEditingBorder" size="small" :value="borderColor" @change="onColorChange"/>
     <PositionCheckbox label="上" label-key="top" />
     <div class="middle">
       <PositionCheckbox label="左" label-key="left" />
@@ -45,6 +46,12 @@
       },
       commonStyle () {
         return this.editingElement ? this.editingElement.commonStyle : {}
+      },
+      borderColor () {
+        return this.commonStyle ? this.commonStyle.border.color.value : ''
+      },
+      isEditingBorder () {
+        return this.boxModelPart === 'border'
       }
     },
     filters: {
@@ -73,6 +80,18 @@
           target.classList.add(selectClass)
           this.lastSelect = type
         }
+      },
+      onColorChange (color) {
+        console.log('color', color)
+        this.changeCommonStyle(color, 'color')
+      },
+      changeCommonStyle (changeValue, labelKey, key = 'value') {
+         const boxModelPart = this.boxModelPart
+        // 例如 boxModelPart 为 margin 时候
+        const boxModelPartStyle = this.editingElement.commonStyle[boxModelPart]
+        // 更新值例如: padding-top
+        Object.assign(boxModelPartStyle[labelKey], { [key]: changeValue })
+        this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
       }
     },
     watch: {

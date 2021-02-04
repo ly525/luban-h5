@@ -11,7 +11,7 @@
     </template>
     <template v-if="boxModelPart && isChecked">
       <a-input-number style="width:70px" :value="value" :min="0" @change="onInputNumberChange" />
-      <a-select :default-value="unitList[0]" style="width:70px">
+      <a-select :value="unit" style="width:70px" @change="onUnitChange">
         <a-select-option v-for="(item,index) in unitList" :key="index" :value="item">
           {{ item }}
         </a-select-option>
@@ -50,6 +50,10 @@
         const { editingElement, labelKey, boxModelPart } = this
         return this.boxModelPart ? editingElement.commonStyle[boxModelPart][labelKey].value : ''
       },
+      unit () {
+        const { editingElement, labelKey, boxModelPart } = this
+        return this.boxModelPart ? editingElement.commonStyle[boxModelPart][labelKey].unit : ''
+      },
       unitList () {
         return this.boxModelPart === 'border' ? ['px', 'em'] : ['px', '%', 'em']
       }
@@ -58,16 +62,22 @@
       ...mapActions('editor', [
         'setElementPosition'
       ]),
+      onUnitChange (unit) {
+        this.changeCommonStyle(unit, 'unit')
+      },
       onCheckboxChange (e) {
         console.log(e)
         this.isChecked = e.target.checked
       },
       onInputNumberChange (value) {
-        const boxModelPart = this.boxModelPart
+        this.changeCommonStyle(value)
+      },
+      changeCommonStyle (changeValue, key = 'value') {
+         const boxModelPart = this.boxModelPart
         // 例如 boxModelPart 为 margin 时候
         const boxModelPartStyle = this.editingElement.commonStyle[boxModelPart]
         // 更新值例如: padding-top
-        Object.assign(boxModelPartStyle[this.labelKey], { value })
+        Object.assign(boxModelPartStyle[this.labelKey], { [key]: changeValue })
         this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
       }
     },
