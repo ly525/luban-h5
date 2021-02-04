@@ -66,7 +66,6 @@
         this.changeCommonStyle(unit, 'unit')
       },
       onCheckboxChange (e) {
-        console.log(e)
         this.isChecked = e.target.checked
       },
       onInputNumberChange (value) {

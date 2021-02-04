@@ -85,7 +85,6 @@
         }
       },
       onColorChange (color) {
-        console.log('color', color)
         this.changeCommonStyle(color, 'color')
       },
       changeCommonStyle (changeValue, labelKey, key = 'value') {
