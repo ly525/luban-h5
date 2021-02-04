@@ -2,7 +2,6 @@
   <div v-if="editingElement" class="box-model">
     <div v-if="boxModelPart" class="prompt">设置 {{ boxModelPart }}</div>
     <div v-else>选择 margin/border/padding 进行设置</div>
-    <el-color-picker v-if="isEditingBorder" size="small" :value="borderColor" @change="onColorChange"/>
     <PositionCheckbox label="上" label-key="top" />
     <div class="middle">
       <PositionCheckbox label="左" label-key="left" />
@@ -21,6 +20,10 @@
       <PositionCheckbox label="右" label-key="right" />
     </div>
     <PositionCheckbox label="下" label-key="bottom" />
+    <template v-if="isEditingBorder">
+      <div> 设置border-color </div>
+      <el-color-picker size="small" :value="borderColor" @change="onColorChange"/>
+    </template>
   </div>
 </template>
 
@@ -77,7 +80,7 @@
         }
         // 选中的元素添加上选中的 className
         if (!classList.contains(selectClass)) {
-          target.classList.add(selectClass)
+          this.$refs[type].classList.add(selectClass)
           this.lastSelect = type
         }
       },
