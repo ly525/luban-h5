@@ -25,7 +25,12 @@ export default {
   },
   render (h) {
     return (
-      <a-layout-sider width={this.width} data-set-width={this.width} theme='light' style={{ background: '#fff', padding: '0 12px 0 12px' }}>
+      <a-layout-sider
+        width={this.width}
+        data-set-width={this.width}
+        theme='light'
+        style={{ background: '#fff', padding: '0 6px 0 6px' }}
+      >
         <a-tabs
           style="height: 100%;"
           tabBarGutter={10}

@@ -10,7 +10,7 @@
  -->
 <template>
   <a-form :layout="formLayout">
-    <a-form-item label="H5类型">
+    <a-form-item style="margin: 0;">
       <a-radio-group v-model="pageMode" size="small">
         <a-radio-button v-for="(value, key) in PAGE_MODE" :key="key" :value="value">
           {{PAGE_MODE_LABEL[key]}}
