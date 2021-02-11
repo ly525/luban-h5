@@ -101,7 +101,7 @@ class Element {
 
   getCommonStyle (ele) {
     if (typeof ele.commonStyle === 'object') {
-      return cloneObj(ele.commonStyle)
+      return cloneObj({ ...defaultStyle, ...ele.commonStyle })
     }
     return {
       ...defaultStyle,
@@ -167,7 +167,11 @@ class Element {
     const commonStyle = this.commonStyle
     const { margin, padding } = commonStyle
     // 由于在 defaultStyle 定义的时候是对象，这里需要将数据重新组装成 margin-top 这种形式
-    const boxModel = { ...this.packPosData(margin, 'margin'), ...this.packPosData(padding, 'padding'), ...this.packBorderData() }
+    const boxModel = {
+      ...this.packPosData(margin, 'margin'),
+      ...this.packPosData(padding, 'padding'),
+      ...this.packBorderData()
+    }
     let style = {
       top: parsePx(pluginProps.top || commonStyle.top, isRem),
       left: parsePx(pluginProps.left || commonStyle.left, isRem),

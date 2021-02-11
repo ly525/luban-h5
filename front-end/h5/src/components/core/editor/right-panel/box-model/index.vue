@@ -20,18 +20,19 @@
       <PositionCheckbox label="右" label-key="right" />
     </div>
     <PositionCheckbox label="下" label-key="bottom" />
-    <template v-if="isEditingBorder">
-      <div> 设置border-color </div>
+    <div v-if="isEditingBorder" style="margin: 20px;">
+      <span> 设置border-color </span>
       <el-color-picker size="small" :value="borderColor" @change="onColorChange"/>
-    </template>
+    </div>
   </div>
 </template>
 
 <script>
+  // 盒子模型编辑器
   import { mapState, mapActions } from 'vuex'
   import PositionCheckbox from './position-checkbox'
   export default {
-    name: 'BoxModel',
+    name: 'BoxModelEditor',
     components: {
       PositionCheckbox
     },
@@ -79,6 +80,10 @@
         // 取出 commonStyle.border,并更改 border.color.value 的值
         const boxModelPartStyle = this.editingElement.commonStyle[boxModelPart]
          Object.assign(boxModelPartStyle.color, { value: color })
+         // TODO 收归style至commonStyle，而非pluginProps
+         if (boxModelPart === 'border') {
+           this.editingElement.pluginProps.borderColor = color
+         }
          this.setElementPosition({ [boxModelPart]: boxModelPartStyle })
       }
     }
@@ -86,21 +91,27 @@
 </script>
 
 <style lang='less' scoped>
+.box-model {
+  margin: 8px 0;
+  border-top: 1px dashed #eee;
+  border-bottom: 1px dashed #eee;
+}
 .inline-block{
   display:inline-block;
   text-align: center;
 }
 .common{
   .inline-block();
-  background-color:rgb(15, 14, 14);
+  background-color:#52527e;
   &-select{
-    background-color: rgb(170, 170, 95);
+    background-color: #fedd9b;
   }
 }
 .middle{
-  margin:20px 0;
+  margin:12px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .margin{
   width:150px;
@@ -124,6 +135,7 @@
   .common()
 }
 .content{
+  border: 1px solid #fff;
   background-color: rgb(82, 82, 126);
   width:80%;
   .inline-block()

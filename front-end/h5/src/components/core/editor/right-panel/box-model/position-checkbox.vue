@@ -3,15 +3,15 @@
     <!-- 只有选中 padding border margin 之后才会显示 -->
     <template v-if="boxModelPart">
       <div class="flex">
-        <a-checkbox @change="onCheckboxChange" :checked="isChecked">
+        <a-checkbox @change="onCheckboxChange" :checked="isChecked" size="small">
         </a-checkbox>
         <div class="label">{{label}}</div>
       </div>
 
     </template>
     <template v-if="boxModelPart && isChecked">
-      <a-input-number style="width:70px" :value="value" :min="0" @change="onInputNumberChange" />
-      <a-select :value="unit" style="width:70px" @change="onUnitChange">
+      <a-input-number style="width:70px" :value="value" :min="0" @change="onInputNumberChange" size="small" />
+      <a-select :value="unit" style="width:70px" @change="onUnitChange" size="small" >
         <a-select-option v-for="(item,index) in unitList" :key="index" :value="item">
           {{ item }}
         </a-select-option>
