@@ -1,11 +1,22 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import BoxModelEditor from './box-model'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
 
 export default {
+  name: 'RightPanelProps',
+  components: {
+    BoxModelEditor
+  },
   data: () => ({
-    loadCustomEditorFlag: false
+    loadCustomEditorFlag: false,
+    editorPositionConfig: [
+      { type: 'a-input-number', label: '上', key: 'top' },
+      { type: 'a-input-number', label: '左', key: 'left' },
+      { type: 'a-input-number', label: '宽', key: 'width' },
+      { type: 'a-input-number', label: '高', key: 'height' }
+    ]
   }),
   props: {
     layout: {
@@ -31,7 +42,7 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
-      'setEditingElement'
+      'setEditingElement', 'setElementPosition'
     ]),
     loadCustomEditorForPlugin () {
       this.loadCustomEditorFlag = false
@@ -114,39 +125,96 @@ export default {
         </a-form-item>
       )
     },
+    /**
+     * 设置当前编辑元素的位置,通过 key 值(width,height,left,top)来控制更新相应的位置
+     * 在显示层已经通过 this.stateEditingElement 来控制是否选中编辑组件了
+     */
+    onPositionChange (key, value) {
+      this.setElementPosition({
+        [key]: Number(value)
+      })
+    },
+    /**
+     * 渲染编辑组件的位置
+     */
+    renderEditorPositionConfig (h) {
+      const _this = this
+      const commonStyle = this.editingElement.commonStyle
+      return <a-form layout="inline">
+        {
+          this.editorPositionConfig.map(item => {
+            const { type, label, key } = item
+            console.log(key, commonStyle)
+            const data = {
+              props: {
+                value: commonStyle[key],
+                placeholder: `请输入${key}`,
+                formatter: value => `${label} ${value}`,
+                size: 'small'
+              },
+              on: {
+                change (e) {
+                  const value = e.target ? e.target.value : e
+                  _this.onPositionChange(key, value)
+                }
+              }
+            }
+            return (
+              <a-form-item>
+                {
+                  h(type, data)
+                }
+              </a-form-item>
+            )
+          })
+        }
+      </a-form>
+    },
     renderPropsEditorPanel (h, editingElement) {
       const vm = getVM(editingElement.name)
       const props = vm.$options.props
-
       return (
-        <a-form
-          ref="form"
-          size="mini"
-          class="props-config-form"
-          layout={this.layout}
-        >
-          {
-            // plugin-custom-editor
-            this.loadCustomEditorFlag &&
-            h(this.customEditorName, {
-              props: {
-                elementProps: editingElement.pluginProps
-              }
-            })
-          }
-          {
-            Object
-              .entries(props)
-              .filter(([propKey, propConfig]) => {
-                // 1. 如果开发者给 某个prop 显式指定了 visible 属性，则取开发者指定的值；
-                // 2. 否则取默认值：true，即默认在属性面板显示该属性
-                // 3. 组件的某些属性是不需要显示在 配置编辑器的，比如：editorMode(编辑模式/预览模式)，因为这个是鲁班编辑器默认注入到每个组件的，无须显示出来
-                const isVisible = propConfig.hasOwnProperty('visible') ? propConfig.visible : true
-                return isVisible && propConfig.editor && !propConfig.editor.custom
+        <div>
+          <a-collapse bordered={true} expand-icon-position="right">
+            <a-collapse-panel key="1" header="通用样式">
+              {/* left,top,width,height编辑 只有在选中编辑组件的时候显示 */}
+                {
+                  this.stateEditingElement ? this.renderEditorPositionConfig(h) : ''
+                }
+              {/* margin、padding编辑 */}
+              <BoxModelEditor />
+            </a-collapse-panel>
+          </a-collapse>
+          <a-form
+            ref="form"
+            size="mini"
+            class="props-config-form"
+            layout={this.layout}
+          >
+
+            {
+              // plugin-custom-editor
+              this.loadCustomEditorFlag &&
+              h(this.customEditorName, {
+                props: {
+                  elementProps: editingElement.pluginProps
+                }
               })
-              .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
-          }
-        </a-form>
+            }
+            {
+              Object
+                .entries(props)
+                .filter(([propKey, propConfig]) => {
+                  // 1. 如果开发者给 某个prop 显式指定了 visible 属性，则取开发者指定的值；
+                  // 2. 否则取默认值：true，即默认在属性面板显示该属性
+                  // 3. 组件的某些属性是不需要显示在 配置编辑器的，比如：editorMode(编辑模式/预览模式)，因为这个是鲁班编辑器默认注入到每个组件的，无须显示出来
+                  const isVisible = propConfig.hasOwnProperty('visible') ? propConfig.visible : true
+                  return isVisible && propConfig.editor && !propConfig.editor.custom
+                })
+                .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
+            }
+          </a-form>
+        </div>
       )
     },
     renderWorkGlobalPropsPanel (h) {

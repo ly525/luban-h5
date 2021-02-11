@@ -27,7 +27,11 @@ export default {
     const bgEle = this.editingPage.elements.find(e => e.name === 'lbp-background')
     return (
       <div>
-        <RenderWorkMode />
+        <a-collapse expand-icon-position="right">
+          <a-collapse-panel key="1" header="H5模式">
+            <RenderWorkMode />
+          </a-collapse-panel>
+        </a-collapse>
         <PropsEditPanel
           layout="vertical"
           realEditingElement={bgEle}
