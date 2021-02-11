@@ -42,7 +42,8 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
-      'setEditingElement', 'setElementPosition'
+      'setEditingElement',
+      'setElementPosition'
     ]),
     loadCustomEditorForPlugin () {
       this.loadCustomEditorFlag = false
@@ -184,37 +185,39 @@ export default {
               {/* margin、padding编辑 */}
               <BoxModelEditor />
             </a-collapse-panel>
-          </a-collapse>
-          <a-form
-            ref="form"
-            size="mini"
-            class="props-config-form"
-            layout={this.layout}
-          >
+            <a-collapse-panel key="2" header="属性设置">
+              <a-form
+                ref="form"
+                size="mini"
+                class="props-config-form"
+                layout={this.layout}
+              >
 
-            {
-              // plugin-custom-editor
-              this.loadCustomEditorFlag &&
-              h(this.customEditorName, {
-                props: {
-                  elementProps: editingElement.pluginProps
+                {
+                  // plugin-custom-editor
+                  this.loadCustomEditorFlag &&
+                  h(this.customEditorName, {
+                    props: {
+                      elementProps: editingElement.pluginProps
+                    }
+                  })
                 }
-              })
-            }
-            {
-              Object
-                .entries(props)
-                .filter(([propKey, propConfig]) => {
-                  // 1. 如果开发者给 某个prop 显式指定了 visible 属性，则取开发者指定的值；
-                  // 2. 否则取默认值：true，即默认在属性面板显示该属性
-                  // 3. 组件的某些属性是不需要显示在 配置编辑器的，比如：editorMode(编辑模式/预览模式)，因为这个是鲁班编辑器默认注入到每个组件的，无须显示出来
-                  const isVisible = propConfig.hasOwnProperty('visible') ? propConfig.visible : true
-                  return isVisible && propConfig.editor && !propConfig.editor.custom
-                })
-                .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
-            }
-          </a-form>
-        </div>
+                {
+                  Object
+                    .entries(props)
+                    .filter(([propKey, propConfig]) => {
+                      // 1. 如果开发者给 某个prop 显式指定了 visible 属性，则取开发者指定的值；
+                      // 2. 否则取默认值：true，即默认在属性面板显示该属性
+                      // 3. 组件的某些属性是不需要显示在 配置编辑器的，比如：editorMode(编辑模式/预览模式)，因为这个是鲁班编辑器默认注入到每个组件的，无须显示出来
+                      const isVisible = propConfig.hasOwnProperty('visible') ? propConfig.visible : true
+                      return isVisible && propConfig.editor && !propConfig.editor.custom
+                    })
+                    .map(([propKey, propConfig]) => this.renderPropFormItem(h, { propKey, propConfig }))
+                }
+              </a-form>
+            </a-collapse-panel>
+          </a-collapse>
+          </div>
       )
     },
     renderWorkGlobalPropsPanel (h) {
