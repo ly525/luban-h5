@@ -14,12 +14,12 @@ import { renderWaterMark } from '@/utils/dom-helper'
 export default {
   name: 'lbp-background',
   props: {
-    imgSrc: PropTypes.image({ label: '背景图' }),
-    backgroundColor: PropTypes.color({ label: '背景色', defaultValue: 'rgba(255, 255, 255, 0.2)' }),
-    waterMarkText: PropTypes.string({ label: '水印文字', defaultValue: '水印文字' }),
-    waterMarkFontSize: PropTypes.number({ label: '水印文字大小(px)', defaultValue: 16 }),
-    waterMarkRotate: PropTypes.number({ label: '水印旋转角度', defaultValue: 10 }),
-    waterMarkColor: PropTypes.color({ label: '水印文字颜色', defaultValue: 'rgba(184, 184, 184, 0.2)' })
+    imgSrc: PropTypes.image({ label: '背景图', 'en-US-label': 'BgImage' }),
+    backgroundColor: PropTypes.color({ label: '背景色', 'en-US-label': 'BgColor', defaultValue: 'rgba(255, 255, 255, 0.2)' }),
+    waterMarkText: PropTypes.string({ label: '水印文字', 'en-US-label': 'BgColor', defaultValue: '水印文字' }),
+    waterMarkFontSize: PropTypes.number({ label: '水印文字大小(px)', 'en-US-label': 'WaterMaskSize', defaultValue: 16 }),
+    waterMarkRotate: PropTypes.number({ label: '水印旋转角度', 'en-US-label': 'WaterMaskRotate', defaultValue: 10 }),
+    waterMarkColor: PropTypes.color({ label: '水印文字颜色', 'en-US-label': 'WaterMaskColor', defaultValue: 'rgba(184, 184, 184, 0.2)' })
   },
   methods: {
     renderWaterMark () {

@@ -840,10 +840,10 @@
     core-js "^3.3.2"
     vue "^2.6.10"
 
-"@luban-h5/plugin-common-props@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.npmjs.org/@luban-h5/plugin-common-props/-/plugin-common-props-0.2.7.tgz#098cb71c789a527f8b50a2b613c9b28d959f5ab2"
-  integrity sha512-Kf+HogjJVQy9Mp/c36X6m8VNF56rme/RkRwnLVdtTG1c0rTcPdn9iE+2gCP641DDN9ifGj5Y6T+wfVyTaOTDaw==
+"@luban-h5/plugin-common-props@0.2.8":
+  version "0.2.8"
+  resolved "https://registry.npm.taobao.org/@luban-h5/plugin-common-props/download/@luban-h5/plugin-common-props-0.2.8.tgz#a8ce6d8c445ef65a1c9147a61c5d5b049217f38f"
+  integrity sha1-qM5tjERe9lockUemHF1bBJIX848=
 
 "@luban-h5/plugin-common-props@^0.0.1":
   version "0.0.1"

@@ -106,7 +106,10 @@ export default {
         title: 'Animation {index}'
       },
       common: {
-        empty: 'Select an element first please!'
+        empty: 'Select an element first please!',
+        ConfigProps: '属性设置',
+        commonStyle: '通用样式',
+        pageMode: '页面模式'
       }
     },
     tip: {

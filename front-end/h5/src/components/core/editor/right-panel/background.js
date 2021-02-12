@@ -28,7 +28,8 @@ export default {
     return (
       <div>
         <a-collapse expand-icon-position="right">
-          <a-collapse-panel key="1" header="H5模式">
+          {/* #!zh: H5模式 */}
+          <a-collapse-panel key="1" header={this.$t('editor.editPanel.common.pageMode')}>
             <RenderWorkMode />
           </a-collapse-panel>
         </a-collapse>
