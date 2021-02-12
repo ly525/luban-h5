@@ -26,15 +26,15 @@ export default {
      * #!en click the plugin shortcut, create new Element with the plugin's meta data
      * pluginInfo {Object}: 插件列表中的基础数据, {name}=pluginInfo
      *
-     * shortcutItem: PluginListItem = {
+     * elementShortcutConfig: PluginListItem = {
       name: String,
       shortcutProps: {}
      }
      */
-    clone (shortcutItem) {
+    clone (elementShortcutConfig) {
       this.elementManager({
         type: 'add',
-        value: shortcutItem
+        value: elementShortcutConfig
       })
     }
     /**
