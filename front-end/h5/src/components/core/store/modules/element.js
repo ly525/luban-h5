@@ -32,7 +32,18 @@ export const mutations = {
       ...payload
     }
   },
+  /**
+   * 元素管理：增/删/复制/上移/下移
+   * @param {*} state
+   * @param {*} {
+   *  type:  add/copy/delete/move2Top/move2Bottom 增/删/复制/上移/下移
+   *  value(elementShortcutConfig) 左侧元素列表中元素对应的配置，主要包含：
+   *   - shortcutProps：默认Props，比如一个Chart是饼图、折线图、漏斗图，可以通过此指定
+   *   - dragStyle：用于拖拽结束，确定最终放置的位置, // {left: Number, top: Number}
+   * }
+   */
   elementManager (state, { type, value }) {
+    const elementShortcutConfig = value
     const { editingPage, editingElement } = state
     const elements = editingPage.elements
     const len = elements.length
@@ -40,10 +51,12 @@ export const mutations = {
     switch (type) {
       case 'add':
         const vm = getVM(value.name)
-        vm.$options.shortcutProps = value.shortcutProps
-        // 用于拖拽结束，确定最终放置的位置
-        vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
-        const element = new Element(vm.$options)
+        const basicElement = vm.$options
+        const element = new Element({
+          ...basicElement,
+          ...elementShortcutConfig,
+          zindex: len + 1
+        })
         elements.push(element)
         break
       case 'copy':
