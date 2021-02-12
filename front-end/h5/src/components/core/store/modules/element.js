@@ -40,10 +40,11 @@ export const mutations = {
     switch (type) {
       case 'add':
         const vm = getVM(value.name)
-        vm.$options.shortcutProps = value.shortcutProps
+        const basicElement = vm.$options
+        basicElement.shortcutProps = value.shortcutProps
         // 用于拖拽结束，确定最终放置的位置
-        vm.$options.dragStyle = value.dragStyle // {left: Number, top: Number}
-        const element = new Element(vm.$options)
+        basicElement.dragStyle = value.dragStyle // {left: Number, top: Number}
+        const element = new Element({ ...basicElement, zindex: len + 1 })
         elements.push(element)
         break
       case 'copy':

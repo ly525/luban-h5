@@ -145,7 +145,6 @@ export default {
         {
           this.editorPositionConfig.map(item => {
             const { type, label, key } = item
-            console.log(key, commonStyle)
             const data = {
               props: {
                 value: commonStyle[key],
