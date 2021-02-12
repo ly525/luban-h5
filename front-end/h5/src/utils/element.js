@@ -71,3 +71,13 @@ export const genUUID = () => {
   // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
+
+// Generate four random hex digits.
+function S4 () {
+  return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+}
+
+// Generate a pseudo-GUID by concatenating random hexadecimal.
+export function guid () {
+  return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4())
+}

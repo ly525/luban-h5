@@ -22,7 +22,7 @@ export default {
     clickOutside: vClickOutside.directive
   },
   render (h) {
-    const canEdit = this.canEdit && this.editorMode === 'edit'
+    const canEdit = this.canEdit && this.editorMode === 'edit' && this.isEditingElement
     const style = {
       position: 'relative',
       color: `${this.color} !important`,
@@ -108,6 +108,11 @@ export default {
     editorMode: PropTypes.string({
       defaultValue: 'preview', // 可选值: preview/edit
       label: '模式',
+      visible: false
+    }),
+    isEditingElement: PropTypes.boolean({
+      defaultValue: false, // 可选值: preview/edit
+      label: '是否当前元素',
       visible: false
     })
   },
