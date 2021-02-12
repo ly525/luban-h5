@@ -25,6 +25,12 @@
     </style>
     <!-- <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/createjs@1.0.1/builds/1.0.0/createjs.min.js"></script>
+    <script>
+      // Note: 增加html userAgent标记，
+      // windows启用下仿mac的滚动条样式。
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
   </head>
   <body>
     <noscript>
