@@ -9,7 +9,7 @@
         margin
         <div ref="border" class="border" data-type="border" :class="{'border-select':boxModelPart === 'border'}">
           border
-          <div ref="padding" class="padding" data-type="padding" :class="{'padding-select':boxModelPart === 'padding'}">
+          <div ref="padding" class="padding" data-type="padding" :class="{'padding-select':boxModelPart === 'padding'}">]
             padding
             <div class="content"  data-type="padding">
               {{ commonStyle.width | digit }} x {{ commonStyle.height | digit }}
@@ -36,24 +36,19 @@
     components: {
       PositionCheckbox
     },
-    data () {
-      return {
-        lastSelect: '',
-        select: ''
-      }
-    },
     computed: {
       ...mapState('editor', {
         editingElement: state => state.editingElement
       }),
+      // margin/padding/border
       boxModelPart () {
-        return this.editingElement && this.editingElement.commonStyle.boxModelPart
+        return this.editingElement?.commonStyle.boxModelPart
       },
       commonStyle () {
-        return this.editingElement ? this.editingElement.commonStyle : {}
+        return this.editingElement?.commonStyle || {}
       },
       borderColor () {
-        return this.commonStyle ? this.commonStyle.border.color.value : ''
+        return this.commonStyle?.border.color.value || ''
       },
       isEditingBorder () {
         return this.boxModelPart === 'border'
@@ -69,8 +64,7 @@
         'setElementPosition'
       ]),
       onBoxModelClick (e) {
-        const target = e.target
-        const type = target.dataset.type
+        const type = e.target.dataset.type
         this.setElementPosition({
           boxModelPart: type
         })
@@ -93,8 +87,6 @@
 <style lang='less' scoped>
 .box-model {
   margin: 8px 0;
-  border-top: 1px dashed #eee;
-  border-bottom: 1px dashed #eee;
 }
 .inline-block{
   display:inline-block;

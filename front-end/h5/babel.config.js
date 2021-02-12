@@ -4,6 +4,7 @@ module.exports = {
     // ['es2015', { 'modules': false }]
   ],
   'plugins': [
+    '@babel/plugin-proposal-optional-chaining',
     [
       'component',
       {
