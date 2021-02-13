@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/10/2020 10:31:59 PM"
+    "x-generation-date": "02/13/2021 1:32:47 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -102,6 +102,63 @@
       }
     },
     "/works/has-forms": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Work"
+        ],
+        "parameters": []
+      }
+    },
+    "/works/editor": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -3713,8 +3770,9 @@
           "is_template": {
             "type": "boolean"
           },
-          "mode": {
+          "page_mode": {
             "type": "string",
+            "default": "h5_swipper",
             "enum": [
               "h5_swipper",
               "h5_long_page",
@@ -3724,6 +3782,10 @@
           "height": {
             "type": "integer",
             "default": 568
+          },
+          "width": {
+            "type": "integer",
+            "default": 320
           }
         }
       },
@@ -3747,8 +3809,9 @@
           "is_template": {
             "type": "boolean"
           },
-          "mode": {
+          "page_mode": {
             "type": "string",
+            "default": "h5_swipper",
             "enum": [
               "h5_swipper",
               "h5_long_page",
@@ -3758,6 +3821,10 @@
           "height": {
             "type": "integer",
             "default": 568
+          },
+          "width": {
+            "type": "integer",
+            "default": 320
           }
         }
       },
@@ -3798,10 +3865,13 @@
               "is_template": {
                 "type": "boolean"
               },
-              "mode": {
+              "page_mode": {
                 "type": "string"
               },
               "height": {
+                "type": "integer"
+              },
+              "width": {
                 "type": "integer"
               }
             }

@@ -45,7 +45,7 @@
       position: relative;
       display: flex;
       flex-wrap: nowrap;
-      width: 320px;
+      width: <%= work.width %>px;
       height: 568px;
 
       position: absolute;
@@ -55,7 +55,7 @@
 
       .phone-wrapper {
         position: absolute;
-        width: 320px;
+        width: <%= work.width %>px;
         height: 568px;
         display: inline-block;
         background: #fff;
@@ -125,7 +125,7 @@
       position: relative;
       display: flex;
       flex-wrap: nowrap;
-      width: 320px;
+      width: <%= work.width %>px;
       height: 568px;
       /* position: absolute;
       left: 0;
@@ -140,7 +140,7 @@
     }
     .preview-wrapper .phone-wrapper {
       position: absolute;
-      width: 320px;
+      width: <%= work.width %>px;
       height: 568px;
       display: inline-block;
       background: #fff;
@@ -211,11 +211,11 @@
 
       function updateViewport() {
         var scale = 1;
-        var w = document.documentElement.clientWidth || 320;
+        var w = document.documentElement.clientWidth || <%= work.width %>;
         // var h = document.documentElement.clientHeight || 568;
-        // scale = w/h >= 320/568 ? h/568 : w/320;
-        scale = w/320;
-        var viewport = "width=320, initial-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
+        // scale = w/h >= <%= work.width %>/568 ? h/568 : w/<%= work.width %>;
+        scale = w/<%= work.width %>;
+        var viewport = "width=<%= work.width %>, initial-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
         document.getElementById("viewport").setAttribute("content", viewport)
       }
 

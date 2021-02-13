@@ -1,0 +1,116 @@
+$activeHoverColor: #1593ff;
+.collapse-indicator-wrapper {
+  position: relative;
+  display: flex;
+  height: calc(100vh - 64px);
+
+  .component-wrapper {
+    order: 0;
+    flex: 0 1 auto;
+    height: 100%;
+    // transition: width 0.3s ease-in-out 0s, min-width 0.3s ease-in-out 0s;
+  }
+
+  .indicator-wrapper {
+    position: relative;
+    order: 1;
+    flex: 0 1 auto;
+    height: 100%;
+    width: 1px;
+
+    &:hover {
+      background: $activeHoverColor;
+      .indicator{
+        color: white;
+        background: $activeHoverColor;
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      height: 64px;
+      top: calc(50% - 32px);
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 0 4px 4px 0;
+      border: 1px solid #e5e5e5;
+      border-left-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.adjust-line-wrapper {
+  .adjust-line {
+    border: 1px solid #eee;
+  }
+
+  .adjust-line-h {
+    width: 100%;
+  }
+
+  .adjust-line-v {
+    height: 100%;
+  }
+
+  .adjust-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 30px;
+    height: 10px;
+    background-color: #fff;
+
+    .indicator {
+      margin: 0 auto;
+      width: 10px;
+      height: 1px;
+      background-color: #ccd5db;
+    }
+  }
+
+  &:hover {
+    .adjust-button {
+      background-color: $activeHoverColor;
+    }
+
+    .adjust-line {
+      border-color: $activeHoverColor;
+    }
+  }
+}
+
+.adjust-line-wrapper-h {
+  cursor: ns-resize;
+
+  .adjust-tip {
+    letter-spacing: 1px;
+    padding: 0;
+    height: 24px;
+    margin: 2px auto 0;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    color: #868484;
+    vertical-align: middle;
+  }
+}
+
+.adjust-line-wrapper-v {
+  position: relative;
+  height: calc(100vh - 64px);
+  cursor: ew-resize;
+
+  .adjust-button {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: rotate(90deg);
+  }
+}

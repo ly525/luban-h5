@@ -301,7 +301,13 @@ export default {
               <div class="adjust-line adjust-line-h"></div>
               <div class="adjust-button" onMousedown={this.mousedownForAdjustLine}><div class="indicator"></div></div>
               <div class="adjust-tip">
-                <span>320 x</span>
+                <a-input-number
+                  size="small"
+                  style="margin: 0 4px; width:60px;"
+                  value={this.work.width}
+                  onChange={width => { this.updateWork({ width }) }}
+                  />
+                <span>x</span>
                 <a-input-number
                   size="small"
                   style="margin: 0 4px; width:60px;"

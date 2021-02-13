@@ -20,6 +20,45 @@ import router from 'core/router/index'
 import i18n from '@/locales'
 import '@/plugins/index'
 
+function AdjustHoc (WrappedComponent) {
+  return {
+    props: WrappedComponent.props,
+    data: () => ({
+      show: true
+    }),
+    computed: {
+      displayStyle () {
+        return {
+          display: this.show ? 'block' : 'none'
+        }
+      },
+      iconType () {
+        return `vertical-${this.show ? 'right' : 'left'}`
+      }
+    },
+    render (h) {
+      return (
+        <div class="collapse-indicator-wrapper">
+          <WrappedComponent
+            attrs={this.$attrs}
+            props={this.$props}
+            on={this.$listeners}
+            scopedSlots={this.$scopedSlots}
+            class="component-wrapper"
+            style={this.displayStyle} />
+          <div class="indicator-wrapper">
+            <span class="indicator" onClick={() => { this.show = !this.show }}>
+              <a-icon type={this.iconType} />
+            </span>
+          </div>
+        </div>
+      )
+    }
+  }
+}
+
+const AdjustLeftPanel = AdjustHoc(EditorLeftPanel)
+
 window.EditorApp = new Vue() // event bus
 const CoreEditor = {
   name: 'CoreEditor',
@@ -51,7 +90,8 @@ const CoreEditor = {
           <EditorActionMenu slot="action-menu" onPreview={this.handlePreview} />
         </Header>
         <a-layout>
-          <EditorLeftPanel />
+          {/* <EditorLeftPanel /> */}
+          <AdjustLeftPanel />
           <EditorCanvas />
           <AdjustLineV onLineMove={(offset) => { this.propsPanelWidth += offset }} />
           <FixedTools />
