@@ -97,7 +97,10 @@ export default {
         title: 'Animation {index}'
       },
       common: {
-        empty: 'Select an element first please!'
+        empty: 'Select an element first please!',
+        ConfigProps: 'Props',
+        commonStyle: 'CommonStyle',
+        pageMode: 'PageMode'
       }
     },
     tip: {

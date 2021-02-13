@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 import BoxModelEditor from './box-model'
+import langMixin from 'core/mixins/i18n'
 import { getVM, getComponentsForPropsEditor } from '@/utils/element'
 import 'core/styles/props-config-panel.scss'
 
 export default {
   name: 'RightPanelProps',
+  mixins: [langMixin],
   components: {
     BoxModelEditor
   },
@@ -114,7 +116,7 @@ export default {
       const formItemData = {
         props: {
           ...formItemLayout,
-          label: item.label,
+          label: item[`${this.currentLang}-label`] || item.label,
           ...item.layout
         }
       }
@@ -176,7 +178,8 @@ export default {
       return (
         <div>
           <a-collapse bordered={true} expand-icon-position="right">
-            <a-collapse-panel key="1" header="通用样式">
+            {/* #!zh: 通用样式 */}
+            <a-collapse-panel key="1" header={this.$t('editor.editPanel.common.commonStyle')}>
               {/* left,top,width,height编辑 只有在选中编辑组件的时候显示 */}
                 {
                   this.stateEditingElement ? this.renderEditorPositionConfig(h) : ''
@@ -184,7 +187,8 @@ export default {
               {/* margin、padding编辑 */}
               <BoxModelEditor />
             </a-collapse-panel>
-            <a-collapse-panel key="2" header="属性设置">
+            {/* #!zh: 属性设置 */}
+            <a-collapse-panel key="2" header={this.$t('editor.editPanel.common.ConfigProps')}>
               <a-form
                 ref="form"
                 size="mini"

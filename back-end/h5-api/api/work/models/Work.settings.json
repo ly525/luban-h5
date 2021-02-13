@@ -44,6 +44,10 @@
     "height": {
       "type": "integer",
       "default": 568
+    },
+    "width": {
+      "type": "integer",
+      "default": 320
     }
   }
 }
