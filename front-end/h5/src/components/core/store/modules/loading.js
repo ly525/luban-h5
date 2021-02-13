@@ -16,7 +16,8 @@ const state = {
   setWorkAsTemplate_loading: false,
   fetchWorkTemplates_loading: false,
   useTemplate_loading: false,
-  uploadWorkCover_loading: false
+  uploadWorkCover_loading: false,
+  deleteWork_loading: false
 }
 
 // getters

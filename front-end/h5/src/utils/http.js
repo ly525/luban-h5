@@ -98,6 +98,14 @@ export class AxiosWrapper {
     this.setDefaultLoadingName(args)
 
     this.setLoadingValue(true)
+    if (this.customRequest) {
+      return this.customRequest(...args)
+        .then(data => {
+          const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
+          handler.call(this, { status: 200, data: { data } })
+        })
+        .finally(() => this.setLoadingValue(false))
+    }
     return this.instance.delete(...args).then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
       handler.call(this, response)

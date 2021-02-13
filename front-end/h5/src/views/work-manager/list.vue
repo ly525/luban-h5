@@ -24,6 +24,9 @@ const ListItemCard = {
     qrcodeUrl: ''
   }),
   methods: {
+    ...mapActions('editor', [
+      'deleteWork'
+    ]),
     timeFmt (date) {
       const dateTime = new Date(date)
       const displayTime = `${dateTime.getFullYear()}-${dateTime.getMonth() +
@@ -35,6 +38,20 @@ const ListItemCard = {
       QRCode.toDataURL(url, (err, url) => {
         if (err) console.log(err)
         this.qrcodeUrl = url
+      })
+    },
+    handleDeleteWork () {
+      const { title, id } = this.work
+      this.$confirm({
+        title: this.$t('workCard.confirmDeleteTip', { tip: `${title}(${id})` }),
+        // content: 'Bla bla ...',
+        okText: 'Confirm',
+        cancelText: 'Cancel',
+        onOk: async () => {
+          await this.deleteWork(this.work.id)
+          this.$emit('deleteSuccess')
+        },
+        onCancel: () => {}
       })
     }
   },
@@ -52,6 +69,10 @@ const ListItemCard = {
           {/** 预览 */}
           <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.preview')}>
             <a-icon type="eye" title={this.$t('workCard.preview')} onClick={this.handleClickPreview} />
+          </a-tooltip>
+          {/** 删除 */}
+          <a-tooltip effect="dark" placement="bottom" title={this.$t('workCard.delete')}>
+            <a-icon type="delete" title={this.$t('workCard.delete')} onClick={this.handleDeleteWork} />
           </a-tooltip>
           {
             this.qrcodeUrl
@@ -114,10 +135,7 @@ export default {
     ...mapActions('editor', [
       'fetchWorks',
       'createWork'
-    ]),
-    deleteWork (item) {
-      // TODO delete work from work list
-    }
+    ])
   },
   render (h) {
     return (
@@ -133,10 +151,14 @@ export default {
               </a-col>
               : this.works.map(work => (
                 <a-col span={6} key={work.id} style="margin-bottom: 20px;">
-                  <ListItemCard work={work} handleClickPreview={e => {
-                    this.previewVisible = true
-                    this.activeWork = work
-                  }} />
+                  <ListItemCard
+                    work={work}
+                    handleClickPreview={e => {
+                      this.previewVisible = true
+                      this.activeWork = work
+                    }}
+                    onDeleteSuccess={this.fetchWorks}
+                  />
                 </a-col>
               ))
           }

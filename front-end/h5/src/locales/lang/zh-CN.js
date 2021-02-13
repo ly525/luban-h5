@@ -33,7 +33,9 @@ export default {
     preview: '预览',
     createNewWork: '创建新作品',
     edit: '编辑',
-    view: '查看作品'
+    delete: '删除',
+    view: '查看作品',
+    confirmDeleteTip: '确认删除 {tip}？'
   },
   basicData: {
     viewData: '查看数据'
