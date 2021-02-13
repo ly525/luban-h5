@@ -50,6 +50,16 @@ export const actions = {
       // router.replace({ name: 'editor', params: { workId: entry.id } })
     }).catch(handleError)
   },
+  deleteWork ({ commit, dispatch, state }, workId) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      loading_name: 'deleteWork_loading',
+      successMsg: '删除作品成功',
+      customRequest: strapi.deleteEntry.bind(strapi)
+    }).delete('works', workId).catch(handleError)
+    // return strapi.deleteEntry('works', workId)
+  },
   updateWork ({ commit, state }, payload = {}) {
     // update work with strapi
     const work = {

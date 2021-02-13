@@ -101,10 +101,7 @@ export default {
       'fetchWorks',
       'fetchWorkTemplates',
       'useTemplate'
-    ]),
-    deleteWork (item) {
-      // TODO delete work from work list
-    }
+    ])
   },
   render (h) {
     return (

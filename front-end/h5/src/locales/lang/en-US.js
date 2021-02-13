@@ -22,8 +22,10 @@ export default {
     useNow: 'Use it Now',
     preview: 'Preview',
     edit: 'Edit',
+    delete: 'Delete',
     createNewWork: 'Create New',
-    view: 'View Work'
+    view: 'View Work',
+    confirmDeleteTip: 'Confirm Delete {tip}?'
   },
   basicData: {
     viewData: 'View Data'
