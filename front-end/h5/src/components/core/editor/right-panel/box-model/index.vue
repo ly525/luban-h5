@@ -9,7 +9,7 @@
         margin
         <div ref="border" class="border" data-type="border" :class="{'border-select':boxModelPart === 'border'}">
           border
-          <div ref="padding" class="padding" data-type="padding" :class="{'padding-select':boxModelPart === 'padding'}">]
+          <div ref="padding" class="padding" data-type="padding" :class="{'padding-select':boxModelPart === 'padding'}">
             padding
             <div class="content"  data-type="padding">
               {{ commonStyle.width | digit }} x {{ commonStyle.height | digit }}
