@@ -31,6 +31,7 @@ module.exports = {
     // 非预览模式, 查看不到内容
     const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish;
     if (!canRender) work.pages = [];
+    work.width = work.width || 320;
     return ctx.render('engine', { work });
   },
   renderCoreEditor: async (ctx) => {
