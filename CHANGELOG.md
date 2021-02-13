@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.1](https://github.com/ly525/luban-h5/compare/v1.14.0...v1.14.1) (2021-02-13)
+
+
+### Features
+
+* add alert&log for api 403 ([e492406](https://github.com/ly525/luban-h5/commit/e492406af58cf118f1bb3896ae546d6b4c616fa5))
+* add component tree; !#zh: 组件树 ([d34d717](https://github.com/ly525/luban-h5/commit/d34d717de4914ab40e2081b7cee6aa43f886a17a))
+* contextmenu support whitelist !#zh: 右键菜单支持元素黑白名单 ([b6c26b0](https://github.com/ly525/luban-h5/commit/b6c26b028825d092f32ca50346062e4e7cce6465))
+* contextmenu support whitelist !#zh: 右键菜单支持元素黑白名单 ([d503c3b](https://github.com/ly525/luban-h5/commit/d503c3b6548c807a5aa6465fcfb64defa44698e3))
+* refactor core-editor as npm package: @luban-h5/core-editor ([6e23b00](https://github.com/ly525/luban-h5/commit/6e23b00197fca18fe5a5f9a7903b267369c4ea1b))
+* **work:** delete work; #!zh: 支持删除作品 ([816ce3a](https://github.com/ly525/luban-h5/commit/816ce3ae202eb8ef6d6acc1185ce6e12038fe5d7))
+
+
+### Bug Fixes
+
+* [#241](https://github.com/ly525/luban-h5/issues/241) [#240](https://github.com/ly525/luban-h5/issues/240) ([3787d85](https://github.com/ly525/luban-h5/commit/3787d8574a801c78f2c0f25170d113ca011700e3))
+* [#250](https://github.com/ly525/luban-h5/issues/250) ([d1dcd2a](https://github.com/ly525/luban-h5/commit/d1dcd2a209710f189400d1fe939972ea6f987ea1))
+* [#293](https://github.com/ly525/luban-h5/issues/293) ([1406139](https://github.com/ly525/luban-h5/commit/1406139a91b81bcf62cc441966aef86b01f43eab))
+* add router to core-editor ([63a6b7b](https://github.com/ly525/luban-h5/commit/63a6b7b245548e77ec9e000c5d0b0001466598ae))
+* eslint ([c56da70](https://github.com/ly525/luban-h5/commit/c56da70a2391d23ea8955f05cebfbb7944912d55))
+* move canvas scale ratio to vuex ([4c3679c](https://github.com/ly525/luban-h5/commit/4c3679c42f539622b98e6c4e854c277c656a7114))
+* page manager ([b220828](https://github.com/ly525/luban-h5/commit/b220828de34459b64cce8c82c59eebafb4791a62))
+* use element.uuid to get editingElement ([4228dbb](https://github.com/ly525/luban-h5/commit/4228dbb79adb614fff068c4a092a17d8af857c1a))
+
 ## [1.14.0](https://github.com/ly525/luban-h5/compare/v1.13.2...v1.14.0) (2020-09-13)
 
 
