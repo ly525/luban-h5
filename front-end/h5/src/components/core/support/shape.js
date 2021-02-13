@@ -146,7 +146,6 @@ export default {
      * !#en: delete element with keyboard
      * !#zh: 键盘快捷键删除元素
      *
-     * TODO: 增加 确认删除 拦截操作
      */
     handleDeleteByKeyboard (event) {
       const key = event.keyCode || event.charCode

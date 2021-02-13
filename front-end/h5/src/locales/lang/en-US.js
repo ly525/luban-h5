@@ -35,7 +35,8 @@ export default {
       components: 'Components',
       pages: 'Pages',
       templates: 'Templates',
-      tree: 'Tree'
+      tree: 'Tree',
+      preferences: 'Preferences'
     },
     pageManager: {
       title: 'Page {index}',

@@ -1,5 +1,8 @@
 import Element from 'core/models/element'
 import { swapZindex, getVM } from '@/utils/element'
+import LocalPreferences, { IS_CONFIRM_BEFORE_DELETE_ELEMENT } from 'core/editor/left-panel/preferences/local-preferences.js'
+import { Modal } from 'ant-design-vue'
+import i18n from '@/locales'
 
 // actions
 export const actions = {
@@ -20,6 +23,20 @@ export const actions = {
     commit('elementManager', payload)
   }
 }
+
+const confirmDelete = () => new Promise((resolve, reject) => {
+  if (LocalPreferences.get(IS_CONFIRM_BEFORE_DELETE_ELEMENT)) {
+    Modal.confirm({
+      title: i18n.t('workCard.confirmDeleteTip', { tip: `` }),
+      onOk: (close) => {
+        resolve()
+        close()
+      }
+    })
+    return
+  }
+  resolve()
+})
 
 // mutations
 export const mutations = {
@@ -66,10 +83,9 @@ export const mutations = {
         {
           const index = elements.findIndex(e => e.uuid === editingElement.uuid)
           if (index !== -1) {
-            // let newElements = elements.slice()
-            // newElements.splice(index, 1)
-            // state.editingPage.elements = newElements
-            state.editingPage.elements.splice(index, 1)
+            confirmDelete().then(() => {
+              state.editingPage.elements.splice(index, 1)
+            })
           }
           state.editingElement = null
         }
