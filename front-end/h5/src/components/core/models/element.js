@@ -16,7 +16,7 @@ const defaultStyle = {
   fontSize: 14,
   margin: {
     top: {
-      value: 10,
+      value: 0,
       unit: 'px'
     },
     right: {
@@ -24,7 +24,7 @@ const defaultStyle = {
       unit: 'px'
     },
     bottom: {
-      value: 30,
+      value: 0,
       unit: 'px'
     },
     left: {
@@ -78,7 +78,7 @@ const defaultStyle = {
   boxModelPart: '' // 可选值 margin、padding、border
 }
 
-class Element {
+export default class Element {
   constructor (ele) {
     this.name = ele.name
     this.uuid = ele.uuid || guid()
@@ -156,8 +156,8 @@ class Element {
       'border-color': color.value
     }
   }
-  getStyle ({ position = 'static', isRem = false } = {}) {
-    if (this.name === 'lbp-background') {
+  getStyle ({ position = 'static', isRem = false, isNodeWrapper = true } = {}) {
+    if (this.name === 'lbp-background' || !isNodeWrapper) {
       return {
         width: '100%',
         height: '100%'
@@ -217,10 +217,9 @@ class Element {
     return attrs
   }
 
-  getPreviewData ({ position = 'static', isRem = false, mode = 'preview' } = {}) {
-    const style = this.getStyle({ position })
+  getPreviewData ({ position = 'static', isRem = false, mode = 'preview', isNodeWrapper = true } = {}) {
     const data = {
-      style,
+      style: this.getStyle({ position, isNodeWrapper }),
       props: this.getProps({ mode }),
       attrs: this.getAttrs()
     }
@@ -240,5 +239,3 @@ class Element {
     })
   }
 }
-
-export default Element

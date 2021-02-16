@@ -11,19 +11,12 @@ export default {
   methods: {
     renderPreview (h, elements) {
       const pageWrapperStyle = { height: this.height || '100%', position: 'relative' }
-      // 与 edit 组件保持样式一致
-      const data = {
-        style: {
-          width: '100%',
-          height: '100%'
-        }
-      }
       return (
         <div style={pageWrapperStyle}>
           {
             elements.map((element, index) => {
               return <node-wrapper element={element}>
-                {h(element.name, data)}
+                {h(element.name, element.getPreviewData({ position: 'static', isNodeWrapper: false }))}
               </node-wrapper>
             })
           }
