@@ -9,7 +9,11 @@ const state = {
     uuidMap2Name: {},
     formRecords: []
   },
-  workTemplates: []
+  workTemplates: [],
+  total: {
+    works: 0,
+    templates: 0
+  }
 }
 
 // getters

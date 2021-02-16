@@ -7,7 +7,7 @@ message.config({
 
 export class AxiosWrapper {
   // eslint-disable-next-line camelcase
-  constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {
+  constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest, actionPayloadExtra = {} }) {
     this.name = name
     // eslint-disable-next-line camelcase
     this.loading_name = loading_name
@@ -21,6 +21,7 @@ export class AxiosWrapper {
     this.customRequest = customRequest
     this.successCallback = successCallback
     this.failCallback = failCallback
+    this.actionPayloadExtra = actionPayloadExtra
     this.source = axios.CancelToken.source()
     this.instance = axios.create({
       // baseURL: '/v1',
@@ -148,7 +149,7 @@ export class AxiosWrapper {
         if (this.successCallback) {
           this.successCallback(response)
         } else {
-          this.commit({ type: this.name, value: response.data }, { root: true })
+          this.commit({ type: this.name, value: response.data, ...this.actionPayloadExtra }, { root: true })
         }
       } else if (this.responseType === 'json') {
         message.error(response.data.msg)

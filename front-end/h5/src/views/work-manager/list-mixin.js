@@ -23,7 +23,7 @@ export default {
     }
   }),
   computed: {
-    ...mapState('editor', ['works', 'workTemplates']),
+    ...mapState('editor', ['works', 'workTemplates', 'total']),
     ...mapState('loading', ['fetchWorks_loading', 'fetchWorkTemplates_loading']),
     workList () {
       const workList = this.isTemplate ? this.workTemplates : this.works
@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
+      'fetchCount',
       'fetchWorks',
       'createWork',
       'deleteWork',
@@ -54,7 +55,6 @@ export default {
         _limit: pageSize,
         _start: (pageNum - 1) * pageSize
       }
-      debugger
       this.isTemplate ? this.fetchWorkTemplates(payload) : this.fetchWorks(payload)
     }
   },
@@ -99,7 +99,7 @@ export default {
           <a-pagination
             show-size-changer
             default-current={1}
-            total={500}
+            total={this.isTemplate ? this.total.templates : this.total.works }
             current={this.pagination.pageNum}
             onShowSizeChange={(pageNum, pageSize) => {
               this.pagination.pageNum = 1
@@ -164,6 +164,6 @@ export default {
   },
   created () {
     this.handleSearch()
-    // this.isTemplate ? this.fetchWorkTemplates() : this.fetchWorks()
+    this.fetchCount({ is_template: this.isTemplate })
   }
 }
