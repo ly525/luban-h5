@@ -104,15 +104,15 @@ export const actions = {
       commit('setEditingPage')
     })
   },
-  fetchWorks ({ commit, dispatch, state }, workId) {
-    new AxiosWrapper({
+  fetchWorks ({ commit, dispatch, state }, payload = { is_template: false, _limit: 10 }) {
+    return new AxiosWrapper({
       dispatch,
       commit,
       name: 'editor/setWorks',
       loading_name: 'fetchWorks_loading',
       successMsg: '获取作品列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works', { is_template: false }).catch(handleError)
+    }).get('works', payload).catch(handleError)
   },
   fetchWorksWithForms ({ commit, dispatch, state }, workId) {
     new AxiosWrapper({
@@ -124,7 +124,7 @@ export const actions = {
       customRequest: strapi.getEntries.bind(strapi)
     }).get('works/has-forms', { is_template: false }).catch(handleError)
   },
-  fetchWorkTemplates ({ commit, dispatch, state }, workId) {
+  fetchWorkTemplates ({ commit, dispatch, state }, payload = { is_template: true, _limit: 10 }) {
     new AxiosWrapper({
       dispatch,
       commit,
@@ -132,7 +132,7 @@ export const actions = {
       loading_name: 'fetchWorkTemplates_loading',
       successMsg: '获取模板列表成功',
       customRequest: strapi.getEntries.bind(strapi)
-    }).get('works', { is_template: true }).catch(handleError)
+    }).get('works', payload).catch(handleError)
   },
   /**
    *
