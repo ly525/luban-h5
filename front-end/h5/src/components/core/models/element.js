@@ -16,7 +16,7 @@ const defaultStyle = {
   fontSize: 14,
   margin: {
     top: {
-      value: 10,
+      value: 0,
       unit: 'px'
     },
     right: {
@@ -24,7 +24,7 @@ const defaultStyle = {
       unit: 'px'
     },
     bottom: {
-      value: 30,
+      value: 0,
       unit: 'px'
     },
     left: {
