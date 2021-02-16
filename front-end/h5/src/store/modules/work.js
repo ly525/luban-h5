@@ -104,6 +104,17 @@ export const actions = {
       commit('setEditingPage')
     })
   },
+  fetchCount ({ commit, dispatch, state }, payload = { is_template: false }) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorksTotal',
+      actionPayloadExtra: {
+        isTemplate: payload.is_template
+      },
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works/count', payload).catch(handleError)
+  },
   fetchWorks ({ commit, dispatch, state }, payload = { is_template: false, _limit: 10 }) {
     return new AxiosWrapper({
       dispatch,
@@ -265,6 +276,10 @@ export const mutations = {
   setWorkCover (state, { type, value }) {
     const [cover] = value
     state.work.cover_image_url = cover.url
+  },
+  setWorksTotal (state, { type, value, ...other }) {
+    const { isTemplate } = other
+    state.total[isTemplate ? 'templates' : 'works'] = value
   },
   /**
    * payload: {
