@@ -1,8 +1,15 @@
+$height: 454px;
+
 .loading-col {
   margin-bottom: 10px;
   text-align: center;
-  height: 454px;
-  line-height: 454px;
+  height: $height;
+  line-height: $height;
   border-bottom: 1px solid #ebedf0;
   background: rgba(255, 255, 255, 0.5);
+
+  .vertical-align {
+    height: $height;
+    line-height: $height;
+  }
 }

@@ -1,38 +1,13 @@
-import { notification } from 'ant-design-vue'
-import Element from 'core/models/element'
 import strapi from '@/utils/strapi'
+import Element from 'core/models/element'
 import Page from 'core/models/page'
 import Work from 'core/models/work'
-import { AxiosWrapper } from '@/utils/http.js'
+import { AxiosWrapper, handleError } from '@/utils/http.js'
 import router from '@/router.js'
 import { takeScreenshot } from '@/utils/canvas-helper.js'
 
 function setLoading (commit, loadingName, isLoading) {
   commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })
-}
-
-function handleError (error) {
-  if (error.message === 'Forbidden') {
-    console.log(`
-        ==========================================================================================
-
-            #!zh: 接口 403，解决方案：https://github.com/ly525/luban-h5/discussions/110
-            #!en: API 403 Forbidden, Solution: https://github.com/ly525/luban-h5/discussions/110
-
-        ==========================================================================================
-    `)
-    notification.warn(
-      {
-        message: 'API 403 Forbidden',
-        description: (h) => (
-          <div style="text-align: left;">
-            <div>- #!zh: 接口 403</div>
-            <div>- #!en: API 403 Forbidden</div>
-            <div>- <a href="https://github.com/ly525/luban-h5/discussions/110" target="_blank">#!en: solution(#!zh: 解决方案)</a></div>
-          </div>
-        )
-      })
-  }
 }
 
 export const actions = {
@@ -102,7 +77,7 @@ export const actions = {
     return strapi.getEntry('works', workId).then(entry => {
       commit('setWork', entry)
       commit('setEditingPage')
-    })
+    }).catch(handleError)
   },
   fetchCount ({ commit, dispatch, state }, payload = { is_template: false }) {
     return new AxiosWrapper({

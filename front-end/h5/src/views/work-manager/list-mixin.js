@@ -56,6 +56,27 @@ export default {
         _start: (pageNum - 1) * pageSize
       }
       this.isTemplate ? this.fetchWorkTemplates(payload) : this.fetchWorks(payload)
+    },
+    renderList () {
+      return this.workList.map(work => (
+        <a-col span={6} key={work.id} class="mb-3">
+          <ListItemCard
+            isTemplate={this.isTemplate}
+            work={work}
+            onPreview={e => {
+              this.previewVisible = true
+              this.activeWork = work
+            }}
+            onUseTemplate={work => {
+              this.useTemplateDialogVisible = true
+              this.useTemplate(work.id).then((clonedWork) => {
+                this.clonedWorkFromTemplate = clonedWork
+              })
+            }}
+            onDelete={() => this.handleDeleteWork(work)}
+          />
+        </a-col>
+      ))
     }
   },
   render (h) {
@@ -70,28 +91,16 @@ export default {
           }
           {
             this.loading
-              ? <a-col span={18} class="loading-col">
+              ? <a-col span={this.isTemplate ? 24 : 18} class="loading-col">
                 <a-spin tip="作品列表获取中..."/>
               </a-col>
-              : this.workList.map(work => (
-                <a-col span={6} key={work.id} class="mb-3">
-                  <ListItemCard
-                    isTemplate={this.isTemplate}
-                    work={work}
-                    onPreview={e => {
-                      this.previewVisible = true
-                      this.activeWork = work
-                    }}
-                    onUseTemplate={work => {
-                      this.useTemplateDialogVisible = true
-                      this.useTemplate(work.id).then((clonedWork) => {
-                        this.clonedWorkFromTemplate = clonedWork
-                      })
-                    }}
-                    onDelete={() => this.handleDeleteWork(work)}
-                  />
-                </a-col>
-              ))
+              : (
+                this.workList.length
+                ? this.renderList()
+                : <a-col span={this.isTemplate ? 24 : 18} class="loading-col">
+                    <a-empty class="vertical-align" />
+                  </a-col>
+              )
           }
         </a-row>
         <a-row gutter={12} class="pb-3">
