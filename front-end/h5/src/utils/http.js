@@ -46,7 +46,7 @@ export class AxiosWrapper {
       return this.customRequest(...args)
         .then(data => {
           const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-          handler.call(this, { status: 200, data })
+          return handler.call(this, { status: 200, data })
         })
         .finally(() => this.setLoadingValue(false))
     }
@@ -147,7 +147,7 @@ export class AxiosWrapper {
       } else if (response.status === 200) {
         this.successMsg && message.success(this.successMsg)
         if (this.successCallback) {
-          this.successCallback(response)
+          return this.successCallback(response)
         } else {
           this.commit({ type: this.name, value: response.data, ...this.actionPayloadExtra }, { root: true })
         }

@@ -26,6 +26,22 @@ import LbpTextAlign from '@luban-h5/lbs-text-align'
  */
 import { ColorPicker, Button } from 'element-ui'
 
+import VueCodemirror from 'vue-codemirror'
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/theme/base16-dark.css'
+import 'codemirror/lib/codemirror.css'
+
+Vue.use(VueCodemirror, {
+  options: {
+    tabSize: 2,
+    mode: 'text/javascript',
+    theme: 'base16-dark',
+    lineNumbers: true,
+    line: true
+  },
+  events: ['scroll']
+})
+
 Vue.component(Button.name, Button)
 Vue.component(ColorPicker.name, ColorPicker)
 Vue.component(PropMultiTextItemsEditor.name, PropMultiTextItemsEditor)

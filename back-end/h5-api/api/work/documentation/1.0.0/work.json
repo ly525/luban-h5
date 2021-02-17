@@ -1076,6 +1076,46 @@
           "width": {
             "type": "integer",
             "default": 320
+          },
+          "datasources": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "works": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "url": {
+                  "type": "string"
+                },
+                "refreshType": {
+                  "type": "string"
+                },
+                "refreshInterval": {
+                  "type": "integer"
+                },
+                "pipe": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1115,6 +1155,12 @@
           "width": {
             "type": "integer",
             "default": 320
+          },
+          "datasources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

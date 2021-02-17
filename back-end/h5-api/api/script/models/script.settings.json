@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "script"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "scripts"
+}

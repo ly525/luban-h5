@@ -14,7 +14,7 @@ export default {
     },
     work: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   },
   computed: {
@@ -62,7 +62,9 @@ export default {
       })
     },
     postMessage2Iframe (message) {
-      let iframeWin = document.getElementById('iframe-for-preview').contentWindow
+      let iframe = document.getElementById('iframe-for-preview')
+      if (!iframe) return
+      const iframeWin = iframe.contentWindow
       iframeWin.postMessage(message, window.location.origin)
     },
     openNewTab (urlType) {

@@ -2,6 +2,7 @@ import RenderShortcutsPanel from './shortcuts-panel/index'
 import RenderPageManager from './page-manager/index'
 import RenderPageTree from './page-tree/index'
 import RenderPagePreferences from './preferences/index'
+import RenderDataSourcePanel from 'core/editor/data-source/index.js'
 
 export default {
   name: 'EditorLeftPanel',
@@ -23,6 +24,9 @@ export default {
           </a-tab-pane>
           <a-tab-pane key='preferences' tab={this.$t('editor.sidebar.preferences')}>
             <RenderPagePreferences />
+          </a-tab-pane>
+          <a-tab-pane key='data-source' tab="数据源">
+            <RenderDataSourcePanel />
           </a-tab-pane>
         </a-tabs>
       </a-layout-sider>

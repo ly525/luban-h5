@@ -108,6 +108,17 @@ export default {
         list: '选择动画',
         title: 'Animation {index}'
       },
+      method: {
+        add: '使用技能(动作)',
+        run: '运行动作',
+        type: '动作类型',
+        duration: '动作时长',
+        delay: '动作延时',
+        iteration: '运行次数',
+        inifinite: '循环播放',
+        list: '选择动作',
+        title: '动作 {index}'
+      },
       common: {
         empty: 'Select an element first please!',
         ConfigProps: '属性设置',

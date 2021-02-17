@@ -5,11 +5,6 @@ import Page from 'core/models/page'
 import Work from 'core/models/work'
 import { AxiosWrapper } from '@/utils/http.js'
 import router from '@/router.js'
-import { takeScreenshot } from '@/utils/canvas-helper.js'
-
-function setLoading (commit, loadingName, isLoading) {
-  commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })
-}
 
 function handleError (error) {
   if (error.message === 'Forbidden') {
@@ -58,7 +53,6 @@ export const actions = {
       successMsg: '删除作品成功',
       customRequest: strapi.deleteEntry.bind(strapi)
     }).delete('works', workId).catch(handleError)
-    // return strapi.deleteEntry('works', workId)
   },
   updateWork ({ commit, state }, payload = {}) {
     // update work with strapi
@@ -67,36 +61,6 @@ export const actions = {
       ...payload
     }
     commit('setWork', work)
-  },
-  /**
-   * isSaveCover {Boolean} 保存作品时，是否保存封面图
-   * loadingName {String} saveWork_loading, previewWork_loading
-   * 预览作品之前需要先保存，但希望 用户点击保存按钮 和 点击预览按钮 loading_name 能够不同（虽然都调用了 saveWork）
-   * 因为 loading 效果要放在不同的按钮上
-   */
-  saveWork ({ commit, dispatch, state }, { isSaveCover = false, loadingName = 'saveWork_loading', successMsg = '保存作品成功' } = {}) {
-    const fn = (callback) => {
-      new AxiosWrapper({
-        dispatch,
-        commit,
-        loading_name: loadingName,
-        successMsg,
-        customRequest: strapi.updateEntry.bind(strapi)
-      }).put('works', state.work.id, state.work).then(callback)
-    }
-    return new Promise((resolve, reject) => {
-      if (isSaveCover) {
-        setLoading(commit, 'uploadWorkCover_loading', true)
-        takeScreenshot().then(file => {
-          dispatch('uploadCover', { file }).then(() => {
-            setLoading(commit, 'uploadWorkCover_loading', false)
-            fn(resolve)
-          }) // uploadCover
-        }) // takeScreenshot
-      } else {
-        fn(resolve)
-      }
-    })
   },
   fetchWork ({ commit, state }, workId) {
     return strapi.getEntry('works', workId).then(entry => {
@@ -131,7 +95,7 @@ export const actions = {
       commit,
       name: 'editor/setWorks',
       loading_name: 'fetchWorks_loading',
-      successMsg: '获取作品列表成功',
+      successMsg: '获取作品表单列表成功',
       customRequest: strapi.getEntries.bind(strapi)
     }).get('works/has-forms', { is_template: false }).catch(handleError)
   },
@@ -232,19 +196,6 @@ export const actions = {
       loading_name: 'useTemplate_loading',
       successMsg: '使用模板成功'
     }).post(`/works/use-template/${workId}`)
-  },
-  uploadCover ({ commit, state, dispatch }, { file } = {}) {
-    const formData = new FormData()
-    formData.append('files', file, `${+new Date()}.png`)
-    formData.append('workId', state.work.id)
-    return new AxiosWrapper({
-      dispatch,
-      commit,
-      name: 'editor/setWorkCover',
-      loading_name: 'uploadWorkCover_loading',
-      successMsg: '上传封面图成功!'
-    // }).post(`/works/uploadCover/${state.work.id}`, formData)
-    }).post(`/upload/`, formData)
   }
 }
 
