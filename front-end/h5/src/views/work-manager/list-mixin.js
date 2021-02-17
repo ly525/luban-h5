@@ -46,6 +46,8 @@ export default {
       this.deleteWork(work.id).then(res => {
         const index = this.workList.findIndex(item => item.id === work.id)
         this.workList.splice(index, 1)
+        this.fetchCount({ is_template: this.isTemplate })
+        this.handleSearch()
       })
     },
     handleSearch () {
