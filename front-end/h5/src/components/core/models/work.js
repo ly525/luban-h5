@@ -32,6 +32,7 @@ class Work {
 
     this.is_publish = !!work.is_publish
     this.is_template = false
+    this.width = work.width || 320
     this.height = work.height || 568
     this.page_mode = work.page_mode || PAGE_MODE.SWIPPER_PAGE
   }

@@ -58,9 +58,13 @@ export default {
           <a-radio-button label={true} value={true}>{this.$t('editor.centerPanel.mode.preview')}</a-radio-button>
         </a-radio-group>
         <a-layout-content style={{ transform: `scale(${this.scaleRate})`, 'transform-origin': 'center top' }}>
-          <div class='canvas-wrapper' style={{
-            height: `${this.work.height}px`
-          }}>
+          <div
+            class='canvas-wrapper'
+            style={{
+              height: `${this.work.height}px`,
+              width: `${this.work.width}px`
+            }}
+          >
             { this.isPreviewMode
               ? <RenderPreviewCanvas elements={this.elements}/>
               : <RenderEditCanvas

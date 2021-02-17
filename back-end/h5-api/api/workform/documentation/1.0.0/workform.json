@@ -556,6 +556,9 @@
               },
               "height": {
                 "type": "integer"
+              },
+              "width": {
+                "type": "integer"
               }
             }
           }
