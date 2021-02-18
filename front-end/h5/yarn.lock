@@ -880,6 +880,11 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
+"@tinymce/tinymce-vue@^3":
+  version "3.2.8"
+  resolved "https://registry.npm.taobao.org/@tinymce/tinymce-vue/download/@tinymce/tinymce-vue-3.2.8.tgz?cache=0&sync_timestamp=1612322636209&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40tinymce%2Ftinymce-vue%2Fdownload%2F%40tinymce%2Ftinymce-vue-3.2.8.tgz#014571b52ec8fa83665a7fa887bf65140207de71"
+  integrity sha1-AUVxtS7I+oNmWn+oh79lFAIH3nE=
+
 "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.npm.taobao.org/@types/glob/download/@types/glob-7.1.3.tgz?cache=0&sync_timestamp=1596838298425&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fglob%2Fdownload%2F%40types%2Fglob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
@@ -10445,6 +10450,11 @@ tinycolor2@^1.4.1:
   version "1.4.2"
   resolved "https://registry.npm.taobao.org/tinycolor2/download/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
   integrity sha1-P2pNEHGtB2dtf6Ry4frECnGdiAM=
+
+tinymce@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.npm.taobao.org/tinymce/download/tinymce-5.7.0.tgz#bc565877e4041db83848a330dfa7916993110cba"
+  integrity sha1-vFZYd+QEHbg4SKMw36eRaZMRDLo=
 
 tmp@^0.0.33:
   version "0.0.33"
