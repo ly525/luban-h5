@@ -102,7 +102,7 @@ export class AxiosWrapper {
       if (status === 200) {
         this.successMsg && message.success(this.successMsg)
         if (this.successCallback) {
-          this.successCallback(response)
+          return this.successCallback(response)
         } else {
            if (!this.name) return
           this.commit({ type: this.name, value: data, ...this.actionPayloadExtra }, { root: true })

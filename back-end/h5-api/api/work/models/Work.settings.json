@@ -48,6 +48,11 @@
     "width": {
       "type": "integer",
       "default": 320
+    },
+    "datasources": {
+      "via": "works",
+      "collection": "datasource",
+      "dominant": true
     }
   }
 }

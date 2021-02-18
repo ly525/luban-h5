@@ -559,6 +559,12 @@
               },
               "width": {
                 "type": "integer"
+              },
+              "datasources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }

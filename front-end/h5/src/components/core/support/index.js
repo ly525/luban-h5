@@ -36,10 +36,6 @@ import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/theme/base16-dark.css'
 import 'codemirror/lib/codemirror.css'
 
-tinymce.init({
-  language: 'zh_CN'
-})
-
 Vue.use(VueCodemirror, {
   options: {
     tabSize: 2,

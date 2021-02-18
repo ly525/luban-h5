@@ -21,14 +21,17 @@ import 'ant-design-vue/lib/message/style/css' // 加载 CSS
 import { pluginsList } from 'core/plugins/index.js'
 import { PAGE_MODE } from 'core/constants/work.js'
 import Element from 'core/models/element'
+import DataSource from 'core/models/data-source'
 import RenderPreview from 'core/editor/canvas/preview'
 import NodeWrapper from 'core/preview/node-wrapper.js'
+import store from 'core/store/index'
 
 Vue.config.productionTip = true
 Vue.prototype.$message = message
 
 const Engine = {
   name: 'engine',
+  store,
   components: {
     NodeWrapper
   },
@@ -96,6 +99,9 @@ const Engine = {
         this.isLongPage ? this.renderLongPage() : this.renderSwiperPage()
       }
     </div>
+  },
+  created () {
+    DataSource.dispatchRequest(window.__work)
   }
 }
 

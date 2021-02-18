@@ -1,4 +1,4 @@
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import Vue from 'vue'
 
 import 'core/support/index.js'
@@ -11,7 +11,11 @@ import EditorRightPanel from 'core/editor/right-panel/index'
 import EditorCanvas from 'core/editor/canvas/index'
 import EditorActionMenu from 'core/editor/header/action-menu'
 import EditorLeftPanel from 'core/editor/left-panel/index'
+
 import PreviewDialog from 'core/editor/modals/preview.vue'
+import ScriptViewDialog from 'core/editor/modals/script-view.vue'
+import ScriptListDialog from 'core/editor/modals/script-list.vue'
+
 import Header from '@/components/common/header/index'
 import Feedback from '@/components/common/feedback/index'
 import AdjustLineV from 'core/support/adjust-line/vertical'
@@ -78,10 +82,17 @@ const CoreEditor = {
   computed: {
     ...mapState('editor', {
       work: state => state.work
-    })
+    }),
+    ...mapState('dialog', [
+      'editScript_dialog',
+      'viewScript_dialog',
+      'createScript_dialog',
+      'allScriptList_dialog'
+    ])
   },
   methods: {
     ...mapActions('editor', ['fetchWork']),
+    ...mapMutations('dialog', ['updateDialog']),
     handlePreview () { this.previewDialogVisible = true }
   },
   render (h) {
@@ -98,13 +109,21 @@ const CoreEditor = {
           <FixedTools />
           <EditorRightPanel width={this.propsPanelWidth} />
         </a-layout>
-        {
           <PreviewDialog
             work={this.work}
             visible={this.previewDialogVisible}
             handleClose={() => { this.previewDialogVisible = false }}
           />
-        }
+        <ScriptViewDialog
+          zIndex={1001}
+          visible={this.viewScript_dialog}
+          handleClose={() => { this.updateDialog({ type: 'viewScript_dialog', value: false }) }}
+        />
+        <ScriptListDialog
+          zIndex={1001}
+          visible={this.allScriptList_dialog}
+          handleClose={() => { this.updateDialog({ type: 'allScriptList_dialog', value: false }) }}
+        />
         <Feedback />
       </a-layout>
     )
