@@ -19,12 +19,37 @@ import VideoGallery from './video-gallery/gallery.js'
 import LbsExcelEditor from './excel'
 import ColorsPanel from './colors-panel'
 import LbpTextAlign from '@luban-h5/lbs-text-align'
+import tinymce from 'tinymce/tinymce'
+import 'tinymce/themes/silver/theme.min.js'
+import 'tinymce/skins/ui/oxide/skin.min.css'
+import Editor from '@tinymce/tinymce-vue'
+
 /**
  * #!en import element-ui color picker for bgcolor、color, because a-input(ant-design-vue) component do not support alpha
  * #!zh 引入 element-ui 颜色选择器，因为 ant-design-vue 没有提供颜色选择器，默认的 <a-input type="color" /> 不支持选择透明度
  * https://github.com/ly525/luban-h5/issues/105
  */
 import { ColorPicker, Button } from 'element-ui'
+
+import VueCodemirror from 'vue-codemirror'
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/theme/base16-dark.css'
+import 'codemirror/lib/codemirror.css'
+
+tinymce.init({
+  language: 'zh_CN'
+})
+
+Vue.use(VueCodemirror, {
+  options: {
+    tabSize: 2,
+    mode: 'text/javascript',
+    theme: 'base16-dark',
+    lineNumbers: true,
+    line: true
+  },
+  events: ['scroll']
+})
 
 Vue.component(Button.name, Button)
 Vue.component(ColorPicker.name, ColorPicker)
@@ -34,3 +59,4 @@ Vue.component(VideoGallery.name, VideoGallery)
 Vue.component(LbpTextAlign.name, LbpTextAlign)
 Vue.component(LbsExcelEditor.name, LbsExcelEditor)
 Vue.component(ColorsPanel.name, ColorsPanel)
+Vue.component('tinymce-editor', Editor)
