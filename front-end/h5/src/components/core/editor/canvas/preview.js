@@ -1,17 +1,16 @@
-import NodeWrapper from 'core/preview/node-wrapper.js'
 /**
  * 预览模块
  * preview h5 work module
  */
+
+import NodeWrapper from 'core/preview/node-wrapper.js'
+
 export default {
   props: ['elements', 'height', 'work'],
   components: {
     NodeWrapper
   },
   computed: {
-    // ...mapState('editor', {
-    //   work: state => state.work
-    // }),
     releaseUrl () {
       return `${window.location.origin}/works/preview/${this.work.id}`
     }

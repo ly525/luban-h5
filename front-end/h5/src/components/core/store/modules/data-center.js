@@ -1,7 +1,6 @@
-window.DS = {}
-const state = {
-  storage: {}
-}
+import Vue from 'vue'
+export const lubanDS = Vue.observable({ DS: {} })
+const state = { $ds: {} }
 
 // getters
 const getters = {}
@@ -12,11 +11,11 @@ const actions = {}
 // mutations
 const mutations = {
   updateStorage (state, payload) {
-    state.storage = {
-      ...state.storage,
+    state.$ds = {
+      ...state.$ds,
       ...payload
     }
-    window.DS = state.storage
+    lubanDS.DS = state.$ds
   }
 }
 
