@@ -50,7 +50,7 @@ export class AxiosWrapper {
     return request(...args)
     .then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Query Failed.' })
-      handler.call(this, this.customRequest ? { status: 200, data: response } : response)
+      return handler.call(this, this.customRequest ? { status: 200, data: response } : response)
     })
     .catch(handleError)
     .finally(() => this.setLoadingValue(false))
@@ -104,7 +104,7 @@ export class AxiosWrapper {
         if (this.successCallback) {
           return this.successCallback(response)
         } else {
-           if (!this.name) return
+          if (!this.name) return data
           this.commit({ type: this.name, value: data, ...this.actionPayloadExtra }, { root: true })
         }
       } else if (this.responseType === 'json') {
