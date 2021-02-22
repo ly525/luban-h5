@@ -101,9 +101,10 @@ module.exports = {
   },
   useTemplate: async (ctx) => {
     const templateWork = await strapi.services.work.findOne(ctx.params);
+    const datasources = templateWork.datasources; // clone datasource
 
     // eslint-disable-next-line no-unused-vars
-    const work = await strapi.services.work.create();
+    const work = await strapi.services.work.create({ datasources });
     return strapi.services.work.update({id: work.id}, { pages: templateWork.pages, is_template: false });
   },
   uploadPSD: async (ctx) => {

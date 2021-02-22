@@ -52,11 +52,14 @@ export class AxiosWrapper {
     }
     return this.instance.get(...args).then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Query Failed.' })
-      handler.call(this, response)
-    }).catch(error => {
-      // handle error
-      message.error(error.message)
-    }).finally(() => this.setLoadingValue(false))
+      return handler.call(this, this.customRequest ? { status: 200, data: response } : response)
+    })
+    .catch(handleError)
+    .finally(() => this.setLoadingValue(false))
+  }
+
+  get (...args) {
+    return this.request('get', ...args)
   }
 
   post (...args) {
@@ -149,7 +152,8 @@ export class AxiosWrapper {
         if (this.successCallback) {
           return this.successCallback(response)
         } else {
-          this.commit({ type: this.name, value: response.data, ...this.actionPayloadExtra }, { root: true })
+          if (!this.name) return data
+          this.commit({ type: this.name, value: data, ...this.actionPayloadExtra }, { root: true })
         }
       } else if (this.responseType === 'json') {
         message.error(response.data.msg)
