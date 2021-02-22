@@ -42,11 +42,11 @@ export default {
   },
   editor: {
     sidebar: {
-      components: '组件列表',
-      pages: '页面管理',
+      components: '组件',
+      pages: '页面',
       templates: '模板',
       tree: '组件树',
-      preferences: '偏好设置'
+      preferences: '偏好'
     },
     pageManager: {
       title: '第{index}页面',
