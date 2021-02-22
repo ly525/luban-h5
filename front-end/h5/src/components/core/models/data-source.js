@@ -7,6 +7,7 @@ export default class DataSource {
   }
 
   init (ds) {
+    this.id = ds.id
     this.name = ds.name
     this.url = ds.url
     this.type = ds.type

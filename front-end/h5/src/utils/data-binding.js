@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { getVMVal } from '@/utils/core'
 import { lubanDS } from 'core/store/modules/data-center'
 
