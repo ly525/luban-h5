@@ -87,7 +87,8 @@ export default {
       importPSD: '导入PSD',
       zoomIn: '缩小{hotkey}',
       zoomOut: '放大{hotkey}',
-      issues: '常见问题'
+      issues: '常见问题',
+      poster: '下载海报'
     },
     editPanel: {
       tab: {

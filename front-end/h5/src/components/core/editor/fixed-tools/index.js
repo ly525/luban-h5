@@ -9,7 +9,12 @@ export default {
     })
   },
   methods: {
-    ...mapActions('editor', ['pageManager', 'elementManager', 'updateScaleRate'])
+    ...mapActions('editor', [
+      'pageManager',
+      'elementManager',
+      'updateScaleRate',
+      'downloadPoster'
+    ])
   },
   render () {
     return (

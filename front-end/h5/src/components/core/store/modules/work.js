@@ -4,7 +4,7 @@ import Page from 'core/models/page'
 import Work from 'core/models/work'
 import { AxiosWrapper, handleError } from '@/utils/http.js'
 // import router from '@/router.js'
-import { takeScreenshot } from '@/utils/canvas-helper.js'
+import { takeScreenshot, downloadPoster } from '@/utils/canvas-helper.js'
 
 function setLoading (commit, loadingName, isLoading) {
   commit('loading/update', { type: loadingName, payload: isLoading }, { root: true })
@@ -82,6 +82,9 @@ export const actions = {
       successMsg: '上传封面图成功!'
     // }).post(`/works/uploadCover/${state.work.id}`, formData)
     }).post(`/upload/`, formData)
+  },
+  downloadPoster ({ commit, state, dispatch }) {
+    downloadPoster()
   }
 }
 

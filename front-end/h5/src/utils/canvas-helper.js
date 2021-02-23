@@ -30,7 +30,11 @@ function dataURItoBlob (dataURI) {
  * @param {String} selector
  * @param {文件名} fileName
  */
-export function takeScreenshot (selector = '.canvas-wrapper', fileName = `${+new Date()}`) {
+export function takeScreenshot ({
+  selector = '.canvas-wrapper',
+  fileName = `${+new Date()}`,
+  type = 'file'
+} = {}) {
   const el = document.querySelector(selector)
   return new Promise((resolve, reject) => {
     // html2canvas document: https://html2canvas.hertzen.com/configuration
@@ -42,11 +46,45 @@ export function takeScreenshot (selector = '.canvas-wrapper', fileName = `${+new
       const dataUrl = canvas.toDataURL('image/jpeg', 0.6)
       const blob = dataURItoBlob(dataUrl)
       const file = new window.File([blob], fileName, { type: 'image/png' })
-      resolve(file)
+      switch (type) {
+        case 'canvas':
+          resolve(canvas)
+          break
+        case 'blob':
+          resolve(blob)
+          break
+        case 'dataUrl':
+          resolve(dataUrl)
+          break
+        default:
+          resolve(file)
+          break
+      }
       // canvas.toBlob(blob => {
       //   const file = new window.File([blob], fileName, { type: 'image/png' })
       //   resolve(file)
       // })
     })
+  })
+}
+
+/**
+ *
+ * @param {*} canvas
+ * @param {*} name
+ */
+export function downLoadCanvas (canvas, name) {
+  var a = document.createElement('a')
+  a.href = canvas.toDataURL()
+  a.download = name
+  a.click()
+}
+
+/**
+ * 下载海报
+ */
+export function downloadPoster () {
+  takeScreenshot({ type: 'canvas' }).then(canvas => {
+    downLoadCanvas(canvas, new Date())
   })
 }
