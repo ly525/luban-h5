@@ -34,11 +34,6 @@ export default {
       }
     }
   },
-  watch: {
-    value () {
-      this.refreshSheet({ rows: this.innerItems })
-    }
-  },
   methods: {
     parseCSV (csv) {
       const sheetData = Parser.binaryMatrix2excel(csv.data)
@@ -84,6 +79,10 @@ export default {
     </div>
   },
   mounted () {
+    // fix #251
+    window.EditorApp.$on('setEditingElement', (ele) => {
+      this.refreshSheet({ rows: this.innerItems })
+    })
     this.sheet = this.initSheet()
     this.refreshSheet({ rows: this.innerItems })
   }
