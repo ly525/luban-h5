@@ -56,6 +56,11 @@ const fixedTools = [
     i18nTooltip: 'editor.fixedTool.issues',
     icon: 'question',
     action: function () { window.open('https://github.com/ly525/luban-h5/issues/110') }
+  },
+  {
+    i18nTooltip: 'editor.fixedTool.poster',
+    icon: 'camera',
+    action: function () { this.downloadPoster() }
   }
 ]
 

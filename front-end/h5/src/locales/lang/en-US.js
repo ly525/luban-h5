@@ -78,7 +78,8 @@ export default {
       importPSD: 'Import PSD',
       zoomIn: 'Zoom In{hotkey}',
       zoomOut: 'Zoom Out{hotkey}',
-      issues: 'Issues'
+      issues: 'Issues',
+      poster: 'Screenshot'
     },
     editPanel: {
       tab: {
