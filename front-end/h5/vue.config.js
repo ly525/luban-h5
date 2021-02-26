@@ -55,6 +55,8 @@ const configureWebpack = {
     new webpack.ContextReplacementPlugin(/moment\/locale$/, /(zh-cn)$/)
   ],
   externals: {
+    echarts: 'echarts',
+    VeIndex: 'echarts'
   }
 }
 

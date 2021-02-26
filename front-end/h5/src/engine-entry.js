@@ -14,9 +14,6 @@
  */
 
 import Vue from 'vue'
-// import 'font-awesome/css/font-awesome.min.css'
-import message from 'ant-design-vue/lib/message' // 加载 JS
-import 'ant-design-vue/lib/message/style/css' // 加载 CSS
 
 import { pluginsList } from 'core/plugins/index.js'
 import { PAGE_MODE } from 'core/constants/work.js'
@@ -27,7 +24,6 @@ import NodeWrapper from 'core/preview/node-wrapper.js'
 import store from 'core/store/index'
 
 Vue.config.productionTip = true
-Vue.prototype.$message = message
 
 const Engine = {
   name: 'engine',
