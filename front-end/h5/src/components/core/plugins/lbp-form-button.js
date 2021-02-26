@@ -1,5 +1,7 @@
 // https://github.com/luban-h5-components/plugin-common-props
 import PropTypes from '@luban-h5/plugin-common-props'
+import Toast from 'vant/lib/toast'
+import 'vant/lib/toast/style'
 
 export default {
   render () {
@@ -55,14 +57,13 @@ export default {
       // #!zh: data-type=lbp-form-input 在 lbp-form-input 组件中定义
       let inputs = document.querySelectorAll("[data-type^='lbp-form-input']")
       if (!inputs.length) return
-      const self = this
       let formData = new FormData()
       inputs.forEach(input => formData.append(input.dataset.uuid, input.value))
       const req = new XMLHttpRequest()
       req.onreadystatechange = function () {
         if (req.readyState === 4) {
           const message = req.status === 200 ? '提交成功' : '提交失败'
-          self.$message.info(message)
+          Toast(message)
         }
       }
 

@@ -5,7 +5,7 @@
  * TODO X轴 formatter：1.只针对 X轴，不针对 tooltip 2. tooltip 和 X轴同时生效
  * TODO legend(series) 到多Y轴的映射
  */
-import _ from 'lodash'
+import { uniqBy } from 'lodash'
 
 export class LineChart {
   constructor ({ xAxis = [], yIndexMap = {}, dataset }) {
@@ -65,7 +65,7 @@ export class LineChart {
      */
   getLegends () {
     const legendKey = this.keys.legend
-    const allLegends = _.uniqBy(this.dataset, legendKey).map((item) => item[legendKey])
+    const allLegends = uniqBy(this.dataset, legendKey).map((item) => item[legendKey])
     const legends = Array.from(new Set(allLegends))
     return legends
   }

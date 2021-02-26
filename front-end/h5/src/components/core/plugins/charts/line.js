@@ -1,14 +1,13 @@
-import VeLine from 'v-charts/lib/line.common'
-import VeRadar from 'v-charts/lib/radar.common'
-import VePie from 'v-charts/lib/pie.common'
-import VeHistogram from 'v-charts/lib/histogram.common'
-import VeFunnel from 'v-charts/lib/funnel.common'
 import PropTypes from '@luban-h5/plugin-common-props'
-import 'echarts/lib/component/legend'
-import 'echarts/lib/component/markLine'
-import 'echarts/lib/component/markPoint'
-import 'echarts/lib/component/markArea'
 import Parser from '@/utils/excel-parser'
+
+const {
+  VeLine,
+  VeRadar,
+  VePie,
+  VeHistogram,
+  VeFunnel
+} = window.VeIndex
 
 // const title = str => str.slice(0, 1).toUpperCase() + str.slice(1)
 
