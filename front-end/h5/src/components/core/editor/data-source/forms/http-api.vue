@@ -55,7 +55,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item label="数据处理"  >
-          <codemirror v-model="form.handler" />
+          <codemirror v-model="form.pipe" />
         </a-form-model-item>
       </a-collapse-panel>
     </a-collapse>
@@ -73,7 +73,6 @@
 
 <script>
 import dataSourceFormMixin from './form-mixin'
-import { HttpDataSource } from '../model'
 
 export default {
   mixins: [dataSourceFormMixin],
@@ -89,14 +88,7 @@ export default {
   },
   data () {
     return {
-      form: new HttpDataSource({
-        ...{
-          refreshInterval: 2,
-          refreshType: 'once',
-          type: this.type
-        },
-        ...this.dataSource
-      }),
+      form: this.dataSource,
       rules: {
         name: [
           {
