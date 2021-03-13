@@ -15,8 +15,8 @@ export default class DataSource {
     this.relatedDsList = ds.relatedDsList || []
     this.refreshType = ds.refreshType || REFRESH_ENUM.code2value.ONCE
     this.refreshInterval = ds.refreshInterval || REFRESH_DEFAULT_INTERVAL
-    this.pipe = ds.pipe
-    this.resHandler = this.getHandlerFn(ds.pipe)
+    this.resHandlerText = ds.resHandlerText
+    this.resHandlerFn = this.getHandlerFn(ds.resHandlerText)
     this.updated = null
     this.loading = false
   }
@@ -28,7 +28,7 @@ export default class DataSource {
       ds = new DataSource(ds, this.options)
 
       const deps = ds.dependencies.reduce((deps, name) => ({ ...deps, [name]: this.vm.$ds[name] }), {})
-      return { ...storage, [dsName]: typeof ds.resHandler === 'function' ? ds.resHandler(deps) : {} }
+      return { ...storage, [dsName]: ds.resHandlerFn(deps) }
     }, {})
     import('core/store/index.js').then(coreStore => {
       const store = coreStore.default
@@ -48,7 +48,7 @@ export default class DataSource {
         ds.updated = +new Date()
         ds.loading = false
         const storage = {
-          [ds.name]: typeof ds.resHandler === 'function' ? ds.resHandler(response) : response.data
+          [ds.name]: ds.resHandlerFn(response)
         }
         import('core/store/index.js').then(coreStore => {
           const store = coreStore.default

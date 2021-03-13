@@ -1111,7 +1111,7 @@
                 "refreshInterval": {
                   "type": "integer"
                 },
-                "pipe": {
+                "resHandlerText": {
                   "type": "string"
                 }
               }

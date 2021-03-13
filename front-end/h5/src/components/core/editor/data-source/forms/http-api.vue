@@ -55,7 +55,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item label="数据处理"  >
-          <codemirror v-model="form.pipe" />
+          <codemirror v-model="form.resHandlerText" />
         </a-form-model-item>
       </a-collapse-panel>
     </a-collapse>
