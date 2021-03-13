@@ -40,7 +40,7 @@
     "refreshInterval": {
       "type": "integer"
     },
-    "pipe": {
+    "resHandlerText": {
       "type": "richtext"
     }
   }

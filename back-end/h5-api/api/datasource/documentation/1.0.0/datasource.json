@@ -595,7 +595,7 @@
           "refreshInterval": {
             "type": "integer"
           },
-          "pipe": {
+          "resHandlerText": {
             "type": "string"
           }
         }
@@ -635,7 +635,7 @@
           "refreshInterval": {
             "type": "integer"
           },
-          "pipe": {
+          "resHandlerText": {
             "type": "string"
           }
         }
