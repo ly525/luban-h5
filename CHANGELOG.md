@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/ly525/luban-h5/compare/v1.14.1...v1.15.0) (2021-03-21)
+
+
+### Features
+
+* **canvas:** adjust canvas width; #!zh: 支持调整画布宽度 ([7fe6408](https://github.com/ly525/luban-h5/commit/7fe6408f75e87bad6dc7a48fcf5e78167cd88ac9))
+* remove delete from template card ([d08ebdf](https://github.com/ly525/luban-h5/commit/d08ebdffdf7e2d4d89ec126053c402daf793c7af))
+* 支持制作海报(导出静态图、封面图) !#en: support download poster; [#135](https://github.com/ly525/luban-h5/issues/135) ([929ba0f](https://github.com/ly525/luban-h5/commit/929ba0fd1e84f18b38dd0eb36cfbb00a641b2283))
+
+
+### Bug Fixes
+
+* [#233](https://github.com/ly525/luban-h5/issues/233) add confirm before delete element; #!zh: 删除元素前需要确认 ([349d12e](https://github.com/ly525/luban-h5/commit/349d12efb666143faa463867083ce0a9eab0119b))
+* [#251](https://github.com/ly525/luban-h5/issues/251) ([c2233d2](https://github.com/ly525/luban-h5/commit/c2233d2239973c0cf5ee49f3446380a8377f84b8))
+* preview margin&padding; #!zh:预览margin&padding ([7b14d7c](https://github.com/ly525/luban-h5/commit/7b14d7c26952c386ef303852063235fe32b12243))
+
 ### [1.14.1](https://github.com/ly525/luban-h5/compare/v1.14.0...v1.14.1) (2021-02-13)
 
 
