@@ -26,6 +26,7 @@ module.exports = {
     const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish;
     if (!canRender) work.pages = [];
     work.width = work.width || 320;
+    // yarn add strapi-hook-ejs
     return ctx.render('engine', { work });
   },
   renderCoreEditor: async (ctx) => {
