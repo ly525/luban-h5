@@ -2,32 +2,8 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/works/cors-proxy",
-      "handler": "Work.corsProxy",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/has-forms",
-      "handler": "Work.queryWorksWithForms",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/editor",
-      "handler": "Work.renderCoreEditor",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
       "path": "/works",
-      "handler": "Work.find",
+      "handler": "work.find",
       "config": {
         "policies": []
       }
@@ -35,7 +11,7 @@
     {
       "method": "GET",
       "path": "/works/count",
-      "handler": "Work.count",
+      "handler": "work.count",
       "config": {
         "policies": []
       }
@@ -43,7 +19,7 @@
     {
       "method": "GET",
       "path": "/works/:id",
-      "handler": "Work.findOne",
+      "handler": "work.findOne",
       "config": {
         "policies": []
       }
@@ -51,7 +27,7 @@
     {
       "method": "POST",
       "path": "/works",
-      "handler": "Work.create",
+      "handler": "work.create",
       "config": {
         "policies": []
       }
@@ -59,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/works/:id",
-      "handler": "Work.update",
+      "handler": "work.update",
       "config": {
         "policies": []
       }
@@ -67,47 +43,7 @@
     {
       "method": "DELETE",
       "path": "/works/:id",
-      "handler": "Work.delete",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/preview/:id",
-      "handler": "Work.previewOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/works/form/submit/:id",
-      "handler": "Work.submitForm",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/form/query/:id",
-      "handler": "Work.queryFormsOfOneWork",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/works/set-as-template/:id",
-      "handler": "Work.setAsTemplate",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/works/use-template/:id",
-      "handler": "Work.useTemplate",
+      "handler": "work.delete",
       "config": {
         "policies": []
       }

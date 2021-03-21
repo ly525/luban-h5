@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/workforms",
-      "handler": "Workform.find",
+      "handler": "workform.find",
       "config": {
         "policies": []
       }
@@ -11,7 +11,7 @@
     {
       "method": "GET",
       "path": "/workforms/count",
-      "handler": "Workform.count",
+      "handler": "workform.count",
       "config": {
         "policies": []
       }
@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/workforms/:id",
-      "handler": "Workform.findOne",
+      "handler": "workform.findOne",
       "config": {
         "policies": []
       }
@@ -27,7 +27,7 @@
     {
       "method": "POST",
       "path": "/workforms",
-      "handler": "Workform.create",
+      "handler": "workform.create",
       "config": {
         "policies": []
       }
@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/workforms/:id",
-      "handler": "Workform.update",
+      "handler": "workform.update",
       "config": {
         "policies": []
       }
@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/workforms/:id",
-      "handler": "Workform.delete",
+      "handler": "workform.delete",
       "config": {
         "policies": []
       }
