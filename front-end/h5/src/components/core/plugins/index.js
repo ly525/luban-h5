@@ -4,6 +4,7 @@ import LbpButton from 'core/plugins/lbp-button'
 import LbpPicture from 'core/plugins/lbp-picture'
 import LbpVideo from 'core/plugins/lbp-video'
 import LbpText from 'core/plugins/lbp-text'
+import LbpTextTinymce from 'core/plugins/lbp-text-tinymce'
 import LbpFormInput from 'core/plugins/lbp-form-input'
 import LbpFormButton from 'core/plugins/lbp-form-button'
 import LbpFormRadioGroup from 'core/plugins/lbp-form-radio-group'
@@ -144,6 +145,17 @@ export const pluginsList = [
     component: LbpText,
     visible: true,
     name: LbpText.name
+  },
+  {
+    i18nTitle: {
+      'en-US': 'Text(Tiny)',
+      'zh-CN': '文字(Tiny)'
+    },
+    title: '文字(Tiny)',
+    icon: 'text-width',
+    component: LbpTextTinymce,
+    visible: true,
+    name: LbpTextTinymce.name
   },
   {
     i18nTitle: {

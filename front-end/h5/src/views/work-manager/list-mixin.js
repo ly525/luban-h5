@@ -134,7 +134,6 @@ export default {
             handleClose={() => { this.previewVisible = false }}
           />
         }
-        {this.useTemplateDialogVisible + '' + this.isTemplate}
         {
           this.isTemplate &&
           this.useTemplateDialogVisible &&
