@@ -81,6 +81,7 @@ export class AxiosWrapper {
   }
 
   setDefaultLoadingName (...args) {
+    debugger
     if (!this.loading_name) {
       let url = args[0]
       if (url.indexOf('/') !== -1) {

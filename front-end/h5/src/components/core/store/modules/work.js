@@ -2,7 +2,7 @@ import Element from 'core/models/element'
 import strapi from '@/utils/strapi'
 import Page from 'core/models/page'
 import Work from 'core/models/work'
-import { AxiosWrapper } from '@/utils/http.js'
+import { AxiosWrapper, handleError } from '@/utils/http.js'
 // import router from '@/router.js'
 import { takeScreenshot, downloadPoster } from '@/utils/canvas-helper.js'
 
@@ -55,11 +55,11 @@ export const actions = {
       }
     })
   },
-  fetchWork ({ commit, state }, workId) {
+  fetchWork ({ commit, dispatch, state }, workId) {
     return strapi.getEntry('works', workId).then(entry => {
       commit('setWork', entry)
       commit('setEditingPage')
-    })
+    }).catch(handleError)
   },
   setWorkAsTemplate ({ commit, state, dispatch }, workId) {
     new AxiosWrapper({
