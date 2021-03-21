@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workforms",
+  "info": {
+    "name": "workform",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "form": {
+      "type": "json"
+    },
+    "work": {
+      "model": "work"
+    }
+  }
+}
