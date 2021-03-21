@@ -1,19 +1,20 @@
 {
+  "kind": "collectionType",
+  "collectionName": "scripts",
   "info": {
     "name": "script"
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
-    "content": {
-      "type": "richtext"
-    },
     "title": {
       "type": "string"
+    },
+    "content": {
+      "type": "richtext"
     }
-  },
-  "connection": "default",
-  "collectionName": "scripts"
+  }
 }

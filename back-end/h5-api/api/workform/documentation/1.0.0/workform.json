@@ -552,7 +552,12 @@
                 "type": "boolean"
               },
               "page_mode": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "h5_swipper",
+                  "h5_long_page",
+                  "h5_form"
+                ]
               },
               "height": {
                 "type": "integer"
@@ -565,8 +570,21 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -576,6 +594,16 @@
             "type": "object"
           },
           "work": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
             "type": "string"
           }
         }
