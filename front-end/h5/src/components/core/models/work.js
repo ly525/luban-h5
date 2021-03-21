@@ -9,14 +9,16 @@
  * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
  */
 import Page from './page.js'
+import DataSource from './data-source.js'
 import { PAGE_MODE } from 'core/constants/work'
 
-class Work {
+export default class Work {
   constructor (work = {}) {
     this.id = work.id
     this.title = work.title || '标题'
     this.description = work.description || '描述'
     this.pages = work.pages || [new Page()]
+    this.datasources = (work.datasources || []).map(item => new DataSource(item))
 
     // this.id = this.id
     // TODO 用id 并不是一个好办法，有心人会得知整个系统中共有多少作品等额外信息，尽量防止信息泄漏
@@ -37,5 +39,3 @@ class Work {
     this.page_mode = work.page_mode || PAGE_MODE.SWIPPER_PAGE
   }
 }
-
-export default Work

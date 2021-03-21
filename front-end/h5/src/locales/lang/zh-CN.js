@@ -42,11 +42,11 @@ export default {
   },
   editor: {
     sidebar: {
-      components: '组件列表',
-      pages: '页面管理',
+      components: '组件',
+      pages: '页面',
       templates: '模板',
       tree: '组件树',
-      preferences: '偏好设置'
+      preferences: '偏好'
     },
     pageManager: {
       title: '第{index}页面',
@@ -108,6 +108,17 @@ export default {
         inifinite: '循环播放',
         list: '选择动画',
         title: 'Animation {index}'
+      },
+      method: {
+        add: '使用技能(动作)',
+        run: '运行动作',
+        type: '动作类型',
+        duration: '动作时长',
+        delay: '动作延时',
+        iteration: '运行次数',
+        inifinite: '循环播放',
+        list: '选择动作',
+        title: '动作 {index}'
       },
       common: {
         empty: 'Select an element first please!',

@@ -17,6 +17,8 @@ export default {
   data: () => ({
     activeWork: null,
     previewVisible: false,
+    useTemplateDialogVisible: false,
+    clonedWorkFromTemplate: null,
     pagination: {
       pageSize: 10,
       pageNum: 1
@@ -123,6 +125,7 @@ export default {
             handleClose={() => { this.previewVisible = false }}
           />
         }
+        {this.useTemplateDialogVisible + '' + this.isTemplate}
         {
           this.isTemplate &&
           this.useTemplateDialogVisible &&

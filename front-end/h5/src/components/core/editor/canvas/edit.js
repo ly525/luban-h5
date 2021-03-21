@@ -260,7 +260,7 @@ export default {
                     this.bindContextMenu(e)
                   }}
                 >
-                  {h(element.name, data)}
+                  {h(element.uuid, data)}
                 </Shape>
               )
             })

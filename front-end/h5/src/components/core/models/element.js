@@ -1,6 +1,8 @@
+import Vue from 'vue'
 import { parsePx, guid } from '@/utils/element.js'
+import { bindData } from '@/utils/data-binding.js'
 
-// #! 编辑状态，不可以点击的按钮，因为点击按钮会触发一些默认行为，比如表单提交等
+// #! 编辑状态，不可以点击的按钮，因为点击按钮会触发一些默认动作，比如表单提交等
 const disabledPluginsForEditMode = ['lbp-form-input', 'lbp-form-button', 'lbp-video']
 const cloneObj = (value) => JSON.parse(JSON.stringify(value))
 
@@ -78,10 +80,12 @@ const defaultStyle = {
   boxModelPart: '' // 可选值 margin、padding、border
 }
 
+const numberReg = /^\d+$/
 export default class Element {
   constructor (ele) {
     this.name = ele.name
-    this.uuid = ele.uuid || guid()
+    this.pluginType = ele.name
+    this.uuid = this.getUUID(ele)
     /**
      * #!zh:
      * 之前版本代码：https://github.com/ly525/luban-h5/blob/a7875cbc73c0d18bc2459985ca3ce1d4dc44f141/front-end/h5/src/components/core/models/element.js#L21
@@ -96,7 +100,29 @@ export default class Element {
     this.pluginProps = this.getPluginProps(ele)
     this.commonStyle = this.getCommonStyle(ele)
     this.events = []
+    this.methodList = ele.methodList || []
+    /**
+      script item<{
+        id,
+        label,
+        value
+      }>
+     */
+    this.scripts = ele.scripts || []
     this.animations = ele.animations || []
+
+    this.registerGlobalComponent()
+  }
+
+  /**
+   * 如果uuid 是number 类型(老uuid通过时间戳生成)，则会报错：[Vue warn]: Invalid component name: "1598504639230". Component names should conform to valid custom element name in html5 specification.
+   *
+   * 如果uuid不存在/全为Number，则采用新规则生成uuid，否则采用老uuid
+   *
+   * @param {*} ele
+   */
+  getUUID (ele) {
+    return (!ele.uuid || numberReg.test(ele.uuid) || !ele.uuid.includes('_')) ? `${ele.name}_${guid()}` : ele.uuid
   }
 
   getCommonStyle (ele) {
@@ -189,8 +215,9 @@ export default class Element {
   }
 
   getProps ({ mode = 'edit' } = {}) {
+    const pluginProps = mode === 'preview' ? bindData(this.pluginProps, window) : this.pluginProps
     return {
-      ...this.pluginProps,
+      ...pluginProps,
       disabled: disabledPluginsForEditMode.includes(this.name) && mode === 'edit'
     }
   }
@@ -219,9 +246,11 @@ export default class Element {
 
   getPreviewData ({ position = 'static', isRem = false, mode = 'preview', isNodeWrapper = true } = {}) {
     const data = {
+      // 与 edit 组件保持样式一致
       style: this.getStyle({ position, isNodeWrapper }),
       props: this.getProps({ mode }),
-      attrs: this.getAttrs()
+      attrs: this.getAttrs(),
+      nativeOn: this.getEventHandlers()
     }
     return data
   }
@@ -237,5 +266,65 @@ export default class Element {
         left: this.commonStyle.left + 20
       }
     })
+  }
+
+  getEventHandlers () {
+    const Ctor = Vue.component(this.uuid)
+    const vm = new Ctor()
+    const handlers = this.methodList.reduce((handlers, method) => {
+      // bind is fine too：handlers[method.trigger] = vm[method.name].bind(vm, method.arguments)
+      handlers[method.trigger] = () => vm[method.name].apply(vm, method.arguments)
+      return handlers
+    }, {})
+    return handlers
+  }
+
+  registerGlobalComponent () {
+    const basePlugin = Vue.component(this.name)
+    const mixinList = this.scripts.map(script => new Function(script.content.replace('editorMethods', 'methodsConfig'))())
+    basePlugin && this._mixinScript(mixinList, basePlugin)
+  }
+
+  /**
+   *
+    interface Script {
+      id?: number;
+      label?: string;
+      value: string; //  `return { created() {} }`
+    }
+   * @param {Object} script:Script
+   */
+  mixinScript (script) {
+    const basePlugin = Vue.component(this.uuid)
+    let mixin = new Function(script.content)() || {}
+    // normalize mixin(对 mixin 做规范化处理)
+    mixin = {
+      ...mixin,
+      methodsConfig: mixin.methodsConfig || {}
+    }
+    this._mixinScript(mixin, basePlugin)
+  }
+
+  _mixinScript (mixinList, basePlugin = Vue.component(this.uuid)) {
+    // basePlugin 不传入 && 不存在
+    if (!basePlugin) return
+
+    if (!Array.isArray(mixinList)) {
+      mixinList = [mixinList]
+    }
+
+    let pluginWithMixins = mixinList.reduce((mixedPlugin, mixin) => {
+      mixin.methodsConfig = mixin.methodsConfig || {} // 处理为 undefined 的情况，更应该在 mixinScript 的时候，从入口处进行约束
+      // 这里需要注意：
+      // 因为在不同的脚本中，方法的配置信息字段都是：methodsConfig，因此根据 Vue.mixin 的规则，后mixin 的会覆盖前面的同名
+      // 因此需要将前面的 methodsConfig 和 新mixin.methodsConfig 进行合并，防止之前的 methodsConfig 消失了
+      mixin.methodsConfig = {
+        ...mixedPlugin.options.methodsConfig,
+        ...mixin.methodsConfig
+      }
+      return mixedPlugin.extend(mixin)
+    }, basePlugin)
+
+    Vue.component(this.uuid, pluginWithMixins)
   }
 }

@@ -6,6 +6,73 @@
 @import url("./page-manager.scss");
 @import url("./canvas-wrapper.scss");
 @import url("./adjust.scss");
+@import url("./script-panel.scss");
+
+#luban-editor-layout,
+#luban-work-manager-layout  {
+  .header {
+    padding: 0 10px;
+
+    .logo {
+      width: 120px;
+      height: 31px;
+      // background: rgba(255,255,255,.2);
+      margin: 16px 28px 16px 0;
+      float: left;
+
+      line-height: 31px;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .lang-select-activator,
+    .user-avatar-activator {
+      float: right;
+      background: transparent;
+      margin: 0 28px 16px 0;
+      cursor: pointer;
+
+      .anticon {
+        color: white;
+      }
+    }
+  }
+
+  #props-edit-form {
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+  }
+
+  .card-cover-wrapper {
+    position: relative;
+    height: 300px;
+    border: 1px dashed #eee;
+    color: #aaa;
+    padding: 4px;
+  }
+  // .action-steps-wrapper {
+  //   .ant-timeline-item {
+  //     height: 60px;
+  //   }
+  //   .ant-timeline-item-content span:first-child {
+  //     display: inline-block;
+  //     margin-right: 10px;
+  //     min-width: 100px;
+  //   }
+  // }
+
+  code.marked {
+    margin: 0 1px;
+    background: #f2f4f5;
+    // padding: .2em .4em;
+    border-radius: 3px;
+    font-size: .9em;
+    border: 1px solid #eee;
+    color: #e36c6c;
+  }
+}
 
 .hidden {
   display: none !important;
@@ -30,7 +97,7 @@
 }
 
 .ant-tabs-nav .ant-tabs-tab {
-  padding: 12px 0 !important;
+  // padding: 12px 0 !important;
 }
 
 .avaiable-animations-tabs .ant-tabs-nav .ant-tabs-tab {

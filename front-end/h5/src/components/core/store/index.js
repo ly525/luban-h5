@@ -15,6 +15,8 @@ import editor from './modules/editor'
 import user from './modules/user'
 import loading from './modules/loading'
 import i18n from './modules/i18n'
+import dialog from './modules/dialog'
+import dataCenter from './modules/data-center'
 
 Vue.use(Vuex)
 
@@ -32,7 +34,9 @@ export default new Vuex.Store({
     editor,
     user,
     loading,
-    i18n
+    i18n,
+    dialog,
+    dataCenter
   },
   plugins: [undoRedoPlugin]
 })
