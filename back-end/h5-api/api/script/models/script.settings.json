@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "workforms",
+  "collectionName": "scripts",
   "info": {
-    "name": "workform",
-    "description": ""
+    "name": "script"
   },
   "options": {
     "increments": true,
@@ -11,11 +10,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "form": {
-      "type": "json"
+    "title": {
+      "type": "string"
     },
-    "work": {
-      "model": "work"
+    "content": {
+      "type": "richtext"
     }
   }
 }

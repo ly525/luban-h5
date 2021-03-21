@@ -3,71 +3,7 @@
     {
       "method": "GET",
       "path": "/works/cors-proxy",
-      "handler": "Work.corsProxy",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/has-forms",
-      "handler": "Work.queryWorksWithForms",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/editor",
-      "handler": "Work.renderCoreEditor",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works",
-      "handler": "Work.find",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/count",
-      "handler": "Work.count",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/works/:id",
-      "handler": "Work.findOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/works",
-      "handler": "Work.create",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/works/:id",
-      "handler": "Work.update",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/works/:id",
-      "handler": "Work.delete",
+      "handler": "work.corsProxy",
       "config": {
         "policies": []
       }
@@ -75,15 +11,80 @@
     {
       "method": "GET",
       "path": "/works/preview/:id",
-      "handler": "Work.previewOne",
+      "handler": "work.previewOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/has-forms",
+      "handler": "work.queryWorksWithForms",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/editor",
+      "handler": "work.renderCoreEditor",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works",
+      "handler": "work.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/count",
+      "handler": "work.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/:id",
+      "handler": "work.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
+      "path": "/works",
+      "handler": "work.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/works/:id",
+      "handler": "work.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/works/:id",
+      "handler": "work.delete",
+      "config": {
+        "policies": []
+      }
+    },
+
+    {
+      "method": "POST",
       "path": "/works/form/submit/:id",
-      "handler": "Work.submitForm",
+      "handler": "work.submitForm",
       "config": {
         "policies": []
       }
@@ -91,7 +92,7 @@
     {
       "method": "GET",
       "path": "/works/form/query/:id",
-      "handler": "Work.queryFormsOfOneWork",
+      "handler": "work.queryFormsOfOneWork",
       "config": {
         "policies": []
       }
@@ -99,7 +100,7 @@
     {
       "method": "POST",
       "path": "/works/set-as-template/:id",
-      "handler": "Work.setAsTemplate",
+      "handler": "work.setAsTemplate",
       "config": {
         "policies": []
       }
@@ -107,7 +108,7 @@
     {
       "method": "POST",
       "path": "/works/use-template/:id",
-      "handler": "Work.useTemplate",
+      "handler": "work.useTemplate",
       "config": {
         "policies": []
       }

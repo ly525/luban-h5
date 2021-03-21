@@ -1,44 +1,40 @@
-/*
- * @Author: ly525
- * @Date: 2019-12-04 19:55:24
- * @LastEditors: ly525
- * @LastEditTime: 2020-10-11 20:02:09
- * @FilePath: /luban-h5/back-end/h5-api/api/work/controllers/Work.js
- * @Github: https://github.com/ly525/luban-h5
- * @Description:
- * @Copyright 2018 - 2019 luban-h5. All Rights Reserved
- */
 'use strict';
-const request = require('request');
+
+/**
+ * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
+ * to customize this controller
+ */
+
 const _ = require('lodash');
+const request = require('request');
+
 // 浏览模式
 const VIEW_MODE = {
   PREVIEW: 'preview' // 预览
 };
-
-/**
- * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/guides/controllers.html#core-controllers)
- * to customize this controller
- */
 
 module.exports = {
   // GET /previewOne
   // strapi-hook-ejs: https://github.com/strapi/strapi/tree/master/packages/strapi-hook-ejs
   previewOne: async (ctx) => {
     const { view_mode }  = ctx.request.query;
-    const work = await strapi.services.work.findOne(ctx.params);
+    // https://github.com/strapi/strapi/issues/5688
+    const work = await strapi.services.work.findOne({ id: ctx.params.id
+    });
     // 非发布状态, 查看不到内容
     // 非预览模式, 查看不到内容
     const canRender = view_mode === VIEW_MODE.PREVIEW || work.is_publish;
     if (!canRender) work.pages = [];
     work.width = work.width || 320;
+    // yarn add strapi-hook-ejs
     return ctx.render('engine', { work });
   },
   renderCoreEditor: async (ctx) => {
     return ctx.render('core-editor');
   },
   submitForm: async (ctx) => {
-    const work = await strapi.services.work.findOne(ctx.params);
+    const work = await strapi.services.work.findOne({ id: ctx.params.id
+    });
     const formData = ctx.request.body;
     // eslint-disable-next-line no-unused-vars
     const workform = await strapi.services.workform.create({ form: formData, work });
@@ -63,7 +59,8 @@ module.exports = {
       return uuidMap2Name;
     }
 
-    const work = await strapi.services.work.findOne(ctx.params);
+    const work = await strapi.services.work.findOne({ id: ctx.params.id
+    });
 
     // learn the query from: https://github.com/strapi/foodadvisor/blob/master/api/api/restaurant/controllers/Restaurant.js#L40
     let formRecords = await strapi.services.workform.find({ work: work.id });
@@ -93,14 +90,17 @@ module.exports = {
     return ctx.body = workRecords;
   },
   setAsTemplate: async (ctx) => {
-    const work = await strapi.services.work.findOne(ctx.params);
+    const work = await strapi.services.work.findOne({ id: ctx.params.id
+    });
 
     // eslint-disable-next-line no-unused-vars
     const templateWork = await strapi.services.work.create();
     return strapi.services.work.update({id: templateWork.id}, { pages: work.pages, is_template: true, cover_image_url: work.cover_image_url });
   },
   useTemplate: async (ctx) => {
-    const templateWork = await strapi.services.work.findOne(ctx.params);
+    const templateWork = await strapi.services.work.findOne({ id: ctx.params.id
+    });
+    const datasources = templateWork.datasources; // clone datasource
 
     // eslint-disable-next-line no-unused-vars
     const work = await strapi.services.work.create();

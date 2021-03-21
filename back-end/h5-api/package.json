@@ -1,51 +1,39 @@
 {
-  "name": "my-project",
+  "name": "h-5-api-v-3",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "localdev": "node server.js",
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "lint": "eslint ."
+    "strapi": "strapi"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.0.0",
-    "eslint": "^6.0.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-react": "^7.14.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "knex": "latest",
-    "lodash": "^4.17.19",
-    "mysql": "latest",
-    "psd": "^3.2.0",
-    "sqlite3": "latest",
-    "strapi-hook-ejs": "3.0.0-beta.17.8",
-    "strapi": "3.0.0-beta.18.4",
-    "strapi-admin": "3.0.0-beta.18.4",
-    "strapi-connector-bookshelf": "3.0.0-beta.18.4",
-    "strapi-plugin-content-manager": "3.0.0-beta.18.4",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.18.4",
-    "strapi-plugin-documentation": "3.0.0-beta.18.4",
-    "strapi-plugin-email": "3.0.0-beta.18.4",
-    "strapi-plugin-graphql": "3.0.0-beta.18.4",
-    "strapi-plugin-upload": "3.0.0-beta.18.4",
-    "strapi-plugin-users-permissions": "3.0.0-beta.18.4",
-    "strapi-utils": "3.0.0-beta.18.4"
+    "knex": "0.21.18",
+    "sqlite3": "5.0.0",
+    "strapi": "3.5.3",
+    "strapi-admin": "3.5.3",
+    "strapi-connector-bookshelf": "3.5.3",
+    "strapi-hook-ejs": "^3.5.3",
+    "strapi-plugin-content-manager": "3.5.3",
+    "strapi-plugin-content-type-builder": "3.5.3",
+    "strapi-plugin-documentation": "3.5.3",
+    "strapi-plugin-email": "3.5.3",
+    "strapi-plugin-upload": "3.5.3",
+    "strapi-plugin-users-permissions": "3.5.3",
+    "strapi-utils": "3.5.3"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "b7ad70cc-17b3-4c0b-b492-e3cc3b49af89"
+    "uuid": "663292bc-acb9-409b-9ed4-0feea5f1203b"
   },
   "engines": {
-    "node": ">= 10.0.0",
-    "npm": ">= 6.0.0"
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "^6.0.0"
   },
   "license": "MIT"
 }
