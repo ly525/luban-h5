@@ -95,6 +95,9 @@ export default {
   render (h) {
     return (
       <div>
+        <a-input value={this.value} onChange={e => {
+          this.$emit('change', e) // #309
+        }} placeholder="输入图片链接/上传"></a-input>
         <slot>{this.renderDefaultActivator()}</slot>
         <a-modal
           closable

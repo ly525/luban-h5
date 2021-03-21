@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/ly525/luban-h5/compare/v1.15.0...v1.16.0) (2021-03-21)
+
+
+### Features
+
+* script&action&data-source ([24201f6](https://github.com/ly525/luban-h5/commit/24201f631106b811dde877fbcd4cff3fba850068))
+* **component:** tinymce-editor ([0a10d92](https://github.com/ly525/luban-h5/commit/0a10d9261a083ea8bb179d98bdda1ac21a03d0e8))
+
+
+### Bug Fixes
+
+* [#253](https://github.com/ly525/luban-h5/issues/253) ([608c4c4](https://github.com/ly525/luban-h5/commit/608c4c463291779f53760e63f365aac9ce329cc6))
+* add id for data-source ([fb06873](https://github.com/ly525/luban-h5/commit/fb068732058476c5f1ae54891bc78b3990181b9c))
+* treat ds.pipe as String ([7a6ec09](https://github.com/ly525/luban-h5/commit/7a6ec094a9e6f1e6fcdfba26f30122f26a1d24f8))
+
 ## [1.15.0](https://github.com/ly525/luban-h5/compare/v1.14.1...v1.15.0) (2021-03-21)
 
 
