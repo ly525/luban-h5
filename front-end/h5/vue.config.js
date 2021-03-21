@@ -12,8 +12,8 @@ const path = require('path')
 const webpack = require('webpack')
 // const isProd = process.env.NODE_ENV === 'production'
 const target = 'http://localhost:1337'
-const engineOutputDir = path.join(__dirname, '../../back-end/strapi-v3-api/public/engine-assets')
-const mainAppOutputDir = path.join(__dirname, '../../back-end/strapi-v3-api/build-editor')
+const engineOutputDir = path.join(__dirname, '../../back-end/h5-api/public/engine-assets')
+const mainAppOutputDir = path.join(__dirname, '../../back-end/h5-api/build-editor')
 const coreEditorOutputDir = path.join(__dirname, '../../front-end/h5/src/components/core/dist')
 
 let page

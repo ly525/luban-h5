@@ -113,3 +113,4 @@ exports
 build
 .strapi-updater.json
 build-editor
+public/engine-assets/*
