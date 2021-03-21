@@ -1,7 +1,12 @@
 module.exports = {
+  load: {
+    order: [
+      'serve-fe-dist',
+    ],
+  },
   settings: {
-    public: {
-      path: './build-editor'
-    }
+    'serve-fe-dist': {
+      enabled: true,
+    },
   },
 };

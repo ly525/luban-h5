@@ -2,6 +2,38 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/works/cors-proxy",
+      "handler": "work.corsProxy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/preview/:id",
+      "handler": "work.previewOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/has-forms",
+      "handler": "work.queryWorksWithForms",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/editor",
+      "handler": "work.renderCoreEditor",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/works",
       "handler": "work.find",
       "config": {
@@ -44,6 +76,39 @@
       "method": "DELETE",
       "path": "/works/:id",
       "handler": "work.delete",
+      "config": {
+        "policies": []
+      }
+    },
+
+    {
+      "method": "POST",
+      "path": "/works/form/submit/:id",
+      "handler": "work.submitForm",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/works/form/query/:id",
+      "handler": "work.queryFormsOfOneWork",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/works/set-as-template/:id",
+      "handler": "work.setAsTemplate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/works/use-template/:id",
+      "handler": "work.useTemplate",
       "config": {
         "policies": []
       }
