@@ -40,6 +40,7 @@ export default {
       'fetchCount',
       'fetchWorks',
       'createWork',
+      'updateWork',
       'deleteWork',
       'useTemplate',
       'fetchWorkTemplates'
@@ -70,6 +71,7 @@ export default {
             onPreview={e => {
               this.previewVisible = true
               this.activeWork = work
+              this.updateWork(work)
             }}
             onUseTemplate={work => {
               this.useTemplateDialogVisible = true
