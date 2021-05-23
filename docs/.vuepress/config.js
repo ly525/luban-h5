@@ -20,7 +20,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     editLinks: true,
     docsDir: 'docs',
-    docsBranch: 'dev',
+    docsBranch: 'master',
     serviceWorker: {
       updatePopup: {
         message: 'New content is available.',
