@@ -216,12 +216,10 @@ yarn dev
 - 访问：[http://localhost:1337/admin](http://localhost:1337/admin) (鲁班的管理后台，在这里管理数据、接口相关权限)
 - 请按照下图的操作，打开接口访问权限：`Roles And Permission -> Public -> Permissions`
 
-![1567438464273-e0892ee2-5dca-45ec-a528-8090d80b23bd](https://user-images.githubusercontent.com/12668546/65381949-32addd00-dd2e-11e9-967a-e313dc6fca89.png)
-
-![1567438463824-d6b87f12-eecf-4ae2-aa9c-bb4c73c4127d](https://user-images.githubusercontent.com/12668546/65381950-32addd00-dd2e-11e9-859a-dbec0941dc5a.png)
+![image](https://user-images.githubusercontent.com/12668546/119246613-7d43c480-bbb5-11eb-943b-aa78619e8760.png)
 
 #### 上传封面图使用
-![image](https://user-images.githubusercontent.com/12668546/91663261-64245080-eb1a-11ea-9e31-f43f910cbb57.png)
+![image](https://user-images.githubusercontent.com/12668546/119246639-ba0fbb80-bbb5-11eb-9278-79c1587dbab8.png)
 :::
 
 ### 预览页面显示空白
