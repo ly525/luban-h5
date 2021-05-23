@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/ly525/luban-h5/compare/v1.16.0...v1.17.0) (2021-05-23)
+
+
+### Features
+
+* 抽离作品信息组件，更新标题/描述自动保存;(autoSave after update workInfo); fix:[#310](https://github.com/ly525/luban-h5/issues/310) ([642938f](https://github.com/ly525/luban-h5/commit/642938ff7ccd02a991f4e66bd0fc922b91565e7e))
+
+
+### Bug Fixes
+
+* [#309](https://github.com/ly525/luban-h5/issues/309) ([21a4ba0](https://github.com/ly525/luban-h5/commit/21a4ba04c62e1f4cb1bd02f586391a4773b37d90))
+* **list-mixin:** 列表预览 链接id显示undefined bug ([bf2f777](https://github.com/ly525/luban-h5/commit/bf2f77726b8fcadac52a47a11faebb78c2a81484))
+* [#329](https://github.com/ly525/luban-h5/issues/329) ([4d93cf1](https://github.com/ly525/luban-h5/commit/4d93cf11d5884e170b4c84ff41a7a560dc085723))
+
 ## [1.16.0](https://github.com/ly525/luban-h5/compare/v1.15.0...v1.16.0) (2021-03-21)
 
 
