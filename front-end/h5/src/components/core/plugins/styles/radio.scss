@@ -1,12 +1,13 @@
+@use 'sass:math';
 // rc -> radio & checkbox
 // https://www.inserthtml.com/2012/06/custom-form-radio-checkbox/
 $radio-size: 6px;
 $radio-label-size: $radio-size ;
-$radio-offset: $radio-size / 2;
+$radio-offset: math.div($radio-size, 2);
 
 $checkbox-size: 6px;
-$checkbox-check-width: $checkbox-size / 4 * 3;
-$checkbox-check-height: $checkbox-size / 4 * 5;
+$checkbox-check-width: math.div($checkbox-size, 4) * 3;
+$checkbox-check-height: math.div($checkbox-size, 4) * 5;
 
 .lbp-rc-wrapper {
 	position: relative;

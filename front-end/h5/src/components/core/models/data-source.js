@@ -32,7 +32,7 @@ export default class DataSource {
     }, {})
     import('core/store/index.js').then(coreStore => {
       const store = coreStore.default
-      store.commit('dataCenter/updateStorage', storage)
+      store.commit('editor/updateDC', storage)
     })
   }
 
@@ -52,8 +52,7 @@ export default class DataSource {
         }
         import('core/store/index.js').then(coreStore => {
           const store = coreStore.default
-          store.commit('dataCenter/updateStorage', storage)
-          // this.vm.updateStorage(storage)
+          store.commit('editor/updateDC', storage)
           this.updateRelated()
           resolve()
         })

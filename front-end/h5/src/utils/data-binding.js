@@ -1,5 +1,5 @@
 import { getVMVal } from '@/utils/core'
-import { lubanDS } from 'core/store/modules/data-center'
+import { LuBanDC } from 'core/store/modules/data-source'
 
 export function bindData (obj, dataCenter) {
   // 插值替换 <span>{{a}}<spam> => {a: 10}=> <span>10</span>
@@ -10,8 +10,8 @@ export function bindData (obj, dataCenter) {
     // https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-and-arays-by-string-path
     exp = exp.trim().replace(/\[(\w+)\]/g, '.$1') // convert indexes to properties
     exp = exp.replace(/^\./, '') // strip a leading dot
-    if (/DS\./.test(exp)) {
-      return getVMVal(lubanDS, exp)
+    if (/DC\./.test(exp)) {
+      return getVMVal(LuBanDC, exp)
     }
     return exp
   }))

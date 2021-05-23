@@ -148,10 +148,10 @@ export const pluginsList = [
   },
   {
     i18nTitle: {
-      'en-US': 'Text(Tiny)',
-      'zh-CN': '文字(Tiny)'
+      'en-US': 'Tiny-Text',
+      'zh-CN': 'Tiny-文字'
     },
-    title: '文字(Tiny)',
+    title: 'Tiny-文字',
     icon: 'text-width',
     component: LbpTextTinymce,
     visible: true,

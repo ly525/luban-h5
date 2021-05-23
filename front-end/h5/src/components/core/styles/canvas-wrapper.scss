@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /**
  * 编辑器中间的画布
  */
@@ -5,7 +7,7 @@
 $cellSize: 35.6px;
 $designerWidth: 320px;
 $designerHeight: 568px;
-$designerWidthHalf: $designerWidth / 2;
+$designerWidthHalf: math.div($designerWidth, 2);
 
 .canvas-wrapper {
   position: relative;

@@ -1,5 +1,5 @@
 {
-  "connection": "default",
+  "kind": "collectionType",
   "collectionName": "works",
   "info": {
     "name": "work",
@@ -7,11 +7,8 @@
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
-    "comment": ""
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
@@ -50,8 +47,8 @@
       "default": 320
     },
     "datasources": {
-      "via": "works",
       "collection": "datasource",
+      "via": "works",
       "dominant": true
     }
   }

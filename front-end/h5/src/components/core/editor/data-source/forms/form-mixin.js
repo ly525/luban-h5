@@ -12,8 +12,12 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
+    /**
+     * 需要过滤掉当前名称，否则编辑的时候，也会提示重名
+     * @returns {Array}
+     */
     dsNames () {
-      return this.work.datasources.map(item => item.name)
+      return this.work.datasources.filter(item => item.name !== this.form.name).map(item => item.name)
     },
     ...mapState('editor', [
       'work'

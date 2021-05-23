@@ -1,12 +1,13 @@
 {
-  "connection": "default",
+  "kind": "collectionType",
   "collectionName": "datasources",
   "info": {
     "name": "datasource"
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "name": {
@@ -23,10 +24,6 @@
         "static"
       ]
     },
-    "works": {
-      "collection": "work",
-      "via": "datasources"
-    },
     "url": {
       "type": "string"
     },
@@ -42,6 +39,10 @@
     },
     "resHandlerText": {
       "type": "richtext"
+    },
+    "works": {
+      "via": "datasources",
+      "collection": "work"
     }
   }
 }

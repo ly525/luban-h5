@@ -522,20 +522,34 @@
           "id": {
             "type": "string"
           },
+          "title": {
+            "type": "string"
+          },
           "content": {
             "type": "string"
           },
-          "title": {
-            "type": "string"
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
       "NewScript": {
         "properties": {
+          "title": {
+            "type": "string"
+          },
           "content": {
             "type": "string"
           },
-          "title": {
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
             "type": "string"
           }
         }

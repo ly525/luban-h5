@@ -22,6 +22,7 @@ import LbpTextAlign from '@luban-h5/lbs-text-align'
 import tinymce from 'tinymce/tinymce'
 import 'tinymce/themes/silver/theme.min.js'
 import 'tinymce/skins/ui/oxide/skin.min.css'
+import 'tinymce/icons/default'
 import Editor from '@tinymce/tinymce-vue'
 
 /**

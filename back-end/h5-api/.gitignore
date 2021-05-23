@@ -1,6 +1,3 @@
-package-lock.json
-engine-assets
-
 ############################
 # OS X
 ############################
@@ -98,7 +95,6 @@ results
 node_modules
 .node_history
 
-
 ############################
 # Tests
 ############################
@@ -110,6 +106,11 @@ coverage
 # Strapi
 ############################
 
+.env
+license.txt
 exports
-.cache
+*.cache
 build
+.strapi-updater.json
+build-editor
+public/engine-assets/*

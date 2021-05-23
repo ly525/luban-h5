@@ -2,6 +2,8 @@ import { mapState, mapActions } from 'vuex'
 import HttpAPIForm from './forms/http-api.vue'
 import StaticDataForm from './forms/static-data.vue'
 import DS_ENUM from 'core/enum/data-source'
+import { LuBanDC } from 'core/store/modules/data-source'
+import template from 'babel-template'
 
 export default {
   props: {
@@ -45,12 +47,12 @@ export default {
     getTitle (page, index) {
       return page.title || this.$t('editor.pageManager.title', { index })
     },
-    showAddDialog () {
-      this.dialog.visible = true
+    toggleAddDialog () {
+      this.dialog.visible = !this.dialog.visible
     },
     handleSelectDataSourceType (menu) {
       this.activeDataSource.type = menu.key
-      this.showAddDialog()
+      this.toggleAddDialog()
     },
     _renderEditTitle (page, index) {
       return (
@@ -96,6 +98,23 @@ export default {
         </a-dropdown>
       )
     },
+    viewDataCenter (page, index) {
+      return (
+        <a-popover title="数据中心预览" trigger="click">
+          <a-button type="link" icon="eye" />
+          <template slot="content">
+            <a-alert
+              class="mb-3"
+              message="使用方法："
+              description="使用 {{DC.[keyPath]}} 消费数据。比如输入框内容为 下载了{{DC.count}}次 => 下载了count次"
+              type="info"
+            />
+            <codemirror value={JSON.stringify(LuBanDC, null, 2)}  />
+
+          </template>
+        </a-popover>
+      )
+    },
     onLeave () {
       this.hoverIndex = -1
     },
@@ -108,18 +127,21 @@ export default {
       }
     },
     manageDataSource (actionType, ds) {
+      // TODO add/edit dataSource 需要补充 loading，即创建、编辑需要调用接口，需要等待
+      this.toggleAddDialog()
       switch (actionType) {
         case 'edit':
-          this.showAddDialog()
-          this.activeDataSource = ds
+          this.activeDataSource = {...ds}
+          this.dataSourceManager({
+            type: actionType,
+            value: {...ds }
+          })
           break
         case 'delete':
         case 'add':
           this.dataSourceManager({
             type: actionType,
-            value: {
-              ...ds
-            }
+            value: {...ds }
           })
           break
       }
@@ -196,6 +218,7 @@ export default {
           <a-collapse-panel header="数据源" key="2">
             {this.renderAddAction()}
             {this.renderDataSourceList()}
+            {this.viewDataCenter()}
           </a-collapse-panel>
         </a-collapse>
         <a-modal
@@ -204,18 +227,10 @@ export default {
           visible={this.dialog.visible}
           onOk={() => {
             this.$refs.form.checkForm().then(dataSourceForm => {
-              // this.dataSourceManager({
-              //   type: 'add',
-              //   value: {
-              //     ...form
-              //   }
-              // })
-              this.manageDataSource('add', dataSourceForm)
-              this.dialog.visible = false
-
-              // this.$refs.form.resetFields()
+              debugger
+              const actionType = dataSourceForm.id ? 'edit' : 'add'
+              this.manageDataSource(actionType, dataSourceForm)
               this.activeDataSource = {}
-              // this.dialog.visible = false
             })
           }}
           onCancel={() => {
