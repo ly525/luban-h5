@@ -8,7 +8,11 @@ export function getVMVal (vm, exp) {
   let val = vm
   exp = exp.split('.')
   exp.forEach(k => {
-    val = val[k] || {}
+    try {
+      val = val[k]
+    } catch (error) {
+      val = undefined
+    }
   })
   return val
 }
