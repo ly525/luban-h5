@@ -50,6 +50,7 @@ module.exports = {
                 '/en/getting-started/introduction',
                 '/en/getting-started/features',
                 '/en/getting-started/quick-start',
+                '/en/getting-started/script',
                 '/en/getting-started/deployment',
                 '/en/getting-started/discussion',
               ],
