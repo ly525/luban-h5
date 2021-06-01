@@ -15,11 +15,26 @@
 - 此时需要到strapi后台进行配置（鲁班对应的管理后台，本地为 localhost:1337/admin）
 ![image](https://user-images.githubusercontent.com/12668546/120248819-3e93c580-c2ab-11eb-8eb6-af4205050b5a.png)
 - 此处配置的业务代码是[前端项目中-src\constants\script.js中的uuid: '1581397464691'部分对应的代码](https://github.com/ly525/luban-h5/blob/master/front-end/h5/src/constants/script.js#L79-L142)，也可自己参照编写其他业务代码
-- 
+- 参见文末附录-1： Demo脚本/动作/装备
 ![image](https://user-images.githubusercontent.com/12668546/120248824-45bad380-c2ab-11eb-9225-a6f8c77f61b5.png)
 
+
+3. 配置完成
+- 配置好后，刷新前端页面，点击`组件“动作面板”`的`“装备（脚本）商店”`就会看到刚刚配置的装备
+![image](https://user-images.githubusercontent.com/12668546/120248834-4eaba500-c2ab-11eb-8bcc-35a5c46145a1.png)
+
+- 点击上图里面的`“使用（购买装备）”`即可在动作面板里面看到自己购买的装备，并且可以通过`“使用技能（动作）”` 启用对应的技能
+![image](https://user-images.githubusercontent.com/12668546/120248842-55d2b300-c2ab-11eb-8199-85dde503da1b.png)
+
+4. 配置动作
+对`动作/技能` 进行简单配置，比如跳转网址，然后点击`预览`，即可看到对应动作/技能的效果了
+
+
+
+附录：
+1. Demo脚本/动作/装备
 ::: details 点击查看
-> 即在Content部分填写如下内容
+即在Content部分填写如下内容
 ```js
 return {
       methodsConfig: {              // 此项配置自定义方法的在组件配置面板如何展示
@@ -86,14 +101,3 @@ return {
       }
     }
 ```
-
-3. 配置完成
-- 配置好后，刷新前端页面，点击`组件“动作面板”`的`“装备（脚本）商店”`就会看到刚刚配置的装备
-![image](https://user-images.githubusercontent.com/12668546/120248834-4eaba500-c2ab-11eb-8bcc-35a5c46145a1.png)
-
-- 点击上图里面的`“使用（购买装备）”`即可在动作面板里面看到自己购买的装备，并且可以通过`“使用技能（动作）”` 启用对应的技能
-![image](https://user-images.githubusercontent.com/12668546/120248842-55d2b300-c2ab-11eb-8199-85dde503da1b.png)
-
-4. 配置动作
-对`动作/技能` 进行简单配置，比如跳转网址，然后点击`预览`，即可看到对应动作/技能的效果了
-
