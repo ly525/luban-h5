@@ -237,7 +237,7 @@ export default class Element {
 
     if (this.animations.length > 0) {
       const animation = this.animations[0]
-      attrs['data-swiper-animation'] = animation.type // "fadeIn"
+      attrs['data-swiper-animation'] = `animate__${animation.type}` // "fadeIn"
       attrs['data-duration'] = `${animation.duration}s` // ".5s"
       attrs['data-delay'] = `${animation.delay}s` // "1s"
     }
