@@ -101,8 +101,8 @@ luban_h5_init() {
 }
 
 luban_h5_start() {
-  cd back-end/h5-api && pm2 start --name luban-h5-service server.js
-  cd ${cur_dir}
+  cd back-end/h5-api && pm2-runtime start --name luban-h5-service server.js
+  #cd ${cur_dir}
 }
 
 luban_h5_restart() {
