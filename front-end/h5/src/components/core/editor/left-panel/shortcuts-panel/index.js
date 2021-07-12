@@ -5,6 +5,7 @@ import langMixin from 'core/mixins/i18n'
 import dragMixin from 'core/mixins/drag'
 import loadPluginsMixin from 'core/plugins/index'
 import { mapActions } from 'vuex'
+import collapseItem from './draggable/collapseItem.vue'
 
 export default {
   mixins: [langMixin, dragMixin, loadPluginsMixin],
@@ -113,6 +114,9 @@ export default {
     return (
       <a-row gutter={10} style="max-height: calc(100vh - 150px);overflow: auto;margin:0;">
         <UsageTip />
+        <collapseItem
+          list={[].concat(this.pluginsList, this.npmPackages)}
+        />
         {
           [].concat(this.pluginsList, this.npmPackages)
             .filter(plugin => plugin.visible)
