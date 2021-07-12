@@ -33,7 +33,7 @@ export default {
             <ShareInfo />
           </a-collapse-panel>
           {/* #!zh: 页面模式 */}
-          <a-collapse-panel key="1" header={this.$t('editor.editPanel.common.pageMode')}>
+          <a-collapse-panel key="2" header={this.$t('editor.editPanel.common.pageMode')}>
             <RenderWorkMode />
           </a-collapse-panel>
         </a-collapse>
