@@ -4,6 +4,7 @@ import RenderEditCanvas from './edit'
 import RenderPreviewCanvas from './preview'
 import formComponentPanel from './formComponentPanel.vue'
 
+import './styles/form-design.less'
 export default {
   name: 'EditorCanvas',
   data: () => ({
@@ -102,7 +103,6 @@ export default {
               // width: `${this.work.width}px`
             }}
           >
-            {typeof this.startType}
             <formComponentPanel
               class={{ 'no-toolbars-top': !this.toolbarsTop }}
               data={this.data}

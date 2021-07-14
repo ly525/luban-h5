@@ -1,0 +1,1204 @@
+// 表单设计器样式
+@primary-color: #13c2c2;
+@layout-color : #ccc;
+
+@primary-background-color: fade(@primary-color, 6%);
+@primary-hover-bg-color  : fade(@primary-color, 20%);
+@layout-background-color : fade(@layout-color, 12%);
+@layout-hover-bg-color   : fade(@layout-color, 24%);
+
+@title-text-color: #fff;
+@border-color    : #ccc;
+
+@left-right-width      : 270px;
+@header-height         : 56px;
+@operating-area-height : 45px;
+@import "./k-table.less";
+@import "./k-editor.less";
+
+// 表单设计器样式
+.form-designer-container-9136076486841527 {
+  height  : 100vh;
+  width   : 100%;
+  overflow: hidden;
+
+  // header样式
+  .header {
+    width           : 100%;
+    height          : @header-height;
+    text-align      : center;
+    background      : @primary-color;
+    color           : @title-text-color;
+    // margin-bottom: 6px;
+    // border-bottom: 1px solid @border-color;
+    line-height     : @header-height;
+    font-size       : 18px;
+    font-weight     : bold;
+  }
+
+  // 头部操作按钮区域
+  .operating-area {
+    border-bottom  : 2px solid @border-color;
+    font-size      : 16px;
+    text-align     : left;
+    height         : @operating-area-height;
+    line-height    : @operating-area-height;
+    padding        : 0px 12px;
+    display        : flex;
+    justify-content: space-between;
+    align-content  : center;
+
+    a {
+      color      : #666;
+      margin: 0 5px;
+      &.disabled, &.disabled:hover {
+      color      : #ccc;
+      }
+      &:hover {
+        color: @primary-color;
+      }
+
+      >span {
+        font-size   : 14px;
+        padding-left: 2px;
+      }
+    }
+  }
+
+  // iconfont 样式
+  .icon {
+    width         : 1em;
+    height        : 1em;
+    vertical-align: -0.15em;
+    fill          : currentColor;
+    overflow      : hidden;
+  }
+
+  // 设计器内容样式
+  .content {
+    display: flex;
+    height : 100%;
+    flex   : 1;
+
+    &.show-head {
+      margin-top: 6px;
+      height    : calc(100% - @header-height - 6px);
+    }
+
+    &.toolbars-top {
+      margin-top: 6px;
+      height    : calc(100% - @operating-area-height - 6px);
+    }
+
+    &.show-head-and-toolbars-top {
+      margin-top: 6px;
+      height    : calc(100% - @header-height - @operating-area-height - 6px);
+    }
+
+    // 左右栏
+    aside {
+      box-shadow      : 0px 0px 1px 1px @border-color;
+      width           : @left-right-width;
+      height          : 100%;
+      // >.left-title {
+      //   padding    : 12px 10px 8px;
+      //   user-select: none;
+      // }
+
+      &.left {
+        // border-right: 1px solid @aside-border-color;
+        height     : 100%;
+        overflow   : auto;
+        user-select: none;
+
+        .ant-collapse-content-box {
+          padding: 0;
+        }
+
+        .ant-collapse {
+          border: 0;
+
+          >.ant-collapse-item {
+            border-color: @border-color;
+
+            >.ant-collapse-header {
+              padding: 7px 0 7px 40px;
+            }
+
+            >.ant-collapse-content {
+              border-color: @border-color;
+            }
+          }
+        }
+
+
+        ul {
+          padding      : 5px;
+          list-style   : none;
+          display      : flex;
+          margin-bottom: 0;
+          flex-wrap    : wrap;
+          // background: #efefef;
+
+          li {
+            border-radius: 0;
+            border       : 0;
+            box-shadow   : 1px 0 0 0 @border-color, 0 1px 0 0 @border-color, 1px 1px 0 0 @border-color, 1px 0 0 0 @border-color inset, 0 1px 0 0 @border-color inset;
+            padding      : 8px 12px;
+            transition   : all 0.3s;
+            width        : calc(50% - 6px);
+            margin       : 2.7px;
+            height       : 36px;
+            line-height  : 20px;
+            cursor       : move;
+            border       : 1px solid transparent;
+            border-radius: 3px;
+            transition   : all .3s;
+
+            &:hover {
+              color     : @primary-color;
+              border    : 1px solid @primary-color;
+              position  : relative;
+              z-index   : 1;
+              box-shadow: 0 2px 6px @primary-color;
+            }
+          }
+        }
+      }
+
+      // 右侧区域
+      &.right {
+        height        : 100%;
+        // border-left: 1px solid @aside-border-color;
+        // border-top : 1px solid @aside-border-color;
+        color         : #fff;
+        overflow      : hidden;
+        position      : relative;
+
+
+        // 控件属性设置
+        .form-item-properties {
+          width : 100%;
+          height: 100%;
+        }
+
+        .ant-tabs {
+          height: 100%;
+
+          .ant-tabs-content {
+            height: 100%;
+
+            .ant-tabs-tabpane {
+
+              height  : calc(100% - 45px);
+              overflow: auto;
+            }
+          }
+        }
+
+        .properties-centent {
+          height    : 100%;
+          overflow  : hidden;
+          background: #fff;
+
+          .properties-body {
+            overflow: auto;
+            height  : 100%;
+            padding : 8px 16px;
+          }
+
+
+          .ant-form-item {
+            margin-bottom: 0;
+            padding      : 6px 0;
+            border-bottom: 1px solid @border-color;
+
+            .ant-form-item-label {
+              line-height: 2;
+            }
+          }
+        }
+
+        .hint-box {
+          margin-top: 120px;
+        }
+      }
+    }
+
+    // 中间内容区域
+    section {
+      flex       : 1;
+      max-width  : calc(100% - @left-right-width - @left-right-width);
+      user-select: none;
+      margin     : 0 8px 0;
+      box-shadow : 0px 0px 1px 1px @border-color;
+
+
+
+      // 内容操作区域
+      .form-panel {
+        // height       : calc(100% - 50px);
+        height          : 100%;
+        background      : #eee;
+        // border       : 1px solid #ccc;
+        position        : relative;
+
+        &.no-toolbars-top {
+          height: calc(100% - 50px);
+        }
+
+        >.hint-text {
+          position  : absolute;
+          left      : 0;
+          top       : 50%;
+          width     : 100%;
+          transform: translateY(-50%);
+          font-size : 20px;
+          color     : #aaa;
+          z-index   : 16;
+        }
+
+        .a-form-box {
+          height       : 100%;
+          // box-shadow: 0px 1px 5px 1px #ccc;
+        }
+
+        .draggable-box {
+          height  : 100%;
+          overflow: auto;
+
+          .list-main {
+            min-height   : 100%;
+            padding      : 5px;
+            position     : relative;
+            background   : #fafafa;
+            // border    : 1px #ccc dashed;
+
+            .moving {
+              // 拖放移动中
+              // outline-width: 0;
+              min-height      : 35px;
+              box-sizing      : border-box;
+              overflow        : hidden;
+              padding         : 0 !important;
+              // margin       : 3px 0;
+              position        : relative;
+
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: @primary-color;
+                position  : absolute;
+                top       : 0;
+                right     : 0;
+              }
+            }
+
+            .drag-move-box {
+              position  : relative;
+              box-sizing: border-box;
+              padding   : 8px;
+              overflow  : hidden;
+              transition: all .3s;
+              min-height: 36px;
+
+              &:hover {
+                background: @primary-hover-bg-color;
+              }
+
+              // 选择时 start
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: @primary-color;
+                position  : absolute;
+                top       : 0;
+                right     : -100%;
+                transition: all .3s;
+              }
+
+              &.active {
+                &::before {
+                  right: 0;
+                }
+
+                background    : @primary-hover-bg-color;
+                outline-offset: 0;
+              }
+
+              // 选择时 end
+              .form-item-box {
+                position  : relative;
+                box-sizing: border-box;
+                word-wrap : break-word;
+
+                &::before {
+                  content : "";
+                  position: absolute;
+                  width   : 100%;
+                  height  : 100%;
+                  top     : 0;
+                  left    : 0;
+                  z-index : 888;
+                }
+
+                .ant-form-item {
+                  // 修改ant form-item的margin为padding
+                  margin        : 0;
+                  padding-bottom: 6px;
+                }
+              }
+
+              .show-key-box {
+                // 显示key
+                position : absolute;
+                bottom   : 2px;
+                right    : 5px;
+                font-size: 14px;
+                z-index  : 999;
+                color    : @primary-color;
+              }
+
+              >.copy,
+              >.delete {
+                position   : absolute;
+                top        : 0;
+                width      : 30px;
+                height     : 30px;
+                line-height: 30px;
+                text-align : center;
+                color      : #fff;
+                z-index    : 989;
+                transition : all .3s;
+
+                &.unactivated {
+                  opacity       : 0 !important;
+                  pointer-events: none;
+                }
+
+                &.active {
+                  opacity: 1 !important;
+                }
+              }
+
+              >.copy {
+                border-radius: 0 0 0 8px;
+                right        : 30px;
+                background   : @primary-color;
+              }
+
+              >.delete {
+                right     : 0px;
+                background: @primary-color;
+              }
+
+            }
+
+            // 动态表格设计面板样式
+            .batch-box,
+            .select-input-list-box {
+              >.batch-label {
+                font-size  : 16px;
+                font-weight: 500;
+                padding    : 10px 10px;
+
+              }
+
+
+              .draggable-box {
+                min-height: 60px;
+                width     : 100%;
+                border    : 1px #ccc dashed;
+                background: #fff;
+
+                .list-main {
+                  min-height : 60px;
+                  position   : relative;
+                  border     : 1px #ccc dashed;
+                  overflow-x : auto;
+                  overflow-y : auto;
+                  white-space: nowrap;
+
+                  .moving {
+                    // 拖放移动中
+                    width     : 175px;
+                    min-height: 94px;
+                    display   : inline-block;
+                  }
+
+                  >div {
+                    min-width     : 185px;
+                    display       : inline-block;
+                    vertical-align: top;
+
+                    .ant-form-item>.ant-form-item-label,
+                    .ant-form-item>.ant-form-item-control-wrapper {
+                      text-align: left;
+                      display   : block;
+                    }
+
+                    .ant-col {
+                      width: 100%;
+                    }
+
+                  }
+                }
+              }
+
+            }
+
+            .select-input-list-box {
+              .column-box {
+                display: flex;
+                width  : 100%;
+
+                .check-box {
+                  width: 80px;
+                }
+
+                .draggable-box {
+                  flex: 1;
+                }
+              }
+
+              // 隐藏选择输入列的所有组件的label
+              .draggable-box {
+                .ant-form-item-label {
+                  display: none !important;
+                }
+              }
+            }
+
+            .batch-box,
+            .select-input-list-box,
+            .grid-box,
+            .table-box {
+              position  : relative;
+              box-sizing: border-box;
+              padding   : 5px;
+              background: @layout-background-color;
+              width     : 100%;
+              transition: all .3s;
+              overflow  : hidden;
+
+              .form-item-box {
+                position  : relative;
+                box-sizing: border-box;
+
+                .ant-form-item {
+                  // 修改ant form-item的margin为padding
+                  margin        : 0;
+                  padding-bottom: 15px;
+                }
+              }
+
+              .grid-row,
+              .table-layout {
+                background: @layout-background-color;
+
+
+                .grid-col,
+                .table-td {
+                  .draggable-box {
+                    min-height: 60px;
+                    min-width : 50px;
+                    border    : 1px #ccc dashed;
+                    background: #fff;
+
+                    .list-main {
+                      min-height: 60px;
+                      position  : relative;
+                      border    : 1px #ccc dashed;
+                    }
+                  }
+                }
+              }
+
+              // 选择时 start
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: transparent;
+                position  : absolute;
+                top       : 0;
+                right     : -100%;
+                transition: all .3s;
+              }
+
+              &.active {
+                &::before {
+                  background: @layout-color;
+                  right     : 0;
+                }
+
+                background    : @layout-hover-bg-color;
+                outline-offset: 0;
+              }
+
+              >.copy,
+              >.delete {
+                position   : absolute;
+                top        : 0px;
+                width      : 30px;
+                height     : 30px;
+                line-height: 30px;
+                text-align : center;
+                color      : #fff;
+                z-index    : 989;
+                transition : all .3s;
+
+                &.unactivated {
+                  opacity       : 0 !important;
+                  pointer-events: none;
+                }
+
+                &.active {
+                  opacity: 1 !important;
+                }
+              }
+
+              >.copy {
+                border-radius: 0 0 0 8px;
+                right        : 30px;
+                background   : @layout-color;
+              }
+
+              >.delete {
+                right     : 0px;
+                background: @layout-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 表格右键菜单样式
+  .right-menu {
+    width     : 160px;
+    background: #fff;
+    border    : 1px solid #ccc;
+    position  : fixed;
+    transition: all 0s;
+    box-shadow: 3px 3px 8px #999;
+    border-radius: 3px;
+    padding   : 8px 0;
+    z-index   : 2199;
+
+    ul {
+      padding   : 0;
+      margin    : 0;
+      list-style: none;
+
+      li {
+        cursor     : pointer;
+        user-select: none;
+        padding    : 0 15px;
+        height     : 30px;
+        line-height: 30px;
+        font-size  : 14px;
+        i{
+          margin-right: 4px;
+        }
+        &:hover {
+          background: #eee;
+        }
+      }
+    }
+  }
+
+  // 控件属性复选组件样式
+  .kk-checkbox {
+    .ant-checkbox-wrapper {
+      margin-left : 0 !important;
+      margin-right: 8px;
+    }
+  }
+
+  // 列表动画
+  .list-enter-active {
+    transition: all .5s;
+  }
+
+  .list-leave-active {
+    transition: all .3s;
+  }
+
+  .list-enter,
+  .list-leave-to
+
+  /* .list-leave-active for below version 2.1.8 */
+    {
+    opacity  : 0;
+    transform: translateX(-100px);
+  }
+
+  .list-enter {
+    height: 30px;
+  }
+
+  ::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width                : 6px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height               : 6px;
+    scrollbar-arrow-color: red;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius        : 5px;
+    box-shadow           : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background           : rgba(0, 0, 0, 0.2);
+    scrollbar-arrow-color: red;
+  }
+
+  ::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background   : rgba(0, 0, 0, 0.1);
+  }
+
+  // 行内组件宽度默认175px
+  .ant-form-inline {
+    .list-main {
+      display        : flex;
+      flex-wrap      : wrap;
+      justify-content: flex-start;
+      align-content  : flex-start;
+
+      .layout-width {
+        width: 100%;
+      }
+    }
+
+    .ant-form-item-control-wrapper {
+      width: 175px !important;
+    }
+  }
+}
+
+
+
+// code盒子样式
+.json-box-9136076486841527 {
+  height  : 570px;
+  overflow: auto;
+
+  .vue-codemirror-wrap {
+    height: 100%;
+
+    .CodeMirror-wrap {
+      height    : 100%;
+      background: #f6f6f6;
+
+      .CodeMirror-scroll {
+        height: 100%;
+        width : 100%;
+      }
+
+      pre.CodeMirror-line,
+      .CodeMirror-linenumber {
+        min-height : 21px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+// code-modal盒子样式
+.code-modal-9136076486841527 {
+  .ant-modal-body {
+    padding: 12px;
+  }
+}
+
+// modal复制按钮样式
+.copy-btn-box-9136076486841527 {
+  padding-top: 8px;
+  text-align : center;
+
+  .copy-btn {
+    margin-right: 8px;
+  }
+}
+
+// k-form-build
+.k-form-build-9136076486841527 {
+
+  .select-input-list-box {
+    color    : rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+
+    .ant-form-item {
+      margin-bottom: 2px;
+      margin-right : 8px
+    }
+
+    &.ant-form-horizontal {
+      .ant-col.ant-form-item-control-wrapper {
+        height     : 30px;
+        display    : flex;
+        align-items: center;
+      }
+
+      .text-box {
+        height     : 30px;
+        line-height: 30px;
+      }
+    }
+
+  }
+
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  // 防止报错信息占位
+  .ant-form-item-control {
+    position: relative;
+
+    .ant-form-explain {
+      bottom  : -16px;
+      position: absolute;
+      z-index : 10;
+    }
+  }
+
+  &.ant-form-inline {
+    .ant-form-item-control-wrapper {
+      width: 175px !important;
+    }
+  }
+
+  // 动态表格样式
+  .batch-table {
+    .ant-form-item {
+      margin: 0;
+    }
+
+    .ant-form-item-control-wrapper {
+      width: 170px !important;
+    }
+
+    .ant-table-thead>tr>th {
+
+      padding: 12px;
+    }
+
+    .ant-table-tbody>tr>td {
+      padding: 8px;
+    }
+
+    .ant-form-inline .ant-form-item-with-help {
+      margin: 0;
+    }
+
+    .ant-table-placeholder {
+      padding: 0;
+    }
+  }
+
+  // 拖拽上传控件隐藏
+  .hide-upload-drag {
+    .ant-upload.ant-upload-drag {
+      display: none;
+    }
+  }
+
+}
+
+//颜色选择器覆盖
+.m-colorPicker {
+  width:25%;
+  vertical-align:bottom;
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  font-size: 0;
+  .colorBtn {
+    height: 22px !important;
+    width: 100% !important;
+  }
+}
+
+// .k-form-build-9136076486841527 {
+
+// }
+
+
+// footer样式
+// .footer-9136076486841527 {
+//   width      : 100%;
+//   height     : 30px;
+//   line-height: 30px;
+//   padding    : 0 15px;
+//   text-align : right;
+//   background : #fafafa;
+//   color      : @primary-color;
+//   font-size  : 14px;
+//   font-weight: bold;
+//   border-top : 1px solid #e0e0e0;
+
+//   >a {
+//     color          : @primary-color;
+//     text-decoration: none;
+//   }
+// }
+
+ // 中间内容区域
+    section {
+      // flex       : 1;
+      // max-width  : calc(100% - @left-right-width - @left-right-width);
+      // user-select: none;
+      // margin     : 0 8px 0;
+      // box-shadow : 0px 0px 1px 1px @border-color;
+
+
+
+      // 内容操作区域
+      .form-panel {
+        // height       : calc(100% - 50px);
+        height          : 100%;
+        background      : #eee;
+        // border       : 1px solid #ccc;
+        position        : relative;
+
+        &.no-toolbars-top {
+          height: calc(100% - 50px);
+        }
+
+        >.hint-text {
+          position  : absolute;
+          left      : 0;
+          top       : 50%;
+          width     : 100%;
+          transform: translateY(-50%);
+          font-size : 20px;
+          color     : #aaa;
+          z-index   : 16;
+        }
+
+        .a-form-box {
+          height       : 100%;
+          // box-shadow: 0px 1px 5px 1px #ccc;
+        }
+
+        .draggable-box {
+          height  : 100%;
+          overflow: auto;
+
+          .list-main {
+            min-height   : 100%;
+            padding      : 5px;
+            position     : relative;
+            background   : #fafafa;
+            // border    : 1px #ccc dashed;
+
+            .moving {
+              // 拖放移动中
+              // outline-width: 0;
+              min-height      : 35px;
+              box-sizing      : border-box;
+              overflow        : hidden;
+              padding         : 0 !important;
+              // margin       : 3px 0;
+              position        : relative;
+
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: @primary-color;
+                position  : absolute;
+                top       : 0;
+                right     : 0;
+              }
+            }
+
+            .drag-move-box {
+              position  : relative;
+              box-sizing: border-box;
+              padding   : 8px;
+              overflow  : hidden;
+              transition: all .3s;
+              min-height: 36px;
+
+              &:hover {
+                background: @primary-hover-bg-color;
+              }
+
+              // 选择时 start
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: @primary-color;
+                position  : absolute;
+                top       : 0;
+                right     : -100%;
+                transition: all .3s;
+              }
+
+              &.active {
+                &::before {
+                  right: 0;
+                }
+
+                background    : @primary-hover-bg-color;
+                outline-offset: 0;
+              }
+
+              // 选择时 end
+              .form-item-box {
+                position  : relative;
+                box-sizing: border-box;
+                word-wrap : break-word;
+
+                &::before {
+                  content : "";
+                  position: absolute;
+                  width   : 100%;
+                  height  : 100%;
+                  top     : 0;
+                  left    : 0;
+                  z-index : 888;
+                }
+
+                .ant-form-item {
+                  // 修改ant form-item的margin为padding
+                  margin        : 0;
+                  padding-bottom: 6px;
+                }
+              }
+
+              .show-key-box {
+                // 显示key
+                position : absolute;
+                bottom   : 2px;
+                right    : 5px;
+                font-size: 14px;
+                z-index  : 999;
+                color    : @primary-color;
+              }
+
+              >.copy,
+              >.delete {
+                position   : absolute;
+                top        : 0;
+                width      : 30px;
+                height     : 30px;
+                line-height: 30px;
+                text-align : center;
+                color      : #fff;
+                z-index    : 989;
+                transition : all .3s;
+
+                &.unactivated {
+                  opacity       : 0 !important;
+                  pointer-events: none;
+                }
+
+                &.active {
+                  opacity: 1 !important;
+                }
+              }
+
+              >.copy {
+                border-radius: 0 0 0 8px;
+                right        : 30px;
+                background   : @primary-color;
+              }
+
+              >.delete {
+                right     : 0px;
+                background: @primary-color;
+              }
+
+            }
+
+            // 动态表格设计面板样式
+            .batch-box,
+            .select-input-list-box {
+              >.batch-label {
+                font-size  : 16px;
+                font-weight: 500;
+                padding    : 10px 10px;
+
+              }
+
+
+              .draggable-box {
+                min-height: 60px;
+                width     : 100%;
+                border    : 1px #ccc dashed;
+                background: #fff;
+
+                .list-main {
+                  min-height : 60px;
+                  position   : relative;
+                  border     : 1px #ccc dashed;
+                  overflow-x : auto;
+                  overflow-y : auto;
+                  white-space: nowrap;
+
+                  .moving {
+                    // 拖放移动中
+                    width     : 175px;
+                    min-height: 94px;
+                    display   : inline-block;
+                  }
+
+                  >div {
+                    min-width     : 185px;
+                    display       : inline-block;
+                    vertical-align: top;
+
+                    .ant-form-item>.ant-form-item-label,
+                    .ant-form-item>.ant-form-item-control-wrapper {
+                      text-align: left;
+                      display   : block;
+                    }
+
+                    .ant-col {
+                      width: 100%;
+                    }
+
+                  }
+                }
+              }
+
+            }
+
+            .select-input-list-box {
+              .column-box {
+                display: flex;
+                width  : 100%;
+
+                .check-box {
+                  width: 80px;
+                }
+
+                .draggable-box {
+                  flex: 1;
+                }
+              }
+
+              // 隐藏选择输入列的所有组件的label
+              .draggable-box {
+                .ant-form-item-label {
+                  display: none !important;
+                }
+              }
+            }
+
+            .batch-box,
+            .select-input-list-box,
+            .grid-box,
+            .table-box {
+              position  : relative;
+              box-sizing: border-box;
+              padding   : 5px;
+              background: @layout-background-color;
+              width     : 100%;
+              transition: all .3s;
+              overflow  : hidden;
+
+              .form-item-box {
+                position  : relative;
+                box-sizing: border-box;
+
+                .ant-form-item {
+                  // 修改ant form-item的margin为padding
+                  margin        : 0;
+                  padding-bottom: 15px;
+                }
+              }
+
+              .grid-row,
+              .table-layout {
+                background: @layout-background-color;
+
+
+                .grid-col,
+                .table-td {
+                  .draggable-box {
+                    min-height: 60px;
+                    min-width : 50px;
+                    border    : 1px #ccc dashed;
+                    background: #fff;
+
+                    .list-main {
+                      min-height: 60px;
+                      position  : relative;
+                      border    : 1px #ccc dashed;
+                    }
+                  }
+                }
+              }
+
+              // 选择时 start
+              &::before {
+                content   : '';
+                height    : 5px;
+                width     : 100%;
+                background: transparent;
+                position  : absolute;
+                top       : 0;
+                right     : -100%;
+                transition: all .3s;
+              }
+
+              &.active {
+                &::before {
+                  background: @layout-color;
+                  right     : 0;
+                }
+
+                background    : @layout-hover-bg-color;
+                outline-offset: 0;
+              }
+
+              >.copy,
+              >.delete {
+                position   : absolute;
+                top        : 0px;
+                width      : 30px;
+                height     : 30px;
+                line-height: 30px;
+                text-align : center;
+                color      : #fff;
+                z-index    : 989;
+                transition : all .3s;
+
+                &.unactivated {
+                  opacity       : 0 !important;
+                  pointer-events: none;
+                }
+
+                &.active {
+                  opacity: 1 !important;
+                }
+              }
+
+              >.copy {
+                border-radius: 0 0 0 8px;
+                right        : 30px;
+                background   : @layout-color;
+              }
+
+              >.delete {
+                right     : 0px;
+                background: @layout-color;
+              }
+            }
+          }
+        }
+      }
+    }

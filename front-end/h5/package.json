@@ -6,7 +6,7 @@
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "npm run build:editor && npm run build:engine",
-    "lint": "vue-cli-service lint --fix",
+    "lint": "vue-cli-service lint --fix src",
     "deploy": "rm -rf dist && npm run build:editor && npm run build:engine && ./deploy.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",

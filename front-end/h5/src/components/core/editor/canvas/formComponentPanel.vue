@@ -482,9 +482,12 @@ export default {
 }
 </script>
 
-<style scoped>
-.form-panel .a-form-box {
-  height: 100%;
+<style lang="stylus" scoped>
+.form-panel,
+.a-form-box,
+.list-main,
+.draggable-box {
+    height: 100%;
 }
 
 .form-panel > .hint-text {

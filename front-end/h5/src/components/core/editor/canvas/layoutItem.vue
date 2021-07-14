@@ -69,14 +69,14 @@
           </draggable>
         </a-form-item>
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -162,14 +162,14 @@
           </div>
         </a-form-item>
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -237,14 +237,14 @@
         </a-tabs>
 
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -303,14 +303,14 @@
         </a-row>
 
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -364,14 +364,14 @@
         </a-card>
 
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -445,14 +445,14 @@
         </table>
 
         <div
-          class="copy"
+          class="action-icon copy"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleCopy')"
         >
           <a-icon type="copy" />
         </div>
         <div
-          class="delete"
+          class="action-icon delete"
           :class="record.key === selectItem.key ? 'active' : 'unactivated'"
           @click.stop="$emit('handleDelete')"
         >
@@ -534,3 +534,23 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.action-icon {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  /* color: #fff; */
+  z-index: 989;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  &.delete {
+    right: 0;
+  }
+  &.copy {
+    right: 30px;
+  }
+}
+</style>

@@ -18,6 +18,7 @@ $designerWidthHalf: math.div($designerWidth, 2);
   margin: 0 auto;
   background: #fff;
   border: 1px solid #e7e7e7;
+  height: calc(100vh - 64px);
 
   .edit-mode {
     // box-shadow: 0 0 0 1px #d9d9d9;
