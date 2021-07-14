@@ -49,7 +49,7 @@
     "x-data-spreadsheet": "^1.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.12.16",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",

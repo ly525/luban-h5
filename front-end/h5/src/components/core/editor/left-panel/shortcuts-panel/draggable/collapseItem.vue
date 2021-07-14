@@ -47,7 +47,8 @@ export default {
   },
   methods: {
     handleStart (e, list) {
-      this.$emit('start', list[e.oldIndex].type)
+      console.log('handleStart')
+      this.$emit('start', list[e.oldIndex].name)
     }
   }
 }

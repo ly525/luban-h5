@@ -12,7 +12,7 @@ $designerWidthHalf: math.div($designerWidth, 2);
 .canvas-wrapper {
   position: relative;
   top: 60px;
-  width: $designerWidth;
+  // width: $designerWidth;
   // height: $designerHeight;
   min-height: $designerHeight;
   margin: 0 auto;

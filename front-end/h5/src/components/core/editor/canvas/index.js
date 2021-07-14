@@ -2,11 +2,38 @@ import { mapState, mapActions } from 'vuex'
 
 import RenderEditCanvas from './edit'
 import RenderPreviewCanvas from './preview'
+import formComponentPanel from './formComponentPanel.vue'
 
 export default {
   name: 'EditorCanvas',
   data: () => ({
-    isPreviewMode: false
+    isPreviewMode: false,
+    selectItem: {
+      key: ''
+    },
+    noModel: [
+      'button',
+      'divider',
+      'card',
+      'grid',
+      'tabs',
+      'table',
+      'alert',
+      'text',
+      'html'
+    ],
+    data: {
+      list: [],
+      config: {
+        layout: 'horizontal',
+        labelCol: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4, xxl: 4 },
+        labelWidth: 100,
+        labelLayout: 'flex',
+        wrapperCol: { xs: 18, sm: 18, md: 18, lg: 18, xl: 18, xxl: 18 },
+        hideRequiredMark: false,
+        customStyle: ''
+      }
+    }
   }),
   computed: {
     ...mapState('editor', {
@@ -15,7 +42,8 @@ export default {
       elements: state => state.editingPage.elements,
       pages: state => state.work.pages,
       work: state => state.work,
-      scaleRate: state => state.scaleRate
+      scaleRate: state => state.scaleRate,
+      startType: state => state.startType
     }),
     ...mapState('loading', [
       'saveWork_loading',
@@ -54,24 +82,42 @@ export default {
           onInput={this.handleToggleMode}
         >
           {/* 编辑模式、预览模式 */}
-          <a-radio-button label={false} value={false}>{this.$t('editor.centerPanel.mode.edit')}</a-radio-button>
-          <a-radio-button label={true} value={true}>{this.$t('editor.centerPanel.mode.preview')}</a-radio-button>
+          <a-radio-button label={false} value={false}>
+            {this.$t('editor.centerPanel.mode.edit')}
+          </a-radio-button>
+          <a-radio-button label={true} value={true}>
+            {this.$t('editor.centerPanel.mode.preview')}
+          </a-radio-button>
         </a-radio-group>
-        <a-layout-content style={{ transform: `scale(${this.scaleRate})`, 'transform-origin': 'center top' }}>
+        <a-layout-content
+          style={{
+            transform: `scale(${this.scaleRate})`,
+            transformOrigin: 'center top'
+          }}
+        >
           <div
-            class='canvas-wrapper'
+            class="canvas-wrapper"
             style={{
-              height: `${this.work.height}px`,
-              width: `${this.work.width}px`
+              // height: `${this.work.height}px`
+              // width: `${this.work.width}px`
             }}
           >
-            { this.isPreviewMode
-              ? <RenderPreviewCanvas elements={this.elements}/>
-              : <RenderEditCanvas
-                class="edit-mode"
-                elements={this.elements}
-              />
-            }
+            {typeof this.startType}
+            <formComponentPanel
+              class={{ 'no-toolbars-top': !this.toolbarsTop }}
+              data={this.data}
+              selectItem={this.selectItem}
+              noModel={this.noModel}
+              hideModel={this.hideModel}
+              startType={this.startType}
+              ref="KFCP"
+              onHandleSetSelectItem={() => {}}
+            />
+            {/* {this.isPreviewMode ? (
+                <RenderPreviewCanvas elements={this.elements} />
+              ) : (
+                <RenderEditCanvas class="edit-mode" elements={this.elements} />
+              )} */}
           </div>
         </a-layout-content>
       </a-layout>
