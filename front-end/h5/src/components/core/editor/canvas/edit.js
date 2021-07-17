@@ -3,7 +3,6 @@ import Shape from 'core/support/shape'
 import ContextMenu from 'core/support/contexmenu'
 
 export default {
-  name:'Edit',
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
   data: () => ({
     vLines: [],
@@ -76,7 +75,6 @@ export default {
       const eyCoords = [etop + eheight, etop + (eheight / 2), etop]
       let hasVLine = false
       let hasHLine = false
-      // 吸附效果的时候需要判断当前拖拽的是哪个点，不同的点操作的是不同的
       exCoords.forEach(eX => {
         referElementsXCoords.forEach(referX => {
           let offset = referX - eX
