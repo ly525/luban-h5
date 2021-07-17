@@ -35,6 +35,7 @@ export default {
     clearHLine () {
       this.hLines = []
     },
+    // 传入拖动点的位置,不传默认为 undefined,视为拖动组件本身
     calcVHLine (point) {
       const isPointMove = Boolean(point)
       const uuid = this.editingElement.uuid
@@ -83,7 +84,7 @@ export default {
               // issue #360 
                if(hasL) {
                  this.setElementPosition({ width: commonStyle.width - offset,left:eleft + offset })
-               }else if(hasR){ // 向右移动
+               }else if(hasR){ 
                  this.setElementPosition({ width: commonStyle.width + offset })
                }
             } else {
@@ -129,7 +130,6 @@ export default {
     },
     handlePointMove (pos,point) {
       this.setElementPosition(pos)
-      // 传如拖动点的位置
       this.calcVHLine(point)
     },
     bindContextMenu (e) {
