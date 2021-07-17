@@ -3,6 +3,7 @@ import Shape from 'core/support/shape'
 import ContextMenu from 'core/support/contexmenu'
 
 export default {
+  name:'Edit',
   props: ['elements', 'handleClickElementProp', 'handleClickCanvasProp'],
   data: () => ({
     vLines: [],
@@ -35,11 +36,16 @@ export default {
     clearHLine () {
       this.hLines = []
     },
-    calcVHLine (isPointMove) {
+    calcVHLine (point) {
+      const isPointMove = Boolean(point)
       const uuid = this.editingElement.uuid
       const referElements = this.elements.filter(e => e.uuid !== uuid)
       let referElementsXCoords = []
       let referElementsYCoords = []
+      let hasT = /t/.test(point)
+      let hasB = /b/.test(point)
+      let hasL = /l/.test(point)
+      let hasR = /r/.test(point)
       referElements.forEach(e => {
         const width = e.commonStyle.width
         const left = e.commonStyle.left
@@ -61,6 +67,7 @@ export default {
       })
 
       // e代表 editingElement
+      const commonStyle = this.editingElement.commonStyle
       const eleft = this.editingElement.commonStyle.left
       const etop = this.editingElement.commonStyle.top
       const ewidth = this.editingElement.commonStyle.width
@@ -69,12 +76,18 @@ export default {
       const eyCoords = [etop + eheight, etop + (eheight / 2), etop]
       let hasVLine = false
       let hasHLine = false
+      // 吸附效果的时候需要判断当前拖拽的是哪个点，不同的点操作的是不同的
       exCoords.forEach(eX => {
         referElementsXCoords.forEach(referX => {
           let offset = referX - eX
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              this.setElementPosition({ width: ewidth + offset })
+              // issue #360 
+               if(hasL) {
+                 this.setElementPosition({ width: commonStyle.width - offset,left:eleft + offset })
+               }else if(hasR){ // 向右移动
+                 this.setElementPosition({ width: commonStyle.width + offset })
+               }
             } else {
               this.setElementPosition({ left: eleft + offset })
             }
@@ -88,7 +101,12 @@ export default {
           let offset = referY - eY
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              this.setElementPosition({ height: eheight + offset })
+              // issue #360 
+              if(hasT){
+               this.setElementPosition({ height: eheight - offset,top:offset + commonStyle.top })
+              }else if(hasB){
+               this.setElementPosition({ height: eheight + offset })
+              }
             } else {
               this.setElementPosition({ top: etop + offset })
             }
@@ -109,11 +127,12 @@ export default {
      */
     handleElementMove (pos) {
       this.setElementPosition(pos)
-      this.calcVHLine(false)
+       this.calcVHLine()
     },
-    handlePointMove (pos) {
+    handlePointMove (pos,point) {
       this.setElementPosition(pos)
-      this.calcVHLine(true)
+      // 传如拖动点的位置
+      this.calcVHLine(point)
     },
     bindContextMenu (e) {
       // 优化右击菜单的显示，去除冗余的无效逻辑
