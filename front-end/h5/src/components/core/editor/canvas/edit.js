@@ -81,10 +81,10 @@ export default {
           let offset = referX - eX
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              // issue #360 
-               if(hasL) {
-                 this.setElementPosition({ width: commonStyle.width - offset,left:eleft + offset })
-               }else if(hasR){ 
+              // issue #360
+               if (hasL) {
+                 this.setElementPosition({ width: commonStyle.width - offset, left: eleft + offset })
+               } else if (hasR) {
                  this.setElementPosition({ width: commonStyle.width + offset })
                }
             } else {
@@ -100,10 +100,10 @@ export default {
           let offset = referY - eY
           if (Math.abs(offset) <= 5) {
             if (isPointMove) {
-              // issue #360 
-              if(hasT){
-               this.setElementPosition({ height: eheight - offset,top:offset + commonStyle.top })
-              }else if(hasB){
+              // issue #360
+              if (hasT) {
+               this.setElementPosition({ height: eheight - offset, top: offset + commonStyle.top })
+              } else if (hasB) {
                this.setElementPosition({ height: eheight + offset })
               }
             } else {
@@ -128,7 +128,7 @@ export default {
       this.setElementPosition(pos)
        this.calcVHLine()
     },
-    handlePointMove (pos,point) {
+    handlePointMove (pos, point) {
       this.setElementPosition(pos)
       this.calcVHLine(point)
     },
