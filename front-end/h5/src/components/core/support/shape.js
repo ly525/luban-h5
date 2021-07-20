@@ -15,6 +15,7 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
+  name: 'Shape',
   mixins: [animationMixin],
   props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp', 'element'],
   computed: {
@@ -92,9 +93,9 @@ export default {
         let newWidth = +width + (hasL ? -disX : hasR ? disX : 0)
         pos.height = newHeight > 0 ? newHeight : 0
         pos.width = newWidth > 0 ? newWidth : 0
-        pos.left = +left + (hasL ? disX : 0)
-        pos.top = +top + (hasT ? disY : 0)
-        this.handlePointMoveProp(pos)
+        pos.left = newWidth > 0 ? +left + (hasL ? disX : 0) : pos.left
+        pos.top = newHeight > 0 ? +top + (hasT ? disY : 0) : pos.top
+        this.handlePointMoveProp(pos,point)
       }
       let up = () => {
         this.handlePointMouseUpProp()
