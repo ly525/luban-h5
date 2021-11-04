@@ -20,7 +20,7 @@
           type: 'el-color-picker',
           label: '文字颜色',
           // !#zh 为编辑组件指定 prop
-          prop: {
+          props: {
             size: 'mini',
             showAlpha: true
           },
