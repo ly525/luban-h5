@@ -1,0 +1,96 @@
+@use 'sass:math';
+// rc -> radio & checkbox
+// https://www.inserthtml.com/2012/06/custom-form-radio-checkbox/
+$radio-size: 6px;
+$radio-label-size: $radio-size ;
+$radio-offset: math.div($radio-size, 2);
+
+$checkbox-size: 6px;
+$checkbox-check-width: math.div($checkbox-size, 4) * 3;
+$checkbox-check-height: math.div($checkbox-size, 4) * 5;
+
+.lbp-rc-wrapper {
+	position: relative;
+	height: 20px;
+	clear: both;
+
+	.lbp-rc-input {
+		display: none;
+	}
+
+  .tag {
+		float: left;
+		margin-left: 20px;
+		overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // position: absolute;
+    // left: 24px;
+  }
+
+  .lbp-rc-input + label {
+    position: absolute;
+		left: 0;
+		top: 2px;
+
+		appearance: none;
+		background-color: #fafafa;
+		border: 1px solid #cacece;
+  }
+}
+
+
+.lbp-checkbox {
+	& + label {
+		top: 2px;
+		padding: $checkbox-size; // 控制 checkbox 的大小
+		border-radius: 2px;
+	}
+
+	&:checked + label:after {
+		content: " ";
+
+		position: absolute;
+		top: $checkbox-size / 4 - 1px ;
+		left: $checkbox-size / 4 * 3 - 1px;
+		z-index: 999;
+		width: $checkbox-check-width;
+		height: $checkbox-check-height;
+		// width: 5px;
+		// height: 11px;
+		border-style: solid;
+		border-width: 0 1px 1px 0;
+		transform: rotate(45deg);
+		// color: #3396fb;
+	}
+}
+
+.lbp-radio {
+	& + label {
+		padding: $radio-size;
+		border-radius: 50px;
+		display: inline-block;
+	}
+	// &:checked + label {
+	// 	background-color: #e9ecee;
+	// 	color: #99a1a7;
+	// 	border: 1px solid #adb8c0;
+	// 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+	// }
+
+	// // thanks for https://mobile.ant.design/components/checkbox-cn/
+	&:checked + label:after {
+		content: ' ';
+		position: absolute;
+		top: $radio-offset;
+		left: $radio-offset;
+
+		width: $radio-label-size;
+		height: $radio-label-size;
+		border-radius: 50px;
+		background: #99a1a7;
+		box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+		text-shadow: 0px;
+		font-size: 32px;
+	}
+}

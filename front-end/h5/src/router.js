@@ -9,16 +9,19 @@ export default new Router({
   // mode: 'history',
   routes: [
     {
-      path: '/work-manager',
+      path: '/',
       component: Home,
-      name: 'work-manager',
       redirect: '/work-manager/list',
-      alias: '/',
       children: [
         {
           path: '/work-manager/list',
           name: 'work-manager-list',
           component: () => import('@/views/work-manager/list.vue')
+        },
+        {
+          path: '/work-manager/templates',
+          name: 'work-manager-templates',
+          component: () => import('@/views/work-manager/templates.vue')
         },
         {
           path: '/work-manager/form-stat',
@@ -31,11 +34,6 @@ export default new Router({
           component: () => import('@/views/work-manager/form-stat/detail.vue')
         }
       ]
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue')
     },
     {
       path: '/editor/:workId', // #!zh 编辑器页面，核心功能部分

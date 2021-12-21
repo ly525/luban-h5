@@ -1,0 +1,24 @@
+.page-manager-panel {
+  position: relative;
+
+  max-height: calc(100vh - 200px);
+  overflow: scroll;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    height: 60px;
+    border-bottom: 1px solid #f0f4f5;
+
+    &.active {
+      color: #1593ff;
+    }
+  }
+
+  .footer-actions {
+    position: fixed;
+    bottom: 10px;
+    margin-left: 40px;
+  }
+}

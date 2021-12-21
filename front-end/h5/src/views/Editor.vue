@@ -1,36 +1,11 @@
 <script>
-import CoreEditor from '../components/core/editor/index.js'
-import loadPluginMixin from '../mixins/load-plugins.js'
-
+import CoreEditor from 'core/index.js'
+// import CoreEditor from '@luban-h5/core-editor'
 export default {
-  extends: CoreEditor,
-  mixins: [loadPluginMixin]
+  render () {
+    return (
+      <CoreEditor workId={this.$route.params.workId} />
+    )
+  }
 }
 </script>
-<style lang="scss">
-$cellSize: 35.6px;
-$designerWidth: 320px;
-$designerHeight: 568px;
-$designerWidthHalf: $designerWidth / 2;
-
-.canvas-wrapper {
-  position: relative;
-  top: 5%;
-  width: $designerWidth;
-  height: $designerHeight;
-  border: 1px #ebeaea solid;
-  margin: 0 auto;
-  background: #fff;
-}
-
-.lb-tabs {
-  box-shadow: none;
-  padding: 4px 8px 4px 0;
-  border: 1px solid #EBEEF5;
-  height: 100%;
-}
-
-.full-height {
-  height: 100% !important;
-}
-</style>

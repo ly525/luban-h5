@@ -1,45 +1,55 @@
 {
-  "connection": "default",
-  "collectionName": "work",
+  "kind": "collectionType",
+  "collectionName": "works",
   "info": {
     "name": "work",
-    "description": "用户的一个H5作品"
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
-    "comment": ""
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
-      "required": true,
-      "type": "string",
-      "default": "default title"
-    },
-    "description": {
-      "type": "text",
-      "default": "default desc"
-    },
-    "cover_image_url": {
       "type": "string"
     },
-    "is_publish": {
-      "type": "boolean"
+    "description": {
+      "type": "text"
     },
-    "create_time": {
-      "type": "date"
-    },
-    "update_time": {
-      "type": "date"
+    "cover_image_url": {
+      "type": "text"
     },
     "pages": {
       "type": "json"
     },
-    "formData": {
-      "type": "json"
+    "is_publish": {
+      "type": "boolean"
+    },
+    "is_template": {
+      "type": "boolean"
+    },
+    "page_mode": {
+      "type": "enumeration",
+      "enum": [
+        "h5_swipper",
+        "h5_long_page",
+        "h5_form"
+      ],
+      "default": "h5_swipper"
+    },
+    "height": {
+      "type": "integer",
+      "default": 568
+    },
+    "width": {
+      "type": "integer",
+      "default": 320
+    },
+    "datasources": {
+      "collection": "datasource",
+      "via": "works",
+      "dominant": true
     }
   }
 }

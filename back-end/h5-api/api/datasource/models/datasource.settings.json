@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "datasources",
+  "info": {
+    "name": "datasource"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "csv",
+        "httpApi",
+        "static"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "refreshType": {
+      "type": "enumeration",
+      "enum": [
+        "once",
+        "fixed"
+      ]
+    },
+    "refreshInterval": {
+      "type": "integer"
+    },
+    "resHandlerText": {
+      "type": "richtext"
+    },
+    "works": {
+      "via": "datasources",
+      "collection": "work"
+    }
+  }
+}

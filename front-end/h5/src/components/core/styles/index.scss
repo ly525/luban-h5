@@ -1,3 +1,13 @@
+@import url("./helpers.scss");
+@import url("./spacing-helpers.scss");
+@import url("./shape.scss");
+@import url("./align-guides.scss");
+@import url("./shortcut-btn.scss");
+@import url("./page-manager.scss");
+@import url("./canvas-wrapper.scss");
+@import url("./adjust.scss");
+@import url("./script-panel.scss");
+
 #luban-editor-layout,
 #luban-work-manager-layout  {
   .header {
@@ -15,52 +25,17 @@
       color: white;
       font-size: 16px;
     }
-  }
 
-  .shortcut-button {
-    width: 100%;
-    height: 30px;
-    font-size: 14px;
+    .lang-select-activator,
+    .user-avatar-activator {
+      float: right;
+      background: transparent;
+      margin: 0 28px 16px 0;
+      cursor: pointer;
 
-    .shortcut-icon {
-      padding-right: 4px;
-      // display: block;
-      // font-size: 16px;
-      // margin-bottom: 10px;
-    }
-  }
-
-  .canvas-editor-wrapper {
-    // inspired by https://github.com/Heboy/h5-maker/blob/38136192bab1427b9d5741a5dae0b5186d4b2ea0/src/scss/Page.scss#L8
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADVJREFUeNpifPHixQEGGgMWEPH161cHWlrCxEAHMGrJqCWjloxaMmrJqCWjloxaMrgtAQgwAL+YBst5kqDgAAAAAElFTkSuQmCC);
-    .element--editing {
-      outline: 1px dashed #70c0ff !important;
-    }
-
-    // !#zh 控制缩放大小的圆点
-    .shape__scale-point {
-      position: absolute;
-      background: #fff;
-      border: 1px solid rgb(89, 199, 249);
-      width: 6px;
-      height: 6px;
-      z-index: 1;
-      border-radius: 50%;
-    }
-    // TODO #!zh: 写一个辅助线基类： base-line
-    .v-line {
-      position: absolute;
-      height: 100vh;
-      width: 1px;
-      top: 0;
-      background-color: #94f5ff;
-    }
-    .h-line {
-      position: absolute;
-      height: 1px;
-      width: 100vh;
-      left: 0;
-      background-color: #94f5ff;
+      .anticon {
+        color: white;
+      }
     }
   }
 
@@ -70,33 +45,98 @@
     }
   }
 
-  .page-manager-container {
-    margin-top: 16px;
-    .page-button {
-      padding: 18px 8px;
-      border-bottom: 1px solid #ebeef5;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-    .active-page {
-      color: #2981fa;
-    }
+  .card-cover-wrapper {
+    position: relative;
+    height: 300px;
+    border: 1px dashed #eee;
+    color: #aaa;
+    padding: 4px;
+  }
+  // .action-steps-wrapper {
+  //   .ant-timeline-item {
+  //     height: 60px;
+  //   }
+  //   .ant-timeline-item-content span:first-child {
+  //     display: inline-block;
+  //     margin-right: 10px;
+  //     min-width: 100px;
+  //   }
+  // }
 
+  code.marked {
+    margin: 0 1px;
+    background: #f2f4f5;
+    // padding: .2em .4em;
+    border-radius: 3px;
+    font-size: .9em;
+    border: 1px solid #eee;
+    color: #e36c6c;
   }
 }
 
-
-
-.transparent-bg {
-  background: transparent !important;
+.hidden {
+  display: none !important;
 }
 
-.no-border {
-  border: none !important;
+// 拖拽出来的控件
+.dragging-dom-ele {
+  position: fixed !important;
+  z-index: 100;
+
+  display: inline-block;
+  box-sizing: border-box;
+
+  height: 30px;
+  width: 130px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+
+  cursor: grabbing;
+  user-select: none;
+  opacity: 0.6;
 }
 
-.flex-center {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+.ant-tabs-nav .ant-tabs-tab {
+  // padding: 12px 0 !important;
+}
+
+.avaiable-animations-tabs .ant-tabs-nav .ant-tabs-tab {
+  padding: 12px 16px !important;
+}
+
+// 动画编辑面板定制
+#animation-right-panel {
+  .ant-collapse-header {
+    padding: 6px 0 6px 40px;
+  }
+
+  .adjust-line-wrapper {
+    margin-top: 12px;
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.default-router-link {
+  color: rgba(0, 0, 0, 0.65);
+}
+.router-link-active {
+  color: #1890ff !important;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.plugin-usage-tip {
+  font-size: 12px;
+  color: #999;
+  border-left: 0.2rem solid #dfe2e5;
+  // margin: 1rem 0;
+  padding: 0.25rem 0 0.25rem 0.5rem;
+}
+
+.ant-layout-sider {
+  // 防止拖动延迟
+  transition: none !important;
 }

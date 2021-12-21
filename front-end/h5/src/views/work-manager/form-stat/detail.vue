@@ -1,28 +1,26 @@
+<!--
+ * @Author: ly525
+ * @Date: 2019-12-01 18:11:50
+ * @LastEditors: ly525
+ * @LastEditTime: 2019-12-08 15:28:42
+ * @FilePath: /luban-h5/front-end/h5/src/views/work-manager/form-stat/detail.vue
+ * @Github: https://github.com/ly525/luban-h5
+ * @Description:
+    #!zh: 某个作品的的表单统计页
+    #!en: forms for the work
+ * @Copyright 2018 - 2020 luban-h5. All Rights Reserved
+ -->
+
 <script>
-/**
- * [基础数据](/work-manager/form-stat) 对应的页面
- *
- */
 import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
   },
   data: () => ({
-    activeWork: null,
-    previewVisible: false
   }),
   computed: {
-    ...mapState('editor', ['works', 'formDetailOfWork']),
-    computedWorks () {
-      return this.works.map(w => ({
-        id: w.id,
-        title: w.title,
-        pv: w.pv || 0,
-        uv: w.uv || 0,
-        formCount: w.formCount || 0
-      }))
-    },
+    ...mapState('editor', ['formDetailOfWork']),
     /**
      * columns demo: [{"1565369322603":"abc"},{"1565595388440":"ddd"},{"1565595388440":"acd"},{"1565596393441":"b","1565596397671":"a"},{"1565596393441":"b","1565596397671":"a"}]
      */
@@ -38,7 +36,7 @@ export default {
     /**
      * rows demo: [{"title":"姓名","key":"1565596393441"},{"title":"学校","key":"1565596397671"}]
      *
-     * formDetails example: <[{
+     * formRecords example: <[{
         "id": 4,
         "form": {
           "1565595388440": "ddd",
@@ -50,8 +48,8 @@ export default {
       }]>
     */
     rows () {
-      const { formDetails, uuidMap2Name } = this.formDetailOfWork
-      const rows = formDetails.map(({ form, id }) => {
+      const { formRecords, uuidMap2Name } = this.formDetailOfWork
+      const rows = formRecords.map(({ form, id }) => {
         const row = {}
         Object.entries(form).forEach(([uuid, inputValue = '-']) => {
           if (uuidMap2Name[uuid]) {
@@ -66,22 +64,16 @@ export default {
   },
   methods: {
     ...mapActions('editor', [
-      'fetchWorks',
       'fetchFormsOfWork'
-    ]),
-    deleteWork (item) {
-      // TODO delete work from work list
-    },
-    createWork () {
-      this.$router.push({ name: 'editor' })
-    }
+    ])
   },
   render (h) {
     return (
       <div class="works-wrapper">
         <a-table columns={this.columns} dataSource={this.rows} row-key="id" scopedSlots={{
           action: function (props) {
-            return [<router-link to={{ name: 'stat-detail', params: { id: props.id } }} >查看数据</router-link>]
+            // 查看数据
+            return [<router-link to={{ name: 'stat-detail', params: { id: props.id } }} >{this.$t('basicData.viewData')}</router-link>]
           }
         }}>
         </a-table>
@@ -89,7 +81,6 @@ export default {
     )
   },
   created () {
-    // this.fetchWorks()
     const workId = this.$route.params.id
     this.fetchFormsOfWork(workId)
   }

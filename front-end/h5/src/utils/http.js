@@ -1,23 +1,13 @@
 import axios from 'axios'
-import { message } from 'ant-design-vue'
+import { message, notification } from 'ant-design-vue'
 
 message.config({
   maxCount: 3
 })
 
-export const myMessage = message
-
-export const client = axios.create({
-  baseURL: '/v1',
-  responseType: 'json'
-})
-export const baseClient = axios.create({
-  responseType: 'json'
-})
-
 export class AxiosWrapper {
   // eslint-disable-next-line camelcase
-  constructor ({ name = 'default', loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest }) {
+  constructor ({ name, loading_name, responseType = 'json', headers, dispatch, commit, router, successMsg, failMsg, successCallback, failCallback, customRequest, actionPayloadExtra = {} }) {
     this.name = name
     // eslint-disable-next-line camelcase
     this.loading_name = loading_name
@@ -31,6 +21,7 @@ export class AxiosWrapper {
     this.customRequest = customRequest
     this.successCallback = successCallback
     this.failCallback = failCallback
+    this.actionPayloadExtra = actionPayloadExtra
     this.source = axios.CancelToken.source()
     this.instance = axios.create({
       // baseURL: '/v1',
@@ -47,65 +38,38 @@ export class AxiosWrapper {
     })
   }
 
-  get (...args) {
-    this.setDefaultLoadingName(args)
-
+  /**
+   *
+   * @param {String} method get/post/delete/put
+   * @param  {...any} args
+   */
+  request (method, ...args) {
+    this.setDefaultLoadingName(...args)
     this.setLoadingValue(true)
-    return this.instance.get(...args).then(response => {
+    const request = this.customRequest || this.instance[method]
+    return request(...args)
+    .then(response => {
       const handler = this.getCommonResponseHandler({ failMsg: 'Query Failed.' })
-      handler.call(this, response)
-    }).catch(error => {
-      // handle error
-      myMessage.error(error.message)
-    }).finally(() => this.setLoadingValue(false))
+      return handler.call(this, this.customRequest ? { status: 200, data: response } : response)
+    })
+    .catch(handleError)
+    .finally(() => this.setLoadingValue(false))
+  }
+
+  get (...args) {
+    return this.request('get', ...args)
   }
 
   post (...args) {
-    this.setDefaultLoadingName(args)
-
-    this.setLoadingValue(true)
-    return this.instance.post(...args).then(response => {
-      const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-      handler.call(this, response)
-    }).catch(error => {
-      // handle error
-      myMessage.error(error.message)
-    }).finally(() => this.setLoadingValue(false))
+    return this.request('post', ...args)
   }
 
   put (...args) {
-    this.setDefaultLoadingName(args)
-
-    this.setLoadingValue(true)
-    if (this.customRequest) {
-      return this.customRequest(...args)
-        .then(data => {
-          const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-          handler.call(this, { status: 200, data: { data } })
-        })
-        .finally(() => this.setLoadingValue(false))
-    }
-    return this.instance.put(...args).then(response => {
-      const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-      // handler.call(this, response)
-      handler()
-    }).catch(error => {
-      // handle error
-      myMessage.error(error.message)
-    }).finally(() => this.setLoadingValue(false))
+    return this.request('put', ...args)
   }
 
   delete (...args) {
-    this.setDefaultLoadingName(args)
-
-    this.setLoadingValue(true)
-    return this.instance.delete(...args).then(response => {
-      const handler = this.getCommonResponseHandler({ failMsg: 'Save Failed.' })
-      handler.call(this, response)
-    }).catch(error => {
-      // handle error
-      myMessage.error(error.message)
-    }).finally(() => this.setLoadingValue(false))
+    return this.request('delete', ...args)
   }
 
   cancel (reason) {
@@ -113,7 +77,6 @@ export class AxiosWrapper {
   }
 
   setLoadingValue (payload) {
-    // this.dispatch('loading/update', { type: this.loading_name, payload }, { root: true })
     this.commit('loading/update', { type: this.loading_name, payload }, { root: true })
   }
 
@@ -134,23 +97,24 @@ export class AxiosWrapper {
 
   getCommonResponseHandler ({ failMsg } = {}) {
     return (response) => {
-      if (!response.data) {
-        myMessage.warn(this.failMsg || failMsg)
-      } else if (response.status === 200) {
-        this.successMsg && myMessage.success(this.successMsg)
+      const { status, data } = response
+      if (status === 200) {
+        this.successMsg && message.success(this.successMsg)
         if (this.successCallback) {
-          this.successCallback(response)
+          return this.successCallback(response)
         } else {
-          this.commit({ type: this.name, value: response.data }, { root: true })
+          if (!this.name) return data
+          this.commit({ type: this.name, value: data, ...this.actionPayloadExtra }, { root: true })
         }
       } else if (this.responseType === 'json') {
-        myMessage.error(response.data.msg)
-        if (response.status === 401) {
+        message.error(data.msg)
+        if (status === 401) {
+          message.error('401 Session Expired')
           if (this.router) {
             this.router.push('/login')
           }
         } else {
-          alert(response.data.msg)
+          alert(data.msg)
           if (this.failCallback) {
             this.failCallback(response)
           }
@@ -161,5 +125,30 @@ export class AxiosWrapper {
         }
       }
     }
+  }
+}
+
+export function handleError (error) {
+  // strapi-api-sdk 错误状态下，未将 status-code 抛出
+  if (error.message === 'Forbidden') {
+    console.log(`
+        ==========================================================================================
+
+            #!zh: 接口 403，解决方案：https://github.com/ly525/luban-h5/discussions/110
+            #!en: API 403 Forbidden, Solution: https://github.com/ly525/luban-h5/discussions/110
+
+        ==========================================================================================
+    `)
+    notification.error(
+      {
+        message: 'API 403 Forbidden',
+        description: (h) => (
+          <div style="text-align: left;">
+            <div>- #!zh: 接口 403</div>
+            <div>- #!en: API 403 Forbidden</div>
+            <div>- <a href="https://github.com/ly525/luban-h5/discussions/110" target="_blank">#!en: solution(#!zh: 解决方案)</a></div>
+          </div>
+        )
+      })
   }
 }

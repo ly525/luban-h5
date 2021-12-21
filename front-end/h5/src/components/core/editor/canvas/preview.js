@@ -1,22 +1,40 @@
 /**
- * TODO extract page preview card used for page list
+ * 预览模块
+ * preview h5 work module
  */
+
+import NodeWrapper from 'core/preview/node-wrapper.js'
+
 export default {
-  props: ['elements'],
+  props: ['elements', 'height', 'work'],
+  components: {
+    NodeWrapper
+  },
+  computed: {
+    releaseUrl () {
+      return `${window.location.origin}/works/preview/${this.work.id}`
+    }
+  },
   methods: {
-    renderPreview (h, elements) {
+    genEventHandlers (element) {
+      const Ctor = this.$options.components[element.uuid]
+      return element.getEventHandlers(Ctor)
+    },
+    renderPreview () {
+      const elements = this.elements || []
+      const pageWrapperStyle = { height: this.height || '100%', position: 'relative' }
       return (
-        <div style={{ height: '100%', position: 'relative' }}>
+        <div style={pageWrapperStyle}>
           {
             elements.map((element, index) => {
-              /**
-               * TODO 是否可以将 renderElement 进行抽象成 renderBaseElement？
-               * renderBaseElement
-               * -> renderBaseElementWithEvent()
-               * -> renderBaseElementWithCustomStyle()
-               */
-
-              return h(element.name, element.getPreviewData())
+              return <node-wrapper element={element}>
+                {
+                  this.$createElement(element.uuid, {
+                    ...element.getPreviewData({ isNodeWrapper: false }),
+                    nativeOn: this.genEventHandlers(element)
+                  })
+                }
+              </node-wrapper>
             })
           }
         </div>
@@ -24,6 +42,12 @@ export default {
     }
   },
   render (h) {
-    return this.renderPreview(h, this.elements)
+    // return <iframe
+    //   id="iframe-for-preview-1"
+    //   src={this.releaseUrl}
+    //   frameborder="0"
+    //   style="height: 100%;width: 100%;"
+    // ></iframe>
+    return this.renderPreview()
   }
 }

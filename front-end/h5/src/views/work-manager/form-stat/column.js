@@ -1,23 +1,31 @@
 export const columns = [
   {
-    title: '标题',
+    title: 'Id',
+    // dataIndex: 'id',
+    key: 'id',
+    scopedSlots: { customRender: 'id' }
+  },
+  {
+    title: 'Title',
     dataIndex: 'title',
     key: 'title'
   },
+  // {
+  //   title: 'PV',
+  //   dataIndex: 'pv',
+  //   key: 'pv'
+  // },
+  // {
+  //   title: 'Uv',
+  //   dataIndex: 'uv',
+  //   key: 'uv'
+  // },
   {
-    title: 'PV',
-    dataIndex: 'pv',
-    key: 'pv'
-  },
-  {
-    title: 'Uv',
-    dataIndex: 'uv',
-    key: 'uv'
-  },
-  {
-    title: '表单数',
+    // i18n for title
+    title: 'Forms',
     key: 'formCount',
-    dataIndex: 'formCount'
+    dataIndex: 'formCount',
+    align: 'center'
   },
   {
     title: 'Action',

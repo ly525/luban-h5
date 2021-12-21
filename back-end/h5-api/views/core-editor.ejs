@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>鲁班H5 编辑器</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/@luban-h5/core-editor"></script>
+  </head>
+  <body>
+    <div id="app"> <core-editor :work-id="id" /></div>
+    <script>
+      const id = new URLSearchParams(window.location.search).get('id')
+      new Vue({ data: () => ({id }), el: '#app'});
+    </script>
+  </body>
+</html>

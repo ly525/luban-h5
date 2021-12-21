@@ -1,0 +1,34 @@
+.shortcut-button {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60px !important;
+  width: 100%;
+  margin-bottom: 5px;
+
+  border: 1px dashed #fff !important;
+  background-color: #f5f8fb !important;
+  color: #393e46 !important;
+
+  // !#zh: 移除动画，防止因为动画导致的拖拽延迟
+  // !#en: remove animation to prevent moving delay
+  // transition: all .25s;
+  // transition: none !important;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+  .shortcut-icon {
+    padding: 4px;
+  }
+
+  // !#zh: learn from ant-design-vue button style which prevent show the select area
+  // !#en: 从 ant-design-vue 借鉴而来，防止从组件列表拖拽元素至画布过程中，出现用户选中文字内容效果
+  user-select: none;
+  span {
+    pointer-events: none;
+  }
+}
+

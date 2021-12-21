@@ -1,0 +1,21 @@
+.quill-editor {
+  width: 100%;
+  height: 100%;
+}
+
+.ql-toolbar.ql-snow {
+  position: absolute;
+  top: -70px;
+  height: 70px;
+  width: 300px;
+  padding: 0;
+  background: white;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+  margin: 0;
+}
+
+.ql-editor {
+  padding: 0;
+}

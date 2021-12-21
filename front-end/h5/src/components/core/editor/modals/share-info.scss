@@ -1,0 +1,41 @@
+.setting {
+  color: #4a4a4a;
+  font-size: 14px;
+  float: right;
+  .info {
+    .input {
+      margin-top: 10px;
+    }
+  }
+  .qrcode {
+    margin-top: 20px;
+
+    .label span {
+      margin-right: 10px;
+    }
+  }
+  .code {
+    // !#zh 防止浮动塌陷
+    overflow: hidden;
+    .radios {
+      width: 80px;
+      margin-top: 5px;
+      margin-left: 30px;
+      label {
+        margin-left: 0px;
+        margin-top: 10px;
+      }
+      button {
+        margin-top: 15px;
+      }
+    }
+  }
+  .link {
+    width: 100%;
+    display: block;
+  }
+  .edit {
+    text-align: center;
+    margin-top: 20px;
+  }
+}

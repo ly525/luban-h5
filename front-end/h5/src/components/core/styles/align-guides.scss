@@ -1,0 +1,22 @@
+/**
+ * #!zh: 元素对齐参考线
+ * #!en: align objects with guides
+ */
+
+// 垂直对齐参考线
+.v-line {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  background-color: #94f5ff;
+}
+
+// 水平对齐参考线
+.h-line {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  background-color: #94f5ff;
+}

@@ -1,0 +1,36 @@
+.news-item {
+  border-color: rgba(33, 181, 244, 0.2);
+  border-bottom: 1px solid #bbddff;
+  text-align: left;
+  padding: 16px 12px 4px;
+  overflow: auto;
+  color: #333;
+  font-size: 12px;
+
+  .link {
+    color: #333;
+    text-decoration: underline;
+  }
+}
+
+.news-item .title {
+  font-weight: 700;
+  text-align: left;
+  font-size: 14px;
+}
+
+.news-item .content {
+  // text-indent: 24px!important;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+ .news-item .source {
+  float: left;
+  text-align: left;
+}
+
+.news-item .time {
+  float: right;
+  margin-right: 4px;
+}

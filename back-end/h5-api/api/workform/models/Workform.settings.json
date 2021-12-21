@@ -1,5 +1,5 @@
 {
-  "connection": "default",
+  "kind": "collectionType",
   "collectionName": "workforms",
   "info": {
     "name": "workform",
@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "attributes": {
     "form": {

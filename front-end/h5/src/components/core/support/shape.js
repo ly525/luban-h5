@@ -1,3 +1,5 @@
+import animationMixin from 'core/mixins/animation.js'
+
 /**
  * #!zh: 上下左右 对应的 东南西北
  * #!en: top(north)、bottom(south)、left(west)、right(east)
@@ -13,7 +15,8 @@ const directionKey = {
 const points = ['lt', 'rt', 'lb', 'rb', 'l', 'r', 't', 'b']
 
 export default {
-  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp'],
+  mixins: [animationMixin],
+  props: ['defaultPosition', 'active', 'handleMousedownProp', 'handleElementMoveProp', 'handlePointMoveProp', 'handleElementMouseUpProp', 'handlePointMouseUpProp', 'element'],
   computed: {
     position () {
       return { ...this.defaultPosition }
@@ -94,6 +97,7 @@ export default {
         this.handlePointMoveProp(pos)
       }
       let up = () => {
+        this.handlePointMouseUpProp()
         document.removeEventListener('mousemove', move)
         document.removeEventListener('mouseup', up)
       }
@@ -125,27 +129,49 @@ export default {
       }
 
       let up = moveEvent => {
+        this.handleElementMouseUpProp()
         document.removeEventListener('mousemove', move, true)
         document.removeEventListener('mouseup', up, true)
       }
       document.addEventListener('mousemove', move, true)
       document.addEventListener('mouseup', up, true)
-      // TODO add comment
-      return true
     },
     handleMousedown (e) {
       if (this.handleMousedownProp) {
         this.handleMousedownProp()
         this.mousedownForElement(e, this.element)
       }
+    },
+    /**
+     * !#en: delete element with keyboard
+     * !#zh: 键盘快捷键删除元素
+     *
+     */
+    handleDeleteByKeyboard (event) {
+      const key = event.keyCode || event.charCode
+      if (key === 8 || key === 46) {
+        this.$emit('delete')
+      }
+    },
+    /**
+     * detect key pressed on keyboard
+     * 检测键盘按键 按下行为
+     *
+     * 支持如下行为：
+     * - Backspace/Delete 快速删除元素
+     */
+    handleKeyPressed (e) {
+      this.handleDeleteByKeyboard(e)
     }
   },
   render (h) {
     return (
       <div
+        tabIndex="0"
+        onKeydown={this.handleKeyPressed}
         onClick={this.handleWrapperClick}
         onMousedown={this.handleMousedown}
-        style={{ outline: this.active ? '1px dashed #bcbcbc' : '' }}
+        class={{ 'shape__wrapper-active': this.active }}
       >
         {
           this.active &&

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320px" height="180px" viewBox="0 0 320 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-29" fill-rule="nonzero">
+            <rect id="Rectangle-3" fill="#D8D8D8" opacity="0" x="0" y="0" width="320" height="180"></rect>
+            <g id="Group-2" transform="translate(124.000000, 54.000000)">
+                <circle id="Combined-Shape" fill="#FFFFFF" opacity="0.400000006" cx="36" cy="36" r="36"></circle>
+                <path d="M52.5014571,38.4687039 L29.5125474,53.0910406 C28.4252016,53.7826583 26.9830667,53.4618573 26.291449,52.3745114 C26.0533764,52.000219 25.9269295,51.5658183 25.9269295,51.1222268 L25.9269295,21.8775534 C25.9269295,20.588889 26.9715984,19.5442201 28.2602628,19.5442201 C28.7038543,19.5442201 29.138255,19.6706671 29.5125474,19.9087397 L52.5014571,34.5310764 C53.5888029,35.2226941 53.909604,36.6648289 53.2179863,37.7521747 C53.0345158,38.0406229 52.7899052,38.2852335 52.5014571,38.4687039 Z" id="Triangle-2" fill="#000000" opacity="0.5"></path>
+            </g>
+        </g>
+    </g>
+</svg>

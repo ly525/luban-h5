@@ -1,7 +1,6 @@
 <script>
 import { mapActions } from 'vuex'
-import QRCode from 'qrcode'
-import { API_ORIGIN } from '../../../../constants/api.js'
+import ShareInfo from './share-info'
 
 export default {
   props: {
@@ -15,29 +14,20 @@ export default {
     },
     work: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   },
   computed: {
     // ...mapState('editor', {
     //   work: state => state.work
     // }),
-    releaseUrl () {
-      return `${API_ORIGIN}/works/preview/${this.work.id}`
+    previewUrl () {
+      return `${window.location.origin}/works/preview/${this.work.id}?view_mode=preview`
     }
   },
-  data () {
-    return {
-      confirmLoading: false,
-      qrcodeSize: 500
-    }
-  },
-  watch: {
-    visible (val) {
-      if (!val) return
-      this.$nextTick(() => this.drawQRcode())
-    }
-  },
+  data: () => ({
+    confirmLoading: false
+  }),
   methods: {
     ...mapActions('editor', [
       'saveWork',
@@ -49,25 +39,16 @@ export default {
         this.handleClose()
         this.confirmLoading = false
       })
-      // setTimeout(() => {
-      // }, 2000);
     },
     handleCancel (e) {
       console.log('Clicked cancel button')
       this.handleClose()
     },
-    drawQRcode () {
-      var canvas = document.getElementById('qrcode-container')
-      QRCode.toCanvas(canvas, this.releaseUrl, { scale: 4 }, err => {
-        console.log(err)
-      })
-    },
     postMessage2Iframe (message) {
-      let iframeWin = document.getElementById('iframe-for-preview').contentWindow
-      iframeWin.postMessage(message, API_ORIGIN)
-    },
-    openNewTab () {
-      window.open(this.releaseUrl)
+      let iframe = document.getElementById('iframe-for-preview')
+      if (!iframe) return
+      const iframeWin = iframe.contentWindow
+      iframeWin.postMessage(message, window.location.origin)
     }
   },
   render (h) {
@@ -95,61 +76,27 @@ export default {
                     <a-icon type="down" class="page-controller"  onClick={() => { this.postMessage2Iframe('next') }}/>
                     */}
                   </div>
-                  <iframe
-                    id="iframe-for-preview"
-                    src={this.releaseUrl}
-                    frameborder="0"
-                    style="height: 100%;width: 100%;"
-                  ></iframe>
+                  {
+                    // 类似 v-if="this.visible" 的目的：关闭预览弹框之后，销毁 iframe，避免继续播放音乐、视频
+                    // similar with v-if="this.visible": destory the iframe after close the preview dialog to avoid playing the music and video
+                    this.visible && <iframe
+                      id="iframe-for-preview"
+                      src={this.previewUrl}
+                      frameborder="0"
+                      style="height: 100%;width: 100%;"
+                    ></iframe>
+                  }
                   {/** <engine :work="editingWork" :map-config="{}" /> */}
                 </div>
               </div>
             </a-col>
             <a-col span={12} offset={4}>
-              <div class="setting">
-                <div class="info">
-                  <h4 class="label">设置作品信息</h4>
-                  <a-input
-                    class="input"
-                    value={this.work.title}
-                    onChange={e => this.updateWork({ title: e.target.value })}
-                    // onBlur={this.saveTitle}
-                    placeholder="请输入标题"
-                  ></a-input>
-                  <a-input
-                    class="input"
-                    value={this.work.description}
-                    onChange={e => this.updateWork({ description: e.target.value })}
-                    // v-model="description"
-                    // onBlur={this.saveDescription}
-                    placeholder="请输入描述"
-                    type="textarea"
-                  ></a-input>
-                </div>
-                <div class="qrcode my-4">
-                  <div class="label">手机扫码分享给好友</div>
-                  <div class="code">
-                    <canvas style="float: left" id="qrcode-container"></canvas>
-                    <div>
-                      <a-button type="dashed" onClick={() => this.openNewTab()}>打开预览 URL </a-button>
-                    </div>
-                    {/**
-                    <a-radio-group class="radios" value={this.qrcodeSize} onChange={e => { this.qrcodeSize = e.target.value }}>
-                      <a-radio label={500} value={500}>500x500</a-radio>
-                      <a-radio label={1000} value={1000}>1000x1000</a-radio>
-                      <a-radio label={2000} value={2000}>2000x2000</a-radio>
-                    </a-radio-group>
-                    */}
-                  </div>
-                </div>
-              </div>
+              <ShareInfo />
             </a-col>
           </a-row>
         </div>
       </a-modal>
     )
-  },
-  mounted () {
   }
 }
 </script>
@@ -204,44 +151,6 @@ export default {
         }
 
       }
-    }
-  }
-  .setting {
-    color: #4a4a4a;
-    font-size: 14px;
-    float: right;
-    width: 380px;
-    .info {
-      .input {
-        margin-top: 10px;
-      }
-    }
-    .qrcode {
-      margin-top: 20px;
-    }
-    .code {
-      // !#zh 防止浮动塌陷
-      overflow: hidden;
-      .radios {
-        width: 80px;
-        margin-top: 5px;
-        margin-left: 30px;
-        label {
-          margin-left: 0px;
-          margin-top: 10px;
-        }
-        button {
-          margin-top: 15px;
-        }
-      }
-    }
-    .link {
-      width: 100%;
-      display: block;
-    }
-    .edit {
-      text-align: center;
-      margin-top: 20px;
     }
   }
 }

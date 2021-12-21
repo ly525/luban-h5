@@ -1,0 +1,21 @@
+.contextmenu {
+  &__horizontal-menus {
+    height: 32px;
+    line-height: 32px;
+    border: none;
+    border-top: 1px solid #eee;
+
+    &__item {
+      padding: 0 4px 4px;
+    }
+  }
+
+  &__vertical-menus {
+    border: none;
+    &__item {
+      height: 22px !important;
+      line-height: 22px !important;
+      margin: 0;
+    }
+  }
+}

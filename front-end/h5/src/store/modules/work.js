@@ -1,7 +1,8 @@
-import Element from '../../components/core/models/element'
-import strapi from '../../utils/strapi'
-import Page from '../../components/core/models/page'
-import { AxiosWrapper } from '../../utils/http.js'
+import strapi from '@/utils/strapi'
+import Element from 'core/models/element'
+import Page from 'core/models/page'
+import Work from 'core/models/work'
+import { AxiosWrapper, handleError } from '@/utils/http.js'
 import router from '@/router.js'
 
 export const actions = {
@@ -12,13 +13,21 @@ export const actions = {
     commit('previewWork', payload)
   },
   createWork ({ commit }, payload) {
-    strapi.createEntry('works').then(entry => {
-      router.replace({ name: 'editor', params: { workId: entry.id } })
-      // window.location = `${window.location.origin}/#/editor/${entry.id}`
-    })
-    // commit('createWork')
-    // commit('pageManager', { type: 'add' })
-    // commit('setEditingPage')
+    strapi.createEntry('works', new Work()).then(entry => {
+      const routeData = router.resolve({ name: 'editor', params: { workId: entry.id } })
+      window.open(routeData.href, '_blank')
+      // 如果希望不打开新 tab，可以注释上面面两行，启用下面一行的代码即可，不过不推荐。将编辑器单独起一个页面更有利于 vuex 的数据管理
+      // router.replace({ name: 'editor', params: { workId: entry.id } })
+    }).catch(handleError)
+  },
+  deleteWork ({ commit, dispatch, state }, workId) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      loading_name: 'deleteWork_loading',
+      successMsg: '删除作品成功',
+      customRequest: strapi.deleteEntry.bind(strapi)
+    }).delete('works', workId).catch(handleError)
   },
   updateWork ({ commit, state }, payload = {}) {
     // update work with strapi
@@ -28,31 +37,52 @@ export const actions = {
     }
     commit('setWork', work)
   },
-  saveWork ({ commit, dispatch, state }, payload = {}) {
-    // update work with strapi
-    const work = {
-      ...state.work,
-      ...payload
-    }
-
+  fetchWork ({ commit, state }, workId) {
+    return strapi.getEntry('works', workId).then(entry => {
+      commit('setWork', entry)
+      commit('setEditingPage')
+    }).catch(handleError)
+  },
+  fetchCount ({ commit, dispatch, state }, payload = { is_template: false }) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorksTotal',
+      actionPayloadExtra: {
+        isTemplate: payload.is_template
+      },
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works/count', payload).catch(handleError)
+  },
+  fetchWorks ({ commit, dispatch, state }, payload = { is_template: false, _limit: 10 }) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorks',
+      loading_name: 'fetchWorks_loading',
+      successMsg: '获取作品列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works', payload).catch(handleError)
+  },
+  fetchWorksWithForms ({ commit, dispatch, state }, workId) {
     new AxiosWrapper({
       dispatch,
       commit,
-      loading_name: 'saveWork_loading',
-      successMsg: '保存作品成功',
-      customRequest: strapi.updateEntry.bind(strapi)
-    }).put('works', state.work.id, work)
+      name: 'editor/setWorks',
+      loading_name: 'fetchWorks_loading',
+      successMsg: '获取作品表单列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works/has-forms', { is_template: false }).catch(handleError)
   },
-  fetchWork ({ commit, state }, workId) {
-    strapi.getEntry('works', workId).then(entry => {
-      commit('setWork', entry)
-      commit('setEditingPage')
-    })
-  },
-  fetchWorks ({ commit, state }, workId) {
-    strapi.getEntries('works', {}).then(entries => {
-      commit('setWorks', entries)
-    })
+  fetchWorkTemplates ({ commit, dispatch, state }, payload = { is_template: true, _limit: 10 }) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      name: 'editor/setWorkTemplates',
+      loading_name: 'fetchWorkTemplates_loading',
+      successMsg: '获取模板列表成功',
+      customRequest: strapi.getEntries.bind(strapi)
+    }).get('works', payload).catch(handleError)
   },
   /**
    *
@@ -63,7 +93,7 @@ export const actions = {
         "1565596393441": "姓名",
         "1565596397671": "学校"
     },
-    "formDetails": [
+    "formRecords": [
         {
             "id": 3,
             "form": {
@@ -115,7 +145,7 @@ export const actions = {
     }
    */
   fetchFormsOfWork ({ commit, state, dispatch }, workId) {
-    // TODO 考虑 return Promise
+    // 可以 return Promise
     new AxiosWrapper({
       dispatch,
       commit,
@@ -123,13 +153,79 @@ export const actions = {
       loading_name: 'queryFormsOfWork_loading',
       successMsg: '表单查询完毕'
     }).get(`/works/form/query/${workId}`)
+  },
+  setWorkAsTemplate ({ commit, state, dispatch }, workId) {
+    new AxiosWrapper({
+      dispatch,
+      commit,
+      // name: 'editor/formDetailOfWork',
+      loading_name: 'setWorkAsTemplate_loading',
+      successMsg: '设置为模板成功'
+    }).post(`/works/set-as-template/${workId || state.work.id}`)
+  },
+  useTemplate ({ commit, state, dispatch }, workId) {
+    return new AxiosWrapper({
+      dispatch,
+      commit,
+      // name: 'editor/formDetailOfWork',
+      loading_name: 'useTemplate_loading',
+      successMsg: '使用模板成功'
+    }).post(`/works/use-template/${workId}`)
   }
 }
 
 // mutations
 export const mutations = {
-  setWorks (state, works) {
-    state.works = works
+  /**
+   *
+   * @param {*} state
+   * @param {Object} payload
+   *
+    value example: [
+      {
+        "id": 1,
+        "name": "1567769149231.png",
+        "hash": "1660b11229e7473b90f99a9f9afe7675",
+        "sha256": "lKl7f_csUAgOjf0VRYkBZ64EcTjvt4Dt4beNIhELpTU",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": "6.57",
+        "url": "/uploads/1660b11229e7473b90f99a9f9afe7675.png",
+        "provider": "local",
+        "public_id": null,
+        "created_at": "2019-09-06T11:25:49.255Z",
+        "updated_at": "2019-09-06T11:25:49.261Z",
+        "related": []
+      }
+    ]
+   */
+  setWorkCover (state, { type, value }) {
+    const [cover] = value
+    state.work.cover_image_url = cover.url
+  },
+  setWorksTotal (state, { type, value, ...other }) {
+    const { isTemplate } = other
+    state.total[isTemplate ? 'templates' : 'works'] = value
+  },
+  /**
+   * payload: {
+   *  type:   @params {String} "editor/setWorks",
+   *  value:  @params {Array}  work list
+   * }
+   */
+  setWorks (state, { type, value }) {
+    value.sort((a, b) => b.id - a.id)
+    state.works = value
+  },
+  /**
+   * payload: {
+   *  type:   @params {String} "editor/setWorks",
+   *  value:  @params {Array}  work list
+   * }
+   */
+  setWorkTemplates (state, { type, value }) {
+    value.sort((a, b) => b.id - a.id)
+    state.workTemplates = value
   },
   setWork (state, work) {
     window.__work = work
@@ -137,11 +233,8 @@ export const mutations = {
       page.elements = page.elements.map(element => new Element(element))
       return new Page(page)
     })
-    state.work = work
+    state.work = new Work(work)
   },
-  // createWork (state) {
-  //   state.work = new Work()
-  // },
   previewWork (state, { type, value }) {},
   deployWork (state, { type, value }) {},
   formDetailOfWork (state, { type, value }) {

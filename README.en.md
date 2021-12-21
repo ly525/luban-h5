@@ -1,13 +1,69 @@
-English | [简体中文](./README.md)
+<p align="left">
+<a href="https://github.com/ly525/luban-h5/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ly525/luban-h5"></a>
+</p>
+
+[📖 Document](https://ly525.github.io/luban-h5/) | [📖简体中文](./README.md)
 
 ### What's LuBan-H5?
-> LuBan-H5 is a mobile page builder based on Vue.js, which is similar with http://www.eqxiu.com、[Baidu-H5](https://h5.bce.baidu.com/). It also supports parsing PSD file to HMTL5 Page
+> LuBan-H5 is a mobile page builder based on Vue.js, which is similar with [Amolink](www.amolink.com) [eqx](http://www.eqxiu.com)(it's a chinese website, you may need to translate the page). It also supports parsing PSD file to HMTL5 Page
 
-### Screenshots
-![image](https://user-images.githubusercontent.com/12668546/61186568-974b1c80-a699-11e9-831b-a87a506699b9.png)
+### Demo
+> [Preview Website](https://h5.luban-h5.com)
+
+<img src="https://s2.ax1x.com/2019/10/11/u7WzUx.gif" style="margin: 10px;" width="60%" />
+
+### let's go through it real quick.
+> in short
+
+```shell
+git clone https://github.com/ly525/luban-h5 && cd luban-h5
+# install dependencies &&  build front-end && build back-end
+./luban-h5.sh init
+
+./luban-h5.sh start
+
+# ./luban-h5.sh stop
+
+# after the installation finished
+# 1. visit ：http://localhost:1337/admin, create your admin account
+# 1.2 config the api permissions, see more here：https://ly525.github.io/luban-h5/en/getting-started/quick-start.html#_2-something-important
+
+# 2. front-end
+# 2.1 visit https://localhost:1337 to get the front-end of luban-h5
+```
+
+## Links
+- Documents
+    * [Chinese online document](https://ly525.github.io/luban-h5/zh/)
+    * [English](https://ly525.github.io/luban-h5/en/getting-started/introduction.html)
+
+- Source Code
+    * GitHub: https://GitHub.com/ly525/luban-h5
+    * [Gitee(China Mirror)](https://Gitee.com/ly525/luban-h5)
+
+- Community
+    * [Gitter](https://gitter.im/luban-h5/community)
+    * [吐个槽：For Chinese Users](https://support.qq.com/product/93432)
 
 
-###Features 功能
+- Ecosystem
+    * back-end integration
+        * [Strapi.js(official Node.js backend API for luban-h5)](/luban-h5/tree/dev/back-end/h5-api)
+        * [Spring Boot API Demo](https://github.com/luban-h5/Spring-Boot-API-for-editor)
+
+    * Custom components
+       * [Rapid development of custom component scaffolding](https://github.com/luban-h5/vue-cli-plugin-lbhc)
+
+    *  official components library
+        * [Slide](https://github.com/luban-h5-components/lbp-slide)
+        * [Normal Button(different from form-button)](https://github.com/luban-h5-components/lbc-button)
+
+    * Support Component/Auxiliary Component
+        * Image Gallery: For Quick Selection of images from the gallery
+        * [Text alignment-Repo(for Button text alignment)](https://github.com/luban-h5/lbs-text-align)
+
+
+### Features
 1. Editor
     - [x] Reference Line/GuideLine
     - [x] Adsorption Line
@@ -28,12 +84,13 @@ English | [简体中文](./README.md)
     - [x] Form Button
     - [x] Form Field
     - [x] Picture
-    - [ ] Background Image
-    - [ ] Video (Iframe format)
+    - [x] Background Image
+    - [x] Background Music
+    - [x] Video (Iframe format)
 
 3. enhanced function
     - [ ] parsing PSD file to HTML Page
-    - [ ] Photo Gallery
+    - [x] Photo Gallery
     - [ ] Third Party uncopyrighted Image Search
 
 
@@ -49,9 +106,7 @@ English | [简体中文](./README.md)
 
 ### Installs
 > proj: project root path
-
-  1. Front End
-      Editor: please refer to: [`project/front-end/h5/README.md`](https://github.com/ly525/luban-h5/blob/dev/front-end/h5/README.md)
+please refer to: [`Document/Quick Start`](https://ly525.github.io/luban-h5/en/getting-started/quick-start.html?language=en-us)
 
 
 ---
@@ -60,7 +115,10 @@ English | [简体中文](./README.md)
 1. `lbp-`: `lu-ban-plugin-`, means `Luban H5 plugin`, location: `proj/front-end/h5/src/components/plugins`
 
 
-#### Technology Stack (current)
+#### Build With (current)
   1. Front end: Vue.js
   2. Back End: Strapi
   3. Storage: Sqlite
+
+
+Read more here [Online English Document](https://ly525.github.io/luban-h5)
