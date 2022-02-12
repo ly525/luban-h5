@@ -57,9 +57,9 @@ yarn config get registry
 # -> https://registry.yarnpkg.com
 
 # 改成 taobao 的源：
-yarn config set registry https://registry.npm.taobao.org
+yarn config set registry https://registry.npmmirror.com
 # -> yarn config v0.15.0
-# -> success Set "registry" to "https://registry.npm.taobao.org".
+# -> success Set "registry" to "https://registry.npmmirror.com".
 
 # 看到 succes 表示安装完毕
 ```
