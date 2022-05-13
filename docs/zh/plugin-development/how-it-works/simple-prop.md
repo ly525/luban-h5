@@ -77,7 +77,7 @@
 props: {
   imgSrc: {
     type: String,
-    defualt: '',
+    default: '',
     editor: {
       type: 'a-input'
       // 调用 ant-design-vue 的 input(输入框) 组件来配置 imgSrc，直接复制粘贴图片的链接即可
