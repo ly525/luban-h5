@@ -16,6 +16,6 @@ includes
 3. 模板列表模块
 4. 预览模块、
 
-## Getting Started
+## 快速上手
 
 <a href="https://ly525.github.io/luban-h5/zh/getting-started/quick-start.html" target="_blank">快速上手指南</a>
