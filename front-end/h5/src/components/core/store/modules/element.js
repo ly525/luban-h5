@@ -66,6 +66,9 @@ export const mutations = {
     const len = elements.length
 
     switch (type) {
+      case 'setStartType':
+        state.startType = value
+        break
       case 'add':
         const vm = getVM(value.name)
         const basicElement = vm.$options

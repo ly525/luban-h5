@@ -64,7 +64,7 @@ module.exports = {
   outputDir: page.outputDir,
   publicPath: page.publicPath,
   lintOnSave: process.env.NODE_ENV !== 'production',
-  productionSourceMap: process.env.NODE_ENV !== 'production',
+  // productionSourceMap: process.env.NODE_ENV !== 'production',
   pages: { index: page },
   devServer: {
     proxy: {

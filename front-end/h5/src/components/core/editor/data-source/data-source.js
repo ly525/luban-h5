@@ -109,7 +109,7 @@ export default {
               description="使用 {{DC.[keyPath]}} 消费数据。比如输入框内容为 下载了{{DC.count}}次 => 下载了count次"
               type="info"
             />
-            <codemirror value={JSON.stringify(LuBanDC, null, 2)}  />
+            <codemirror value={JSON.stringify(LuBanDC, null, 2)} />
 
           </template>
         </a-popover>
@@ -131,17 +131,17 @@ export default {
       this.toggleAddDialog()
       switch (actionType) {
         case 'edit':
-          this.activeDataSource = {...ds}
+          this.activeDataSource = { ...ds }
           this.dataSourceManager({
             type: actionType,
-            value: {...ds }
+            value: { ...ds }
           })
           break
         case 'delete':
         case 'add':
           this.dataSourceManager({
             type: actionType,
-            value: {...ds }
+            value: { ...ds }
           })
           break
       }

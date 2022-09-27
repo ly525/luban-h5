@@ -18,7 +18,8 @@ const state = {
   },
   workTemplates: [],
   scaleRate: 1,
-  scripts: []
+  scripts: [],
+  startType: ''
 }
 
 // getters

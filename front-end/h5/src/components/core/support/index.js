@@ -19,6 +19,7 @@ import VideoGallery from './video-gallery/gallery.js'
 import LbsExcelEditor from './excel'
 import ColorsPanel from './colors-panel'
 import LbpTextAlign from '@luban-h5/lbs-text-align'
+// eslint-disable-next-line no-unused-vars
 import tinymce from 'tinymce/tinymce'
 import 'tinymce/themes/silver/theme.min.js'
 import 'tinymce/skins/ui/oxide/skin.min.css'

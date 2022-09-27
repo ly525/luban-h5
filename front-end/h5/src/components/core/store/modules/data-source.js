@@ -21,7 +21,7 @@ export const actions = {
       })
     }
 
-    function updateDs(ds) {
+    function updateDs (ds) {
       const targetDsIdx = state.work.datasources.findIndex(item => item.id === ds.id)
       state.work.datasources.splice(targetDsIdx, 1, new Datasource(ds))
     }
@@ -104,6 +104,6 @@ export const mutations = {
       return new Page(page)
     })
     state.dataSource = new Datasource(dataSource)
-  },
+  }
 
 }
