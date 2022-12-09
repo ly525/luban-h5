@@ -10587,10 +10587,10 @@ tinycolor2@^1.4.1:
   resolved "https://registry.nlark.com/tinycolor2/download/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
   integrity sha1-P2pNEHGtB2dtf6Ry4frECnGdiAM=
 
-tinymce@^5.7.0:
-  version "5.8.2"
-  resolved "https://registry.nlark.com/tinymce/download/tinymce-5.8.2.tgz#54eb8160b697796c3b52282e648d9d12b1a7399a"
-  integrity sha1-VOuBYLaXeWw7UiguZI2dErGnOZo=
+tinymce@^5.10.7:
+  version "5.10.7"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.10.7.tgz#d89d446f1962f2a1df6b2b70018ce475ec7ffb80"
+  integrity sha512-9UUjaO0R7FxcFo0oxnd1lMs7H+D0Eh+dDVo5hKbVe1a+VB0nit97vOqlinj+YwgoBDt6/DSCUoWqAYlLI8BLYA==
 
 tmp@^0.0.33:
   version "0.0.33"
