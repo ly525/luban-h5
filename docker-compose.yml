@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  luban:
+    build: .
+    ports:
+      - '1234:1337'
+    volumes:
+      - .:/app
+    command: ["/app/luban-h5.sh", "start"]
