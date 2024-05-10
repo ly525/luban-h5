@@ -5,7 +5,7 @@
 
 ## 安装
 
-### 使用preset自动安装插件
+### 使用 preset 自动安装插件
 ```
 vue create --preset luban-h5/vue-cli-plugin-lbhc my-luban-component-demo
 ```
