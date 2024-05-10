@@ -1,7 +1,7 @@
-# Oracle 适配([Strapi.js](https://strapi.io/))
-> 本文作者[shaxm](https://github.com/shaxm), 特别感谢他的辛勤写作和探索
+# Oracle 适配 ([Strapi.js](https://strapi.io/))
+> 本文作者 [shaxm](https://github.com/shaxm)，特别感谢他的辛勤写作和探索
 
-以下适用于luban-h5的v1.8.1 以上版本
+以下适用于 luban-h5 的 v1.8.1 以上版本
 [1.8.1](https://github.com/ly525/luban-h5/compare/v1.8.0...v1.8.1) (2020-01-12)
 
 1. 安装 oracledb 模块
@@ -12,7 +12,7 @@ npm install oracledb
 
 2. back-end\h5-api\config\environments\development\database.json
 
-> 注：username就是数据库的用户名，由于框架原因，创建数据库用户时要注意，用户名前后必须带半角双引号。
+> 注：username 就是数据库的用户名，由于框架原因，创建数据库用户时要注意，用户名前后必须带半角双引号。
 
 
 ```javascript
