@@ -1,7 +1,7 @@
-# 原理篇:简单属性编辑器
+# 原理篇：简单属性编辑器
 > 自定义组件/插件/Plugin 原理概览
 
-## [鲁班H5 按钮组件](https://github.com/luban-h5-components/lbc-button)
+## [鲁班 H5 按钮组件](https://github.com/luban-h5-components/lbc-button)
 - 这个组件本质上就是一个 vue 组件
 - [核心代码](https://github.com/luban-h5-components/lbc-button/blob/master/src/component/entry.js)
   - 可以看出来，核心代码其实非常简单，和大家平时写按钮组件差不多，基本上是配置一些 props，比如颜色、字体、内容、背景色、前景色、border 等
@@ -29,14 +29,14 @@
       },
     }
     ```
-      - 可以看到相对于平时我们写的 Vue 或者 React 组件，这里的 color 的 prop 多了一个 key: `editor`
-      - 这个 `color.editor` 就是 颜色的`属性编辑器`了，因为鲁班默认集成了 element-ui 的颜色选择器组件，因此我们可以直接使用 `'el-color-picker'` 来作为颜色属性的自定义编辑器
-      - 当然，鲁班也集成了 ant-design-vue 的全部组件，但因为 ant-design-vue 的颜色选择器目前功能上没有 element-ui 的颜色选择器强大（不支持透明度），因此我们选择了 element-ui 的颜色选择器
+      - 可以看到相对于平时我们写的 Vue 或者 React 组件，这里的 color 的 prop 多了一个 key：`editor`
+      - 这个 `color.editor` 就是颜色的 `属性编辑器` 了，因为鲁班默认集成了 element-ui 的颜色选择器组件，因此我们可以直接使用 `'el-color-picker'` 来作为颜色属性的自定义编辑器
+      - 当然，鲁班也集成了 ant-design-vue 的全部组件，但因为 ant-design-vue 的颜色选择器目前功能上没有 element-ui 的颜色选择器强大 (不支持透明度)，因此我们选择了 element-ui 的颜色选择器
 
 
-  - 在把`按钮` 从左侧`拖拽放置`到 `编辑器`中间的画布上的时候，鲁班会自动执行如下代码：
-    - 遍历`按钮组件`的`props`
-    - 构造 pluginProps 对象，作为画布中按钮元素的描述信息（也是数据库中存储的信息）
+  - 在把 `按钮` 从左侧 `拖拽放置` 到 `编辑器` 中间的画布上的时候，鲁班会自动执行如下代码：
+    - 遍历 `按钮组件` 的 `props`
+    - 构造 pluginProps 对象，作为画布中按钮元素的描述信息 (也是数据库中存储的信息)
         ```js
         // init prop of plugin
         getDefaultPluginProps (props) {
