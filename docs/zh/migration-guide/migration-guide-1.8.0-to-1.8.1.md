@@ -1,13 +1,13 @@
-# 鲁班H5 v.1.8.0 至 v.1.8.1 迁移指南
-升级`鲁班H5`版本至 `v.1.8.1`.
+# 鲁班 H5 v.1.8.0 至 v.1.8.1 迁移指南
+升级 `鲁班H5` 版本至 `v.1.8.1`。
 
 主要修改是：
-- 将 strapi依赖从 beta.17.x 升级至 beta.18.4， 主要为了修复 [图片上传之后，返回的response url 中包含 localhost:1337](https://github.com/strapi/strapi/issues/4791)
+- 将 strapi 依赖从 beta.17.x 升级至 beta.18.4，主要为了修复[图片上传之后，返回的 response url 中包含 localhost:1337](https://github.com/strapi/strapi/issues/4791)
 
-- 更多请参见 Strapi 升级指南: [Strapi Migration guide from beta.17+ to beta.18](https://strapi.io/documentation/3.0.0-beta.x/migration-guide/migration-guide-beta.17-to-beta.18.html)
+- 更多请参见 Strapi 升级指南：[Strapi Migration guide from beta.17+ to beta.18](https://strapi.io/documentation/3.0.0-beta.x/migration-guide/migration-guide-beta.17-to-beta.18.html)
 
 
-将 鲁班H5 升级到`v.1.8.1` 比较简单，只要执行如下命令即可：
+将鲁班 H5 升级到 `v.1.8.1` 比较简单，只要执行如下命令即可：
 
 ```bash
 # clone 最新代码
