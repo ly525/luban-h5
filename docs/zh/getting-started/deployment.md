@@ -1,10 +1,10 @@
 # 部署
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+> 欢迎大家到[鲁班 H5-社区](https://support.qq.com/products/93432/)交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 ## 阿里云/腾讯云/Digital Ocean
-> 以 Centos 为例，Ubuntu等其它发行版，请自行调整
+> 以 Centos 为例，Ubuntu 等其它发行版，请自行调整
 
-1. 首先需要安装一些基础的软件包，请自行安装（具体参照其官网文档）
+1. 首先需要安装一些基础的软件包，请自行安装 (具体参照其官网文档)
 >  `node、npm、yarn、pm2`
 
   ```bash
@@ -46,7 +46,7 @@ cd luban-h5
 
 ---
 
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+> 欢迎大家到[鲁班 H5-社区](https://support.qq.com/products/93432/)交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 
 <Vssue issueId="7" />
