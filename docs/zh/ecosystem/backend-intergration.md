@@ -2,19 +2,19 @@
 [[toc]]
 
 ## 需求
-- 鲁班H5 后端(Node.js)  ->  Java(Spring Boot)/PHP 等
+- 鲁班 H5 后端 (Node.js)  ->  Java(Spring Boot)/PHP 等
 
 ## 解决方案
-> 目前鲁班H5的后端是基于 Node.js 写的，社区的很多小伙伴反馈，希望能够提供 Spring Boot 或者 PHP 等其它语言驱动的后端API。因为精力有限，我们提供了如下的解决方案，来尝试解决这个需求：
-1. 提供[基于 Swagger UI 的后端API 文档](https://h5.luban-h5.com/documentation/)，小伙伴只要参照参照 API 文档，使用 Spring Boot 或者 其它语言实现相同的API即可
+> 目前鲁班 H5 的后端是基于 Node.js 写的，社区的很多小伙伴反馈，希望能够提供 Spring Boot 或者 PHP 等其它语言驱动的后端 API。因为精力有限，我们提供了如下的解决方案，来尝试解决这个需求：
+1. 提供[基于 Swagger UI 的后端 API 文档](https://h5.luban-h5.com/documentation/)，小伙伴只要参照参照 API 文档，使用 Spring Boot 或者其它语言实现相同的 API 即可
 ![image](https://user-images.githubusercontent.com/12668546/73250033-04b33a80-41f1-11ea-9688-96fe03dccbbe.png)
 
-2. 社区有小伙伴贡献了基于 Spring Boot 的API项目，如下，大家可以根据自己的需求，跟进这两个项目，非常欢迎提 PR 或 相关 issue：
+2. 社区有小伙伴贡献了基于 Spring Boot 的 API 项目，如下，大家可以根据自己的需求，跟进这两个项目，非常欢迎提 PR 或相关 issue：
     - [springboot2-jpa-api-for-luban](https://github.com/luban-h5/springboot2-jpa-api-for-luban) ![GitHub stars](https://img.shields.io/github/stars/luban-h5/springboot2-jpa-api-for-luban.svg?style=social&label=Star&maxAge=2592000) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
     - [springboot2-mybatis-plus-api-for-luban](https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban) ![GitHub stars](https://img.shields.io/github/stars/luban-h5/springboot2-mybatis-plus-api-for-luban.svg?style=social&label=Star&maxAge=2592000) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
 
-- WIP: Working in Progress 迭代中
-- 版权声明：鲁班H5 版权所有，禁止任何形式的转载和抄袭，侵权必究
+- WIP：Working in Progress 迭代中
+- 版权声明：鲁班 H5 版权所有，禁止任何形式的转载和抄袭，侵权必究
 
 
 ## 数据库表
@@ -151,7 +151,7 @@ WorkForm Table 结构
 ```
 
 ####
-解释：Work  与 FormCollection 的关系是 一对多的关系，一个作品可以有很多关联的表单统计记录。
+解释：Work 与 FormCollection 的关系是一对多的关系，一个作品可以有很多关联的表单统计记录。
 
 ---
 
@@ -394,5 +394,5 @@ WorkForm Table 结构
 ## 贡献代码或自行开发
 ### 前提准备
 
-1. 了解鲁班H5 编辑器的后端 Model
-1. 了解鲁班H5 编辑器的后端 接口
+1. 了解鲁班 H5 编辑器的后端 Model
+1. 了解鲁班 H5 编辑器的后端接口
