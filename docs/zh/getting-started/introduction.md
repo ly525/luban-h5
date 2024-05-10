@@ -17,13 +17,13 @@
 - [代码目录说明](#代码目录说明)
   * [前端部分](#前端部分) -->
 
-### 鲁班H5是什么？
-鲁班H5是基于Vue2.0开发的，通过拖拽的形式，生成页面的工具，类似[易企秀](http://www.eqxiu.com/)、[百度 H5](https://h5.baidu.com) 等工具
+### 鲁班 H5 是什么？
+鲁班 H5 是基于 Vue2.0 开发的，通过拖拽的形式，生成页面的工具，类似[易企秀](http://www.eqxiu.com/)、[百度 H5](https://h5.baidu.com) 等工具
 
 ![image](https://s2.ax1x.com/2019/10/11/u7WzUx.gif)
 
 ---
 
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+> 欢迎大家到[鲁班 H5-社区](https://support.qq.com/products/93432/)交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 <Vssue issueId="12" />
