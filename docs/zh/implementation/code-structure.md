@@ -1,7 +1,7 @@
 # 代码目录说明
 
 ## 前端目录
-推荐先看 router.js, 再从 front-end/h5/src/views/Editor.vue 开始了解，这里是编辑器的入口
+推荐先看 router.js，再从 front-end/h5/src/views/Editor.vue 开始了解，这里是编辑器的入口
 
 ```JavaScript
 front-end/h5/src                # 前端源码目录：包含编辑器、作品管理、表单统计等部分
@@ -95,7 +95,7 @@ front-end/h5/src                # 前端源码目录：包含编辑器、作品�
 
 ---
 
-> 欢迎大家到[鲁班H5-社区](https://support.qq.com/products/93432/) 交流，在这里可以提问、反馈意见和建议，与作者直接互动
+> 欢迎大家到[鲁班 H5-社区](https://support.qq.com/products/93432/)交流，在这里可以提问、反馈意见和建议，与作者直接互动
 
 
 <Vssue issueId="9" />
