@@ -5,11 +5,13 @@ import langMixin from 'core/mixins/i18n'
 import dragMixin from 'core/mixins/drag'
 import loadPluginsMixin from 'core/plugins/index'
 import { mapActions } from 'vuex'
+import collapseItem from './draggable/collapseItem.vue'
 
 export default {
   mixins: [langMixin, dragMixin, loadPluginsMixin],
   data: () => ({
-    npmPackages: []
+    npmPackages: [],
+    startType: ''
   }),
   methods: {
     ...mapActions('editor', [
@@ -113,6 +115,30 @@ export default {
     return (
       <a-row gutter={10} style="max-height: calc(100vh - 150px);overflow: auto;margin:0;">
         <UsageTip />
+        <collapseItem
+          list={[].concat(this.pluginsList, this.npmPackages)}
+          onGenerateKey={(list, index) => {
+            // 生成key值
+            const key = list[index].type + '_' + new Date().getTime()
+            this.$set(list, index, {
+              ...list[index],
+              key,
+              model: key
+            })
+            // if (this.noModel.includes(list[index].type)) {
+            //   // 删除不需要的model属性
+            //   delete list[index].model
+            // }
+          }}
+          onStart={type => {
+            debugger
+            this.startType = type
+            this.elementManager({
+              type: 'setStartType',
+              value: type
+            })
+          }}
+        />
         {
           [].concat(this.pluginsList, this.npmPackages)
             .filter(plugin => plugin.visible)
