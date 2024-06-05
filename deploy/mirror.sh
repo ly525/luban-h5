@@ -17,7 +17,7 @@
 # NPM
 # ==========================================================
 
-npm set registry "https://registry.npm.taobao.org"
+npm set registry "https://registry.npmmirror.com"
 npm set disturl "https://npm.taobao.org/dist"
 
 npm set chromedriver-cdnurl "https://npm.taobao.org/mirrors/chromedriver"
@@ -57,7 +57,7 @@ npm cache clean --force # clean npm cache
 # YARN
 # ==========================================================
 
-yarn config set registry "https://registry.npm.taobao.org"
+yarn config set registry "https://registry.npmmirror.com"
 yarn config set disturl "https://npm.taobao.org/dist"
 yarn config set chromedriver-cdnurl "https://npm.taobao.org/mirrors/chromedriver"
 yarn config set couchbase-binary-host-mirror "https://npm.taobao.org/mirrors/couchbase/v{version}"
