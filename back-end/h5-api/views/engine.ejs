@@ -19,16 +19,16 @@
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <meta content="email=no" name="format-detection">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuex/dist/vuex.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/dist/css/swiper.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper/dist/js/swiper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper-animation@2.0.2/build/swiper-animation.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex/dist/vuex.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/dist/css/swiper.min.css">
+  <script src="https://unpkg.com/swiper/dist/js/swiper.min.js"></script>
+  <script src="https://unpkg.com/swiper-animation@2.0.2/build/swiper-animation.min.js"></script>
   <!-- <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js" async></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/v-charts/lib/index.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-charts/lib/style.min.css">
+  <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+  <script src="https://unpkg.com/v-charts/lib/index.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/v-charts/lib/style.min.css">
   <script>window.__work = <%- JSON.stringify(work) %></script>
   <script src="/engine-assets/engine.umd.js"></script>
   <style>
@@ -249,7 +249,7 @@
       }
 
       function doPCActions() {
-        loadJS('https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js', drawQRcode);
+        loadJS('https://unpkg.com/qrcode/build/qrcode.min.js', drawQRcode);
       }
 
       isMobile() ? doMobileActions() : doPCActions();
