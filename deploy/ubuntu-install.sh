@@ -156,9 +156,9 @@ function install_node {
   else
     installing node
     # source $HOME/.nvm/nvm.sh;
-    export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/;
+    export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node/;
     # gyp WARN download NVM_NODEJS_ORG_MIRROR is deprecated and will be removed in node-gyp v4, please use NODEJS_ORG_MIRROR
-    export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/;
+    export NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node/;
     nvm install stable
     nvm use stable
     nvm alias default stable
