@@ -32,6 +32,7 @@ npm install pm2 -g
 # just run the following code on the server
 git clone https://github.com/ly525/luban-h5.git
 cd luban-h5
+# If you encounter installation errors with sqlite3, node-gyp, etc., please run ./deploy/mirror.sh to configure npm registry to Alibaba Cloud Mirror (especially for resolving binary package installation issues)
 ./luban-h5.sh init  # installation dependency, build front-end and back-end
 ./luban-h5.sh start # just start the service
 ./luban-h5.sh stop # stop the service

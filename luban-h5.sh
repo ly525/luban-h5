@@ -56,7 +56,7 @@ Usage:
 
 e.g.
   ./luban-h5.sh version
-  ./luban-h5.sh init
+  ./luban-h5.sh init # 如果您遇到 sqlite3、node-gpy 等安装报错问题，请您执行 ./deploy/mirror.sh 配置npm 镜像为阿里云镜像
   ./luban-h5.sh start
   ./luban-h5.sh stop
 EOT

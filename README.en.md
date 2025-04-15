@@ -18,6 +18,7 @@
 ```shell
 git clone https://github.com/ly525/luban-h5 && cd luban-h5
 # install dependencies &&  build front-end && build back-end
+# If you encounter installation errors with sqlite3, node-gyp, etc., please run ./deploy/mirror.sh to configure npm registry to Alibaba Cloud Mirror
 ./luban-h5.sh init
 
 ./luban-h5.sh start

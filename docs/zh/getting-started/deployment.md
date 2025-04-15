@@ -28,6 +28,7 @@
 ```bash
 git clone https://github.com/ly525/luban-h5.git
 cd luban-h5
+# 如果您遇到 sqlite3、node-gpy 等安装报错问题，请您执行 ./deploy/mirror.sh 配置npm 镜像为阿里云镜像(特别是为了解决二进制包安装问题)
 ./luban-h5.sh init  # 安装依赖，构建前后端
 ./luban-h5.sh start # 启动项目即可
 ./luban-h5.sh stop  # 停止服务

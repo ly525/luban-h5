@@ -31,7 +31,7 @@
 
 - `fork` 本项目到你的 GitHub;
 - `git clone` 你 `fork` 的项目;
-- 安装依赖 `./luban-h5.sh init`;
+- 安装依赖 `./luban-h5.sh init`; # 如果您遇到 sqlite3、node-gpy 等安装报错问题，请您执行 ./deploy/mirror.sh 配置npm 镜像为阿里云镜像(特别是为了解决二进制包安装问题)
 - 从master新建分支并检出新分支 `git checkout -b feat/(your-feature-name)` / `git checkout -b bug/(your-bug-name)`;
 - 进行修改，确保负复杂逻辑和函数有相关的 `注释`, 请自测确保没有问题;
 - `git push` 你的本地代码到 GitHub;

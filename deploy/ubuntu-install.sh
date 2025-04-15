@@ -342,6 +342,8 @@ function install_luban-h5 {
     # pwd
     # success luban-h5
 
+    # If you encounter installation errors with sqlite3, node-gyp, etc., please run ./deploy/mirror.sh to configure npm registry to Alibaba Cloud Mirror (especially for resolving binary package installation issues)
+    # 如果您遇到 sqlite3、node-gpy 等安装报错问题，请您执行 ./deploy/mirror.sh 配置npm 镜像为阿里云镜像（特别是为了解决二进制安装包安装问题）
     ./luban-h5.sh init
     ./luban-h5.sh start
   fi
