@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>后端集成说明 | 鲁班H5</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <meta name="description" content="前后端均开源的H5制作平台，类似易企秀、百度H5、Maka、人人秀">
+    <link rel="preload" href="/luban-h5/assets/css/0.styles.e5c129e4.css" as="style"><link rel="preload" href="/luban-h5/assets/js/app.2656929f.js" as="script"><link rel="preload" href="/luban-h5/assets/js/2.ad1aa2c5.js" as="script"><link rel="preload" href="/luban-h5/assets/js/23.a63a903d.js" as="script"><link rel="prefetch" href="/luban-h5/assets/js/10.f5896d88.js"><link rel="prefetch" href="/luban-h5/assets/js/11.a3b145db.js"><link rel="prefetch" href="/luban-h5/assets/js/12.5d98ecbf.js"><link rel="prefetch" href="/luban-h5/assets/js/13.354490db.js"><link rel="prefetch" href="/luban-h5/assets/js/14.d3c3996d.js"><link rel="prefetch" href="/luban-h5/assets/js/15.d636793a.js"><link rel="prefetch" href="/luban-h5/assets/js/16.a083a69c.js"><link rel="prefetch" href="/luban-h5/assets/js/17.69e64446.js"><link rel="prefetch" href="/luban-h5/assets/js/18.f57f9c9f.js"><link rel="prefetch" href="/luban-h5/assets/js/19.da42865c.js"><link rel="prefetch" href="/luban-h5/assets/js/20.83342659.js"><link rel="prefetch" href="/luban-h5/assets/js/21.aeea7e30.js"><link rel="prefetch" href="/luban-h5/assets/js/22.c984347b.js"><link rel="prefetch" href="/luban-h5/assets/js/24.b004e0ae.js"><link rel="prefetch" href="/luban-h5/assets/js/25.29a7c53c.js"><link rel="prefetch" href="/luban-h5/assets/js/26.e96494f0.js"><link rel="prefetch" href="/luban-h5/assets/js/27.8de22cf2.js"><link rel="prefetch" href="/luban-h5/assets/js/28.5a8383f1.js"><link rel="prefetch" href="/luban-h5/assets/js/29.f70e9251.js"><link rel="prefetch" href="/luban-h5/assets/js/3.94c9fd12.js"><link rel="prefetch" href="/luban-h5/assets/js/30.0716f1b3.js"><link rel="prefetch" href="/luban-h5/assets/js/31.d437d282.js"><link rel="prefetch" href="/luban-h5/assets/js/32.6c37c764.js"><link rel="prefetch" href="/luban-h5/assets/js/33.d4768cc9.js"><link rel="prefetch" href="/luban-h5/assets/js/34.f5c7f972.js"><link rel="prefetch" href="/luban-h5/assets/js/35.408f4f10.js"><link rel="prefetch" href="/luban-h5/assets/js/36.75fa1df0.js"><link rel="prefetch" href="/luban-h5/assets/js/37.b0d3ec0f.js"><link rel="prefetch" href="/luban-h5/assets/js/38.d22b4f0c.js"><link rel="prefetch" href="/luban-h5/assets/js/39.c38f8bc4.js"><link rel="prefetch" href="/luban-h5/assets/js/4.0efcb621.js"><link rel="prefetch" href="/luban-h5/assets/js/40.f5798b3b.js"><link rel="prefetch" href="/luban-h5/assets/js/41.2a96eee4.js"><link rel="prefetch" href="/luban-h5/assets/js/42.f7e93f71.js"><link rel="prefetch" href="/luban-h5/assets/js/43.99d66797.js"><link rel="prefetch" href="/luban-h5/assets/js/44.88cb39ba.js"><link rel="prefetch" href="/luban-h5/assets/js/5.506fc07a.js"><link rel="prefetch" href="/luban-h5/assets/js/6.6c3213dc.js"><link rel="prefetch" href="/luban-h5/assets/js/7.8501796b.js"><link rel="prefetch" href="/luban-h5/assets/js/8.3553d759.js"><link rel="prefetch" href="/luban-h5/assets/js/9.1e997795.js">
+    <link rel="stylesheet" href="/luban-h5/assets/css/0.styles.e5c129e4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/luban-h5/zh/" class="home-link router-link-active"><!----> <span class="site-name">鲁班H5</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://h5.luban.website" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  首页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/luban-h5/zh/ecosystem/" class="nav-link router-link-active">
+  生态
+</a></div><div class="nav-item"><a href="https://github.com/ly525/luban-h5/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  发布日志
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://h5.luban.website/documentation/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  后端API文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/luban-h5/" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/luban-h5/zh/ecosystem/backend-intergration.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/ly525/luban-h5" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://h5.luban.website" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  首页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/luban-h5/zh/ecosystem/" class="nav-link router-link-active">
+  生态
+</a></div><div class="nav-item"><a href="https://github.com/ly525/luban-h5/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  发布日志
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://h5.luban.website/documentation/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  后端API文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/luban-h5/" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/luban-h5/zh/ecosystem/backend-intergration.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/ly525/luban-h5" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>🚀 Getting started</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/luban-h5/zh/getting-started/introduction.html" class="sidebar-link">简介</a></li><li><a href="/luban-h5/zh/getting-started/features.html" class="sidebar-link">Features</a></li><li><a href="/luban-h5/zh/getting-started/quick-start.html" class="sidebar-link">快速开始</a></li><li><a href="/luban-h5/zh/getting-started/script.html" class="sidebar-link">脚本/动作系统</a></li><li><a href="/luban-h5/zh/getting-started/deployment.html" class="sidebar-link">部署</a></li><li><a href="/luban-h5/zh/getting-started/discussion.html" class="sidebar-link">社区与交流群</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>🤝社区生态-周边建设</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/luban-h5/zh/ecosystem/" aria-current="page" class="sidebar-link">概览</a></li><li><a href="/luban-h5/zh/ecosystem/backend-intergration.html" aria-current="page" class="active sidebar-link">后端集成说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/luban-h5/zh/ecosystem/backend-intergration.html#需求" class="sidebar-link">需求</a></li><li class="sidebar-sub-header"><a href="/luban-h5/zh/ecosystem/backend-intergration.html#解决方案" class="sidebar-link">解决方案</a></li><li class="sidebar-sub-header"><a href="/luban-h5/zh/ecosystem/backend-intergration.html#数据库表" class="sidebar-link">数据库表</a></li><li class="sidebar-sub-header"><a href="/luban-h5/zh/ecosystem/backend-intergration.html#接口实现思路-伪代码" class="sidebar-link">接口实现思路 + 伪代码</a></li><li class="sidebar-sub-header"><a href="/luban-h5/zh/ecosystem/backend-intergration.html#贡献代码或自行开发" class="sidebar-link">贡献代码或自行开发</a></li></ul></li><li><a href="/luban-h5/zh/ecosystem/database-oracle.html" class="sidebar-link">Oracle 适配 (Strapi.js)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>🔌插件/自定义组件开发(Alpha)</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/luban-h5/zh/plugin-development/" class="sidebar-link">概览</a></li><li><a href="/luban-h5/zh/plugin-development/how-it-works/simple-prop.html" class="sidebar-link">原理篇：简单属性编辑器</a></li><li><a href="/luban-h5/zh/plugin-development/how-it-works/custom-editor-single-prop.html" class="sidebar-link">原理篇：单属性自定义编辑器</a></li><li><a href="/luban-h5/zh/plugin-development/how-it-works/custom-editor-multiple-props.html" class="sidebar-link">原理篇：多属性自定义编辑器</a></li><li><a href="/luban-h5/zh/plugin-development/quick-start.html" class="sidebar-link">快速开始</a></li><li><a href="/luban-h5/zh/plugin-development/cli-params.html" class="sidebar-link">脚手架-命令行参数说明</a></li><li><a href="/luban-h5/zh/plugin-development/plugin-default-inject-props.html" class="sidebar-link">组件默认属性</a></li><li><a href="/luban-h5/zh/plugin-development/reference.html" class="sidebar-link">参考资料</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>迁移</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/luban-h5/zh/migration-guide/" class="sidebar-link">迁移指南</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>💡实现原理</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/luban-h5/zh/implementation/code-structure.html" class="sidebar-link">代码目录说明</a></li><li><a href="/luban-h5/zh/implementation/form-submit.html" class="sidebar-link">表单提交</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="后端集成说明"><a href="#后端集成说明" class="header-anchor">#</a> 后端集成说明</h1> <p></p><div class="table-of-contents"><ul><li><a href="#需求">需求</a></li><li><a href="#解决方案">解决方案</a></li><li><a href="#数据库表">数据库表</a><ul><li><a href="#work-表-h5-作品">Work 表：H5 作品</a></li><li><a href="#workform-表单收集表">WorkForm：表单收集表</a></li></ul></li><li><a href="#接口实现思路-伪代码">接口实现思路 + 伪代码</a></li><li><a href="#贡献代码或自行开发">贡献代码或自行开发</a><ul><li><a href="#前提准备">前提准备</a></li></ul></li></ul></div><p></p> <h2 id="需求"><a href="#需求" class="header-anchor">#</a> 需求</h2> <ul><li>鲁班 H5 后端 (Node.js)  -&gt;  Java(Spring Boot)/PHP 等</li></ul> <h2 id="解决方案"><a href="#解决方案" class="header-anchor">#</a> 解决方案</h2> <blockquote><p>目前鲁班 H5 的后端是基于 Node.js 写的，社区的很多小伙伴反馈，希望能够提供 Spring Boot 或者 PHP 等其它语言驱动的后端 API。因为精力有限，我们提供了如下的解决方案，来尝试解决这个需求：</p></blockquote> <ol><li><p>提供<a href="https://h5.luban.website/documentation/" target="_blank" rel="noopener noreferrer">基于 Swagger UI 的后端 API 文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，小伙伴只要参照参照 API 文档，使用 Spring Boot 或者其它语言实现相同的 API 即可
+<img src="https://user-images.githubusercontent.com/12668546/73250033-04b33a80-41f1-11ea-9688-96fe03dccbbe.png" alt="image"></p></li> <li><p>社区有小伙伴贡献了基于 Spring Boot 的 API 项目，如下，大家可以根据自己的需求，跟进这两个项目，非常欢迎提 PR 或相关 issue：</p> <ul><li><a href="https://github.com/luban-h5/springboot2-jpa-api-for-luban" target="_blank" rel="noopener noreferrer">springboot2-jpa-api-for-luban<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <img src="https://img.shields.io/github/stars/luban-h5/springboot2-jpa-api-for-luban.svg?style=social&amp;label=Star&amp;maxAge=2592000" alt="GitHub stars"> <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></li> <li><a href="https://github.com/luban-h5/springboot2-mybatis-plus-api-for-luban" target="_blank" rel="noopener noreferrer">springboot2-mybatis-plus-api-for-luban<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <img src="https://img.shields.io/github/stars/luban-h5/springboot2-mybatis-plus-api-for-luban.svg?style=social&amp;label=Star&amp;maxAge=2592000" alt="GitHub stars"> <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></li></ul></li></ol> <ul><li>WIP：Working in Progress 迭代中</li> <li>版权声明：鲁班 H5 版权所有，禁止任何形式的转载和抄袭，侵权必究</li></ul> <h2 id="数据库表"><a href="#数据库表" class="header-anchor">#</a> 数据库表</h2> <h3 id="work-表-h5-作品"><a href="#work-表-h5-作品" class="header-anchor">#</a> Work 表：H5 作品</h3> <h5 id="建表语句"><a href="#建表语句" class="header-anchor">#</a> 建表语句</h5> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span><span class="token keyword">work</span><span class="token punctuation">`</span><span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span><span class="token keyword">work</span><span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>title<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'标题'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>description<span class="token punctuation">`</span> <span class="token keyword">longtext</span> <span class="token keyword">COMMENT</span> <span class="token string">'描述'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>cover_image_url<span class="token punctuation">`</span> <span class="token keyword">longtext</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>pages<span class="token punctuation">`</span> json <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>publish<span class="token punctuation">`</span> <span class="token keyword">tinyint</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>template<span class="token punctuation">`</span> <span class="token keyword">tinyint</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>created_at<span class="token punctuation">`</span> <span class="token keyword">datetime</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">COMMENT</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>updated_at<span class="token punctuation">`</span> <span class="token keyword">datetime</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">COMMENT</span> <span class="token string">'更新时间'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">12</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>
+</code></pre></div><p><img src="https://user-images.githubusercontent.com/12668546/74095470-744bf280-4b2c-11ea-9acd-92b079329441.png" alt="image"></p> <h5 id="字段说明"><a href="#字段说明" class="header-anchor">#</a> 字段说明</h5> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  	<span class="token comment">// 标题</span>
+    <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;string&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 描述信息</span>
+    <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;text&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 封面图链接</span>
+    <span class="token property">&quot;cover_image_url&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;text&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 页面数据，主要部分</span>
+    <span class="token property">&quot;pages&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;json&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 创建时间</span>
+    <span class="token property">&quot;created_at&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;date&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 更新时间</span>
+    <span class="token property">&quot;updated_at&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;date&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 是否已经发布</span>
+    <span class="token property">&quot;is_publish&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;boolean&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 是否是模板</span>
+    <span class="token property">&quot;is_template&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;boolean&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  	<span class="token comment">// 关联的表单</span>
+    <span class="token property">&quot;workforms&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;collection&quot;</span><span class="token operator">:</span> <span class="token string">&quot;workform&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;via&quot;</span><span class="token operator">:</span> <span class="token string">&quot;work&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="workform-表单收集表"><a href="#workform-表单收集表" class="header-anchor">#</a> WorkForm：表单收集表</h3> <h5 id="建表语句-2"><a href="#建表语句-2" class="header-anchor">#</a> 建表语句</h5> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>work_forms<span class="token punctuation">`</span><span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>work_forms<span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>form<span class="token punctuation">`</span> <span class="token keyword">longtext</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>work_id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">KEY</span> <span class="token punctuation">`</span>work_id<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>work_id<span class="token punctuation">`</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">CONSTRAINT</span> <span class="token punctuation">`</span>work_forms_ibfk_1<span class="token punctuation">`</span> <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>work_id<span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> <span class="token punctuation">`</span><span class="token keyword">work</span><span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code>WorkForm Table 结构
+<span class="token punctuation">{</span>
+	formJSON<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">,</span> <span class="token comment">// 一条表单记录</span>
+  workID<span class="token operator">:</span> 外键     <span class="token comment">// 关联的作品ID，外键</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="表单提交记录-example"><a href="#表单提交记录-example" class="header-anchor">#</a> 表单提交记录 Example：</h5> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">[</span>
+	<span class="token punctuation">{</span>
+	  workId<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+	  formJSON<span class="token operator">:</span> <span class="token punctuation">{</span>
+		  <span class="token property">&quot;11&quot;</span><span class="token operator">:</span> <span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>   <span class="token comment">// 姓名</span>
+		  <span class="token property">&quot;22&quot;</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>      <span class="token comment">// 年龄</span>
+		  <span class="token property">&quot;33&quot;</span><span class="token operator">:</span> <span class="token string">&quot;工程师&quot;</span>  <span class="token comment">// 角色</span>
+	  <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span>
+	  workId<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+	  formJSON<span class="token operator">:</span> <span class="token punctuation">{</span>
+		  <span class="token property">&quot;11&quot;</span><span class="token operator">:</span> <span class="token string">&quot;张四&quot;</span><span class="token punctuation">,</span>   <span class="token comment">// 姓名</span>
+		  <span class="token property">&quot;22&quot;</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>      <span class="token comment">// 年龄</span>
+		  <span class="token property">&quot;33&quot;</span><span class="token operator">:</span> <span class="token string">&quot;工程师&quot;</span>  <span class="token comment">// 角色</span>
+	  <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span>
+	  workId<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+	  formJSON<span class="token operator">:</span> <span class="token punctuation">{</span>
+		  <span class="token property">&quot;11&quot;</span><span class="token operator">:</span> <span class="token string">&quot;王五&quot;</span><span class="token punctuation">,</span>   <span class="token comment">// 姓名</span>
+		  <span class="token property">&quot;22&quot;</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>      <span class="token comment">// 年龄</span>
+		  <span class="token property">&quot;33&quot;</span><span class="token operator">:</span> <span class="token string">&quot;工程师&quot;</span>  <span class="token comment">// 角色</span>
+	  <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre></div><div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;formJSON&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// &quot;type&quot;: &quot;json&quot;,</span>
+    <span class="token string">&quot;workId&quot;</span> <span class="token comment">// 关联的 workId，外键</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><h4 id=""><a href="#" class="header-anchor">#</a></h4> <p>解释：Work 与 FormCollection 的关系是一对多的关系，一个作品可以有很多关联的表单统计记录。</p> <hr> <h2 id="接口实现思路-伪代码"><a href="#接口实现思路-伪代码" class="header-anchor">#</a> 接口实现思路 + 伪代码</h2> <blockquote><p>Node.js 代码实现：<a href="https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js" target="_blank" rel="noopener noreferrer">https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;routes&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 图片代理，防止跨域</span>
+      <span class="token comment">// 主要是请求一些跨域图片的时候，先走API，API负责请求图片，用来解决跨域问题</span>
+      <span class="token comment">// 代码关键实现：return http.request(request.get.imgURL)</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/cors-proxy&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.corsProxy&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 所有作品</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.find&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 统计作品总数</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/count&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.count&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 获取某个作品的详情数据</span>
+      <span class="token comment">// 伪代码：return HTTPJsonResponse(WorkModel.findOne(workId).toJSON())</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.findOne&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 创建作品</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.create&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 更新作品</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;PUT&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.update&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 删除某个作品</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;DELETE&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.delete&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 预览某个作品</span>
+      <span class="token comment">// workJSON = WorkModel.findOne(workId).toJSON()</span>
+      <span class="token comment">// return render('作品模板.jsp', workJSON)</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/preview/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.previewOne&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">//</span>
+      <span class="token comment">/**
+      	* 提交某个作品的表单
+      	* 思路：
+      	比如页面中有
+        输入框：姓名，UUID为：11...
+        输入框：年龄，UUID为：22...
+        单选框：角色，UUID为：33...
+        在表单提交的时候，其实提交到后端的数据方式如下：
+        1. URL 为 /submit-form/:workId/
+				2. payload 是一个 JSON：
+        {
+        	&quot;11&quot;: &quot;张三&quot;,   // 姓名
+          &quot;22&quot;: 18,      // 年龄
+          &quot;33&quot;: &quot;工程师&quot;  // 角色
+        }
+        后端在接收到数据之后
+        	1. 会向 WorkForm 表中插入一条记录，主要存储在其 form 字段中（JSON 类型字段）
+          2. 根据 workId 找到 Work，并绑定到该记录的work字段上（外键）
+      */</span>
+      <span class="token comment">// Node.js 参考代码如下：</span>
+      <span class="token comment">// https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js#L16-L24</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/form/submit/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.submitForm&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">/*
+       * 查询某个作品的表单统计数据
+     	 * 思路
+       		1. 根据 workId 获得 Work
+          2. work.pages.find(所有的表单类型元素)
+          3. 构造 Object：uuid2NameMap，即 UUID 和元素名称的映射，比如 11 代表姓名，22代表年龄这样
+          	举个栗子：
+            这是 Work 记录：
+            {
+              &quot;11&quot;: &quot;姓名&quot;,
+              &quot;22&quot;: 年龄,
+              &quot;33&quot;: &quot;角色&quot;
+            }
+          4. 我们再从服务器中找出来刚才提交的和这个 Work 绑定的所有表单，其中一条记录栗子如下：
+            其中一条表单记录：
+            {
+              &quot;11&quot;: &quot;张三&quot;,   // 姓名
+              &quot;22&quot;: 18,      // 年龄
+              &quot;33&quot;: &quot;工程师&quot;  // 角色
+            }
+          5. 这样，我们把两条记录结合下，就会得到如下结果：
+          	{
+              &quot;姓名&quot;: &quot;张三&quot;,
+              &quot;年龄&quot;: 18,
+              &quot;角色&quot;: &quot;工程师&quot;
+            }
+          	其中的一条记录，我们就生成完毕了。
+          	同样的办法，所有的表单记录都可以生成了，我们把这个返回给前端，前端就可以渲染表单数据了
+      			Response Demo：
+            ---------------------
+            {
+              formRecords: [
+                {
+                  workId: 1,
+                  formJSON: {
+                    &quot;11&quot;: &quot;张三&quot;,   // 姓名
+                    &quot;22&quot;: 18,      // 年龄
+                    &quot;33&quot;: &quot;工程师&quot;  // 角色
+                  }
+                },
+                {
+                  workId: 1,
+                  formJSON: {
+                    &quot;11&quot;: &quot;张三&quot;,   // 姓名
+                    &quot;22&quot;: 18,      // 年龄
+                    &quot;33&quot;: &quot;工程师&quot;  // 角色
+                  }
+                },
+              ],
+              uuidToName: {
+                  &quot;11&quot;: &quot;姓名&quot;,
+                  &quot;22&quot;: 年龄,
+                  &quot;33&quot;: &quot;角色&quot;
+                }
+            }
+            ---------------------
+      */</span>
+      <span class="token comment">// Node.js 参考代码如下：</span>
+      <span class="token comment">// https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js#L25-L55</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/form/query/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.queryFormsOfOneWork&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 设置某个作品为模板</span>
+      <span class="token comment">// 伪代码：</span>
+      <span class="token comment">// work = WorkModel.findOne(workId).toJSON()</span>
+      <span class="token comment">// newTemplateWork = work.clone()</span>
+      <span class="token comment">// newTemplateWork.isTemplate = true // 不是模版，是正常作品</span>
+      <span class="token comment">// result = WorkModel.create(newTemplateWork)</span>
+      <span class="token comment">// return result</span>
+      <span class="token comment">// Node.js 参考代码如下：</span>
+      <span class="token comment">// https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js#L56-L63</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/set-as-template/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.setAsTemplate&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 基于某个模版创建新作品</span>
+      <span class="token comment">// 伪代码：</span>
+      <span class="token comment">// templateWork = WorkModel.findOne(templateId).toJSON()</span>
+      <span class="token comment">// newWork = templateWork.clone()</span>
+      <span class="token comment">// newWork.title = newTitle || ''</span>
+      <span class="token comment">// newWork.desc = newDesc || ''</span>
+      <span class="token comment">// newWork.isTemplate = false // 不是模版，是正常作品</span>
+      <span class="token comment">// result = WorkModel.create(newWork)</span>
+      <span class="token comment">// return result</span>
+      <span class="token comment">// Node.js 参考代码如下：</span>
+      <span class="token comment">// https://github.com/ly525/luban-h5/blob/dev/back-end/h5-api/api/work/controllers/Work.js#L64-L71</span>
+      <span class="token property">&quot;method&quot;</span><span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/works/use-template/:id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;handler&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Work.useTemplate&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;policies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="贡献代码或自行开发"><a href="#贡献代码或自行开发" class="header-anchor">#</a> 贡献代码或自行开发</h2> <h3 id="前提准备"><a href="#前提准备" class="header-anchor">#</a> 前提准备</h3> <ol><li>了解鲁班 H5 编辑器的后端 Model</li> <li>了解鲁班 H5 编辑器的后端接口</li></ol></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/ly525/luban-h5/edit/master/docs/zh/ecosystem/backend-intergration.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2025/4/27 00:09:58</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/luban-h5/zh/ecosystem/" class="prev router-link-active">
+        概览
+      </a></span> <span class="next"><a href="/luban-h5/zh/ecosystem/database-oracle.html">
+        Oracle 适配 (Strapi.js)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/luban-h5/assets/js/app.2656929f.js" defer></script><script src="/luban-h5/assets/js/2.ad1aa2c5.js" defer></script><script src="/luban-h5/assets/js/23.a63a903d.js" defer></script>
+  </body>
+</html>
