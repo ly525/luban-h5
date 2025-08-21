@@ -1,4 +1,4 @@
-[📖中文文档](https://ly525.github.io/luban-h5/zh/) || [📖English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html) | [README(en)](./README.en.md) || [论坛/社区](https://github.com/ly525/luban-h5/discussions)
+[📖中文文档](https://ly525.github.io/luban-h5/zh/) || [📖English Docs](https://ly525.github.io/luban-h5/en/getting-started/introduction.html) | [README(en)](./README.en.md) || [论坛/社区](https://github.com/ly525/luban-h5/discussions) || [DeepWiki](https://deepwiki.com/ly525/luban-h5)
 
 <h2 align="center">
  鲁班 H5
